@@ -1,0 +1,920 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zilphas Cottages — 134 Oakneck Rd. — HYAMIS, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1376,467,822,44",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. Adams — 32 Washington Ave. — NORTH ADAMS, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1376,667,769,47",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "B. Chapman — 799 Central Ave. — NEEDHAM, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1379,870,725,44",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. E. Grant — 53 King St. — PITTSFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1379,1070,640,47",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. Dillard — 109 Linden St. — PITTSFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1379,1117,757,45",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Jasper — 66 Dewey Ave. — PITTSFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1379,1165,747,45",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Marshall — 124 Danforth Ave. — PITTSFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1379,1210,754,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Taylor — 11 Oak St. — PLYMOUTH, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1379,1381,577,46",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. A. Gray — 47 Davis St. — PLYMOUTH, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1379,1430,621,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mary Lee Chicken Shack — 482 Main St. — RANDOLPH, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1376,1616,910,44",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Gale — 168 Townsend St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1379,1802,850,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth's — 64 Humboldt St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1376,1908,600,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charm Grove — 90 Humboldt St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1375,1956,749,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. Lovett — 68 Humboldt St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1370,2001,777,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mae's — 140 Lenox St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1361,2050,533,36",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lovetts — 69 Humboldt St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1337,2096,652,37",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth's — 64 Humboldt St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1330,1863,661,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Belinda's — 429 Shawmut Ave. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1354,2185,737,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cherrie Charm Cove — 90 Humboldt Ave. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1366,2235,993,37",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martha's — 588 Columbus Ave. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1369,2280,731,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. De Lisser — 492 Mass. Ave. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1370,2324,853,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thompson's — 1105 Tremont St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1376,2432,771,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Atlanta — 1105 Tremont St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1370,2480,703,38",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sexton — Northampton St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1370,2571,656,45",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morgan's — 355 Warren St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1376,2678,704,44",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roxbury — 52 Laurel St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1548,1694,785,45",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas Square — 1002 Tremont St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1370,2830,825,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jaspan's — 134 Harold St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1369,2878,591,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kornfield's — 2121 Washington St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1369,2922,808,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modern — 26 Reed St. — SOUTH HANSON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1376,3115,487,31",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mary B. Pina — 26 Reed St. — SOUTH HANSON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1370,3212,772,47",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Park View House — Park Street — STOCKBRIDGE, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=1361,3405,925,44",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mothers Lunch — 510 Columbus Av. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,469,827,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lucille — 52 Rutland Sq. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=225,512,589,47",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harrett Tubman — 25 Holyoke St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=211,563,789,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Williams — 555 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=218,668,866,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Julia Walters — 912 Tremont — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=230,720,610,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Holeman — 212 W. Springfield St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,764,789,45",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. Johnson — 616 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,810,760,47",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. A. Taylor — 192 W. Springfield St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,855,977,47",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Guest House — 193 Humbolt St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,905,722,37",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lonie Lee's — 536 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=231,1007,749,46",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Slades — 958 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,1056,587,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Southern — 505 Mass. Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,1104,613,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oklahoma — 975 Tremont Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,1150,710,38",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charlie's — 429 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,1196,732,38",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green Candle — 395 Mass. Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,1241,740,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunnyside — 411 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,1287,720,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Western — 415 Mass. Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,1334,594,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Estelles — 888 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,1378,612,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Geneva's — 808 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=234,1486,612,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. F. S. Blake — 363 Mass. Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=233,1534,829,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. L. Crosby — 11 Greenwich Park — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=233,1576,809,44",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. Enslow's — 977 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,1624,819,45",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. Milliams — 62 Hammond St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=230,1673,741,36",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Victory — 46 W. Canton St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=234,1719,637,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. West — 609 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=225,1763,682,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth Evans — 563 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=224,1811,803,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rubinetta — 961 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,1856,646,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beauty Box — 781C Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=233,1903,725,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lucile's — 226 W. Springfield St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,1950,788,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Constance — 414 Mass. Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,1997,653,37",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Easter's — 169A Springfield St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=221,2042,712,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arizona — 563 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,2090,691,37",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Washington — 985 Tremont — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,2135,644,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lititia's — 140 Linox St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,2181,616,38",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jovennette's — 109 Humbolt Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,2218,809,53",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Betty's — 609 Columbus Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,2274,676,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clark-Merrill — 507 Shawmut Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=218,2318,893,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Amy's — 782 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=218,2365,678,43",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Doris — 767 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=218,2408,749,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Amity — 1028 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=225,2514,890,50",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Abbott's — 974 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,2565,702,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy — 410 Mass. Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=227,2671,682,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garfield's — 657 Shawnut Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,2777,736,37",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savannah — 612 Shawnut St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,2821,673,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Baltimore — 1013 Tremont St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,2866,694,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Corry's — 431 A Mass. Ave. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,2913,651,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/77"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chester's — 189 W. Newton St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=224,2957,725,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/78"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grady & Oliver — 525 Shawnut St. — BOSTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,3006,898,39",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/79"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. P. Bennett — 26 Mead St. — CAMBRIDGE, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=226,3182,792,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/80"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. I. Anderson — 28 Rossiter St. — GREAT BARRINGTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=224,3371,776,41",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/81"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Hamilton — 118 Main St. — GREAT BARRINGTON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210142/full/!760,760/0/default.jpg#xywh=214,3419,784,42",
+      "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json/entry/82"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0037_5210142_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

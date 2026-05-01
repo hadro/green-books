@@ -1,0 +1,711 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Busy Bee Cottage — 446 Fisher Ave. — NEPTUNE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=283,439,988,40",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shore Villa — 316 Myrtle Ave. — NEPTUNE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=283,486,836,42",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Playland Farms — MILLINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=283,587,443,39",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Camp Midval — MIDVALE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=289,686,362,37",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shady Nook Cot. — 71 Atlantic Ave. — NORTH LONG BRANCH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=284,790,985,39",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robertson's Farm — LAKEHURST",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=283,888,478,34",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oaklawn Country Club — NEW GRENTA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=283,985,622,38",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morris Beach — 401 Bayview Ave. — PLEASANTVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=283,1086,930,39",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garden Spot — 300 Doughty Rd. — PLEASANTVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=283,1131,839,47",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marionette Cottage — 604 Portland — PLEASANTVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=283,1181,988,46",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Red Oaks Rest — RICHLAND",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=280,1282,427,38",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rainbow End — SKILLMAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=280,1381,373,35",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Laster Cottage — 419 Morris Ave. — SPRINGLAKE BEACH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=280,1479,898,44",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McDaniel Farm — 2 Rover Rd. — TOMS RIVER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,1578,839,42",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Poindexter Cottage — 106 E. Schellenger Ave. — WILDWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=280,1677,530,41",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. B. Quarles — 100 Young Ave. — WILDWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=280,1771,984,50",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whip-or-Will Cot. — Rt. 1, Box 178B — BALDWIN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=277,2005,674,43",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Three Sisters — BALDWIN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,2104,368,37",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Double J. Ranch — CONSTANTINE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=277,2195,933,54",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zac White Pines — BAY SHORE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=280,2298,462,43",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Waters Farm — BUCHANAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=277,2399,372,36",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Woodland Park Resort — BITLEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=220,2441,955,56",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Old Dears Rest — Rt. 1 — BITLEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,2492,612,51",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dagg's Cottage — Rt. 1 — BITLEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=276,2541,623,52",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Everett Rest Haven — Rt. 1 — BITLEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=277,2590,748,51",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal Breeez Hotel — Rt. 1 — BITLEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,2644,749,46",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Caslen's Blue Bell Garden — Rt. 1 — BITLEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,2679,930,70",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Scott's, Country Villa — Rt. 1, Box 53 — COVERT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=276,2785,989,58",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pitchford's, Big Tower Child. Camp — COVERT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=276,2836,839,51",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mable's Place — COVERT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=276,2935,387,39",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bryson's, on the Hilltop — 202 N. State St. — HART",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=276,3033,693,49",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Matthew Burgess' Place — HARTFORD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,3176,667,53",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Pomiserania Lodge — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=220,3277,769,69",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mildred Williams — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=220,3346,560,54",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club El Morocco — Rt. 1. Box 186A — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,3403,986,57",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bask-Inn — Broadway & Hemlock — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,3453,902,57",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas Manor — P. O. Box 794 — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=277,3507,851,49",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McKnight's Par. Pal. — P. O. Box 75 — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,3556,983,52",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rosana Tavern — Lake Drive — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,482,801,42",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nichol's Home — P. O. Box \"B\" — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1493,530,895,42",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morton's Motel — P. O. Box 116 — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1495,577,853,46",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Flora Giles Farm — Rt. 1 — LAWRENCE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1492,686,668,50",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "White Way Inn — Broadway — PAW PAW",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1505,387,752,38",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lydia Inn — P. O. Box 81 — PAW PAW",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1498,436,706,39",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glover's Chi Acres Resort — Route 1, Paw Paw, Michigan — PAW PAW",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1437,738,324,41",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Trails End Resort — PAW PAW",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1500,1779,506,35",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pit's Resort — Rt. 1, Box 131 — PAW PAW",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1498,1831,787,39",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Medicine Acres — 8775 Water St. — ROSE CENTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,1943,932,41",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thornton's Resort — Rt. 3, Box 41 — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1498,2057,984,45",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's Shady Nook — Rt. 1, Box 102 — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,2106,876,47",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Twin Star Resort — Rt. 3, Box 245 — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,2209,932,41",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clare Harris' Resort — Rt. 4, Box 38 — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1499,2257,983,43",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Evergreen Resort — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,2307,475,37",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's Farm — Rt. 2, Box 344 — THREE RIVERS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1493,2420,901,46",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jordan's Home — Rt. 2, Box 546 — THREE RIVERS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,2469,876,46",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise Ik. Resort — VANDALIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1440,2539,992,40",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Three Sisters — Rt. 1 — VANDALIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=279,2104,368,37",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stroudsburg Mt. View House — 14 No. 2nd St. — STROUDSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1498,2866,791,47",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fern Board. House — 387 Lincoln — EAST STROUDSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,3016,897,44",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunrise — P. O. Box 65 — ESPY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1500,3116,620,40",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dorsey Wood Park Farm — R. F. D. 1 — MONROETON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,3214,745,39",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Carter House — 15 Quay St. — MT. POCONO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1499,3361,845,42",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alenia's Inn — Box 236 — SWIFTWATER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,3460,604,40",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Laster Chateau — 428 S. Easton Rd. — WILLOW GROVE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213983/full/!760,760/0/default.jpg#xywh=1496,3557,984,42",
+      "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0081_5213983_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

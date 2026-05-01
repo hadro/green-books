@@ -1,0 +1,62 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HOLLIS' BICYCLE STORE — NEW YORK CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207707/full/!760,760/0/default.jpg#xywh=495,815,1174,88",
+      "id": "https://hadro.github.io/green-books/0005_5207707_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "ALEXANDER MOTORS — NEW YORK CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207707/full/!760,760/0/default.jpg#xywh=2069,783,1466,92",
+      "id": "https://hadro.github.io/green-books/0005_5207707_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CLANROD JONES — NEW YORK CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207707/full/!760,760/0/default.jpg#xywh=2209,4038,1162,114",
+      "id": "https://hadro.github.io/green-books/0005_5207707_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "RADIO SERVICE LABORATORY — NEW YORK CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207707/full/!760,760/0/default.jpg#xywh=357,3892,1449,76",
+      "id": "https://hadro.github.io/green-books/0005_5207707_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "AL'S GARAGE — NEW YORK CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207707/full/!760,760/0/default.jpg#xywh=605,4665,826,60",
+      "id": "https://hadro.github.io/green-books/0005_5207707_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0005_5207707_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

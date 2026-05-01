@@ -1,0 +1,678 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Keystone Club — 4th & Freemen — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=400,518,781,52",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Duck Inn — 5th & State Street — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=396,567,750,49",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Virgil's Place — 1622 Gray Road — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=393,614,774,53",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "De Moss — 44th and Sorta Road, Rt. 3 — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=386,744,947,51",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Flamingo — 1916 N. 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=398,876,686,46",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Congo — 1932 - 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=396,925,572,50",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunn & McGee — 7th & Garfield — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=400,1035,791,51",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Economy — 1935 N. 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=400,1149,684,56",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arthur's — 2414 N. 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=389,1199,675,48",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whitney's — 5th & Virginia — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=401,1319,666,45",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cundiff — 5th & Quindarf — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=387,1369,623,41",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Dawson — 1010 Yuma St. — MANHATTAN, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=403,1577,827,55",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Jackson — 830 Yuma St. — MANHATTAN, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=404,1627,834,58",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. W. White — 821 Cypress — OTTAWA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=403,1844,801,56",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Williams — 2216 Grand Ave. — PARSONS, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=403,2057,909,57",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Womaack's — 406 W. 43rd Terraace (Kemo) — PARSONS, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=393,2106,1107,61",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — 400 Quincy St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=394,2332,623,46",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Slaughter — 1407 Monroe — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=405,2445,826,50",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horseshoe Grill — 114 Kansas — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=396,2557,730,53",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jenkins — 112 East 4th St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=403,2610,671,49",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Heaven — 301 E. 1st St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=400,2658,767,48",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe Andy's — 1000 Washington St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=398,2706,885,51",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lytle's — 107 E. 4th St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=403,2828,610,50",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Power's — 402 Quincy Street — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=401,2881,684,41",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Newton's — 1316 Van Buren St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=403,2995,792,47",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Avalla's — 1800 Van Buren St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=403,3046,773,45",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Macks' — 400 Quincy St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=415,3163,602,45",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Power's Cafe — 116 E. 4th St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=415,3209,743,46",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Powers — 401 Quincy St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=405,3337,626,49",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hatton's — 726 E. 10th St. — TOPEKA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=411,3456,683,42",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oklahoma House — 517½ N. Main — WICHITA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=410,3667,1078,58",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oklahoma Cafe — 517 N. Main St. — WICHITA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1620,430,847,42",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Southern Inn — State St., Hiway 31W — BOWLING GREEN, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1627,784,954,49",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Johnson — Valley Creek Road — ELIZABETHTOWN, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1634,1018,789,50",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Tyler — Mile Stt. — ELIZABETHTOWN, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1635,1071,616,45",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. E. Wintersmith — S. Dixie Ave. — ELIZABETHTOWN, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1633,1118,854,42",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Razor — 436 E. Main St. — HAZARD, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1637,1330,799,53",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Jessie Richardson — HAZARD, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1635,1385,616,44",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. McNary — 113 Liberty St. — HOPKINSVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1640,1596,706,49",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. C. Hopkins — 128 Liberty St. — HOPKINSVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1640,1642,770,52",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Burn's — Buford St. — LANCASTER, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1637,1809,464,44",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hord's — Buford St. — LANCASTER, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1637,1858,476,41",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Plum's — Buford St. — LANCASTER, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1640,1974,477,40",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hyatt's — Buford St. — LANCASTER, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1637,2088,487,42",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hilltop — Buford St. — LANCASTER, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1640,2201,494,42",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Warren & Francis — N. Campbell St. — LANCASTER, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1642,2314,932,44",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Douglas — 183 Dewees St. — LEXINGTON, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1640,2539,766,48",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln Institute — LINCOLN RIDGE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1645,2743,413,39",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allen — 2516 W. Madison St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1649,2954,714,46",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pythian Temple — 10th & Chestnut — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1647,3004,830,49",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Walnut — 615 Walnut St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1649,3056,613,40",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 528 S. 6th St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1652,3103,720,42",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "May's — 623 S. 10th St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1649,3152,583,45",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lee L. Brown — 1014 W. Chestnut — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1642,3266,852,46",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hattie Daniels — 1512 W. Chestnut — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1654,3312,849,49",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eatmore — 964 S. 12th St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1658,3428,627,47",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Honey Dripper — 1208 Breckinridge St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1656,3475,932,53",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones — 525 S. 13th St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1661,3532,567,39",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Du Rez — Madison & 26th St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1659,3577,718,42",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Honey Dripper — 1212 W. Breckenridge St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1656,3475,932,53",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thompson's — 419 So. 19th St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208024/full/!760,760/0/default.jpg#xywh=1656,3676,767,47",
+      "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0028_5208024_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

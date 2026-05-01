@@ -1,0 +1,623 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Williams — 814 Linden St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=371,443,1085,50",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sumnes' — 1258 - 7th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=374,570,728,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McCabe — 5901 Adeline St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=373,623,763,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Signal — 800 Center St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=373,677,687,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bufford's — 5901 Aldine St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=373,796,814,41",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Overland Cafe — 1719 - 7th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=367,919,893,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rythm Buffet — 1704 - 7th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=366,973,897,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Personality — 3613 San Dablo Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=370,1093,1073,47",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kentucky — 1067 N. Fair Oaks — PASADENA, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=367,1302,939,47",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Penn's Super — 1285 Lincoln Ave. — PASADENA, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=366,1424,997,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S. M. Carlton — 939 W. 6th St. — SAN BERNARDINO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=253,1603,1014,77",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Phillips — 964 6th St. — SAN BERNARDINO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=356,1683,946,49",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglass — 206 Market St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=350,1897,813,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simmons — 542 Sixth Ave. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=357,1949,789,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Wallace — 537 13th St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=357,2073,910,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Chance — 279 \"A St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=360,2126,1010,47",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Gooden — 3000 Franklin St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=360,2179,1032,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 18 N. 30th St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=366,2302,788,45",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Turpin — Powell & Market Sts. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=360,2517,887,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. E. Davis — 1564 Jones St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=357,2639,1010,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Johnson — 1788 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=356,2692,974,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jacks' — 1931 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=357,2815,689,41",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Riggans' — 2600 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=356,2936,753,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Adrian — 1930 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=356,3057,698,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arineica's — 1928 Fillmore St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=350,3110,863,42",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Nobita — 1807 Belmount Place — SANTA MONICA, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=353,3316,979,47",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kings — 322 South \"K\" St. — TULARE, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=353,3525,777,45",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. N. Hamilton — 717 N. Corona St. — COLORADO SPRINGS, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1602,497,607,42",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. Wallace — 314 E. Costilla St. — COLORADO SPRINGS, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,604,560,40",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dr. I. Moore — 738 N. Spruce St. — COLORADO SPRINGS, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1593,707,960,49",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. Barnett — 410 S. Wahsatch Ave. — COLORADO SPRINGS, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,763,577,40",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. Roberts — 418 E. Cucharras St. — COLORADO SPRINGS, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,867,580,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arapahoe — 2247 Arapahoe St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,1144,870,49",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Herndon — 2716 Welton St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,1200,790,42",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rossonian — 2650 Welton St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1589,1253,817,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Ritz — 2721 Welton St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1596,1306,783,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. F. Stell — 2427 Ogden St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,1430,1035,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. McClure — 2849 Lafayette St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1594,1483,575,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. Graham — 2544 Emerson St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1584,1587,1042,42",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. B. Anderson — 2421 Ogden St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,1643,694,40",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. L. Fisher — 2356 Humboldt St. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1594,1747,608,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Auto Service — 817 E. 26 Ave. — DENVER, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1594,1923,888,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Alexander — 106 E. 12th St. — GREELEY, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,2142,1034,51",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rev. W. H. Mance — 104 E. 12th St. — GREELEY, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1592,2200,1031,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Mitchell — 322 W. 1st St. — LA JUNTA, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1587,2407,978,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Moore — 301 Lewis Ave. — LA JUNTA, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1587,2462,953,41",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Tittsworth — 325 Maple Ave. — LA JUNTA, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1584,2513,643,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Perry — 231 S. Victoria St. — PUEBLO, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1584,2775,781,45",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Protho House — 188 Central Main St. — PUEBLO, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1584,2829,485,40",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. Protho — 918 E. Evans Ave. — PUEBLO, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1584,3002,1033,43",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. Forehand — 100 Spruce St. — PUEBLO, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1582,3056,973,46",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Roneoak — 121 E. Northern Ave. — PUEBLO, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1584,3107,469,40",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. Brooks — 114 W. 3rd St. — TRINIDAD, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1584,3375,943,42",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel Broad — 468 Broad St. — BRIDGEPORT, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1576,3615,859,65",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Barrett — 33mer St. — BRIDGEPORT, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1579,3662,1040,66",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Lawrence — 8an St. — BRIDGEPORT, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206413/full/!760,760/0/default.jpg#xywh=1576,3718,1043,57",
+      "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0015_5206413_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

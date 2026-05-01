@@ -1,0 +1,634 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tippin-In — 35 Vetran St. — MERIDEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=415,535,620,48",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Phillis Wheatley — 108 Canal Street — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=404,732,887,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dr. M. F. Allen — 65 Dixwell Avenue — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=421,848,931,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. Raone — 68 Dixwell Avenue — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=418,897,880,42",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Monterey — 267 Dixwell Ave. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=414,1027,711,45",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Belmonts — 156 Dixwell Ave. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=414,1074,698,41",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. Ruby — 175 Goffe St. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=418,1189,686,47",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glady's — 624 Orchard Street — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=423,1238,705,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ethel's — 152 Dixwell Avenue — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=423,1285,719,43",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harris — 734 Orchard St. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=413,1334,619,45",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modern — 170 Goffe St. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=421,1449,567,43",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elk's — 204 Goffe St. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=415,1563,530,42",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lillian's Paradise — 137 Wallace St. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=413,1611,895,42",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shiffrins — 221 Dixwell Ave. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=415,1726,679,43",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Proctor's — 180 Dixwell Ave. — NEW HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=405,1838,709,44",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Whittle — 785 Bank St. — NEW LONDON, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=421,2037,773,42",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palm Gardens — Post Road — SOUTH NORWALK, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=428,2247,680,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "GLADSTONE — Gay St. — STAMFORD, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=425,2444,590,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robert Graham — 37 Hanrahan Ave. — STAMFORD, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=428,2559,887,48",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sizone — 136 W. Main St. — STAMFORD, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=430,2673,637,48",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elton — WATERBURY, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=423,2873,144,41",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Community House — 34 Hopkins St. — WATERBURY, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=431,2987,884,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rhineharts — 471 N. Main St. — WATERBURY, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=425,3098,731,49",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McCarthy — Main, Bishop & Grove Sts. — WATERBURY, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=431,3153,955,45",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sam's — 149 South Main St. — WATERBURY, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=433,3265,679,42",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dadds — 359 Beach St. — WEST HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=428,3461,531,40",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Seaview — 392 Beach St. — WEST HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=428,3510,577,40",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hoot Owl — 374 Beach St. — WEST HAVEN, CONN.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=428,3619,634,43",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dean's — Forrest St. — DOVER, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1660,615,470,48",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mosely's — Division St. — DOVER, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1659,668,550,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Weston's — Division St. — DOVER, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1660,715,554,42",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe Randolph's — W. 6th St. — LAUREL, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1652,915,718,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe Randolph's — W. 6th St. — LAUREL, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1652,915,718,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Orchid — W. 6th St. — LAUREL, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1652,1152,497,42",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rodney — Dupont Highway-Rt. 13 — TOWNSEND, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1659,1352,818,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hood's — Dupont Hiway — TOWNSEND, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1652,1465,582,43",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal — 703 French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1663,1679,561,37",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lawson — 208 Poplar St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1649,1725,601,45",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.M.C.A. — 10th & Walnut Sts. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1660,1776,806,42",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 10th & Walnut Sts. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1663,1829,807,41",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss W. A. Brown — 1306 Tatnall St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1650,1943,971,49",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Till — 1008 French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1660,1995,767,45",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Christian Assn. Bldg. — 10th & Walnut St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1660,2110,1026,55",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Anderson — 916 French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1660,2256,876,47",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dora's — 314 East 10th St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1670,2312,666,40",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spot — 7th and 8th on French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1665,2437,852,52",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Esso — 8th and 9th on King — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1669,2571,681,43",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WILLIS HOUSE — 1428 QUE STREET, N. W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1663,3000,551,53",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's Hotel — 1505 13th St. N.W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1670,3123,971,52",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whitelaw — 13th & 'T' Sts. N. W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1670,3175,831,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson, Jr. — 1509 Vermont Ave., N.W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1660,3227,988,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — U St. & 15th St., N. W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1666,3277,884,43",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 1816 12th St. N. W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1669,3325,889,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 901 Rhode Is. Ave. N. W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1670,3374,1014,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. Fowler — 1449 'Q' St. N. W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1659,3518,941,46",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Towles — 1342 Vermont Ave., N. W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1663,3570,904,41",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bailey's — 2533 - 13th St., N. W. — WASHINGTON, D. C., DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212872/full/!760,760/0/default.jpg#xywh=1663,3617,864,48",
+      "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0014_5212872_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,854 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Golden Star — 10th & Forrester Ave. — DARBY, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=412,565,433,51",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pope — 1318 French St. — ERIE, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=404,849,673,56",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Famble — 538 West 12th St. — ERIE, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=410,963,955,54",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Forsett — 210 W. High St. — GETTYBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=414,1194,1037,66",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alexander — 7th & Boas Sts. — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=419,1435,846,57",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson — 1004 N. 6th St. — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=414,1491,756,55",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Carter — 606 Foster St. — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=418,1600,951,69",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Hall — Herr & Montgomery — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=421,1652,1047,67",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. D. Jones — 613 forster St. — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=418,1700,1049,68",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. Clark — 449 S. Duke St. — LANCASTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=421,1938,803,63",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Carter — 143 S. Duke St. — LANCASTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=421,1999,791,55",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. L. Polite — 540 North St. — LANCASTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=421,2050,815,58",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. D. Slater — 1211 Arch St. — NORRISTOWN, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=417,2281,877,62",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 140 Elm St. — NEW CASTLE, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=419,2519,710,50",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Jackson — 258 Bissel Ave. — OIL CITY, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=429,2764,887,58",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Moore — 8 Bishop St. — OIL CITY, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=428,2815,857,60",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Attucks — 801 S. 15th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=428,3067,735,57",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elizabeth Fry — 756 S. 16th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=428,3117,914,58",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dupree — 529 So. Broad St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=428,3164,816,66",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Woodson — 17th & Lombard Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=431,3213,968,66",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gilchriest — 319 N. 40 St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=431,3271,730,50",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dixie — 606 S. 13th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=434,3322,650,50",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Grand — 420 So. 15th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=439,3366,858,56",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Baltimore — 1438 Lombard St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=441,3408,890,70",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Citizens — 420 S. 15th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=445,3467,748,55",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas — Broad & Lombard Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=444,3515,962,60",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elrae — 805 N. 13th St, — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=445,3569,653,58",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Salle — 2026 Ridge Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=444,3620,763,57",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Maceo Cafe — Van Pelt & Norris St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=444,3664,1044,65",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Roadside — 514 S. 15th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=445,3716,954,66",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise — 1627 Fitzwater St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1638,411,897,55",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 1724 Christian St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1635,460,962,59",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 1605 Catherine St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1638,513,911,57",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 6128 Germantown Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1638,513,911,57",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horseshoe — 12th & Lombard — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1641,615,861,52",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Phain — 2059 Fitzwater St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1648,667,973,47",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Reve — Cor. 9 & Columbus Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1651,717,1031,52",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cotton Grove — 1329 South St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1651,856,891,51",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Loyal Grill — 16th & South Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1658,907,944,54",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lyons Cafe — 1418 South St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1648,959,840,53",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wayside Inn — 13th & Oxford Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1655,1009,1034,55",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dixon's Wonder Bar — 19th & Montgomery Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1648,1063,666,53",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lenox — Popular Jessup Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1655,1163,955,55",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roseland — 5404 Arch St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1655,1218,706,50",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sam's — 1612 South St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1658,1271,642,47",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wander Inn — 18th & Federal Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1658,1313,1043,59",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Campbells — 18th & South Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1645,1367,897,53",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Old Peacock — 766 Market St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1647,1418,870,50",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Congo — 2300 Ridge Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1648,1472,738,45",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Freds — 1320 South St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1651,1517,660,47",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butler's Paradise — Ridge & Jefferson — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1659,1646,839,57",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Progressive Club — 1415 S. 20th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1659,1751,679,53",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Irene's — 2200 Ridge Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1651,1853,744,53",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modern Cafe — Cor. 11 & Fitzwater — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1652,1897,1047,62",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crystal Room — 1935 W. Columbia — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1652,1999,1033,57",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marion's — 20th & Bainridge Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1665,2179,964,60",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's — 21st & Burke Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1662,2234,870,53",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Seattle — 113 South St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1661,2287,674,49",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lill's — 908 So. 17th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1659,2336,686,50",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S. Jones — 2064 Ridge St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1655,2451,761,55",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Effie's — 5502 Girad Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1669,2580,746,58",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elizabeth's — 5003 Brown St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1671,2628,820,63",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Henson — 1318 Fairmont Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1671,2676,963,67",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jennie's — 1618 French St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1676,2730,756,65",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Salle — 2036 Ridge St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=444,3620,763,57",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lady Ross — 718 S. 18th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1676,2834,814,62",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Reynolds — 1612 N. 13th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1679,2885,826,59",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rose's — 16th & South Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1676,2934,814,67",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. Franklin — 2115 W. York St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1683,2981,951,68",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Morton's — 17th & Bainbridge Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1679,3046,445,51",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Redmond's — 4823 Fairmount St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1666,3135,995,68",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. B. Tooks — 1913 W. Diamond St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1669,3188,1047,66",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "United Oil — 16th & Fitzwater — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1695,3318,935,68",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Booker Bros — 1811 Fitzwater St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1690,3451,985,70",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garage — 5732 Westminister Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1581,3416,326,52",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garage — 1823 Bainbridge St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1581,3416,326,52",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dorsey Bros. — 2009 Oxford St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206335/full/!760,760/0/default.jpg#xywh=1686,3695,900,65",
+      "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0042_5206335_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Trans World Airlines — 80 East 42nd Street, New York, N. Y.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213521/full/!760,760/0/default.jpg#xywh=1416,1101,1140,61",
+      "id": "https://hadro.github.io/green-books/0009_5213521_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0009_5213521_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

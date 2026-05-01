@@ -1,0 +1,733 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel Shaw — 245 Auburn Ave. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=300,379,966,69",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "James Hotel — 241 Auburn Ave. N.E — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=296,432,1067,63",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McKay Hotel — Auburn Ave. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=306,486,895,59",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brookmont — 3953 S. Michigan Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1636,305,1054,71",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Claridge — 51st & Mhichigan Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1640,355,1049,70",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grand — 5048 S.Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1646,415,747,54",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Huntington — 649E.37th.St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1640,459,777,66",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Monogram — 3449 S. State St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,512,896,60",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ritz — 409 E. Oakwood Blvd. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,563,844,58",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Southway — 6014 S. Park Aae. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,611,898,63",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Trenier — 409 Oakwood Blvd. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,664,886,54",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tyson — 4259 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,716,751,52",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vincennes — 601 E. 36th St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,765,881,52",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 3763 S. Wabash Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1640,808,1050,63",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 4559 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,858,957,67",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Franklin — 3942 Indiana Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,912,886,55",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. B. Clayborne — 303 N. Pine St. — CENTRALIA, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1650,1111,661,52",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "P. Coleman — 503 N. Poplar St. — CENTRALIA, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,1347,914,69",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. Coleman — 503 N. Poplar St. — CENTRALIA, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1650,1450,954,57",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Langenfield — 120 N. Poplar St. — CENTRALIA, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1650,1550,953,63",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stewart — E. North St. — DANVILLE, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1655,1738,695,45",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dudley — 130 S. 11th St. — SPRINGFIELD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1649,1902,709,50",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allen — 2516 W. Madison — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1653,2144,768,57",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Walnut — 615 Walnut St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1646,2195,781,56",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 528 S. Walnut St. — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1643,858,957,67",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brantsford — MOMMOUTH CAVE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1649,2435,330,46",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dew Drop Inn — E. Locust St. — MT. STERLING, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1646,2594,955,49",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jefferson — 514 S. 8th St. — PADUCAH, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1649,2724,784,49",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Metropolitan — 724 Jackson St. — PADUCAH, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1650,2774,910,50",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Washington — 805 Washington St. — PADUCAH, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1652,2824,1050,49",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Astoria — 225 S. Rampart St. — NEW ORLEANS, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1652,3058,895,45",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chicago — Bienville St. — NEW ORLEANS, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1650,3105,708,51",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Patterson — 761 S. Rampart St. — NEW ORLEANS, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1649,3153,952,53",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Page — 1038 Dryades — NEW ORLEANS, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1652,3211,595,42",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lloyd — Milom St. — SHREVEPORT, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1653,3322,534,47",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Thomas House — 28 \"A\" St. — PORTLAND, MAINE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1653,3495,961,53",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wright's — 26 Calvert St. — ANNAPOLIS, MARYLAND",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=1649,3733,749,45",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butler Y. M. C. A. — 22 Butler St. — ANNAPOLIS, MARYLAND",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=313,624,1050,68",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. B. Jackson — 49 Davis St. N. W. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=315,971,1054,80",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Top Hat — Auburn Ave. Ν. Ε. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=317,1124,1049,77",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Suttons — 312 Auburn Ave. N. E. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=207,1226,1160,77",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Artistic — 55 Decatur St. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=317,1336,684,60",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Poro — Auburn & Belle St. Ν. Ε. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=317,1427,994,70",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal — Auburn Ave. Ν. Ε. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=316,1536,807,57",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ashly — Hunter St. N. Ε. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=210,1589,760,57",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunset Casino — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=212,1696,444,43",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Halls — Auburn Ave. N. E. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=215,1642,440,53",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lowes Hotel — COLUMBUS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=313,1908,409,47",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. T. Banyon — 316 S. Jefferson — DUBLIN, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=323,2058,1051,67",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Burden — 508 McCall St. — DUBLIN, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=328,2108,986,69",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Hunter — 504 S. Jefferson — DUBLIN, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=332,2158,1042,66",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Kea — 405 S. Jefferson St. — DUBLIN, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=326,2204,965,73",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. P. Cooper — 211 College St. — EASTMAN, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=328,2375,849,60",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Mariano — 408 1st Ave. — EASTMAN, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=325,2428,908,55",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. Brown — Caanen Section — GREENSBORO, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=328,2588,953,61",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Jeter — Railroad Sec. — GREENSBORO, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=328,2641,849,58",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Walker — Springfield Sec. — GREENSBORO, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=330,2690,1020,63",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas Hotel — 361-3 Broadway — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=326,2807,963,56",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Richmond Hotel — 319 Broadway — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=326,2859,961,54",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Clemons — 104 Spring St. — KENTUCKY, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=333,3025,956,53",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. C. Moore — 122 Spring St. — KENTUCKY, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=333,3073,983,56",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. W. Henndon — 139 1st Aev. — KENTUCKY, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=333,3125,1043,53",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. A. Monroe — 108 Spring St. — KENTUCKY, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=333,3172,1041,59",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jerry Cox — SAVANNAH, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=326,3346,313,42",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Duggar — 964 Renolds St. — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=330,3488,963,51",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. K. G. Scarlett — 843 Reynolds — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206461/full/!760,760/0/default.jpg#xywh=330,3537,1013,54",
+      "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0011_5206461_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

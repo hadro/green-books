@@ -1,0 +1,62 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WASHINGTON PARK FOOD CENTER — Cor. Ivey Lane and Gore Avenue — Orlando",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215036/full/!760,760/0/default.jpg#xywh=1134,548,1430,64",
+      "id": "https://hadro.github.io/green-books/0031_5215036_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "COLEMAN'S CROSS COUNTRY GAS STATION — Cor. Ivey Lane and Gore Avenue — Orlando",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215036/full/!760,760/0/default.jpg#xywh=1251,1042,1197,64",
+      "id": "https://hadro.github.io/green-books/0031_5215036_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. J.'S GULF SERVICE — 17690 Homestead Avenue — Perrine",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215036/full/!760,760/0/default.jpg#xywh=922,1996,996,81",
+      "id": "https://hadro.github.io/green-books/0031_5215036_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CHAT & CHEW — Pompano Beach",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215036/full/!760,760/0/default.jpg#xywh=997,2802,871,62",
+      "id": "https://hadro.github.io/green-books/0031_5215036_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "KIDD'S PLACE — Pompano Beach",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215036/full/!760,760/0/default.jpg#xywh=997,3421,869,64",
+      "id": "https://hadro.github.io/green-books/0031_5215036_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0031_5215036_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

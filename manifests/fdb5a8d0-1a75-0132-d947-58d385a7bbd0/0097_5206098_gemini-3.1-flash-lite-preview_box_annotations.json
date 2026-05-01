@@ -1,0 +1,73 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dole-Les-Bains — BRITISH GUIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206098/full/!760,760/0/default.jpg#xywh=296,139,959,69",
+      "id": "https://hadro.github.io/green-books/0097_5206098_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Courtleigh Manor — JAMAICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206098/full/!760,760/0/default.jpg#xywh=296,680,959,70",
+      "id": "https://hadro.github.io/green-books/0097_5206098_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Strawberry Hill — JAMAICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206098/full/!760,760/0/default.jpg#xywh=296,1518,959,74",
+      "id": "https://hadro.github.io/green-books/0097_5206098_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Montemar Hotel — PUERTO RICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206098/full/!760,760/0/default.jpg#xywh=306,3160,435,51",
+      "id": "https://hadro.github.io/green-books/0097_5206098_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Barranquitas Hotel — PUERTO RICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206098/full/!760,760/0/default.jpg#xywh=1463,3160,570,56",
+      "id": "https://hadro.github.io/green-books/0097_5206098_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dorado Beach Hotel — PUERTO RICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206098/full/!760,760/0/default.jpg#xywh=1468,3285,537,51",
+      "id": "https://hadro.github.io/green-books/0097_5206098_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0097_5206098_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

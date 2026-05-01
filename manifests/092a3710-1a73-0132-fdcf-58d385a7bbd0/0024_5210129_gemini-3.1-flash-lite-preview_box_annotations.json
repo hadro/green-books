@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Supreme Liberty Life Insurance Company — 35th and South Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210129/full/!760,760/0/default.jpg#xywh=290,3374,1067,54",
+      "id": "https://hadro.github.io/green-books/0024_5210129_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0024_5210129_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

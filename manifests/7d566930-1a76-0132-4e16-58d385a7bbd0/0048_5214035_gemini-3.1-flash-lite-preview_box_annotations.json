@@ -1,0 +1,40 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "STATUE OF LIBERTY — Battery — NEW YORK CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214035/full/!760,760/0/default.jpg#xywh=481,341,1060,40",
+      "id": "https://hadro.github.io/green-books/0048_5214035_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "UNITED NATIONS — Manhattan Island, 42nd to 48th Streets; between 1st Avenue and the East River — NEW YORK CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214035/full/!760,760/0/default.jpg#xywh=479,670,1062,45",
+      "id": "https://hadro.github.io/green-books/0048_5214035_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "TRINITY CHURCH — Broadway and Wall St. — NEW YORK CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214035/full/!760,760/0/default.jpg#xywh=481,1362,1060,41",
+      "id": "https://hadro.github.io/green-books/0048_5214035_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0048_5214035_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

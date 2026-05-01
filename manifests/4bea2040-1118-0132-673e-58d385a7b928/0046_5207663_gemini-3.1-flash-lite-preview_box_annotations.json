@@ -1,0 +1,645 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. E. Grant — 53 King St. — PITTSFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,608,766,52",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. Dillard — 109 Linden St. — PITTSFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,660,900,53",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Jasper — 66 Dewey Ave. — PITTSFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,720,938,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Marshall — 124 Danforth Ave. — PITTSFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,774,894,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Taylor — 11 Oak St. — PLYMOUTH, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=398,1033,704,53",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. A. Gray — 47 Davis St. — PLYMOUTH, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=406,1089,743,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mary Lee Chicken Shack — 482 Main St. — RANDOLPH, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=406,1329,1090,53",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Gale — 168 Townsend St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=403,1583,926,58",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth's — 64 Humboldt St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,1718,703,46",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charm Grove — 90 Humboldt St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=406,1772,893,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. Lovett — 68 Humboldt St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=400,1828,896,46",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mac's — 8 Coventry St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=400,1956,645,53",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thompson's — 1105 Tremont St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=403,2013,869,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garfield's — 657 Shawnut St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=400,2140,781,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morgan's — 355 Warren St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=403,2196,768,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roxbury — 52 Laurel St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=608,1438,406,57",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas Square — 1002 Tremont St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,2376,1001,52",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jaspan's — 134 Harold St. — ROXBURY, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=411,2434,714,46",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modern — 26 Reed St. — SOUTH HANSON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,2672,595,47",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mary B. Pina — 26 Reed St. — SOUTH HANSON, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,2802,929,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Park View House — Park St. — STOCKBRIDGE, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=406,3042,775,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Springfield — SPRINGFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=408,3302,285,47",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joiner's — 97 Hancock Street — SPRINGFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,3429,774,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Law's — 18 Hawley St. — SPRINGFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=406,3557,623,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "American Cleaners — 433 Eastern Ave. — SPRINGFIELD, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=408,3680,1049,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Home — 3 Boynton St. — SWAMPSCOTT, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=410,3926,836,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Worcester — Washington Square — WORCESTER, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=611,4035,518,57",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dixie — 143 Summer St. — WORCESTER, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1804,510,631,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moffett's — 47 Summer St. — WORCESTER, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1806,565,705,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Buddy's — 118 Summer St. — WORCESTER, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1801,694,750,46",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bea's — 8 Carwell St. — WORCESTER, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1803,816,576,52",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kozarian's — 53 Summer St. — WORCESTER, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,947,769,45",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bancroft — 24 Portland St. — WORCESTER, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,1068,733,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bergwall — 238 Main St. — WORCESTER, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1804,1199,693,52",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Watts — 10 High St. — WOBURN, MASSACHUSETTS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,1457,555,53",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "American — 123 Washinggton St. — ANN ARBOR, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,1861,885,52",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allenel — 126 El Huron St. — ANN ARBOR, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,1913,749,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. M. Dickson — 144 Hill St. — ANN ARBOR, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,2041,969,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Brown — 76 Walters Ave. — BATTLE CREEK, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,2300,931,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. P. Grayson — 22 Willow — BATTLE CREEK, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,2354,798,51",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. S. Walker — 709 W. Van Buren — BATTLE CREEK, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,2410,1112,46",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bayak's — BALDWIN, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,2663,723,59",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nolph's Super Service — BALDWIN, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,2723,601,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Research Pleasure Club — 362 8th St. — BENTON HARBOR, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,2978,992,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kelsonia Inn — R. R. No. 1 — BITELY, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1787,3234,795,46",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal Breeze — On State Rt. 37 — BITELY, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1793,3291,866,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Touraine — 4614 John R. St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1785,3547,963,54",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gotham — 111 Orchestra Place — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1793,3617,819,47",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mark Twain — E. Garfield & Woodward — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1793,3672,1078,53",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Biltmore — 1926 St. Antoine St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,3725,851,59",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tansey — 2474 Antoine St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,3785,721,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elizabeth — 413 E. Elizabeth St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,3832,881,57",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fox — 715 Madison St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,3894,621,45",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Le Grande — 1365 Lafayette St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1798,3952,803,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Norwood — 550 E. Adams St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,4006,792,48",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Russell — 615 E. Adams St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,4059,744,54",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Preyer — 2476 St. Antoine St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1792,4113,801,58",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crosstown — 4652 Hastings St. — DETROIT, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207663/full/!760,760/0/default.jpg#xywh=1795,4171,822,53",
+      "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0046_5207663_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

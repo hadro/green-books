@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "PLAZA HOTEL — 214 E. Calhoun — MEMPHIS, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214843/full/!760,760/0/default.jpg#xywh=1638,2740,973,139",
+      "id": "https://hadro.github.io/green-books/0102_5214843_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "PLAZA GRILL — 214 E. Calhoun — MEMPHIS, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214843/full/!760,760/0/default.jpg#xywh=1625,3081,975,88",
+      "id": "https://hadro.github.io/green-books/0102_5214843_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0102_5214843_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

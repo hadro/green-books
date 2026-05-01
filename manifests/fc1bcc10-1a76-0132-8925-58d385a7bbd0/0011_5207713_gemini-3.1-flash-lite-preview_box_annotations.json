@@ -1,0 +1,62 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "ORCHID BEAUTY SHOPPE — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207713/full/!760,760/0/default.jpg#xywh=421,771,1126,99",
+      "id": "https://hadro.github.io/green-books/0011_5207713_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HARRIS TEA ROOM — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207713/full/!760,760/0/default.jpg#xywh=2054,835,1263,87",
+      "id": "https://hadro.github.io/green-books/0011_5207713_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "DANIEL'S PHARMACY — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207713/full/!760,760/0/default.jpg#xywh=2013,3053,1368,100",
+      "id": "https://hadro.github.io/green-books/0011_5207713_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "BAL-MO-RAL GRILL — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207713/full/!760,760/0/default.jpg#xywh=2080,4152,1230,97",
+      "id": "https://hadro.github.io/green-books/0011_5207713_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WEEK'S RESTAURANT — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207713/full/!760,760/0/default.jpg#xywh=256,2845,1459,120",
+      "id": "https://hadro.github.io/green-books/0011_5207713_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0011_5207713_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

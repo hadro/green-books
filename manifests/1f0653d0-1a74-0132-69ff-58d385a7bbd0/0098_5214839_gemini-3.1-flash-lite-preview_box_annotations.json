@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "GRADY'S NIGHT CLUB — 1035 Fields Memphis, Tenn. — MEMPHIS, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214839/full/!760,760/0/default.jpg#xywh=880,2627,1539,138",
+      "id": "https://hadro.github.io/green-books/0098_5214839_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0098_5214839_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

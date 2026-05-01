@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "NAACP National Office — 20 West 40th Street — New York",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205996/full/!760,760/0/default.jpg#xywh=209,3529,2361,74",
+      "id": "https://hadro.github.io/green-books/0108_5205996_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0108_5205996_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

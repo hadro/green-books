@@ -1,0 +1,491 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HOMESTEAD REST — CARIO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1092,530,900,78",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Branchcomb Cottage — 18 Cherry St. — CARIO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1643,1486,1073,69",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Richard's Guest House — 29 Ballston Ave. — CARIO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1642,1543,742,59",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jemmott's Inn — 22 Cowen St. — CARIO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1650,1641,870,60",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "James' Guest House — 17 Park St. — CARIO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1649,1682,998,67",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mountain View Farm — R.F.D. 16 — STORMVILLE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1648,1793,972,72",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "White Birches — South Pascack Rd. — SPRING VALLEY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1652,1909,1046,69",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "St. Catherine's Hillside Farm — DE BRUCE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1655,2027,878,60",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Camp Unity — WINGDALE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1652,2152,375,51",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunset Hill Farm — VERBANK, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1660,2263,529,51",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gordon Farms — VEGA, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1648,2382,352,44",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mtn. View Lodge — Mt. View Ave. — VALLEY COTTAGE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1660,2483,1016,60",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rosendale Gardens — P.O. Box 154 — ROSENDALE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1658,2593,1000,66",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Van Winn Villa — Albany Ave. & Reed Road — LONG ISLAND, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1660,2838,904,60",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sea Breeze Cottage — 410 - 2nd St. — GREENPORT, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1669,2998,1017,67",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mona Lodge — 284 Glen St. — GLEN COVE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1666,3115,778,66",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Continental Cot. — 21 Continental Pl. — GLEN COVE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1666,3158,1078,70",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chattahoohie Camp — New Plain Rd. — GREENLAWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1670,3271,1083,73",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harmony Villa — GREENLAWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1668,3338,452,53",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gordon Hgts. Rest — MEDFORD, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1670,3454,566,46",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Flor's Cottage — P.O. Box 211 — MEDFORD, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1668,3492,872,60",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Cherokee — 217 Beach 76th St. — HAMMELS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=1672,3604,1014,60",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Greenwood Forest Farm — GREENWOOD LAKE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=413,1578,732,55",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Just Haven — GREENWOOD LAKE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=413,1636,349,43",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Louise Taylor — P.O. Box 314 — GREENWOOD LAKE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=413,1672,1013,66",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McFerson's Hotel — 52 Glen St. — GLEN FALLS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=413,1798,968,71",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Notch Mountain House — P.O. Box 5 — HUNTER, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=413,1933,1079,60",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clove Valley Dude Ranch — HIGH FALLS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=414,2049,788,63",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lakeland — HOPEWELL JUNCTION, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=414,2176,280,41",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Woodbine Cottage — 75 Dieskau St. — LAKE GEORGE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=417,2273,1044,67",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dreamland Cottage — 41 Mckinley St. — LAKE PLACID, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=424,2387,948,67",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Camp Parkside — Woodland Terrace — LAKE PLACID, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=430,2444,921,58",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lakeside Farm — MONROE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=417,2571,462,50",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Lottie Henderson — R.F.D. 1 — MONROE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=420,2607,996,69",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Comfort Inn — R.F.D. 1 — MECHANICVILLE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=423,2733,676,51",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "King's Lodge — OTISVILLE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=420,2851,411,53",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mountainside Farm — P.O. Box 207 — OTISVILLE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=423,2890,1032,63",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hilltop House — OTISVILLE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=420,2953,431,50",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brucewood — 321 W. 125th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=431,3058,775,57",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown Hill Farm — R.F.D. 1 — PLEASANT VALLEY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=424,3175,835,53",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Mt. View House — P. O. Box 120 — ROXBURY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=415,3288,996,54",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Breezy Acres — SARANAC LAKE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=425,3410,410,45",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simmons Farm — STUYVESANT, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=425,3520,459,48",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nimmo Manor — 21 Federal Street — SARATOGA SPRINGS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212938/full/!760,760/0/default.jpg#xywh=423,3632,861,50",
+      "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0080_5212938_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,513 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe's — 337 Railroad Ave. — POINT PLEASANT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=423,520,642,50",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stith's — 111 Market St. — SALEM, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=423,520,642,50",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's Castle Inn — 11 New St. — PINE BROOK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=431,740,205,40",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grigg's — 58-60 Witherspoon St. — PINE BROOK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=433,851,760,48",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vanity Box — 188 John St. — SEWAREN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=435,963,637,51",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Quality — 13 Pleasant Ave. — SEWAREN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=435,963,637,51",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss Daisy Robinson — 658 Essex St. — PLAINFIELD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=421,1174,916,49",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Liberty — 4th St. — PLAINFIELD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=435,1294,394,42",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem Inn — 1117 Washington Ave. — PLEASANTVILLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1663,1587,617,41",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martin's — 304 W. Wright St. — PLEASANTVILLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1847,1688,356,52",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garden Spot — 300 Doughty Rd. — PLEASANTVILLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=435,1501,777,48",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "O. Paterson — Edwards Ave. & Potters Crossing — RAHWAY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1663,1914,767,47",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Alleyne — 124 W. Bergen Place — RAHWAY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1613,2669,359,45",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glen Oak — 100 E. Lincoln St. — ROSELLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1660,2930,751,42",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "B. Johnson's — 407 Garfield Ave. — ROSELLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1680,3347,767,53",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Morton — 4010 New Jersey Ave. — ROSELLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1680,3472,849,45",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "High Steppers — 437 Lincoln Ave. — ROSELLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1677,3583,818,52",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robins Rest — 615 River Road — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=435,2184,739,42",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vincents — 263 Shrewsbury Ave. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=435,2298,773,46",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "West Bergen — 103 W. Bergen Place — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=435,2413,878,45",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Dillard — 250 Shrewsbury Ave. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=435,2530,828,44",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dudley's — 79 Sunset Ave. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=441,2938,632,47",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Omega — 302 E. 9th St. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=437,3148,584,50",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "St. George — 1139 St. George Ave. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=443,3198,810,46",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hill Top — 6 Jerusalem Road — SCOTCH PLAINS, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=441,3395,717,46",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Villa Casanova — Jerusalem Road — SCOTCH PLAINS, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=443,3492,789,49",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shady Rest — Jerusalem Road — SCOTCH PLAINS, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=445,3593,690,45",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rodney's — Shrewsbury Ave. — SEA BRIGHT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=421,1174,916,49",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 393 Broad St. — SUMMIT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1667,1376,711,43",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Casaloma — Manitan Park — SUMMIT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1663,1587,617,41",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 40 Fowler St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1667,1376,711,43",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spot Sandwich — 121 Spring St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1663,1914,767,47",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bea's — 114 Spring St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1670,2045,571,46",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Geraldine's — 17 Trent St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1667,2093,624,40",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sanitary — 199 N. Willow St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1666,2223,712,42",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bill's — 105 Spring St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1673,2275,563,45",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Famous — 228 N. Willow St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1659,2389,704,41",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crossing Inn — Eggertt's Crossing — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1666,2508,798,43",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Suries — 261 Shrewsbury Ave. — VAUX HALL, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1670,2718,715,46",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carnegie — 380 Carnegie Place — VAUX HALL, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1670,2718,715,46",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Galatres — Shrewsbury & Catherine — VAUX HALL, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1850,2816,422,49",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Marion — Artic & Spicer Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1665,2979,830,46",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Artic Ave. — 3600 Artic Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1666,3028,697,45",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "V'esta — 4118 Park Blvd. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1656,3076,628,45",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hunt's — 140 Spicer Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1642,3125,628,48",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Crawley — 3816 Artic — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207043/full/!760,760/0/default.jpg#xywh=1673,3239,721,46",
+      "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0046_5207043_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Evening Breeze MOTEL — U.S. Highway 70, East — STATESVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214946/full/!760,760/0/default.jpg#xywh=488,2229,1979,110",
+      "id": "https://hadro.github.io/green-books/0073_5214946_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "EVENING BREEZE MOTEL — HIGHWAY 70 EAST, STATESVILLE, N. C. — STATESVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214946/full/!760,760/0/default.jpg#xywh=359,1799,586,84",
+      "id": "https://hadro.github.io/green-books/0073_5214946_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0073_5214946_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

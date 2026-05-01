@@ -1,0 +1,612 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel James — 238 Spring Street — CHARLESTON, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=636,745,523,53",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel James (Azalea Room) — Route 17 - Near Ashley River Bridge — CHARLESTON, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=730,1877,342,37",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Gladsen — 15 Nassau St. — CHARLESTON, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=373,2280,744,42",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mayes — 82½ Spring St. — CHARLESTON, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=373,2331,785,47",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Serrant — 99 Coming St. — CHARLESTON, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=368,2381,690,45",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Workman's — 1825 Taylor St. — COLA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=361,2608,726,46",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 1429 Park St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=364,2838,788,46",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nylon — 918 Senate St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=368,2890,588,45",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "College Inn — 1609 Harden St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=371,3039,770,46",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. H. Smith — 929 Pine St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=376,3089,803,41",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Cornwel — 1713 Wayne — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=376,3139,800,45",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. D. Chappelle — 1301 Pine St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=376,3188,948,47",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beachum — 2212 Gervais St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=373,3234,687,41",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. P. Wakefield — 828 Oak St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=383,3289,907,47",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green Leaf — 1117 Wash. St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=380,3407,707,42",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy — Old Winnsboro Rd. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=380,3453,690,48",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cozy Inn — 1509 Harden St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=380,3504,707,43",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mom's — 1005 Washington St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=376,3555,742,41",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown's — 1014 Lady St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=380,3606,603,43",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Palace — 1001 Washington St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1602,381,873,47",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Waverly — 2515 Gervais St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,431,663,45",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Amy's — 1125½ Washington St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1609,548,776,48",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Obbie's — 1119½ Washington St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,596,799,48",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Holman's — 2138 Gervais St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,725,690,43",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Poro — 2481 Millwood Ave. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,838,690,45",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Madare Bradley — 2228 Hampton St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,886,906,51",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Taylor's — Broad River Rd. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1613,1004,678,47",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy Club — H'way 12 — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1609,1055,591,46",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moon Glow — 1005 Washington St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,1102,869,46",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. W. Simkins — 1331 Park St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,1213,772,51",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Caldwell's — Oak & Taylor Sts. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1613,1269,748,48",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Waverly — 2202 Taylor St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,431,663,45",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Leevy's — 1831 Taylor St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1616,1367,624,48",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Count's — 1105 Washington St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1606,1479,775,48",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Ribbon — 1024 Washington St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1609,1579,877,52",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Live Oak — 328 - 2nd Street — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1603,1759,1124,68",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. B. Robinson — 211 Church St. — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1616,1825,995,51",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Maggie Green — Church St. — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1614,1874,824,56",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "College Inn — 324 Second Street — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=371,3039,770,46",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gate Grill — 2nd St. — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1617,2123,495,50",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Watson — 2nd St. — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1616,2179,422,41",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "College Inn — 2nd St. — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=371,3039,770,46",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hill Top — Society Hill Road — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1614,2372,731,51",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Imperial — 276- 2nd Street — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1613,2472,667,55",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bell's — Huger St. — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1624,2574,426,53",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Motor Inn — 2nd Street — CHERAW, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1617,2671,595,49",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Willie Miller — CROSS HILL, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1613,2854,337,47",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "John McDonald — 501 So. Irby St. — FLORENCE, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1609,3022,1108,81",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Wright — 1004 E. Cheeve St. — FLORENCE, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1624,3092,941,62",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ace's Grill — 114 E. Cheeve St. — FLORENCE, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1614,3208,770,56",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Anderson — 424 Broad — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1624,3385,785,66",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. D. Atkinson — 811 Duke — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1621,3440,744,54",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jas. Becote — 118 Orange — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1621,3491,605,53",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "T. W. Brown — Merriman & Emanuel — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1617,3538,943,53",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. A. Smith — 317 Emanuel — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212922/full/!760,760/0/default.jpg#xywh=1617,3588,805,55",
+      "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0064_5212922_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

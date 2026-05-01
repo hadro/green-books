@@ -1,0 +1,722 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chicken Shack — 525 So. 13th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1535,438,846,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones — 525 So. 13th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1784,506,447,50",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Betty's Grill — 547 So. 9th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1478,567,517,39",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miller's — 630 W. Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1532,620,940,42",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sally's — 1104 W. Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1706,819,589,82",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eatmore — 956 So. 12th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1714,1023,567,53",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harry's — 28th & Chestnut Sts. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1471,1106,249,38",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kelman's — 1832 Magazine St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1525,1158,944,42",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bar-B-Q — 771 S. Clay St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1528,1257,903,41",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elizabeth's — 1200 W. Kentucky — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1522,1355,852,41",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bellonia — 1625 Callagher St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1468,1403,299,37",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Va's — 221 S. 28th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1525,1453,631,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beauty Box — 922 W. Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1467,1497,588,45",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rose's — 1813 W. Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1522,1550,681,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Willie's — 1815 W. Madison St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1472,1598,601,39",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lov-Lee, Ladies — 529 S. 12th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1525,1644,997,50",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Va's — 221 So. 28th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1525,1453,631,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Herman — 1601 W. Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1519,1742,999,50",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Apex — 978 Louise St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1522,1845,567,38",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Raine — 508 North Ave. — BOGALUSA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1518,2039,880,42",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bourges — 416 Washington St. — LAFAYETTE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1515,2232,843,49",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lewis — 515 Boulevard — LAKE CHARLES",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1515,2428,591,39",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Combre's Place — 601 Boulevard — LAKE CHARLES",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1512,2521,896,55",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Taylor's — 329 Boulevard — LAKE CHARLES",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1512,2574,684,49",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Armstrong's — 817 Sparrow St. — LAKE PROVIDENCE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1510,2772,841,48",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. Simpkins — Jenkins St. — MANSFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1508,2966,741,49",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Turner — 1015 Desiard St. — MONROE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1503,3151,703,49",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dudley's Hotel — 1015 Desiard St. — MONROE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1503,3200,917,55",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Red Union — 705½ Desiard — MONROE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1506,3303,757,47",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. Williams — 719 Federal Ave. — MORGAN CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1500,3489,998,55",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. V. Williams — 208 Union St. — MORGAN CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1500,3539,906,51",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown's — 1121 W. Chestnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=317,434,849,44",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown Derby — 563 So. 10th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=317,628,852,52",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sara's — 1617 W. Jefferson St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=317,733,792,41",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paddock — 617 So. 24th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=313,881,749,39",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pedra's — 619 Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=310,1027,721,43",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Scotty's — 442 So. 21st St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=310,1325,701,43",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones — 409 S. 18th St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1784,506,447,50",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hunter's — 1502 W. Chestnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=300,1820,907,41",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miller's — 818 W. Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=1532,620,940,42",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dave's — 13th & Magazine — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=297,2013,693,46",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shiek's — 12th & Zane St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=300,2061,706,48",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Top-Hat — 1210 W. Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=297,2161,848,46",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palace — 12th & Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=291,2312,777,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lyons — 16th & Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=291,2362,792,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eade's — 3509 Dumesril — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=291,2462,622,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lone Wolf — 1500 Garland Ave. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=288,2508,871,45",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. & M. — 8th and Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=289,2613,850,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Camers — 18th & Broadway — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=289,2716,762,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln — 705 W. Walnut — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=289,2818,699,40",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dependable — 1835 W. Walnut St. — LOUISVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=286,2862,947,49",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Webster's — 112 W. 8th St. — PARIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=289,3064,747,41",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Webster — 110 W. 8th St. — PARIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=289,3064,747,41",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robinson — Lilleston St. — PARIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=279,3260,645,38",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Metropolitan House — 724 Jackson St. — PADUCAH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=222,3458,643,55",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jefferson — 514 So. 8th St. — PADUCAH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=317,733,792,41",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Metropolitan — 724 Jackson St. — PADUCAH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=222,3458,643,55",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. K. Wallace — 600 W. Maxwell — LEXINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=317,780,785,46",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ever-Ready — 1325 Government St. — BATON ROUGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=307,1076,841,46",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "T. Harrison — 1236 Louisiana Ave. — BATON ROUGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=307,1177,748,42",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ideal Cafeteria — 1501 E. Blvd. — BATON ROUGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=310,1277,833,41",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Waldo's — 712 Peach St. — BATON ROUGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=304,1473,602,43",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carrie's — 561 S. 13th St. — BATON ROUGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=304,1571,791,44",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horatio's Esso, No. 1 — 1150 South St. — BATON ROUGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=303,1668,909,49",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horatio's Esso, No. 3 — 1607 Govt. St. — BATON ROUGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214012/full/!760,760/0/default.jpg#xywh=297,1963,848,47",
+      "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0025_5214012_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

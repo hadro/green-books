@@ -1,0 +1,788 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Fannie Jeffers — Mill St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1668,479,803,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arcade — 122 E. Hargett St. — WILSON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1611,638,253,37",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Wilson Biltmore — 539 E. Nash — WILSON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1668,687,1003,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. Jones — 1209 E. Queen St. — WILSON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1671,787,797,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stevens — 526 East 4th St. — WINSTON SALEM",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1673,1001,728,40",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln — 9 E. 3rd St. — WINSTON SALEM",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,1050,593,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.M.C.A. — 410 N. Church St. — WINSTON SALEM",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1665,1101,836,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charles H. Jones — 1611 E. 14th St. — WINSTON SALEM",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1668,1195,947,47",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. L. Christian — 302 E. 9th St. — WINSTON SALEM",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1668,1249,1002,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Payne's Tourist Home — 417 North 6th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1605,1461,740,52",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 1007 Chestnut St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1665,1638,848,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ollie's — 415½ S. 7th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,1688,699,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beth's — 405 Anderson St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1665,1789,690,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lezora — 609 Red Cross St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,1839,759,40",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Germany's — 715 Red Cross St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,1888,860,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lou's — 820 Red Cross St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,1938,719,40",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Newkirk's — 1217 Castle St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,1987,759,39",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pierce's — 615 Kedder St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,2038,702,40",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Apex — 613 Red Cross St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,2089,706,39",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dickson — 1101 S. 7th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,2138,706,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gertrude — 415 S. 7th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,2187,682,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Howard's — 121 S. 13th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,2235,719,47",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vanity Box — 115 S. 13th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,2289,779,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La May — 703 S. 15th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,2340,709,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thelma's — 207 S. 12th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,2391,716,40",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zan-Zibar — 403 Nixon St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,2440,714,39",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McCleese — 9th & Red Cross Sts — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,2491,905,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 6 Market St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1665,1638,848,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown's — 607 S. 7th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,2641,664,39",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "High Hat — Morret St. Rd. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,2739,772,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Del Morocco — 1405 Dawson St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,2790,836,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "William's — 8th & Dawson Sts. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,2893,854,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brooklyn — 4th & Taylor Sts. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,2995,807,45",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lane's — 4th & Bladen Sts. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1657,3101,754,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Star — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,3206,442,40",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mack's — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,3255,520,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dixie — 516 S. 7 St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,3304,523,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tom's — 418 McRae St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,3354,628,40",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crosby's — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,3405,571,40",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Greyhound — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1660,3455,664,43",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Progressive — 525 Red Cross St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,3554,1011,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "De Luxe Hotel — 220 E. Cabarrus St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=373,474,504,50",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.M.C.A. — 600 So. Bloodworth St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1665,1101,836,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lewis Hotel — 200 Cabarrus St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=423,773,868,39",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Starksville Guest House — 809 E. Bragg St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=372,876,815,51",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Charles Higgs — 219 E. Lenoir — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=430,1001,1012,49",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nile-Congo — Rt. 70 & Garner Rd. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=430,1105,950,44",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Legion Home — 416 E. Cabarrus St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=427,1253,981,48",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New York — 108 E. Hargett St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=427,1304,867,45",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stanton's Cafe — 319 South East St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=726,351,359,53",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tip Toe Inn — Cor. Davis & Bloodworth Sts. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=430,1452,1008,47",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H & H — 118 E. Hargett St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=429,1604,765,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hall's — 322 N. Tarboro St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=427,1650,738,46",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sales — 222 S. Tarboro St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=430,1701,673,43",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "G. & M. — 106 Hargett St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=426,1798,739,51",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lewis — 220 E. Cabarrus St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=423,773,868,39",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arcade — 122 E. Hargett St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1611,638,253,37",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Peerless — 516 Fayetteville St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=420,1945,822,55",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Snakenburg — 123 So. Salisbury St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=427,1993,959,61",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunn's — 502 E. Bloodworth St. — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=426,2097,871,50",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "East End — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=426,2199,634,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Foster's — PINEHURST",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=421,2379,233,38",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Foster's — PINEHURST",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=421,2379,233,38",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dixie — 106 E. Thomas — ROCKY MOUNT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=1663,3304,523,41",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Atlantic — 216 E. Thomas St. — ROCKY MOUNT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=423,2750,815,52",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shaws — 440 Raleigh Rd. — ROCKY MOUNT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=423,2802,703,48",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Safety — 122 N. Lee St. — SALISBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=423,2983,682,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bland's — 300 S Steele St. — SANFORD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=421,3156,709,42",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Silver Moon — 20 W. Liberty St. — SUMTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=423,3329,873,44",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pope — WELDON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=421,3505,146,36",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Terminal Inn — Washington Ave. — WELDON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214043/full/!760,760/0/default.jpg#xywh=420,3548,963,53",
+      "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0056_5214043_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

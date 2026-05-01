@@ -1,0 +1,623 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. Augustus — 420 Commercial Ave. — EL CENTRO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=349,450,602,54",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Emmett Terrell — 193 E. Main St. — EL CENTRO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=347,558,973,47",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pearl McKinney Lunch — 301 Main St. — EL CENTRO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=347,681,716,48",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Barnes Drive In — 1412 \"F\" St. — FRESNO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=345,964,899,49",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LINCOLN HOTEL — 549 CERES AVE., LOS ANGELES — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=235,1154,672,53",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allen — 1123 Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=340,1436,742,45",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cark — 1818 - 24 Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=340,1488,1023,50",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — 4025 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=340,1538,944,52",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite — 1217 Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=340,1594,759,45",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sojourner's — 1119 E. Adams Blvd. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=343,1647,1082,45",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sheridan — 1824 Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=342,1694,976,55",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Regal — 815 E. 6th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=338,1753,709,45",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arcade — 542 Ceres Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=338,1799,783,52",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Hoffman — 760 W. 17th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=342,1917,1048,58",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. H. Grier — 1121 E. 22nd St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=340,1975,1060,49",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. D. Grealoiu — 1311 W. 35 Place — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=342,2027,685,48",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Relay — Centai Ave. at 28th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=339,2202,369,45",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lewis & Hayes — 3426 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=335,2306,558,49",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marble Inn — 1820 Imperial Highway — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=333,2480,1027,51",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. B. Dunbar — 906 E. 54th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=331,2597,1028,51",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "House of Morgan — 2729 S. Central — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=332,2719,1027,51",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. C. Clark — 805 Linden St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=333,2957,968,45",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Williams — 814 Linden St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=331,3008,1025,50",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Summes' — 1258 - 7th St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=332,3123,722,56",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McCabe — 5901 Adeline St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=331,3179,752,52",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Signal — 800 Center St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=329,3231,680,52",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bufford's — 5901 Aldine St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=328,3351,759,48",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Overland Cafe — 1719 - 7th St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=328,3470,855,53",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rythm Buffet — 1704 - 7th St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=325,3523,883,54",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Personality — 3613 San Dablo Ave. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=328,3642,1034,58",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kentucky — 1067 N. Fair Oaks — PASADENA, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1574,528,891,50",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Penn's Super — 1285 Lincoln Ave. — PASADENA, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1569,644,958,58",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Phillips — 964 6th St. — SAN BERNARDINO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1569,883,880,54",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S. M. Carlton — 939 W. 6th St. — SAN BERNARDINO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1569,935,907,53",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglass — 206 Market St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1560,1151,743,62",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simmons — 542 Sixth Ave. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1561,1204,746,55",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Wallace — 537 13th St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1569,1328,887,53",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Chance — 279 \"A\" St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1569,1381,884,54",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Gooden — 3030 Franklin St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1569,1432,1029,56",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 18 N. 30th St. — SAN DIEGO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1566,1554,787,53",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Turpin — Powell & Market Sts. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1566,1773,889,61",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. E. Davis — 1564 Jones St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1569,1893,1001,62",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Johnson — 1788 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1561,1947,980,58",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Helen's Guest House — 1951 Sutter — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1556,1996,1045,65",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Hulsey — 2946 Pine St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1556,2051,951,62",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jacks' — 1931 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1561,2169,687,58",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Adrian — 1930 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1559,2289,699,56",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arineica's — 1928 Fillmore St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1552,2339,858,65",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fredonia's — 1953 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1553,2396,834,57",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Riggans' — 2600 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1556,2515,752,62",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Town Club — 1963 Sutter St. — SAN FRANCISCO, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1560,2632,843,66",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Nobita — 1807 Belmount Place — SANTA MONICA, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1552,2885,975,55",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kings — 322 South \"K\" St. — TULARE, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1553,3115,772,49",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. N. Hamilton — 717 N. Corona St. — COLORADO SPRINGS, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1547,3449,605,41",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dr. I. Moore — 738 N. Spruce St. — COLORADO SPRINGS, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1542,3551,942,55",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. Roberts — 418 E. Cucharras St. — COLORADO SPRINGS, COLORADO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206355/full/!760,760/0/default.jpg#xywh=1543,3604,563,45",
+      "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0009_5206355_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,51 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "NEW AGE FEDERAL SAVINGS & LOAN ASSOCIATION — 1401 North Kingshighway — St. Louis, MISSOURI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206528/full/!760,760/0/default.jpg#xywh=605,375,1954,61",
+      "id": "https://hadro.github.io/green-books/0042_5206528_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WESLEY'S CONFECTIONERY — 1431 North Whittier Street — St. Louis, MISSOURI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206528/full/!760,760/0/default.jpg#xywh=1090,2282,993,74",
+      "id": "https://hadro.github.io/green-books/0042_5206528_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "SARA-LOU CAFE — St. Louis Ave. at Sarah St. — St. Louis, MISSOURI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206528/full/!760,760/0/default.jpg#xywh=515,1537,2264,72",
+      "id": "https://hadro.github.io/green-books/0042_5206528_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "ST. LOUIS AUTO REPAIR & SERVICE STA — 1906 Whittier St. — St. Louis, MISSOURI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206528/full/!760,760/0/default.jpg#xywh=515,1812,2264,74",
+      "id": "https://hadro.github.io/green-books/0042_5206528_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0042_5206528_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

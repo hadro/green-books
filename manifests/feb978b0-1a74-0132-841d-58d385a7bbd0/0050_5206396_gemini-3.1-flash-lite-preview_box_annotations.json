@@ -1,0 +1,590 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H. C. Deering — 508 S. 3rd St. — YAKIMA, YAKIMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=350,531,922,60",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. A. Branum — 515 S. 1st — YAKIMA, YAKIMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=352,584,805,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. Jones — 906 Naches Ave. — YAKIMA, YAKIMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=352,633,965,62",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. H. Jones — 310 Third Ave. — YAKIMA, YAKIMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=358,685,1041,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Pioneer — 58 S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=360,1000,984,63",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Home Service — 37 Prince St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=362,1121,893,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moss's — 135 S Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=367,1244,885,57",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Traveler's Inn — 602 Raleigh St. — BLUEFIELD, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=372,1485,945,54",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ferguson — CHARLESTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=363,1717,286,39",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Brown — 1001 Washington St. — CHARLESTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=372,1819,986,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "White Front — 1007 Washington St. — CHARLESTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=374,1937,1045,55",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palace Cafe — 910 Washington St. — CHARLESTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=377,1990,1018,56",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cobbs — 226 Jackson St. — FAIRMONT, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=384,2230,694,46",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Southern — 921 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=380,2452,724,42",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fair — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=404,2505,146,40",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Massey's — 837 7th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=382,2551,747,51",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Ross — 911 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=387,2602,711,52",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. Washington — 1657 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=386,2715,903,62",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. J. Lewis — 1412 10th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=391,2761,1035,65",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. J. Barnett — 810 7th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=396,2815,1034,62",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Jones — 1824 10th ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=391,2870,840,57",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Bowling — 1517 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=391,2919,998,63",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Gross — 839 7th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=393,3038,677,62",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Monroe's — 1616 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=396,3155,753,60",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Alpha — 1624 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=401,3209,787,52",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Appomattox Club — 1659 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=398,3321,994,59",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Harriston — 1615 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=398,3439,841,54",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Pack — 1612 Artisen Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=401,3554,896,59",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sterling — Cor 12th St. & 3rd Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=404,3673,1015,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "South Side — 716 8th Ave. — HUNTINGTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1583,432,757,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "River View Lodge — Storer Colege — HARPERS FERRY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1588,644,1046,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hilltop House — Mrs. Drew — HARPERS FERRY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1595,699,824,54",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Capheart — 14 Virginia Ave. — WELCH, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1595,919,836,50",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Verse — 1042 Market — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1598,1136,599,50",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. Turner — 114 12th St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1605,1253,891,51",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. Early — 132 12th St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1607,1303,856,56",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Williams — 1007 Chapline St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1605,1359,590,47",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. T. Hughes — 1021 Goff St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1607,1460,1004,52",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Singetlery — 1043 Chapline St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1614,1577,921,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "American Legion — 1516 Main St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1615,1704,974,45",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elks Club — 1010 Chapline St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1612,1756,891,43",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss Hall — Chapline St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1615,1877,712,49",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss Taylor — Chapline St. — WHEELING, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1612,1932,794,42",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Pirtle — 45 E. 11th St. — FOND DU LAC, WISCONSIN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1619,2247,893,48",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. V. Williams — 97 S. Seymour St. — FOND DU LAC, WISCONSIN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1619,2301,597,45",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. Shadd — 37 King St. — OSHKOSH, WISCONSIN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1619,2585,689,50",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. Pemberton — 239 Liberty St. — OSHKOSH, WISCONSIN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1622,2633,923,53",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. E. Edwards — 347 N. Grant — CASPER, WYOMING",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1631,2962,1045,55",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H. Keeling — 331 N. Grant — CASPER, WYOMING",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1629,3018,802,51",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Barbeque Inn — 622 W. 20th St. — CHEYENNE, WYOMING",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1636,3247,950,58",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. I. Randall — 612 W. 18th St. — CHEYENNE, WYOMING",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1642,3359,972,65",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Herman — 621 W. 18th St. — CHEYENNE, WYOMING",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1641,3415,1034,63",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Collins — 905 6th St. — ROCK SPRINGS, WYOMING",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206396/full/!760,760/0/default.jpg#xywh=1641,3654,833,54",
+      "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0050_5206396_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

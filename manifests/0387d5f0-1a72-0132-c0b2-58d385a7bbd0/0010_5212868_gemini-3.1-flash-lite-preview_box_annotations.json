@@ -1,0 +1,953 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Regal — 813 E. 6th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=348,593,573,45",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kentucky — 1123 Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=348,643,726,47",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — 4225 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=353,691,792,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glacier — 523 Stanford Street — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=356,741,718,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roberson — 2111 E. Imperial Blvd. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=326,867,895,48",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 11816 So. Wilmington — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=348,918,840,47",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Western — Cor. W. 37 St. & So. Western Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=346,965,1107,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vallee Vista — 2408 Cimarron St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=363,1095,828,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ivie's — 1105½ E. Vernon Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=356,1226,849,48",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Henry Bros. — 10359 Wilmington (WATTS) — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=354,1269,1077,55",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "John's — 3519 S. Western — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=354,1316,623,58",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eddie's — 4201 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,1372,805,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zombie — 4216 S. Central Blvd. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=348,1422,773,42",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arc — 4067 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,1472,717,40",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hi Jenks — 4428 Avalon Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,1521,789,42",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Waffle Shop — 1063 E. 43 Street — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=354,1565,830,51",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clifton's — 618 S. Olive Street — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,1616,737,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Down Beat — 1064 E. 42nd St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=366,1666,739,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sherwoods — 5113 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,1793,884,47",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Studio — 2515 S. Central — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=354,1842,598,48",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Continental — 5203 Hopper Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,1890,865,49",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anna Mae's — 4436 Avalon Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,1942,865,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Triangle — 43 San Pedro & Walls Sts. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,1988,912,52",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Colonial — 1813½ S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=356,2040,883,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — 4225 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=353,691,792,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beauty Salon — 1195 East 35th Street — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=360,2139,938,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Margurite — 5011 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=363,2189,858,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bertha's — 1434 W. Jefferson Boulevard — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=360,2304,992,50",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Personality — 4222 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,2344,858,59",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Echo — 43rd & Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,2404,710,40",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Margot — 5259 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,2533,829,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Emeral Room — 901 E. 6th St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=363,2581,749,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Golden Gate — 1719 E. 103rd St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=360,2626,824,53",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise — 5505 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,2680,837,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Samba — 5th & Towns Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=363,2730,733,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tip Top Cafe — 4631 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=364,2780,947,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Broter's Rendezvous — 4210½ Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=366,2830,1103,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 4201 S. Main Street — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=348,918,840,47",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Basket Room — 3219 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=350,2994,989,42",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem — 11812 Parmalee — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=350,3044,637,40",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Billy Bergs — 12612 California (N. Holly.) — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=371,3087,1078,53",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elk s Lounge — 1767 E. 103 St. (Watts) — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=356,3141,997,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wakeki — 3741 So. Western Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=350,3190,919,44",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Last Word — 4206 So. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=347,3237,939,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oasis — 2801 So. Western Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=370,3287,792,45",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Down Beat — 4201 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=371,3335,1037,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "House of Morgan — 2729 S. Central — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=357,3448,864,50",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — 4223 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=353,691,792,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson's — 5501 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=370,3548,854,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Esquire — Vernon & Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=360,3598,806,50",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ascot — 1404 51st St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=374,3649,578,45",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Valentine's Service — 2657 S. Western Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1586,524,1047,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Long's — 2732 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1583,574,748,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carner's — 4500 S. Avalon Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1593,623,821,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simpkins & Cower — 2227 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1586,671,998,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tom's — 1424 W. Jefferson Blvd. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1593,721,826,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hughes — 2901 W. Jefferson Blvd. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1595,768,838,47",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brock — 1246 W. Jefferson Blvd. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1593,814,816,48",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. A. & S. — Jefferson & Griffith — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1578,867,816,50",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garcia — 52nd Pl. and Central — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1593,915,774,42",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilkens — 4924 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1602,961,798,50",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gracis — 5201 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1600,1015,746,42",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Watson Bros. — 4000 So. Pedro St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1602,1065,881,42",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parkers — 10229 Alameda — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1602,1214,637,40",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alexander's — Jefferson & Griffith — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1592,1261,794,47",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allums — 4375 S. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1593,1389,753,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Doctor's — 4012 S. Central Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1595,1439,844,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Medical — 3112 S. Western Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1563,1489,858,42",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martinas — 4406 Avalon Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1595,1539,768,42",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Slopers — 2100-W. Jefferson Blvd. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1595,1586,861,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bader's — 1840 E. 103rd St. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1602,1715,684,47",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Delta — 8512 Compton Avenue — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1595,1768,738,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Herndon — 3419 So. Central Ave. — LOS ANGELES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1590,1910,811,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Geo. Moore — 407 Scrivener Street — ELSINORE, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1592,2116,822,54",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jam. W. Brown — 2881 Seattle Dr. — ELSINORE, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1595,2299,871,53",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Adobe — Rt. 66 — NEEDLES, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1583,2530,449,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CARVER HOTEL — 1421 MARKET ST. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1592,2757,595,54",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Warren — 1252 7th St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1602,2884,544,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/77"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. C. Clark — 805 Linden St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1602,2997,854,53",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/78"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Williams — 3521 Grove St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1602,3050,854,43",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/79"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Villa — 3016 Adeline St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1612,3175,725,55",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/80"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Overland Cafe — 1719 7th St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1602,3275,715,52",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/81"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Summers — 1251-7th St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1608,3397,721,48",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/82"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McCabe — 5901 Adeline St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1605,3457,668,41",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/83"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Signal — 800 Center St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1608,3511,548,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/84"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "А. В. — 918 Castro St. — OAKLAND, CALIFORNIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212868/full/!760,760/0/default.jpg#xywh=1612,3638,557,46",
+      "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json/entry/85"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0010_5212868_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

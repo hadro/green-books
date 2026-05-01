@@ -1,0 +1,62 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HOLMES BROS. SINCLAIR SERVICE STATION — 3415 Gosport Road — PORTSMOUTH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215106/full/!760,760/0/default.jpg#xywh=558,398,1736,89",
+      "id": "https://hadro.github.io/green-books/0101_5215106_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "BOUIE'S ESSO SERVICE STATION — 1701 Effingham Street — PORTSMOUTH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215106/full/!760,760/0/default.jpg#xywh=778,920,1317,91",
+      "id": "https://hadro.github.io/green-books/0101_5215106_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MARSHALL'S CITIES SERVICE STATION — 1808 Gosport Road — PORTSMOUTH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215106/full/!760,760/0/default.jpg#xywh=659,1440,1556,102",
+      "id": "https://hadro.github.io/green-books/0101_5215106_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "JIMMIE'S FLYING A SERVICE STATION — 1201 Langley Blvd. — PORTSMOUTH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215106/full/!760,760/0/default.jpg#xywh=388,1828,2243,89",
+      "id": "https://hadro.github.io/green-books/0101_5215106_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "FAGAN'S SEAFOOD RESTAURANT — Corner Gosport Road & Pine Street on Tunnel Route 460 — PORTSMOUTH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215106/full/!760,760/0/default.jpg#xywh=878,2411,1152,86",
+      "id": "https://hadro.github.io/green-books/0101_5215106_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0101_5215106_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

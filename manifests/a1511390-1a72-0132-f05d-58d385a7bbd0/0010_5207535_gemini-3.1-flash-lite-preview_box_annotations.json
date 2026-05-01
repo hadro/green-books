@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "VICTOR H. GREEN & CO. — 200 WEST 135th STREET - Room 215-A - NEW YORK 30, N. Y — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207535/full/!760,760/0/default.jpg#xywh=747,3329,624,67",
+      "id": "https://hadro.github.io/green-books/0010_5207535_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0010_5207535_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CASTLE HOTEL — 1000 Sprague Street — SHREVEPORT, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214791/full/!760,760/0/default.jpg#xywh=1156,2435,1042,122",
+      "id": "https://hadro.github.io/green-books/0050_5214791_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0050_5214791_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

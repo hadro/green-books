@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE ROSETTA MOTELS, Inc. — 37th & WILLIAM STREETS — CHATTANOOGA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205961/full/!760,760/0/default.jpg#xywh=314,1033,2295,130",
+      "id": "https://hadro.github.io/green-books/0073_5205961_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0073_5205961_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

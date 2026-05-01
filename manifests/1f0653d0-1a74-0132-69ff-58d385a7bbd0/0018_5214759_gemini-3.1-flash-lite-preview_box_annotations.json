@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE TEXAN INN — 605 Pleasant Street — HOT SPRINGS, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214759/full/!760,760/0/default.jpg#xywh=1185,2921,1143,147",
+      "id": "https://hadro.github.io/green-books/0018_5214759_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0018_5214759_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

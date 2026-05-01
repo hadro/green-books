@@ -1,0 +1,634 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Aquatic Club — St. Michael",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=388,1267,965,70",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bowden — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,2529,960,71",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Georgetown — Georgetown",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,2889,964,71",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clarke Hall — Georgetown",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1563,1688,955,70",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beach Club Colony — St. George's",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2048,519,70",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Islander — St. Michael",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1568,3184,969,75",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tower — Georgetown",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1559,1272,566,75",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Water — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=398,1384,435,70",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bonnie Dundee — St. James",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=398,1449,435,61",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bellevue — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1559,1449,566,85",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fort George — St. Michael",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1563,1496,562,80",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cacrabank — St. Joseph",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=398,1576,435,51",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Caribbee — Rockley Beach",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=398,1618,440,84",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cherry Lodge — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1559,1618,566,145",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Colony Club — Coral Caymanian",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=403,1693,430,60",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "South Chiltern — Cayman Brac",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1568,1749,557,65",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Springfield — Georgetown",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1568,1814,557,56",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eastry House — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=403,1870,430,66",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sutton — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1456,1870,669,122",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edgewater — St. Lawrence",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=398,1931,435,65",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Island Inn — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=403,2001,430,52",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marine — South Sound",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=403,2057,430,56",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miramar — Georgetown",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,2118,426,51",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ocean View — Georgetown",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,2169,426,66",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Buccaneer's Inn — Rum Point",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2174,552,56",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Emerald Beach Apts. — Georgetown",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2296,552,60",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Galleon Beach — St. Philip",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1568,2352,557,61",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal Caribbean — Georgetown",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=412,2356,491,57",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pageant Beach — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2413,552,60",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal-On-Sea — St. James",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=412,2417,491,56",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rum Point — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2469,552,60",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sea View — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2529,552,71",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sam Lord's — Shoe String",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,2586,501,74",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunset House — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2586,552,70",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sandy Beach — Green Gables",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,2651,496,65",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Antilles — St. George's",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1568,2693,557,84",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crescent Inn — Belmont-Grand Anse",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2768,552,61",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite Guest House — St. George's",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1577,2829,548,65",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stonehaven Inn. — St. Philip",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1460,2656,323,46",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grenada Beach — Grand Anse",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1577,2955,548,51",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "South Winds — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=412,3016,491,56",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "St. James — St. James",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1577,3016,548,51",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunset Lodge — St. Peter",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,3076,496,61",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Silver Sands — Grand Anse",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1577,3076,548,52",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Swiss Chalet — St. James",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,3137,496,52",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "White Sands — Christ Church",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,3198,496,56",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spice Island — Grand Anse",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1568,3184,969,75",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Au Grand Corsaire — St. George's",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,3310,552,61",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bagshot House — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=393,1337,463,42",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Coral Reef — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=398,1758,402,47",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crane — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=403,1823,163,38",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sandy Lane — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,2721,314,52",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "San Remo — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,2782,370,47",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sea View — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=1573,2529,552,71",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Park — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=407,3320,211,46",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise Beach Club — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=403,2240,589,51",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Powell Spring — GUADELOUPE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206097/full/!760,760/0/default.jpg#xywh=393,2300,389,52",
+      "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0096_5206097_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

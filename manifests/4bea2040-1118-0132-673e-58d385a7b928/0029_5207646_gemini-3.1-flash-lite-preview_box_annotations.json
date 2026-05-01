@@ -1,0 +1,799 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Marquette — 522 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=491,612,915,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Graysonia — 809 Gaines St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,669,738,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Vincent — 522½ West 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=481,724,961,54",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tuckers — 700½ W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,775,794,60",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C & C — 522½ W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=488,829,757,60",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. Thomas — 1901 High St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=493,969,930,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lafayette — 904 State Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,1028,744,47",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lafayette — 904 State St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,1169,684,56",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "College — 16th & Bishop — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,1227,677,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson’s — 610 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=498,1282,755,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "DeLuxe — 203 E. Washington — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=485,1333,827,62",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "DeLuxe — 724 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,1395,697,45",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dean’s — 904 State Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,1450,713,46",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown Bomber — W. 9th Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,1499,858,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Myrtles — 1822 High St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,1633,680,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Woods — 16th & High St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,1688,736,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sue’s — 919 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,1740,636,54",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lafayette — 914 State Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,1794,751,56",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Velvatex — 1004 State Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,1934,992,66",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Velvia — 814 Chester Ave. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=493,2019,717,46",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ferguson’s — 14th & High Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,2145,889,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shangri-La — 904 State Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,2267,820,62",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lafayette — 9th & State Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,2327,875,54",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whitney — 524 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=489,2456,844,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "East End — 1005½ Apperson — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,2513,814,53",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Century — 609 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,2569,705,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite — 622 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,2621,636,54",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fontaine’s — 710 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,2675,794,55",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Century — 610 West 9th Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,2729,834,57",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Woods — 1523—High Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,2786,744,55",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ritz — 1511 Wright Ave. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=483,2916,692,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones — 528 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,2973,635,53",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lee’s — 1401 High St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=488,3099,600,55",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spoon’s — 14th & High St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,3154,733,57",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anderson — 8th & State St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=489,3215,757,45",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fosters — 1400 W. 10th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=488,3337,758,54",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lee’s — 9th & Chester Street — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=486,3394,767,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Floyd — 602 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,507,674,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Children’s — 9th & Gaines — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,558,696,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miller — 916 Gaines St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1876,690,631,46",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crenshaw — 709 W. 9th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,742,757,51",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunn — 2719 E. 2nd St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,801,693,45",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Metropolitan — 618 W. 10th St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,855,879,47",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "B & F — 1005 Apperson St. — LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,910,763,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oasis — 1311 E. 3rd St. — NORTH LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,1165,664,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "De Lux Court — 2720 E. Broadway — NORTH LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1858,1292,990,54",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jim’s — 908 Cedar St. N. L. R. — NORTH LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1870,1424,894,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nore Vean’s — 1101 E. 6th St. — NORTH LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1868,1479,860,48",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ceats — Henry—No. 67 — NORTH LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,1536,629,48",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oasis — 1311 East 3rd Street — NORTH LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,1655,817,59",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "College — 1523 High St. — NORTH LITTLE ROCK, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1878,1771,655,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Benj. Williams — N. Main Street — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1873,2032,1049,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Hugh Hill — S. Main Street — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1876,2089,923,48",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jim Summers — 717 S. Main Street — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1874,2208,960,66",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glady’s — 219 E. Washington St. — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1876,2342,969,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln — 215 E. Washington St. — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1874,2450,916,60",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Patton’s — 212 Short St. — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1876,2582,659,47",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Daniel’s — North Adams St. — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1879,2637,754,46",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones — 309 Monroe St. — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1879,2693,654,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Package — 715½ Main St. — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1878,2818,711,54",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Summers — 715½ S. Main Street — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1879,2877,893,49",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mollette — N. Main Street — CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1874,2986,720,53",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Henry Hanson — Cross Street — SOUTH CAMDEN, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1878,3220,778,53",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "P. K. — 3rd & Alabama Sts. — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1887,3495,801,46",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marietta — 3rd & Louisiana Sts. — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1881,3546,883,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith’s — East Third St. — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1884,3601,677,52",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pee Kay — 300 E. 3rd Street — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1881,3660,763,47",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. K. L. Bell — 1111 W. 2nd Ave. — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1881,3781,1023,60",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. J. Hollis — 1108 W. 2nd Ave. — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1883,3838,985,58",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shelton’s — 200 E. 3rd Street — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1883,3960,843,64",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Duck Inn — 405 N. Cedar Street — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1884,4019,906,54",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nappy Chin — 217 State Street — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207646/full/!760,760/0/default.jpg#xywh=1878,4149,817,57",
+      "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0029_5207646_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

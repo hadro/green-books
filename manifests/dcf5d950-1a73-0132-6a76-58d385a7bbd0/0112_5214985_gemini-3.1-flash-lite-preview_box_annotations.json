@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. & D. MOTEL — Route 168, New Kent Co. Lanexa, Va. — LANEXA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214985/full/!760,760/0/default.jpg#xywh=1039,1975,1366,116",
+      "id": "https://hadro.github.io/green-books/0112_5214985_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0112_5214985_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

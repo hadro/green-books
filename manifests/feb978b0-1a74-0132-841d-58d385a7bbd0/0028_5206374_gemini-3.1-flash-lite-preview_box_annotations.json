@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butler Street Y. M. C. A. — ATLANTA, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206374/full/!760,760/0/default.jpg#xywh=290,3661,2379,82",
+      "id": "https://hadro.github.io/green-books/0028_5206374_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0028_5206374_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

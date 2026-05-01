@@ -1,0 +1,601 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miller's & Archers — 3rd & Clay — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1547,1022,619,42",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Slaughters — 514 N. 2nd St. — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1538,1074,707,46",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Brice — 14 W. Clay St. — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1442,1303,497,41",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 515 N. 7th St. — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1538,1356,804,43",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. Bradford — 3 Chop Road — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1537,1407,691,47",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jacks Colored Tourist — Route 11 — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1544,1449,1033,50",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cora's Waffle Shop — Leigh & 5th St — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1541,1576,673,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rest- A-Bit — 619 N. 3rd St. — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1538,1697,791,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Preston St. — 2nd & Preston Sts. — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=321,1193,975,42",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cameron's — Brook Ave. & W. Clay St. — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=318,1247,811,41",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harris — 400 N. Henry St. — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=321,1348,781,48",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wright's — 412 E. Leigh St. — RICHMOND, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=321,1472,829,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dumas — Henry St. N.W. — ROANOKE, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=314,1717,778,46",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.M.C.A. — 28 Wells Ave. N. W. — ROANOKE, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=303,1836,955,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 208-2nd St., N. W. — ROANOKE, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=300,1886,958,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tom's Place — ROANOKE, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=310,1998,381,42",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. & G. — 114 N. Henry St. — ROANOKE, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=300,2053,812,46",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Maple Leaf — High St. at Henry — ROANOKE, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=311,2168,982,47",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown's — SOUTH HILL, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=311,2377,940,59",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Groom's — SOUTH HILL, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=311,2437,884,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pannell's Inn — 613 N. Augusta St. — STAUNTON, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=310,2669,1010,48",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. T. Jones — 515 Baptist St. — STAUNTON, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=294,2788,843,46",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 301 N. Central Ave. — STAUNTON, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=308,2893,951,62",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McGuire's Inn — Marsh St. — TAPPAHANNOCK, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=311,3132,784,52",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Evans Hotel — Sharp St. — WINCHESTER, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=307,3369,884,52",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Jos. Willis — N. Main St. — WINCHESTER, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=307,3484,886,54",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar Tea Room — 21 W. Hart St. — WINCHESTER, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=305,3535,1033,55",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth's — 128 E. Cecil St. — WINCHESTER, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=301,3650,695,52",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hayes — 2227 East Madison — WASHINGTON, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1537,1867,788,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stockards — 2032 East Madison — WASHINGTON, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1535,1912,895,51",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dicks — 413 Maynard St. — WASHINGTON, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1534,1964,713,50",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stoemer — 2047 East Madison — WASHINGTON, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1534,2081,860,42",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hil Top — 1200 Jackson St. — WASHINGTON, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1531,2130,781,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Robinson — 1906 S. \"I\" St. — TACOMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1541,2357,1033,46",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. H. Carter — 1017 S. Trafton St. — TACOMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1541,2410,604,43",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Samuels — 2214 Wedmore Ave. — TACOMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=324,525,978,49",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. T. Payne — 2132 Oaks Ave. — TACOMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1438,584,562,41",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. Samuels — 3620 Hoyt Ave. — TACOMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1548,635,563,42",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wayside Inn — 1107 W. Willow — WALLA WALLA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1538,2713,934,46",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H. C. Deering — 508 S. 3rd St. — YAKIMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1531,2956,906,58",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. A. Branum — 515 S. 1st — YAKIMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1534,3013,801,49",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. H. Jones — 310 Third Ave. — YAKIMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1534,3068,1037,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Coast — 901 King St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=321,694,893,49",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Atlas — 420 Maynard St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1547,737,1034,47",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 102-21 North St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=300,1886,958,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garner — 2220 East Madison — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=310,798,782,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith — 2229 East Madison — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1839,888,320,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tokyo — 855 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=205,910,500,41",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dixie Chicken Inn — 928-12th Ave. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=314,961,1044,47",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moszee — 19 E. Madison — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=317,1075,886,46",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones — 2223 East Madison — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1534,3068,1037,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pauline's — 2221 East Madison — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1534,1240,823,40",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Home Service — 338½ S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1523,3409,1034,47",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Traveler's Inn — 602 Raleigh St. — BLUEFIELD, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206342/full/!760,760/0/default.jpg#xywh=1534,3660,930,45",
+      "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0049_5206342_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

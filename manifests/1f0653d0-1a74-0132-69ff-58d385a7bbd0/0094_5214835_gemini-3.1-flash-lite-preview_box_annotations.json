@@ -1,0 +1,62 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "AMERICAN LEGION Toussaint L'Ouverture Post No. 80 — 1112 Main Avenue, S.E. — KNOXVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214835/full/!760,760/0/default.jpg#xywh=915,620,1555,106",
+      "id": "https://hadro.github.io/green-books/0094_5214835_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "ROSEBUD TAVERN & RESTAURANT — 120 E. Vine Avenue — KNOXVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214835/full/!760,760/0/default.jpg#xywh=997,1327,1408,99",
+      "id": "https://hadro.github.io/green-books/0094_5214835_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "PLAZEL GANDER — 513 Mee Street — KNOXVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214835/full/!760,760/0/default.jpg#xywh=1193,1849,1042,85",
+      "id": "https://hadro.github.io/green-books/0094_5214835_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE PINK HOUSE — 1514 University Ave., N.W. — KNOXVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214835/full/!760,760/0/default.jpg#xywh=1357,2373,735,79",
+      "id": "https://hadro.github.io/green-books/0094_5214835_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "COLLEGE CAFE — 1518 University Ave., N.W. — KNOXVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214835/full/!760,760/0/default.jpg#xywh=1200,2993,1076,98",
+      "id": "https://hadro.github.io/green-books/0094_5214835_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0094_5214835_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

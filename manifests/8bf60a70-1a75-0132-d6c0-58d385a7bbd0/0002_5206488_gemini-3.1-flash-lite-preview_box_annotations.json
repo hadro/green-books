@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "EASTON FOOT WEAR — 4231 E. EASTON — ST. LOUIS, MISSOURI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206488/full/!760,760/0/default.jpg#xywh=1012,1096,751,73",
+      "id": "https://hadro.github.io/green-books/0002_5206488_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0002_5206488_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

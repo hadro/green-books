@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "GREEN'S TOURIST HOME — 103 Iselin — JACKSON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214961/full/!760,760/0/default.jpg#xywh=1202,2299,1054,91",
+      "id": "https://hadro.github.io/green-books/0088_5214961_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0088_5214961_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,480 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Ritz — 214 Main St. — EAST ORANGE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=392,600,715,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Milan's — 232 Halstead St. — EAST ORANGE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=392,656,765,46",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vernon's — 182 Amherst St. — EAST ORANGE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=403,784,742,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charles — 63 N Park St. — EAST ORANGE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=408,835,686,53",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Greenbriar — Pine Bush — EATONTOWN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=403,1094,765,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allen House — 625 Cincinnati Ave. — EGG HARBOR, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=400,1351,964,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Red, White & Blue Inn — 701 Phila. Ave. — EGG HARBOR, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=406,1481,1144,51",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. G. Brown — 178 Madison St. — ELIZABETH, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=403,1732,1003,58",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. T. Dtvis — 27 Dayton St. — ELIZABETH, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=346,1785,994,65",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hunter's — 1155 Dickerson St. — ELIZABETH, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=403,1921,825,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "One & Only — 1112 Dickerson St. — ELIZABETH, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=403,1977,934,52",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Lincoln — 1-3 Englewood Ave. — ENGLEWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=392,2233,942,52",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. E. Beverage Co. — 107 William St. — ENGLEWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=397,2359,1260,65",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Giles — 107 Williams St. — ENGLEWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=410,2434,660,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mary — 206 Central Ave. — HACKENSACK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=410,2695,689,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "5 POINT SERVICE STATION — First and Hackensack Susquehanna St. N. J. — HACKENSACK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=453,2952,1086,58",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tip Top — 174 Central Ave. — HACKENSACK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=414,3995,805,53",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crosson — Railroad Place — HACKENSACK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=425,4049,669,47",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rideout's — 204 Central Ave. — HACKENSACK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=430,4174,798,58",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Majestic Lodge — 351 - 1st St. — HACKENSACK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1784,501,820,59",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thomas Lake — HASKELL, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1798,748,369,44",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paul's Inn — Rt. 33 East Windsor TWP — HIGHTSTOWN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1790,985,1251,56",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Old Barn — 104 Daws St. — HIGHTSTOWN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1798,1127,683,53",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beauty — 74A Atlantic Ave. — JERSEY CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=344,542,589,47",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bell's — 630 Communipaw Ave. — JERSEY CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1798,1519,835,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. & E. — 11A Oak St. — JERSEY CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1798,1575,641,47",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Merrill's — KINGSTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1798,1815,232,45",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green Grove Inn — Atlantic & Halsey Street — KEYPORT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1795,2050,1243,55",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Major's — 215 Atlantic Ave. — KEYPORT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1795,2197,771,53",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Driver's — 17th & Monroe Ave. — KENNELWORTH, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1806,2436,845,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hi-Hat — White Horse Pike — LAWNSIDE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1785,2693,762,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Acorn Inn — Whitehorse Pike — LAWNSIDE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1801,2821,778,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dreamland — LAWNSIDE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1798,2880,293,42",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Belle Inn — Gloucester Ave. — LAWNSIDE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1795,2931,844,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thelma Thomas — Warwick Blvd. — LAWNSIDE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1801,3059,898,48",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Henry Smith — Mouldy Road — LAWNSIDE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1801,3189,781,53",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lawnside Park — LAWNSIDE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1801,3318,410,47",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "4th Ward Club — 1035 Baltimore — LINDEN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1803,3549,881,60",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Victory — 1307 Baltimore Avenue — LINDEN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1795,3686,1177,56",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Quality — 1140 E. St. George Ave. — LINDEN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1806,3824,957,61",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club '45' — Liberty St. — LONG BRANCH, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1809,4067,621,59",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sam Hall — 18 Academy St. — LONG BRANCH, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1809,4129,768,51",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tally-Ho — 185 Belmont Ave. — LONG BRANCH, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207670/full/!760,760/0/default.jpg#xywh=1809,4180,803,58",
+      "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0053_5207670_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

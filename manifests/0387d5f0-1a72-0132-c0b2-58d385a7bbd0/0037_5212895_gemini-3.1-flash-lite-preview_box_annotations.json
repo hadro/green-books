@@ -1,0 +1,579 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 536 N. Farish — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1471,325,737,103",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Farish St. — 752 N. Farrish — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1514,487,702,50",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Veterans — 116 W. Amite St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1533,616,746,46",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bass — S. Pine St. — LAUREL, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1523,828,429,40",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. L. Brown — 522 E. Kingston — LAUREL, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1523,940,879,47",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Garner — 909 Joe Wheeler's Ave. — LAUREL, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1521,989,983,48",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. G. Wilson — 802 S. 7th — LAUREL, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1521,1037,761,42",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "D. Mason — 218 Denwidde St. — MACOMB, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1523,1245,714,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bob's — H'way 49 — MENDENHALL, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1521,1455,419,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith's — Hi'Way 49 No. — MENDENHALL, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1526,1505,632,46",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beales — 2411 Fifth St. — MERIDIAN, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1521,1697,541,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. W. Williams — 1208-31st St. — MERIDIAN, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1511,1811,783,47",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Simmons — 5th St. betw. 16 & 17 A. — MERIDIAN, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1521,1862,1090,42",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charley Leigh — 5th St. & 16th Ave. — MERIDIAN, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1521,1910,872,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Sallie Price — MOUND BAYOU, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1514,2106,415,42",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Charlotte Strong — MOUND BAYOU, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1516,2156,527,40",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Liddle's — MOUND BAYOU, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1516,2252,195,40",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Foot's — Railroad Ave. — NEW ALBANY, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1518,2448,533,41",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S. Drewery — Church St. — NEW ALBANY, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1515,2546,587,49",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Minnie B. Wilson — 1001 Kenneth Ave. — PASCAGONLA, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1501,2735,1111,53",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Caldwell — Water & Broadway Sts. — YAZOO CITY, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1514,2928,825,54",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. J. Walker — 321 S. Monroe — YAZOO CITY, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1514,3027,870,54",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. Martin — 38 N. Hanover St. — CAPE GIRADEAU, MISSOURI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1521,3436,758,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Randol — 422 North St. — CAPE GIRADEAU, MISSOURI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1521,3486,630,46",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dades — Hi'Way 49 So. — D'LO, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=312,462,591,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tolliver's — 115 N. Hickory — CANTON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=307,671,673,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Garden — 5 Liberty St. — CANTON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=310,798,663,48",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "7-11 — Highway 61 at 8 — CLEVELAND, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=307,1011,569,44",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Queen City — 15th St. & 7th Ave. — COLUMBUS, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=307,1219,797,47",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. J. Harrison — 915 N. 14th St. — COLUMBUS, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=306,1332,815,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H. Sommerville — 906 N. 14th St. — COLUMBUS, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=306,1381,809,42",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. Alexander — N. 12th St. — COLUMBUS, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=300,1430,798,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. I. Roberts — 12th & 5th Ave. N. — COLUMBUS, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=303,1475,898,48",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Chevis — 1425 11th Ave. N. — COLUMBUS, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=303,1524,808,44",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Peoples — Nelson & Eddie St. — GREENVILLE, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=300,1733,703,51",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. K. D. Fisher — 72 Adams St. — GRENADA, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=300,1944,821,48",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. Williams — H'way 51 & Fairground Rd. — GRENADA, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=300,1995,1036,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. A. Godbolt — 409 E. 7th St. — HATTIESBURG, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=300,2205,787,44",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Crosby — 413 E. 6th St. — HATTIESBURG, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=300,2255,775,44",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Vann — 636 Mobile St. — HATTIESBURG, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=299,2303,738,39",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Summers Hotel — 619 W. Pearl St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=307,2527,875,44",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edward Lee — 144 W. Church St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=307,2578,841,42",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson House — 154 W. Oakley St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=303,2691,851,48",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stevens Tourist Homes — H'way 49 West — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=299,2742,1016,45",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tip Top Club — Whitfield Road — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=297,2850,767,55",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shepherds Kitchenette — 604 N. Farish St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=300,2902,993,48",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Chop House — 703 N. Farish St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=300,2950,905,49",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stevens Bar-B-Que — H'way 49 West — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=297,2999,883,50",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Davis Salon — 703 N. Farish St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=293,3110,773,50",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "City — 127 N. Farish St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=1690,2817,433,54",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paris — 800 N. Parish St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=299,3360,638,39",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palace — 504 N. Farish St. — JACKSON, MISSISSIPPI",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212895/full/!760,760/0/default.jpg#xywh=279,3486,638,42",
+      "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0037_5212895_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

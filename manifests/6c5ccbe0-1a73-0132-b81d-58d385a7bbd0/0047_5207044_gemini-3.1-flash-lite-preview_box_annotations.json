@@ -1,0 +1,942 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robinson's — 225 Park Ave. — WOODBURY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=289,521,669,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pine Acres Country Club — WEST PLEASANTVILLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,721,679,44",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HOTEL BROADWAY — 603 BROADWAY — ALBANY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,1128,717,52",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Aaron J. Oliver — 42 Spring St. — ALBANY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=280,1320,908,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Buelah Fords — 96 2nd St. — ALBANY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,1433,628,40",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martin's — 4 Vantromp St. — ALBANY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,1551,631,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rythm Club — Madison Ave. — ALBANY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,1660,683,49",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tuskegee — 364 West Morris St. — BATH, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=275,1876,794,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Little Harlem — 494 Michigan Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=275,2073,839,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 585 Michigan Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=294,2122,823,41",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Montgomery — 486 Michigan Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=289,2169,811,49",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vendome — 177 Clinton St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,2221,632,40",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Claridge — 38 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=289,2268,564,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss R. Scott — 244 N. Division St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,2395,880,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Washington — 172 Clinton St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,2447,933,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. Chase — 194 Clinton St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=299,2499,805,39",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "William Campbell — 342 Adam St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,2546,832,44",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horseshoe — 198 Pine St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=294,2660,590,41",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lou's — 154 Williams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=294,2711,592,39",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crystal — 534 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,2760,568,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bar-B-Q — 413 Michigan Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,2805,717,48",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Empire — 454 Michigan Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=294,2858,688,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Silver Star — 175 Williams — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,2905,628,43",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite — 280 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,2954,516,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Apex — 311 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=289,3004,588,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alfreda's — 192 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,3052,617,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Peter Dubil — 535 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,3100,700,46",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New China's — 172 Genesse St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,3149,781,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Panama — 378 Jefferson St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=285,3201,656,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kam Wing Loo — 433 Michigan Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=284,3312,888,46",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Orchid — 419 Pratt St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,3440,541,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Melisey's — 196 Hickory St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=294,3489,701,49",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Ritz — 348 Jefferson Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=289,3539,700,47",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Matchless — 169 Willam St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=292,3589,673,40",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edwards — 530 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1519,397,653,52",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lady Esther — 243 E. Ferry St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1519,447,761,53",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jean's — 142 Adams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1524,500,573,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Laura's — 643 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,549,564,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Mae — 437 Jefferson Ave — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1520,597,680,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jessie's — 560 Spring St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1517,645,601,46",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fuqua's — 587 Clinton St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1510,692,625,48",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Middleton's — 384 Clinton St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1520,742,726,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bonita's — 254 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1527,792,663,41",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite — 171 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,2954,516,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "People's — 433 Williams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1505,961,657,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jay G. Stamper, Prop. — 192 B'way — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1527,1090,886,46",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pearls — 474 Michigan Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,1142,661,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clover Leaf — 443 Michigan Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1520,1190,808,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Apex — 311 Williams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=289,3004,588,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Balser — 416 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1512,1288,609,41",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kern's — 382 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1517,1336,614,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hickory — Hickory & Williams — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=294,3489,701,49",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horse Shoe — Williams & Pine — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,1434,715,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Toussaint — 292 Williams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,1479,692,51",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe's — 416 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,1528,552,53",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glass Horseshoe — 214 Williams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,1579,840,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jamboree — 339 Williams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1527,1631,673,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mandy's — 278 Williams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1520,1678,669,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Polly's — 403 Jefferson St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1510,1729,639,46",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dubil's — 535 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,1780,574,44",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moonglow — Michigan & Williams — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,1890,804,43",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horseshoe — William and Pine St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=294,2660,590,41",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "King Solomon's — William and Adams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1517,1989,1045,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zarin — 557 Clinton St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1519,2100,554,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parkside — 452 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1509,2147,646,48",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Swan — Swan & Hickory St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1524,2270,676,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Aqui-Line — 141 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1512,2320,643,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ferry — 192 E. Ferry St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1519,447,761,53",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Totton's — 344 Jefferson Ave. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1520,2420,711,46",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stenson's — 133 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1520,2464,678,54",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fraas — Clinton & Jefferson — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1527,2567,642,43",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Your Tire — 250 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1521,2618,637,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eagle — 414 Eagle St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1527,2714,516,44",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Reeve's — 119 Clinton St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1527,2761,615,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mickey's — 544 Williams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1507,2812,689,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sam's — 270 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1512,2857,592,46",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Byrd's — 473 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1517,2910,554,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bell — 197 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=282,2546,832,44",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/77"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Walker — 149 Adams St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1527,3007,625,42",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/78"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sam' — 270 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1512,2857,592,46",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/79"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Empire Star — 234 Broadway — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1524,3105,682,47",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/80"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Veterans — 120 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1531,3232,683,41",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/81"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilmar's — 432 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1531,3330,662,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/82"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roberts — 467 William St. — BUFFALO, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1527,3372,625,45",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/83"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Capitol — 597 Washington St. — HASTING-ON-THE-HUDSON, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207044/full/!760,760/0/default.jpg#xywh=1514,3584,720,47",
+      "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json/entry/84"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0047_5207044_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

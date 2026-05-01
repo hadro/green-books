@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "APOLLO — 125th ST, near 8th Ave.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206063/full/!760,760/0/default.jpg#xywh=949,599,1115,56",
+      "id": "https://hadro.github.io/green-books/0062_5206063_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0062_5206063_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

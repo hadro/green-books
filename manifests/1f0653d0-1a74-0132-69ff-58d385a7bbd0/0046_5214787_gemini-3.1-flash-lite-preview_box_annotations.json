@@ -1,0 +1,62 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MICKEY'S BAR & GRILL — 633 S. 10th Street — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214787/full/!760,760/0/default.jpg#xywh=1510,834,1167,76",
+      "id": "https://hadro.github.io/green-books/0046_5214787_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE CAROUSEL RESTAURANT — 611 W. Walnut — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214787/full/!760,760/0/default.jpg#xywh=1050,1663,1210,64",
+      "id": "https://hadro.github.io/green-books/0046_5214787_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "BROWN DERBY LOUNGE — 10 & Chestnut — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214787/full/!760,760/0/default.jpg#xywh=1495,2972,256,52",
+      "id": "https://hadro.github.io/green-books/0046_5214787_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "JOHN L. LEAKE — Louisville, Kentucky — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214787/full/!760,760/0/default.jpg#xywh=1091,3080,730,74",
+      "id": "https://hadro.github.io/green-books/0046_5214787_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "ANAF — 563 S. 10th Street — LOUISVILLE, KENTUCKY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214787/full/!760,760/0/default.jpg#xywh=793,2516,93,81",
+      "id": "https://hadro.github.io/green-books/0046_5214787_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0046_5214787_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

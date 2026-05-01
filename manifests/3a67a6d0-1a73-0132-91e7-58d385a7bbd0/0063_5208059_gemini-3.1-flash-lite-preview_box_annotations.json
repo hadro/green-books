@@ -1,0 +1,535 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Edwards — 112 Union Ave. — NEW ROCHELLE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=157,414,788,108",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Daniels — 57 Winyah Ave. — NEW ROCHELLE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=212,584,635,50",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Leona's — 13 Hunter St. — OSSINING, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=225,795,576,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lemon's — Valley St. — NORTH TARRYTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=233,1004,485,47",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Brown — Valley St. — NORTH TARRYTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=232,1051,520,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Prioleau — 88 Valley St. — NORTH TARRYTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=232,1167,648,50",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Major's — 48 Washington St. — TUCKAHОЕ, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=234,1362,685,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butterfly Inn — 47 Washington St. — TUCKAHОЕ, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=234,1407,823,56",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shanhana — 144 Main St. — TUCKAHОЕ, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=234,1528,614,50",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Al's — 144 Main St. — TUCKAHОЕ, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=234,1646,480,45",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Brown Derby — 125 Nepperham Ave. — YONKERS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=236,1837,999,53",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Garner — 875 E. 2nd St. — RENO, NEVADA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=232,2160,792,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Billie Ross — 520 Spokane St. — RENO, NEVADA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=239,2212,738,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss G. Harrison — 1001 North 'F' St. — LAS VEGAS, NEVADA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=235,2415,1011,64",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ideal — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=243,2788,132,41",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. Bailey — 1127 N. 2nd St. — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=255,2888,831,64",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Katie Duncan — 423 N. Arno St. — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=241,2938,973,59",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bon Ton — 115 N. First St. — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=261,3059,677,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Sherrell — 502 S. Haloquens — CARLSBAD, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=245,3251,882,61",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. M. Smith — 514 South Canyon — CARLSBAD, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=262,3302,810,53",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roy La Flore New San Jose — CARLSBAD, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=247,3418,779,50",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garland Johnson — West Bronson St. — CARLSBAD, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=250,3527,885,61",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. B. McCoy — 545 N. Church — LAS CRUCES, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=250,3708,907,58",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mary Collins — 121 E. 10th St. — ROSWELL, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1444,522,949,66",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Brown — 115 E. Walnut St. — ROSWELL, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1459,573,748,56",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunset Cafe — 115 E. Walnut St. — ROSWELL, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1459,690,799,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. N. W. Jones — 524 W. Campbell st. — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1443,929,644,47",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rockett Inn — 524 N. Campbell St. — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1452,1050,863,58",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jone's Rooms — Box 1002 — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1456,1103,628,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Henry Jones — 211 N. 5th St. — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1459,1217,783,53",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Swift's — Hiway 66 — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1459,1336,468,50",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 360 College St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1473,1737,741,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Booker T. Washington — 409 Southside Ave. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1470,1784,1074,55",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy — Eagle & Market St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1470,1835,692,55",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palace Grille — 19 Eagle St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1459,1951,671,50",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butler's — Eagle & Market St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1474,2060,729,58",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's — 13 Eagle St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1478,2184,572,44",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilkin's — Eagle & Market Sts. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1481,2290,763,56",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lacy's Beauty Shop — BLADENBORO, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1478,2507,486,48",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carthage Hotel — CARTHAGE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1483,2720,370,48",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "First Street — 6301-1 First St. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1477,2924,764,55",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Economy — 804 1-2 E. First St. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1478,3040,794,53",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gilmore — 2205 Booker Ave. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1478,3155,707,50",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charlotte — 200 E. Trade St. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1662,2798,446,55",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tumlin Bros. — 1608 N. Tryon St. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1481,3309,867,66",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bishop Dale — First & Brevard Sts. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1489,3429,850,56",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Biltmore — E. Pettigrew St. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1484,3644,680,52",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones — 502 Ramsey St. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208059/full/!760,760/0/default.jpg#xywh=1443,929,644,47",
+      "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0063_5208059_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

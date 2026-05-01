@@ -1,0 +1,909 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Midtown Hotel & Country Club — SPARTA, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=465,503,778,46",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Rollins — 844 S. College St. — SPRINGFIELD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=465,701,910,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Mosby — 1614 E. Jackson St. — SPRINGFIELD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=472,750,934,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. Bell — 625 N. 2nd St. — SPRINGFIELD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=472,796,740,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Brooks — 705 N. 2nd St. — SPRINGFIELD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=469,844,808,49",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dr. Ware — 1520 E. Washington St. — SPRINGFIELD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=473,893,881,46",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ideal Drug Store — 801 E. Washington St. — SPRINGFIELD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=473,1005,997,50",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Briggs — 429 S. Court St. — ROCKFORD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=473,1203,610,48",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C.Gorum — 301 Steward Ave. — ROCKFORD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=473,1317,833,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S. Westbrook — 630 Lexington Ave. — ROCKFORD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=473,1365,874,49",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Brown — 927 S. Winnebago St. — ROCKFORD, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=469,1415,885,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Terrance Cafe — 1411 Madison Ave. — ANDERSON, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=473,1734,861,55",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss E. Botts — 336 St. Joe St. — ELKHART, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=480,1935,754,49",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Bell — 672 Lincoln Ave. — EVANSVILLE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=472,2132,831,44",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Lauderdale — 309 Locust St. — EVANSVILLE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=477,2181,818,52",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss F. Snow — 719 Oak St. — EVANSVILLE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=479,2235,692,43",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Community Ass'n — 620 Cherry St. — EVANSVILLE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=483,2286,830,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Leo Manuals' — 1329 Lafayette St. — FORT WAYNE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=483,2480,827,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stewart's — 621 E. Brackenridge St. — FORT WAYNE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=473,2529,878,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martin & Rankin — 1329 S. Lafayette St. — FORT WAYNE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=472,2578,1031,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Ben Talbot — 456 E. Douglas — FORT WAYNE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=466,2692,1089,56",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "William's — 1116 Eliza — FORT WAYNE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=476,2827,549,40",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Service — 840 Lewis St. — FORT WAYNE, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=483,2945,566,44",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "States' — 1700 Washington St. — GARY, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=483,3141,719,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hayes — 2167 Broadway — GARY, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=479,3192,563,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Haley's — 1600 B'way — GARY, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=482,3291,519,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Prosperity — 1705 B'way — GARY, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=466,3385,597,47",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bufkin — 2472 B'way — GARY, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=480,3480,503,56",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Way — 17 Jefferson St. — GARY, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=472,3536,682,46",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Prosperity — 1705 B'way — GARY, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=466,3385,597,47",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thurman — 222 Indianna Ave. — FRENCH LICK, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1701,496,734,47",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 450 N. Senate Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1705,705,852,52",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 653 N. West St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1708,757,769,49",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marquis — 1523 N. Capitol Avenue — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1701,803,853,54",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hawaii — 406 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1703,855,645,46",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zanzibar — 420 N. Sinate Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1703,906,726,40",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harbour — 617-19 N. Ill. St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1701,953,685,43",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Estelle — 455 West 10th St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1713,1102,680,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lasley's — 510 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1710,1231,676,47",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Broaden's — 1645 N. Western Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1710,1281,825,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parkview — 321 N. California Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1710,1331,832,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stormy Weather — 319 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1710,1380,856,47",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Log Cabin — 524 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1710,1431,733,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "DeLuxe Diner — 805 Blake St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1701,1479,712,46",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Taylor's — 427 W. Mich. St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1705,1525,692,53",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Westmorland — 1309 E. 15th St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1708,1578,759,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Eagle — 648 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1708,1625,730,53",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Courtesy — 1217 Senate St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1706,1678,639,46",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Perkins — 793 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1708,1729,644,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stephens & Childs — 527 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1713,1875,909,46",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beauty Box — 2704 Clifton St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1715,1922,714,49",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dancy' — 436 N. California Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1713,1974,801,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith's — 446 Douglas St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1713,2025,625,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mignor's — 2457 Northwestern Sun — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1710,2074,839,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Home Beauty Parlor — 2704 Clifton St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1710,2122,923,49",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Majorette — 2201 Martendale Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1708,2168,818,55",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bronze Lady — 1212 N. Missouri St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1712,2220,865,51",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fannie Bowles — 418 W. 28th St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1713,2273,784,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Campbell — 2439 N. Western Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1720,2324,855,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Noonie's — 547 N. Senate Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1719,2370,767,51",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crawford's — 450 Blake St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1720,2426,679,43",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anna M. Falton — 412 W. North St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1722,2474,907,46",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Home Beauty Shop — 2704 Clifton St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1720,2529,951,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Terry's — 233 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1723,2581,680,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Louvenia Stephens — 337 W. Michigan St — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1719,2624,1054,55",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mary Childs — 721 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1720,2678,818,49",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rose Ann — 412 W. North St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1720,2732,747,41",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Burgess Beauty Shop — 1417 N. Senate — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1719,2777,981,57",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mayes Cafe — 503 Indiana — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1717,2930,628,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ritz — Sinate & Indiana — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1717,2978,569,44",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunset — 875 Indiana — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1717,3029,505,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. C. — 544 W. Maryland St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1705,705,852,52",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Midway — 736 Indiana — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1715,3127,545,45",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Panama — 306 Indiana — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1717,3176,543,41",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dick Shaw's — 451 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1710,3220,770,50",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Downbeat — 1005 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1719,3272,776,49",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Andrew Perkins — 793 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1722,3319,910,55",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glenn's Place — 1771 Boulevard Pl. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1722,3369,883,53",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/77"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Broaden's Victory Cafe — 1645 N. Western — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1722,3422,1032,52",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/78"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pick-Way Inn — 926 W. New York St. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1722,3472,985,54",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/79"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunset — 875 Indiana Ave. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1717,3029,505,42",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/80"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ranell's Casa De Amor Cafe — 952 N. W. — INDIANAPOLIS, INDIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207025/full/!760,760/0/default.jpg#xywh=1708,3572,1016,52",
+      "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json/entry/81"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0028_5207025_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

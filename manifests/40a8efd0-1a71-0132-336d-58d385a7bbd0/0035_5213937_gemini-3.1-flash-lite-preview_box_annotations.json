@@ -1,0 +1,733 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mary Lee Chicken Shack — 482 Main St. — RANDOLPH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1542,499,989,40",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth E. Colery's — 132 Warren St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1542,736,911,41",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Janett's — 132 Humboldt Ave. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1544,788,809,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charm Grove — 90 Humboldt St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1546,837,851,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. Lovett — 68 Humboldt St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1546,886,864,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Belinda's — 429 Shawmut Ave. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1542,936,824,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cherrie Charm Cove — 90 Humboldt Ave. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1544,988,1000,37",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mae's — 140 Lenox St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1546,1087,573,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lovett's — 69 Humboldt Ave. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1544,1133,768,45",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth's — 185 Warren St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1544,1185,651,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wright's — 51A Humboldt St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1549,1285,806,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Metropolitan — Ruggles & Ashburn Sts. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1549,1335,996,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thompson's — 1105 Tremont St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1549,1479,844,46",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Atlanta — 1105 Tremont St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1549,1532,709,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morgan's — 355 Warren St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1551,1627,768,45",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas Square — 1002 Tremont St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1548,1726,939,48",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jaspan's — 134 Harold St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1549,1777,702,44",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kornfield's — 2121 Washington St. — ROXBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1544,1823,915,52",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modern — 26 Reed St. — SOUTH HANSON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1546,2045,656,42",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Springfield — SPRINGFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1546,2256,298,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joiner's — 97 Hancock St. — SPRINGFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1549,2354,682,40",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Law's — 18 Hawley St. — SPRINGFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1549,2453,756,42",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "American Cleaners — 433 Eastern Ave. — SPRINGFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1553,2549,938,44",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Home — 3 Boynton St. — SWAMPSCOTT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1552,2808,894,42",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. E. Roberts — 128 Dragon Ct. — WOBURN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1552,3017,999,45",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Worcester — Washington Square — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1776,3112,483,55",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kozarian's — 53 Summer St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1559,3323,796,42",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bancroft — 24 Portland St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1551,3417,750,47",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bergwall — 238 Main St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1553,3519,684,43",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. F. S. Blake — 363 Mass. Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,447,992,40",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. L. Crosby — 11 Greenwich Park — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=325,492,995,49",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. Enslow's — 977 Tremont St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,543,933,45",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. Milliams — 62 Hammond St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=325,592,897,48",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. West — 609 Columbus Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=325,643,814,44",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "House of Charms — 169-A W. Springfield — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=319,694,1001,41",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Josephine Bolt — 374 Columbus Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=330,791,989,44",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth Evans — 563 Columbus Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,841,904,43",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rubinetta — 961 Tremont St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,887,799,49",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lucile's — 226 W. Springfield St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,939,897,44",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Constance — 414 Mass. Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,990,749,41",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Easter's — 168A Springfield St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=330,1038,838,43",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arizona — 563 Columbus Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=331,1090,834,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Betty's — 609 Columbus Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=331,1138,791,40",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clark-Merrill — 507 Shawmut Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=331,1187,905,41",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Amy's — 782 Tremont St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=331,1238,665,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Doris — 767 Tremont St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,1286,661,40",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Newton — 462 Mass. Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=330,1333,764,44",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Belleza De La Casa — 360 Mass. Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=331,1384,992,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Amity — 1028 Tremont St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=332,1479,727,45",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Abbott's — 974 Tremont St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=331,1532,742,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy — 410 Mass. Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=338,1630,608,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "4-H Lounge — 411 Columbus Ave. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,1729,924,41",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Baltimore — 1013 Tremont St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=328,1824,830,42",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chester's — 189 W. Newton St. — WORCESTER",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=332,1872,850,46",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. P. Bennett — 26 Mead St. — CAMBRIDGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=331,2060,911,45",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth's — 20 Woodward St. — EVERETT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=1544,1185,651,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. I. Anderson — 28 Rossiter St. — GREAT BARRINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=335,2428,935,46",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Hamilton — 118 Main St. — GREAT BARRINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=335,2479,900,42",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crawford's Inn — 14 Elm Court — GREAT BARRINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=338,2528,806,42",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zilphas Cottages — 134 Oakneck Rd. — HYAMIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=338,2713,995,42",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. Adams — 32 Washington Ave. — NORTH ADAMS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=332,2896,950,44",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. G. Hill — 39 Hubbard Ave. — NORTH CAMBRIDGE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=338,3077,975,45",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "B. Chapman — 799 Central Ave. — NEEDHAM",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=335,3246,911,41",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. E. Grant — 53 King St. — PITTSFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=338,3429,732,38",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. Dillard — 109 Linden St. — PITTSFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=338,3477,856,39",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Marshall — 124 Danforth Ave. — PITTSFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213937/full/!760,760/0/default.jpg#xywh=341,3526,939,40",
+      "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0035_5213937_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

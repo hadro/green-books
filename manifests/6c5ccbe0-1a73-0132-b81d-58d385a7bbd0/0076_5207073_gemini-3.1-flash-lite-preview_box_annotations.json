@@ -1,0 +1,656 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pemex — TAMAZUNCHALE, MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=414,558,161,39",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pemex — IXQUIMILIPAN, MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=414,558,161,39",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butch's Manhattan — on the Highway — CUERNAVACA, MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=414,1006,926,46",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel Carlton-Ignacia Marisca — CUERNAVACA, MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=414,1236,765,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Waikiki — Paseo de la Reforma — CUERNAVACA, MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=419,1362,851,50",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Castilla — Calle 6, Ave. 1/3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,1787,682,49",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Continental — Calle 3, Ave. 3/5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=435,1837,773,52",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Europa — Calle. Av., Ave. 5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,1889,702,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Latimo — Calle 6, Ave. 3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,1942,616,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pan American — CS. 3/5, Ave. F.G. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=431,1980,908,68",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rex — Calle 2, Ave. FG/2 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,2044,646,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anexo — CS. 7/9, Ave. F.G. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=435,2096,696,46",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Central — Calle 6, Ave. 2 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=473,1638,824,71",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Costa Rica — Calle 3, Aves. FG/2 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=280,323,383,39",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Las Americas — Calle 8, Ave. 3/5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=430,2243,840,53",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Metropoli — CS. 1/3, Ave. F.G. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=428,2299,789,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Regina — Calle 5, Ave. 3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=426,2348,616,51",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ritz — Calle 11, Ave. 3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=428,2400,576,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Trebol — CS. 8/9, Ave. 3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=431,2452,616,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Torino — Calle 6, Ave. 5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=428,2614,692,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Eureka — CS. 4/6, A.F.G. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=426,2666,741,46",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Imperio — Calle 6/8, Ave. 3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=427,2712,767,55",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Nido — Calle 6, Ave. 1/3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=428,2767,699,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roma — Calle 3, Ave. 1 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=431,2819,578,46",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Moderino — Calle 2, Ave. 6 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=426,2867,755,52",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Esmeralda — C. Av., F.G./2 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=428,2917,783,52",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La nava — Calle 9, Avs. 12/14 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=428,2972,751,45",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tavernsperial — Calle 6, Ave. 2. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,3017,819,53",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Popular — Calle 6, Avs. 1/3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=427,3069,688,53",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Real — Calle 12, Avs. 26 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=428,3124,612,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Napoles — Calle 7, Av. 5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=428,3174,609,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Atlantico — Calle 21, Av. 3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,3226,661,45",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Union — Calle 2, Av. 1/3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,3277,751,45",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chelles — Calle 9, Av. F.G. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=435,3327,662,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Areopuerto — Sabana Sur. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,3374,730,50",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Castillo — Calle 9, Av. 14 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=430,3424,713,51",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Comrth — Calle 10, Av. F.G. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=431,3478,784,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Gato Negro — Calle 8, Αν. 9/10 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=430,3521,869,62",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Maragato — Calle 8, Av. 3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,3574,723,58",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Eden — La Uruca — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=433,3628,511,45",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Central — Calle 3, Av. F.G. — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=473,1638,824,71",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Espanola — Calle 2, Av. F.G./2 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1673,537,774,46",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hollywood — Calle A.V., Ave. 1 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1670,698,791,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carlos Alvarado — Cale 3, Av. 3 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1670,860,798,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Central — Calle 8, Av. 3/5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=473,1638,824,71",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lang — Calle 1, Av. 3/5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1670,959,596,55",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Aguilar — Calle 6, Avs. 2/4 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1669,1010,681,57",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. Castro — C.A.V., Ave. 6/8 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1670,1063,736,48",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Montealegre — Calle 1/3, Av. 1 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1667,1112,857,52",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. M. Arellano — Calle 1, Αν. 3/5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1667,1277,838,50",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Penon — CS. 6/8, Avs. 4/6 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1666,1327,670,51",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Sanarrusia — Calle 7, Ave. 4/7 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1667,1381,841,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Valencia — Calle 6, Av. 2 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1670,1428,631,52",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vives — Calle 4, Avs. 6/8 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1667,1480,634,50",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morales — Calle 6, Avs. 4/6 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1670,1532,691,47",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Munoz — CS. 2/4, Ave. 14 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1667,1583,668,46",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Empresa Quesada Guadalupe — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1670,1635,773,45",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "San Jose — Calle 2, Avs. 3/5 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=471,1552,1024,83",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vargas — Calle 6, Avs. 4/6 — SAN JOSE, COSTA RICA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207073/full/!760,760/0/default.jpg#xywh=1673,1735,662,46",
+      "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0076_5207073_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

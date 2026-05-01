@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Negro Motorist Green Book — IIIF Viewer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #1a1a1a; color: #f0f0f0;
+      height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+    }
+    header {
+      background: #111; border-bottom: 1px solid #333;
+      padding: 8px 16px; display: flex; align-items: center;
+      gap: 12px; flex-shrink: 0; flex-wrap: wrap;
+    }
+    header h1 { font-size: 14px; font-weight: 700; color: #f0c040; }
+    header a { font-size: 12px; color: #aaa; text-decoration: none; margin-left: auto; }
+    header a:hover { color: #fff; }
+    #viewer-wrap { flex: 1; position: relative; overflow: hidden; }
+    clover-viewer { display: block; position: absolute; inset: 0; }
+    #landing, #error {
+      display: none; position: absolute; inset: 0;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px; padding: 32px; text-align: center;
+    }
+    #landing.visible, #error.visible { display: flex; }
+    #landing p { font-size: 14px; color: #aaa; max-width: 480px; line-height: 1.6; }
+    #landing a {
+      display: inline-block; padding: 10px 20px; background: #f0c040; color: #111;
+      border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px;
+    }
+    #landing a:hover { background: #ffd54f; }
+    #error p { font-size: 13px; color: #f88; max-width: 520px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>The Negro Motorist Green Book</h1>
+  <a href="explorer.html">← Back to explorer</a>
+</header>
+
+<div id="viewer-wrap">
+  <div id="landing">
+    <p>This viewer opens specific pages from the digitized Green Book volumes.
+       Use the explorer to find an entry and click its source link to open it here.</p>
+    <a href="explorer">Open the Green Book Explorer</a>
+  </div>
+  <div id="error"><p id="error-msg"></p></div>
+</div>
+
+<script>
+const BASE_URL = "https://hadro.github.io/green-books";
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+function showError(msg) {
+  document.getElementById("error-msg").textContent = msg;
+  document.getElementById("error").classList.add("visible");
+}
+
+function serviceId(service) {
+  if (!service) return "";
+  const s = Array.isArray(service) ? service[0] : service;
+  return (s && (s.id || s["@id"])) || "";
+}
+
+function buildCanvasIndex(manifest) {
+  const index = {};
+  for (const canvas of (manifest.items || [])) {
+    try {
+      const body = canvas.items[0].items[0].body;
+      // Index by service base URL (primary)
+      const svc = serviceId(body.service);
+      if (svc) index[svc] = canvas.id;
+      // Also index by body URL stripped to service base (NYPL canvas IDs are image URLs)
+      if (body.id) index[body.id.replace(/\/full\/.*$/, "")] = canvas.id;
+    } catch (e) {}
+  }
+  return index;
+}
+
+function buildCloverState(manifestId, canvasId, fragment) {
+  const target = {
+    type: "SpecificResource",
+    source: { id: canvasId, type: "Canvas", partOf: [{ id: manifestId, type: "Manifest" }] },
+  };
+  if (fragment) target.selector = { type: "FragmentSelector", value: fragment };
+  return {
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    id: canvasId + (fragment ? "#" + fragment : "") + "/content-state",
+    type: "Annotation",
+    motivation: ["contentState"],
+    target,
+  };
+}
+
+function contentStateToBlobId(stateObj) {
+  return URL.createObjectURL(
+    new Blob([JSON.stringify(stateObj)], { type: "application/json" })
+  );
+}
+
+function closeInfoPanelAfterZoom(el, fallbackMs) {
+  let done = false;
+  function close() {
+    if (done) return;
+    done = true; obs.disconnect(); clearTimeout(timer);
+    const btn = el.querySelector('[data-value="manifest-back"]');
+    if (btn) btn.click();
+  }
+  const obs = new MutationObserver(mutations => {
+    for (const m of mutations) {
+      if (m.type === "attributes" && m.attributeName === "class" &&
+          m.target.className === "clover-iiif-content-state") { close(); return; }
+    }
+  });
+  obs.observe(el, { subtree: true, attributes: true, attributeFilter: ["class"] });
+  const timer = setTimeout(close, fallbackMs);
+}
+
+function launchClover(manifestId, cfUrl) {
+  const wrap = document.getElementById("viewer-wrap");
+  const old = wrap.querySelector("clover-viewer");
+  if (old) old.remove();
+
+  const el = document.createElement("clover-viewer");
+
+  if (!cfUrl) {
+    el.setAttribute("id", manifestId);
+    wrap.appendChild(el);
+    closeInfoPanelAfterZoom(el, 1500);
+    return;
+  }
+
+  const fragment = cfUrl.includes("#") ? cfUrl.split("#")[1] : "";
+  const cfBase   = cfUrl.includes("#") ? cfUrl.split("#")[0] : cfUrl;
+
+  fetch(manifestId)
+    .then(r => r.json())
+    .then(manifest => {
+      const index = buildCanvasIndex(manifest);
+      const svcBase = cfBase.replace(/\/full\/.*$/, "");
+      const canvasId = index[svcBase] || index[cfBase] || cfBase;
+      el.setAttribute("id", contentStateToBlobId(buildCloverState(manifestId, canvasId, fragment)));
+      wrap.appendChild(el);
+      closeInfoPanelAfterZoom(el, 5000);
+    })
+    .catch(() => {
+      el.setAttribute("id", manifestId);
+      wrap.appendChild(el);
+      closeInfoPanelAfterZoom(el, 1500);
+    });
+}
+
+// ── Route ────────────────────────────────────────────────────────────────────
+
+const cf = new URLSearchParams(location.search).get("cf");
+
+if (!cf) {
+  document.getElementById("landing").classList.add("visible");
+} else {
+  const m = cf.match(/\/iiif\/\d+\/(\d+)\//);
+  if (!m) {
+    showError("Unrecognised canvas fragment URL: " + cf);
+  } else {
+    const imageId = m[1];
+    fetch("image_to_volume.json")
+      .then(r => r.json())
+      .then(lookup => {
+        const uuid = lookup[imageId];
+        if (!uuid) {
+          showError("No volume found for image ID " + imageId + ". The lookup table may be out of date.");
+          return;
+        }
+        launchClover(BASE_URL + "/manifests/" + uuid + "/manifest.json", cf);
+      })
+      .catch(err => showError("Could not load volume index: " + err.message));
+  }
+}
+</script>
+
+<script src="clover.umd.patched.js"></script>
+</body>
+</html>

@@ -1,0 +1,788 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Evans — 224 Sharp St. — WINCHESTER, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=478,587,599,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Joe Willis — N. Main St. — WINCHESTER, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=483,719,838,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar Tea Room — 21 W. Hart St. — WINCHESTER, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=486,770,1000,59",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth's — 128 E. Cecil Street — WINCHESTER, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,897,974,64",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Samuels — 2214 Wedmore Ave. — EVERETT, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=478,1414,900,60",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. T. Payne — 2912 Pacific — EVERETT, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,1470,881,62",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. Samuels — 3620 Hoyt Ave. — EVERETT, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,1528,967,57",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Atlas — 420 Maynard St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,1817,667,64",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 102-21 North St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=476,1874,914,60",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green — 711 Lane St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=473,1925,599,65",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Idaho — 505 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=476,1983,666,66",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Olympus — 413 Maynard St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=473,2042,772,62",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — 328 N. W. 5th St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=480,2099,796,56",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eagle — 408 1/2 Main St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=480,2155,664,57",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Evelyn Inn — 2229 E. Madison Ave. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,2295,985,49",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palm Garden — 1040 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=480,2350,871,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pacific — 417 Maynard St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,2407,704,48",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paramount — 518 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=478,2464,775,48",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Egyptian — 2040 E. Madison St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=480,2517,867,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite — 428—21st Street — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=470,2574,654,45",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shanty Inn — 110 12th Ave. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,2631,775,47",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sid's — 2330 E. Madison Ave. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=473,2685,809,49",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cozy Inn — 66 N. E. Broadway — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,2740,866,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vctory — 652 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,2792,708,57",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rendezvous — Empire Highway 2 1/2 Mile S. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,2923,1209,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pauline's — 2221 E. Madison — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,3048,778,56",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modernistic — 674 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,3109,799,49",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Streamline — 1212 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=473,3166,793,49",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LaMode — 2036 E. Madison St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,3221,855,46",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bert's — 2301 E. Denny Way — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=475,3277,780,47",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth Whiteside — 614 Jackson — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=473,3334,813,45",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hayes — 2227 E. Madison St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=473,3461,796,47",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stockards — 2032 E. Madison St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=471,3512,893,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pltyhouse — 1238 Main St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=473,3645,721,48",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson's — 707 Jackson Street — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=462,3773,1068,53",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stoemer — 2047 E. Madison St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=473,3916,843,47",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hill Top — 1200 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=470,3975,760,47",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sea Gull — 673 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=470,4030,716,48",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pacific Cafe — 417 Maynard St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=471,4082,849,54",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lucky Hour — 1315 Yesler Way — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=467,4139,861,51",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Richfield — 707 Jackson — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1886,486,623,64",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bob's — 19th & E. Madison St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1886,543,837,59",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Burnham's — 2211 E. Madison St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1889,599,907,58",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moszee — 19 E. Madison St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1886,657,767,51",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bon-Rot — 14th & Yesler St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1889,785,783,55",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bishop's — 507 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1886,842,711,57",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chikata — 114 12th Ave. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1886,897,664,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Madison — 22nd & Madison — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1879,949,757,59",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gilt Edge — 611 Jackson St. — SEATTLE, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1886,1078,765,65",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A Robinson — 1906 S. \"I\" St. — TACOMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1883,1336,990,60",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. H. Carter — 1017 S. Trafton St. — TACOMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1881,1393,961,59",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Catherine's — 1408 South \"K\" St. — TACOMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1884,1523,906,56",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H. C. Deering — 508 S. Third St. — YAKIMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1878,1779,915,64",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. H. Jones — 310 Third Ave. — YAKIMA, WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1843,1835,1005,63",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Pioneer — 340 S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1861,2230,943,58",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Morton — 430 S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1874,2360,996,60",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Home Service — 338 1/2 S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1874,2491,994,60",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Katie's Vanity — S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1868,2624,856,48",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fuqua's — Fugua Bldg. S. Fayette — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1876,2681,902,49",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paynes — 338 S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1865,2804,771,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simpson's — New Pioneer Hotel — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1873,2864,830,47",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beckino Club — S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1874,2990,801,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chesterfield Club — New Pioneer Hotel — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1873,3048,1019,46",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moss — 501 South Fayette Street — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1861,3179,1139,55",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morton Drug — S. Fayette St. — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1868,3326,851,49",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robertson's — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1870,3453,626,46",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nuway — BECKLEY, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1865,3510,520,46",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Traveler's Inn — 602 Raleigh St. — BLUEFIELD, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1865,3714,879,47",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ferguson — CHARLESTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1861,3968,237,46",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "White Front — 1007 Washington St. — CHARLESTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1865,4092,925,47",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palace Cafe — 910 Washington St. — CHARLESTON, WEST VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5207699/full/!760,760/0/default.jpg#xywh=1865,4149,921,52",
+      "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0082_5207699_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

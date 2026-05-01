@@ -1,0 +1,40 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pan American World Airways",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213516/full/!760,760/0/default.jpg#xywh=1578,1055,1158,66",
+      "id": "https://hadro.github.io/green-books/0004_5213516_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "American Airlines",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213516/full/!760,760/0/default.jpg#xywh=342,1220,1025,58",
+      "id": "https://hadro.github.io/green-books/0004_5213516_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Trans World Airlines",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213516/full/!760,760/0/default.jpg#xywh=342,1287,1081,52",
+      "id": "https://hadro.github.io/green-books/0004_5213516_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0004_5213516_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

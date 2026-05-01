@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pan American World Airways — 135 East 42nd Street, New York 17, N. Y.",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5213517/full/!760,760/0/default.jpg#xywh=1398,1934,1154,77",
+      "id": "https://hadro.github.io/green-books/0005_5213517_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0005_5213517_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

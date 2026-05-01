@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "San Remo Beach Hotel — BARBADOES",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215121/full/!760,760/0/default.jpg#xywh=601,664,692,50",
+      "id": "https://hadro.github.io/green-books/0116_5215121_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "White Sands Beach Hotel — St. Lawrence 21 — BARBADOES",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215121/full/!760,760/0/default.jpg#xywh=601,711,2106,65",
+      "id": "https://hadro.github.io/green-books/0116_5215121_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0116_5215121_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

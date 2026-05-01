@@ -1,0 +1,73 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WHITNEY MUSEUM OF AMERICAN ART — 10 West 8th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208047/full/!760,760/0/default.jpg#xywh=1371,404,1167,64",
+      "id": "https://hadro.github.io/green-books/0051_5208047_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MUSEUM OF THE NUMISMATIC SOCIETY — Broadway between 155th and 156th Sts. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208047/full/!760,760/0/default.jpg#xywh=1375,1063,1171,68",
+      "id": "https://hadro.github.io/green-books/0051_5208047_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "AMERICAN GEOGRAPHICAL SOCIETY — Broadway at 156th Street — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208047/full/!760,760/0/default.jpg#xywh=1395,3117,1166,52",
+      "id": "https://hadro.github.io/green-books/0051_5208047_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HAMILTON GRANGE — 287 Convent Avenue — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208047/full/!760,760/0/default.jpg#xywh=1412,3463,1161,48",
+      "id": "https://hadro.github.io/green-books/0051_5208047_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "NEW YORK MUSEUM of SCIENCE and INDUSTRY — R. C. A. Bldg., Rockefeller Center — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208047/full/!760,760/0/default.jpg#xywh=167,3121,1169,61",
+      "id": "https://hadro.github.io/green-books/0051_5208047_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "NEW YORK BOTANICAL GARDENS — East 200th Street and Webster Avenue — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5208047/full/!760,760/0/default.jpg#xywh=176,3468,1160,50",
+      "id": "https://hadro.github.io/green-books/0051_5208047_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0051_5208047_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

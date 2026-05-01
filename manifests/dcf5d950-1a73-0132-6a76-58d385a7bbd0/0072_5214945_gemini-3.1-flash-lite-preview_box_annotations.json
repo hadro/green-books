@@ -1,0 +1,73 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "DUNN'S ESSO SERVICENTER — 520 S. Bloodworth Street — RALEIGH",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214945/full/!760,760/0/default.jpg#xywh=1175,367,1126,62",
+      "id": "https://hadro.github.io/green-books/0072_5214945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wright's Motel — P. O. Box 43 — ROCKY MOUNT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214945/full/!760,760/0/default.jpg#xywh=673,859,2256,77",
+      "id": "https://hadro.github.io/green-books/0072_5214945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln Park Motel — 1000 Leggett Rd. — ROCKY MOUNT",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214945/full/!760,760/0/default.jpg#xywh=670,915,2262,80",
+      "id": "https://hadro.github.io/green-books/0072_5214945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "DALTON'S LUNCH — 128 N. Lee Street — SALISBURY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214945/full/!760,760/0/default.jpg#xywh=673,1147,2262,64",
+      "id": "https://hadro.github.io/green-books/0072_5214945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CARSON'S SERVICE STATION — 636 S. Center Street — STATESVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214945/full/!760,760/0/default.jpg#xywh=1150,1565,1163,62",
+      "id": "https://hadro.github.io/green-books/0072_5214945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "FRANK'S GRILL — 640 S. Center St. — STATESVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214945/full/!760,760/0/default.jpg#xywh=888,2172,755,76",
+      "id": "https://hadro.github.io/green-books/0072_5214945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0072_5214945_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

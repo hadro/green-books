@@ -1,0 +1,62 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "KING'S CIRCLE INN BAR-B-QUE — 4054 Miles at Broadway — SHREVEPORT, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214792/full/!760,760/0/default.jpg#xywh=799,394,1244,72",
+      "id": "https://hadro.github.io/green-books/0051_5214792_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "SPRAGUE HOTEL — 1032-4-8 Sprague Street — SHREVEPORT, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214792/full/!760,760/0/default.jpg#xywh=911,899,1020,72",
+      "id": "https://hadro.github.io/green-books/0051_5214792_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CARRILETTE'S DINETTE & MOTEL — 1201 Sprague Street — SHREVEPORT, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214792/full/!760,760/0/default.jpg#xywh=767,1381,1312,62",
+      "id": "https://hadro.github.io/green-books/0051_5214792_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson Motel — 2004 Cypress St., Hwy. 80 — WEST MONROE, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214792/full/!760,760/0/default.jpg#xywh=375,1815,2231,81",
+      "id": "https://hadro.github.io/green-books/0051_5214792_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MYLES' AUTO PARTS AND WRECKING CO. — 2122 Cypress Street — WEST MONROE, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214792/full/!760,760/0/default.jpg#xywh=383,2276,2087,84",
+      "id": "https://hadro.github.io/green-books/0051_5214792_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0051_5214792_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

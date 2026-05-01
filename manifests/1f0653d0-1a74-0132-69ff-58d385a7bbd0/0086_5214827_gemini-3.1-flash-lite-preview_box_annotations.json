@@ -1,0 +1,73 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M-Y-B PACKAGE SHOP — 320 East 9th Street — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214827/full/!760,760/0/default.jpg#xywh=987,462,1035,89",
+      "id": "https://hadro.github.io/green-books/0086_5214827_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MME. C. J. WALKERS COLLEGE OF BEAUTY CULTURE — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214827/full/!760,760/0/default.jpg#xywh=799,1573,1439,98",
+      "id": "https://hadro.github.io/green-books/0086_5214827_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LA VOGUE BEAUTY LOUNGE — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214827/full/!760,760/0/default.jpg#xywh=835,1859,1359,100",
+      "id": "https://hadro.github.io/green-books/0086_5214827_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CHANDLER'S DRUG CO. — 505 East 9th Street — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214827/full/!760,760/0/default.jpg#xywh=1104,2559,892,74",
+      "id": "https://hadro.github.io/green-books/0086_5214827_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MILLENDER'S PHARMACY — 1800 East 3rd Street — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214827/full/!760,760/0/default.jpg#xywh=1071,2982,969,75",
+      "id": "https://hadro.github.io/green-books/0086_5214827_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "BEAUTY PARLOR — 517 East 9th Street — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214827/full/!760,760/0/default.jpg#xywh=2003,616,584,56",
+      "id": "https://hadro.github.io/green-books/0086_5214827_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0086_5214827_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,557 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simmons — 407 E. 5th St. — OKMULGEE, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=360,469,592,43",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Walker — 717 N. Porter — OKMULGEE, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=361,571,538,50",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Phillips — 5th & Delaware Sts. — OKMULGEE, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=413,684,691,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H. & H. — 421 E. 5th St. — OKMULGEE, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=360,786,594,51",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Olison — 501 S. Bell St. — SHAWNEE, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=361,991,542,48",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Slugg's — 410 So. Bell St. — SHAWNEE, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=361,1039,605,50",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. Gross — 602 S. Bell St. — SHAWNEE, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=362,1150,612,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Small — 615 E. Archer St. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=362,1349,609,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Red Wing — 206 N. Greenwood — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=364,1391,696,54",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal — 605 E. Archer St. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=360,1441,589,45",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McHunt — 1121 N. Greenwood Ave. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=361,1480,843,58",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Warren Hotel — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=365,1530,317,49",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 621 E. Oklahoma Pl. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=364,1575,826,54",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. H. Smith — 124½ N. Greenwood — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=364,1688,872,50",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. U. Netherland — 542 N. Elgin St. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=348,1728,863,54",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Your Cab — 517 E. Beady St. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=360,1840,676,50",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Swindall's — 203 N. Greenwood — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=346,1944,718,50",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mince — 2nd & Eigin Sts. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=354,2055,582,47",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pine Street — 906 E. Pine St. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=360,2160,674,49",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Meharry Drugs — 101 Greenwood St. — TULSA, OKLAHOMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=354,2270,831,49",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Medley — 2272 N. Interstate Ave. — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=344,2555,762,53",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — N. E. Williams Ave. & Till. — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=354,2604,1037,54",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Barno's — 84 N. E. Broadway — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=354,2714,718,49",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bakers — 6535 N. E. Grand Ave. — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=357,2816,770,54",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Redmond — 2862 S. E. Ankeny — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=356,2866,703,49",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mott Sisters — 2107 Vancouver Ave. — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=348,2907,840,52",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Holliday's — 511 N. W. 6th Ave. — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=354,3016,752,54",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oregon Frat. — 1412 N. Wms. — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=353,3125,725,47",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spicers — 1734 N. Williams Ave. — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=353,3235,744,45",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "BROADWAY DE LUXE CAB — PORTLAND, OREGON",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=340,3356,894,51",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Southern — 372 Union Street — ALLENTOWN, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1509,598,827,48",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. Bell — 1420 Wash. Ave. — ALTOONA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1517,808,600,49",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Jackson — 2138-18th St. — ALTOONA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1516,857,777,47",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Shorter — 2620-8th St. — ALTOONA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1515,903,720,48",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mac's — 1710 Union Ave. — ALTOONA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1517,1007,597,51",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Subway — COATESVILLE, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1512,1210,182,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HARRIS HOTEL — PENN & WEST STS. BEDFORD SPRINGS, PA. — BEDFORD SPRINGS, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1463,1410,524,51",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem — 1909 W. 3rd St. — CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1519,1915,609,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moonglow — 225 Market Street — CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1515,1958,659,53",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rio — 321 Central Ave. — CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1519,2072,530,40",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rosella — 413 Concord Ave. — CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1516,2177,618,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alex. Davis — 123 Reaney St. — CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1513,2225,693,43",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bouldin — 1710 W. 3rd St. — CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1517,2328,613,46",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wright's — 3rd St. & Central Ave. — CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1516,2438,793,46",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tailor Shop — 601 Tilgaman — CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1513,2549,650,43",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Golden Star — 10th & Forrester — DARBY, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1513,2746,697,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pope — 1318 French Street — ERIE, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1513,2946,601,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Forsett — 210 W. High — GETTYBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1512,3145,732,42",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 132 W. Rittenhouse — GERMANTOWN PHIL, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1498,3326,807,43",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. Foote — 5560 Blakmore St. — GERMANTOWN PHIL, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5210169/full/!760,760/0/default.jpg#xywh=1509,3436,689,39",
+      "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0064_5210169_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

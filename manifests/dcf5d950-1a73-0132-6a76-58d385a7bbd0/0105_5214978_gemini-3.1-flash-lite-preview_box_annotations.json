@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Drive Inn Tourist Cabins — MARSHALL",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214978/full/!760,760/0/default.jpg#xywh=578,994,240,74",
+      "id": "https://hadro.github.io/green-books/0105_5214978_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE WHEEL MOTEL — 18th and Milan Streets — MARSHALL",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214978/full/!760,760/0/default.jpg#xywh=555,1094,288,48",
+      "id": "https://hadro.github.io/green-books/0105_5214978_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0105_5214978_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

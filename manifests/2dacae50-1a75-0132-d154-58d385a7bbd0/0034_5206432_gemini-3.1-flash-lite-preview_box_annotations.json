@@ -1,0 +1,557 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Savoy — 210 Almond St. — SYRACUSE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=436,520,824,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. F. Garden — 912 Almond St. — SYRACUSE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=443,636,939,47",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Geneva — 27 Walworth St. — SARATOGA SPRINGS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=437,800,743,50",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green Tree — 52 Washington St. — SARATOGA SPRINGS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=440,853,993,50",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bridge Rendezvous — 40 Cortland St. — TARRYTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=444,1070,633,50",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lemon's — Valley St. — NORTH TARRYTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=440,1359,613,45",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Brown — Valley St. — NORTH TARRYTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=443,1410,649,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Prioleau — 88 Valley St. — NORTH TARRYTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=444,1524,763,50",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Major's — 48 Washington St. — TUCKAHOE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=450,1740,852,47",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butterfly Inn — 47 Washington St. — TUCKAHOE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=453,1790,1019,49",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Al's — 144 Main St. — TUCKAHOE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=446,1907,524,43",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shahana — 144 Main St. — TUCKAHOE, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=460,2024,673,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Broad St. Inn — 415 Broad St. — UTICA, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=463,2260,890,43",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Burns — 314 Broad St. — UTICA, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=464,2313,883,43",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Howard Home — 413 Broad St. — UTICA, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=467,2366,646,43",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Goody Shop — Brookfield St. — WHITE PLAINS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=463,2653,817,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lloyd's — 88 Martine Ave. — WHITE PLAINS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=467,2703,790,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Southern — 118 Martine Ave. — WHITE PLAINS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=473,2755,831,41",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oasis — 115 Tarrytown Road — WHITE PLAINS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=463,2870,839,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marie's — 94 Brookfield St. — WHITE PLAINS, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=467,2985,797,45",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. F. Thomas — 123 Union St. — WATERTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=473,3220,891,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "V. H. Brown — 502 Binase St. — WATERTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=473,3273,884,42",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "G. E. Depuy — 710 Morrison St. — WATERTOWN, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=474,3329,939,43",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Matt Wilson — Iron & 2nd St. — DEMING, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=479,3679,884,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. P. Partee — 109 W. Wilson Ave. — GALLUP, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1682,510,627,49",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carthage Hotel — CARTHAGE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1684,876,466,47",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charlomac — 1st & Brevard Sts. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1683,1073,953,56",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sanders — 2nd St. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1683,1130,516,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shaws' Cafe — 781 Mint St. — CHARLOTTE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1692,1247,797,47",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Biltmore — E. Pettigrew St. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1684,1454,839,48",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones — 502 Ramsey St. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1689,1507,690,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hollywood — 118 S. Mangum St. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1692,1622,938,47",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "De Shazors — 809 Fayetteville St. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1692,1742,978,50",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "D'Orsay — 120 S. Mangum St. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1692,1797,883,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Midway — Pine & Poplar Sts. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1696,1922,883,45",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pine Street — 1102 Pine St. — DURHAM, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1696,1974,793,42",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Duck — 404 Erringhaus St. — ELIZABETH, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1700,2179,967,53",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bedford Inn — 203 Moore St. — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1699,2385,813,48",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mary Sims — 909 Fayettesville — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1696,2497,1044,58",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. A. Morris — 902 Fayettesville — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1693,2547,1053,59",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. N. O'Daniel — 1005 Fayetteville St. — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1696,2606,553,49",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Restful Inn — 418 Gillespie St. — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1692,2706,854,51",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bedford Inn — 203 Moore St. — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1699,2385,813,48",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Big Buster — Gillespie St. — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1703,2879,754,51",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Delux — Person St. — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1706,3003,541,42",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Brown — Person St. — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1710,3119,720,50",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wood & Melvin — Union Sq. — FAYETTEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1707,3236,563,53",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Union Sq. — GASTONIA, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1702,3448,311,42",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Travelers Inn — 612 E. Market St. — GREENSBORO, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1709,3626,1041,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Legion Club — 829 E. Market St. — GREENSBORO, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206432/full/!760,760/0/default.jpg#xywh=1703,3676,993,46",
+      "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0034_5206432_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

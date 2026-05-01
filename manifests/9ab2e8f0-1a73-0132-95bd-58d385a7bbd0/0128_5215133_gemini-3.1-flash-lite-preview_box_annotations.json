@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Quebec-Dominion Square Hotel — MONTREAL",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215133/full/!760,760/0/default.jpg#xywh=761,1175,263,50",
+      "id": "https://hadro.github.io/green-books/0128_5215133_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0128_5215133_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

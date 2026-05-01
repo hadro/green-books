@@ -1,0 +1,73 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "FOREST VIEW LOUNGE — 6 miles East of Petersburg, Va. on Route 460 (Norfolk Highway), Box 113 — Disputanta",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215100/full/!760,760/0/default.jpg#xywh=898,546,936,61",
+      "id": "https://hadro.github.io/green-books/0095_5215100_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HARRIET'S DRIVE-IN — Gloucester",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215100/full/!760,760/0/default.jpg#xywh=1322,2322,963,73",
+      "id": "https://hadro.github.io/green-books/0095_5215100_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HILL TOP RESTAURANT & CABINS — 21 miles north of Richmond 82 miles south of Washington, On Hiway #1 — Doswell",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215100/full/!760,760/0/default.jpg#xywh=708,1064,1334,70",
+      "id": "https://hadro.github.io/green-books/0095_5215100_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WATKINS MOTEL — Doswell",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215100/full/!760,760/0/default.jpg#xywh=879,1529,990,61",
+      "id": "https://hadro.github.io/green-books/0095_5215100_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WATKINS FLORIST — Doswell",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215100/full/!760,760/0/default.jpg#xywh=826,1669,1092,68",
+      "id": "https://hadro.github.io/green-books/0095_5215100_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "KELLAM'S MOTEL — 185 Atlantic Avenue — Doswell",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5215100/full/!760,760/0/default.jpg#xywh=318,3233,2229,57",
+      "id": "https://hadro.github.io/green-books/0095_5215100_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0095_5215100_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

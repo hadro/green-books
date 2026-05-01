@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "PLAZA HOTEL — 214 E. Calhoun Memphis 3, Tenn. — MEMPHIS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214967/full/!760,760/0/default.jpg#xywh=613,2177,610,83",
+      "id": "https://hadro.github.io/green-books/0094_5214967_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0094_5214967_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

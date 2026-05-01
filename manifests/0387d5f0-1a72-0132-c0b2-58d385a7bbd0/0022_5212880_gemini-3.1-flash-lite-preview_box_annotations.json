@@ -1,0 +1,579 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eagle — 2246 Hubble Blvd. — DES MOINES, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=420,491,675,66",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mumford's — 4th & Euclid Avenue — DES MOINES, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=430,545,832,58",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "4th Street — 417 4th St. — DES MOINES, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=433,644,576,51",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Andy's — E. University & Hubble — DES MOINES, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=427,745,808,53",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "National — 808 - 12th Street — DES MOINES, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=430,838,728,57",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clean Craft — 1300 - 6th Avenue — DES MOINES, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=427,890,827,57",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Adams — E. 5th & Locust St. — DES MOINES, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=430,991,715,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. P. Martin — 712 University Ave. — DUBUQUE, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=418,1188,971,57",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Edwin Weaver — 795 Roberts Ave. — DUBUQUE, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=424,1241,997,55",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Rose — 802 N. Fellows — OTTUMWA, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=425,1441,750,52",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "William Bailey — 526 Center Ave. — OTTUMWA, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=425,1491,823,52",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. H. Hewitt — 512 Grant — OTTUMWA, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=427,1538,634,53",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harry Owens — 814 W. Pershing — OTTUMWA, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=425,1586,779,56",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Prince Henry — 704 W. 7th St. — SIOUX CITY, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=411,1772,821,51",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fannie Mae's — 611 Cook St. — SIOUX CITY, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=427,1903,729,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. F. Tredwell — 928 Beach St. — WATERLOO, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=420,2086,928,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Spencer — 220 Summer St. — WATERLOO, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=418,2135,776,51",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Lee — 745 Vinton St. — WATERLOO, IOWA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=420,2185,725,47",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Geneva Miles — 924 N. 9th St. — ATCHISON, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=404,2524,891,43",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. McDonald — 10th & Spruce — ATCHISON, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=413,2613,891,58",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Henderson — 7th & Division St. — ATCHISON, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=411,2716,794,47",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Penrod — R. F. D. 1 — BETHEL, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=394,2898,551,42",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tourist Court — Juntion Rt. U. S. 24 — BOGUE, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=407,3083,914,45",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE ROBERTS ROOMS — 8 EAST 5th STREET — COFFEYVILLE, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=391,3280,844,52",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Johnson — 102 E. 2nd St. — CONCORDIA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=395,3541,836,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Glen McVey — 328 East St. — CONCORDIA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=394,3588,822,53",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elliott's — 816 Congress St. — EMPORIA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1672,504,655,53",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Road House — Anderson's Highway 32 & Bitts Creek — EDWARDSVILLE, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1668,692,992,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hall's — 223½ E. Wall St. — FORT SCOTT, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1669,927,652,48",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Peter Thomasun — 114 S. Ransom St. — FORT SCOTT, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1663,1025,910,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mary Sanders — 1014 Shawnee — HIAWATHA, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1663,1214,853,42",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. Lewis — 400 W. Sherman — HUTCHINSON, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1666,1394,841,48",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bridgeforth — 311 E. 11th St. — JUNCTION CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1660,1593,717,48",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Jones — 229 E. 14th St. — JUNCTION CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1660,1692,810,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. M. Madison — 828 W. 12th St. — LARNED, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1659,1890,969,46",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mose Madison — 518 W. 10th St. — LARNED, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1656,1940,968,46",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. John Caro — 218 E. 4th Street — LARNED, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1649,1995,918,41",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carrie's Bar-B-Q — 218 E. 4th St. — LARNED, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1649,2086,851,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. Jones — 1423 Carroll St. — LARNED, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1649,2192,665,47",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Snowden's — 1933 Tennessee St. — LAURENCE, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1653,2389,748,43",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. Shelton — 216 Poplar St. — LEAVENWORTH, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1652,2591,828,46",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dabb's — 10th and Oakland — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1642,2790,679,41",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sander's — 1813 N. 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1636,2893,678,45",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Keystone Club — 4th & Freemen — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1646,3008,787,46",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Virgil's Pl. — 3229 Victor St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1642,3054,745,51",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "De Moss — 44th and Sorta Road, Rt. 3 — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1635,3158,942,46",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Flamingo — 1916 N. 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1640,3255,689,50",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Congo — 1932 - 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1629,3307,583,43",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Economy — 1935 N. 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1642,3400,679,48",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arthur's — 2414 N. 5th St. — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1629,3452,671,42",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whitney's — 5th & Virginia — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1635,3551,669,46",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cundiff — 5th & Quindarf — KANSAS CITY, KANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5212880/full/!760,760/0/default.jpg#xywh=1622,3597,624,45",
+      "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0022_5212880_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

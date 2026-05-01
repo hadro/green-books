@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LA FONTAINE SERVICE — 470 CONVENT AVE. — NEW YORK CITY, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5206378/full/!760,760/0/default.jpg#xywh=622,372,1697,97",
+      "id": "https://hadro.github.io/green-books/0032_5206378_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0032_5206378_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

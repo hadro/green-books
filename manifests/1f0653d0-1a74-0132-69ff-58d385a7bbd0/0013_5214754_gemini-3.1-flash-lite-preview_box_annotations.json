@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Capistranto Motel — 5 Miles West of Tuskegee, Ala., Highway 80 — TUSKEGEE INSTITUTE, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214754/full/!760,760/0/default.jpg#xywh=637,2170,1510,112",
+      "id": "https://hadro.github.io/green-books/0013_5214754_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Restaurant Country Club — 5 Miles West of Tuskegee, Ala., Highway 80 — TUSKEGEE INSTITUTE, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5214754/full/!760,760/0/default.jpg#xywh=266,2406,2264,115",
+      "id": "https://hadro.github.io/green-books/0013_5214754_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0013_5214754_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

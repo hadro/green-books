@@ -1,0 +1,557 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Playa Mazatlan — P. O. Box 207 — MAZATLAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=361,278,1010,58",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Prado-Aiffer — Revillagijedo 18 — MAZATLAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1594,215,1012,55",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ritz — Madero 30 — MAZATLAN",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1595,276,1014,51",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ambassador — Hidalgo & Galeana St. — MONTERREY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1588,418,348,50",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anfa Super Motel — Hwy 85 N., Kilometer 995 — MONTERREY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1588,547,508,51",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gran Hotel Aneira — Plaza Hidalgo — MONTERREY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1594,672,1012,54",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Virrey de Mendoza — Portal Matameros 16 — MORELIA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1584,816,542,53",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Posada De Don Vasco — Av. Americas Unidas — PATZCUARE",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1598,1021,601,49",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Loma Linda Motel — Hwy 95 at Kilometer 161 — TAXCO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1595,1224,516,50",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Posada De La Mision — Calle de la Mision 32 — TAXCO",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1595,1350,582,55",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Panamericana — 59th St., No. 455 — MERIDA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=364,398,1010,68",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alameda — Ave. Juarez 50 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=359,532,995,53",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ambassador — Humboldt No. 38 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1588,418,348,50",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Continental Hilton — Paseo de la Reforma 166 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=368,656,525,54",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cortes — Ave. Hidalgo 85 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=358,785,1016,61",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Del Prado Hotel — Av. Juarez 70 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=367,849,1010,54",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Presidente — Hamburgo 135 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=365,906,1015,68",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Francis — Paseo de la Reforma & Morelos — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=367,981,200,43",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Geneve — 130 Londres St. — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=364,1103,1013,52",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Guardiola — Madero 5 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=367,1167,1010,54",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Luma — Orizaba 16 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=365,1229,1011,57",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Majestic — Madero No. 73 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=362,1277,1014,83",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Meurice — Calle Marsella 28 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=367,1357,1007,51",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Monte Cassino — Genova 56 — MEXICO CITY",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=364,1422,1015,50",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Admirals Inn — English Harbour — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=367,2698,1022,56",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anchorage — Dickenson Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=367,2761,1025,57",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Antigua Beach — Hodges Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=368,2818,1023,68",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Antigua Horizons — Long Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=368,2889,1029,56",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Balgowne Guest House — St. John's — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=377,2954,1018,54",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Barrymore — Fort Rd. — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=374,3017,1021,55",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beachcomber — Coolidge — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=374,3079,1018,58",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Waters — Soldier Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=377,3144,1020,56",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Caribbean Beach Club — THE CARIBBEAN — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=376,3203,632,51",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Curtain Bluff — Old Road — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=368,3331,1045,53",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Galley Bay Surf Club — Galley Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=376,3389,1029,64",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Half Moon Bay — Half Moon Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=376,3439,2245,85",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hawksbill — Five Islands — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=379,3518,1129,56",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jolly Beach — Jolly Hill Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1592,2684,1026,72",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kensington House — St. John's — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1603,2749,1016,68",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Long Bay — Long Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1603,2820,1013,57",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lord Nelson Club — Coolidge — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1603,2882,1009,56",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stephendale — St. John's — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1601,2945,1018,59",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sugar Mill — Coolidge — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1601,3007,1015,60",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Inn — English Harbour — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1595,3064,1026,73",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Trade Winds — Dickenson Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1594,3123,1028,78",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "White Sands — Hodges Bay — ANTIGUA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1595,3193,1024,61",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Aruba Caribbean Hotel — Casino — ARUBA",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1588,3321,1031,56",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Accra Beach — Christ Church — BARBADOS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1603,3508,1016,59",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "BARBADOS TOURIST BD. — THE CARIBBEAN — BARBADOS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1473,3389,360,54",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Abbeville — Christ Church — BARBADOS",
+        "format": "text/plain"
+      },
+      "target": "https://iiif.nypl.org/iiif/3/5205975/full/!760,760/0/default.jpg#xywh=1473,3389,360,54",
+      "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/0087_5205975_gemini-3.1-flash-lite-preview_box_annotations.json"
+}
