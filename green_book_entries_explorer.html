@@ -79,7 +79,7 @@ a { color: var(--gb-accent); }
   font-family: var(--gb-font-display); font-size: 18px;
   line-height: 1.55; color: var(--gb-ink-soft); margin: 0 0 32px; max-width: 56ch;
 }
-.gb-hero-cta { display: flex; gap: 12px; margin-bottom: 32px; }
+.gb-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 32px; }
 .gb-btn-primary {
   font-family: var(--gb-font-body); font-size: 13px; font-weight: 500;
   padding: 11px 20px; background: var(--gb-accent); color: var(--gb-paper);
@@ -96,9 +96,8 @@ a { color: var(--gb-accent); }
 }
 .gb-btn-ghost:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
 .gb-hero-credit {
-  font-size: 12px; line-height: 1.5; color: var(--gb-ink-faint);
-  max-width: 50ch; border-top: 1px solid var(--gb-rule-faint);
-  padding-top: 16px; font-style: italic;
+  font-size: 11px; line-height: 1.5; color: var(--gb-ink-faint);
+  font-style: italic; margin: 0; padding: 0;
 }
 .gb-hero-featured { display: flex; flex-direction: column; gap: 12px; }
 .gb-hero-featured-label {
@@ -182,11 +181,12 @@ a { color: var(--gb-accent); }
 #volume-select { width: 100%; font-size: 12px; padding: 4px 6px; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper); color: var(--gb-ink); cursor: pointer; font-family: var(--gb-font-body); }
 #sidebar-cta { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
 #about-btn, #gb-explore-btn {
-  background: none; border: none; font-family: var(--gb-font-mono);
-  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--gb-accent); cursor: pointer; padding: 0; text-align: left;
+  background: none; border: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
+  padding: 6px 10px; text-align: left; width: 100%;
 }
-#about-btn:hover, #gb-explore-btn:hover { color: var(--gb-accent-deep); }
+#about-btn:hover, #gb-explore-btn:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
 #sidebar-scroll { overflow-y: auto; flex: 1; padding: 16px 20px 24px; }
 .sidebar-filter-hd {
   font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.16em;
@@ -236,10 +236,10 @@ a { color: var(--gb-accent); }
 
 /* ── Toolbar ── */
 #toolbar { padding: 16px 24px 12px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper); display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
-#search-wrap { position: relative; display: flex; align-items: center; }
+#search-wrap { position: relative; display: flex; align-items: center; gap: 10px; }
 #search-wrap::before { content: "⌕"; position: absolute; left: 12px; color: var(--gb-ink-faint); font-size: 16px; pointer-events: none; z-index: 1; }
 #search {
-  width: 100%; font-family: var(--gb-font-display); font-size: 18px; font-weight: 400;
+  flex: 1; font-family: var(--gb-font-display); font-size: 18px; font-weight: 400;
   background: transparent; border: 1px solid var(--gb-rule-faint);
   padding: 10px 14px 10px 36px; color: var(--gb-ink); outline: none;
   transition: border-color 0.15s ease, background 0.15s ease;
@@ -489,8 +489,16 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div class="gb-hero-cta">
         <button class="gb-btn-primary" onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start exploring &rarr;</button>
         <button class="gb-btn-ghost" id="random-btn-hero">Open a random entry</button>
+        <p class="gb-hero-credit">Source scans held by the New York Public Library, Schomburg Center. Data extracted via OCR and named-entity recognition.</p>
       </div>
-      <p class="gb-hero-credit">Source scans held by the New York Public Library, Schomburg Center. Data extracted via OCR and named-entity recognition.</p>
+      <aside class="gb-hero-caveat" role="note" aria-label="A note on accuracy">
+        <div class="gb-hero-caveat-rule" aria-hidden="true"></div>
+        <div class="gb-hero-caveat-body">
+          <div class="gb-hero-caveat-label">A NOTE ON ACCURACY</div>
+          <p class="gb-hero-caveat-text">There are OCR and entity-extraction errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, <em>not a replacement for them</em>. Data has not been reviewed for 100% accuracy.</p>
+          <button class="gb-hero-caveat-link" id="caveat-about-btn">READ MORE ABOUT THE DATA &rarr;</button>
+        </div>
+      </aside>
     </div>
     <div class="gb-hero-featured">
       <div class="gb-hero-featured-label"><span>FEATURED &middot; RANDOM SAMPLE</span></div>
@@ -505,14 +513,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">49</div><div class="gb-hero-stat-label">states represented</div></div>
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">20</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
-  <aside class="gb-hero-caveat" role="note" aria-label="A note on accuracy">
-    <div class="gb-hero-caveat-rule" aria-hidden="true"></div>
-    <div class="gb-hero-caveat-body">
-      <div class="gb-hero-caveat-label">A NOTE ON ACCURACY</div>
-      <p class="gb-hero-caveat-text">There may be <strong>OCR or entity-extraction errors</strong> in this data. The original source pages remain the authoritative record &mdash; this explorer is a way to engage with the directories more deeply, <em>not a replacement for them</em>.</p>
-      <button class="gb-hero-caveat-link" id="caveat-about-btn">READ MORE ABOUT THE DATA &rarr;</button>
-    </div>
-  </aside>
 </section>
 
 <div id="app">
@@ -548,18 +548,16 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <button id="filter-btn" style="display:none" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
     <div id="search-wrap">
       <input id="search" type="search" placeholder="Search names, addresses, notes…" autocomplete="off" aria-label="Search all fields">
-      <small id="search-scope-label">Searches name, address, city, and all other fields</small>
+      <button id="export-btn">Export CSV</button>
     </div>
     <div class="toolbar-meta-row">
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">Clear filters</button>
-      <div id="meta-strip"></div>
-      <button id="charts-toggle" aria-expanded="true" aria-controls="charts-row">Hide summary &#9652;</button>
-      <button id="export-btn">Export CSV</button>
-      <button id="random-btn" title="Open a random entry from the current results">Random entry</button>
     </div>
   </div>
-  <div id="charts-row"></div>
+  <button id="random-btn" style="display:none" aria-hidden="true"></button>
+  <button id="charts-toggle" style="display:none" aria-hidden="true"></button>
+  <div id="charts-row" style="display:none"></div>
   <div id="content">
     <div id="table-wrap">
       <table id="results-table">
@@ -613,7 +611,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <h3 class="about-modal-h3">The source</h3>
           <p>Page scans are held by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an OCR and named-entity-recognition pipeline. The Explorer uses the IIIF standard for imagery &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
-          <p class="about-modal-emphasis">There may be OCR or entity-extraction errors in this data. The original source pages remain the authoritative record. This explorer is a way to engage with the directories more deeply, not a replacement for them.</p>
+          <p class="about-modal-emphasis">There are OCR and entity-extraction errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
           <h3 class="about-modal-h3">How to use this site</h3>
           <ol class="about-modal-list">
             <li>Filter by <strong>edition</strong>, <strong>state</strong>, <strong>city</strong>, or <strong>category</strong> in the sidebar &mdash; counts update live.</li>
@@ -694,18 +692,6 @@ document.getElementById("mobile-title").textContent = DOC_META.title || DOC_TITL
 document.getElementById("mobile-sub").textContent =
     ALL_ENTRIES.length.toLocaleString() + " entries";
 
-// Metadata strip in top-right toolbar
-function renderMetaStrip(meta) {
-  const parts = [];
-  if (meta.date)         parts.push(`<span class="meta-chip">${meta.date}</span>`);
-  if (meta.institution)  parts.push(`<span class="meta-chip">${meta.institution}</span>`);
-  if (meta.genre)        parts.push(`<span class="meta-chip">${meta.genre}</span>`);
-  if (meta.homepage_url)
-    parts.push(`<a class="meta-chip meta-link" href="${meta.homepage_url}" target="_blank">Item page ↗</a>`);
-  const strip = document.getElementById("meta-strip");
-  if (strip) strip.innerHTML = parts.join("");
-}
-renderMetaStrip(DOC_META);
 
 let facetFields = FIELD_META.filter(f => f.type === "facet");
 let displayFields = FIELD_META.filter(f => f.type !== "id");
@@ -1386,13 +1372,6 @@ document.getElementById("clear-all-btn").addEventListener("click", () => {
 });
 
 // ── Charts toggle ──────────────────────────────────────────────────────────
-document.getElementById("charts-toggle").addEventListener("click", () => {
-  const row = document.getElementById("charts-row");
-  const btn = document.getElementById("charts-toggle");
-  const collapsed = row.classList.toggle("collapsed");
-  btn.textContent = collapsed ? "Show summary ▾" : "Hide summary ▴";
-  btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
-});
 
 // ── Mobile sidebar toggle ──────────────────────────────────────────────────
 (function () {
@@ -1528,12 +1507,6 @@ function renderAll() {
 }
 
 renderFillRate();
-if (window.innerWidth <= 640) {
-  document.getElementById("charts-row").classList.add("collapsed");
-  const _ctBtn = document.getElementById("charts-toggle");
-  _ctBtn.textContent = "Show summary ▾";
-  _ctBtn.setAttribute("aria-expanded", "false");
-}
 
 // ── Random entry ────────────────────────────────────────────────────────────
 document.getElementById("random-btn").addEventListener("click", () => {
