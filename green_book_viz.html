@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Negro Motorist Green Book: 1937–1966</title>
+<style>
+:root {
+  --bg:       #0d0d14;
+  --surface:  #14141e;
+  --card:     #1a1a28;
+  --border:   #252535;
+  --text:     #e0d8c8;
+  --muted:    #7a7490;
+  --green:    #3d8b5c;
+  --green2:   #52b87a;
+  --gold:     #c9a227;
+  --radius:   8px;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Georgia',serif;
+  line-height:1.6;
+}
+header {
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:2.5rem 2rem 2rem;
+  text-align:center;
+}
+header h1 {
+  font-size:2rem;
+  letter-spacing:.04em;
+  color:var(--green2);
+  margin-bottom:.4rem;
+}
+header .sub {
+  color:var(--gold);
+  font-size:1rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:.8rem;
+}
+header p {
+  color:var(--muted);
+  max-width:680px;
+  margin:0 auto;
+  font-size:.9rem;
+}
+.stats-row {
+  display:flex;
+  justify-content:center;
+  gap:2.5rem;
+  margin-top:1.2rem;
+  flex-wrap:wrap;
+}
+.stat { text-align:center; }
+.stat .n { font-size:1.6rem; color:var(--green2); font-variant-numeric:tabular-nums; }
+.stat .l { font-size:.75rem; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; }
+nav {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:2rem;
+  padding:.7rem 1rem;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:100;
+  flex-wrap:wrap;
+}
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+  font-size:.85rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  transition:color .2s;
+}
+nav a:hover { color:var(--green2); }
+.nav-divider { color:var(--border); }
+.scope-toggle {
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:.25rem .3rem .25rem .75rem;
+  font-size:.78rem;
+  color:var(--muted);
+  cursor:pointer;
+  transition:border-color .2s;
+  user-select:none;
+}
+.scope-toggle:hover { border-color:var(--green); }
+.scope-toggle .pill {
+  background:var(--border);
+  color:var(--muted);
+  border-radius:12px;
+  padding:.15rem .6rem;
+  font-size:.75rem;
+  transition:background .25s, color .25s;
+  white-space:nowrap;
+}
+.scope-toggle.us-active { border-color:var(--green); }
+.scope-toggle.us-active .pill {
+  background:var(--green);
+  color:#fff;
+}
+section {
+  padding:2.5rem 1.5rem;
+  max-width:1200px;
+  margin:0 auto;
+}
+section + section { border-top:1px solid var(--border); }
+.section-head { margin-bottom:1.5rem; }
+.section-head h2 { font-size:1.4rem; color:var(--text); margin-bottom:.3rem; }
+.section-head p { color:var(--muted); font-size:.875rem; max-width:700px; }
+/* MAP */
+#map-wrap {
+  position:relative;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1rem;
+}
+#map-svg { width:100%; display:block; }
+.state-path { stroke:#0d0d14; stroke-width:.5; transition:fill .35s; }
+.state-path:hover { stroke:var(--green2); stroke-width:1.5; cursor:pointer; }
+#map-controls {
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-top:1rem;
+  flex-wrap:wrap;
+}
+#year-display {
+  font-size:2.2rem;
+  color:var(--gold);
+  font-variant-numeric:tabular-nums;
+  min-width:4.5rem;
+  text-align:right;
+}
+#year-slider { flex:1; min-width:200px; accent-color:var(--green); cursor:pointer; }
+#play-btn {
+  background:var(--green);
+  color:#fff;
+  border:none;
+  border-radius:4px;
+  padding:.35rem .9rem;
+  cursor:pointer;
+  font-size:.85rem;
+  letter-spacing:.05em;
+}
+#play-btn:hover { background:var(--green2); }
+#map-count { color:var(--muted); font-size:.85rem; min-width:180px; }
+.map-legend {
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  margin-top:.8rem;
+  font-size:.78rem;
+  color:var(--muted);
+}
+.legend-bar { height:10px; flex:1; max-width:200px; border-radius:3px; }
+/* TOOLTIP */
+.tooltip {
+  position:fixed;
+  background:rgba(20,20,30,.95);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:.5rem .75rem;
+  font-size:.82rem;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .15s;
+  z-index:200;
+  max-width:200px;
+  line-height:1.4;
+}
+.tooltip strong { color:var(--green2); display:block; margin-bottom:.1rem; }
+/* STREAM */
+#stream-wrap {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1rem;
+  overflow:hidden;
+}
+#stream-svg { width:100%; display:block; }
+.stream-path { opacity:.88; transition:opacity .2s; }
+.stream-path:hover { opacity:1; }
+.stream-legend {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem .9rem;
+  margin-top:.8rem;
+}
+.legend-item {
+  display:flex;
+  align-items:center;
+  gap:.35rem;
+  font-size:.78rem;
+  color:var(--muted);
+}
+.legend-swatch { width:12px; height:12px; border-radius:2px; flex-shrink:0; }
+/* HEAT */
+#heat-wrap {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1rem;
+  overflow-x:auto;
+}
+#heat-svg { display:block; }
+.heat-cell { rx:2; cursor:default; }
+.heat-cell:hover { stroke:var(--green2); stroke-width:1; }
+.axis text { fill:var(--muted); font-size:11px; }
+.axis line, .axis path { stroke:var(--border); }
+.annotation { fill:var(--muted); font-size:10px; font-style:italic; }
+footer {
+  text-align:center;
+  padding:2rem;
+  color:var(--muted);
+  font-size:.8rem;
+  border-top:1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sub">The Negro Motorist Green Book</div>
+  <h1>Safe Spaces for Black Travelers in America</h1>
+  <p>The Green Book was published annually from 1936 to 1966, guiding Black Americans
+     to hotels, restaurants, beauty parlors, and other businesses where they would be
+     welcomed during the era of Jim Crow segregation.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="n">63,185</div><div class="l">Total entries</div></div>
+    <div class="stat"><div class="n">23</div><div class="l">Volumes</div></div>
+    <div class="stat"><div class="n">1937–1966</div><div class="l">Years covered</div></div>
+    <div class="stat"><div class="n">48</div><div class="l">US states + DC</div></div>
+  </div>
+</header>
+
+<nav>
+  <a href="#map-section">Geographic Coverage</a>
+  <span class="nav-divider">·</span>
+  <a href="#stream-section">Business Types</a>
+  <span class="nav-divider">·</span>
+  <a href="#heat-section">Cities Over Time</a>
+  <span class="nav-divider">·</span>
+  <div class="scope-toggle" id="scope-toggle" title="Toggle between all entries and US-only entries">
+    <span>Scope:</span>
+    <span class="pill" id="scope-pill">All entries</span>
+  </div>
+</nav>
+
+<section id="map-section">
+  <div class="section-head">
+    <h2>Geographic Coverage by Edition Year</h2>
+    <p>Number of listings per US state. Use the slider to scrub through editions,
+       or press Play to animate. Note the gap (1942–1946) where no editions are held
+       in this collection, and the expansion into the Deep South through the 1950s.</p>
+  </div>
+  <div id="map-wrap">
+    <svg id="map-svg" viewBox="0 0 960 560"></svg>
+    <div id="map-controls">
+      <span id="year-display">—</span>
+      <input id="year-slider" type="range" min="0" step="1">
+      <button id="play-btn">&#9654; Play</button>
+      <span id="map-count"></span>
+    </div>
+    <div class="map-legend">
+      <span>0</span>
+      <canvas class="legend-bar" id="legend-bar" width="200" height="10"></canvas>
+      <span id="legend-max">—</span>
+      <span style="margin-left:.5rem">listings per state</span>
+    </div>
+  </div>
+</section>
+
+<section id="stream-section">
+  <div class="section-head">
+    <h2>Business Types Over Time, 1937–1955</h2>
+    <p>How the mix of listed business categories shifted across the first two decades
+       of the Green Book, the period in which each listing carried a specific category
+       label. From 1957 onward, editorial reorganisations replaced per-listing labels
+       with a single consolidated heading ("Hotels — Motels — Tourist Homes —
+       Restaurants"), and the 1957 and 1961 editions dropped category labels entirely.
+       Those later volumes are excluded here to keep comparisons meaningful. Use the
+       Scope toggle to compare all entries against US-only listings.</p>
+  </div>
+  <div id="stream-wrap">
+    <svg id="stream-svg"></svg>
+    <div class="stream-legend" id="stream-legend"></div>
+  </div>
+</section>
+
+<section id="heat-section">
+  <div class="section-head">
+    <h2>Top Cities Across All Editions</h2>
+    <p>The 20 most-listed US cities, coloured by number of listings per edition year.
+       New York, Philadelphia, and St. Louis were consistent anchors; Idlewild, Michigan
+       (a Black resort community) and Atlantic City stand out as summer-travel hubs.
+       The Scope toggle shows the effect of international entries on city rankings.</p>
+  </div>
+  <div id="heat-wrap">
+    <svg id="heat-svg"></svg>
+  </div>
+</section>
+
+<div class="tooltip" id="tooltip"></div>
+
+<footer>
+  Data extracted from digitised volumes via NYPL Digital Collections IIIF API.
+  Visualisation built with D3.js.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script>
+// ── Embedded data ─────────────────────────────────────────────────────────
+const MAP_DATA    = {"New York":{"1937":58,"1938":338,"1939":261,"1940":302,"1941":248,"1947":560,"1948":590,"1949":620,"1950":616,"1951":628,"1952":626,"1953":643,"1954":619,"1955":631,"1956":209,"1957":197,"1959":186,"1960":205,"1961":212,"1962":312,"1963":503,"1966":529},"Connecticut":{"1938":31,"1939":37,"1940":31,"1941":31,"1947":33,"1948":34,"1949":35,"1950":52,"1951":51,"1952":49,"1953":46,"1954":46,"1955":51,"1956":19,"1957":30,"1959":24,"1960":24,"1961":23,"1962":4,"1963":43,"1966":38},"Alabama":{"1938":25,"1939":29,"1940":28,"1941":27,"1947":34,"1948":17,"1949":16,"1950":17,"1951":18,"1952":17,"1953":19,"1954":18,"1955":19,"1956":20,"1957":25,"1959":26,"1960":76,"1961":78,"1962":35,"1963":33,"1966":44},"Delaware":{"1938":11,"1939":11,"1940":12,"1941":14,"1947":20,"1948":9,"1949":19,"1950":21,"1951":22,"1952":21,"1953":22,"1954":23,"1955":8,"1956":15,"1957":11,"1959":12,"1960":12,"1961":10,"1962":2,"1963":11,"1966":11},"District of Columbia":{"1938":19,"1939":24,"1940":27,"1941":16,"1947":66,"1948":71,"1949":65,"1950":63,"1951":61,"1952":59,"1953":55,"1954":68,"1955":77,"1956":24,"1957":24,"1959":27,"1960":29,"1961":30,"1963":39,"1966":38},"Florida":{"1938":21,"1939":32,"1940":30,"1941":61,"1947":64,"1948":71,"1949":56,"1950":78,"1951":72,"1952":70,"1953":68,"1954":69,"1955":67,"1956":47,"1957":41,"1959":50,"1960":48,"1961":51,"1962":75,"1963":74,"1966":109},"Georgia":{"1938":31,"1939":52,"1940":49,"1941":14,"1947":89,"1948":95,"1949":92,"1950":66,"1951":79,"1952":81,"1953":76,"1954":68,"1955":73,"1956":32,"1957":39,"1959":40,"1960":52,"1961":55,"1962":45,"1963":45,"1966":11},"Illinois":{"1938":19,"1939":63,"1940":57,"1941":60,"1947":86,"1948":46,"1949":110,"1950":104,"1951":83,"1952":82,"1953":86,"1954":86,"1955":82,"1956":56,"1957":61,"1959":92,"1960":63,"1961":96,"1962":83,"1963":79,"1966":82},"Kentucky":{"1938":12,"1939":34,"1940":34,"1941":33,"1947":60,"1948":68,"1949":68,"1950":64,"1951":61,"1952":22,"1953":57,"1954":9,"1955":63,"1956":30,"1957":30,"1959":28,"1960":30,"1961":32,"1962":20,"1963":22,"1966":9},"Louisiana":{"1938":5,"1939":41,"1940":52,"1941":50,"1947":113,"1948":100,"1949":97,"1950":109,"1951":106,"1952":100,"1953":101,"1954":90,"1955":91,"1956":57,"1957":58,"1959":60,"1960":63,"1961":71,"1962":48,"1963":58,"1966":71},"Maine":{"1938":2,"1939":9,"1940":4,"1941":3,"1947":5,"1948":4,"1949":10,"1950":10,"1951":11,"1952":12,"1953":9,"1954":14,"1955":9,"1956":17,"1957":23,"1959":8,"1960":19,"1961":18,"1962":15,"1963":7,"1966":9},"Maryland":{"1938":22,"1939":34,"1940":35,"1941":39,"1947":56,"1948":52,"1949":58,"1950":54,"1951":51,"1952":49,"1953":46,"1954":57,"1955":54,"1956":29,"1957":36,"1959":27,"1960":31,"1961":29,"1962":26,"1963":20,"1966":18},"Massachusetts":{"1938":9,"1939":43,"1940":47,"1941":44,"1947":97,"1948":99,"1949":129,"1950":117,"1951":123,"1952":112,"1953":119,"1954":113,"1955":111,"1956":62,"1957":38,"1959":64,"1960":53,"1961":50,"1962":49,"1963":37,"1966":39},"Michigan":{"1938":11,"1939":51,"1940":64,"1941":55,"1947":100,"1948":108,"1949":112,"1950":149,"1951":147,"1952":148,"1953":147,"1954":136,"1955":136,"1956":96,"1957":126,"1959":104,"1960":76,"1961":83,"1962":85,"1963":62,"1966":74},"New Jersey":{"1938":172,"1939":280,"1940":225,"1941":230,"1947":303,"1948":326,"1949":359,"1950":345,"1951":336,"1952":356,"1953":316,"1954":345,"1955":351,"1956":137,"1957":157,"1959":162,"1960":142,"1961":156,"1962":130,"1963":95,"1966":100},"North Carolina":{"1938":28,"1939":63,"1940":66,"1941":66,"1947":150,"1948":159,"1949":166,"1950":195,"1951":196,"1952":190,"1953":159,"1954":175,"1955":164,"1956":54,"1957":53,"1959":58,"1960":53,"1961":70,"1962":47,"1963":76,"1966":82},"Ohio":{"1938":24,"1939":89,"1940":102,"1941":87,"1947":199,"1948":245,"1949":245,"1950":284,"1951":284,"1952":273,"1953":256,"1954":244,"1955":229,"1956":94,"1957":84,"1959":86,"1960":81,"1961":82,"1962":67,"1963":71,"1966":70},"Pennsylvania":{"1938":109,"1939":144,"1940":128,"1941":135,"1947":146,"1948":143,"1949":158,"1950":161,"1951":130,"1952":139,"1953":134,"1954":134,"1955":141,"1956":76,"1957":93,"1959":50,"1960":46,"1961":61,"1962":55,"1963":54,"1966":56},"Rhode Island":{"1938":3,"1939":13,"1940":15,"1941":13,"1947":13,"1948":9,"1949":10,"1950":8,"1951":8,"1952":8,"1953":7,"1954":10,"1955":9,"1956":5,"1957":3,"1959":4,"1960":3,"1961":3,"1962":4,"1963":3,"1966":20},"South Carolina":{"1938":25,"1939":62,"1940":43,"1941":42,"1947":116,"1948":109,"1949":105,"1950":109,"1951":98,"1952":98,"1953":101,"1954":98,"1955":96,"1956":61,"1957":46,"1959":53,"1960":55,"1961":49,"1962":43,"1963":29,"1966":26},"Tennessee":{"1938":20,"1939":14,"1940":29,"1941":39,"1947":76,"1948":64,"1949":62,"1950":66,"1951":68,"1952":74,"1953":69,"1954":69,"1955":45,"1956":44,"1957":38,"1959":48,"1960":142,"1961":172,"1962":74,"1963":78,"1966":75},"Virginia":{"1938":53,"1939":92,"1940":92,"1941":92,"1947":120,"1948":108,"1949":129,"1950":112,"1951":106,"1952":131,"1953":110,"1954":125,"1955":121,"1956":67,"1957":74,"1959":72,"1960":67,"1961":84,"1962":98,"1963":91,"1966":92},"Vermont":{"1938":1,"1939":3,"1940":3,"1941":4,"1947":7,"1948":7,"1949":8,"1950":32,"1951":7,"1952":6,"1953":12,"1954":7,"1955":7,"1956":10,"1957":3,"1959":21,"1960":5,"1961":3,"1962":4,"1963":4,"1966":6},"West Virginia":{"1938":17,"1939":40,"1940":39,"1941":33,"1947":45,"1948":40,"1949":76,"1950":81,"1951":97,"1952":96,"1953":85,"1954":79,"1955":69,"1956":26,"1957":25,"1959":26,"1960":23,"1961":26,"1962":19,"1963":15,"1966":14},"New Hampshire":{"1938":2,"1939":2,"1949":2,"1950":1,"1951":1,"1952":1,"1953":1,"1954":2,"1955":2,"1956":3,"1957":7,"1959":7,"1960":7,"1961":7,"1962":18,"1963":6,"1966":8},"Arizona":{"1939":6,"1940":19,"1941":18,"1947":28,"1948":24,"1949":22,"1950":22,"1951":21,"1952":23,"1953":6,"1954":25,"1955":1,"1956":18,"1957":30,"1959":26,"1960":30,"1961":29,"1963":21,"1966":12},"Arkansas":{"1939":44,"1940":53,"1941":49,"1947":131,"1948":128,"1949":132,"1950":118,"1951":112,"1952":109,"1953":107,"1954":106,"1955":116,"1956":50,"1957":57,"1959":58,"1960":90,"1961":101,"1962":59,"1963":58,"1966":61},"California":{"1939":49,"1940":57,"1941":61,"1947":194,"1948":168,"1949":168,"1950":172,"1951":171,"1952":173,"1953":178,"1954":150,"1955":44,"1956":63,"1957":88,"1959":72,"1960":72,"1961":70,"1962":63,"1963":75,"1966":76},"Colorado":{"1939":26,"1940":25,"1941":25,"1947":67,"1948":64,"1949":59,"1950":62,"1951":59,"1952":62,"1953":52,"1954":49,"1955":49,"1956":19,"1957":28,"1959":22,"1960":19,"1961":19,"1963":11,"1966":10},"Indiana":{"1939":36,"1940":48,"1941":40,"1947":62,"1948":91,"1949":57,"1950":105,"1951":113,"1952":98,"1953":93,"1954":91,"1955":77,"1956":45,"1957":48,"1959":44,"1960":41,"1961":40,"1963":37,"1966":35},"Idaho":{"1939":2,"1940":2,"1941":2,"1947":3,"1948":6,"1949":6,"1950":6,"1951":6,"1952":6,"1953":5,"1954":5,"1955":5,"1956":7,"1957":10,"1959":8,"1960":6,"1961":9,"1963":13,"1966":16},"Iowa":{"1939":13,"1940":12,"1941":12,"1947":67,"1948":50,"1949":47,"1950":45,"1951":44,"1952":44,"1953":39,"1954":39,"1955":37,"1956":20,"1957":35,"1959":35,"1960":29,"1961":30,"1963":23,"1966":15},"Kansas":{"1939":39,"1940":40,"1941":37,"1947":34,"1948":59,"1949":57,"1950":57,"1951":54,"1952":91,"1953":54,"1954":101,"1955":43,"1956":38,"1957":49,"1959":50,"1960":45,"1961":42,"1962":43,"1963":36,"1966":56},"Minnesota":{"1939":2,"1940":5,"1941":8,"1947":9,"1948":43,"1949":42,"1950":41,"1951":38,"1952":36,"1953":34,"1954":35,"1955":35,"1956":14,"1957":18,"1959":20,"1960":18,"1961":36,"1962":32,"1963":31,"1966":33},"Mississippi":{"1939":41,"1940":39,"1941":34,"1947":58,"1948":48,"1949":59,"1950":56,"1951":51,"1952":52,"1953":49,"1954":48,"1955":48,"1956":47,"1957":45,"1959":42,"1960":41,"1961":44,"1962":37,"1963":36,"1966":34},"Missouri":{"1939":45,"1940":52,"1941":54,"1947":187,"1948":195,"1949":218,"1950":247,"1951":212,"1952":196,"1953":169,"1954":157,"1955":161,"1956":64,"1957":47,"1959":62,"1960":53,"1961":55,"1962":42,"1963":60,"1966":73},"Montana":{"1939":1,"1940":1,"1941":1,"1947":1,"1948":13,"1949":1,"1950":1,"1951":1,"1952":2,"1956":6,"1957":13,"1959":10,"1960":13,"1961":13,"1962":12,"1963":14,"1966":12},"Nebraska":{"1939":16,"1940":14,"1941":12,"1947":39,"1948":35,"1949":46,"1950":44,"1951":40,"1952":38,"1953":36,"1954":33,"1955":36,"1956":15,"1957":19,"1959":19,"1960":20,"1961":18,"1962":15,"1963":14,"1966":13},"New Mexico":{"1939":2,"1940":2,"1941":2,"1947":10,"1948":17,"1949":17,"1950":20,"1951":17,"1952":20,"1953":11,"1954":16,"1955":19,"1956":19,"1957":22,"1959":30,"1960":24,"1961":24,"1962":19,"1963":19,"1966":19},"Oklahoma":{"1939":61,"1940":53,"1941":53,"1947":84,"1948":72,"1949":69,"1950":63,"1951":62,"1952":61,"1953":60,"1954":62,"1955":58,"1956":33,"1957":35,"1959":31,"1960":32,"1961":28,"1962":22,"1963":19,"1966":27},"Oregon":{"1939":2,"1940":2,"1941":13,"1947":15,"1948":11,"1949":10,"1950":10,"1951":11,"1952":12,"1953":10,"1954":10,"1955":10,"1956":2,"1957":9,"1959":9,"1960":9,"1961":9,"1962":10,"1963":10,"1966":9},"South Dakota":{"1939":2,"1940":2,"1941":2,"1947":10,"1948":10,"1949":9,"1950":9,"1951":10,"1952":10,"1953":7,"1954":11,"1955":12,"1956":6,"1957":7,"1959":6,"1960":7,"1961":7,"1962":7,"1963":6,"1966":9},"Texas":{"1939":66,"1940":99,"1941":89,"1947":183,"1948":223,"1949":207,"1950":224,"1951":211,"1952":201,"1953":205,"1954":194,"1955":161,"1956":96,"1957":102,"1959":103,"1960":118,"1961":124,"1962":93,"1963":80,"1966":103},"Washington":{"1939":12,"1940":12,"1941":24,"1947":61,"1948":59,"1949":64,"1950":60,"1951":76,"1952":55,"1953":44,"1954":45,"1955":38,"1956":8,"1957":23,"1959":26,"1960":21,"1961":21,"1962":21,"1963":21,"1966":29},"Wisconsin":{"1939":4,"1940":4,"1941":4,"1947":4,"1948":4,"1949":4,"1950":4,"1951":4,"1952":4,"1953":5,"1954":124,"1955":113,"1956":42,"1957":24,"1959":29,"1960":30,"1961":26,"1962":27,"1963":29,"1966":23},"Wyoming":{"1939":6,"1940":7,"1941":7,"1947":7,"1948":7,"1949":8,"1950":8,"1951":7,"1952":9,"1953":8,"1954":4,"1955":5,"1956":5,"1957":10,"1959":9,"1960":10,"1961":8,"1962":7,"1963":7,"1966":14},"Utah":{"1940":1,"1941":1,"1947":1,"1948":4,"1949":5,"1950":4,"1951":4,"1952":10,"1953":7,"1954":5,"1955":5,"1956":3,"1957":10,"1959":17,"1960":15,"1961":15,"1962":12,"1963":13,"1966":10},"Nevada":{"1948":3,"1949":3,"1950":4,"1951":5,"1952":5,"1953":5,"1954":5,"1955":5,"1956":5,"1957":6,"1959":7,"1960":7,"1961":9,"1962":9,"1963":7,"1966":15},"Alaska":{"1948":1,"1949":1,"1950":1,"1951":1,"1952":3,"1954":1,"1955":1,"1956":1,"1957":1,"1959":1,"1960":1,"1961":1,"1962":5,"1963":12,"1966":17},"Hawaii":{"1952":3,"1963":31,"1966":31},"North Dakota":{"1957":7,"1959":6,"1960":6,"1961":6,"1962":10,"1963":7,"1966":7}};
+const STREAM_ALL  = {"1937":{"Tourist Homes":0,"Hotels & Motels":0,"Hotels / Motels / Tourist Homes":0,"Restaurants":0,"Taverns & Road Houses":0,"Beauty Parlors":0,"Barber Shops":0,"Night Clubs & Bars":0,"Auto Services":0,"Drug Stores":0,"Wine & Liquor":0,"Tailor Shops":0,"Resorts & Recreation":0,"Taxi Cabs":0,"Theatres & Entertainment":0,"General (mixed)":0,"Other":86},"1938":{"Tourist Homes":198,"Hotels & Motels":237,"Hotels / Motels / Tourist Homes":0,"Restaurants":85,"Taverns & Road Houses":111,"Beauty Parlors":95,"Barber Shops":47,"Night Clubs & Bars":64,"Auto Services":30,"Drug Stores":0,"Wine & Liquor":1,"Tailor Shops":1,"Resorts & Recreation":98,"Taxi Cabs":1,"Theatres & Entertainment":21,"General (mixed)":0,"Other":22},"1939":{"Tourist Homes":755,"Hotels & Motels":358,"Hotels / Motels / Tourist Homes":0,"Restaurants":107,"Taverns & Road Houses":215,"Beauty Parlors":122,"Barber Shops":44,"Night Clubs & Bars":33,"Auto Services":70,"Drug Stores":19,"Wine & Liquor":7,"Tailor Shops":14,"Resorts & Recreation":123,"Taxi Cabs":23,"Theatres & Entertainment":58,"General (mixed)":0,"Other":51},"1940":{"Tourist Homes":741,"Hotels & Motels":431,"Hotels / Motels / Tourist Homes":0,"Restaurants":144,"Taverns & Road Houses":206,"Beauty Parlors":167,"Barber Shops":80,"Night Clubs & Bars":49,"Auto Services":105,"Drug Stores":17,"Wine & Liquor":22,"Tailor Shops":16,"Resorts & Recreation":2,"Taxi Cabs":21,"Theatres & Entertainment":21,"General (mixed)":0,"Other":41},"1941":{"Tourist Homes":646,"Hotels & Motels":411,"Hotels / Motels / Tourist Homes":0,"Restaurants":159,"Taverns & Road Houses":218,"Beauty Parlors":172,"Barber Shops":82,"Night Clubs & Bars":59,"Auto Services":102,"Drug Stores":15,"Wine & Liquor":7,"Tailor Shops":15,"Resorts & Recreation":2,"Taxi Cabs":19,"Theatres & Entertainment":34,"General (mixed)":0,"Other":71},"1947":{"Tourist Homes":655,"Hotels & Motels":555,"Hotels / Motels / Tourist Homes":0,"Restaurants":529,"Taverns & Road Houses":548,"Beauty Parlors":408,"Barber Shops":165,"Night Clubs & Bars":148,"Auto Services":244,"Drug Stores":74,"Wine & Liquor":86,"Tailor Shops":101,"Resorts & Recreation":3,"Taxi Cabs":41,"Theatres & Entertainment":0,"General (mixed)":115,"Other":141},"1948":{"Tourist Homes":652,"Hotels & Motels":567,"Hotels / Motels / Tourist Homes":0,"Restaurants":583,"Taverns & Road Houses":561,"Beauty Parlors":442,"Barber Shops":217,"Night Clubs & Bars":146,"Auto Services":307,"Drug Stores":115,"Wine & Liquor":115,"Tailor Shops":135,"Resorts & Recreation":5,"Taxi Cabs":47,"Theatres & Entertainment":0,"General (mixed)":1,"Other":16},"1949":{"Tourist Homes":627,"Hotels & Motels":565,"Hotels / Motels / Tourist Homes":0,"Restaurants":580,"Taverns & Road Houses":559,"Beauty Parlors":459,"Barber Shops":204,"Night Clubs & Bars":160,"Auto Services":307,"Drug Stores":110,"Wine & Liquor":107,"Tailor Shops":130,"Resorts & Recreation":16,"Taxi Cabs":52,"Theatres & Entertainment":0,"General (mixed)":192,"Other":77},"1950":{"Tourist Homes":647,"Hotels & Motels":590,"Hotels / Motels / Tourist Homes":0,"Restaurants":597,"Taverns & Road Houses":545,"Beauty Parlors":505,"Barber Shops":202,"Night Clubs & Bars":189,"Auto Services":312,"Drug Stores":144,"Wine & Liquor":141,"Tailor Shops":161,"Resorts & Recreation":184,"Taxi Cabs":57,"Theatres & Entertainment":0,"General (mixed)":3,"Other":39},"1951":{"Tourist Homes":605,"Hotels & Motels":600,"Hotels / Motels / Tourist Homes":0,"Restaurants":566,"Taverns & Road Houses":561,"Beauty Parlors":485,"Barber Shops":207,"Night Clubs & Bars":174,"Auto Services":311,"Drug Stores":144,"Wine & Liquor":139,"Tailor Shops":147,"Resorts & Recreation":209,"Taxi Cabs":55,"Theatres & Entertainment":0,"General (mixed)":0,"Other":46},"1952":{"Tourist Homes":604,"Hotels & Motels":651,"Hotels / Motels / Tourist Homes":0,"Restaurants":519,"Taverns & Road Houses":505,"Beauty Parlors":471,"Barber Shops":238,"Night Clubs & Bars":162,"Auto Services":292,"Drug Stores":140,"Wine & Liquor":157,"Tailor Shops":125,"Resorts & Recreation":207,"Taxi Cabs":52,"Theatres & Entertainment":0,"General (mixed)":0,"Other":98},"1953":{"Tourist Homes":609,"Hotels & Motels":628,"Hotels / Motels / Tourist Homes":0,"Restaurants":484,"Taverns & Road Houses":483,"Beauty Parlors":434,"Barber Shops":201,"Night Clubs & Bars":184,"Auto Services":270,"Drug Stores":124,"Wine & Liquor":132,"Tailor Shops":126,"Resorts & Recreation":222,"Taxi Cabs":48,"Theatres & Entertainment":0,"General (mixed)":7,"Other":43},"1954":{"Tourist Homes":616,"Hotels & Motels":619,"Hotels / Motels / Tourist Homes":0,"Restaurants":494,"Taverns & Road Houses":484,"Beauty Parlors":438,"Barber Shops":242,"Night Clubs & Bars":154,"Auto Services":263,"Drug Stores":129,"Wine & Liquor":132,"Tailor Shops":123,"Resorts & Recreation":240,"Taxi Cabs":48,"Theatres & Entertainment":0,"General (mixed)":3,"Other":121},"1955":{"Tourist Homes":618,"Hotels & Motels":740,"Hotels / Motels / Tourist Homes":0,"Restaurants":422,"Taverns & Road Houses":490,"Beauty Parlors":394,"Barber Shops":195,"Night Clubs & Bars":155,"Auto Services":258,"Drug Stores":129,"Wine & Liquor":113,"Tailor Shops":141,"Resorts & Recreation":261,"Taxi Cabs":49,"Theatres & Entertainment":0,"General (mixed)":0,"Other":71}};
+const STREAM_US   = {"1937":{"Tourist Homes":0,"Hotels & Motels":0,"Hotels / Motels / Tourist Homes":0,"Restaurants":0,"Taverns & Road Houses":0,"Beauty Parlors":0,"Barber Shops":0,"Night Clubs & Bars":0,"Auto Services":0,"Drug Stores":0,"Wine & Liquor":0,"Tailor Shops":0,"Resorts & Recreation":0,"Taxi Cabs":0,"Theatres & Entertainment":0,"General (mixed)":0,"Other":58},"1938":{"Tourist Homes":198,"Hotels & Motels":237,"Hotels / Motels / Tourist Homes":0,"Restaurants":85,"Taverns & Road Houses":111,"Beauty Parlors":95,"Barber Shops":47,"Night Clubs & Bars":64,"Auto Services":30,"Drug Stores":0,"Wine & Liquor":1,"Tailor Shops":1,"Resorts & Recreation":97,"Taxi Cabs":1,"Theatres & Entertainment":21,"General (mixed)":0,"Other":22},"1939":{"Tourist Homes":755,"Hotels & Motels":358,"Hotels / Motels / Tourist Homes":0,"Restaurants":107,"Taverns & Road Houses":215,"Beauty Parlors":122,"Barber Shops":44,"Night Clubs & Bars":33,"Auto Services":70,"Drug Stores":19,"Wine & Liquor":7,"Tailor Shops":14,"Resorts & Recreation":122,"Taxi Cabs":23,"Theatres & Entertainment":58,"General (mixed)":0,"Other":51},"1940":{"Tourist Homes":741,"Hotels & Motels":431,"Hotels / Motels / Tourist Homes":0,"Restaurants":144,"Taverns & Road Houses":206,"Beauty Parlors":167,"Barber Shops":80,"Night Clubs & Bars":49,"Auto Services":105,"Drug Stores":17,"Wine & Liquor":22,"Tailor Shops":16,"Resorts & Recreation":2,"Taxi Cabs":21,"Theatres & Entertainment":21,"General (mixed)":0,"Other":41},"1941":{"Tourist Homes":644,"Hotels & Motels":411,"Hotels / Motels / Tourist Homes":0,"Restaurants":159,"Taverns & Road Houses":218,"Beauty Parlors":172,"Barber Shops":82,"Night Clubs & Bars":59,"Auto Services":102,"Drug Stores":15,"Wine & Liquor":7,"Tailor Shops":15,"Resorts & Recreation":2,"Taxi Cabs":19,"Theatres & Entertainment":34,"General (mixed)":0,"Other":45},"1947":{"Tourist Homes":655,"Hotels & Motels":555,"Hotels / Motels / Tourist Homes":0,"Restaurants":529,"Taverns & Road Houses":548,"Beauty Parlors":408,"Barber Shops":165,"Night Clubs & Bars":148,"Auto Services":244,"Drug Stores":74,"Wine & Liquor":86,"Tailor Shops":101,"Resorts & Recreation":3,"Taxi Cabs":41,"Theatres & Entertainment":0,"General (mixed)":115,"Other":141},"1948":{"Tourist Homes":652,"Hotels & Motels":567,"Hotels / Motels / Tourist Homes":0,"Restaurants":583,"Taverns & Road Houses":561,"Beauty Parlors":442,"Barber Shops":217,"Night Clubs & Bars":146,"Auto Services":307,"Drug Stores":115,"Wine & Liquor":115,"Tailor Shops":135,"Resorts & Recreation":5,"Taxi Cabs":47,"Theatres & Entertainment":0,"General (mixed)":1,"Other":16},"1949":{"Tourist Homes":621,"Hotels & Motels":562,"Hotels / Motels / Tourist Homes":0,"Restaurants":578,"Taverns & Road Houses":559,"Beauty Parlors":459,"Barber Shops":204,"Night Clubs & Bars":159,"Auto Services":307,"Drug Stores":110,"Wine & Liquor":106,"Tailor Shops":130,"Resorts & Recreation":16,"Taxi Cabs":52,"Theatres & Entertainment":0,"General (mixed)":181,"Other":74},"1950":{"Tourist Homes":638,"Hotels & Motels":587,"Hotels / Motels / Tourist Homes":0,"Restaurants":595,"Taverns & Road Houses":545,"Beauty Parlors":505,"Barber Shops":202,"Night Clubs & Bars":188,"Auto Services":312,"Drug Stores":144,"Wine & Liquor":140,"Tailor Shops":161,"Resorts & Recreation":182,"Taxi Cabs":57,"Theatres & Entertainment":0,"General (mixed)":3,"Other":38},"1951":{"Tourist Homes":595,"Hotels & Motels":583,"Hotels / Motels / Tourist Homes":0,"Restaurants":542,"Taverns & Road Houses":561,"Beauty Parlors":484,"Barber Shops":205,"Night Clubs & Bars":173,"Auto Services":295,"Drug Stores":144,"Wine & Liquor":138,"Tailor Shops":147,"Resorts & Recreation":207,"Taxi Cabs":55,"Theatres & Entertainment":0,"General (mixed)":0,"Other":45},"1952":{"Tourist Homes":593,"Hotels & Motels":633,"Hotels / Motels / Tourist Homes":0,"Restaurants":495,"Taverns & Road Houses":505,"Beauty Parlors":469,"Barber Shops":236,"Night Clubs & Bars":161,"Auto Services":276,"Drug Stores":140,"Wine & Liquor":156,"Tailor Shops":125,"Resorts & Recreation":205,"Taxi Cabs":52,"Theatres & Entertainment":0,"General (mixed)":0,"Other":97},"1953":{"Tourist Homes":588,"Hotels & Motels":610,"Hotels / Motels / Tourist Homes":0,"Restaurants":472,"Taverns & Road Houses":483,"Beauty Parlors":433,"Barber Shops":201,"Night Clubs & Bars":182,"Auto Services":270,"Drug Stores":124,"Wine & Liquor":131,"Tailor Shops":126,"Resorts & Recreation":218,"Taxi Cabs":48,"Theatres & Entertainment":0,"General (mixed)":0,"Other":42},"1954":{"Tourist Homes":589,"Hotels & Motels":613,"Hotels / Motels / Tourist Homes":0,"Restaurants":481,"Taverns & Road Houses":484,"Beauty Parlors":437,"Barber Shops":242,"Night Clubs & Bars":153,"Auto Services":263,"Drug Stores":129,"Wine & Liquor":131,"Tailor Shops":123,"Resorts & Recreation":216,"Taxi Cabs":48,"Theatres & Entertainment":0,"General (mixed)":2,"Other":109},"1955":{"Tourist Homes":567,"Hotels & Motels":696,"Hotels / Motels / Tourist Homes":0,"Restaurants":386,"Taverns & Road Houses":476,"Beauty Parlors":374,"Barber Shops":187,"Night Clubs & Bars":144,"Auto Services":230,"Drug Stores":120,"Wine & Liquor":105,"Tailor Shops":134,"Resorts & Recreation":258,"Taxi Cabs":49,"Theatres & Entertainment":0,"General (mixed)":0,"Other":59}};
+const HEAT_ALL    = {"cities":["New York City, NY","Philadelphia, PA","Los Angeles, CA","Washington D.C., DC","St. Louis, MO","Atlantic City, NJ","Chicago, IL","Cincinnati, OH","Buffalo, NY","Brooklyn, NY","New Orleans, LA","Newark, NJ","Detroit, MI","Kansas City, MO","Columbus, OH","Indianapolis, IN","Boston, MA","Asbury Park, NJ","Little Rock, AR","Idlewild, MI"],"years":["1937","1938","1939","1940","1941","1947","1948","1949","1950","1951","1952","1953","1954","1955","1956","1957","1959","1960","1961","1962","1963","1966"],"matrix":[[19,212,85,178,152,240,305,247,209,88,187,112,0,212,2,33,40,37,37,146,253,238],[0,44,60,52,61,88,84,89,88,74,76,73,69,57,32,38,7,8,18,15,14,12],[0,0,13,17,21,118,99,100,86,90,81,78,71,25,25,33,17,20,24,20,27,36],[0,29,41,39,33,73,77,71,69,67,65,61,74,71,27,26,28,31,32,2,39,38],[0,0,8,11,12,86,81,103,114,98,89,84,74,76,21,16,24,21,20,14,13,18],[0,11,55,34,39,58,62,66,67,64,70,43,64,77,30,35,31,37,34,29,22,26],[0,13,31,30,30,57,39,85,52,57,48,50,48,47,34,36,26,26,58,53,57,60],[0,0,10,14,14,49,108,106,97,90,84,73,69,67,18,13,13,10,10,7,6,6],[0,4,5,7,0,78,80,78,79,76,72,71,71,69,15,18,17,19,15,23,30,32],[0,30,25,23,2,58,29,62,67,74,93,56,80,73,14,12,10,9,12,14,21,26],[0,4,12,18,19,60,57,54,64,59,55,52,50,53,28,31,21,26,27,25,25,26],[0,35,40,38,46,65,57,56,55,58,61,55,52,50,9,10,9,9,8,6,5,6],[0,11,15,17,19,60,52,51,65,60,54,52,47,46,23,25,18,15,18,13,12,14],[0,0,6,8,8,42,61,60,82,66,58,48,29,46,16,12,13,14,18,12,33,38],[0,4,8,9,4,20,18,18,53,70,73,66,61,55,22,20,21,20,19,15,15,13],[0,0,7,13,12,35,41,29,67,76,67,62,58,53,15,14,13,11,11,0,8,12],[0,2,13,25,22,56,17,48,50,53,46,46,18,40,14,15,12,12,12,11,14,13],[0,33,30,37,26,28,24,27,28,31,30,20,39,29,14,18,14,14,14,17,9,6],[0,0,5,3,1,50,50,56,53,50,44,45,42,22,11,9,8,9,9,6,2,0],[0,0,0,17,10,6,25,25,27,26,27,31,29,30,23,28,18,32,32,33,17,32]],"totals":[3032,1059,1001,993,983,954,937,864,859,790,766,730,687,670,604,604,539,488,475,468]};
+const HEAT_US     = {"cities":["New York City, NY","Philadelphia, PA","Los Angeles, CA","Washington D.C., DC","St. Louis, MO","Atlantic City, NJ","Chicago, IL","Cincinnati, OH","Buffalo, NY","Brooklyn, NY","New Orleans, LA","Newark, NJ","Detroit, MI","Kansas City, MO","Columbus, OH","Indianapolis, IN","Boston, MA","Asbury Park, NJ","Little Rock, AR","Idlewild, MI"],"years":["1937","1938","1939","1940","1941","1947","1948","1949","1950","1951","1952","1953","1954","1955","1956","1957","1959","1960","1961","1962","1963","1966"],"matrix":[[19,212,85,178,152,240,305,247,209,88,187,112,0,212,2,33,40,37,37,146,253,238],[0,44,60,52,61,88,84,89,88,74,76,73,69,57,32,38,7,8,18,15,14,12],[0,0,13,17,21,118,99,100,86,90,81,78,71,25,25,33,17,20,24,20,27,36],[0,29,41,39,33,73,77,71,69,67,65,61,74,71,27,26,28,31,32,2,39,38],[0,0,8,11,12,86,81,103,114,98,89,84,74,76,21,16,24,21,20,14,13,18],[0,11,55,34,39,58,62,66,67,64,70,43,64,77,30,35,31,37,34,29,22,26],[0,13,31,30,30,57,39,85,52,57,48,50,48,47,34,36,26,26,58,53,57,60],[0,0,10,14,14,49,108,106,97,90,84,73,69,67,18,13,13,10,10,7,6,6],[0,4,5,7,0,78,80,78,79,76,72,71,71,69,15,18,17,19,15,23,30,32],[0,30,25,23,2,58,29,62,67,74,93,56,80,73,14,12,10,9,12,14,21,26],[0,4,12,18,19,60,57,54,64,59,55,52,50,53,28,31,21,26,27,25,25,26],[0,35,40,38,46,65,57,56,55,58,61,55,52,50,9,10,9,9,8,6,5,6],[0,11,15,17,19,60,52,51,65,60,54,52,47,46,23,25,18,15,18,13,12,14],[0,0,6,8,8,42,61,60,82,66,58,48,29,46,16,12,13,14,18,12,33,38],[0,4,8,9,4,20,18,18,53,70,73,66,61,55,22,20,21,20,19,15,15,13],[0,0,7,13,12,35,41,29,67,76,67,62,58,53,15,14,13,11,11,0,8,12],[0,2,13,25,22,56,17,48,50,53,46,46,18,40,14,15,12,12,12,11,14,13],[0,33,30,37,26,28,24,27,28,31,30,20,39,29,14,18,14,14,14,17,9,6],[0,0,5,3,1,50,50,56,53,50,44,45,42,22,11,9,8,9,9,6,2,0],[0,0,0,17,10,6,25,25,27,26,27,31,29,30,23,28,18,32,32,33,17,32]],"totals":[3032,1059,1001,993,983,954,937,864,859,790,766,730,687,670,604,604,539,488,475,468]};
+const YEARS        = ["1937","1938","1939","1940","1941","1947","1948","1949","1950","1951","1952","1953","1954","1955","1956","1957","1959","1960","1961","1962","1963","1966"];
+const STREAM_YEARS = ["1937","1938","1939","1940","1941","1947","1948","1949","1950","1951","1952","1953","1954","1955"];
+const CAT_COLORS   = {"Tourist Homes":"#4e9e70","Hotels & Motels":"#2d6a4f","Hotels / Motels / Tourist Homes":"#1b4332","Restaurants":"#e07b39","Taverns & Road Houses":"#b44a2f","Beauty Parlors":"#c77dbb","Barber Shops":"#7b6ed6","Night Clubs & Bars":"#d4af37","Auto Services":"#7a8c8e","Drug Stores":"#5bb5d5","Wine & Liquor":"#8b3a52","Tailor Shops":"#b5936b","Resorts & Recreation":"#4a9e82","Taxi Cabs":"#e8c547","Theatres & Entertainment":"#aa6644","General (mixed)":"#556677","Other":"#2a2a3a"};
+const CAT_ORDER    = ["Tourist Homes","Hotels & Motels","Hotels / Motels / Tourist Homes","Restaurants","Taverns & Road Houses","Beauty Parlors","Barber Shops","Night Clubs & Bars","Auto Services","Drug Stores","Wine & Liquor","Tailor Shops","Resorts & Recreation","Taxi Cabs","Theatres & Entertainment","General (mixed)","Other"];
+
+// ── Global scope state ────────────────────────────────────────────────────
+let usOnly = false;
+
+const scopeToggle = document.getElementById("scope-toggle");
+const scopePill   = document.getElementById("scope-pill");
+
+scopeToggle.addEventListener("click", () => {
+  usOnly = !usOnly;
+  scopeToggle.classList.toggle("us-active", usOnly);
+  scopePill.textContent = usOnly ? "US only" : "All entries";
+  updateStream(usOnly ? STREAM_US : STREAM_ALL);
+  updateHeat(usOnly ? HEAT_US : HEAT_ALL);
+});
+
+// ── Shared tooltip ────────────────────────────────────────────────────────
+const tip = document.getElementById("tooltip");
+function showTip(html, event) {
+  tip.innerHTML = html;
+  tip.style.opacity = 1;
+  moveTip(event);
+}
+function moveTip(event) {
+  const x = event.clientX + 14, y = event.clientY - 10;
+  tip.style.left = Math.min(x, window.innerWidth - 220) + "px";
+  tip.style.top  = y + "px";
+}
+function hideTip() { tip.style.opacity = 0; }
+
+// ── 1. MAP ────────────────────────────────────────────────────────────────
+(async function buildMap() {
+  const svg = d3.select("#map-svg");
+  const W = 960, H = 560;
+
+  let us;
+  try {
+    us = await d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json");
+  } catch(e) {
+    svg.append("text").attr("x", W/2).attr("y", H/2)
+       .attr("text-anchor","middle").attr("fill","#7a7490")
+       .text("Map requires internet connection to load state boundaries.");
+    return;
+  }
+
+  const states = topojson.feature(us, us.objects.states);
+  const nation = topojson.mesh(us, us.objects.states, (a,b) => a !== b);
+
+  const proj = d3.geoAlbersUsa().fitSize([W, H], states);
+  const path = d3.geoPath().projection(proj);
+
+  const allCounts = Object.values(MAP_DATA).flatMap(yd => Object.values(yd));
+  const globalMax = d3.max(allCounts);
+  const colorScale = d3.scaleSequential()
+    .domain([0, globalMax])
+    .interpolator(d3.interpolate("#1a2820", "#4caf75"));
+
+  svg.selectAll(".state-path")
+    .data(states.features)
+    .join("path")
+    .attr("class","state-path")
+    .attr("d", path)
+    .on("mousemove", (event, d) => {
+      const name = d.properties.name;
+      const count = MAP_DATA[name]?.[currentYear] ?? 0;
+      showTip(`<strong>${name}</strong>${count} listing${count===1?"":"s"} in ${currentYear}`, event);
+    })
+    .on("mouseleave", hideTip);
+
+  svg.append("path")
+    .datum(nation)
+    .attr("fill","none").attr("stroke","#0d0d14").attr("stroke-width",.4)
+    .attr("d", path);
+
+  const canvas = document.getElementById("legend-bar");
+  const ctx = canvas.getContext("2d");
+  for(let i=0; i<200; i++) {
+    ctx.fillStyle = colorScale(i/199 * globalMax);
+    ctx.fillRect(i, 0, 1, 10);
+  }
+  document.getElementById("legend-max").textContent = globalMax.toLocaleString();
+
+  let currentYear = YEARS[0];
+  let playing = false, timer = null;
+
+  const slider = document.getElementById("year-slider");
+  slider.max = YEARS.length - 1;
+  slider.value = 0;
+
+  function updateMap(yr) {
+    currentYear = yr;
+    document.getElementById("year-display").textContent = yr;
+    svg.selectAll(".state-path")
+      .attr("fill", d => {
+        const count = MAP_DATA[d.properties.name]?.[yr] ?? 0;
+        return count > 0 ? colorScale(count) : "#1a1a28";
+      });
+    const total = Object.values(MAP_DATA).reduce((s,yd) => s + (yd[yr]??0), 0);
+    document.getElementById("map-count").textContent =
+      `${total.toLocaleString()} total listings in ${yr}`;
+  }
+
+  slider.addEventListener("input", function() {
+    stopPlay();
+    updateMap(YEARS[+this.value]);
+  });
+
+  const playBtn = document.getElementById("play-btn");
+  function stopPlay() {
+    playing = false; clearInterval(timer); playBtn.textContent = "▶ Play";
+  }
+  playBtn.addEventListener("click", () => {
+    if(playing) { stopPlay(); return; }
+    playing = true; playBtn.textContent = "⏸ Pause";
+    let idx = +slider.value;
+    timer = setInterval(() => {
+      idx = (idx + 1) % YEARS.length;
+      slider.value = idx;
+      updateMap(YEARS[idx]);
+      if(idx === YEARS.length - 1) stopPlay();
+    }, 700);
+  });
+
+  updateMap(YEARS[0]);
+})();
+
+// ── 2. STREAMGRAPH ────────────────────────────────────────────────────────
+let updateStream;
+(function() {
+  const container = document.getElementById("stream-wrap");
+  const W = container.clientWidth - 32 || 900;
+  const H = 320;
+  const margin = {top:20, right:20, bottom:30, left:50};
+  const iW = W - margin.left - margin.right;
+  const iH = H - margin.top - margin.bottom;
+
+  const svg = d3.select("#stream-svg")
+    .attr("viewBox", `0 0 ${W} ${H}`)
+    .attr("preserveAspectRatio","xMidYMid meet");
+  const g = svg.append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Determine active categories from the all-data set (keeps them stable on toggle)
+  const seedRows = STREAM_YEARS.map(y => {
+    const obj = {year: y};
+    CAT_ORDER.forEach(c => { obj[c] = STREAM_ALL[y]?.[c] ?? 0; });
+    return obj;
+  });
+  const activeCats = CAT_ORDER.filter(c => seedRows.some(r => r[c] > 0));
+
+  const stack = d3.stack()
+    .keys(activeCats)
+    .offset(d3.stackOffsetSilhouette)
+    .order(d3.stackOrderInsideOut);
+
+  // Custom piecewise scale: equal band spacing for all data years + fixed gap
+  const PRE  = STREAM_YEARS.filter(y => +y <= 1941);
+  const POST = STREAM_YEARS.filter(y => +y >= 1947);
+  const GAP_PX = 95;
+  const SLOT_W = (iW - GAP_PX) / STREAM_YEARS.length;
+  const PRE_END = PRE.length * SLOT_W;
+  const gapX1 = PRE_END;
+  const gapX2 = PRE_END + GAP_PX;
+
+  function xPos(year) {
+    const idx = STREAM_YEARS.indexOf(String(year));
+    if (idx < 0) return null;
+    if (+year <= 1941) return idx * SLOT_W + SLOT_W / 2;
+    return PRE_END + GAP_PX + (idx - PRE.length) * SLOT_W + SLOT_W / 2;
+  }
+
+  const yScale = d3.scaleLinear().range([iH, 0]);
+
+  const area = d3.area()
+    .x(d => xPos(d.data.year))
+    .y0(d => yScale(d[0]))
+    .y1(d => yScale(d[1]))
+    .curve(d3.curveCatmullRom.alpha(.5));
+
+  let currentData = STREAM_ALL;
+
+  function getStackRows(data) {
+    return STREAM_YEARS.map(y => {
+      const obj = {year: y};
+      activeCats.forEach(c => { obj[c] = data[y]?.[c] ?? 0; });
+      return obj;
+    });
+  }
+
+  const initSeries = stack(getStackRows(STREAM_ALL));
+  const initExtent = [
+    d3.min(initSeries, s => d3.min(s, d => d[0])),
+    d3.max(initSeries, s => d3.max(s, d => d[1])),
+  ];
+  yScale.domain(initExtent);
+
+  // Gap region (drawn before streams so streams render on top)
+  g.append("rect")
+    .attr("x", gapX1).attr("y", 0)
+    .attr("width", GAP_PX).attr("height", iH)
+    .attr("fill","#0a0a14").attr("opacity",.75);
+  [gapX1, gapX2].forEach(x => {
+    g.append("line")
+      .attr("x1",x).attr("x2",x).attr("y1",0).attr("y2",iH)
+      .attr("stroke","#3a3a5a").attr("stroke-width",1).attr("stroke-dasharray","3,3");
+  });
+  const midGap = (gapX1 + gapX2) / 2;
+  g.append("text").attr("class","annotation")
+    .attr("x", midGap).attr("y", iH/2 - 14)
+    .attr("text-anchor","middle").attr("font-style","italic")
+    .text("No editions");
+  g.append("text").attr("class","annotation")
+    .attr("x", midGap).attr("y", iH/2)
+    .attr("text-anchor","middle").attr("font-style","italic")
+    .text("published");
+  g.append("text").attr("class","annotation")
+    .attr("x", midGap).attr("y", iH/2 + 14)
+    .attr("text-anchor","middle").attr("font-size","9px").attr("opacity",.7)
+    .text("1942–1946");
+  g.append("text").attr("class","annotation")
+    .attr("x", midGap).attr("y", iH/2 + 14)
+    .attr("text-anchor","middle").attr("font-size","9px").attr("opacity",.7)
+    .text("(WWII)");
+
+  // Stream paths — split into pre-gap and post-gap segments per category
+  // pathRefs keyed by "catKey|seg" for updateStream transitions
+  const pathRefs = {};
+  initSeries.forEach(s => {
+    [["pre", PRE], ["post", POST]].forEach(([segName, seg]) => {
+      const pts = s.filter(d => seg.includes(d.data.year));
+      if (!pts.length) return;
+      const p = g.append("path")
+        .attr("class","stream-path")
+        .attr("d", area(pts))
+        .attr("fill", CAT_COLORS[s.key] ?? "#444")
+        .on("mousemove", (event) => {
+          const rawX = d3.pointer(event, g.node())[0];
+          const candidates = rawX < (gapX1 + gapX2) / 2 ? PRE : POST;
+          const snapYr = candidates.reduce((a,b) =>
+            Math.abs(xPos(b) - rawX) < Math.abs(xPos(a) - rawX) ? b : a);
+          const count = currentData[snapYr]?.[s.key] ?? 0;
+          showTip(`<strong>${s.key}</strong> ${snapYr}: ${count.toLocaleString()} listings`, event);
+        })
+        .on("mouseleave", hideTip);
+      pathRefs[`${s.key}|${segName}`] = {path: p, seg};
+    });
+  });
+
+  // X-axis ticks at each data year using custom xPos
+  const axisG = g.append("g").attr("class","axis")
+    .attr("transform",`translate(0,${iH})`);
+  STREAM_YEARS.forEach(y => {
+    const x = xPos(y);
+    axisG.append("line")
+      .attr("x1",x).attr("x2",x).attr("y1",0).attr("y2",-iH)
+      .attr("stroke","#fff").attr("stroke-opacity",.15).attr("stroke-dasharray","2,3");
+    axisG.append("text")
+      .attr("x",x).attr("y",16)
+      .attr("text-anchor","middle").attr("fill","#aaa").attr("font-size","11px")
+      .text(y);
+  });
+  // Axis break symbols (//) at gap edges
+  [[gapX1-5, gapX1+5],[gapX2-5, gapX2+5]].forEach(([x1,x2]) => {
+    axisG.append("line")
+      .attr("x1",x1).attr("y1",-4).attr("x2",x2).attr("y2",4)
+      .attr("stroke","#4a4a6a").attr("stroke-width",1.5);
+  });
+
+  // Legend
+  const legendEl = document.getElementById("stream-legend");
+  activeCats.forEach(cat => {
+    const item = document.createElement("div");
+    item.className = "legend-item";
+    item.innerHTML = `<div class="legend-swatch" style="background:${CAT_COLORS[cat]??'#444'}"></div>
+      <span>${cat}</span>`;
+    legendEl.appendChild(item);
+  });
+
+  // Exported update function (scope toggle)
+  updateStream = function(data) {
+    currentData = data;
+    const series = stack(getStackRows(data));
+    const extent = [
+      d3.min(series, s => d3.min(s, d => d[0])),
+      d3.max(series, s => d3.max(s, d => d[1])),
+    ];
+    yScale.domain(extent);
+    series.forEach(s => {
+      [["pre", PRE], ["post", POST]].forEach(([segName, seg]) => {
+        const ref = pathRefs[`${s.key}|${segName}`];
+        if (!ref) return;
+        const pts = s.filter(d => seg.includes(d.data.year));
+        ref.path.transition().duration(500).attr("d", area(pts));
+      });
+    });
+  };
+})();
+
+// ── 3. HEATMAP ────────────────────────────────────────────────────────────
+let updateHeat;
+(function() {
+  const { cities, years, matrix, totals } = HEAT_ALL;
+  const cellW = 32, cellH = 18;
+  const marginLeft = 190, marginTop = 50, marginBottom = 20;
+
+  // WWII gap: fixed pixel break between 1941 and 1947 columns
+  const HEAT_GAP = 22;
+  const gapAfterIdx = years.indexOf("1941");
+  function xCell(yi) {
+    return yi * cellW + (yi > gapAfterIdx && gapAfterIdx >= 0 ? HEAT_GAP : 0);
+  }
+
+  const W = marginLeft + years.length * cellW + (gapAfterIdx >= 0 ? HEAT_GAP : 0) + 46;
+  const H = marginTop + cities.length * cellH + marginBottom;
+  const gridH = cities.length * cellH;
+
+  const svg = d3.select("#heat-svg").attr("width", W).attr("height", H);
+  const g = svg.append("g").attr("transform",`translate(${marginLeft},${marginTop})`);
+
+  // ── Gap region ────────────────────────────────────────────────────────────
+  if (gapAfterIdx >= 0) {
+    const gapX1 = (gapAfterIdx + 1) * cellW;
+    const gapX2 = gapX1 + HEAT_GAP;
+    g.append("rect")
+      .attr("x", gapX1).attr("y", 0)
+      .attr("width", HEAT_GAP).attr("height", gridH)
+      .attr("fill","#0a0a14").attr("opacity",.8);
+    [gapX1, gapX2].forEach(x =>
+      g.append("line")
+        .attr("x1",x).attr("x2",x).attr("y1",0).attr("y2",gridH)
+        .attr("stroke","#3a3a5a").attr("stroke-width",1).attr("stroke-dasharray","3,3")
+    );
+    // Rotated "WWII" label centred in gap
+    g.append("text")
+      .attr("x", gapX1 + HEAT_GAP/2).attr("y", gridH/2)
+      .attr("text-anchor","middle").attr("dominant-baseline","middle")
+      .attr("fill","#3a3a5a").attr("font-size","9px").attr("font-style","italic")
+      .attr("transform",`rotate(-90,${gapX1 + HEAT_GAP/2},${gridH/2})`)
+      .text("WWII");
+    // Break symbols (//) above year labels at gap edges
+    const breakY = -10;
+    [[gapX1-4, gapX1+4],[gapX2-4, gapX2+4]].forEach(([x1,x2]) =>
+      g.append("line")
+        .attr("x1",x1).attr("y1",breakY-4).attr("x2",x2).attr("y2",breakY+4)
+        .attr("stroke","#4a4a6a").attr("stroke-width",1.5)
+    );
+  }
+
+  // Colour scale (mutable domain)
+  const colorScale = d3.scaleSequential()
+    .domain([0, d3.max(matrix.flat())])
+    .interpolator(d3.interpolate("#1a1a28", "#4caf75"));
+
+  // Flat cell data keyed by [ci, yi]
+  const flatCells = matrix.flatMap((row, ci) =>
+    years.map((yr, yi) => ({ ci, yi, count: row[yi], city: cities[ci], year: yr }))
+  );
+
+  const cells = g.selectAll(".heat-cell")
+    .data(flatCells, d => `${d.ci}-${d.yi}`)
+    .join("rect")
+    .attr("class","heat-cell")
+    .attr("x", d => xCell(d.yi) + 1)
+    .attr("y", d => d.ci * cellH + 1)
+    .attr("width", cellW - 2).attr("height", cellH - 2).attr("rx", 2)
+    .attr("fill", d => d.count > 0 ? colorScale(d.count) : "#16161f")
+    .on("mousemove", (event, d) =>
+      showTip(`<strong>${d.city}</strong>${d.year}: ${d.count.toLocaleString()} listing${d.count===1?"":"s"}`, event))
+    .on("mouseleave", hideTip);
+
+  // City labels
+  svg.selectAll(".city-label")
+    .data(cities)
+    .join("text")
+    .attr("x", marginLeft - 6)
+    .attr("y", (d,i) => marginTop + i * cellH + cellH * .65)
+    .attr("text-anchor","end").attr("fill","#9a94b0").attr("font-size","11px")
+    .text(d => d);
+
+  // Year labels
+  svg.selectAll(".year-label")
+    .data(years)
+    .join("text")
+    .attr("x", (d,i) => marginLeft + xCell(i) + cellW/2)
+    .attr("y", marginTop - 8)
+    .attr("text-anchor","middle").attr("fill","#7a7490").attr("font-size","10px")
+    .attr("transform", (d,i) =>
+      `rotate(-45,${marginLeft + xCell(i) + cellW/2},${marginTop - 8})`)
+    .text(d => d);
+
+  // Total bars
+  const bx = marginLeft + years.length * cellW + (gapAfterIdx >= 0 ? HEAT_GAP : 0) + 6;
+  const barScale = d3.scaleLinear().domain([0, d3.max(totals)]).range([0, 30]);
+
+  const totalBars = svg.selectAll(".total-bar")
+    .data(totals)
+    .join("rect")
+    .attr("class","total-bar")
+    .attr("x", bx)
+    .attr("y", (d,i) => marginTop + i * cellH + 2)
+    .attr("width", d => barScale(d))
+    .attr("height", cellH - 4).attr("fill","#3d5a48").attr("rx", 2)
+    .on("mousemove", (event, d, i) => {
+      const city = cities[svg.selectAll(".total-bar").nodes().indexOf(event.currentTarget)];
+      showTip(`<strong>${city}</strong>Total: ${d.toLocaleString()} listings`, event);
+    })
+    .on("mouseleave", hideTip);
+
+  svg.append("text")
+    .attr("x", bx + 2).attr("y", marginTop - 8)
+    .attr("fill","#7a7490").attr("font-size","10px")
+    .text("Total ▶");
+
+  // Exported update function
+  updateHeat = function(data) {
+    colorScale.domain([0, d3.max(data.matrix.flat())]);
+    barScale.domain([0, d3.max(data.totals)]);
+
+    const newCells = data.matrix.flatMap((row, ci) =>
+      data.years.map((yr, yi) => ({ ci, yi, count: row[yi], city: data.cities[ci], year: yr }))
+    );
+    cells.data(newCells, d => `${d.ci}-${d.yi}`)
+      .transition().duration(500)
+      .attr("fill", d => d.count > 0 ? colorScale(d.count) : "#16161f");
+
+    totalBars.data(data.totals)
+      .transition().duration(500)
+      .attr("width", d => barScale(d));
+  };
+})();
+</script>
+</body>
+</html>
