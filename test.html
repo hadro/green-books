@@ -27,8 +27,8 @@
 </section>
 
 <section>
-  <h2>Test B — no service, 1800px body URL (proposed fix — expect image to load)</h2>
-  <p>Service field removed; body URL requests 1800px max. OSD uses static image mode — no info.json needed.</p>
+  <h2>Test B — no service, full/max body URL (proposed fix — expect image to load)</h2>
+  <p>Service field removed; body URL requests full resolution (max). OSD uses static image mode — no info.json needed. Body dimensions = canvas dimensions = actual image dimensions, so coordinate mapping is exact.</p>
   <div class="viewer-wrap">
     <clover-viewer id="https://hadro.github.io/green-books/manifests/test/manifest_no_service.json"></clover-viewer>
   </div>
