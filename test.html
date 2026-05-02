@@ -36,37 +36,50 @@
 
 <section>
   <h2>Test C — no service + content state with fragment (full end-to-end)</h2>
-  <p>
-    Content state targets canvas/0 at <code>xywh=399,438,974,58</code> (first entry on this page).
-    Viewer should open zoomed to that region.
-  </p>
+  <p>Content state targets canvas/0 at <code>xywh=399,438,974,58</code>. No service → static image mode.</p>
   <div class="viewer-wrap" id="test-c-wrap"></div>
 </section>
 
+<section>
+  <h2>Test D — inline service + content state with fragment (best-of-both-worlds)</h2>
+  <p>Service kept but tile structure embedded inline — OSD uses IIIF tile mode without fetching info.json. If this works in both Chrome and Firefox, it's the production fix.</p>
+  <div class="viewer-wrap" id="test-d-wrap"></div>
+</section>
+
 <script>
-const MANIFEST = "https://hadro.github.io/green-books/manifests/test/manifest_no_service.json";
-const CANVAS   = MANIFEST + "/canvas/0";
+function makeContentState(manifestUrl, fragment) {
+  const canvasId = manifestUrl + "/canvas/0";
+  return {
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    id: canvasId + "#" + fragment + "/content-state",
+    type: "Annotation",
+    motivation: ["contentState"],
+    target: {
+      type: "SpecificResource",
+      source: { id: canvasId, type: "Canvas", partOf: [{ id: manifestUrl, type: "Manifest" }] },
+      selector: { type: "FragmentSelector", value: fragment }
+    }
+  };
+}
+
+function appendViewer(containerId, stateObj) {
+  const blobUrl = URL.createObjectURL(
+    new Blob([JSON.stringify(stateObj)], { type: "application/json" })
+  );
+  const el = document.createElement("clover-viewer");
+  el.setAttribute("id", blobUrl);
+  document.getElementById(containerId).appendChild(el);
+}
+
 const FRAGMENT = "xywh=399,438,974,58";
 
-const state = {
-  "@context": "http://iiif.io/api/presentation/3/context.json",
-  id: CANVAS + "#" + FRAGMENT + "/content-state",
-  type: "Annotation",
-  motivation: ["contentState"],
-  target: {
-    type: "SpecificResource",
-    source: { id: CANVAS, type: "Canvas", partOf: [{ id: MANIFEST, type: "Manifest" }] },
-    selector: { type: "FragmentSelector", value: FRAGMENT }
-  }
-};
+// Test C — no service, full/max
+appendViewer("test-c-wrap",
+  makeContentState("https://hadro.github.io/green-books/manifests/test/manifest_no_service.json", FRAGMENT));
 
-const blobUrl = URL.createObjectURL(
-  new Blob([JSON.stringify(state)], { type: "application/json" })
-);
-
-const el = document.createElement("clover-viewer");
-el.setAttribute("id", blobUrl);
-document.getElementById("test-c-wrap").appendChild(el);
+// Test D — inline service (tile data embedded, no info.json fetch)
+appendViewer("test-d-wrap",
+  makeContentState("https://hadro.github.io/green-books/manifests/test/manifest_inline_service.json", FRAGMENT));
 </script>
 
 <script src="clover.umd.patched.js"></script>
