@@ -128,9 +128,11 @@ function launchClover(manifestId, cfUrl) {
   if (old) old.remove();
 
   const el = document.createElement("clover-viewer");
+  // Resolve to absolute so Clover can fetch when no content-state is used
+  const absManifestId = new URL(manifestId, location.href).href;
 
   if (!cfUrl) {
-    el.setAttribute("id", manifestId);
+    el.setAttribute("id", absManifestId);
     wrap.appendChild(el);
     closeInfoPanelAfterZoom(el, 1500);
     return;
@@ -139,18 +141,21 @@ function launchClover(manifestId, cfUrl) {
   const fragment = cfUrl.includes("#") ? cfUrl.split("#")[1] : "";
   const cfBase   = cfUrl.includes("#") ? cfUrl.split("#")[0] : cfUrl;
 
+  // Fetch using the (possibly relative) manifestId so local dev hits local files
   fetch(manifestId)
     .then(r => r.json())
     .then(manifest => {
       const index = buildCanvasIndex(manifest);
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
-      el.setAttribute("id", contentStateToBlobId(buildCloverState(manifestId, canvasId, fragment)));
+      // Use manifest.id (absolute URL in the patched manifest) for the content state
+      const stateManifestId = manifest.id || absManifestId;
+      el.setAttribute("id", contentStateToBlobId(buildCloverState(stateManifestId, canvasId, fragment)));
       wrap.appendChild(el);
       closeInfoPanelAfterZoom(el, 5000);
     })
     .catch(() => {
-      el.setAttribute("id", manifestId);
+      el.setAttribute("id", absManifestId);
       wrap.appendChild(el);
       closeInfoPanelAfterZoom(el, 1500);
     });
@@ -176,7 +181,7 @@ if (!cf) {
           showError("No volume found for image ID " + imageId + ". The lookup table may be out of date.");
           return;
         }
-        launchClover(BASE_URL + "/manifests/" + uuid + "/manifest.json", cf);
+        launchClover("manifests/" + uuid + "/manifest.json", cf);
       })
       .catch(err => showError("Could not load volume index: " + err.message));
   }
