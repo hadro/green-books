@@ -109,7 +109,8 @@ function closeInfoPanelAfterZoom(el, fallbackMs) {
   function close() {
     if (done) return;
     done = true; obs.disconnect(); clearTimeout(timer);
-    const btn = el.querySelector('[data-value="manifest-back"]');
+    const root = el.shadowRoot || el;
+    const btn = root.querySelector('[data-value="manifest-back"]');
     if (btn) btn.click();
   }
   const obs = new MutationObserver(mutations => {
@@ -128,11 +129,12 @@ function launchClover(manifestId, cfUrl) {
   if (old) old.remove();
 
   const el = document.createElement("clover-viewer");
-  // Resolve to absolute so Clover can fetch when no content-state is used
-  const absManifestId = new URL(manifestId, location.href).href;
+  el.setAttribute("options", JSON.stringify({
+    showIIIFBadge: false, showDownload: false, informationPanel: { open: false }
+  }));
 
   if (!cfUrl) {
-    el.setAttribute("id", absManifestId);
+    el.setAttribute("id", manifestId);
     wrap.appendChild(el);
     closeInfoPanelAfterZoom(el, 1500);
     return;
@@ -141,21 +143,18 @@ function launchClover(manifestId, cfUrl) {
   const fragment = cfUrl.includes("#") ? cfUrl.split("#")[1] : "";
   const cfBase   = cfUrl.includes("#") ? cfUrl.split("#")[0] : cfUrl;
 
-  // Fetch using the (possibly relative) manifestId so local dev hits local files
   fetch(manifestId)
     .then(r => r.json())
     .then(manifest => {
       const index = buildCanvasIndex(manifest);
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
-      // Use absManifestId (resolved relative to this page) so Clover fetches from
-      // the same host — localhost in dev, GitHub Pages in production.
-      el.setAttribute("id", contentStateToBlobId(buildCloverState(absManifestId, canvasId, fragment)));
+      el.setAttribute("id", contentStateToBlobId(buildCloverState(manifestId, canvasId, fragment)));
       wrap.appendChild(el);
-      closeInfoPanelAfterZoom(el, 5000);
+      closeInfoPanelAfterZoom(el, 1500);
     })
     .catch(() => {
-      el.setAttribute("id", absManifestId);
+      el.setAttribute("id", manifestId);
       wrap.appendChild(el);
       closeInfoPanelAfterZoom(el, 1500);
     });
@@ -181,7 +180,7 @@ if (!cf) {
           showError("No volume found for image ID " + imageId + ". The lookup table may be out of date.");
           return;
         }
-        launchClover("manifests/" + uuid + "/manifest.json", cf);
+        launchClover(BASE_URL + "/manifests/" + uuid + "/manifest.json", cf);
       })
       .catch(err => showError("Could not load volume index: " + err.message));
   }
