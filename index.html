@@ -148,9 +148,9 @@ function launchClover(manifestId, cfUrl) {
       const index = buildCanvasIndex(manifest);
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
-      // Use manifest.id (absolute URL in the patched manifest) for the content state
-      const stateManifestId = manifest.id || absManifestId;
-      el.setAttribute("id", contentStateToBlobId(buildCloverState(stateManifestId, canvasId, fragment)));
+      // Use absManifestId (resolved relative to this page) so Clover fetches from
+      // the same host — localhost in dev, GitHub Pages in production.
+      el.setAttribute("id", contentStateToBlobId(buildCloverState(absManifestId, canvasId, fragment)));
       wrap.appendChild(el);
       closeInfoPanelAfterZoom(el, 5000);
     })

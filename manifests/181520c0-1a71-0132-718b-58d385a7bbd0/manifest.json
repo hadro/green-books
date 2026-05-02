@@ -186,25 +186,12 @@
       "The Green Book||9ea5d5b0-1117-0132-7932-58d385a7b928"
     ]
   },
-  "services": [
-    {
-      "context": "http://iiif.io/api/search/1/context.json",
-      "id": "https://api-collections.nypl.org/items/181520c0-1a71-0132-718b-58d385a7bbd0/search",
-      "type": "SearchService1",
-      "profile": "http://iiif.io/api/search/1/search",
-      "service": {
-        "id": "https://api-collections.nypl.org/items/181520c0-1a71-0132-718b-58d385a7bbd0/search/autocomplete",
-        "type": "AutoCompleteService1",
-        "profile": "http://iiif.io/api/search/1/autocomplete"
-      }
-    }
-  ],
   "behavior": [
     "paged"
   ],
   "items": [
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206210/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/0",
       "type": "Canvas",
       "label": {
         "en": [
@@ -286,11 +273,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206210/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206210/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206210/full/!760,760/0/default.jpg",
@@ -301,9 +288,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206210/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/0",
               "motivation": "painting"
             }
           ]
@@ -311,7 +301,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206211/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/1",
       "type": "Canvas",
       "label": {
         "en": [
@@ -393,11 +383,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206211/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/1/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206211/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/1/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206211/full/!760,760/0/default.jpg",
@@ -408,9 +398,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206211/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/1",
               "motivation": "painting"
             }
           ]
@@ -418,7 +411,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206212/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/2",
       "type": "Canvas",
       "label": {
         "en": [
@@ -500,11 +493,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206212/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/2/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206212/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/2/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206212/full/!760,760/0/default.jpg",
@@ -515,9 +508,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206212/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/2",
               "motivation": "painting"
             }
           ]
@@ -525,7 +521,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206213/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/3",
       "type": "Canvas",
       "label": {
         "en": [
@@ -607,11 +603,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206213/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/3/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206213/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/3/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206213/full/!760,760/0/default.jpg",
@@ -622,9 +618,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206213/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/3",
               "motivation": "painting"
             }
           ]
@@ -632,7 +631,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206214/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/4",
       "type": "Canvas",
       "label": {
         "en": [
@@ -714,11 +713,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206214/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/4/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206214/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/4/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206214/full/!760,760/0/default.jpg",
@@ -729,9 +728,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206214/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/4",
               "motivation": "painting"
             }
           ]
@@ -739,7 +741,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206215/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/5",
       "type": "Canvas",
       "label": {
         "en": [
@@ -821,11 +823,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206215/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/5/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206215/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/5/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206215/full/!760,760/0/default.jpg",
@@ -836,9 +838,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206215/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/5",
               "motivation": "painting"
             }
           ]
@@ -846,7 +851,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206216/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/6",
       "type": "Canvas",
       "label": {
         "en": [
@@ -928,11 +933,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206216/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/6/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206216/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/6/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206216/full/!760,760/0/default.jpg",
@@ -943,9 +948,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206216/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/6",
               "motivation": "painting"
             }
           ]
@@ -953,7 +961,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206217/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/7",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1035,11 +1043,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206217/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/7/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206217/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/7/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206217/full/!760,760/0/default.jpg",
@@ -1050,9 +1058,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206217/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/7",
               "motivation": "painting"
             }
           ]
@@ -1060,7 +1071,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206218/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/8",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1142,11 +1153,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206218/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/8/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206218/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/8/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206218/full/!760,760/0/default.jpg",
@@ -1157,9 +1168,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206218/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/8",
               "motivation": "painting"
             }
           ]
@@ -1167,7 +1181,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206219/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/9",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1249,11 +1263,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206219/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/9/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206219/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/9/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206219/full/!760,760/0/default.jpg",
@@ -1264,9 +1278,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206219/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/9",
               "motivation": "painting"
             }
           ]
@@ -1274,13 +1291,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0010_5206219_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0010_5206219_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206220/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/10",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1362,11 +1379,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206220/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/10/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206220/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/10/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206220/full/!760,760/0/default.jpg",
@@ -1377,9 +1394,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206220/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/10",
               "motivation": "painting"
             }
           ]
@@ -1387,13 +1407,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0011_5206220_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0011_5206220_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206221/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/11",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1475,11 +1495,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206221/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/11/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206221/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/11/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206221/full/!760,760/0/default.jpg",
@@ -1490,9 +1510,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206221/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/11",
               "motivation": "painting"
             }
           ]
@@ -1500,13 +1523,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0012_5206221_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0012_5206221_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206222/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/12",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1588,11 +1611,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206222/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/12/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206222/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/12/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206222/full/!760,760/0/default.jpg",
@@ -1603,9 +1626,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206222/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/12",
               "motivation": "painting"
             }
           ]
@@ -1613,13 +1639,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0013_5206222_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0013_5206222_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206223/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/13",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1701,11 +1727,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206223/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/13/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206223/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/13/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206223/full/!760,760/0/default.jpg",
@@ -1716,9 +1742,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206223/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/13",
               "motivation": "painting"
             }
           ]
@@ -1726,13 +1755,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0014_5206223_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0014_5206223_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206224/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/14",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1814,11 +1843,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206224/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/14/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206224/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/14/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206224/full/!760,760/0/default.jpg",
@@ -1829,9 +1858,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206224/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/14",
               "motivation": "painting"
             }
           ]
@@ -1839,13 +1871,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0015_5206224_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0015_5206224_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206225/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/15",
       "type": "Canvas",
       "label": {
         "en": [
@@ -1927,11 +1959,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206225/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/15/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206225/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/15/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206225/full/!760,760/0/default.jpg",
@@ -1942,9 +1974,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206225/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/15",
               "motivation": "painting"
             }
           ]
@@ -1952,13 +1987,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0016_5206225_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0016_5206225_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206226/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/16",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2040,11 +2075,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206226/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/16/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206226/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/16/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206226/full/!760,760/0/default.jpg",
@@ -2055,9 +2090,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2946,
+                "height": 4083,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206226/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/16",
               "motivation": "painting"
             }
           ]
@@ -2065,13 +2103,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0017_5206226_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0017_5206226_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206227/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/17",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2153,11 +2191,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206227/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/17/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206227/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/17/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206227/full/!760,760/0/default.jpg",
@@ -2168,9 +2206,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206227/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/17",
               "motivation": "painting"
             }
           ]
@@ -2178,13 +2219,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0018_5206227_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0018_5206227_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206228/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/18",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2266,11 +2307,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206228/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/18/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206228/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/18/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206228/full/!760,760/0/default.jpg",
@@ -2281,9 +2322,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2933,
+                "height": 4064,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206228/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/18",
               "motivation": "painting"
             }
           ]
@@ -2291,13 +2335,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0019_5206228_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0019_5206228_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206229/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/19",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2379,11 +2423,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206229/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/19/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206229/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/19/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206229/full/!760,760/0/default.jpg",
@@ -2394,9 +2438,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206229/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/19",
               "motivation": "painting"
             }
           ]
@@ -2404,13 +2451,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0020_5206229_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0020_5206229_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206230/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/20",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2492,11 +2539,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206230/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/20/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206230/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/20/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206230/full/!760,760/0/default.jpg",
@@ -2507,9 +2554,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2933,
+                "height": 4065,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206230/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/20",
               "motivation": "painting"
             }
           ]
@@ -2517,13 +2567,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0021_5206230_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0021_5206230_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206231/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/21",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2605,11 +2655,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206231/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/21/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206231/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/21/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206231/full/!760,760/0/default.jpg",
@@ -2620,9 +2670,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206231/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/21",
               "motivation": "painting"
             }
           ]
@@ -2630,13 +2683,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0022_5206231_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0022_5206231_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206232/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/22",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2718,11 +2771,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206232/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/22/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206232/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/22/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206232/full/!760,760/0/default.jpg",
@@ -2733,9 +2786,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2948,
+                "height": 4086,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206232/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/22",
               "motivation": "painting"
             }
           ]
@@ -2743,13 +2799,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0023_5206232_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0023_5206232_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206233/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/23",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2831,11 +2887,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206233/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/23/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206233/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/23/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206233/full/!760,760/0/default.jpg",
@@ -2846,9 +2902,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206233/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/23",
               "motivation": "painting"
             }
           ]
@@ -2856,13 +2915,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0024_5206233_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0024_5206233_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206234/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/24",
       "type": "Canvas",
       "label": {
         "en": [
@@ -2944,11 +3003,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206234/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/24/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206234/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/24/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206234/full/!760,760/0/default.jpg",
@@ -2959,9 +3018,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2934,
+                "height": 4067,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206234/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/24",
               "motivation": "painting"
             }
           ]
@@ -2969,13 +3031,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0025_5206234_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0025_5206234_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206235/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/25",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3057,11 +3119,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206235/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/25/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206235/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/25/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206235/full/!760,760/0/default.jpg",
@@ -3072,9 +3134,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206235/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/25",
               "motivation": "painting"
             }
           ]
@@ -3082,13 +3147,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0026_5206235_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0026_5206235_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206236/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/26",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3170,11 +3235,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206236/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/26/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206236/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/26/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206236/full/!760,760/0/default.jpg",
@@ -3185,9 +3250,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206236/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/26",
               "motivation": "painting"
             }
           ]
@@ -3195,13 +3263,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0027_5206236_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0027_5206236_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206237/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/27",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3283,11 +3351,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206237/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/27/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206237/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/27/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206237/full/!760,760/0/default.jpg",
@@ -3298,9 +3366,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206237/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/27",
               "motivation": "painting"
             }
           ]
@@ -3308,13 +3379,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0028_5206237_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0028_5206237_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206238/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/28",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3396,11 +3467,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206238/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/28/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206238/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/28/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206238/full/!760,760/0/default.jpg",
@@ -3411,9 +3482,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206238/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/28",
               "motivation": "painting"
             }
           ]
@@ -3421,13 +3495,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0029_5206238_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0029_5206238_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206239/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/29",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3509,11 +3583,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206239/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/29/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206239/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/29/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206239/full/!760,760/0/default.jpg",
@@ -3524,9 +3598,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206239/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/29",
               "motivation": "painting"
             }
           ]
@@ -3534,13 +3611,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0030_5206239_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0030_5206239_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206240/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/30",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3622,11 +3699,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206240/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/30/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206240/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/30/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206240/full/!760,760/0/default.jpg",
@@ -3637,9 +3714,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206240/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/30",
               "motivation": "painting"
             }
           ]
@@ -3647,13 +3727,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0031_5206240_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0031_5206240_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206241/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/31",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3735,11 +3815,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206241/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/31/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206241/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/31/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206241/full/!760,760/0/default.jpg",
@@ -3750,9 +3830,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206241/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/31",
               "motivation": "painting"
             }
           ]
@@ -3760,13 +3843,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0032_5206241_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0032_5206241_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206242/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/32",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3848,11 +3931,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206242/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/32/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206242/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/32/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206242/full/!760,760/0/default.jpg",
@@ -3863,9 +3946,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206242/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/32",
               "motivation": "painting"
             }
           ]
@@ -3873,13 +3959,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0033_5206242_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0033_5206242_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206243/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/33",
       "type": "Canvas",
       "label": {
         "en": [
@@ -3961,11 +4047,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206243/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/33/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206243/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/33/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206243/full/!760,760/0/default.jpg",
@@ -3976,9 +4062,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2926,
+                "height": 4117,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206243/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/33",
               "motivation": "painting"
             }
           ]
@@ -3986,13 +4075,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0034_5206243_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0034_5206243_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206244/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/34",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4074,11 +4163,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206244/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/34/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206244/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/34/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206244/full/!760,760/0/default.jpg",
@@ -4089,9 +4178,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206244/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/34",
               "motivation": "painting"
             }
           ]
@@ -4099,13 +4191,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0035_5206244_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0035_5206244_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206245/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/35",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4187,11 +4279,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206245/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/35/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206245/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/35/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206245/full/!760,760/0/default.jpg",
@@ -4202,9 +4294,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206245/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/35",
               "motivation": "painting"
             }
           ]
@@ -4212,13 +4307,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0036_5206245_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0036_5206245_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206246/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/36",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4300,11 +4395,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206246/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/36/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206246/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/36/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206246/full/!760,760/0/default.jpg",
@@ -4315,9 +4410,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206246/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/36",
               "motivation": "painting"
             }
           ]
@@ -4325,13 +4423,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0037_5206246_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0037_5206246_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206247/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/37",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4413,11 +4511,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206247/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/37/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206247/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/37/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206247/full/!760,760/0/default.jpg",
@@ -4428,9 +4526,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206247/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/37",
               "motivation": "painting"
             }
           ]
@@ -4438,13 +4539,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0038_5206247_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0038_5206247_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206248/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/38",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4526,11 +4627,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206248/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/38/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206248/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/38/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206248/full/!760,760/0/default.jpg",
@@ -4541,9 +4642,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2924,
+                "height": 4053,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206248/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/38",
               "motivation": "painting"
             }
           ]
@@ -4551,13 +4655,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0039_5206248_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0039_5206248_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206249/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/39",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4639,11 +4743,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206249/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/39/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206249/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/39/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206249/full/!760,760/0/default.jpg",
@@ -4654,9 +4758,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206249/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/39",
               "motivation": "painting"
             }
           ]
@@ -4664,13 +4771,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0040_5206249_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0040_5206249_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206250/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/40",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4752,11 +4859,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206250/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/40/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206250/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/40/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206250/full/!760,760/0/default.jpg",
@@ -4767,9 +4874,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206250/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/40",
               "motivation": "painting"
             }
           ]
@@ -4777,13 +4887,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0041_5206250_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0041_5206250_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206251/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/41",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4865,11 +4975,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206251/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/41/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206251/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/41/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206251/full/!760,760/0/default.jpg",
@@ -4880,9 +4990,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206251/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/41",
               "motivation": "painting"
             }
           ]
@@ -4890,13 +5003,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0042_5206251_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0042_5206251_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206252/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/42",
       "type": "Canvas",
       "label": {
         "en": [
@@ -4978,11 +5091,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206252/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/42/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206252/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/42/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206252/full/!760,760/0/default.jpg",
@@ -4993,9 +5106,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206252/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/42",
               "motivation": "painting"
             }
           ]
@@ -5003,7 +5119,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206253/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/43",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5085,11 +5201,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206253/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/43/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206253/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/43/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206253/full/!760,760/0/default.jpg",
@@ -5100,9 +5216,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206253/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/43",
               "motivation": "painting"
             }
           ]
@@ -5110,7 +5229,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206254/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/44",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5192,11 +5311,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206254/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/44/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206254/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/44/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206254/full/!760,760/0/default.jpg",
@@ -5207,9 +5326,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206254/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/44",
               "motivation": "painting"
             }
           ]
@@ -5217,13 +5339,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0045_5206254_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0045_5206254_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206255/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/45",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5305,11 +5427,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206255/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/45/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206255/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/45/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206255/full/!760,760/0/default.jpg",
@@ -5320,9 +5442,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206255/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/45",
               "motivation": "painting"
             }
           ]
@@ -5330,7 +5455,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206256/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/46",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5412,11 +5537,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206256/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/46/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206256/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/46/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206256/full/!760,760/0/default.jpg",
@@ -5427,9 +5552,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206256/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/46",
               "motivation": "painting"
             }
           ]
@@ -5437,7 +5565,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206257/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/47",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5519,11 +5647,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206257/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/47/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206257/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/47/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206257/full/!760,760/0/default.jpg",
@@ -5534,9 +5662,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206257/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/47",
               "motivation": "painting"
             }
           ]
@@ -5544,13 +5675,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0048_5206257_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0048_5206257_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206258/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/48",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5632,11 +5763,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206258/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/48/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206258/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/48/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206258/full/!760,760/0/default.jpg",
@@ -5647,9 +5778,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206258/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/48",
               "motivation": "painting"
             }
           ]
@@ -5657,13 +5791,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0049_5206258_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0049_5206258_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206259/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/49",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5745,11 +5879,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206259/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/49/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206259/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/49/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206259/full/!760,760/0/default.jpg",
@@ -5760,9 +5894,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206259/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/49",
               "motivation": "painting"
             }
           ]
@@ -5770,13 +5907,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0050_5206259_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0050_5206259_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206260/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/50",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5858,11 +5995,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206260/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/50/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206260/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/50/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206260/full/!760,760/0/default.jpg",
@@ -5873,9 +6010,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2939,
+                "height": 4073,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206260/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/50",
               "motivation": "painting"
             }
           ]
@@ -5883,13 +6023,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0051_5206260_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0051_5206260_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206261/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/51",
       "type": "Canvas",
       "label": {
         "en": [
@@ -5971,11 +6111,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206261/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/51/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206261/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/51/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206261/full/!760,760/0/default.jpg",
@@ -5986,9 +6126,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206261/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/51",
               "motivation": "painting"
             }
           ]
@@ -5996,13 +6139,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0052_5206261_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0052_5206261_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206262/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/52",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6084,11 +6227,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206262/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/52/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206262/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/52/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206262/full/!760,760/0/default.jpg",
@@ -6099,9 +6242,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206262/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/52",
               "motivation": "painting"
             }
           ]
@@ -6109,13 +6255,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0053_5206262_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0053_5206262_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206263/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/53",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6197,11 +6343,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206263/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/53/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206263/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/53/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206263/full/!760,760/0/default.jpg",
@@ -6212,9 +6358,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206263/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/53",
               "motivation": "painting"
             }
           ]
@@ -6222,7 +6371,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206264/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/54",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6304,11 +6453,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206264/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/54/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206264/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/54/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206264/full/!760,760/0/default.jpg",
@@ -6319,9 +6468,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206264/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/54",
               "motivation": "painting"
             }
           ]
@@ -6329,13 +6481,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0055_5206264_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0055_5206264_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206265/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/55",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6417,11 +6569,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206265/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/55/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206265/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/55/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206265/full/!760,760/0/default.jpg",
@@ -6432,9 +6584,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206265/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/55",
               "motivation": "painting"
             }
           ]
@@ -6442,7 +6597,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206266/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/56",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6524,11 +6679,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206266/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/56/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206266/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/56/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206266/full/!760,760/0/default.jpg",
@@ -6539,9 +6694,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206266/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/56",
               "motivation": "painting"
             }
           ]
@@ -6549,7 +6707,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206267/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/57",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6631,11 +6789,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206267/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/57/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206267/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/57/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206267/full/!760,760/0/default.jpg",
@@ -6646,9 +6804,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206267/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/57",
               "motivation": "painting"
             }
           ]
@@ -6656,7 +6817,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206268/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/58",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6738,11 +6899,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206268/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/58/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206268/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/58/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206268/full/!760,760/0/default.jpg",
@@ -6753,9 +6914,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206268/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/58",
               "motivation": "painting"
             }
           ]
@@ -6763,13 +6927,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0059_5206268_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0059_5206268_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206269/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/59",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6851,11 +7015,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206269/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/59/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206269/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/59/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206269/full/!760,760/0/default.jpg",
@@ -6866,9 +7030,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206269/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/59",
               "motivation": "painting"
             }
           ]
@@ -6876,13 +7043,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0060_5206269_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0060_5206269_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206270/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/60",
       "type": "Canvas",
       "label": {
         "en": [
@@ -6964,11 +7131,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206270/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/60/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206270/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/60/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206270/full/!760,760/0/default.jpg",
@@ -6979,9 +7146,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206270/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/60",
               "motivation": "painting"
             }
           ]
@@ -6989,13 +7159,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0061_5206270_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0061_5206270_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206271/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/61",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7077,11 +7247,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206271/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/61/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206271/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/61/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206271/full/!760,760/0/default.jpg",
@@ -7092,9 +7262,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206271/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/61",
               "motivation": "painting"
             }
           ]
@@ -7102,13 +7275,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0062_5206271_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0062_5206271_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206272/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/62",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7190,11 +7363,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206272/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/62/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206272/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/62/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206272/full/!760,760/0/default.jpg",
@@ -7205,9 +7378,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206272/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/62",
               "motivation": "painting"
             }
           ]
@@ -7215,13 +7391,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0063_5206272_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0063_5206272_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206273/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/63",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7303,11 +7479,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206273/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/63/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206273/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/63/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206273/full/!760,760/0/default.jpg",
@@ -7318,9 +7494,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206273/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/63",
               "motivation": "painting"
             }
           ]
@@ -7328,13 +7507,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0064_5206273_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0064_5206273_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206274/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/64",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7416,11 +7595,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206274/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/64/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206274/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/64/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206274/full/!760,760/0/default.jpg",
@@ -7431,9 +7610,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2944,
+                "height": 4080,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206274/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/64",
               "motivation": "painting"
             }
           ]
@@ -7441,13 +7623,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0065_5206274_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0065_5206274_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206275/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/65",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7529,11 +7711,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206275/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/65/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206275/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/65/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206275/full/!760,760/0/default.jpg",
@@ -7544,9 +7726,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206275/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/65",
               "motivation": "painting"
             }
           ]
@@ -7554,13 +7739,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0066_5206275_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0066_5206275_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206276/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/66",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7642,11 +7827,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206276/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/66/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206276/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/66/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206276/full/!760,760/0/default.jpg",
@@ -7657,9 +7842,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206276/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/66",
               "motivation": "painting"
             }
           ]
@@ -7667,13 +7855,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0067_5206276_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0067_5206276_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206277/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/67",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7755,11 +7943,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206277/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/67/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206277/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/67/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206277/full/!760,760/0/default.jpg",
@@ -7770,9 +7958,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206277/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/67",
               "motivation": "painting"
             }
           ]
@@ -7780,13 +7971,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0068_5206277_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0068_5206277_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206278/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/68",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7868,11 +8059,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206278/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/68/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206278/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/68/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206278/full/!760,760/0/default.jpg",
@@ -7883,9 +8074,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4075,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206278/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/68",
               "motivation": "painting"
             }
           ]
@@ -7893,13 +8087,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0069_5206278_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0069_5206278_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206279/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/69",
       "type": "Canvas",
       "label": {
         "en": [
@@ -7981,11 +8175,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206279/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/69/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206279/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/69/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206279/full/!760,760/0/default.jpg",
@@ -7996,9 +8190,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206279/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/69",
               "motivation": "painting"
             }
           ]
@@ -8006,13 +8203,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0070_5206279_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0070_5206279_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206280/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/70",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8094,11 +8291,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206280/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/70/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206280/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/70/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206280/full/!760,760/0/default.jpg",
@@ -8109,9 +8306,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206280/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/70",
               "motivation": "painting"
             }
           ]
@@ -8119,7 +8319,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206281/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/71",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8201,11 +8401,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206281/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/71/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206281/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/71/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206281/full/!760,760/0/default.jpg",
@@ -8216,9 +8416,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206281/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/71",
               "motivation": "painting"
             }
           ]
@@ -8226,7 +8429,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206282/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/72",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8308,11 +8511,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206282/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/72/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206282/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/72/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206282/full/!760,760/0/default.jpg",
@@ -8323,9 +8526,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206282/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/72",
               "motivation": "painting"
             }
           ]
@@ -8333,13 +8539,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0073_5206282_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0073_5206282_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206283/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/73",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8421,11 +8627,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206283/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/73/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206283/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/73/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206283/full/!760,760/0/default.jpg",
@@ -8436,9 +8642,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206283/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/73",
               "motivation": "painting"
             }
           ]
@@ -8446,7 +8655,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206284/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/74",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8528,11 +8737,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206284/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/74/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206284/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/74/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206284/full/!760,760/0/default.jpg",
@@ -8543,9 +8752,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206284/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/74",
               "motivation": "painting"
             }
           ]
@@ -8553,13 +8765,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0075_5206284_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0075_5206284_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206285/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/75",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8641,11 +8853,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206285/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/75/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206285/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/75/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206285/full/!760,760/0/default.jpg",
@@ -8656,9 +8868,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206285/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/75",
               "motivation": "painting"
             }
           ]
@@ -8666,13 +8881,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0076_5206285_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0076_5206285_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206286/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/76",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8754,11 +8969,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206286/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/76/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206286/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/76/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206286/full/!760,760/0/default.jpg",
@@ -8769,9 +8984,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2952,
+                "height": 4092,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206286/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/76",
               "motivation": "painting"
             }
           ]
@@ -8779,13 +8997,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0077_5206286_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0077_5206286_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206287/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/77",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8867,11 +9085,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206287/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/77/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206287/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/77/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206287/full/!760,760/0/default.jpg",
@@ -8882,9 +9100,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206287/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/77",
               "motivation": "painting"
             }
           ]
@@ -8892,13 +9113,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0078_5206287_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0078_5206287_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206288/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/78",
       "type": "Canvas",
       "label": {
         "en": [
@@ -8980,11 +9201,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206288/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/78/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206288/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/78/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206288/full/!760,760/0/default.jpg",
@@ -8995,9 +9216,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206288/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/78",
               "motivation": "painting"
             }
           ]
@@ -9005,7 +9229,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206289/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/79",
       "type": "Canvas",
       "label": {
         "en": [
@@ -9087,11 +9311,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206289/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/79/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206289/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/79/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206289/full/!760,760/0/default.jpg",
@@ -9102,9 +9326,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206289/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/79",
               "motivation": "painting"
             }
           ]
@@ -9112,13 +9339,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0080_5206289_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0080_5206289_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206290/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/80",
       "type": "Canvas",
       "label": {
         "en": [
@@ -9200,11 +9427,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206290/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/80/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206290/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/80/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206290/full/!760,760/0/default.jpg",
@@ -9215,9 +9442,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206290/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/80",
               "motivation": "painting"
             }
           ]
@@ -9225,7 +9455,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206291/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/81",
       "type": "Canvas",
       "label": {
         "en": [
@@ -9307,11 +9537,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206291/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/81/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206291/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/81/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206291/full/!760,760/0/default.jpg",
@@ -9322,9 +9552,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2940,
+                "height": 4137,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206291/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/81",
               "motivation": "painting"
             }
           ]
@@ -9332,13 +9565,13 @@
       ],
       "annotations": [
         {
-          "id": "https://hadro.github.io/green-books/0082_5206291_gemini-3.1-flash-lite-preview_box_annotations.json",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/0082_5206291_gemini-3.1-flash-lite-preview_box_annotations.json",
           "type": "AnnotationPage"
         }
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206292/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/82",
       "type": "Canvas",
       "label": {
         "en": [
@@ -9420,11 +9653,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206292/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/82/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206292/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/82/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206292/full/!760,760/0/default.jpg",
@@ -9435,9 +9668,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206292/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/82",
               "motivation": "painting"
             }
           ]
@@ -9445,7 +9681,7 @@
       ]
     },
     {
-      "id": "https://iiif.nypl.org/iiif/3/5206293/full/!760,760/0/default.jpg",
+      "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/83",
       "type": "Canvas",
       "label": {
         "en": [
@@ -9527,11 +9763,11 @@
       ],
       "items": [
         {
-          "id": "https://iiif.nypl.org/iiif/3/5206293/full/!760,760/0/default.jpg",
+          "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/83/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://iiif.nypl.org/iiif/3/5206293/full/!760,760/0/default.jpg",
+              "id": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/83/page/0/annotation/0",
               "type": "Annotation",
               "body": {
                 "id": "https://iiif.nypl.org/iiif/3/5206293/full/!760,760/0/default.jpg",
@@ -9542,9 +9778,12 @@
                     "type": "ImageService3",
                     "profile": "level2"
                   }
-                ]
+                ],
+                "width": 2560,
+                "height": 2560,
+                "format": "image/jpeg"
               },
-              "target": "https://iiif.nypl.org/iiif/3/5206293/full/!760,760/0/default.jpg",
+              "target": "https://hadro.github.io/green-books/manifests/181520c0-1a71-0132-718b-58d385a7bbd0/manifest.json/canvas/83",
               "motivation": "painting"
             }
           ]
