@@ -932,7 +932,16 @@ function renderTableBody() {
   }
 
   const noResults = document.getElementById("no-results");
-  noResults.style.display = sorted.length === 0 ? "block" : "none";
+  if (sorted.length === 0) {
+    noResults.style.display = "block";
+    if (ALL_ENTRIES.length === 0) {
+      noResults.innerHTML = '<p style="font-size:14px;color:#595959;margin:0">Loading entries…</p>';
+    } else {
+      noResults.innerHTML = 'No entries match the current filters.<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">Clear all filters</button>';
+    }
+  } else {
+    noResults.style.display = "none";
+  }
 }
 
 // ── Render: table head (sort row + filter row) ──────────────────────────────
@@ -1395,7 +1404,7 @@ document.getElementById("export-btn").addEventListener("click", () => {
 });
 
 // ── Clear all filters (empty-state button) ─────────────────────────────────
-document.getElementById("clear-all-btn").addEventListener("click", () => {
+function clearAllFilters() {
   _pushNextHistory = true;
   Object.values(facetState).forEach(s => s.clear());
   colFilters = {};
@@ -1406,6 +1415,11 @@ document.getElementById("clear-all-btn").addEventListener("click", () => {
   searchQuery = "";
   document.getElementById("search").value = "";
   renderAll();
+}
+document.getElementById("clear-all-btn").addEventListener("click", clearAllFilters);
+// Delegated handler covers the dynamically-recreated button inside #no-results
+document.getElementById("no-results").addEventListener("click", e => {
+  if (e.target && e.target.id === "clear-all-btn") clearAllFilters();
 });
 
 // ── Charts toggle ──────────────────────────────────────────────────────────
@@ -1902,13 +1916,6 @@ document.getElementById('detail-close').addEventListener('click', () => {
       result.push(obj);
     }
     return result;
-  }
-
-  // Show loading state in the no-results panel (already visible since ALL_ENTRIES=[])
-  const noRes = document.getElementById('no-results');
-  if (noRes) {
-    noRes.style.display = 'block';
-    noRes.innerHTML = '<p style="font-size:14px;color:#595959;margin:0">Loading entries…</p>';
   }
 
   fetch(GB_CSV_URL)
