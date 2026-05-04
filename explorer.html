@@ -840,7 +840,13 @@ function renderTableBody() {
 
   const tbody = document.getElementById("table-body");
   tbody.innerHTML = "";
-  sorted.slice(0, 2000).forEach(row => {
+  const WINDOW = 2000;
+  let winStart = 0;
+  if (selectedIdx !== null) {
+    const selPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === selectedIdx);
+    if (selPos > WINDOW - 200) winStart = Math.max(0, selPos - Math.floor(WINDOW / 2));
+  }
+  sorted.slice(winStart, winStart + WINDOW).forEach(row => {
     const tr = document.createElement("tr");
     const isSelected = ALL_ENTRIES.indexOf(row) === selectedIdx;
     if (isSelected) tr.classList.add("selected");
@@ -1513,14 +1519,27 @@ function renderAll() {
 renderFillRate();
 
 // ── Random entry ────────────────────────────────────────────────────────────
+function scrollToSelected(delayMs = 0) {
+  setTimeout(() => {
+    const tr = document.querySelector('#table-body tr.selected');
+    const wrap = document.getElementById('table-wrap');
+    if (!tr || !wrap) return;
+    const trRect = tr.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    wrap.scrollTop += trRect.top - wrapRect.top - (wrap.clientHeight / 2) + (tr.offsetHeight / 2);
+  }, delayMs);
+}
+
 document.getElementById("random-btn").addEventListener("click", () => {
-  const pool = getSorted(getFiltered());
+  const all = getSorted(getFiltered());
+  const pool = all.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
   if (!pool.length) return;
   const r = pool[Math.floor(Math.random() * pool.length)];
   selectedIdx = ALL_ENTRIES.indexOf(r);
   _detailOpener = null;
   showDetail(r);
   renderTableBody();
+  scrollToSelected();
 });
 
 // ── Back/forward navigation via popstate ────────────────────────────────────
@@ -1545,6 +1564,7 @@ window.addEventListener("popstate", function () {
       selectedIdx = ALL_ENTRIES.indexOf(match);
       showDetail(match);
       renderTableBody();
+      scrollToSelected();
     }
   }
 });
@@ -1742,6 +1762,10 @@ document.getElementById('detail-close').addEventListener('click', () => {
   selectedIdx = ALL_ENTRIES.indexOf(match);
   showDetail(match);
   renderTableBody();
+  history.scrollRestoration = 'manual';
+  const app = document.getElementById('app');
+  if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+  scrollToSelected(100);
 })();
 
 // ── About modal ──────────────────────────────────────────────────────────────
@@ -1874,6 +1898,9 @@ document.getElementById('detail-close').addEventListener('click', () => {
           selectedIdx = ALL_ENTRIES.indexOf(match);
           showDetail(match);
           renderTableBody();
+          const app = document.getElementById('app');
+          if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+          scrollToSelected(100);
         }
       }
     })
@@ -1893,6 +1920,7 @@ document.getElementById('detail-close').addEventListener('click', () => {
 document.getElementById('random-btn-hero').addEventListener('click', () => {
   document.getElementById('random-btn').click();
   setTimeout(() => document.getElementById('app').scrollIntoView({ behavior: 'smooth' }), 50);
+  scrollToSelected(500);
 });
 document.getElementById('caveat-about-btn').addEventListener('click', () => {
   document.getElementById('about-btn').click();
@@ -1911,7 +1939,7 @@ function gbUpdateHero() {
   document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
 
-  const withImg = ALL_ENTRIES.filter(r => r.canvas_fragment);
+  const withImg = ALL_ENTRIES.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
   if (!withImg.length) return;
   const featured = [], seen = new Set();
   for (let t = 0; t < 800 && featured.length < 3; t++) {
@@ -1953,6 +1981,7 @@ function gbUpdateHero() {
       showDetail(r);
       renderTableBody();
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+      scrollToSelected(500);
     });
     stack.appendChild(card);
   });
