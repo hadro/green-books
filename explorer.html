@@ -1212,8 +1212,15 @@ function showDetail(row) {
 document.getElementById("detail-close").addEventListener("click", () => {
   document.getElementById("detail").classList.remove("open");
   const prevIdx = selectedIdx;
+  const wrap = document.getElementById("table-wrap");
+  const savedScroll = wrap ? wrap.scrollTop : 0;
   selectedIdx = null;
+  // Keep the render window anchored to the previously-selected row so the
+  // table doesn't jump back to row 0 after deselection.
+  _yearScrollAnchor = prevIdx;
   renderTable();
+  _yearScrollAnchor = null;
+  if (wrap) wrap.scrollTop = savedScroll;
   if (prevIdx !== null) {
     const prevRow = document.querySelector('#table-body tr[data-idx="' + prevIdx + '"]');
     if (prevRow) prevRow.focus();
