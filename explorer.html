@@ -325,10 +325,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .detail-fields { display: grid; grid-template-columns: 80px 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 13px; }
 .df-key { font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
 .df-val { color: var(--gb-ink); font-size: 13px; word-break: break-word; }
-.detail-source { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+#detail-page-context { text-align: right; margin-bottom: 8px; min-height: 0; }
+#detail-page-context:empty { display: none; }
+#detail-page-context a { font-family: var(--gb-font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
+#detail-page-context a:hover { border-bottom-style: dashed; }
+.detail-source { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); display: flex; flex-direction: column; gap: 8px; }
 .detail-source a { font-family: var(--gb-font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
 .detail-source a:hover { border-bottom-style: dashed; }
-#detail-also-in { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+#detail-also-in { margin-top: 16px; padding-top: 16px; }
 .also-in-label { font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 10px; font-weight: 500; }
 .also-year { display: inline-block; padding: 4px 10px; border-radius: 2px; font-family: var(--gb-font-mono); font-size: 11px; cursor: pointer; margin: 2px 3px 2px 0; background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink); transition: all 0.1s ease; }
 .also-year:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
@@ -594,6 +598,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <button id="detail-close" aria-label="Close detail panel">&#x2715;</button>
       </div>
       <div id="detail-inner">
+        <div id="detail-page-context"></div>
         <h2 id="detail-title"></h2>
         <div class="detail-fields" id="detail-fields"></div>
         <div id="detail-also-in" style="display:none"></div>
@@ -1162,7 +1167,7 @@ function showDetail(row) {
     img.alt = `Scan showing ${entryName}`;
     img.style.display = "block";
     img.onerror = () => { img.style.display = "none"; };
-    thumbLink.href = csUrl || viewerUrl(row.canvas_fragment) || "#";
+    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}`;
     thumbLink.title = "View this entry highlighted in the original scan";
     thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
   } else {
@@ -1187,16 +1192,18 @@ function showDetail(row) {
     fields.appendChild(v);
   });
 
+  const pageCtx = document.getElementById("detail-page-context");
   const src = document.getElementById("detail-source");
   if (row.canvas_fragment) {
+    pageCtx.innerHTML = `<a href="index.html?cf=${encodeURIComponent(row.canvas_fragment)}" target="_blank">View in page context ↗</a>`;
     const links = [];
     const srcUrl = viewerUrl(row.canvas_fragment);
-    if (srcUrl) links.push(`<a href="${srcUrl}" target="_blank">Open source page ↗</a>`);
+    if (srcUrl) links.push(`<a href="${srcUrl}" target="_blank">Open original NYPL source page ↗</a>`);
     const csUrl = contentStateUrl(row.canvas_fragment);
     if (csUrl) links.push(`<a href="${csUrl}" target="_blank">View in source document ↗</a>`);
-    links.push(`<a href="index.html?cf=${encodeURIComponent(row.canvas_fragment)}" target="_blank">View in page context ↗</a>`);
-    src.innerHTML = links.join(" · ");
+    src.innerHTML = links.length ? `<div class="also-in-label">Source</div>` + links.join("") : "";
   } else {
+    pageCtx.innerHTML = "";
     src.innerHTML = "";
   }
   document.getElementById("detail-close").focus();
