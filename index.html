@@ -4,42 +4,77 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Green Books Directory Explorer — IIIF Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --gb-paper:       #faf8f3;
+      --gb-paper-2:     #f0ece2;
+      --gb-ink:         #161310;
+      --gb-ink-soft:    #54504a;
+      --gb-ink-faint:   #9a948a;
+      --gb-rule-faint:  rgba(22, 19, 16, 0.12);
+      --gb-accent:      #1d4d2e;
+      --gb-highlight:   #c89028;
+      --gb-font-display: "Newsreader", Georgia, serif;
+      --gb-font-body:   "Source Sans 3", system-ui, sans-serif;
+      --gb-font-mono:   "JetBrains Mono", ui-monospace, monospace;
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: #1a1a1a; color: #f0f0f0;
-      height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+      background: var(--gb-paper);
+      font-family: var(--gb-font-body);
+      display: flex; flex-direction: column;
     }
     header {
-      background: #111; border-bottom: 1px solid #333;
-      padding: 8px 16px; display: flex; align-items: center;
-      gap: 12px; flex-shrink: 0; flex-wrap: wrap;
+      flex-shrink: 0;
+      display: flex; align-items: center; gap: 16px;
+      padding: 10px 24px;
+      background: var(--gb-paper-2);
+      border-bottom: 1px solid var(--gb-rule-faint);
     }
-    header h1 { font-size: 14px; font-weight: 700; color: #f0c040; }
-    header a { font-size: 12px; color: #aaa; text-decoration: none; margin-left: auto; }
-    header a:hover { color: #fff; }
-    #viewer-wrap { flex: 1; position: relative; overflow: hidden; }
+    header h1 {
+      font-family: var(--gb-font-display);
+      font-weight: 300; font-size: 17px;
+      color: var(--gb-ink); letter-spacing: -0.01em;
+    }
+    header h1 em { font-style: italic; color: var(--gb-accent); }
+    header a {
+      margin-left: auto;
+      font-family: var(--gb-font-mono); font-size: 11px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--gb-ink-soft); text-decoration: none;
+    }
+    header a:hover { color: var(--gb-accent); }
+    #viewer-wrap { flex: 1; min-height: 0; position: relative; }
     clover-viewer { display: block; position: absolute; inset: 0; }
+    clover-viewer > div { height: 100%; }
     #landing, #error {
       display: none; position: absolute; inset: 0;
       align-items: center; justify-content: center;
       flex-direction: column; gap: 16px; padding: 32px; text-align: center;
     }
     #landing.visible, #error.visible { display: flex; }
-    #landing p { font-size: 14px; color: #aaa; max-width: 480px; line-height: 1.6; }
-    #landing a {
-      display: inline-block; padding: 10px 20px; background: #f0c040; color: #111;
-      border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px;
+    #landing p {
+      font-family: var(--gb-font-display); font-size: 16px;
+      color: var(--gb-ink-soft); max-width: 480px; line-height: 1.6;
     }
-    #landing a:hover { background: #ffd54f; }
-    #error p { font-size: 13px; color: #f88; max-width: 520px; line-height: 1.5; }
+    #landing a {
+      display: inline-block; padding: 10px 22px;
+      background: var(--gb-accent); color: var(--gb-paper);
+      border-radius: 3px; text-decoration: none;
+      font-family: var(--gb-font-body); font-weight: 600; font-size: 14px;
+    }
+    #landing a:hover { background: var(--gb-accent-deep, #143a22); }
+    #error p { font-size: 13px; color: #b00; max-width: 520px; line-height: 1.5; }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>The Green Book Directory Explorer</h1>
+  <h1>The <em>Green Book</em> Directory Explorer</h1>
   <a href="explorer.html">← Back to explorer</a>
 </header>
 
@@ -47,7 +82,7 @@
   <div id="landing">
     <p>This viewer opens specific pages from the digitized Green Book volumes.
        Use the explorer to find an entry and click its source link to open it here.</p>
-    <a href="explorer">Open the Green Book Explorer</a>
+    <a href="explorer.html">Open the Green Book Explorer</a>
   </div>
   <div id="error"><p id="error-msg"></p></div>
 </div>
@@ -129,9 +164,6 @@ function launchClover(manifestId, cfUrl) {
   if (old) old.remove();
 
   const el = document.createElement("clover-viewer");
-  el.setAttribute("options", JSON.stringify({
-    showIIIFBadge: false, showDownload: false, informationPanel: { open: false }
-  }));
 
   if (!cfUrl) {
     el.setAttribute("id", manifestId);
