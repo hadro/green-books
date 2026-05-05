@@ -313,6 +313,7 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 /* ── Detail panel ── */
+#main.detail-open #table-wrap { padding-right: 420px; }
 #detail { position: fixed; top: 0; right: 0; width: 420px; min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
 #detail.open { display: flex; }
 .detail-hero { position: relative; height: 280px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
@@ -703,6 +704,7 @@ let sortDir = 1;  // 1 = asc, -1 = desc
 let selectedIdx = null;
 let _detailOpener = null;
 let _yearScrollAnchor = null;  // ALL_ENTRIES index used to center window for year-jump (no selection change)
+let _winStart = 0;             // persists across renders so re-selecting an in-window row doesn't re-center
 let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
 let colFilters = {};  // fieldName → filter string
 const showAllFacets = new Set();  // field names with expanded value list
@@ -740,7 +742,7 @@ function loadVolume(label) {
   showAllFacets.clear();
   try { sessionStorage.removeItem('showAllFacets'); } catch(e) {}
   document.getElementById("search").value = "";
-  document.getElementById("detail").classList.remove("open");
+  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   document.getElementById("doc-title").textContent = label;
   document.getElementById("doc-sub").textContent =
     ALL_ENTRIES.length.toLocaleString() + " entries";
@@ -863,13 +865,21 @@ function renderTableBody() {
   tbody.innerHTML = "";
   const WINDOW = 2000;
   let winStart = 0;
-  if (selectedIdx !== null) {
-    const selPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === selectedIdx);
-    if (selPos > WINDOW - 200) winStart = Math.max(0, selPos - Math.floor(WINDOW / 2));
-  } else if (_yearScrollAnchor !== null) {
+  if (_yearScrollAnchor !== null) {
+    // Year-jump and close-restore always take priority over selection centering.
     const anchorPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === _yearScrollAnchor);
     if (anchorPos >= 0 && anchorPos > WINDOW - 200) winStart = Math.max(0, anchorPos - Math.floor(WINDOW / 2));
+  } else if (selectedIdx !== null) {
+    const selPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === selectedIdx);
+    if (selPos >= 0) {
+      if (selPos >= _winStart && selPos < _winStart + WINDOW) {
+        winStart = _winStart;  // row already in window — don't re-center
+      } else if (selPos > WINDOW - 200) {
+        winStart = Math.max(0, selPos - Math.floor(WINDOW / 2));
+      }
+    }
   }
+  _winStart = winStart;
   sorted.slice(winStart, winStart + WINDOW).forEach(row => {
     const tr = document.createElement("tr");
     const isSelected = ALL_ENTRIES.indexOf(row) === selectedIdx;
@@ -900,10 +910,23 @@ function renderTableBody() {
     }
     tr.appendChild(tdSrc);
     const rowHandler = () => {
+      const wrap = document.getElementById('table-wrap');
+      const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
+      const trRect = tr.getBoundingClientRect();
+      const alreadyVisible = wrapRect &&
+        trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
+      const savedScroll = wrap ? wrap.scrollTop : 0;
       selectedIdx = ALL_ENTRIES.indexOf(row);
       _detailOpener = tr;
       showDetail(row);
       renderTableBody();
+      if (wrap) {
+        if (alreadyVisible) {
+          wrap.scrollTop = savedScroll;
+        } else {
+          scrollToSelected();
+        }
+      }
     };
     tr.addEventListener("click", rowHandler);
     tr.addEventListener("keydown", e => {
@@ -1152,6 +1175,7 @@ function thumbUrl(row) {
 function showDetail(row) {
   const panel = document.getElementById("detail");
   panel.classList.add("open");
+  document.getElementById("main").classList.add("detail-open");
 
   const nameField = displayFields.find(f => f.name.includes("name") || f.name.includes("title"));
   document.getElementById("detail-title").textContent =
@@ -1195,7 +1219,7 @@ function showDetail(row) {
   const pageCtx = document.getElementById("detail-page-context");
   const src = document.getElementById("detail-source");
   if (row.canvas_fragment) {
-    pageCtx.innerHTML = `<a href="index.html?cf=${encodeURIComponent(row.canvas_fragment)}" target="_blank">View in page context ↗</a>`;
+    pageCtx.innerHTML = `<a href="index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}" target="_blank">View in page context ↗</a>`;
     const links = [];
     const srcUrl = viewerUrl(row.canvas_fragment);
     if (srcUrl) links.push(`<a href="${srcUrl}" target="_blank">Open original NYPL source page ↗</a>`);
@@ -1210,7 +1234,7 @@ function showDetail(row) {
 }
 
 document.getElementById("detail-close").addEventListener("click", () => {
-  document.getElementById("detail").classList.remove("open");
+  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   const prevIdx = selectedIdx;
   const wrap = document.getElementById("table-wrap");
   const savedScroll = wrap ? wrap.scrollTop : 0;
@@ -1563,7 +1587,7 @@ function applyHashState() {
 function renderAll() {
   // Auto-close the detail panel whenever filters/search change so users
   // never see a stale record juxtaposed against a new result set.
-  document.getElementById("detail").classList.remove("open");
+  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   selectedIdx = null;
   renderFacetSidebar();
   renderCharts();
@@ -1802,7 +1826,7 @@ showDetail = function (row) {
       document.getElementById("search").value = nfVal;
       if (row.city) colFilters["city"] = row.city;
       if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
-      document.getElementById("detail").classList.remove("open");
+      document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
       selectedIdx = null;
       _pushNextHistory = true;
       renderAll();
