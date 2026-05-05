@@ -15,7 +15,7 @@
   --gb-paper-2:      #f0ece2;
   --gb-ink:          #161310;
   --gb-ink-soft:     #54504a;
-  --gb-ink-faint:    #9a948a;
+  --gb-ink-faint:    #767069;
   --gb-rule:         #161310;
   --gb-rule-faint:   rgba(22, 19, 16, 0.12);
   --gb-accent:       #1d4d2e;
@@ -169,11 +169,11 @@ a { color: var(--gb-accent); }
   display: flex; flex-direction: column; overflow: hidden;
 }
 #sidebar-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--gb-rule-faint); }
-#sidebar-header h1 {
+.sidebar-brand {
   font-family: var(--gb-font-mono); font-size: 10px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.16em; color: var(--gb-ink-faint); margin: 0 0 8px;
 }
-#sidebar-header h1 a { color: inherit; text-decoration: none; }
+.sidebar-brand a { color: inherit; text-decoration: none; }
 #sidebar-header h2 { font-family: var(--gb-font-display); font-size: 14px; font-weight: 400; color: var(--gb-ink); margin: 0 0 2px; letter-spacing: -0.005em; }
 .gb-sidebar-desc { font-size: 12px; line-height: 1.45; color: var(--gb-ink-soft); margin: 6px 0 0; font-family: var(--gb-font-body); }
 #sidebar-header .sub { font-size: 11px; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); letter-spacing: 0.04em; }
@@ -246,7 +246,7 @@ a { color: var(--gb-accent); }
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 #search::placeholder { color: var(--gb-ink-faint); font-style: italic; }
-#search:focus { border-color: var(--gb-ink); background: var(--gb-paper-2); }
+#search:focus { border-color: var(--gb-ink); background: var(--gb-paper-2); outline: 2px solid var(--gb-accent); outline-offset: 1px; }
 #search-scope-label { display: none; }
 .toolbar-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 #count-label { font-size: 12px; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
@@ -290,7 +290,7 @@ thead th.sorted-asc::after { content: " ↑"; color: var(--gb-accent); }
 thead th.sorted-desc::after { content: " ↓"; color: var(--gb-accent); }
 thead tr.filter-row th { position: sticky; top: 33px; background: var(--gb-paper-2); padding: 5px 8px; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); }
 .col-filter-input { width: 100%; font-size: 11px; font-family: var(--gb-font-body); padding: 3px 6px; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper); color: var(--gb-ink); }
-.col-filter-input:focus { outline: none; border-color: var(--gb-accent); }
+.col-filter-input:focus { outline: 2px solid var(--gb-accent); outline-offset: 1px; border-color: var(--gb-accent); }
 tbody tr { border-bottom: 1px solid var(--gb-rule-faint); cursor: pointer; transition: background 0.1s ease; }
 tbody tr:hover { background: var(--gb-row-hover); }
 tbody tr.selected { background: var(--gb-row-active) !important; }
@@ -302,6 +302,8 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 .table-end-sentinel td { text-align: center; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); font-size: 11px; letter-spacing: 0.06em; padding: 14px; border-top: 1px solid var(--gb-rule-faint); }
 #no-results { padding: 40px; text-align: center; color: var(--gb-ink-soft); font-family: var(--gb-font-display); font-size: 16px; display: none; }
 #no-results p { margin: 6px 0 0; font-size: 14px; color: var(--gb-ink-faint); }
+#no-results p.no-results-active { margin: 10px auto 0; }
+.no-results-active { font-family: var(--gb-font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--gb-accent); background: var(--gb-accent-soft); padding: 6px 12px; margin: 10px auto 0; max-width: 520px; text-align: center; }
 #no-results button { margin-top: 14px; padding: 8px 18px; background: var(--gb-accent); color: var(--gb-paper); border: none; cursor: pointer; font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
 .source-cell { text-align: center; }
 .src-btn { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); padding: 3px 8px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--gb-ink-soft); }
@@ -492,6 +494,9 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     scroll-snap-align: start;
     margin-right: 12px;
   }
+  #detail-close { width: 44px; height: 44px; }
+  #export-btn, #charts-toggle, #random-btn { padding: 9px 14px; }
+  .facet-item { min-height: 36px; }
 }
 </style>
 </head>
@@ -530,17 +535,17 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
   </div>
   <div class="gb-hero-stats">
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">63,185</div><div class="gb-hero-stat-label">individual listings</div></div>
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">23</div><div class="gb-hero-stat-label">published volumes</div></div>
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">49</div><div class="gb-hero-stat-label">states represented</div></div>
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">20</div><div class="gb-hero-stat-label">business categories</div></div>
+    <div class="gb-hero-stat" aria-label="63,185 individual listings"><div class="gb-hero-stat-num" id="hero-stat-entries" aria-hidden="true">63,185</div><div class="gb-hero-stat-label" aria-hidden="true">individual listings</div></div>
+    <div class="gb-hero-stat" aria-label="23 published volumes"><div class="gb-hero-stat-num" id="hero-stat-editions" aria-hidden="true">23</div><div class="gb-hero-stat-label" aria-hidden="true">published volumes</div></div>
+    <div class="gb-hero-stat" aria-label="49 states represented"><div class="gb-hero-stat-num" id="hero-stat-states" aria-hidden="true">49</div><div class="gb-hero-stat-label" aria-hidden="true">states represented</div></div>
+    <div class="gb-hero-stat" aria-label="20 business categories"><div class="gb-hero-stat-num" id="hero-stat-cats" aria-hidden="true">20</div><div class="gb-hero-stat-label" aria-hidden="true">business categories</div></div>
   </div>
 </section>
 
 <div id="app">
-<div id="sidebar">
+<aside id="sidebar" role="complementary" aria-label="Filters">
   <div id="sidebar-header">
-    <h1><a href="#" onclick="location.href=location.pathname;return false;">Green Book Directory Explorer</a></h1>
+    <p class="sidebar-brand"><a href="#" onclick="location.href=location.pathname;return false;">Green Book Directory Explorer</a></p>
     <p class="gb-sidebar-desc">Explore the directory of safe businesses and services for Black travelers, 1936&ndash;1966</p>
     <span id="doc-title" style="display:none"></span>
     <span id="doc-sub" style="display:none"></span>
@@ -558,10 +563,10 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div class="sidebar-filter-hd">Filter by</div>
     <div id="facet-controls"></div>
   </div>
-</div>
+</aside>
 <div id="sidebar-backdrop" aria-hidden="true"></div>
 
-<div id="main">
+<main id="main">
   <div id="mobile-header">
     <div id="mobile-title"></div>
     <div id="mobile-sub"></div>
@@ -572,18 +577,19 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div id="search-wrap">
       <input id="search" type="search" placeholder="Search names, addresses, notes…" autocomplete="off" aria-label="Search all fields">
       <button id="export-btn">Export CSV</button>
+      <span id="export-feedback" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
     </div>
     <div class="toolbar-meta-row">
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">Clear filters</button>
     </div>
   </div>
-  <button id="random-btn" style="display:none" aria-hidden="true"></button>
-  <button id="charts-toggle" style="display:none" aria-hidden="true"></button>
+  <button id="random-btn" style="display:none"></button>
+  <button id="charts-toggle" style="display:none"></button>
   <div id="charts-row" style="display:none"></div>
   <div id="content">
     <div id="table-wrap">
-      <table id="results-table">
+      <table id="results-table" aria-label="Green Book entries">
         <thead id="table-head"></thead>
         <tbody id="table-body"></tbody>
       </table>
@@ -593,7 +599,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <button id="clear-all-btn">Clear all filters</button>
       </div>
     </div>
-    <div id="detail">
+    <div id="detail" role="dialog" aria-modal="true" aria-label="Entry details">
       <div class="detail-hero">
         <a id="detail-thumb-link" target="_blank"><img id="detail-thumb" alt="" style="display:none;cursor:pointer"></a>
         <button id="detail-close" aria-label="Close detail panel">&#x2715;</button>
@@ -607,7 +613,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       </div>
     </div>
   </div>
-</div>
+</main>
 </div>
 
 <!-- <div id="timeline-view" role="dialog" aria-label="Cross-edition timeline" aria-modal="true">
@@ -628,7 +634,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <button class="close-about" aria-label="Close">&#x2715;</button>
     </div>
     <div class="about-modal-body">
-      <h1 id="about-title" class="about-modal-title">A search index for <em>The Negro Motorist Green&nbsp;Book</em>,<br>extracted from page scans, 1937&nbsp;&ndash;&nbsp;1966.</h1>
+      <h2 id="about-title" class="about-modal-title">A search index for <em>The Negro Motorist Green&nbsp;Book</em>,<br>extracted from page scans, 1937&nbsp;&ndash;&nbsp;1966.</h2>
       <div class="about-modal-grid">
         <div class="about-modal-prose">
           <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966 &mdash; annual travel guides that helped Black Americans find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
@@ -858,8 +864,10 @@ function renderTableBody() {
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
 
-  document.getElementById("count-label").textContent =
-    `${sorted.length.toLocaleString()} of ${ALL_ENTRIES.length.toLocaleString()} entries`;
+  const countText = `${sorted.length.toLocaleString()} of ${ALL_ENTRIES.length.toLocaleString()} entries`;
+  document.getElementById("count-label").textContent = countText;
+  const tbl = document.getElementById("results-table");
+  if (tbl) tbl.setAttribute("aria-label", `Green Book entries — ${countText}`);
 
   const tbody = document.getElementById("table-body");
   tbody.innerHTML = "";
@@ -965,7 +973,14 @@ function renderTableBody() {
     if (ALL_ENTRIES.length === 0) {
       noResults.innerHTML = '<p style="font-size:14px;color:#595959;margin:0">Loading entries…</p>';
     } else {
-      noResults.innerHTML = 'No entries match the current filters.<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">Clear all filters</button>';
+      const activeDesc = [];
+      if (searchQuery.trim()) activeDesc.push(`searching for “${searchQuery.trim()}”`);
+      Object.entries(facetState).filter(([,s]) => s.size > 0)
+        .forEach(([k,s]) => activeDesc.push(`${FIELD_LABELS[k] || k.replace(/_/g,' ')}: ${[...s].join(', ')}`));
+      Object.entries(colFilters).filter(([,v]) => v)
+        .forEach(([k,v]) => activeDesc.push(`${FIELD_LABELS[k] || k.replace(/_/g,' ')}: “${v}”`));
+      const summary = activeDesc.length ? `<p class="no-results-active">Active filters: ${activeDesc.join(' · ')}</p>` : '';
+      noResults.innerHTML = 'No entries match the current filters.' + summary + '<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">Clear all filters</button>';
     }
   } else {
     noResults.style.display = "none";
@@ -1028,7 +1043,7 @@ function renderTableHead() {
     if (f.type === "facet" && f.top_values.length > 0) {
       const sel = document.createElement("select");
       sel.className = "col-filter-input";
-      sel.setAttribute("aria-label", `Filter by ${f.name.replace(/_/g, " ")}`);
+      sel.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
       const opt0 = document.createElement("option");
       opt0.value = ""; opt0.textContent = "(all)";
       sel.appendChild(opt0);
@@ -1042,6 +1057,10 @@ function renderTableHead() {
         if (colFilters[f.name] === val) opt.selected = true;
         sel.appendChild(opt);
       });
+      if (f.name === "volume_year") {
+        opt0.textContent = "Jump to year…";
+        sel.setAttribute("title", "Select a year to scroll the table to that year — does not filter");
+      }
       sel.addEventListener("change", () => {
         if (f.name === "volume_year" && sel.value) {
           const yr = sel.value;
@@ -1055,7 +1074,7 @@ function renderTableHead() {
     } else {
       const inp = document.createElement("input");
       inp.type = "text"; inp.className = "col-filter-input"; inp.placeholder = "filter…";
-      inp.setAttribute("aria-label", `Filter by ${f.name.replace(/_/g, " ")}`);
+      inp.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
       inp.value = colFilters[f.name] || "";
       inp.addEventListener("input", () => { colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); renderCharts(); syncFilterUI(); });
       fth.appendChild(inp);
@@ -1155,14 +1174,16 @@ function thumbUrl(row) {
     const [cw, ch] = [svc[1], svc[2]];
     if (!cw || !ch) return "";
     const padV = Math.max(xywh[3], 60), tw = 400;
-    // Ensure the crop is at least 600px wide so narrow Surya detections
-    // (e.g. short names in classified directories) show enough context.
+    // Center the crop window on the entry midpoint so edge-of-page entries
+    // aren't clipped by object-position:center in the thumbnail display.
     const minW = 600;
     const padH = Math.max(40, Math.ceil((minW - xywh[2]) / 2));
-    const rx = Math.max(0, xywh[0] - padH);
-    const ry = Math.max(0, xywh[1] - padV);
-    const rw = (xywh[0] + xywh[2] + padH) - rx;
-    const rh = (xywh[1] + xywh[3] + padV) - ry;
+    const entryCx = xywh[0] + Math.round(xywh[2] / 2);
+    const halfW   = Math.max(padH + Math.ceil(xywh[2] / 2), Math.ceil(minW / 2));
+    const rx  = Math.max(0, entryCx - halfW);
+    const rw  = Math.min(cw, entryCx + halfW) - rx;
+    const ry  = Math.max(0, xywh[1] - padV);
+    const rh  = (xywh[1] + xywh[3] + padV) - ry;
     const xp = (rx / cw * 100).toFixed(4);
     const yp = (ry / ch * 100).toFixed(4);
     const wp = (rw / cw * 100).toFixed(4);
@@ -1281,7 +1302,7 @@ function renderFacetSidebar() {
       const clr = document.createElement("button");
       clr.className = "facet-clear";
       clr.textContent = "clear";
-      clr.setAttribute("aria-label", `Clear ${f.name.replace(/_/g, " ")} filter`);
+      clr.setAttribute("aria-label", `Clear ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")} filter`);
       clr.addEventListener("click", () => {
         _pushNextHistory = true;
         facetState[f.name].clear();
@@ -1438,7 +1459,11 @@ document.getElementById("export-btn").addEventListener("click", () => {
   a.href = URL.createObjectURL(blob);
   a.download = (DOC_TITLE || "entries").replace(/\s+/g, "_") + "_filtered.csv";
   a.click();
-  setTimeout(() => { btn.disabled = false; btn.textContent = "Export CSV"; }, 600);
+  setTimeout(() => {
+    btn.disabled = false; btn.textContent = "Export CSV";
+    const fb = document.getElementById("export-feedback");
+    if (fb) { fb.textContent = `Exported ${filtered.length.toLocaleString()} entries as CSV.`; setTimeout(() => { fb.textContent = ""; }, 4000); }
+  }, 600);
 });
 
 // ── Clear all filters (empty-state button) ─────────────────────────────────
@@ -1907,6 +1932,25 @@ document.getElementById('detail-close').addEventListener('click', () => {
     }
   });
 }());
+
+// ── Detail panel: focus trap + Escape ────────────────────────────────────────
+document.getElementById('detail').addEventListener('keydown', e => {
+  const detail = document.getElementById('detail');
+  if (!detail.classList.contains('open')) return;
+  if (e.key === 'Escape') { document.getElementById('detail-close').click(); return; }
+  if (e.key === 'Tab') {
+    const focusable = Array.from(
+      detail.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])')
+    ).filter(el => !el.disabled && el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  }
+});
 
 // ── Sidebar random-entry CTA ──────────────────────────────────────────────────
 (function () {
