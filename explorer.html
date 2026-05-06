@@ -1212,7 +1212,7 @@ function showDetail(row) {
     img.alt = `Scan showing ${entryName}`;
     img.style.display = "block";
     img.onerror = () => { img.style.display = "none"; };
-    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}`;
+    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}`;
     thumbLink.title = "View this entry highlighted in the original scan";
     thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
   } else {
@@ -1240,7 +1240,10 @@ function showDetail(row) {
   const pageCtx = document.getElementById("detail-page-context");
   const src = document.getElementById("detail-source");
   if (row.canvas_fragment) {
-    pageCtx.innerHTML = `<a href="index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}" target="_blank">View in page context ↗</a>`;
+    const cityState = [row.city, row.state].filter(Boolean).join(", ");
+    const overlayLabel = [entryName, row.address, cityState].filter(Boolean).join(" – ");
+    const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent(overlayLabel)}`;
+    pageCtx.innerHTML = `<a href="index.html?${viewerParams}" target="_blank">View in page context ↗</a>`;
     const links = [];
     const srcUrl = viewerUrl(row.canvas_fragment);
     if (srcUrl) links.push(`<a href="${srcUrl}" target="_blank">Open original NYPL source page ↗</a>`);
@@ -2075,7 +2078,15 @@ function gbUpdateHero() {
   document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
 
-  const withImg = ALL_ENTRIES.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
+  const withImg = ALL_ENTRIES.filter(r => {
+    if (!r.address || !r.canvas_fragment || !r.canvas_fragment.includes('#xywh=')) return false;
+    try {
+      const xywh = r.canvas_fragment.split('#xywh=')[1].split(',').map(Number);
+      const svc  = CANVAS_MAP[r.canvas_fragment.split('#')[0]];
+      if (svc && svc[1]) return xywh[2] / svc[1] <= 0.45;
+    } catch (_) {}
+    return true;
+  });
   if (!withImg.length) return;
   const featured = [], seen = new Set();
   for (let t = 0; t < 800 && featured.length < 3; t++) {
@@ -2123,10 +2134,25 @@ function gbUpdateHero() {
   });
 }
 let _heroUpdated = false;
+// Only build hero thumbnails (IIIF requests) when the hero section is actually
+// visible. If the user refreshes while scrolled past the hero, skip entirely.
+const _heroSection = document.getElementById('gb-hero');
+const _heroObserver = new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting) return;
+  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
+    _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
+  }
+}, { threshold: 0 });
+_heroObserver.observe(_heroSection);
+// Fallback interval in case data arrives after the hero is already visible
 const _checkHero = setInterval(() => {
   if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    _heroUpdated = true; clearInterval(_checkHero); gbUpdateHero();
+    const rect = _heroSection.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      _heroUpdated = true; clearInterval(_checkHero); _heroObserver.disconnect(); gbUpdateHero();
+    }
   }
+  if (_heroUpdated) clearInterval(_checkHero);
 }, 200);
 
 // // ── Cross-edition timeline ────────────────────────────────────────────────────

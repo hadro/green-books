@@ -125,19 +125,21 @@ function buildCanvasIndex(manifest) {
   return index;
 }
 
-function buildCloverState(manifestId, canvasId, fragment) {
+function buildCloverState(manifestId, canvasId, fragment, label) {
   const target = {
     type: "SpecificResource",
     source: { id: canvasId, type: "Canvas", partOf: [{ id: manifestId, type: "Manifest" }] },
   };
   if (fragment) target.selector = { type: "FragmentSelector", value: fragment };
-  return {
+  const state = {
     "@context": "http://iiif.io/api/presentation/3/context.json",
     id: canvasId + (fragment ? "#" + fragment : "") + "/content-state",
     type: "Annotation",
     motivation: ["contentState"],
     target,
   };
+  if (label) state.body = [{ type: "TextualBody", value: label, format: "text/plain" }];
+  return state;
 }
 
 function contentStateToBlobId(stateObj) {
@@ -165,7 +167,7 @@ function closeInfoPanelAfterZoom(el, fallbackMs) {
   const timer = setTimeout(close, fallbackMs);
 }
 
-function launchClover(manifestId, cfUrl) {
+function launchClover(manifestId, cfUrl, label) {
   const wrap = document.getElementById("viewer-wrap");
   const old = wrap.querySelector("clover-viewer");
   if (old) old.remove();
@@ -188,7 +190,7 @@ function launchClover(manifestId, cfUrl) {
       const index = buildCanvasIndex(manifest);
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
-      el.setAttribute("id", contentStateToBlobId(buildCloverState(manifestId, canvasId, fragment)));
+      el.setAttribute("id", contentStateToBlobId(buildCloverState(manifestId, canvasId, fragment, label)));
       wrap.appendChild(el);
       closeInfoPanelAfterZoom(el, 1500);
     })
@@ -225,7 +227,10 @@ function launchClover(manifestId, cfUrl) {
 
 // ── Route ────────────────────────────────────────────────────────────────────
 
-const cf = new URLSearchParams(location.search).get("cf");
+const _params = new URLSearchParams(location.search);
+const cf    = _params.get("cf");
+const name  = _params.get("name") || "";
+const label = _params.get("label") || name;
 
 if (!cf) {
   document.getElementById("landing").classList.add("visible");
@@ -243,7 +248,7 @@ if (!cf) {
           showError("No volume found for image ID " + imageId + ". The lookup table may be out of date.");
           return;
         }
-        launchClover(BASE_URL + "/manifests/" + uuid + "/manifest.json", cf);
+        launchClover(BASE_URL + "/manifests/" + uuid + "/manifest.json", cf, label);
       })
       .catch(err => showError("Could not load volume index: " + err.message));
   }
