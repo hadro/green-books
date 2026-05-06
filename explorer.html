@@ -548,8 +548,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   <div class="gb-hero-stats">
     <div class="gb-hero-stat" aria-label="63,185 individual listings"><div class="gb-hero-stat-num" id="hero-stat-entries" aria-hidden="true">63,185</div><div class="gb-hero-stat-label" aria-hidden="true">individual listings</div></div>
     <div class="gb-hero-stat" aria-label="23 published volumes"><div class="gb-hero-stat-num" id="hero-stat-editions" aria-hidden="true">23</div><div class="gb-hero-stat-label" aria-hidden="true">published volumes</div></div>
-    <div class="gb-hero-stat" aria-label="49 states represented"><div class="gb-hero-stat-num" id="hero-stat-states" aria-hidden="true">49</div><div class="gb-hero-stat-label" aria-hidden="true">states represented</div></div>
-    <div class="gb-hero-stat" aria-label="20 business categories"><div class="gb-hero-stat-num" id="hero-stat-cats" aria-hidden="true">20</div><div class="gb-hero-stat-label" aria-hidden="true">business categories</div></div>
+    <div class="gb-hero-stat" aria-label="49 states represented"><div class="gb-hero-stat-num" id="hero-stat-states" aria-hidden="true">89</div><div class="gb-hero-stat-label" aria-hidden="true">states and countries represented</div></div>
+    <div class="gb-hero-stat" aria-label="20 business categories"><div class="gb-hero-stat-num" id="hero-stat-cats" aria-hidden="true">25</div><div class="gb-hero-stat-label" aria-hidden="true">business categories</div></div>
   </div>
 </section>
 
@@ -2084,8 +2084,8 @@ function gbUpdateHero() {
   const n = ALL_ENTRIES.length;
   document.getElementById('hero-stat-entries').textContent = n.toLocaleString();
   document.getElementById('hero-stat-editions').textContent = volumes.size;
-  document.getElementById('hero-stat-states').textContent = states.size;
-  document.getElementById('hero-stat-cats').textContent = cats.size;
+  document.getElementById('hero-stat-states').textContent = 89;
+  document.getElementById('hero-stat-cats').textContent = 25;
   document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
 
