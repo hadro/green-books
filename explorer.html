@@ -478,7 +478,12 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   #filter-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; background: none; border: 1px solid var(--gb-rule-faint); cursor: pointer; font-size: 13px; color: var(--gb-ink-soft); white-space: nowrap; flex-shrink: 0; }
   #table-wrap { overflow-x: auto; }
   #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
-  #mobile-header { display: block; padding: 8px 12px 6px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
+  #mobile-header { display: block; padding: 14px 16px 12px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
+  .mobile-hero-title { margin: 0 0 4px; font-family: var(--gb-font-display); font-size: 17px; font-weight: 500; color: var(--gb-ink); line-height: 1.2; }
+  .mobile-hero-desc { margin: 0 0 10px; font-size: 12px; color: var(--gb-ink-soft); line-height: 1.4; }
+  .mobile-hero-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .mobile-hero-actions button { flex: 1; padding: 7px 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-soft); white-space: nowrap; }
+  .mobile-hero-actions button:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
   .gb-hero { padding: 32px 24px; }
   .gb-hero::before { display: none; }
   .gb-hero-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -579,8 +584,12 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 <main id="main">
   <div id="mobile-header">
-    <div id="mobile-title"></div>
-    <div id="mobile-sub"></div>
+    <p class="mobile-hero-title">Green Books Travel Guide Explorer</p>
+    <p class="mobile-hero-desc">Explore the directory of safe businesses and services for Black travelers, 1936&ndash;1966</p>
+    <div class="mobile-hero-actions">
+      <button id="mobile-about-btn">About this explorer</button>
+      <button id="mobile-random-btn">Open a random entry</button>
+    </div>
     <select id="mobile-volume-select" aria-label="Select volume" style="display:none"></select>
   </div>
   <div id="toolbar">
@@ -731,9 +740,8 @@ try { const _s = sessionStorage.getItem('showAllFacets'); if (_s) JSON.parse(_s)
 document.getElementById("doc-title").textContent = DOC_TITLE;
 document.getElementById("doc-sub").textContent =
     ALL_ENTRIES.length.toLocaleString() + " entries";
-document.getElementById("mobile-title").textContent = DOC_TITLE;
-document.getElementById("mobile-sub").textContent =
-    ALL_ENTRIES.length.toLocaleString() + " entries";
+document.getElementById("mobile-about-btn").addEventListener("click", () => document.getElementById("about-btn").click());
+document.getElementById("mobile-random-btn").addEventListener("click", () => document.getElementById("gb-explore-btn").click());
 
 
 let facetFields = FIELD_META.filter(f => f.type === "facet");
@@ -763,9 +771,6 @@ function loadVolume(label) {
   document.getElementById("doc-title").textContent = label;
   document.getElementById("doc-sub").textContent =
     ALL_ENTRIES.length.toLocaleString() + " entries";
-  document.getElementById("mobile-title").textContent = label;
-  document.getElementById("mobile-sub").textContent =
-    ALL_ENTRIES.length.toLocaleString() + " entries";
   currentDocMeta = vol.doc_meta || {};
   activeManifestUrl = currentDocMeta.manifest_url || MANIFEST_URL;
   renderMetaStrip(currentDocMeta);
@@ -785,9 +790,8 @@ function loadVolume(label) {
     opt.textContent = label + "  (" + VOLUMES[label].rows.length.toLocaleString() + ")";
     sel.appendChild(opt);
   });
-  // Set h1, mobile title, and meta strip to first volume on load
+  // Set h1 and meta strip to first volume on load
   document.getElementById("doc-title").textContent = volLabels[0];
-  document.getElementById("mobile-title").textContent = volLabels[0];
   currentDocMeta = VOLUMES[volLabels[0]].doc_meta || {};
   activeManifestUrl = currentDocMeta.manifest_url || MANIFEST_URL;
   renderMetaStrip(currentDocMeta);
