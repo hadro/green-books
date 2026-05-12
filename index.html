@@ -172,32 +172,43 @@ function launchClover(manifestId, cfUrl, label) {
   const old = wrap.querySelector("clover-viewer");
   if (old) old.remove();
 
-  const el = document.createElement("clover-viewer");
+  // Wait for the custom element to be defined before appending it.
+  // On cold loads, clover.umd.patched.js (1.7 MB) can finish downloading
+  // after the manifest fetches complete, leaving the element in the DOM as an
+  // unknown element. Clover upgrades it later, but by then the
+  // closeInfoPanelAfterZoom timer has already started — and usually fired.
+  const cloverReady = customElements.whenDefined("clover-viewer");
+
+  function attach(blobId) {
+    const el = document.createElement("clover-viewer");
+    el.setAttribute("id", blobId);
+    wrap.appendChild(el);
+    // 6 s fallback: the MutationObserver in closeInfoPanelAfterZoom cannot see
+    // into Clover's shadow DOM, so the timer is the only active path. 1500 ms
+    // is too short on uncached loads where Clover must fetch + process the
+    // content state after upgrade.
+    closeInfoPanelAfterZoom(el, 6000);
+  }
 
   if (!cfUrl) {
-    el.setAttribute("id", manifestId);
-    wrap.appendChild(el);
-    closeInfoPanelAfterZoom(el, 1500);
+    cloverReady.then(() => attach(manifestId));
     return;
   }
 
   const fragment = cfUrl.includes("#") ? cfUrl.split("#")[1] : "";
   const cfBase   = cfUrl.includes("#") ? cfUrl.split("#")[0] : cfUrl;
 
-  fetch(manifestId)
-    .then(r => r.json())
-    .then(manifest => {
+  // Run the manifest fetch and Clover registration in parallel; attach only
+  // when both are ready so the element is immediately active on connection.
+  Promise.all([cloverReady, fetch(manifestId).then(r => r.json())])
+    .then(([, manifest]) => {
       const index = buildCanvasIndex(manifest);
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
-      el.setAttribute("id", contentStateToBlobId(buildCloverState(manifestId, canvasId, fragment, label)));
-      wrap.appendChild(el);
-      closeInfoPanelAfterZoom(el, 1500);
+      attach(contentStateToBlobId(buildCloverState(manifestId, canvasId, fragment, label)));
     })
     .catch(() => {
-      el.setAttribute("id", manifestId);
-      wrap.appendChild(el);
-      closeInfoPanelAfterZoom(el, 1500);
+      cloverReady.then(() => attach(manifestId));
     });
 }
 
