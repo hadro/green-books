@@ -192,13 +192,20 @@ a { color: var(--gb-accent); }
 #volume-wrap { margin-top: 10px; background: var(--gb-accent-soft); border: 1px solid rgba(29,77,46,0.25); padding: 8px 10px; }
 #volume-select { width: 100%; font-size: 12px; padding: 4px 6px; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper); color: var(--gb-ink); cursor: pointer; font-family: var(--gb-font-body); }
 #sidebar-cta { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
-#about-btn, #gb-explore-btn {
-  background: none; border: 1px solid var(--gb-rule-faint);
+#gb-explore-btn {
+  background: none; border: 1px solid var(--gb-accent);
   font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
-  padding: 6px 10px; text-align: left; width: 100%;
+  text-transform: uppercase; color: var(--gb-accent); cursor: pointer;
+  padding: 8px 10px; text-align: left; width: 100%;
 }
-#about-btn:hover, #gb-explore-btn:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
+#gb-explore-btn:hover { background: var(--gb-accent-soft); border-color: var(--gb-accent-deep); color: var(--gb-accent-deep); }
+#about-btn {
+  background: none; border: none;
+  font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer;
+  padding: 4px 0; text-align: left; width: 100%;
+}
+#about-btn:hover { color: var(--gb-ink-soft); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
 #sidebar-scroll { overflow-y: auto; flex: 1; padding: 16px 20px 24px; }
 .sidebar-filter-hd {
   font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.16em;
@@ -262,12 +269,13 @@ a { color: var(--gb-accent); }
 .toolbar-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 #count-label { font-size: 12px; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
 #clear-filters-btn {
-  display: none; background: none; border: none;
+  display: none; background: var(--gb-highlight-soft);
+  border: 1px solid rgba(200, 144, 40, 0.6);
   font-family: var(--gb-font-mono); font-size: 11px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--gb-accent); cursor: pointer; padding: 0;
-  text-decoration: underline; text-underline-offset: 2px;
+  text-transform: uppercase; color: #5c3d00; cursor: pointer;
+  padding: 3px 10px; flex-shrink: 0;
 }
-#clear-filters-btn:hover { color: var(--gb-accent-deep); }
+#clear-filters-btn:hover { background: rgba(200, 144, 40, 0.25); color: #5c3d00; }
 #meta-strip { display: flex; gap: 6px; align-items: center; margin-left: auto; }
 .meta-chip { font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.08em; background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); padding: 2px 8px; color: var(--gb-ink-faint); border-radius: 2px; }
 .meta-link { color: var(--gb-accent); text-decoration: none; }
@@ -315,7 +323,8 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 #no-results p { margin: 6px 0 0; font-size: 14px; color: var(--gb-ink-faint); }
 #no-results p.no-results-active { margin: 10px auto 0; }
 .no-results-active { font-family: var(--gb-font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--gb-accent); background: var(--gb-accent-soft); padding: 6px 12px; margin: 10px auto 0; max-width: 520px; text-align: center; }
-#no-results button { margin-top: 14px; padding: 8px 18px; background: var(--gb-accent); color: var(--gb-paper); border: none; cursor: pointer; font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+#clear-all-btn { display: inline-block; margin-top: 14px; padding: 8px 18px; background: var(--gb-highlight-soft); border: 1px solid rgba(200, 144, 40, 0.6); color: #5c3d00; cursor: pointer; font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+#clear-all-btn:hover { background: rgba(200, 144, 40, 0.25); color: #5c3d00; }
 .source-cell { text-align: center; }
 .src-btn { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); padding: 3px 8px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--gb-ink-soft); }
 .src-btn:hover { background: var(--gb-paper); color: var(--gb-accent); border-color: var(--gb-accent); }
@@ -601,7 +610,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
     <div class="toolbar-meta-row">
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
-      <button id="clear-filters-btn" aria-label="Clear all filters">Clear filters</button>
+      <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
   </div>
   <button id="random-btn" style="display:none"></button>
@@ -616,7 +625,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div id="no-results">
         No entries match the current filters.
         <p>Try removing filters or adjusting your search.</p>
-        <button id="clear-all-btn">Clear all filters</button>
+        <button id="clear-all-btn">× Clear all filters</button>
       </div>
     </div>
     <div id="detail" role="dialog" aria-modal="true" aria-label="Entry details">
@@ -995,7 +1004,7 @@ function renderTableBody() {
       Object.entries(colFilters).filter(([,v]) => v)
         .forEach(([k,v]) => activeDesc.push(`${FIELD_LABELS[k] || k.replace(/_/g,' ')}: “${v}”`));
       const summary = activeDesc.length ? `<p class="no-results-active">Active filters: ${activeDesc.join(' · ')}</p>` : '';
-      noResults.innerHTML = 'No entries match the current filters.' + summary + '<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">Clear all filters</button>';
+      noResults.innerHTML = 'No entries match the current filters.' + summary + '<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">× Clear all filters</button>';
     }
   } else {
     noResults.style.display = "none";
@@ -2056,9 +2065,6 @@ document.getElementById('detail').addEventListener('keydown', e => {
           if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
           scrollToSelected(100);
         }
-      } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
-                 && !location.hash.includes('volume_year')) {
-        scrollToYear("1938");
       }
     })
     .catch(err => {
