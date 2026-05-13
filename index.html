@@ -251,10 +251,12 @@ if (!cf) {
     showError("Unrecognised canvas fragment URL: " + cf);
   } else {
     const imageId = m[1];
-    fetch("image_to_volume.json")
-      .then(r => r.json())
-      .then(lookup => {
-        const uuid = lookup[imageId];
+    Promise.all([
+      fetch("image_to_volume.json").then(r => r.json()).catch(() => ({})),
+      fetch("travel_guides_image_to_volume.json").then(r => r.json()).catch(() => ({})),
+    ])
+      .then(([gbLookup, tgLookup]) => {
+        const uuid = gbLookup[imageId] || tgLookup[imageId];
         if (!uuid) {
           showError("No volume found for image ID " + imageId + ". The lookup table may be out of date.");
           return;
