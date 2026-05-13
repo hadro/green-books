@@ -2056,6 +2056,9 @@ document.getElementById('detail').addEventListener('keydown', e => {
           if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
           scrollToSelected(100);
         }
+      } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
+                 && !location.hash.includes('volume_year')) {
+        scrollToYear("1938");
       }
     })
     .catch(err => {
