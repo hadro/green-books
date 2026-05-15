@@ -362,6 +362,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .map-disclaimer a { color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
 .map-disclaimer a:hover { border-bottom-style: dashed; }
 .map-loading { font-size: 12px; font-family: var(--gb-font-mono); color: var(--gb-ink-faint); margin: 8px 0 0; }
+@media (prefers-contrast: more) { .map-frame { filter: none; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 .also-in-label { font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 10px; font-weight: 500; }
 .also-year { display: inline-block; padding: 4px 10px; border-radius: 2px; font-family: var(--gb-font-mono); font-size: 11px; cursor: pointer; margin: 2px 3px 2px 0; background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink); transition: all 0.1s ease; }
 .also-year:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
@@ -1945,6 +1947,7 @@ showDetail = function (row) {
       const btn = document.createElement("button");
       btn.className = "also-year";
       btn.textContent = y;
+      btn.setAttribute("aria-label", "Jump to " + y + " listing");
       btn.addEventListener("click", () => gbJumpToYear(y));
       alsoEl.appendChild(btn);
     });
