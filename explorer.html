@@ -356,6 +356,12 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .detail-source a { font-family: var(--gb-font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
 .detail-source a:hover { border-bottom-style: dashed; }
 #detail-also-in { margin-top: 16px; padding-top: 16px; }
+#detail-map { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+.map-frame { width: 100%; height: 190px; border: 1px solid var(--gb-rule-faint); display: block; margin-top: 8px; }
+.map-disclaimer { font-size: 11px; font-family: var(--gb-font-mono); color: var(--gb-ink-faint); margin: 6px 0 0; }
+.map-disclaimer a { color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
+.map-disclaimer a:hover { border-bottom-style: dashed; }
+.map-loading { font-size: 12px; font-family: var(--gb-font-mono); color: var(--gb-ink-faint); margin: 8px 0 0; }
 .also-in-label { font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 10px; font-weight: 500; }
 .also-year { display: inline-block; padding: 4px 10px; border-radius: 2px; font-family: var(--gb-font-mono); font-size: 11px; cursor: pointer; margin: 2px 3px 2px 0; background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink); transition: all 0.1s ease; }
 .also-year:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
@@ -638,6 +644,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <h2 id="detail-title"></h2>
         <div class="detail-fields" id="detail-fields"></div>
         <div id="detail-also-in" style="display:none"></div>
+        <div id="detail-map" style="display:none"></div>
         <div class="detail-source" id="detail-source"></div>
       </div>
     </div>
@@ -1287,6 +1294,69 @@ function showDetail(row) {
     src.innerHTML = "";
   }
   document.getElementById("detail-close").focus();
+  renderDetailMap(row);
+}
+
+// ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
+let _mapAbort = null;
+function renderDetailMap(row) {
+  const mapEl = document.getElementById("detail-map");
+  mapEl.style.display = "none";
+  mapEl.innerHTML = "";
+  if (_mapAbort) { _mapAbort.abort(); _mapAbort = null; }
+
+  const addr = (row.address || "").trim();
+  const city = (row.city || "").trim();
+  const state = (row.state || "").trim();
+  if (!addr || !city || !state) return;
+
+  const addrQuery = [addr, city, state].join(", ");
+  const cityQuery = [city, state].join(", ");
+  const osmSearchUrl = "https://www.openstreetmap.org/search?query=" + encodeURIComponent(addrQuery);
+
+  mapEl.style.display = "";
+  mapEl.innerHTML = '<div class="also-in-label">Approximate location</div><p class="map-loading">Loading map…</p>';
+
+  const controller = new AbortController();
+  _mapAbort = controller;
+
+  function showEmbed(lat, lon, d, disclaimer) {
+    const bbox = [lon - d, lat - d, lon + d, lat + d].join(",");
+    const marker = d < 0.05 ? "&marker=" + lat + "," + lon : "";
+    const embedUrl = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=mapnik" + marker;
+    mapEl.innerHTML =
+      '<div class="also-in-label">Approximate location</div>' +
+      '<iframe class="map-frame" src="' + embedUrl + '" loading="lazy" title="Map showing approximate location of this listing"></iframe>' +
+      '<p class="map-disclaimer">' + disclaimer + ' <a href="' + osmSearchUrl + '" target="_blank">Search on OpenStreetMap ↗</a></p>';
+  }
+
+  function tryCity() {
+    fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(cityQuery), { signal: controller.signal })
+      .then(r => r.json())
+      .then(results => {
+        if (!results.length) throw new Error("no results");
+        const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
+        showEmbed(lat, lon, 0.1, "Specific address not found — showing city area.");
+      })
+      .catch(err => {
+        if (err.name === "AbortError") return;
+        mapEl.innerHTML =
+          '<div class="also-in-label">Approximate location</div>' +
+          '<p class="map-disclaimer"><a href="' + osmSearchUrl + '" target="_blank">Search this address on OpenStreetMap ↗</a></p>';
+      });
+  }
+
+  fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(addrQuery), { signal: controller.signal })
+    .then(r => r.json())
+    .then(results => {
+      if (!results.length) { tryCity(); return; }
+      const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
+      showEmbed(lat, lon, 0.006, "Note: Streets and addresses change over time, and historical addresses often don't match contemporary locations -- use with caution.");
+    })
+    .catch(err => {
+      if (err.name === "AbortError") return;
+      tryCity();
+    });
 }
 
 document.getElementById("detail-close").addEventListener("click", () => {
