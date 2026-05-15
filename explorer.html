@@ -199,6 +199,13 @@ a { color: var(--gb-accent); }
   padding: 8px 10px; text-align: left; width: 100%;
 }
 #gb-explore-btn:hover { background: var(--gb-accent-soft); border-color: var(--gb-accent-deep); color: var(--gb-accent-deep); }
+#random-year-btn {
+  background: none; border: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
+  padding: 8px 10px; text-align: left; width: 100%;
+}
+#random-year-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
 #about-btn {
   background: none; border: none;
   font-family: var(--gb-font-mono); font-size: 10px; letter-spacing: 0.1em;
@@ -588,6 +595,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
     <div id="sidebar-cta">
       <button id="about-btn">About this explorer</button>
+      <button id="random-year-btn">Jump to a random year</button>
       <button id="gb-explore-btn">Open a random entry</button>
     </div>
   </div>
@@ -1773,6 +1781,13 @@ document.getElementById("random-btn").addEventListener("click", () => {
   showDetail(r);
   renderTableBody();
   scrollToSelected();
+});
+
+document.getElementById("random-year-btn").addEventListener("click", () => {
+  const yearField = FIELD_META.find(f => f.name === GB_YEAR_FIELD);
+  if (!yearField || !yearField.top_values.length) return;
+  const years = yearField.top_values.map(([y]) => y);
+  gbJumpToYear(years[Math.floor(Math.random() * years.length)]);
 });
 
 // ── Back/forward navigation via popstate ────────────────────────────────────
