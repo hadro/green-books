@@ -828,11 +828,11 @@ function loadVolume(label) {
 
 // ── Filtering ──────────────────────────────────────────────────────────────
 function getFiltered() {
-  const q = searchQuery.trim().toLowerCase();
+  const q = searchQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
   return ALL_ENTRIES.filter(row => {
     // Search filter
     if (q) {
-      const haystack = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase();
+      const haystack = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       if (!haystack.includes(q)) return false;
     }
     // Facet filters
