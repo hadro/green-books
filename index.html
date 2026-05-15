@@ -148,23 +148,23 @@ function contentStateToBlobId(stateObj) {
   );
 }
 
-function closeInfoPanelAfterZoom(el, maxWaitMs) {
-  // Poll for the "back to manifest" button inside Clover's shadow DOM rather
-  // than using a one-shot timer.  On cold loads the panel can appear after a
-  // fixed timeout has already fired (manifest fetch + content-state processing
-  // takes longer than the timer), leaving the panel up and blocking interaction.
-  // Polling fires as soon as the button exists, regardless of load time.
-  const POLL_MS = 200;
-  let elapsed = 0;
-  const poll = setInterval(() => {
-    elapsed += POLL_MS;
-    const root = el.shadowRoot;
-    if (root) {
-      const btn = root.querySelector('[data-value="manifest-back"]');
-      if (btn) { clearInterval(poll); btn.click(); return; }
+function closeInfoPanelAfterZoom(el, fallbackMs) {
+  let done = false;
+  function close() {
+    if (done) return;
+    done = true; obs.disconnect(); clearTimeout(timer);
+    const root = el.shadowRoot || el;
+    const btn = root.querySelector('[data-value="manifest-back"]');
+    if (btn) btn.click();
+  }
+  const obs = new MutationObserver(mutations => {
+    for (const m of mutations) {
+      if (m.type === "attributes" && m.attributeName === "class" &&
+          m.target.className === "clover-iiif-content-state") { close(); return; }
     }
-    if (elapsed >= maxWaitMs) clearInterval(poll);
-  }, POLL_MS);
+  });
+  obs.observe(el, { subtree: true, attributes: true, attributeFilter: ["class"] });
+  const timer = setTimeout(close, fallbackMs);
 }
 
 function launchClover(manifestId, cfUrl, label) {
@@ -183,8 +183,11 @@ function launchClover(manifestId, cfUrl, label) {
     const el = document.createElement("clover-viewer");
     el.setAttribute("id", blobId);
     wrap.appendChild(el);
-    // Poll for up to 15 s — gives up only if something went badly wrong.
-    closeInfoPanelAfterZoom(el, 15000);
+    // 6 s fallback: the MutationObserver in closeInfoPanelAfterZoom cannot see
+    // into Clover's shadow DOM, so the timer is the only active path. 1500 ms
+    // is too short on uncached loads where Clover must fetch + process the
+    // content state after upgrade.
+    closeInfoPanelAfterZoom(el, 6000);
   }
 
   if (!cfUrl) {
