@@ -220,7 +220,6 @@ a { color: var(--gb-accent); }
   margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--gb-rule-faint);
 }
 #sidebar-scroll > hr { border: none; border-top: 1px solid var(--gb-rule-faint); margin: 0 0 16px; }
-#fill-rate-section { display: none !important; }
 .facet-group { margin-bottom: 24px; }
 .facet-group + .facet-group { border-top: 1px solid var(--gb-rule-faint); padding-top: 20px; }
 .facet-label {
@@ -294,10 +293,6 @@ a { color: var(--gb-accent); }
 #random-btn { padding: 6px 14px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gb-ink-soft); }
 #random-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
 #filter-btn { display: none; }
-#charts-row { padding: 10px 24px 0; display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper); }
-#charts-row.collapsed { display: none; }
-.chart-block { display: flex; flex-direction: column; }
-.chart-block h3 { margin: 0 0 4px; font-family: var(--gb-font-mono); font-size: 0.714rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gb-ink-faint); }
 
 /* ── Table ── */
 #content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
@@ -510,7 +505,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   .mobile-hero-actions { display: flex; gap: 8px; flex-wrap: wrap; }
   .mobile-hero-actions button { flex: 1; padding: 7px 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-soft); white-space: nowrap; }
   .mobile-hero-actions button:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
-  .gb-hero { padding: 32px 24px; }
+  .gb-hero { padding: 32px 24px; overflow-x: clip; }
+  .gb-hero-card-thumb img { object-position: left; }
   .gb-hero::before { display: none; }
   .gb-hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .gb-hero-title { font-size: 2.571rem; }
@@ -603,7 +599,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
   </div>
   <div id="sidebar-scroll">
-    <div id="fill-rate-section" style="display:none"><div id="fill-rate-chart"></div></div>
     <div class="sidebar-filter-hd">Filter by</div>
     <div id="facet-controls"></div>
   </div>
@@ -634,7 +629,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   </div>
   <button id="random-btn" style="display:none"></button>
   <button id="charts-toggle" style="display:none"></button>
-  <div id="charts-row" style="display:none"></div>
   <div id="content">
     <div id="table-wrap">
       <table id="results-table" aria-label="Green Book entries">
@@ -758,7 +752,6 @@ let searchQuery = "";
 let sortCol = null;
 let sortDir = 1;  // 1 = asc, -1 = desc
 let selectedIdx = null;
-let _detailOpener = null;
 let _yearScrollAnchor = null;  // ALL_ENTRIES index used to center window for year-jump (no selection change)
 let _winStart = 0;             // persists across renders so re-selecting an in-window row doesn't re-center
 let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
@@ -804,7 +797,6 @@ function loadVolume(label) {
   currentDocMeta = vol.doc_meta || {};
   activeManifestUrl = currentDocMeta.manifest_url || MANIFEST_URL;
   renderMetaStrip(currentDocMeta);
-  renderFillRate();
 }
 
 // ── Volume selector ─────────────────────────────────────────────────────────
@@ -906,9 +898,8 @@ function highlightMatch(text, query) {
 }
 
 // ── Canvas page extraction ─────────────────────────────────────────────────
-function canvasId(row) {
-  const cf = row.canvas_fragment || "";
-  return cf.includes("#") ? cf.split("#")[0] : cf;
+function canvasId(cf) {
+  return cf ? cf.split('#')[0] : '';
 }
 
 // ── Render: table body only (preserves thead / focus) ──────────────────────
@@ -977,7 +968,6 @@ function renderTableBody() {
         trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
       const savedScroll = wrap ? wrap.scrollTop : 0;
       selectedIdx = ALL_ENTRIES.indexOf(row);
-      _detailOpener = tr;
       showDetail(row);
       renderTableBody();
       if (wrap) {
@@ -1119,7 +1109,7 @@ function renderTableHead() {
           sel.value = "";
           scrollToYear(yr);
         } else {
-          colFilters[f.name] = sel.value; renderTableBody(); renderFacetSidebar(); renderCharts(); syncFilterUI();
+          colFilters[f.name] = sel.value; renderTableBody(); renderFacetSidebar(); syncFilterUI();
         }
       });
       fth.appendChild(sel);
@@ -1128,7 +1118,7 @@ function renderTableHead() {
       inp.type = "text"; inp.className = "col-filter-input"; inp.placeholder = "filter…";
       inp.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
       inp.value = colFilters[f.name] || "";
-      inp.addEventListener("input", () => { colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); renderCharts(); syncFilterUI(); });
+      inp.addEventListener("input", () => { colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); syncFilterUI(); });
       fth.appendChild(inp);
     }
     filterRow.appendChild(fth);
@@ -1147,7 +1137,7 @@ function renderTable() {
 // ── Resolve canvas_fragment → human-browseable viewer URL ──────────────────
 function viewerUrl(canvas_fragment) {
   if (!canvas_fragment) return "";
-  const cid = canvas_fragment.includes("#") ? canvas_fragment.split("#")[0] : canvas_fragment;
+  const cid = canvasId(canvas_fragment);
 
   // CANVAS_MAP entry[3] is a pre-built viewer URL (e.g. NYPL Digital Collections)
   const entry = CANVAS_MAP[cid];
@@ -1192,7 +1182,7 @@ function openSource(canvas_fragment) {
 function contentStateUrl(canvas_fragment) {
   const mUrl = activeManifestUrl || MANIFEST_URL;
   if (!VIEWER_URL || !mUrl || !canvas_fragment) return "";
-  const cid = canvas_fragment.includes("#") ? canvas_fragment.split("#")[0] : canvas_fragment;
+  const cid = canvasId(canvas_fragment);
   if (!cid) return "";
   const state = {
     "@context": "http://iiif.io/api/presentation/3/context.json",
@@ -1217,7 +1207,7 @@ function thumbUrl(row, hAnchor) {
     // No canvas fragment — fall back to the local page image (full page, no crop)
     return row.image ? row.image : "";
   }
-  const cid = cf.includes("#") ? cf.split("#")[0] : cf;
+  const cid = canvasId(cf);
   const svc = CANVAS_MAP[cid];
   if (!svc) return "";
   if (!FULL_PAGE_THUMBS && cf.includes("#xywh=")) {
@@ -1382,6 +1372,10 @@ function renderDetailMap(row) {
 
 document.getElementById("detail-close").addEventListener("click", () => {
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+  const u = new URL(location.href);
+  u.searchParams.delete('cf');
+  const qs = u.searchParams.toString();
+  history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + (location.hash || ''));
   const prevIdx = selectedIdx;
   const wrap = document.getElementById("table-wrap");
   const savedScroll = wrap ? wrap.scrollTop : 0;
@@ -1483,93 +1477,6 @@ function renderFacetSidebar() {
   });
 }
 
-// ── Render: fill-rate chart ────────────────────────────────────────────────
-function renderFillRate() {
-  const el = document.getElementById("fill-rate-chart");
-  const data = FIELD_META
-    .filter(f => f.type !== "id")
-    .map(f => ({ name: f.name.replace(/_/g, " "), fill: f.fill_rate }))
-    .sort((a, b) => b.fill - a.fill);
-
-  const plot = Plot.plot({
-    width: 200, height: data.length * 16 + 20,
-    marginLeft: 100, marginRight: 10, marginTop: 4, marginBottom: 16,
-    x: { domain: [0, 1], label: null, tickFormat: "%", ticks: 2 },
-    y: { label: null },
-    marks: [
-      Plot.barX(data, {
-        x: "fill", y: "name",
-        fill: d => d.fill >= 0.8 ? "#59a14f" : d.fill >= 0.4 ? "#f28e2b" : "#e15759",
-        sort: { y: "x", reverse: true }
-      }),
-      Plot.text(data, {
-        x: "fill", y: "name",
-        text: d => (d.fill * 100).toFixed(0) + "%",
-        dx: 4, frameAnchor: "left",
-        fontSize: 9, fill: "#444",
-      }),
-      Plot.ruleX([0]),
-    ],
-    style: { fontSize: "11px" },
-  });
-  el.innerHTML = "";
-  el.appendChild(plot);
-}
-
-// ── Render: facet bar charts ───────────────────────────────────────────────
-function renderCharts() {
-  const row = document.getElementById("charts-row");
-  row.innerHTML = "";
-
-  const filtered = getFiltered();
-
-  facetFields.slice(0, 4).forEach(f => {
-    // Count filtered values
-    const counts = {};
-    filtered.forEach(r => {
-      const v = r[f.name] || "(empty)";
-      counts[v] = (counts[v] || 0) + 1;
-    });
-    const data = Object.entries(counts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 15)
-      .map(([v, c]) => ({ v, c }));
-
-    if (data.length === 0) return;
-
-    const block = document.createElement("div");
-    block.className = "chart-block";
-    const h3 = document.createElement("h3");
-    h3.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
-    block.appendChild(h3);
-
-    const barHeight = 18;
-    const plot = Plot.plot({
-      width: 220,
-      height: data.length * barHeight + 24,
-      marginLeft: 110, marginRight: 30, marginTop: 2, marginBottom: 20,
-      x: { label: null, grid: false },
-      y: { label: null, tickSize: 0, type: "band" },
-      marks: [
-        Plot.barX(data, {
-          x: "c", y: "v",
-          fill: "#aac4e6",
-          sort: { y: "x", reverse: true },
-          title: d => `${d.v}: ${d.c}`,
-          rx: 2,
-        }),
-        Plot.text(data, {
-          x: "c", y: "v", text: d => d.c.toString(),
-          dx: 4, frameAnchor: "left",
-          fontSize: 10, fill: "#555",
-        }),
-      ],
-      style: { fontSize: "11px" },
-    });
-    block.appendChild(plot);
-    row.appendChild(block);
-  });
-}
 
 // ── Export CSV ─────────────────────────────────────────────────────────────
 document.getElementById("export-btn").addEventListener("click", () => {
@@ -1652,7 +1559,19 @@ function syncFilterUI() {
   document.getElementById("clear-filters-btn").style.display = anyActive ? "inline-block" : "none";
 }
 
-document.getElementById("clear-filters-btn").addEventListener("click", clearAllFilters);
+document.getElementById("clear-filters-btn").addEventListener("click", () => {
+  _pushNextHistory = true;
+  Object.values(facetState).forEach(s => s.clear());
+  colFilters = {};
+  sortCol = null;
+  sortDir = 1;
+  showAllFacets.clear();
+  try { sessionStorage.removeItem('showAllFacets'); } catch(e) {}
+  searchQuery = "";
+  document.getElementById("search").value = "";
+  renderAll();
+  scrollToYear("1938");
+});
 
 // ── URL hash state (shareable filtered links) ─────────────────────────────
 function stateToHash() {
@@ -1733,12 +1652,9 @@ function renderAll() {
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   selectedIdx = null;
   renderFacetSidebar();
-  renderCharts();
   renderTable();
   syncFilterUI();
 }
-
-renderFillRate();
 
 // ── Random entry ────────────────────────────────────────────────────────────
 function scrollToSelected(delayMs = 0) {
@@ -1778,7 +1694,6 @@ document.getElementById("random-btn").addEventListener("click", () => {
   if (!pool.length) return;
   const r = pool[Math.floor(Math.random() * pool.length)];
   selectedIdx = ALL_ENTRIES.indexOf(r);
-  _detailOpener = null;
   showDetail(r);
   renderTableBody();
   scrollToSelected();
@@ -1912,15 +1827,6 @@ renderFacetSidebar = function () {
   facetFields = orig;
 };
 
-// renderCharts: exclude volume_year from bar charts (year chips replace it)
-const _gbOrigRC = renderCharts;
-renderCharts = function () {
-  const orig = facetFields;
-  facetFields = facetFields.filter(f => f.name !== GB_YEAR_FIELD);
-  _gbOrigRC();
-  facetFields = orig;
-};
-
 // showDetail: sync ?cf= URL param + append "Also in" section
 const _gbOrigSD = showDetail;
 showDetail = function (row) {
@@ -1995,13 +1901,6 @@ showDetail = function (row) {
 // this second pass.
 renderAll();
 
-// Remove ?cf= from URL when the detail panel is closed
-document.getElementById('detail-close').addEventListener('click', () => {
-  const u = new URL(location.href);
-  u.searchParams.delete('cf');
-  const qs = u.searchParams.toString();
-  history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + (location.hash || ''));
-});
 
 // ── Deep-link: ?cf=<canvas_fragment> opens entry detail on load ──────────────
 (function () {
@@ -2170,6 +2069,7 @@ document.getElementById('detail').addEventListener('keydown', e => {
       }
     })
     .catch(err => {
+      const noRes = document.getElementById("no-results");
       if (noRes) {
         noRes.style.display = 'block';
         noRes.innerHTML =
@@ -2199,8 +2099,9 @@ function gbUpdateHero() {
   const n = ALL_ENTRIES.length;
   document.getElementById('hero-stat-entries').textContent = n.toLocaleString();
   document.getElementById('hero-stat-editions').textContent = volumes.size;
-  document.getElementById('hero-stat-states').textContent = 89;
-  document.getElementById('hero-stat-cats').textContent = 25;
+  document.getElementById('hero-stat-states').textContent = states.size;
+  const catMeta = FIELD_META.find(f => f.name === 'category');
+  document.getElementById('hero-stat-cats').textContent = catMeta ? catMeta.top_values.length : cats.size;
   document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
 
@@ -2208,7 +2109,7 @@ function gbUpdateHero() {
     if (!r.address || !r.canvas_fragment || !r.canvas_fragment.includes('#xywh=')) return false;
     try {
       const xywh = r.canvas_fragment.split('#xywh=')[1].split(',').map(Number);
-      const svc  = CANVAS_MAP[r.canvas_fragment.split('#')[0]];
+      const svc  = CANVAS_MAP[canvasId(r.canvas_fragment)];
       if (svc && svc[1]) return xywh[2] / svc[1] <= 0.45;
     } catch (_) {}
     return true;
@@ -2250,7 +2151,6 @@ function gbUpdateHero() {
     card.appendChild(meta);
     card.addEventListener('click', () => {
       selectedIdx = ALL_ENTRIES.indexOf(r);
-      _detailOpener = null;
       showDetail(r);
       renderTableBody();
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
