@@ -129,7 +129,7 @@ a { color: var(--gb-accent); }
   width: 100%; height: 110px; background: var(--gb-paper-2);
   border-bottom: 1px solid var(--gb-rule-faint); overflow: hidden; flex-shrink: 0;
 }
-.gb-hero-card-thumb img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+.gb-hero-card-thumb img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: left; }
 .gb-hero-card-meta { display: flex; flex-direction: column; gap: 3px; padding: 8px 10px 10px; min-width: 0; }
 .gb-hero-card-name {
   font-family: var(--gb-font-display); font-size: 1.286rem; font-weight: 400;
@@ -1208,7 +1208,7 @@ function contentStateUrl(canvas_fragment) {
 }
 
 // ── Detail panel ───────────────────────────────────────────────────────────
-function thumbUrl(row) {
+function thumbUrl(row, hAnchor) {
   const cf = row.canvas_fragment || "";
   if (!cf) {
     // No canvas fragment — fall back to the local page image (full page, no crop)
@@ -1223,14 +1223,22 @@ function thumbUrl(row) {
     const [cw, ch] = [svc[1], svc[2]];
     if (!cw || !ch) return "";
     const padV = Math.max(xywh[3], 60), tw = 400;
-    // Center the crop window on the entry midpoint so edge-of-page entries
-    // aren't clipped by object-position:center in the thumbnail display.
     const minW = 600;
-    const padH = Math.max(40, Math.ceil((minW - xywh[2]) / 2));
-    const entryCx = xywh[0] + Math.round(xywh[2] / 2);
-    const halfW   = Math.max(padH + Math.ceil(xywh[2] / 2), Math.ceil(minW / 2));
-    const rx  = Math.max(0, entryCx - halfW);
-    const rw  = Math.min(cw, entryCx + halfW) - rx;
+    let rx, rw;
+    if (hAnchor === "left") {
+      // Anchor crop at the entry's left edge so the entry sits flush left
+      // when displayed with object-position:left.
+      rx = Math.max(0, xywh[0] - 8);
+      rw = Math.min(cw, rx + Math.max(minW, xywh[2] + 240)) - rx;
+    } else {
+      // Center the crop window on the entry midpoint so edge-of-page entries
+      // aren't clipped by object-position:center in the thumbnail display.
+      const padH = Math.max(40, Math.ceil((minW - xywh[2]) / 2));
+      const entryCx = xywh[0] + Math.round(xywh[2] / 2);
+      const halfW   = Math.max(padH + Math.ceil(xywh[2] / 2), Math.ceil(minW / 2));
+      rx  = Math.max(0, entryCx - halfW);
+      rw  = Math.min(cw, entryCx + halfW) - rx;
+    }
     const ry  = Math.max(0, xywh[1] - padV);
     const rh  = (xywh[1] + xywh[3] + padV) - ry;
     const xp = (rx / cw * 100).toFixed(4);
@@ -2233,7 +2241,7 @@ function gbUpdateHero() {
     card.className = 'gb-hero-card';
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gb-hero-card-thumb';
-    const ts = thumbUrl(r);
+    const ts = thumbUrl(r, 'left');
     if (ts) {
       const img = document.createElement('img');
       img.src = ts; img.alt = r[nf] || '';
