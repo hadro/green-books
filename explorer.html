@@ -1604,6 +1604,7 @@ function clearAllFilters() {
   searchQuery = "";
   document.getElementById("search").value = "";
   renderAll();
+  scrollToYear("1938");
 }
 document.getElementById("clear-all-btn").addEventListener("click", clearAllFilters);
 // Delegated handler covers the dynamically-recreated button inside #no-results
@@ -1649,18 +1650,7 @@ function syncFilterUI() {
   document.getElementById("clear-filters-btn").style.display = anyActive ? "inline-block" : "none";
 }
 
-document.getElementById("clear-filters-btn").addEventListener("click", () => {
-  _pushNextHistory = true;
-  Object.values(facetState).forEach(s => s.clear());
-  colFilters = {};
-  sortCol = null;
-  sortDir = 1;
-  showAllFacets.clear();
-  try { sessionStorage.removeItem('showAllFacets'); } catch(e) {}
-  searchQuery = "";
-  document.getElementById("search").value = "";
-  renderAll();
-});
+document.getElementById("clear-filters-btn").addEventListener("click", clearAllFilters);
 
 // ── URL hash state (shareable filtered links) ─────────────────────────────
 function stateToHash() {
