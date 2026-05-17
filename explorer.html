@@ -544,22 +544,23 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   <div class="gb-hero-grid">
     <div>
       <div class="gb-hero-eyebrow">
-        <span>EST. 1936</span>
-        <span class="gb-hero-eyebrow-dot">&#x25CF;</span>
-        <span id="hero-eyebrow-stats">63,185 ENTRIES &middot; 23 VOLUMES</span>
+        <span>Green Books Travel Guide Explorer</span>
+        <!-- <span>EST. 1936</span> -->
+        <!-- <span class="gb-hero-eyebrow-dot">&#x25CF;</span> -->
+        <!-- <span id="hero-eyebrow-stats">63,185 ENTRIES &middot; 23 VOLUMES</span> -->
       </div>
-      <h1 class="gb-hero-title">A directory of places that welcomed Black travelers,<br><em>1936&nbsp;&ndash;&nbsp;1966.</em></h1>
+      <h1 class="gb-hero-title">A directory of places that welcomed Black travelers, <em>1937&nbsp;&ndash;&nbsp;1966.</em></h1>
       <p class="gb-hero-lede">The Negro Motorist Green Book listed hotels, restaurants, beauty parlors, and roadhouses safe to visit during the Jim Crow era of segregation. This explorer makes those records searchable across all published editions.</p>
       <div class="gb-hero-cta">
         <button class="gb-btn-primary" onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start exploring &rarr;</button>
         <button class="gb-btn-ghost" id="random-btn-hero">Open a random entry</button>
-        <p class="gb-hero-credit">Source scans held by the New York Public Library, Schomburg Center. Data extracted via OCR and named-entity recognition.</p>
+        <p class="gb-hero-credit">Source material held by the New York Public Library, Schomburg Center for Research in Black Culture.<br>Data extracted using an LLM-enhanced <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">Directory Pipeline</a> for OCR and named-entity recognition.</p>
       </div>
       <aside class="gb-hero-caveat" role="note" aria-label="A note on accuracy">
         <div class="gb-hero-caveat-rule" aria-hidden="true"></div>
         <div class="gb-hero-caveat-body">
           <div class="gb-hero-caveat-label">A NOTE ON ACCURACY</div>
-          <p class="gb-hero-caveat-text">There are OCR and entity-extraction errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, <em>not a replacement for them</em>. Data has not been reviewed for 100% accuracy.</p>
+          <p class="gb-hero-caveat-text">There are OCR, entity-extraction, and entry alignment errors in this data viewer, always use the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, <em>not a replacement for them</em>. Data has not been reviewed for 100% accuracy.</p>
           <button class="gb-hero-caveat-link" id="caveat-about-btn">READ MORE ABOUT THE DATA AND EXPLORER&rarr;</button>
         </div>
       </aside>
@@ -583,7 +584,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 <aside id="sidebar" role="complementary" aria-label="Filters">
   <div id="sidebar-header">
     <p class="sidebar-brand"><a href="#" onclick="location.href=location.pathname;return false;">Green Books Travel Guide Explorer</a></p>
-    <p class="gb-sidebar-desc">Explore the directory of safe businesses and services for Black travelers, 1936&ndash;1966</p>
+    <p class="gb-sidebar-desc">Explore the directory of safe businesses and services for Black travelers, 1937&ndash;1966</p>
     <span id="doc-title" style="display:none"></span>
     <span id="doc-sub" style="display:none"></span>
     <div id="volume-wrap" style="display:none">
@@ -606,7 +607,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 <main id="main">
   <div id="mobile-header">
     <p class="mobile-hero-title">Green Books Travel Guide Explorer</p>
-    <p class="mobile-hero-desc">Explore the directory of safe businesses and services for Black travelers, 1936&ndash;1966</p>
+    <p class="mobile-hero-desc">Explore the directory of safe businesses and services for Black travelers, 1937&ndash;1966</p>
     <div class="mobile-hero-actions">
       <button id="mobile-about-btn">About this explorer</button>
       <button id="mobile-random-btn">Open a random entry</button>
@@ -681,12 +682,13 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966 &mdash; annual travel guides that helped Black Americans find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
           <h3 class="about-modal-h3">The source</h3>
           <p>The Green Book was published annually by Victor H. Green &amp; Co. from 1936 to 1966 as a guide for Black Americans navigating the Jim Crow era. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
-          <p>Page scans are held by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
+          <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
-          <p class="about-modal-emphasis">There are OCR and entity-extraction errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
+          <p class="about-modal-emphasis">There are OCR, entity-extraction, and entry alignment errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
           <h3 class="about-modal-h3">How to use this site</h3>
           <ol class="about-modal-list">
-            <li>Filter by <strong>edition</strong>, <strong>state</strong>, <strong>city</strong>, or <strong>category</strong> in the sidebar &mdash; counts update live.</li>
+            <li>Filter by <strong>year</strong>, <strong>name</strong>, <strong>address</strong>, <strong>state</strong>, <strong>city</strong>, or <strong>category</strong> at the top of the explorer.</li>
+            <li>Filter by <strong>year</strong> or <strong>category</strong> in the left sidebar &mdash; counts update live.</li>
             <li>Use the <strong>search bar</strong> to find names, addresses, or notes across all editions at once.</li>
             <li><strong>Click any row</strong> to open the full entry alongside a thumbnail of the source scan.</li>
             <li>Use <strong>Export CSV</strong> to download the currently filtered selection for your own work.</li>
@@ -709,6 +711,12 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <div class="about-modal-side-sub">Created by Josh Hadro, using an open-source tool for extracting structured data from digitized historical directories. <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
           </div>
           <div class="about-modal-credit">Source material held by the Schomburg Center for Research in Black Culture, The New York Public Library.</div>
+          <div class="about-modal-credit" style="margin-top:10px;">
+            <a class="about-modal-link" href="https://github.com/hadro/green-books" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-style:normal;">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              View explorer source on GitHub
+            </a>
+          </div>
         </aside>
       </div>
     </div>
@@ -1591,7 +1599,9 @@ function stateToHash() {
     if (valSet.size) params.set("f_" + field, [...valSet].join("|"));
   }
   const str = params.toString();
-  return str ? "#" + str : location.pathname + location.search;
+  if (str) return "#" + str;
+  if (location.hash === '#about') return '#about';
+  return location.pathname + location.search;
 }
 
 function applyHashState() {
@@ -2100,7 +2110,7 @@ function gbUpdateHero() {
   document.getElementById('hero-stat-states').textContent = states.size;
   const catMeta = FIELD_META.find(f => f.name === 'category');
   document.getElementById('hero-stat-cats').textContent = catMeta ? catMeta.top_values.length : cats.size;
-  document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
+  // document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
 
   const withImg = ALL_ENTRIES.filter(r => {
