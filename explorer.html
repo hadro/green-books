@@ -129,7 +129,7 @@ a { color: var(--gb-accent); }
   width: 100%; height: 110px; background: var(--gb-paper-2);
   border-bottom: 1px solid var(--gb-rule-faint); overflow: hidden; flex-shrink: 0;
 }
-.gb-hero-card-thumb img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+.gb-hero-card-thumb img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: left; }
 .gb-hero-card-meta { display: flex; flex-direction: column; gap: 3px; padding: 8px 10px 10px; min-width: 0; }
 .gb-hero-card-name {
   font-family: var(--gb-font-display); font-size: 1.286rem; font-weight: 400;
@@ -506,7 +506,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   .mobile-hero-actions button { flex: 1; padding: 7px 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-soft); white-space: nowrap; }
   .mobile-hero-actions button:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
   .gb-hero { padding: 32px 24px; overflow-x: clip; }
-  .gb-hero-card-thumb img { object-position: left; }
   .gb-hero::before { display: none; }
   .gb-hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .gb-hero-title { font-size: 2.571rem; }
@@ -532,7 +531,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     scroll-snap-align: start;
     margin-right: 12px;
   }
-  .gb-hero-card-thumb img { object-position: left; }
   #detail-close { width: 44px; height: 44px; }
   #export-btn, #charts-toggle, #random-btn { padding: 9px 14px; }
   .facet-item { min-height: 36px; }
@@ -1224,8 +1222,8 @@ function thumbUrl(row, hAnchor) {
       rx = Math.max(0, xywh[0] - 8);
       rw = Math.min(cw, rx + Math.max(minW, xywh[2] + 240)) - rx;
     } else {
-      // Center the crop window on the entry midpoint so edge-of-page entries
-      // aren't clipped by object-position:center in the thumbnail display.
+      // Center the crop window on the entry midpoint (used by the detail panel,
+      // which displays with object-fit:contain rather than object-position:left).
       const padH = Math.max(40, Math.ceil((minW - xywh[2]) / 2));
       const entryCx = xywh[0] + Math.round(xywh[2] / 2);
       const halfW   = Math.max(padH + Math.ceil(xywh[2] / 2), Math.ceil(minW / 2));
@@ -2135,7 +2133,7 @@ function gbUpdateHero() {
     card.className = 'gb-hero-card';
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gb-hero-card-thumb';
-    const ts = thumbUrl(r, window.matchMedia('(max-width: 640px)').matches ? 'left' : 'center');
+    const ts = thumbUrl(r, 'left');
     if (ts) {
       const img = document.createElement('img');
       img.src = ts; img.alt = r[nf] || '';
