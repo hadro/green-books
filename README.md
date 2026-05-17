@@ -14,8 +14,9 @@ This repository powers a public website for browsing and viewing the digitized e
 | `explorer.html` | Interactive directory browser — search and filter ~63,000 business listings across all 23 editions |
 | `green_book_entries_all.csv` | Combined structured dataset of all entries, extracted via OCR and AI from the digitized scans |
 | `image_to_volume.json` | Lookup table mapping NYPL image IDs to volume UUIDs, used by the viewer to route deep-links |
+| `canvas_map.json` | Lookup table mapping IIIF canvas IDs to image service URLs, used by the explorer for thumbnail generation |
 | `manifests/` | IIIF Presentation 3 manifests for each of the 23 volumes, patched to serve from this repository |
-| `clover.umd.patched.js` | Vendored [Clover IIIF](https://github.com/samvera-labs/clover-iiif) viewer bundle with a bug-fix patch for content-state deep-link rendering |
+| `clover.umd.patched.js` | Vendored [Clover IIIF](https://github.com/samvera-labs/clover-iiif) viewer bundle with patches for content-state deep-link rendering and HTTP→HTTPS URL rewriting for NYPL tile requests |
 
 ---
 
@@ -27,9 +28,13 @@ A single-page browser that lazy-loads `green_book_entries_all.csv` after first p
 
 - Full-text search across all fields
 - Faceted filtering by edition year, city, state, and business category (with live counts)
-- Detail panel with a thumbnail of the original scanned page
-- "Also listed in" cross-referencing across editions for the same business
+- Detail panel with a thumbnail of the original scanned page and a link to the IIIF viewer
+- "Also listed in" cross-referencing — shows other editions where the same business appears
+- Cross-edition timeline — for businesses appearing in multiple editions, a dedicated view shows each appearance as a run card with scan thumbnails, year chips, and address-diff detection
+- Jump-to-year navigation for quickly moving between editions
+- OpenStreetMap embed for entries with geocodeable addresses
 - CSV export of any filtered view
+- Deep-linking via `?cf=` (entry detail) and `?tl=` (timeline view) URL parameters
 
 ### Viewer (`index.html`)
 
@@ -55,6 +60,6 @@ The 23 volumes span 1936–1966 and contain approximately 63,000 individual list
 ## Credits
 
 - Digitized volumes: [New York Public Library Digital Collections](https://digitalcollections.nypl.org/)
-- IIIF viewer: [Clover IIIF](https://github.com/samvera-labs/clover-iiif) by Samvera Labs
+- IIIF viewer: [Clover IIIF](https://github.com/samvera-labs/clover-iiif) by Mat Jordan and Adam Arling
 - Data extraction pipeline: [directory-pipeline](https://github.com/hadro/directory-pipeline)
 - Claude Code for coding support, and Claude Design for design elements
