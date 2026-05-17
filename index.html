@@ -95,6 +95,33 @@
 </div>
 
 <script>
+// NYPL info.json responses return "id":"http://iiif.nypl.org:443/..." — Chrome
+// blocks HTTP requests from an HTTPS page. Rewrite those URLs for both fetch
+// (info.json) and XMLHttpRequest (OSD tile loading) before Clover/OSD loads.
+(function () {
+  function fixNyplUrl(url) {
+    return typeof url === 'string'
+      ? url.replace(/^http:\/\/iiif\.nypl\.org(:\d+)?\//,'https://iiif.nypl.org/')
+      : url;
+  }
+  const _fetch = window.fetch;
+  window.fetch = function (input, init) {
+    return _fetch.call(this, fixNyplUrl(input), init).then(function (resp) {
+      // Also rewrite URLs embedded in JSON response bodies (info.json @id field)
+      const ct = resp.headers.get('content-type') || '';
+      if (!ct.includes('json')) return resp;
+      return resp.text().then(function (text) {
+        const fixed = text.replace(/http:\/\/iiif\.nypl\.org(:\d+)?\//g, 'https://iiif.nypl.org/');
+        return new Response(fixed, { status: resp.status, statusText: resp.statusText, headers: resp.headers });
+      });
+    });
+  };
+  const _open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function (method, url) {
+    return _open.apply(this, [method, fixNyplUrl(url)].concat(Array.prototype.slice.call(arguments, 2)));
+  };
+}());
+
 const BASE_URL = "https://hadro.github.io/green-books";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
