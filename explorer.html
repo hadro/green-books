@@ -1514,6 +1514,7 @@ document.getElementById("export-btn").addEventListener("click", () => {
 
 // ── Clear all filters (empty-state button) ─────────────────────────────────
 function clearAllFilters() {
+  const savedRow = selectedIdx !== null ? ALL_ENTRIES[selectedIdx] : null;
   _pushNextHistory = true;
   Object.values(facetState).forEach(s => s.clear());
   colFilters = {};
@@ -1524,7 +1525,14 @@ function clearAllFilters() {
   searchQuery = "";
   document.getElementById("search").value = "";
   renderAll();
-  scrollToYear("1938");
+  if (savedRow) {
+    selectedIdx = ALL_ENTRIES.indexOf(savedRow);
+    showDetail(savedRow);
+    renderTableBody();
+    scrollToSelected(100);
+  } else {
+    scrollToYear("1938");
+  }
 }
 document.getElementById("clear-all-btn").addEventListener("click", clearAllFilters);
 // Delegated handler covers the dynamically-recreated button inside #no-results
@@ -1570,19 +1578,7 @@ function syncFilterUI() {
   document.getElementById("clear-filters-btn").style.display = anyActive ? "inline-block" : "none";
 }
 
-document.getElementById("clear-filters-btn").addEventListener("click", () => {
-  _pushNextHistory = true;
-  Object.values(facetState).forEach(s => s.clear());
-  colFilters = {};
-  sortCol = null;
-  sortDir = 1;
-  showAllFacets.clear();
-  try { sessionStorage.removeItem('showAllFacets'); } catch(e) {}
-  searchQuery = "";
-  document.getElementById("search").value = "";
-  renderAll();
-  scrollToYear("1938");
-});
+document.getElementById("clear-filters-btn").addEventListener("click", clearAllFilters);
 
 // ── URL hash state (shareable filtered links) ─────────────────────────────
 function stateToHash() {
