@@ -57,6 +57,12 @@ The 23 volumes span 1936–1966 and contain approximately 63,000 individual list
 
 ---
 
+## Traffic
+
+Public traffic dashboard: https://green-books.goatcounter.com (via [GoatCounter](https://www.goatcounter.com/), privacy-friendly and cookieless)
+
+---
+
 ## Credits
 
 - Digitized volumes: [New York Public Library Digital Collections](https://digitalcollections.nypl.org/)
