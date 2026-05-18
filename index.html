@@ -297,6 +297,8 @@ if (!cf) {
 
 <script src="clover.umd.patched.js"></script>
 <!-- privacy-friendly analytics via GoatCounter -->
+<!-- Strip ?cf=... so every entry view aggregates under /index.html instead of fragmenting per-entry -->
+<script>window.goatcounter = { path: function (p) { return p.split('?')[0]; } };</script>
 <script data-goatcounter="https://green-books.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>

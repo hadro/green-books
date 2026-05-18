@@ -752,6 +752,9 @@ let _detailOpener = null;
 let _yearScrollAnchor = null;  // ALL_ENTRIES index used to center window for year-jump (no selection change)
 let _winStart = 0;             // persists across renders so re-selecting an in-window row doesn't re-center
 let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
+function gcEvent(name) {
+  if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
+}
 let colFilters = {};  // fieldName → filter string
 const showAllFacets = new Set();  // field names with expanded value list
 try { const _s = sessionStorage.getItem('showAllFacets'); if (_s) JSON.parse(_s).forEach(n => showAllFacets.add(n)); } catch(e) {}
@@ -1493,6 +1496,7 @@ function renderCharts() {
 
 // ── Export CSV ─────────────────────────────────────────────────────────────
 document.getElementById("export-btn").addEventListener("click", () => {
+  gcEvent('export-csv');
   const btn = document.getElementById("export-btn");
   btn.disabled = true;
   btn.textContent = "Exporting…";
@@ -1703,6 +1707,7 @@ function scrollToYear(year) {
 }
 
 document.getElementById("random-btn").addEventListener("click", () => {
+  gcEvent('random-entry');
   const all = getSorted(getFiltered());
   const pool = all.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
   if (!pool.length) return;
@@ -1848,6 +1853,7 @@ renderCharts = function () {
 const _gbOrigSD = showDetail;
 showDetail = function (row) {
   _gbOrigSD(row);
+  if (row) gcEvent('detail-open');
 
   // Push the open entry to history so the back button can return to previous state
   if (row && row.canvas_fragment) {
