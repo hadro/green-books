@@ -510,7 +510,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   .mobile-hero-actions { display: flex; gap: 8px; flex-wrap: wrap; }
   .mobile-hero-actions button { flex: 1; padding: 7px 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-soft); white-space: nowrap; }
   .mobile-hero-actions button:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
-  .gb-hero { padding: 32px 24px; }
+  .gb-hero { padding: 32px 24px; overflow-x: hidden; }
   .gb-hero::before { display: none; }
   .gb-hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .gb-hero-title { font-size: 2.571rem; }
@@ -529,6 +529,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     gap: 0;
     margin: 0 -24px;
     padding: 0 24px;
+    min-width: 0;
   }
   .gb-hero-featured-stack::-webkit-scrollbar { display: none; }
   .gb-hero-card {
