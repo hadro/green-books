@@ -182,7 +182,12 @@ function closeInfoPanelAfterZoom(el, fallbackMs) {
     done = true; obs.disconnect(); clearTimeout(timer);
     const root = el.shadowRoot || el;
     const btn = root.querySelector('[data-value="manifest-back"]');
-    if (btn) btn.click();
+    // Clover hides this control via `display:none` on mobile (`@sm`-and-up
+    // only). .click() fires the handler regardless of display, and the handler
+    // exits content-state mode entirely — wiping zoom + highlight and dropping
+    // the user onto the manifest's page-thumbnail view. Skip the auto-dismiss
+    // on small viewports to preserve the deep-linked entry view.
+    if (btn && window.matchMedia('(min-width: 641px)').matches) btn.click();
   }
   const obs = new MutationObserver(mutations => {
     for (const m of mutations) {
