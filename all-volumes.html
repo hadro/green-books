@@ -368,6 +368,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 @media (prefers-contrast: more) { .map-frame { filter: none; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 .also-in-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 10px; font-weight: 500; }
+.also-pub-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+.also-pub-row:last-of-type { margin-bottom: 4px; }
+.also-pub-label { display: flex; align-items: center; gap: 6px; font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink-soft); line-height: 1.3; }
+.also-pub-label .pub-dot { margin-right: 0; }
+.also-chips { display: flex; flex-wrap: wrap; gap: 4px; padding-left: 14px; }
 .also-year { display: inline-block; padding: 4px 10px; border-radius: 2px; font-family: var(--gb-font-mono); font-size: 0.786rem; cursor: pointer; margin: 2px 3px 2px 0; background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink); transition: all 0.1s ease; }
 .also-year:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
 .also-all-link { display: block; font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; margin-top: 8px; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
@@ -1894,6 +1899,24 @@ function gbJumpToYear(year) {
   }
 }
 
+// Jump to a specific listing row. Used by the publication-grouped "also in"
+// chips, where the exact target row is already known and we don't need to
+// guess by year alone (a name+city can hit multiple publications in the same
+// year).
+function gbJumpToListing(targetRow) {
+  if (!targetRow || !GB_YEAR_FIELD) return;
+  const year = targetRow[GB_YEAR_FIELD] || targetRow.year;
+  if (year) {
+    facetState[GB_YEAR_FIELD].clear();
+    facetState[GB_YEAR_FIELD].add(year);
+  }
+  _pushNextHistory = true;
+  renderAll();
+  selectedIdx = ALL_ENTRIES.indexOf(targetRow);
+  showDetail(targetRow);
+  renderTableBody();
+}
+
 // ── Monkey-patches ───────────────────────────────────────────────────────────
 
 // renderFacetSidebar: move volume_year to the top of the facet list
@@ -1932,49 +1955,87 @@ showDetail = function (row) {
 
   const city = (row.city || "").toLowerCase().trim();
   const key = gbNormName(nfVal) + "|" + city;
-  const others = gbNameIndex.get(key) || [];
-  const currentYear = row[GB_YEAR_FIELD] || "";
-  const otherYears = [...new Set(
-    others
-      .filter(r => r !== row)
-      .map(r => r[GB_YEAR_FIELD] || r.year)
-      .filter(Boolean)
-  )].sort();
+  const others = (gbNameIndex.get(key) || []).filter(r => r !== row);
 
-  if (otherYears.length > 0) {
-    alsoEl.innerHTML = "";
-    const lbl = document.createElement("div");
-    lbl.className = "also-in-label";
-    lbl.textContent = "Also listed in";
-    alsoEl.appendChild(lbl);
-    otherYears.forEach(y => {
+  if (others.length === 0) { alsoEl.style.display = "none"; return; }
+
+  // Group by publication. Within each group, keep the earliest row per year
+  // (one chip per (publication, year) — typical case is one volume per year).
+  const byPub = new Map();
+  others.forEach(r => {
+    const pub = r.publication || "(Unknown)";
+    if (!byPub.has(pub)) byPub.set(pub, new Map());
+    const yearMap = byPub.get(pub);
+    const y = r[GB_YEAR_FIELD] || r.year || "";
+    if (y && !yearMap.has(y)) yearMap.set(y, r);
+  });
+
+  // Ordering: current entry's publication first, then by listing count desc.
+  const currentPub = row.publication;
+  const pubs = [...byPub.keys()].sort((a, b) => {
+    if (a === currentPub && b !== currentPub) return -1;
+    if (b === currentPub && a !== currentPub) return 1;
+    return byPub.get(b).size - byPub.get(a).size;
+  });
+
+  alsoEl.innerHTML = "";
+  const lbl = document.createElement("div");
+  lbl.className = "also-in-label";
+  lbl.textContent = "Also listed in";
+  alsoEl.appendChild(lbl);
+
+  pubs.forEach(pub => {
+    const yearMap = byPub.get(pub);
+    const pubRow = document.createElement("div");
+    pubRow.className = "also-pub-row";
+
+    const pubLabel = document.createElement("div");
+    pubLabel.className = "also-pub-label";
+    const color = PUBLICATION_COLORS[pub];
+    if (color) {
+      const dot = document.createElement("span");
+      dot.className = "pub-dot";
+      dot.style.background = color;
+      pubLabel.appendChild(dot);
+    }
+    pubLabel.appendChild(document.createTextNode(pub));
+    pubRow.appendChild(pubLabel);
+
+    const chips = document.createElement("div");
+    chips.className = "also-chips";
+    const years = [...yearMap.keys()].sort();
+    years.forEach(y => {
+      const targetRow = yearMap.get(y);
       const btn = document.createElement("button");
       btn.className = "also-year";
       btn.textContent = y;
-      btn.setAttribute("aria-label", "Jump to " + y + " listing");
-      btn.addEventListener("click", () => gbJumpToYear(y));
-      alsoEl.appendChild(btn);
+      btn.setAttribute("aria-label", "Jump to " + pub + ", " + y);
+      btn.addEventListener("click", () => gbJumpToListing(targetRow));
+      chips.appendChild(btn);
     });
-    const allLink = document.createElement("a");
-    allLink.className = "also-all-link";
-    allLink.href = "#";
-    allLink.textContent = "See all likely match listings";
-    allLink.addEventListener("click", e => {
-      e.preventDefault();
-      searchQuery = nfVal;
-      document.getElementById("search").value = nfVal;
-      if (row.city) colFilters["city"] = row.city;
-      if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
-      document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
-      selectedIdx = null;
-      _pushNextHistory = true;
-      renderAll();
-    });
-    alsoEl.appendChild(allLink);
-    alsoEl.style.display = "";
-  } else {
-    alsoEl.style.display = "none";
-  }
+    pubRow.appendChild(chips);
+    alsoEl.appendChild(pubRow);
+  });
+
+  const allLink = document.createElement("a");
+  allLink.className = "also-all-link";
+  allLink.href = "#";
+  allLink.textContent = "See all likely match listings";
+  allLink.addEventListener("click", e => {
+    e.preventDefault();
+    searchQuery = nfVal;
+    document.getElementById("search").value = nfVal;
+    if (row.city) colFilters["city"] = row.city;
+    if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
+    // Clear publication facet too so cross-publication matches surface.
+    if (facetState["publication"]) facetState["publication"].clear();
+    document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+    selectedIdx = null;
+    _pushNextHistory = true;
+    renderAll();
+  });
+  alsoEl.appendChild(allLink);
+  alsoEl.style.display = "";
 };
 
 // ── Re-render everything now that monkey-patches are in place ────────────────
