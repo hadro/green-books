@@ -2065,110 +2065,161 @@ document.getElementById('detail').addEventListener('keydown', e => {
   if (btn) btn.addEventListener('click', () => document.getElementById('random-btn').click());
 }());
 
-// ── Lazy CSV loader ───────────────────────────────────────────────────────────
-(function () {
+// ── Streaming CSV loader ──────────────────────────────────────────────────────
+// Both CSVs are ~32 MB raw / ~4 MB gzipped over the wire. Streaming the parse
+// lets the table show a usable subset within a second or two instead of waiting
+// for the full download. We render once at a first-paint threshold (so the
+// user sees something fast) and once more when both streams finish.
+
+// State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
+// quoting (escaped quotes, embedded commas and newlines) across arbitrary
+// chunk boundaries.
+function gbCreateStreamingCSVParser(onRow) {
+  let headers = null;
+  let field = '';
+  let row = [];
+  let inQuote = false;
+  let pendingQuote = false;  // saw `"` while in quote — next char decides escape vs end
+  let pendingCR = false;     // saw `\r` — swallow following `\n` if any
+  function flushField() { row.push(field); field = ''; }
+  function flushRow() {
+    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; return; }
+    if (!headers) { headers = row; row = []; return; }
+    const obj = {};
+    for (let i = 0; i < headers.length; i++) obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    onRow(obj);
+    row = [];
+  }
+  return {
+    feed(text) {
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (pendingQuote) {
+          pendingQuote = false;
+          if (c === '"') { field += '"'; continue; }
+          inQuote = false;
+          // fall through to handle c outside quotes
+        }
+        if (inQuote) {
+          if (c === '"') pendingQuote = true;
+          else field += c;
+          continue;
+        }
+        if (pendingCR) {
+          pendingCR = false;
+          if (c === '\n') continue;
+        }
+        if (c === '"') inQuote = true;
+        else if (c === ',') flushField();
+        else if (c === '\r') { flushField(); flushRow(); pendingCR = true; }
+        else if (c === '\n') { flushField(); flushRow(); }
+        else field += c;
+      }
+    },
+    end() { if (field !== '' || row.length > 0) { flushField(); flushRow(); } }
+  };
+}
+
+async function gbStreamCsv(url, onRow) {
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + url);
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder('utf-8');
+  const parser = gbCreateStreamingCSVParser(onRow);
+  // Sub-chunk size: yielding between sub-chunks lets the browser paint the
+  // first-paint render (and successive incremental updates) instead of being
+  // blocked by a single multi-MB synchronous parse on fast connections.
+  const SUBCHUNK = 128 * 1024;
+  const yieldToBrowser = () => new Promise(r => setTimeout(r, 0));
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) { parser.feed(decoder.decode()); parser.end(); return; }
+    const text = decoder.decode(value, { stream: true });
+    for (let off = 0; off < text.length; off += SUBCHUNK) {
+      parser.feed(text.substring(off, Math.min(off + SUBCHUNK, text.length)));
+      await yieldToBrowser();
+    }
+  }
+}
+
+(async function () {
   const GB_CSV_URL = 'green_book_entries_all.csv';
   const TG_CSV_URL = 'travel_guides_all.csv';
-
-  // RFC 4180-compliant parser — handles quoted fields, embedded commas/newlines
-  function gbParseCSV(text) {
-    const result = [];
-    let headers = null;
-    let pos = 0;
-    const len = text.length;
-    while (pos < len) {
-      const row = [];
-      while (true) {
-        let field = '';
-        if (pos < len && text[pos] === '"') {
-          pos++;
-          while (pos < len) {
-            if (text[pos] === '"') {
-              if (pos + 1 < len && text[pos + 1] === '"') { field += '"'; pos += 2; }
-              else { pos++; break; }
-            } else { field += text[pos++]; }
-          }
-        } else {
-          while (pos < len && text[pos] !== ',' && text[pos] !== '\r' && text[pos] !== '\n') {
-            field += text[pos++];
-          }
-        }
-        row.push(field);
-        if (pos < len && text[pos] === ',') { pos++; }
-        else { break; }
-      }
-      if (pos < len && text[pos] === '\r') pos++;
-      if (pos < len && text[pos] === '\n') pos++;
-      if (row.length === 0 || (row.length === 1 && row[0] === '')) continue;
-      if (!headers) { headers = row; continue; }
-      const obj = {};
-      headers.forEach((h, i) => { obj[h] = row[i] !== undefined ? row[i] : ''; });
-      result.push(obj);
-    }
-    return result;
+  const FIRST_PAINT_AT = 2000;
+  let firstPainted = false;
+  function maybeFirstPaint() {
+    if (firstPainted || ALL_ENTRIES.length < FIRST_PAINT_AT) return;
+    firstPainted = true;
+    gbBuildFacets(ALL_ENTRIES);
+    renderAll();
+    // renderAll set count-label to "X of N" where N is the partial total. Make
+    // it clear more is still streaming — the final renderAll() corrects it.
+    const cl = document.getElementById('count-label');
+    if (cl) cl.textContent = 'Showing first ' + FIRST_PAINT_AT.toLocaleString() + ' entries — loading more…';
   }
-
-  const getText = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); };
   const getJson = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
-
-  Promise.all([
-    fetch(GB_CSV_URL).then(getText),
-    fetch(TG_CSV_URL).then(getText),
-    fetch('canvas_map.json').then(getJson),
-    fetch('travel_guides_canvas_map.json').then(getJson)
-  ])
-    .then(([gbText, tgText, gbCanvas, tgCanvas]) => {
-      CANVAS_MAP = Object.assign({}, gbCanvas, tgCanvas);
-      const gbRows = gbParseCSV(gbText);
-      gbRows.forEach(r => { r.publication = GREEN_BOOK_PUBLICATION; });
-      ALL_ENTRIES = gbRows.concat(gbParseCSV(tgText));
-      gbBuildFacets(ALL_ENTRIES);
-      // Rebuild name index now that data is available
-      gbNameIndex.clear();
-      const sample = ALL_ENTRIES[0];
-      if (sample) {
-        const nf = ['name', 'establishment_name', 'firm_name', 'business_name']
-          .find(k => k in sample);
-        if (nf) {
-          ALL_ENTRIES.forEach(row => {
-            const city = (row.city || '').toLowerCase().trim();
-            const key = gbNormName(row[nf]) + '|' + city;
-            if (key.length >= 3) {
-              if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
-              gbNameIndex.get(key).push(row);
-            }
-          });
-        }
+  try {
+    const [gbCanvas, tgCanvas] = await Promise.all([
+      fetch('canvas_map.json').then(getJson),
+      fetch('travel_guides_canvas_map.json').then(getJson)
+    ]);
+    CANVAS_MAP = Object.assign({}, gbCanvas, tgCanvas);
+    await Promise.all([
+      gbStreamCsv(GB_CSV_URL, row => {
+        row.publication = GREEN_BOOK_PUBLICATION;
+        ALL_ENTRIES.push(row);
+        maybeFirstPaint();
+      }),
+      gbStreamCsv(TG_CSV_URL, row => {
+        ALL_ENTRIES.push(row);
+        maybeFirstPaint();
+      })
+    ]);
+    // Both streams done — final build + render covers everything the original
+    // loader's .then() did after parsing.
+    gbBuildFacets(ALL_ENTRIES);
+    gbNameIndex.clear();
+    const sample = ALL_ENTRIES[0];
+    if (sample) {
+      const nf = ['name', 'establishment_name', 'firm_name', 'business_name'].find(k => k in sample);
+      if (nf) {
+        ALL_ENTRIES.forEach(row => {
+          const city = (row.city || '').toLowerCase().trim();
+          const key = gbNormName(row[nf]) + '|' + city;
+          if (key.length >= 3) {
+            if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
+            gbNameIndex.get(key).push(row);
+          }
+        });
       }
-      renderAll();
-      // Re-apply URL state now that rows exist
-      applyHashState();
-      const cf = new URLSearchParams(location.search).get('cf');
-      if (cf) {
-        const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
-        if (match) {
-          selectedIdx = ALL_ENTRIES.indexOf(match);
-          showDetail(match);
-          renderTableBody();
-          const app = document.getElementById('app');
-          if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
-          scrollToSelected(100);
-        }
-      } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
-                 && !location.hash.includes('volume_year')) {
-        scrollToYear("1938");
+    }
+    renderAll();
+    applyHashState();
+    const cf = new URLSearchParams(location.search).get('cf');
+    if (cf) {
+      const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
+      if (match) {
+        selectedIdx = ALL_ENTRIES.indexOf(match);
+        showDetail(match);
+        renderTableBody();
+        const app = document.getElementById('app');
+        if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+        scrollToSelected(100);
       }
-    })
-    .catch(err => {
-      const noRes = document.getElementById("no-results");
-      if (noRes) {
-        noRes.style.display = 'block';
-        noRes.innerHTML =
-          '<p style="color:#c00;margin:0">Could not load entries: ' + err.message + '.</p>' +
-          '<p style="font-size: 0.857rem;margin:6px 0 0">Open this file from a web server rather than file://.</p>';
-      }
-    });
-}());
+    } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
+               && !location.hash.includes('volume_year')) {
+      scrollToYear("1938");
+    }
+  } catch (err) {
+    const noRes = document.getElementById("no-results");
+    if (noRes) {
+      noRes.style.display = 'block';
+      noRes.innerHTML =
+        '<p style="color:#c00;margin:0">Could not load entries: ' + err.message + '.</p>' +
+        '<p style="font-size: 0.857rem;margin:6px 0 0">Open this file from a web server rather than file://.</p>';
+    }
+  }
+})();
 
 
 // ── Hero + Timeline additions ─────────────────────────────────────────────────
