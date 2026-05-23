@@ -1,0 +1,99 @@
+# Build the static site and publish to the `gh-pages` branch:
+#   - pushes to `main` deploy the full repo to the root of `gh-pages`
+#   - pushes to any other branch deploy that branch's HTML files (only) to
+#     `gh-pages/previews/<branch-slug>/`
+#
+# Preview deploys inject a `<base href>` so relative fetches in the HTML
+# (CSVs, manifests, canvas-map JSON) resolve back to main's data — keeps
+# each preview to a few hundred KB instead of duplicating ~32 MB of CSVs.
+#
+# To enable previews: in repo Settings → Pages, set Source to "Deploy from
+# a branch" and choose the `gh-pages` branch / root (after the first run
+# of this workflow creates that branch).
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches-ignore:
+      - gh-pages
+
+# Only run the most recent push per branch; older runs are wasted work.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute deploy target
+        id: target
+        run: |
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          if [ "$BRANCH" = "main" ]; then
+            echo "is_main=true" >> "$GITHUB_OUTPUT"
+            echo "subdir=."     >> "$GITHUB_OUTPUT"
+          else
+            # Slugify branch name for use as a path segment.
+            SLUG="${BRANCH//\//-}"
+            echo "is_main=false"           >> "$GITHUB_OUTPUT"
+            echo "subdir=previews/$SLUG"   >> "$GITHUB_OUTPUT"
+            echo "slug=$SLUG"              >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build deploy artifact
+        env:
+          IS_MAIN: ${{ steps.target.outputs.is_main }}
+        run: |
+          set -euo pipefail
+          mkdir _publish
+          # .nojekyll keeps Pages from running Jekyll on the site, which
+          # would otherwise strip files/folders starting with `_`.
+          touch _publish/.nojekyll
+          if [ "$IS_MAIN" = "true" ]; then
+            # Full site: everything except repo plumbing.
+            rsync -a \
+              --exclude='.git' \
+              --exclude='.github' \
+              --exclude='_publish' \
+              ./ _publish/
+          else
+            # Preview: HTML files only, with `<base href>` injected so
+            # relative fetches resolve to main's data files.
+            BASE_TAG='  <base href="https://hadro.github.io/green-books/">'
+            for f in *.html; do
+              awk -v tag="$BASE_TAG" '
+                { print }
+                !injected && tolower($0) ~ /<head[^>]*>/ { print tag; injected = 1 }
+              ' "$f" > "_publish/$f"
+            done
+          fi
+          ls -la _publish
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_publish
+          destination_dir: ${{ steps.target.outputs.subdir }}
+          # keep_files preserves whatever else is in gh-pages — for main
+          # deploys this keeps the `previews/` subtree; for preview deploys
+          # it keeps main's content + other previews intact.
+          keep_files: true
+          commit_message: "Deploy ${{ github.ref_name }} @ ${{ github.sha }}"
+
+      - name: Summary
+        run: |
+          if [ "${{ steps.target.outputs.is_main }}" = "true" ]; then
+            echo "Deployed main to gh-pages root." >> "$GITHUB_STEP_SUMMARY"
+            echo "Live at https://hadro.github.io/green-books/" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Deployed preview for \`${GITHUB_REF#refs/heads/}\`." >> "$GITHUB_STEP_SUMMARY"
+            echo "Preview URL: https://hadro.github.io/green-books/previews/${{ steps.target.outputs.slug }}/" >> "$GITHUB_STEP_SUMMARY"
+          fi
