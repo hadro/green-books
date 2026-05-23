@@ -1,0 +1,678 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Catherine's — 410 Main Street — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=244,407,786,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pauline's — 2221 E. Madison — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=259,456,674,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LaMode — 2039 E. Madison Street — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=244,504,857,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bert's — 2301 E. Denny Way — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=259,556,675,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glenarvons — 657 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=248,601,697,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pltyhouse — 1238 Main St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=256,717,637,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson's — 707 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=249,824,640,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mardi Gras — 2047 E. Madison St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=259,942,807,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hill Top — 1200 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=256,992,672,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sea Gull — 673 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=256,1041,633,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lucky Hour — 1315 Yesler Way — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=255,1089,762,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Banquet — 1237 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=249,1135,682,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Victory — 652 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=248,1185,628,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Banquet — 1237 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=249,1135,682,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dumas — 1040 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=248,1282,617,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Commercial Auto — 9th & Denny Way — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=251,1391,944,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bon-Rot — 14th & Yesler St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=260,1501,685,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bishop's — 507 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=259,1554,621,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chikata — 114 12th Ave. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=256,1601,590,39",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Madison — 2051 E. Madison — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=259,456,674,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gosho — 656 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=249,1700,577,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tokuda — 1724 Yesler Way — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=248,1745,669,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson St. — Jackson & Maynard St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=248,601,697,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gilt Edge — 611 Jackson St. — SEATTLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=259,1910,674,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Monte Carlo — 1555 Tacoma Ave. — TACOMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=248,2100,865,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A Robinson — 1906 S. \"I\" St. — TACOMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=260,2209,865,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Monte Carlo — 1555 Tacoma Ave. — TACOMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=248,2100,865,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Travelers — 1506½ Pacific Ave. — TACOMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=248,2372,760,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Pioneer — 340 S. Fayette — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=266,2689,741,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Katie's Vanity — S. Fayette — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=266,2804,682,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fuqua's — Fuqua Bldg., S. Fayette — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=266,2851,864,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Payne's — 338 S. Fayette — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=268,2968,616,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simpson's — New Pioneer Hotel — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=268,3016,794,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Priscilla's — 336 So. Fayette Street — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=249,3131,871,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Home Service — 338½ S. Fayette — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=262,3178,794,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moss's — 501 S. Fayette — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=266,3289,586,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morton's — S. Fayette — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=266,3405,548,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nuway — BECKLEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=264,3517,473,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Travelers' Inn — 602 Raleigh St. — BLUEFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1476,473,807,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel Thelma — 1047 Wayne St. — BLUEFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1474,524,802,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kingslow's — Bland St. — BLUEFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1476,654,564,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ferguson's — Washington St. — CHARLESTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1478,894,712,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Penn's — West Charleston — CHARLESTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1476,939,641,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HALL'S PARK — U.S. RT. 60 — CHARLESTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1468,1073,944,59",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Hut — 1329 Washington St. — CHARLESTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1479,1274,794,59",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bridge's Esso — Wash. & Truslow — CHARLESTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1481,1404,829,58",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Perkins & Watson — at Bradford — CHARLESTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1478,1459,764,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Red Star — CHARLESTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1481,1589,562,44",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kenneth B. Johnson — 505 Carolina Ave. — CHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1458,1792,1072,59",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Ruby Thomas — 309 Water St. — CLARKSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1478,2016,897,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tasty Lunch — 308 Water St. — CLARKSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1478,2150,732,53",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "American Legion — Monticello St. — CLARKSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1485,2275,829,56",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pythian — 119 Harper St. — CLARKSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1479,2334,633,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elks — First St. — CLARKSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1479,2384,385,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — Monticello St. — CLARKSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1481,2507,648,53",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Monongahela — Madison St. — FAIRMONT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1479,2768,687,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whittaker's Grill — Pennsylvania Ave. — FAIRMONT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1481,2896,951,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parker's — Pennsylvania Ave. — FAIRMONT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1481,3027,728,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Geo. Jones — Front St. — GRAFTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1479,3251,698,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jones' — Latrobe St. — GRAFTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1474,3381,498,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Boston's — 36 Latrobe St. — GRAFTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/72#xywh=1478,3505,625,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0073_5213585_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,458 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Barrett — 83 Summer St. — BRIDGEPORT, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1690,991,1049,57",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Lawrence — 68 Fulton St. — BRIDGEPORT, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1688,1041,1044,59",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Williams — 101 Church St. — BRIDGEPORT, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1670,1091,1013,59",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Log Cabin Cottage — 2016 Main St. — HARTFORD, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1688,1254,1046,69",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. S. A. Reed — 12 Canton St. — HARTFORD, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1688,1309,988,54",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Majestic — 359 Beach St. — NEW HAVEN, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1693,1432,720,42",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel Portsmouth — 91 Webster St. — NEW HAVEN, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1690,1476,1046,48",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Phyllis Wheatley Home — 108 Canal St. — NEW HAVEN, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1690,1530,797,47",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dr. M. F. Allen — 65 Dixwell Ave. — NEW HAVEN, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1698,3186,1042,52",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Robinson — 54 Dixwell Ave. — NEW HAVEN, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1695,3239,1048,49",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. Raine — 68 Dixwell Ave. — NEW HAVEN, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1698,3286,962,53",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Jackson — 55 Dwxiell Ave. — NEW HAVEN, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1698,3338,1045,50",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Home of the Bachelor — 20 Brewer St. — NEW LONDON, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1700,3491,746,41",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Wm. Gambles — 45 Shapley St. — NEW LONDON, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1700,3585,1046,53",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hempstead Cottage — 73 Hempstead St. — NEW LONDON, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=1586,3642,661,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Ed. Andrews — 69 N. Cotton St. — ANDALUSIA, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=365,1101,642,56",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar Hotel — 316 N. 17th St. — BIRMINGHAM, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=365,1317,951,49",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fraternal Hotel — 1619 N. 4th St. — BIRMINGHAM, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=366,1370,983,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palm Leaf Hotel — 318 N. 18th St. — BIRMINGHAM, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=365,1414,1014,55",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rush Hotel — 316 N. 18th St. — BIRMINGHAM, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=365,1469,886,48",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Hayes — 207 W. Church St. — DECATUR, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=370,1650,1043,52",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith Hotel — 902 Garden Ave. — GADSDEN, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=370,1818,950,41",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Neal — 1317 4th Aev. — GADSDEN, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=372,1931,892,51",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. C. Oliver — 1335 4th Ave. — GADSDEN, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,1979,813,55",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Sheperd — 1324 4th Ave. — GADSDEN, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=372,2026,990,58",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Simons — 233 N. 6th St. — GADSDEN, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,2075,955,57",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe Dondal — GENEVA, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,2250,369,41",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Susie M. Sharp — GENEVA, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,2300,479,41",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sallie Edwards — GENEVA, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,2347,457,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Reed — 950 Lyons St. — MOBILE, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,2508,899,49",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Jordan — 256 N. Dearborn — MOBILE, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=378,2556,1042,51",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. B. Sylvester — 355 Cuba St. — MOBILE, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,2606,1044,54",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McClain Hotel — 19th St. — SHEFFIELD, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=262,2721,725,53",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. I. Hawkins — S. Atlantic Ave. — SHEFFIELD, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=378,2822,1042,47",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. A. Benton — 113 E. FairView St. — TROY, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,2990,652,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Thomas — E. Academy St. — TROY, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,3090,1042,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. W. Baugh — 2526 12th St. — TUSCALOOSO, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=378,3271,1044,45",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. A. Barnes — 419 30th Ave. — TUSCALOOSO, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,3318,1049,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. W. Clopton — 1516 25th Ave. — TUSCALOOSO, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,3366,1045,50",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. G. Robinson — 11th St. — TUSCALOOSO, ALABAMA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=380,3414,833,51",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel Broad — 468 Broad St. — BRIDGEPORT, CONNECTICUT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/8#xywh=375,3694,839,41",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0009_5206459_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

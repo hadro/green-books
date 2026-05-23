@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bay Shore Hotel — Buckroe Beach, Va. — Hampton",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/93#xywh=908,2306,1589,149",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0094_5215099_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0094_5215099_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

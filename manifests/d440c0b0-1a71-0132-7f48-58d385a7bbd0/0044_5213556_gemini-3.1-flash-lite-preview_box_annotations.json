@@ -1,0 +1,942 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Madison — 196 Main St. — MADISON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=643,368,339,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Yellow — 14 Lincoln Place — MADISON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=475,530,611,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunshine — 540 White Horse Pike — MAGNOLIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=462,738,841,43",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paul's Lunch — Brook St. — MAHWAH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=458,933,611,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Macon's Inn — H'way Rt. No. 1-26 — MOMOUTH JUNCTION",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=465,1134,880,43",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 39 Washington St. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=465,1327,881,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 159 Glenridge Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=468,1381,880,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tabard's — 144 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=469,1496,834,44",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Front — 154 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=475,1544,821,43",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lula's — 270 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=474,1657,751,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McGhee — 307 Orange Road — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=472,1703,702,58",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gamble's — 146 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=475,1761,774,40",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stewart Bros. — 139 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=477,1869,891,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Walkers — 180 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=474,1922,746,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paramount — 215 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=468,1972,806,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elm's — 231 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=480,2084,723,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cut Rate — 274 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=477,2198,793,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Raveneau — 239 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=477,2249,790,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eay-Ayer's — 190 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=477,2295,820,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whitefields — 175 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=477,2411,820,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Montclairs — 170 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=474,2460,813,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cardell's — 323 Orange Road — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=480,2574,710,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Maple Ave. — 91 Maple Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=477,2621,719,57",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edmonds — 173 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=480,2751,836,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Davenport — 152 Lincoln St. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=477,2803,694,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elm Pharmacy — 220 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=481,2913,897,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hampton Inn — 1718 Sringwood Ave. — NEPTUNE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=497,3108,908,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Samuel's — 351 Fisher Ave. — NEPTUNE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=498,3160,670,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gottlings — 118 Bradley Ave. — NEPTUNE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=497,3212,703,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Priscilla's — 261 Myrtle Ave. — NEPTUNE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=498,3325,691,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rio Plaza Hotel — 92 So. 13th St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=478,3517,1086,75",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grand — 78 W. Market St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=498,3585,656,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 153 Court St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=465,1327,881,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 20 Jones St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=468,1381,880,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harwin Terrace — 27 Sterling St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1700,448,819,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Morris — 39 Chester Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1700,563,823,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cabin Grill — 54 Waverly Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1694,677,748,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alpine — 197 W. Kinney St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1707,726,672,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bar-B-Q — 9 Monmouth St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1707,777,659,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mae's — 161 W. Kinney St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1716,888,683,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson — 118 Springfield Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1717,942,753,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Vogue — 227 W. Kinney St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1709,984,754,60",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Farrar — 35 Prince St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1709,1037,530,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Billy's — 206 Belmont Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1710,1092,641,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Algene's — 120 Spruce St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1710,1140,607,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Queen — 155 Barclay St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1709,1187,583,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Five-Star — 185 Kinney St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1709,1235,638,53",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Idellio — 30 Wright St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1716,1362,618,58",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem — 109 Belmont Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1722,1495,703,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Howard — Springfield Ave. & Howard St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1719,1541,1044,59",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bert's — 211 Renner Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1707,1599,620,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dan's — 245 Academy St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1717,1649,604,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Little Johnny's — 47 Montgomery — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1719,1693,793,59",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kesselman's — 13th & Rutgers St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1720,1748,782,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alcazar — 72 Waverly Place — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1710,1797,662,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rosen's — 164 Spruce St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1719,1846,593,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dave's — 202 Court St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1722,1898,550,40",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kleinbergs — 88 Waverly St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1725,1941,673,54",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Afro — 19 Quitman St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1722,1997,547,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Welcome Inn — 87 West St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1725,2045,655,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Del Mar — 133 Howard St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1722,2088,657,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "'570' — 570 Market St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1727,2142,545,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Corprew's — 297 Sprinfield Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1722,2190,748,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dug-Out — 188 Belmont Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1722,2233,706,59",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harry's — 60 Waverly Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1722,2288,654,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ernie's — 104 Wallace St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1725,2340,603,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Trippe's — 121 Halstead St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1725,2387,654,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mulberry — 302 Mulberry St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1725,2435,699,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Frederick — 2 Boston St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1725,2484,587,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hi Spot — 166 W. Kinney St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1717,2532,773,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harold — 71 Blooffield — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1714,2582,549,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wood's — 258 Prince Street — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1716,2629,715,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Piccadilly — 1 Peshine Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1733,2757,691,54",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Caravan — 8 Bedford St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1733,2806,751,54",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hi Spot — 166 W. Kinney St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1717,2532,773,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Kinney Club — 36 Arlington St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1716,2906,949,53",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Boston Plaza — 4 Boston St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1732,2958,679,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Golden Inn — 192 S. Pruce St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1719,3003,771,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/77"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nest Club — Warren & Norfolk St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1729,3050,833,57",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/78"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alcazar — 72 Waverly Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1710,1797,662,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/79"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Night Cap — 1079 Broad Street — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1716,3153,812,53",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/80"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Silver Saddle — 272 Clinton Ave. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1719,3198,820,56",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/81"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chinese-American — 603 W. Market — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1729,3308,852,54",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/82"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Estes — 77 Tillinghast Street — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1719,3442,705,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/83"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Branch — 45 Rankin St. — NEWARK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/43#xywh=1730,3569,575,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json/entry/84"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0044_5213556_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

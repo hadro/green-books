@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "APOLLO — 125th ST, near 8th Ave.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fdb5a8d0-1a75-0132-d947-58d385a7bbd0/manifest.json/canvas/57#xywh=949,599,1115,56",
+      "id": "https://hadro.github.io/green-books/manifests/fdb5a8d0-1a75-0132-d947-58d385a7bbd0/0062_5206063_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/fdb5a8d0-1a75-0132-d947-58d385a7bbd0/0062_5206063_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

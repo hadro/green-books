@@ -1,0 +1,876 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Margot — 5259 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=293,527,844,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Golden Gate — 1719 E. 103rd St. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,575,855,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise — 5505 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,626,855,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Samba — 5th & Towns Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,675,756,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tip Top Cafe — 4631 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=300,723,989,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 4201 S. Main St. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,771,793,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elks Lounge — 10123 Beach — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,820,719,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Basket Room — 3219 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,923,995,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem — 11812 Parmalee — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,975,679,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wakeki — 3741 So. Western Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,1023,858,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Last Word — 4206 So. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,1070,941,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — 4223 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,1174,848,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson's — 5501 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=300,1224,854,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Esquire — Vernon & Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=297,1273,903,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. M. Davis — 4321 Long Beach Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=300,1322,991,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fred Little John — 3503 Avalon Blvd. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=297,1369,992,45",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Valentine's Service — 2657 S. Western Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=300,1474,991,44",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carner's — 4500 S. Avalon Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,1573,850,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simpkins & Cower — 2227 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=304,1622,985,43",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tom's — 1424 W. Jefferson Blvd. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=301,1717,854,44",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hughes — 2901 W. Jefferson Blvd. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,1769,908,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brock — 1246 W. Jefferson Blvd. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,1820,854,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garcia — 52nd Pl. & Central — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,1869,785,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilkens — 4924 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=301,1914,854,44",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gracis — 5201 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,1966,823,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Watson Bros. — 4000 So. Pedro St. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2017,942,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parkers — 10229 Alameda — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2122,680,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alexander's — Jefferson & Griffith — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=304,2170,934,43",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allums — 4375 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=304,2274,855,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Doctor's — 4012 S. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2324,861,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Medical — 3112 S. Western Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2373,854,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bader's — 1840 E. 103rd St. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2470,746,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Delta — 8512 Compton Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2519,787,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Benjamin — 5016 So. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2568,912,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Herndon — 3419 So. Central Ave. — LOS ANGELES",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2667,905,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Geo. Moore — 407 Scrivener St. — LAKE ELSIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,2862,823,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lake Elsimore — 416 N. Kelogg St. — LAKE ELSIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=443,2748,656,52",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise — 1793 7th St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=294,626,855,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ebony Plaza — 3908 San Pablo Ave. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=304,3152,947,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carver — 1412 Market St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=307,3203,655,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Warren — 1252 7th St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=302,3251,610,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. C. Clark — 805 Linden St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=309,3349,918,45",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Williams — 3521 Grove St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=309,3401,908,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Villa — 3016 Adeline St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=309,3502,759,43",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Overland Cafe — 1719 7th St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1512,428,795,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McCabe — 5901 Adeline St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1514,527,699,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Signal — 800 Center St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1514,578,631,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bufford's — 5901 Aldine St. — OAKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1514,675,742,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Muse-A-While — PERRIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1514,876,392,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Penn Mobile — 1096 Lincoln Ave. — PASADENA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1514,1077,903,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Center Hotel — 420½ Capitol Ave. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1516,1283,906,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. C. Peyton — 2202½ 4th St. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,1381,934,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunlap's — 4372 4th Ave. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1512,1483,684,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mikes — 1350 56th St. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,1578,730,47",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Twigg's — 421 Capitol Ave. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1516,1682,714,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Leftridge — 3102 Sacramento Blvd. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1514,1729,915,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nannette's — 1214 5th St. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,1779,673,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Larocco's — 1630 7th St. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1516,1829,660,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mo-Mo — 600 Capitol Ave. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,1927,725,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Taylors — 1230 6th St. — SACRAMENTO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1521,2024,575,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas — 206 Market St. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1516,2225,695,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Simmons — 542 6th Ave. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,2276,656,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 1029 C St. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,2324,602,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sun — 421 Market St. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1522,2422,556,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown Hostess — 2816 Imperial Ave. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,2471,993,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Webber's — 1655 1st Ave. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1522,2570,660,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Woodson's — 3126 Franklin Ave. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,2619,854,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robinson's — 2876 Imperial Ave. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,2717,854,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clever — 2606 Imperial Ave. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1523,2815,740,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Imperial — 2751 Imperial Ave. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1519,2471,993,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ramona — 2244 Logan Ave. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1522,2913,777,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Maryann — 1317 Market St. — SAN DIEGO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1522,2962,710,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Scaggs — 1715 Webster St. — SAN FRANCISCO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1522,3161,799,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Pullman — 232 Townsend St. — SAN FRANCISCO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1522,3208,905,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edison — 1540 Ellis St. — SAN FRANCISCO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1522,3259,612,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Texas — 1840 Filmore St. — SAN FRANCISCO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1522,3307,664,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Buford — 1969 Sutter St. — SAN FRANCISCO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1523,3355,649,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Johnson — 1788 Sutter St. — SAN FRANCISCO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1523,3453,906,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/77"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thadd's DeLux — 2040 Sutter St. — SAN FRANCISCO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/20#xywh=1523,3501,901,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json/entry/78"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0021_5213923_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

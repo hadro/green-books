@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WISHING WELL MOTEL — Route 22, Harrisburg, Pennsylvania — HARRISBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/7#xywh=2493,465,48,144",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0008_5213995_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0008_5213995_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

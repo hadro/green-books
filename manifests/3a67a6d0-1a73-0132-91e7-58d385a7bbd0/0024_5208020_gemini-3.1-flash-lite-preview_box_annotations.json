@@ -1,0 +1,854 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. Brown — Caanen Section — GREENSBORO, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=410,520,774,50",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Jeter — Railroad Section — GREENSBORO, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=407,568,788,53",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Walker — Springfield Section — GREENSBORO, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=410,616,872,54",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas — 361 Broadway — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=412,854,594,49",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Richmond — 319 Broadway — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=412,905,641,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. C. Moore — 122 Spring St. — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=415,1015,853,55",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brs. F. W. Henndon — 139 1st Ave. — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=415,1063,876,53",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mables — Main Street — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=415,1187,514,44",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Red Front — 417 Wall St. — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=414,1234,649,49",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jean's — 429 Cotton Avenue — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=421,1288,674,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "West Side — 222 Dempsev Avenue — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=421,1334,819,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marquiata — 554 New Street — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=419,1450,688,47",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Bonita — 455 Cotton Avenue — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=422,1500,769,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carrie's — 133 Forest Avenue — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=412,1550,690,41",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lula Life — 425 E. 2nd Street — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=415,1595,738,47",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Huschel — 264 Broadway — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=422,1709,598,53",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Community — 550 - 3rd Avenue — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=422,1756,772,53",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anderson's — Pursley at Pond Street — MACON, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=423,1869,906,55",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dreamland — 43rd & Hopkins St. — SAVANNAH, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=429,2100,854,52",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rose — 348 Price St. — SAVANNAH, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=432,2220,497,46",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "School of Beauty Culture — 456 Montgomery St. — SAVANNAH, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=375,2282,1001,57",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gibson's — 442 West Broad St. — SAVANNAH, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=426,2463,762,50",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moores' — 37th & Florence — SAVANNAH, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=432,2584,632,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Halls — 1014 W. Broad St. — SAVANNAH, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=436,2694,648,47",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cocoanut Grove — Mrs.J. Cox — SAVANNAH, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=440,2811,713,49",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cooper — Oak St. — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=428,3048,429,54",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. K. G. Scarlett — 843 Reynoids — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=442,3162,861,46",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith's — State St. — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=435,3216,444,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise — Oak St. — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=433,3316,453,48",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — Oak St. — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=439,3435,535,44",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Union Cab — State St. — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=443,3546,549,48",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "State Street — State Street — WAY CROSS, GEORGIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=442,3666,606,40",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "California — 1101½ Main St. — BOISE, IDAHO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1640,577,718,47",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Love — 1164 River St. — BOISE, IDAHO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1637,706,770,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Open Door Mission — 1159 River St. — BOISE, IDAHO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1637,758,907,46",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Union Pacific Greyhound Depot — 9th and Bannock Sts. — BOISE, IDAHO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1624,872,1072,54",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. M. E. Parsnage — 625 E. Fremont St. — POCATELLO, IDAHO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1651,1117,994,53",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tourist Park — E. Fremont St. — POCATELLO, IDAHO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1654,1170,718,39",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ritz — 409 E. Oakwood Blvd. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1649,1463,737,44",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alpha — 2945 S. Michigan Blvd. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1658,1503,788,64",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Como — 5204 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1659,1561,616,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green Gables — 3920 S. Lake Park Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1661,1609,958,47",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Du Sable — 764 E. Oakwood Blvd. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1661,1653,849,56",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Strode — 820 E. Oakwood Blvd. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1659,1708,751,46",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Almo — 3800 Lake Park Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1661,1756,692,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Evans — 733 E. 61st St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1661,1809,583,41",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oakwood — 820 E. Oakwood Blvd. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1649,1463,737,44",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Perishing — 6400 Cottage Grove Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1663,1905,881,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Praire — 2836 Praire Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1661,1953,624,46",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S & S — 4142 S. Park Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1663,2003,643,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Southway — 6014 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1663,2053,704,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spencer — 300 E. Garfield — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1666,2103,602,41",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grand — 5044 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1666,2151,619,41",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tyson — 4259 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1663,2197,626,50",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vincennes — 601 E. 36th St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1668,2247,704,46",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 3763 S. Wabash Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1673,2291,880,55",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 4559 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1670,2348,771,41",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Franklin — 3942 Indianna Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1668,2393,742,46",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln — 2901 State St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1670,2446,581,40",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pompeii — 20 E. 31st St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1670,2495,606,44",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Hazie — 3910 Indianna Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1670,2543,800,41",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clarilge — 51st & Michigan Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1670,2594,780,44",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morris' — 410 E. 47th St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1676,2709,630,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wrights — 3753 S. Wabash Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1673,2755,776,52",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A & J — 105 E. 51st St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1674,2804,591,50",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pitts — 812 E. 39th St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1674,2853,574,48",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palm Gardens — 720 E. Oakwood Blvd. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1677,2900,938,52",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "400 Club — 715 E. 63rd St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1677,2954,665,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pioneer — 533 E. 43rd St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1677,3004,616,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pershing — 755 East 64th Street — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1677,3052,793,46",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mabel Bank — 712 E. 44th St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1686,3166,734,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Poro College — 4415 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1687,3213,768,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Matties' — 4212 Cottage Grove Ave. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1683,3323,851,49",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bank's — 209 E. 39th St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1687,3442,599,42",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The palm — 466 E. 47th St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1690,3556,666,45",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Casino — 823 E. 39th St. — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1693,3605,679,44",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Key Hole — 3965 S. Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/23#xywh=1694,3651,688,51",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0024_5208020_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

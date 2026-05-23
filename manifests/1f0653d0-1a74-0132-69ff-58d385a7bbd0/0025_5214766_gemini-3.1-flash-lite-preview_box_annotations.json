@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "TROTTER'S RIVERSIDE MOTEL — 310 E. Barraque Street — PINE BLUFF, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/manifest.json/canvas/24#xywh=392,2747,2050,155",
+      "id": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/0025_5214766_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/0025_5214766_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

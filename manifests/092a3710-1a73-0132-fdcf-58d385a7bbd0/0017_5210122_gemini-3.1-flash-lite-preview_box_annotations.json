@@ -1,0 +1,865 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal — 703 French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1403,1890,756,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anderson — 716 French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=252,541,614,39",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lawson — 208 Poplar St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=244,587,566,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss W. A. Brown — 1306 Tatnall St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=242,723,906,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Till — 1008 French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=245,773,722,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Christian Assn. Bldg. — 10th & Walnut St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=251,898,955,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Anderson — 916 French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=247,1021,825,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Burton's — 8th and Walnut St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=248,1151,714,39",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spot — 7th and 8th on French St. — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=247,1269,802,53",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Esso — 8th and 9th on King — WILMINGTON, DELAWARE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=252,1398,639,38",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "JOHNSON'S HOTEL — 1505-13th ST., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=239,1811,630,54",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whitelaw — 13th & 'T' Sts. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=247,1945,793,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson, Jr. — 1509 Vermont Ave., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=240,1992,929,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — U St. & 15th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=249,2039,829,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 1816 12th St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=249,2085,831,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 901 Rhode Is. Ave. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=249,2130,959,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. L. Fowler — 1449 'Q' St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=240,2270,889,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Lee — 1212 Girad St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=247,2318,884,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "PATSY'S GUEST HOUSE — 2026-13th St., N. W., Wash,ton, D. C. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=198,2414,801,51",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Towles — 1342 Vermont Ave., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=255,2823,846,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bailey's — 2553 13th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=255,2869,804,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modern — 3006 - 13th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=252,2912,807,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hunt's — 1318 Rhode Island Ave., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=248,2961,967,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rivers — 1021 Monroe St., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=248,3009,784,40",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pasty's — 2026 13th St., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=248,3053,722,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cottage Grove — 1531 Vermont Ave., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=248,3103,983,39",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Terry's — 939 Rhode Island Ave., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=248,3145,935,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bell's — 105 I St., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=252,3193,556,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mack's — 1810 7th St., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=252,3236,686,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cloves — 614 S. St., S.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=255,3284,602,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hammond's — 725 First St., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=255,3332,773,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Boyd's — 1744 Swann St., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=255,3377,739,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Downtown House — 421 K St., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=257,3424,863,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Holleywood — 1940 9th St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,398,773,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Liberty — 910 5th St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,442,643,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harrison's Cafe — 455 Florida Ave. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1402,491,982,41",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Off Beat — 1849 7th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1402,539,777,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kenyon — Ga. Avenue & Kenyon St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,585,998,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Capitol — 1224 U St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1403,627,698,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chuck's — 1334 V St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1404,676,647,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Liberty — 910 5th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,714,823,54",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Keys — 7th & 'T' St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1408,832,653,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chicken Paradise — 1210 U. St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,879,925,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Earl's — 1218 U. St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,920,636,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sugar Bowl — 2830 Georgia Ave., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,966,950,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shrimp Hut — 807 Florida Aveneue, N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1403,1013,981,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Casbah — 1211 U St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1394,1060,648,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Uptown — 807 Florida, N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1400,1104,686,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 1909 14th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1399,1150,827,51",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Hour — 1937 11th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1403,1196,873,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson's — 1831 Weltberger St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,1240,926,54",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cozy — 708 Florida Ave., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1396,1289,737,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brass Rail — 1739 7th St., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1394,1335,749,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Peoples — 719 11th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1403,1444,781,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S & W — 1428 9th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,1486,769,53",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ney's — 1013 Penna. Ave., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,1534,798,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shuster's — 101 H St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1403,1574,705,55",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Masters — 714 K St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1400,1625,654,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Florida — 1803 Florida Ave., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1402,1738,827,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Apex — 1417 'U' St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1404,1845,629,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Royal — 1800 'T' St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1348,1795,672,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite — 1806 Florida Ave., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1402,1938,791,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vanity Box — 1515 9th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1393,1984,927,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lil's — 1327 11th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1399,2028,740,52",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green's — 1825 18th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1385,2072,837,55",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Marie — 3114 11th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1399,2120,828,52",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bandbox — 2036 18th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1402,2167,827,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Salle — 541 Florida Ave., N.W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1393,2211,833,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Republic Gardens — 1355 'U' St. N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1404,2322,905,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Bali — 1901 14th St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,2369,878,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Caverns — 11th & U St., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1408,2411,878,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brown's — Georgia Ave. & 'V' St. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1411,2522,765,40",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Engelberg — 1783 Florida Ave., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1399,2566,883,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Doctor's — 112 W. St. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1402,2676,504,39",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. R. Reynolds — 1808 Florida Ave., N. W. — WASHINGTON, DISTRICT OF COLUMBIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1408,2782,1006,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. Littleton — 522 S. Campbell St. — DAYTONA BEACH, FLORIDA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1411,3167,799,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. & B. — 566 Campbell St. — DAYTONA BEACH, FLORIDA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1406,3295,627,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/76"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hank's — 531 S. Campbell St. — DAYTONA BEACH, FLORIDA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/16#xywh=1402,3421,698,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json/entry/77"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0017_5210122_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

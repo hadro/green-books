@@ -1,0 +1,40 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Corpus Christi — NEW ORLEANS, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/28#xywh=1350,2573,1147,54",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0029_5212887_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dillard University — NEW ORLEANS, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/28#xywh=201,823,1074,52",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0029_5212887_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Xavier University — NEW ORLEANS, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/28#xywh=201,823,1074,52",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0029_5212887_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0029_5212887_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

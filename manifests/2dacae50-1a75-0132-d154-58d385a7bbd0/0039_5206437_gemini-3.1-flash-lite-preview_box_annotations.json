@@ -1,0 +1,832 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Barnett — 7th & Central — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=229,468,719,71",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tillmans — Central — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=238,529,558,53",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rio — Central Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=234,647,614,56",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tailor Shop — 515 Central Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=245,756,945,68",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Magnolia — 300 E. Miner St. — WEST CHESTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=235,976,796,68",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Golden Star — 10th & Forrester Ave. — DARBY, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=247,1202,434,53",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pope — 1318 French St. — ERIE, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=239,1465,674,66",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Famble — 538 West 12th St. — ERIE, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=245,1576,972,68",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Craig Oil Co. — 433 N. Main St. — ERIE, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=254,1685,970,74",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Al Duffin — 144 Balm St. — HAMSBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=258,1918,749,58",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Auto Service — Walnut & Sunset Sts. — HAMSBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=256,2044,478,52",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alexander — 7th & Boas Sts. — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=267,2324,864,58",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jackson — 1004 N. 6th St. — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=261,2382,750,53",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Carter — 606 Foster St. — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=258,2494,905,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Hall — Herr & Montgomery — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=258,2547,1054,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. D. Jones — 613 forster St. — HARRISBURG, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=267,2602,642,48",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Clark — 462 Rockland St. — LANCASTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=265,2861,1047,63",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Carter — 143 S. Duke St. — LANCASTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=265,2914,797,63",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. L. Polite — 540 North St. — LANCASTER, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=265,2969,822,56",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Jackson — 258 Bissel Ave. — OIL CITY, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=265,3184,884,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Moore — 8 Bishop St. — OIL CITY, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=269,3234,854,65",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Attucks — 8015 S. 15th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=277,3456,782,48",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Baltimore — 1438 Lombard St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=274,3508,889,53",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Citizens — 420 S. 15th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=275,3558,744,55",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas — Broad & Lombard Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=274,3606,962,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elrae — 805 N. 13th St, — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=274,3663,658,50",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elizaeth Fry — 756 S. 16th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=274,3711,893,55",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Salle — 2026 Ridge Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1461,395,773,71",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Maceo Cafe — Van Pelt & Norris St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1468,440,1045,76",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Roadside — 514 S. 15th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1468,494,953,74",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise — 1627 Fitzwater St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1465,552,894,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Alston — 2333 Catherine St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1468,598,953,69",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 1724 Christian St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1468,645,957,76",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 1605 Catherine St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1469,703,911,66",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 6128 Germantown Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1469,703,911,66",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horseshoe — 12th & Lombard — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1480,806,865,58",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cotton Grove — 1329 South St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1476,926,900,56",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Loyal Grill — 16th & South Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1484,974,951,66",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lyons Cafe — 1418 South St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1476,1032,839,56",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "National Cafe — 1th & Fitzwater — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1486,1079,959,66",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wayside Inn — 13th & Oxford Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1487,1132,1041,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dixon's Wonder Bar — 19th & Montgomery Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1484,1258,656,52",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lenox — Popular Jessup Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1484,1356,952,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roseland — 5404 Arch St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1486,1413,703,50",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parrish — 10th & Parrish Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1487,1458,847,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sam's — 1612 South St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1488,1515,648,53",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wander Inn — 18th & Federal Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1484,1558,1052,66",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butler's Paradise — Ridge & Jefferson — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1487,1682,839,50",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Progressive Club — 1415 S. 20th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1492,1784,679,52",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marion's — 20th & Bainridge Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1487,1948,964,63",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's — 21st & Burke Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1490,2000,869,63",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S. Jones — 2064 Ridge St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1382,2124,760,55",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Agnes — 705 South 18th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1495,2237,782,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "At's — 661 N. 13th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1493,2292,654,55",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Effie's — 5502 Girad Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1495,2340,744,58",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elizabeth's — 5003 Brown St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1496,2392,815,55",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Henson — 1318 Fairmont Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1498,2445,959,50",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jennie's — 1618 French St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1498,2497,752,52",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Salle — 2036 Ridge St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1461,395,773,71",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lady Ross — 718 S. 18th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1496,2597,813,55",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Reynolds — 2133 Christian St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1500,2647,953,53",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Redmond's — 710 N. 48th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1500,2697,842,56",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rose's — 16th & South Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1500,2750,809,56",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "F. Franklin — 2115 W. York St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1503,2797,953,56",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. B. Tooks — 916 S. 17th St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1497,2845,908,65",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Morton's — 17th & Bainbridge Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1504,2908,440,48",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "United Oil — 16th & Fitzwater — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1514,3071,942,55",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Booker Bros — 1811 Fitzwater St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1516,3190,986,55",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garage — 5732 Westminister Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1405,3145,330,48",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garage — 1823 Bainbridge St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1405,3145,330,48",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dorsey Bros. — 2009 Oxford St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1514,3405,900,69",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joy — 51st & Haverford St. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1525,3534,814,56",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dixie — 1224 Point Breeze Ave. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1518,3581,945,63",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln — Broad & Lombard Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1514,3635,959,60",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pearl — Ridge & Jefferson Sts. — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/38#xywh=1518,3689,904,58",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0039_5206437_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

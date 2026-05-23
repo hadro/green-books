@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "VICTOR H. GREEN & CO. — 200 WEST 135th STREET - Room 215-A - NEW YORK 30, N. Y — PHILADELPHIA, PENNSYLVANIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/9#xywh=747,3329,624,67",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0010_5207535_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0010_5207535_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,821 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Towles — 1342 Vermont Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1542,459,999,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modern — 3006 13th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1543,512,804,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rivers — 1021 Monroe St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1543,560,856,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Patsy's — 2026 13th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1540,609,854,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cottage Grove — 1531 Vermont Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1540,659,998,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Boyd's — 1744 Swann St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1539,758,905,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edward's — 1837 16th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1540,808,859,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cecelia's — 2002 12th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1540,938,934,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grand Casa Blanca — 3413 Georgia Ave. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1536,990,944,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Hollywood — 1940 9th St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1533,1086,998,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Holleywood — 1940 9th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1533,1136,951,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harrison's Cafe — 455 Florida Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1533,1183,998,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Off Beat — 1849 7th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1531,1279,856,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kenyon — Ga. Ave. & Kenyon St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1531,1332,1000,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Herbert's Stage Door — 618 \"T\" St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1531,1428,998,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Republic Gardens — 1355 'U' St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1526,1608,996,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alfreds — 1610 'U' St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1529,1657,791,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chicken Paradise — 1210 U. St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1528,1706,899,61",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Earl's — 1218 U. St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1524,1803,718,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sugar Bowl — 2830 Georgia Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1529,1854,941,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shrimp Hut — 807 Florida Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1524,1952,994,61",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Uptown — 807 Florida, N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1524,2003,799,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Hour — 1937 11th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1521,2047,909,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cozy — 708 Florida Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1521,2100,903,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kenyon Grill — 3119 Georgia Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1517,2150,949,59",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Hour — 1837 11th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1521,2047,909,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Peoples — 719 11th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1511,2374,848,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S & W — 1428 9th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1517,2426,802,61",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shuster's — 101 H St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1517,2478,768,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ney's — 1013 Penna. Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1514,2524,942,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carter's — 1927 14th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1514,2573,851,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Florida — 1803 Florida Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1533,1183,998,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Bird — 3219 Georgia Ave. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1511,2756,995,59",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harpers — 703 Park Rd. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1510,2808,639,50",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Modes — 3100 Georgia Ave. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1504,2936,919,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Al, Lenes — 3551 Georgia Ave. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1510,2986,994,65",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Henretta's — 3616 Georgia Ave. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1504,3034,998,67",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Apex — 1417 'U' St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1510,3087,782,59",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Royal — 1800 'T' St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1507,3136,858,61",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite — 1806 Florida Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1504,3183,858,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lil's — 1416 9th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1501,3235,720,58",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green's — 1825 18th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1507,3283,848,65",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bandbox — 2036 18th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1503,3336,859,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Salle — 541 Florida Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1503,3380,939,66",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Republic Gardens — 1355 U St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1526,1608,996,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Caverns — 11th & U St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1503,3567,994,58",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ebony — Cor. 7th & 'S' Sts. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1500,3613,942,65",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe Randolph's — W. 6th St. — LAUREL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=323,545,793,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe Randolph's — W. 6th St. — LAUREL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=323,545,793,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Orchid — W. 6th St. — LAUREL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=323,753,540,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rodney — Dupont Highway-Rt. 13 — TOWNSEND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=316,969,943,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hood's — Dupont Hiway — TOWNSEND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=314,1079,631,50",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lawson House — 100 Poplar Street — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=257,1300,484,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.M.C.A. — 10th & Walnut Sts. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=311,1490,887,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 10th & Walnut Sts. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=309,1539,861,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Miss W. A. Brown — 1306 Tatnall St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=310,1646,998,58",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Till — 1008 French St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=307,1697,811,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Christian Assn. Bldg. — 10th & Walnut Sts. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=309,1804,856,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Anderson — 916 French St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=306,1964,945,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dora's — 314 East 10th St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=302,2015,756,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spot — 7th & 8th on French St. — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=304,2128,857,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Esso — 8th & 9th on King — WILMINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=300,2241,694,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's Hotel — 1505 13th St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=291,2870,998,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whitelaw — 13th & \"T\" Sts. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=291,2920,957,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson, Jr. — 1509 Vermont Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=291,2970,1002,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dunbar — U St. & 15th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=288,3065,917,61",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.M.C.A. — 1816 12th St., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=311,1490,887,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 901 Rhode Is. Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=309,1539,861,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clore — 614 'S' St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=288,3215,663,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cadillac — 1500 Vermont St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=288,3264,939,53",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ken Rod — 621 Rhode Island Ave., N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=288,3312,998,53",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charles — 1334 'R' St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=288,3408,763,50",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Buddie's — 1320 5th St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=281,3549,853,58",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Towles — 1321 13th St. N. W. — WASHINGTON, D. C.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/16#xywh=1542,459,999,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0017_5214004_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

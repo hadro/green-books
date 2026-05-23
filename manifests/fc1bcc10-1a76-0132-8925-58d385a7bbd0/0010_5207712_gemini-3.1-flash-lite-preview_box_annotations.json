@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LLOYD'S OF WHITE PLAINS — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/manifest.json/canvas/9#xywh=1460,1516,1170,78",
+      "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0010_5207712_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HARLEM ON THE HUDSON — NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/manifest.json/canvas/9#xywh=506,3320,2779,144",
+      "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0010_5207712_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0010_5207712_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

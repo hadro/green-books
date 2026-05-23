@@ -1,0 +1,568 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Joe's — 337 Railroad Ave. — POINT PLEASANT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=226,430,606,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's — PINE BROOK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=231,635,194,40",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grigg's — 58-60 Witherspoon St. — PINE BROOK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=230,723,715,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vanity Box — 188 John St. — PINE BROOK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=236,832,595,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Liberty — 4th St. — PLAINFIELD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=234,1030,374,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem Inn — 1117 Washington Ave. — PLEASANTVILLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=230,1226,833,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martin's — 304 W. Wright St. — PLEASANTVILLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=234,1332,673,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "O. Paterson — Edwards Ave. & Potters Crossing — RAHWAY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=238,1524,922,57",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robins Rest — 615 River Road — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=236,1769,693,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vincents — 263 Shrewsbury Ave. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=239,1878,718,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dan Logan's — W. Bergen Place — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=236,1925,721,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "West Bergen — 103 W. Bergen Place — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=239,2030,820,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charlie's — W. Bergen Place — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=239,2078,619,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Dillard — 250 Shrewsbury Ave. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=239,2186,773,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Alleyne — 124 W. Bergen Place — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=243,2277,790,54",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Suries — 214 Shrewsbury Ave. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=240,2326,651,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Galatres — Shrewsbury & Catherine — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=240,2433,777,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dudley's — 79 Sunset Ave. — RED BANK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=244,2542,616,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Omega — 302 E. 9th St. — ROSELLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=245,2738,539,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "St. George — 1139 St. George Ave. — ROSELLE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=245,2781,763,51",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hill Top — 60 Jerusalem Road — SCOTCH PLAINS, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=245,2984,675,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Villa Casanova — Jerusalem Road — SCOTCH PLAINS, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=247,3089,736,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shady Rest — Jerusalem Road — SCOTCH PLAINS, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=245,3194,646,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stith's — 111 Market St. — SALEM, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=247,3386,544,55",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Castle Inn — 11 New St. — SEA BRIGHT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1376,409,589,54",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Quality — 13 Pleasant Ave. — SEWAREN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1382,617,609,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rodney's — Shrewsbury Ave. — SHREWSBURY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1390,795,622,54",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 393 Broad St. — SUMMIT, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1395,980,660,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Casaloma — Manitan Park — TOMS RIVER, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1393,1161,573,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 40 Fowler St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1386,1349,714,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Pleash — 88 Spring St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1393,1457,620,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Garland — 62 Spring St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1390,1503,667,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spot Sandwich — 121 Spring St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1393,1609,712,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bea's — 83 Spring St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1394,1717,483,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Geraldine's — 17 Trent St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1394,1761,588,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sanitary — 199 N. Willow St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1393,1875,668,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bill's — 81 Spring St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1395,1923,473,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Famous — 228 N. Willow St. — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1385,2022,665,53",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crossing Inn — Eggertt's Crossing — TRENTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1391,2134,748,52",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Celeste — 211 Springwood Ave. — VAUX HALL, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1391,2318,692,52",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carnegie — 380 Carnegie Place — VAUX HALL, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1394,2427,672,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Glen Oak — 100 E. Lincoln St. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1387,2595,699,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Marion — Artic & Spicer Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1396,2641,775,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Artic Ave. — 3600 Artic Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1395,2690,650,40",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "V'esta — 4118 Park Blvd. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1389,2739,577,38",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hunt's — 140 Spicer Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1383,2784,590,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Crawley — 3816 Artic — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1396,2887,678,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "B. Johnson's — 407 Garfield Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1400,2990,726,55",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Morton — 4010 New Jersey Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1404,3100,793,54",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "High Steppers — 437 Lincoln Ave. — WILDWOOD, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1402,3209,764,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robinson's — 225 Park Ave. — WOODBURY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/48#xywh=1400,3374,634,51",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0049_5210154_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

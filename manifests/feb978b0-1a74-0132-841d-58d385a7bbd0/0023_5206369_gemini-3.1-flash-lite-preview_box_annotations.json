@@ -1,0 +1,777 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Wigfall — 1112 Adams Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,392,1038,46",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Brown — 135 Ridge Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,439,883,51",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. Jones — 141 Sylvan Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=382,490,946,47",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. V. Maupin — 25 Atkins Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=382,540,950,46",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Minyard — 1106 Adams Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,590,950,42",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Wilks — 1112 Mattison Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,637,1028,42",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. C. Yesger — 1406 Mattison Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=382,682,1033,52",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Anna Eaton — 23 Adkins Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,731,883,45",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parks Rest. — 115 DeWitt Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,852,914,45",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Danny's — Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=382,967,801,54",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "George's — 159 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=374,1014,909,57",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "West Side — 1136 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=382,1064,1033,55",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nellie Fritts — Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=384,1112,943,56",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Helen's Carolina — 1200 Springwood A. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=384,1166,556,49",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Aztex Room — 1147 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=374,1327,1043,58",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Capitol — 1212 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,1380,933,54",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hollywood — 1318 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=384,1421,1038,66",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "2 Door — 1512 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,1476,896,53",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson — Springwood & Dewitt Pl. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=392,1601,297,38",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arrington — 153 Ridge Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=386,1762,830,50",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "West Side — 1206 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=382,1064,1033,55",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Consolidated — 1216 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,1931,434,39",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "John Milby — 1216 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=392,2020,1034,51",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Imperial — 1107 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,2138,954,45",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Opal — 1146 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=388,2187,854,46",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilie's — 37 Sylvan Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=386,2233,733,50",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marion's — 1119 Springwood Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=388,2283,961,47",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jeffs' — 1208 Springwod Ave. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=392,2401,903,46",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Perry's — Route 33 — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=388,2521,542,44",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nomath — 1130 Adams St. — ASBURY PARK, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=395,2638,771,44",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bay State — 334 N. Tennessee Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=388,2851,1071,46",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Liberty Apt. — Baltic & Kentucky Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,2904,448,45",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Randell — 1601 Arctic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,3000,802,42",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ridley — 1806 Arctic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=388,3049,782,45",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Swan — 136 Virginia Ave. N. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,3100,850,46",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wright — 1702 Arctic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=389,3147,781,47",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Capitol — 37 N. Kentucky Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=385,1380,933,54",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln — 911 N. Indiana Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=392,3249,886,40",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Luzon — 601 N. Ohio Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=392,3296,737,49",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. V. Jones — 1720 Arctic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=392,3434,971,42",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Diggs — 1825 Wash. Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=395,3486,974,45",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "P. Tanner — 110 N. Indiana Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=395,3538,990,40",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. Contee — 111 N. Indiana Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=389,3588,1014,44",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Dowling — 328 N. Indiana Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=395,3641,1007,46",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "SATCHELL'S COTTAGE — 27 N. MICHIGAN AVE. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1645,474,869,56",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. R. S. Goss — 324 N. Indiana Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1615,653,494,40",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Goldens' — 41 N. Kentucky Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1660,817,935,51",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Little Diner — 104 N. Kentucky Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1659,873,418,39",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Goldens' — 41 N. Kentucky Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1660,817,935,51",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Austins — Maryland & Baltic Aves. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1656,1096,291,38",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "My Own — Delaware & Artic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1642,1198,1004,42",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Little Belmont — 37 N. Kentucky Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1654,1248,503,41",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elks Bar & Grill — 1613 Arctic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1656,1352,558,42",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wonder Bar — Kent & Arctic Aves. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1661,1454,426,39",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Timbuctu — 1608 Arctic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1663,1553,820,48",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise — N. Illinois Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1660,1668,774,56",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem — 32 N. Kentucky Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1657,1724,913,55",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "42 N. Illinois Ave. — 42 N. Illinois Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1660,1847,547,46",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hollywood — 811 Arctic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=384,1421,1038,66",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Graces' — 43 Kentucky Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1661,2025,805,45",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Goodmans — 1317 Arctic Ave. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1668,2143,843,41",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Macks — New York & Baltic Aves. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1661,2196,991,41",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tumble Inn — Delaware & Baltic Aves. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1671,2247,423,39",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "London's — Cor. Kent & Arctic Aves. — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1666,2416,329,40",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tennis Club Tea Room — Prospect Ave. — ATLANTIC HIGHLANDS, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1613,2692,786,53",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Doc's — 67 W. 23rd St. — BAYONNE, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1614,2973,658,44",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Ram's Inn — Bridgeston & Millville Pike — BRIDGESTON, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1614,3194,578,42",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jack's — 245 Chestnut St. — CAMDEN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1661,3472,722,40",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Economy — 818 Kaign Ave. — CAMDEN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1653,3591,777,48",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Merchant — 741 Kaign Ave. — CAMDEN, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/manifest.json/canvas/22#xywh=1661,3644,803,44",
+      "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/feb978b0-1a74-0132-841d-58d385a7bbd0/0023_5206369_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

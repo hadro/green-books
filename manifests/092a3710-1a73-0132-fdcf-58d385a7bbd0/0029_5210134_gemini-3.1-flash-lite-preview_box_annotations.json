@@ -1,0 +1,40 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Coliseum — 1513 S. Wabash Ave. (50 E) — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/28#xywh=207,2578,1036,51",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0029_5210134_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Soldiers Field — 14th St. and Lake Shore (1400 S) — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/28#xywh=207,3028,1033,52",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0029_5210134_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Race Track — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/28#xywh=1356,2881,1034,61",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0029_5210134_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0029_5210134_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

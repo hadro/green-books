@@ -1,0 +1,51 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LORD N' LADY — 1813 Jefferson Street — NASHVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/98#xywh=856,867,1066,90",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0099_5214972_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "SMITH'S DRIVE-INN — 1043 Jo Johnson — NASHVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/98#xywh=1032,1892,750,77",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0099_5214972_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "WILKIN'S DAIRY QUEEN DRIVE-INN — 2809 Centennial Blvd. — NASHVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/98#xywh=713,2425,1397,83",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0099_5214972_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "COZY CORNER RESTAURANT & TAVERN — 1137 Jefferson St. — NASHVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/98#xywh=477,3067,1895,104",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0099_5214972_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0099_5214972_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

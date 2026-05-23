@@ -1,0 +1,832 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pleasant View House — 504 11th Ave. — BELMAR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=364,441,997,45",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LaPetite Cottage — 502 16th Ave. — BELMAR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=364,489,891,48",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Baldwin Cottage — 610 11th Ave. — BELMAR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=364,538,905,47",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Riverview Inn — 710 8th Ave. — BELMAR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=364,588,804,47",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sadie's Guest House — 1304 E. St. — BELMAR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=367,637,938,50",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stiles — 821 Corgie St. — CAPE MAY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=364,735,587,45",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Forbes Beach — P. O. Box 231 — CLIFFWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=364,830,800,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. N. Perry — R. F. D. No. 1, Box 400 — FARMINGDALE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=364,933,827,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Top Cottage — Shark River Rd. — FARMINGDALE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=359,1029,994,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Albreco Anchorage — 395 Atlantic — LONG BRANCH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=357,1126,948,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Metropolitan Seashore Home — 8 Cottage Ave. — LONG BRANCH, West End",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=359,1229,839,48",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Idle-Eese-Inn — MAHWAH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=363,1377,374,38",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Josie Rue Acres — P. O. Box 184 — MAHWAH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=361,1423,911,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hotel Comfort — 201 Bay Ave. — OCEAN CITY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=361,1521,847,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bryson's — 6th & Simpson Ave. — OCEAN CITY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=359,1569,852,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edna-Mae's — 921 West Ave. — OCEAN CITY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=361,1619,761,50",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Busy Bee Cottage — 446 Fisher Ave. — NEPTUNE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=354,1717,1006,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shore Villa — 316 Myrtle Ave. — NEPTUNE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=356,1765,848,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Playland Farms — MILLINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=350,1867,459,46",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Camp Midval — MIDVALE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=364,1964,374,43",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shady Nook Cot. — 71 Atlantic Ave. — NORTH LONG BRANCH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=356,2064,1002,59",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Robertson's Farm — LAKEHURST",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=356,2167,485,39",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oaklawn Country Club — NEW GRENTA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=352,2263,656,46",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fuller's — 1401 S. New Rd. — PLEASANTVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=352,2360,739,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morris Beach — 401 Bayview Ave. — PLEASANTVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=352,2412,971,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garden Spot — 300 Doughty Rd. — PLEASANTVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=352,2460,860,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Marionette Cottage — 604 Portland — PLEASANTVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=352,2510,1001,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Red Oaks Rest — RICHLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=345,2608,445,43",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rainbow End — SKILLMAN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=348,2705,387,43",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Laster Cottage — 419 Morris Ave. — SPRINGLAKE BEACH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=345,2804,923,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McDaniel Farm — 2 Rover Rd. — TOMS RIVER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=350,2904,859,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mt. Spring Camp — WASHINGTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=352,3002,502,43",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Poindexter Cottage — 106 E. Schellenger Ave. — WILDWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=350,3100,542,46",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. B. Quarles — 100 Young Ave. — WILDWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=348,3197,1007,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lila-Dora — 152 W. Roberts Ave. — WILDWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=350,3248,915,50",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vesta — 4118 Park Blvd. — WILDWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=357,3300,638,39",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whip-or-Will Cot. — Rt. 1, Box 178B — BALDWIN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=354,3521,680,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Three Sisters — BALDWIN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=354,3622,369,39",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Double J. Ranch, Jean S. Jones — CONSTANTINE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1579,452,943,46",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zac White Pines — BAY SHORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1582,553,470,38",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Waters Farm — BUCHANAN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1585,652,371,36",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Old Dears Rest — Rt. 1 — BITLEY (Woodland Park Resort)",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1583,749,620,45",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dagg's Cottage — Rt. 1 — BITLEY (Woodland Park Resort)",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1582,798,628,44",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Everett Rest Haven — Rt. 1 — BITLEY (Woodland Park Resort)",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1583,848,751,43",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal Breeez Hotel — Rt. 1 — BITLEY (Woodland Park Resort)",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1582,897,758,44",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Caslen's Blue Bell Garden — Rt. 1 — BITLEY (Woodland Park Resort)",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1583,945,941,47",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Scott's, Country Villa — Rt. 1, Box 53 — COVERT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1583,1041,994,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pitchford's, Big Tower Child. Camp — COVERT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1581,1091,843,49",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mable's Place — COVERT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1579,1194,389,36",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bryson's, on the Hilltop — 202 N. State St. — HART",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1581,1289,699,45",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Matthew Burgess' Place — HARTFORD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1579,1436,674,44",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Pomiserania Lodge — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1522,1539,779,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club El Morocco — Rt. 1. Box 186A — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1578,1660,999,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bask-Inn — Broadway & Hemlock — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1579,1712,912,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas Manor — P. O. Box 794 — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1579,1763,855,48",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McKnight's Par. Pal. — P. O. Box 75 — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1579,1811,996,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "White Way Inn — Broadway — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1576,1863,764,44",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lydia Inn — P. O. Box 81 — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1574,1910,709,48",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rosana Tavern — Lake Drive — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1572,1960,802,46",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Nichol's Home — P. O. Box \"B\" — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1574,2007,898,50",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Morton's Motel — P. O. Box 116 — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1576,2059,858,45",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Flora Giles Farm — Rt. 1 — LAWRENCE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1569,2153,669,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Trails End Resort — PAW PAW",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1571,2266,521,44",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pit's Resort — Rt. 1, Box 131 — PAW PAW",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1571,2316,798,53",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Medicine Acres — 8775 Water St. — ROSE CENTER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1571,2426,942,58",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's Shady Nook — Rt. 1, Box 102 — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1571,2542,887,53",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Twin Star Resort — Rt. 3, Box 245 — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1571,2641,944,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clare Harris' Resort — Rt. 4, Box 38 — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1571,2690,1001,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Evergreen Resort — SOUTH HAVEN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1569,2744,484,39",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's Farm — Rt. 2, Box 344 — THREE RIVERS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1569,2854,908,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jordan's Home — Rt. 2, Box 546 — THREE RIVERS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1569,2904,892,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Three Sisters — Rt. 1 — VANDALIA (Paradise Ik. Resort)",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=354,3622,369,39",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stroudsburg Mt. View House — 14 No. 2nd St. — STROUDSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1569,3333,801,47",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fern Board. House — 387 Lincoln — EAST STROUDSBURG",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1568,3487,904,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunrise — P. O. Box 65 — ESPY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/80#xywh=1569,3582,625,42",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0081_5214068_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

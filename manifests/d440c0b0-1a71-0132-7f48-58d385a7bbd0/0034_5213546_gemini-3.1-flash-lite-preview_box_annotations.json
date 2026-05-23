@@ -1,0 +1,843 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "York — 1200 Madison Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=493,555,658,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith's — Druid Hill Ave. & Paca St. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=500,605,936,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Majestic — 1602 McCulloh St. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=497,654,735,44",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 1916 Madison Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=493,700,896,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 1600 Druid Hill Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=503,750,933,43",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Watsons — 340 Blum St. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=500,865,823,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spot Bar-B-Q — 1530 Penna Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=504,976,802,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Barbeque — 1519 Penna. Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=501,1024,835,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. King — 1510 Penna Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=507,1142,693,44",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Scott's — 1526 Penna Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=507,1190,627,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Young's — 613 W. Lafayette Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=504,1241,812,43",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Blanche — 1531 Penna. Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=504,1288,773,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sugar Hill — 2361 Druid Hill Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=500,1401,852,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Velma — Cor. Penn & Baker St. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=507,1452,767,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Alhambra — 1520 Penna Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=507,1496,823,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gamby's — 1504 Penna. Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=507,1548,702,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Frolic — 1401 Penna. Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=507,1596,609,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Little Comedy — 1414 Penn Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=497,1703,819,58",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ubangi — 2213 Penna Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=514,1759,634,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wonderland — 2043-Penna — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=514,1810,610,43",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Casino — 1517 Penna Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=510,1859,628,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bertie's — 2432 Annapolis Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=520,1989,771,43",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "D & D — 890, Linden Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=514,2104,659,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fine's — 1817 Penna Ave. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=516,2151,638,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hackerman's — 1733 Penna — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=517,2198,638,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Esso — Presstman & Fremont — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=519,2317,652,44",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Service — 1415 Etting St. — BALTIMORE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=467,2265,740,50",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Stephens Bowie — Bowie-Laurel Road — BOWIE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=507,2593,906,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "GLENWOOD MANOR — 927 Glenwood Street — CUMBERLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=517,2776,732,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Makel — 119 E. 5th St. — FREDERICK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=521,3035,775,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. W. Roberts — 316 W. South — FREDERICK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=519,3085,911,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crescent — 16 W. All Saint St. — FREDERICK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=516,3180,771,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harmon — 226 N. Jonat an St. — HAGERSTOWN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=524,3368,785,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ship Tea Room — 329 N. Jonathan St. — HAGERSTOWN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=517,3461,946,53",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 415 S. Stokes St. — HAVRE DE GRACE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=516,3641,729,58",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Victory — 137 Broad St. — PRINCESS ANNE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1732,547,582,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Adam's — TURNERS STATION",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1732,747,185,39",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Balnew's — 101 Sollers Pt. Road — TURNERS STATION",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1735,856,771,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Midway — UPPER MARLBORO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1727,1062,206,40",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Bird Inn — WALDORF",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1748,1252,364,41",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. R. Brooks Jr. — 54 James St. — ATTLEBORO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1743,1558,793,54",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mothers Lunch — 510 Columbus Av. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1746,1756,881,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lucille — 52 Rutland Sq. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1743,1810,621,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harrett Tubman — 25 Holyoke St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1732,1857,835,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Columbus Arms — 455 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1739,1905,986,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Julia Walters — 912 1 remont — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1751,2021,652,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Holeman — 212 W. Springfield St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1752,2068,843,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "M. Johnson — 616 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1749,2119,809,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. A. Taylor — 192 W. Springfield St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1752,2164,1043,53",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Guest House — 193 Humbolt St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1751,2214,768,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Randolph House — 153 Worcester St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1749,2262,877,56",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. P. J. Reynolds — 613 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1753,2312,1059,54",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith's — 14 Yarmouth Street — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=500,605,936,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edyth's — 170 West Springfield St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1762,2478,875,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Slades — 958 Tremont St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1751,2530,621,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charlie's — 429 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1752,2578,760,45",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunnyside — 411 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1749,2627,770,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Western — 415 Mass. Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1749,2675,641,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Estelles — 888 Tremont St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1752,2723,653,46",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. F. S. Blake — 363 Mass. Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1761,2837,876,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. L. Crosby — 11 Greenwich Park — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1761,2884,850,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mme. Enslow's — 977 Tremont St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1758,2933,848,54",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. Milliams — 62 Hammond St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1759,2985,792,51",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. West — 609 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1761,3037,720,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "House of Charms — 169-A W. Springfield — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1766,3084,1036,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Josephine Bolt — 374 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1774,3134,905,54",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ruth Evans — 563 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1764,3182,842,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rubinetta — 961 Tremont St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1764,3235,684,48",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beauty Box — 781C Tremont St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1761,3283,771,55",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lucile's — 226 W. Springfield St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1762,3339,796,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Constance — 414 Mass. Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1761,3385,694,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Easter's — 169A Springfield St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1756,3433,738,49",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arizona — 563 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1764,3484,723,42",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Betty's — 609 Columbus Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1762,3533,709,47",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clark-Merrill — 507 Shawmut Ave. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1753,3576,855,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Amy's — 782 Tremont St. — BOSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/33#xywh=1753,3631,620,52",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json/entry/75"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0034_5213546_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

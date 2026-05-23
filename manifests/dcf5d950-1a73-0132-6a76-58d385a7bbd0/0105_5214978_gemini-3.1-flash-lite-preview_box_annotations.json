@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Drive Inn Tourist Cabins — MARSHALL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/104#xywh=578,994,240,74",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0105_5214978_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE WHEEL MOTEL — 18th and Milan Streets — MARSHALL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/104#xywh=555,1094,288,48",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0105_5214978_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0105_5214978_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parkway Ballroom — 4445-55 South Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/24#xywh=2261,2526,161,682",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0025_5210130_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Metropolitan Funeral Parlors — 4445-55 South Parkway — CHICAGO, ILLINOIS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/24#xywh=2267,1654,152,502",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0025_5210130_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0025_5210130_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

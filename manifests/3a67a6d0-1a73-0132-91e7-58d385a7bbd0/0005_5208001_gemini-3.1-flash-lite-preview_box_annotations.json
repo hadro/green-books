@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Yellow Cabins — GORDON, NEBRASKA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/4#xywh=223,3243,2252,66",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0005_5208001_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0005_5208001_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

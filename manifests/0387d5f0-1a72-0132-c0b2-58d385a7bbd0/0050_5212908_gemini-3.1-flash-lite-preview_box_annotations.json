@@ -1,0 +1,832 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "BOWMAN'S LOUNGE — 721 St. Nicholas Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=423,433,681,50",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fat Man — St. Nicholas Ave. & 155th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=420,484,998,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "92 ST. NICHOLAS PLACE — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=420,484,998,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jimmie Daniels — 114 W. 116th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=423,538,856,42",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savannah Club \"66\" — 68 West 3rd Street — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=423,538,856,42",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Moon Glow — 2461 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,583,693,45",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Reno — 549 W. 145th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,583,693,45",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palm Cafe — 209 W. 125th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,634,763,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Small's Paradise — 2294 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,634,763,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "George Farrell's — 2711 8th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=423,684,792,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elk's Rendezvous — 133rd & Lenox Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=423,684,792,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Novelty Bar & Grill — 1965 Amsterdam Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,731,1110,49",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Celebrity Club — 35 E. 125th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,731,1110,49",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L-Bar — 3601 Broadway — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,781,573,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Murrain's — 132nd & 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,781,573,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chick's Bar & Grill — 2501 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=423,831,888,44",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hollywood Club — 116th & Lenox Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=423,831,888,44",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sport's Inn — 2308 8th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=421,881,697,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lenox Rendezvous — 75 Lenox Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=421,881,697,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Colonial — 2321 8th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,928,730,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem — 266 West 145th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,928,730,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clover Bar & Grill — 1735 Amsterdam Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,979,1024,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lido — 35 West 125th St — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,979,1024,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Daniel's — 2461 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1027,626,45",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club Harlem — 266 West 145th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1027,626,45",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Coran's — 2359 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1075,606,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bop City — Broadway at 49th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1075,606,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pelican — 45 Lenox Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,1128,600,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gold Coast Lounge — 2017- 5th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,1128,600,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Farrells — 2175 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=408,1175,650,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Well's Musical Bar — 2249- 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=408,1175,650,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gold Coast — 2017 5th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=418,1128,600,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jock's — 2350 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1276,552,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "GOLDMAN LIQUOR STORE — 483 WEST 155th STREET — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1325,662,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mandalay — 2201 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1325,662,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Williams' — 2011 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=421,1375,638,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dawn Cafe — 1931 Amsterdam Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1426,880,42",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chateau Lounge — 379 W. 125th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1478,883,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Convent — 42 Convent Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1478,883,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jerry's Bar — 2091-8th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1526,690,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charity — 483 W. 150 th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1526,690,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Well's Musical Bar — 2249 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=408,1175,650,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Daniel Burrows — 760 St. Nicholas Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=411,1572,887,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Firpo's — 503 Lenox Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=408,1625,631,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eulace Peacock — 200 W. 140th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=408,1625,631,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem — 2140 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,928,730,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ferguson — 271 W. 126th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,1679,572,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Zambezi — 2267-7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1735,601,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fitton & Telesford — 300½ W. 116th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1735,601,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mardi Gras — 1951 Amsterdam Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1785,884,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green's — 161 W. 120th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1785,884,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Casbah — 163rd St. & St. Nicholas Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1835,982,45",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H. & S. — 5 West 131st St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1835,982,45",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bowman's — 92 St. Nicholas Pl. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=423,433,681,50",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harlem — 85 West 128th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=415,928,730,47",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shep's — 1978 Amsterdam Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1932,752,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Inez Gumbs — 347 W. 120th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=404,1932,752,46",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cosan's — 371 West 123rd St — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1645,1933,896,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. D. Kings — 2087 Madison Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1645,1933,896,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Renny — 2359 - 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1645,1983,818,42",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Padam's — 1963 Amsterdam Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1645,1983,818,42",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elk Scene — 439 Lenox Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1649,2032,758,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chas. Arshen — 2501 8th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1649,2032,758,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Magnet — 570 Lenox Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1649,2082,738,45",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kipco — 1765 Amsterdam Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1649,2082,738,45",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fez — 1958 - 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1645,2132,728,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "I. Goldberg — 2655 Broadwav — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1645,2132,728,43",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Frankie's — 2328 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1642,2183,818,39",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Forbes — 272 West 154th Street — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1642,2183,818,39",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bird Cage — 2308 - 7th Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1639,2232,945,40",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hamilton Place — 150 Hamilton Place — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1639,2232,945,40",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bali — 2096 Amsterdam Ave. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1639,2280,828,40",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "H&R — 273 West 121st Street — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1639,2280,828,40",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roy Capanella — 7th Ave. & 134th Street — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1642,2329,1021,41",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE CASWELL MOTOR CO., Inc. — 651 WEST 125th STREET — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/49#xywh=1275,2907,594,184",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0050_5212908_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

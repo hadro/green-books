@@ -1,0 +1,821 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Lizzie Simon — 308 N. Howe St. — ATLANTA, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=317,445,943,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. W. Frazier — 810 E. 13th St. — AUSTIN, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,642,910,47",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. W. Duncan — 1214 E. 7th St. — AUSTIN, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,691,935,48",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. M. Tears — 1203 E. 12th St. — AUSTIN, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,741,913,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Porter's — 1315 E. 12th St. — AUSTIN, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,792,664,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Rivers — 730 Forsythe St. — BEAUMONT, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,988,828,46",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Long Bar-B-Q — 539 Forsythe St. — BEAUMONT, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1099,797,49",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horace Crecy's — 1710 Lexington Ave. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=314,1295,945,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Avalon — 1510 Ramirez — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1412,554,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Skylark — 1216 N. Staples — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1461,624,46",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Willow — 806 Winnebago — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,1512,724,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Little Aisle — 1530 Ramirez — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1561,661,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Square Deal — 810 Winnebago — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1611,711,41",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy — 1007 N. Taneahua — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1657,637,47",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal — 1222 N. Staples St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1708,678,46",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fortuna — 1307 N. Staples St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1758,731,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — 1405 Chipito St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1855,675,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edna's — 921 San Rankin — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1905,610,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Just-a-Mere — 901 Parker St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,1955,688,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mitchell's — 1519 Ramirez St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,2004,710,40",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bessie's — 1526½ Sam Rankin — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=320,2050,740,47",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Steen's — 1303 N. Alameda St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,2169,740,41",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "True Trim — 1001 N. Tancahud — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=314,2217,791,41",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alabam — 1503 Ramirez — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=320,2333,571,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elite — 1216 N. Staples St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,2383,654,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pier — 821 Winnebago St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=320,2499,611,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy — 1220 N. Staples St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=327,1657,637,47",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crecy's — 1502 Ramirez — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=314,1295,945,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Burley's — 1223 N. Alameda St. — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=320,2775,782,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McIntyre — 1426 Ramirez — CORPUS CHRISTIE, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=320,2825,642,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Lee — 712 E. 4th St. — CORSICANA, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=307,3019,748,41",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Early Birds Cafe — 220 E. 5th Ave. — CORSICANA, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=322,3130,873,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Dellum — 117 E. 5th Ave. — CORSICANA, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=317,3231,752,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grand Terrace Boll & Juliett — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=317,3427,750,46",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lewis — 302½ N. Central St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=314,3474,699,48",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Powell — 3115 State St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=314,3526,559,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 2700 Flora St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=313,3573,724,49",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 3525 State St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=313,3625,713,40",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hall's — 1825½ Hall St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,334,613,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lone Star — 3118 San Jacinto St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1562,379,812,49",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beaumont Barbeque — 1815 Orange — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,495,883,46",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Davis — 6806 Lemmon Ave. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,548,687,40",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palm Cafe — 2213 Halls St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,595,732,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "S. Brown's — 1721 Hall St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,707,696,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Washington's — 3203 Thomas Ave. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,823,956,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hall St. — 1804 Hall St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,334,613,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Smith's — 2221 Hall St. — DALLAS, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,1049,563,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Murray Theater — 218 S. Mesa Ave. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1562,1241,874,56",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jordan's — 104 Kemp St. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1562,1299,588,41",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Phillips Manor — 704 St. Vrain St. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,1343,931,51",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Daniel Hotel — 413 S. Oregon St. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1551,1395,823,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Winston — 3205 Almeda St. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1555,1508,741,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. W. Stull — 511 Tornillo — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1555,1559,781,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. Williams — 1507 Wyoming St. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,1609,779,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. Walker — 2923 E. San Antnio — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,1657,796,45",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "E. Phillips — 704 S. St. Vrain St. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,1708,802,46",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Daniel's — 403 S. Orange St. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,1822,964,46",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Donnel — 3201 Nanzana St. — EL PASO, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,1937,657,41",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Del Rey — 901 Jones St. — FORT WORTH, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,2140,581,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jim — 413-15 E. Fifth St. — FORT WORTH, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,2189,617,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Evan's — 1213 E. Terrell St. — FORT WORTH, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1558,2303,729,40",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. M. C. A. — 1604 Jones St. — FORT WORTH, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=313,3573,724,49",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green Leaf — 315 E. 9th St. — FORT WORTH, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1555,2453,685,39",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dickerson's — 1015 E. Rosedale — FORT WORTH, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1559,2550,751,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "South Side — 1151 New York St. — FORT WORTH, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1552,2648,792,41",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oleander — 421½ 25th St. — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1551,2845,639,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gus Allen — 2710 Ave. F. — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1548,2895,664,40",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mitchell's — 417 25th St. — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=324,2004,710,40",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MISS G. H. FREEMAN — 1414 - 29th STREET — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1541,3092,763,48",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Pope — 2824 Ave. M — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1548,3224,692,42",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gulf View — 28th & Blvd. Houston — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1548,3315,830,52",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Manhattan — 2802 Ave. R½ — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1540,3418,686,51",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Imperial — 415 25th St. — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1544,3518,564,44",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunset — 3928 Ave. H. — GALVESTON, TEXAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/75#xywh=1538,3619,571,40",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0076_5207601_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

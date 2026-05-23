@@ -1,0 +1,612 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hamburger Bar — 15 W. 3rd St. — MT. VERNON, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=220,467,728,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Southern Tea Room — 44 W. 3rd St. — MT. VERNON, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=220,514,852,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Friendship — 50 W. 3rd St. — MT. VERNON, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=224,559,603,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Orchid — 48 W. 3rd St. — MT. VERNON, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=222,652,522,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mohawk Inn — 142 S. 7th Ave. — MT. VERNON, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=214,743,724,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Friendship Center — 50 W. 3rd St. — MT. VERNON, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=224,789,771,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Golden Lion — 50 S. 8th St. — MT. VERNON, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=224,835,641,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "City Park — 521 5th Ave. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=224,1021,587,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Harris — 29 Morris St. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=223,1066,512,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Week's — 68 Winyah Ave. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=228,1117,566,39",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Berry — 50 DeWitts Place — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=227,1207,645,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "B. Miller — 54 Dewitt Pl. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=214,1253,572,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ocie — 41 Rochelle Place — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=226,1301,554,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Royal Salon — 4 Brook Ave. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=227,1392,730,48",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Field's — 66 Winyah Ave. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=228,1442,566,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bal-Mo-Ral — 56 Brook St. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=227,1483,606,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. Edwards — 112 Union Ave. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=227,1575,693,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Daniel's — 57 Lincoln Ave. — NEW ROCHELLE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=214,1669,774,52",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Leona's — 13 Hunter St. — OSSINING, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=228,1874,537,38",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lemon's — Valley St. — NORTH TARRYTOWN, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=228,2058,461,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Brown — Valley St. — NORTH TARRYTOWN, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=227,2101,492,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. Prioleau — 88 Valley St. — NORTH TARRYTOWN, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=232,2196,608,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Major's — 48 Washington St. — TUCKAHOE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=230,2379,648,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butterfly Inn — 47 Washington St. — TUCKAHOE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=235,2427,803,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Shanhana — 144 Main St. — TUCKAHOE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=230,2519,585,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Al's — 144 Main St. — TUCKAHOE, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=230,2614,455,40",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Brown Derby — 125 Nepperham Ave. — YONKERS, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=232,2793,932,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Garner — 875 E. 2nd St. — RENO, NEVADA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=230,3114,732,38",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Billie Ross — 520 Spokane St. — RENO, NEVADA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=230,3156,689,49",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HARRISON'S GUEST HOUSE — 1001 NORTH 'F' STREET — LAS VEGAS, NEVADA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=228,3356,914,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ideal — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1370,554,128,38",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MRS. KATE DUNCAN — 423 NORTH ARNO ST. — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1368,658,698,53",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. Bailey — 1127 N. 2nd St. — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1378,777,777,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "AUNT BRENDA'S PIT BARBECUE — 406 N. ARNO ST. — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1373,890,695,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bon Ton — 115 N. First St. — ALBUQUERQUE, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1378,1007,641,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Sherrell — 502 S. Haloquens — CARLSBAD, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1369,1189,831,54",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "L. M. Smith — 514 South Canyon — CARLSBAD, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1383,1240,766,46",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Roy La Flore — New San Jose — CARLSBAD, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1374,1333,729,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garland Johnson — West Bronson St. — CARLSBAD, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1374,1427,827,43",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. B. McCoy — 545 N. Church — LAS CRUCES, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1372,1609,854,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mary Collins — 121 E. 10th St. — ROSWELL, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1370,1793,888,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Brown — 115 E. Walnut St. — ROSWELL, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1383,1840,701,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sun Set Cafe — 115 E. Walnut — ROSWELL, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1372,1948,875,53",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "ROCKET INN — 524 W. CAMPBELL AVE. — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1373,2154,443,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jone's Rooms — Box 1002 — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1374,2269,591,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Henry Jones — 211 N. 5th St. — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1374,2360,743,55",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Swift's — Hiway 66 — TUCUMCARI, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1377,2473,439,44",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 360 College St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1386,2777,697,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Booker T. Washington — 409 Southside Ave. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1386,2820,1011,50",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy — Eagle & Market St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1386,2869,646,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palace Grille — 19 Eagle St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1374,2961,629,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Butler's — Eagle & Market St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1389,3057,682,42",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's — 13 Eagle St. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1389,3145,533,47",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilkin's — Eagle & Market Sts. — ASHEVILLE, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1393,3238,710,52",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lacy's Beauty Shop — BLADENBORO, NORTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/manifest.json/canvas/56#xywh=1390,3424,453,45",
+      "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/092a3710-1a73-0132-fdcf-58d385a7bbd0/0057_5210162_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

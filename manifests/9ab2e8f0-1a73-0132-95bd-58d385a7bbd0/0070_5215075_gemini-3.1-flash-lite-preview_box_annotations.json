@@ -1,0 +1,51 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Bird Inn — 509 Fifth Ave. — NEW YORK, N. Y.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/69#xywh=625,3265,2273,77",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0070_5215075_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bombay Indian — 1211/2 E. 17th Street — NEW YORK, N. Y.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/69#xywh=622,3329,2276,75",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0070_5215075_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bon Soir — 465 W. 125th Street — NEW YORK, N. Y.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/69#xywh=625,3398,2273,66",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0070_5215075_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Brass Rail — 40 W. 8th Street — NEW YORK, N. Y.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/69#xywh=625,3462,2264,66",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0070_5215075_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0070_5215075_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

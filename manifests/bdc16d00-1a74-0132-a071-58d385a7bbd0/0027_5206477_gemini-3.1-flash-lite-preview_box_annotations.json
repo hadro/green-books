@@ -1,0 +1,612 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. Bryant — 915 Fairfield St. — AIKEN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=237,490,982,57",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. H. Harrison — Richland Avenue — AIKEN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=237,539,1041,67",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mayes — 47 Sotuh Street — AIKEN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=237,1065,878,60",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "TAYLOR — 1016 Washington St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=237,1249,955,54",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Cornwell — 1713 Wayne — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=235,1352,950,49",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. D. Chappelle — 1301 Pine St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=225,1403,1062,51",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. H. Pinckney — 1406 Park St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=221,1454,1047,52",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Vincent — 1712 Wayne — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=232,1506,884,49",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. P. Wakefield — 1323 Heidt St. — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=228,1555,1054,53",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. C. C. Godblood — 227 E. Marion — FLORENCE, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=235,1724,1047,45",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Wright — 1004 E. Cheeve St. — FLORENCE, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=235,1774,1051,45",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Anderson — 424 Broad — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=240,1943,871,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. D. Atkinson — 811 Duke — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=240,1995,845,42",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jas. Becote — 118 Oronge — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=238,2044,727,42",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "T. W. Brown — Merriman & Emanuel — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=240,2096,801,45",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. A. Smith — 317 Emanuel — GEORGETOWN, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=240,2196,939,45",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Cloeman — N. Dean St. — SPARTANBURG, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=238,2361,888,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. S. McElroy — Silver Hill St. — SPARTANBURG, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=240,2412,959,47",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. Young — S. Liberty St. — SPARTANBURG, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=240,2464,908,47",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. M. H. Wright — 400 S. Liberty St. — SPARTANBURG, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=245,2516,606,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Chauffeurs Inn — 1102 Sumter Street — COLUMBIA, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=230,694,1052,56",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Alston — 43 South St. — CHARLESTON, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=234,863,767,58",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Gladsden — 15 Nassau St. — CHARLESTON, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=235,915,877,53",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. L. Harleston — 250 Ashley — CHARLESTON, SOUTH CAROLINA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=237,962,1048,60",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lincoln — 1101 Carter St. — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1558,512,705,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martin — 204 E. 9th St. — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1558,563,675,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Central — 535 Franklin St. — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1558,1085,760,50",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Peoples — 1104 Carter St. — CHATTANOOGA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1557,613,744,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. F. Thompkins — 411 Poston St. — COLUMBIA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1564,1189,740,47",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Northington — 717 Main St. — COLUMBIA, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1561,1287,1052,52",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "A. D. Henderson — 301 McDowell St. — BRISTOL, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1561,1458,1054,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "C. Timberlake — Holly St. — LEXINGTON, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1564,1624,757,50",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. Kiser — Holly St. — LEXINGTON, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1567,1679,632,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clarke — 144 Beale Ave. — MEMPHIS, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1567,1845,697,45",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Travelers — 347 Vauce — MEMPHIS, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1571,1896,645,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. R. Moore — Cor. University & State Sts. — MURFREESBORO, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1568,2063,465,41",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bryant — 500 8th Ave. S. — NASHVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1568,2280,757,47",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fred Douglas — 501 4th Ave. N. — NASHVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1571,2332,908,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Washington — 422 Cedar St. — NASHVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1574,2382,810,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. J. Baker — 843 E. 8th St. — NASHVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1587,710,874,54",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. E. Brown — 1133 E. 8th St. — NASHVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1558,763,960,51",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. D. Lowe — 803 Fairview Ave. — NASHVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1561,814,994,51",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Jackson — 1416 College St. — NASHVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1561,863,1047,52",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y. W. C. A. — 839 E. 8th St. — NASHVILLE, TENNESSEE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1558,918,800,50",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. H. Anderson — Near Fairgrounds, E. End. — ABINGDON, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1571,2599,599,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. N. Brown — High St. — ABINGDON, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1575,2703,765,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Monroe — 300 \"A\" St. — ABINGDON, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1578,2754,896,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "B. Nicholas — Park St. — ABINGDON, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1571,2804,665,43",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. T. Holms — 803 Gibbon St. — ALEXANDRIA, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1575,2968,847,47",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. A. Barrett — 724 Gibbon St. — ALEXANDRIA, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1578,3022,899,46",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palace — 210 Front St. — BRISTOL, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1571,3192,653,50",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Eureka — CHRISTIANBURG, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1578,3348,227,39",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McGuire — 521 Princess Ann St. — FREDERICKSBURG, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1581,3499,910,45",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rappshsnock — 520 Princess Ann St. — FREDERICKSBURG, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1573,3547,1048,53",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. B. Scott — 207 5th St. — FREDERICKSBURG, VIRGINIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/manifest.json/canvas/26#xywh=1580,3647,764,54",
+      "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/bdc16d00-1a74-0132-a071-58d385a7bbd0/0027_5206477_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

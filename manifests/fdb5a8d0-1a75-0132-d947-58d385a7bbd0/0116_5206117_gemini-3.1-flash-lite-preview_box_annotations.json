@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "BON REPRODUCTION CORPORATION — 253 West 125th STREET",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fdb5a8d0-1a75-0132-d947-58d385a7bbd0/manifest.json/canvas/111#xywh=1002,2838,1577,126",
+      "id": "https://hadro.github.io/green-books/manifests/fdb5a8d0-1a75-0132-d947-58d385a7bbd0/0116_5206117_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/fdb5a8d0-1a75-0132-d947-58d385a7bbd0/0116_5206117_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,51 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "FRICK COLLECTION — 1 East 70th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/53#xywh=1580,1031,1156,50",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0054_5208050_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MUSEUM OF THE AMERICAN INDIAN — Broadway at 155th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/53#xywh=1599,3385,1158,51",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0054_5208050_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE HAYDEN PLANETARIUM — 81st Street and Central Park West — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/53#xywh=344,379,1173,51",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0054_5208050_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "PIERPONT MORGAN LIBRARY — 33 East 36th St. — NEW YORK CITY, NEW YORK STATE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/manifest.json/canvas/53#xywh=371,3392,1167,48",
+      "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0054_5208050_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/3a67a6d0-1a73-0132-91e7-58d385a7bbd0/0054_5208050_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

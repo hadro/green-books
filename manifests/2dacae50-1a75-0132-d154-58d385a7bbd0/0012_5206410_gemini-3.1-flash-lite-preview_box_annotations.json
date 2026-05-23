@@ -1,0 +1,62 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LA FONTAINE SERVICE — 470 CONVENT AVE. — NEW YORK CITY, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/11#xywh=648,383,1794,134",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0012_5206410_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LA FONTAINE SERVICE — 764 ST. NICHOLAS AVE. — NEW YORK CITY, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/11#xywh=648,383,1794,134",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0012_5206410_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elliott Fontaine — 200 WEST 136th St. Cor. 7th Ave. — NEW YORK CITY, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/11#xywh=2086,1871,550,65",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0012_5206410_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Katherine Fontaine — NEW YORK CITY, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/11#xywh=346,1873,662,58",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0012_5206410_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "LITTLE ALPHA SERVICE — 84 West 120th St. Cor Lenox Ae. — NEW YORK CITY, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/manifest.json/canvas/11#xywh=346,2480,2406,146",
+      "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0012_5206410_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/2dacae50-1a75-0132-d154-58d385a7bbd0/0012_5206410_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

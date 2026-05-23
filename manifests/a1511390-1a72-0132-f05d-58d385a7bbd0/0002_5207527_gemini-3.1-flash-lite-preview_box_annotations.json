@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "VALERI'S BEAUTY PRODUCTS — POST OFFICE BOX 200 — LEONIA, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/1#xywh=556,3524,1907,84",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0002_5207527_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0002_5207527_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

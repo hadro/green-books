@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pan American World Airways — 135 East 42nd Street, New York 17, N. Y.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/4#xywh=1398,1934,1154,77",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0005_5213517_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0005_5213517_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

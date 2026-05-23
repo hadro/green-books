@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "ATLANTIC CITY — ATLANTIC CITY, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/5#xywh=340,233,772,64",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0006_5207531_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CARLSBAD CAVERNS — National Park, New Mexico — CARLSBAD CAVERNS, NEW MEXICO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/manifest.json/canvas/5#xywh=346,1502,796,53",
+      "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0006_5207531_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/a1511390-1a72-0132-f05d-58d385a7bbd0/0006_5207531_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

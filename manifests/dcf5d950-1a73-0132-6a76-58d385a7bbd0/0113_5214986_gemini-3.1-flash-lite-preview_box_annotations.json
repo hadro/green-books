@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "DILLARD'S ENTERPRISES — 802 W. Fayette — MARTINSVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/112#xywh=353,1939,2149,118",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0113_5214986_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0113_5214986_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

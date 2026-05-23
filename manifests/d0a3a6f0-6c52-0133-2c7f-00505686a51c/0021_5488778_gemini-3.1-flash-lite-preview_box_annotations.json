@@ -1,0 +1,29 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Parkerview Lodge — SPRINGHURST, CANADA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d0a3a6f0-6c52-0133-2c7f-00505686a51c/manifest.json/canvas/16#xywh=1763,2746,1340,65",
+      "id": "https://hadro.github.io/green-books/manifests/d0a3a6f0-6c52-0133-2c7f-00505686a51c/0021_5488778_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grant House — MONTREAL, CANADA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d0a3a6f0-6c52-0133-2c7f-00505686a51c/manifest.json/canvas/16#xywh=1769,2647,509,59",
+      "id": "https://hadro.github.io/green-books/manifests/d0a3a6f0-6c52-0133-2c7f-00505686a51c/0021_5488778_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/d0a3a6f0-6c52-0133-2c7f-00505686a51c/0021_5488778_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

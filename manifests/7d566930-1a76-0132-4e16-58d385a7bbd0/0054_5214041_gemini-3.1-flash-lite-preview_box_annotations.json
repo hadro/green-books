@@ -1,0 +1,623 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs, Homer Mason — Greenwood St. — WHITEFIELD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=548,625,1006,42",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Kate Duncan — 423 N. Arno St. — ALBUQUERQUE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,938,1007,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. W. Bailey — 1127 N. 2nd St. — ALBUQUERQUE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,989,918,39",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bob's Apartment Hotel — 1107 12th Street, N.W. — ALBUQUERQUE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=555,1092,941,76",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Aunt Brenda's — 406 North Arno St. — ALBUQUERQUE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,1651,1007,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. A. Sherrell — 502 S. Haloquens — CARLSBAD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=539,1814,1020,47",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garland Johnson — 501 W. Bromson — CARLSBAD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,1916,977,40",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Sonnie Lewis — 109 Wilson St. — GALLUP",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=537,2086,962,43",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. Mary Collins — 121 East 10th St. — ROSWELL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=481,2263,600,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "R. Brown — 313 W. Math — ROSWELL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=537,2391,717,40",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sun Set Cafe — 115 E. Walnut St — ROSWELL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,2490,943,46",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rockett Inn — 524 W. Campbell St. — TUCUMCARI",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=482,2674,397,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jone's Rooms — Box 1002 — TUCUMCARI",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,2797,678,53",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "J. E. Mitchell — 406 N. 3rd S. — TUCUMCARI",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,2851,903,51",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mitchell's Rooms — 406 North 3rd St. — TUCUMCARI",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=485,2906,571,50",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Swift's — Hi'way 66 — TUCUMCARI",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=545,3085,540,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "James Keys — 409 Southside Ave. — ASHEVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=548,3447,913,42",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 360 College St. — ASHEVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=545,3498,719,40",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Booker T. Washington — 409 Southside — ASHEVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,3547,1012,42",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Savoy — Eagle & Market Sts. — ASHEVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1782,458,801,40",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Palace Grille — 19 Eagle St. — ASHEVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1779,561,773,40",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilson's — 13 Eagle St. — ASHEVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1779,662,625,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lacy's Beauty Shop — BLADENBORO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1779,870,583,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alexander — 523 N. McDowell St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1781,1065,956,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ingram's — 304 So. McDowell St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1781,1181,892,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martha's — 509 E. 2nd St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1778,1290,744,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "2nd St. — 500 E. 2nd St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=542,989,918,39",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Martha's — 508 E. 2nd St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1778,1290,744,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charlotte — 200 E. Trade St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=2018,950,475,64",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carolina — 401 E. Trade St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=535,3194,974,86",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "New Way — 935 E. 9th St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1772,1707,772,59",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bishop Dale — 1st & Brevard Sts. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1775,1805,925,61",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bob Roberson's — 701 Trade St. — CHARLOTTE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,1859,868,52",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Biltmore — 332½ E. Pettigrew St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2068,926,53",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "De Shazors — 809 Fayetteville St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1771,2167,902,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "D'Orsay — 120 S. Mangum St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1771,2219,818,53",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Friendly City — 711 Fayetteville St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2266,961,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Burma's — 536 E. Pettigrew St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2317,867,56",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Friendly — 711 Fayetteville St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2266,961,55",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bull City — 412 Pettigrew — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2521,713,48",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cu-Cu — 916 Pickets — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1777,2572,525,47",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "College Inn — 1306 Fayetteville — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2617,861,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "College Inn — 1306 Fayetteville St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2617,861,54",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Jack's Grill — 706 Fayetteville St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1777,2768,953,47",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Granite — Main & 9th St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1779,2870,708,45",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pine Ctreet — 1102 Pine St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2921,752,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Williams — Cor. Pettigrew & Pine Sts. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1777,2967,1006,47",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clay's — 406 1-2 Pettigrew St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,3020,851,42",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Speight's — Fayetteville & Pettigrew — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1779,3069,1007,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Garrett's Biltmore — E. Pettigrew St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1777,3168,1009,40",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bull City — 610 Fayetteville St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1774,2521,713,48",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal Cleaners — 538 E. Pettigrew St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1720,3323,501,53",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Boykin — 715 Fayetteville St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1779,3445,808,48",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Service — 612 Fayetteville St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1718,1760,621,57",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Union — 418 Dowd St. — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1779,3547,611,41",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Scott & Roberts — 702 Fayetteville — DURHAM",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/manifest.json/canvas/53#xywh=1782,3596,1007,42",
+      "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/7d566930-1a76-0132-4e16-58d385a7bbd0/0054_5214041_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

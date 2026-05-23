@@ -1,0 +1,40 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Alexander & Sons Grill — So. Miami, Fla. — South Miami",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/28#xywh=264,1907,563,57",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0029_5215034_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Brown Derby — 902 Lincoln Street — Ocala",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/28#xywh=1366,1658,957,82",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0029_5215034_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Grant's Drive Inn — 15055 N.W. 22nd Avenue, 7 miles north of Miami on Hiway 9 — Opa Locka",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/28#xywh=1383,2619,963,77",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0029_5215034_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0029_5215034_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

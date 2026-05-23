@@ -1,0 +1,40 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Forrest — Kirkland, Tenn. — KIRKLAND",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/88#xywh=336,471,428,54",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0089_5214962_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "T. E. SCALES, JR. SERVICE STATION & CAFE — On Hiways 31A and 41A — KNOXVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/88#xywh=595,595,1741,87",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0089_5214962_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "GRAVES DRUG STORE — 1901 Texas Avenue — KNOXVILLE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/88#xywh=708,2408,1535,134",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0089_5214962_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0089_5214962_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

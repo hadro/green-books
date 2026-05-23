@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE TEXAN INN — 605 Pleasant Street — HOT SPRINGS, ARKANSAS",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/manifest.json/canvas/17#xywh=1185,2921,1143,147",
+      "id": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/0018_5214759_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/0018_5214759_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

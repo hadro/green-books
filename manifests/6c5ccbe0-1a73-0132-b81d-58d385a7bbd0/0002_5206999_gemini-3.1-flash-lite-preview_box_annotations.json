@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "SUPERIOR FLORISTS — 828 SIXTH AVENUE — NEW YORK, NEW YORK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/6c5ccbe0-1a73-0132-b81d-58d385a7bbd0/manifest.json/canvas/1#xywh=798,537,1913,123",
+      "id": "https://hadro.github.io/green-books/manifests/6c5ccbe0-1a73-0132-b81d-58d385a7bbd0/0002_5206999_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/6c5ccbe0-1a73-0132-b81d-58d385a7bbd0/0002_5206999_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

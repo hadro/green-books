@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE ROSETTA MOTELS, Inc. — 37th & WILLIAM STREETS — CHATTANOOGA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/c4391ba0-1a76-0132-7cae-58d385a7bbd0/manifest.json/canvas/68#xywh=314,1033,2295,130",
+      "id": "https://hadro.github.io/green-books/manifests/c4391ba0-1a76-0132-7cae-58d385a7bbd0/0073_5205961_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/c4391ba0-1a76-0132-7cae-58d385a7bbd0/0073_5205961_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

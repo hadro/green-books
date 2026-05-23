@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "GREEN'S TOURIST HOME — 103 Iselin — JACKSON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/manifest.json/canvas/87#xywh=1202,2299,1054,91",
+      "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0088_5214961_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/dcf5d950-1a73-0132-6a76-58d385a7bbd0/0088_5214961_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

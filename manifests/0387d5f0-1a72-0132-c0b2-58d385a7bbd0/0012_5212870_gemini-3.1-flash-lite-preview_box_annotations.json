@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Victor H. Green & Co. — Leonia, N. J. — LEONIA, NEW JERSEY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/manifest.json/canvas/11#xywh=1005,1606,1085,67",
+      "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0012_5212870_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/0387d5f0-1a72-0132-c0b2-58d385a7bbd0/0012_5212870_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

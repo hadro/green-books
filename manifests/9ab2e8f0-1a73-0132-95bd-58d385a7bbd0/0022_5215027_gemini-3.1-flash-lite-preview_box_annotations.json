@@ -1,0 +1,51 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fifth Avenue Pharmacy — 104 N.W. 5th Avenue — Delray Beach",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/21#xywh=367,282,685,54",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0022_5215027_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kemp's Paradise Restaurant and Room Service — 103 N.W. 5th Avenue — Delray Beach",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/21#xywh=367,282,685,54",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0022_5215027_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La France Hotel — 104 N.W. 4th Avenue — Delray Beach",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/21#xywh=1335,2631,764,60",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0022_5215027_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cooper's Sundries & Cafe — 615 N.W. 6th Street — Fort Lauderdale",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/manifest.json/canvas/21#xywh=1141,3418,1149,61",
+      "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0022_5215027_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/9ab2e8f0-1a73-0132-95bd-58d385a7bbd0/0022_5215027_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

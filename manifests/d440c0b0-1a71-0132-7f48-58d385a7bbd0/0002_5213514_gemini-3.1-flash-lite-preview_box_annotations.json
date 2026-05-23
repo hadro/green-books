@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "AFRICAN MART — P. O. Box 200, Leonia, N. J.",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/manifest.json/canvas/1#xywh=1174,3340,732,72",
+      "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0002_5213514_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/d440c0b0-1a71-0132-7f48-58d385a7bbd0/0002_5213514_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

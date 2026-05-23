@@ -1,0 +1,601 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ritz — 214 Main St. — EAST ORANGE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1473,405,458,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Vernon's — 182 Amherst St. — EAST ORANGE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1814,526,366,50",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whitehurst — Cor. Central & Halstead St. — EAST ORANGE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,642,996,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Greenbriar — Pine Bush — EATONTOWN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1693,837,598,51",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allen House — 625 Cincinnati Ave. — EATONTOWN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,951,844,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Red, White & Blue Inn — 701 Phila. — EATONTOWN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1470,1102,252,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hunter's — 1197 E. Broad St. — ELIZABETH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1527,1250,753,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "W. E. Beverage Co. — 107 William — ELIZABETH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,1395,759,43",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Giles — 107 William St. — ELIZABETH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,1446,888,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mary — 206 Central Ave. — HACKENSACK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,1595,934,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Crosson — Railroad Place — HACKENSACK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1520,1693,748,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "HACKENSACK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,1496,666,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Newton's — White Horse Pike — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1522,1890,808,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Victory — 1305 Baltimore Ave. — LINDEN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1520,2080,841,46",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club '45' — Liberty St. — LONG BRANCH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,2277,628,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sam Hall — 180 Belmont St. — LONG BRANCH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,2327,787,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tally-Ho — 44 Liberty St. — LONG BRANCH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,2376,696,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MADISON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1803,2458,363,50",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sunshine — 540 White Horse Pike — MAGNOLIA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,2713,904,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paul's Lunch — Brook St. — MAHWAH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1520,2907,731,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Macon's Inn — H'way Rt. No. 1-26 — MONMOUTH JUNCTION",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1522,3101,991,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.M.C.A. — 39 Washington St. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1524,3293,837,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Y.W.C.A. — 159 Glenridge Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1517,3339,847,46",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tabard's — 144 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1522,3438,846,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blue Front — 154 Bloomfield Ave. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1520,3486,904,44",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Milan's — 232 Halstead St. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=308,514,744,47",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Charles — 49 N. Park St. — MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=308,665,696,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MONTCLAIR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1765,3182,454,50",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. T. T. Davis — 27 Dayton Ave. — EGG HARBOR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=308,1521,885,46",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "One & Only — 1112 Dickerson St. — EGG HARBOR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=310,1618,930,47",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "The Lincoln — 1-3 Englewood Ave. — ENGLEWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=306,1863,948,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Tip Top — 174 Central Ave. — ENGLEWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=306,2348,738,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rideout's — 204 Central Ave. — ENGLEWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=301,2493,786,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Majestic Lodge — 351 1st St. — ENGLEWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=306,2592,788,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Five Point — 1st & Susquehanna St. — ENGLEWOOD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=301,2689,995,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thomas Lake — HASKELL",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=306,2873,382,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paul's Inn — Rt. 33 E. Windsor TWP — HIGHTSTOWN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=301,3058,998,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Old Barn — 104 Daws St. — HIGHTSTOWN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=306,3107,674,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Beauty — 74A Atlantic Ave. — JERSEY CITY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1467,1545,588,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bell's — 630 Cummunipaw Ave. — JERSEY CITY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=301,3388,849,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "N. J. Academy — 374 Forest St. — JERSEY CITY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=303,3481,898,46",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Merrill's — KINGSTON",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=253,569,272,37",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Green Grove Inn — Atlantic & Halsey Sts. — KEYPORT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=310,759,990,53",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Major's — 215 Atlantic Ave. — KEYPORT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=525,889,491,53",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Driver's — 17th & Monroe Ave. — KENNELWORTH",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=308,1193,907,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Inman — White Horse Pike — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=310,1288,989,48",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hi-Hat — White Horse Pike — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=305,1668,802,50",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Acorn Inn — White Horse Pike — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=248,1910,518,46",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dreamland — Evesham Ave. — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=308,1956,991,50",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "La Belle Inn — Gloucester Ave. — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=308,2055,668,47",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Wilcox — Evesham Ave. — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=505,2137,538,50",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Thelma Thomas — Warwick Blvd. — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=308,2249,687,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Henry Smith — Mouldy Rd. — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=301,2397,671,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lawnside Park — LAWNSIDE",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/42#xywh=1522,1794,421,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0043_5213945_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "JACKSON MOTEL — 2006 Cypress Street — WEST MONROE, LOUISIANA",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/manifest.json/canvas/51#xywh=1035,1814,1372,93",
+      "id": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/0052_5214793_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/1f0653d0-1a74-0132-69ff-58d385a7bbd0/0052_5214793_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

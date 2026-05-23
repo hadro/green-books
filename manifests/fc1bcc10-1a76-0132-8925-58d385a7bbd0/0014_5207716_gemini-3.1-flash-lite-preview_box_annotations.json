@@ -1,0 +1,51 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "MOHAWK INN — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/manifest.json/canvas/13#xywh=500,1083,1092,87",
+      "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0014_5207716_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "THE FAVORITE GRILL — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/manifest.json/canvas/13#xywh=2234,841,1067,87",
+      "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0014_5207716_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "PITT'S RESTAURANT — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/manifest.json/canvas/13#xywh=370,2560,1382,108",
+      "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0014_5207716_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "CONRAD'S INN — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/manifest.json/canvas/13#xywh=558,4031,988,85",
+      "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0014_5207716_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0014_5207716_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

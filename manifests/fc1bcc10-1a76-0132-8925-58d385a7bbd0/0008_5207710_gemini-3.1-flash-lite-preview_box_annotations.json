@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "DONHAVEN — WESTCHESTER",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/manifest.json/canvas/7#xywh=665,379,3049,479",
+      "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0008_5207710_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/fc1bcc10-1a76-0132-8925-58d385a7bbd0/0008_5207710_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

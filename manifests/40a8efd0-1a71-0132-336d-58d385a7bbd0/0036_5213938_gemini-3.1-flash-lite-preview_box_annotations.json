@@ -1,0 +1,832 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "American — 123 Washington St. — ANN ARBOR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=481,600,857,46",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Allenel — 126 El Huron St. — ANN ARBOR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=484,653,759,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/1"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Brown — 76 Walters Ave. — BATTLE CREEK",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=481,817,923,43",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/2"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Teresa's — Rt. 1 — BALDWIN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=481,984,427,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/3"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Whip-or-Will Cottage — Rt. No. 1, Box 178B — BALDWIN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=484,1087,953,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/4"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "El Morocco — BALDWIN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=477,1234,324,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/5"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Research Pleasure Club — 362 8th St. — BENTON HARBOR",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=481,1401,1006,43",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/6"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal Breeze — Woodland Park — BITELY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=474,1567,871,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/7"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "KELSONIA INN — Woodland Pk. Resort Biteley, Mich. — BITELY",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=656,1690,621,60",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/8"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fire Side — U. S. Rt. 12 — NEW BUFFALO",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=474,2388,661,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/9"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Star — COVERT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=474,2554,124,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/10"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Capitol — 114 East Palmer — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=473,2718,757,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/11"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McGraw — 5605 Junction St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=474,2768,754,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/12"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Gotham — 111 Orchestra Place — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=473,2818,855,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/13"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mark Twain — E. Garfield & Woodward — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=473,2868,1008,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/14"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Biltmore — 1926 St. Antoine St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=470,2961,861,48",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/15"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Elizabeth — 413 E. Elizabeth St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=473,3016,870,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/16"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Fox — 715 Madison St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=470,3065,645,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/17"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Norwood — 550 E. Adams St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=470,3115,801,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/18"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Russell — 615 E. Adams St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=471,3162,744,43",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/19"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Touraine — 4614 John R. St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=473,3215,801,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/20"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Terraine — John R. & Garfield — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=471,3259,860,47",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/21"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Northcross — 2205 St. Antoine — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=470,3312,801,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/22"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Dewey — 505 E. Adams St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=470,3362,734,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/23"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Davidson — 556 E. Forest Ave. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=470,3409,811,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/24"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edenburgh — 758 Westchester Ave. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=467,3461,956,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/25"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Old Rivers — 2036 Hastings — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=470,3508,724,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/26"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Sportman's — 3767 W. Warren Ave. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=464,3558,961,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/27"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Carlton Plaza — John R at Edmund — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=467,3605,1010,47",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/28"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise — 710 Madison St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,376,753,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/29"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Ebony — 110 Chandler St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1720,428,699,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/30"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Summers — 412 Frederick St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1720,478,812,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/31"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Australian — 5464 Rivard — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1720,531,671,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/32"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Labland — 39 Orchestra Place — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,634,812,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/33"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Pelican — 4613 John R. St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1718,736,716,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/34"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bee-Dew — 703 E. Forest Ave. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1720,833,857,45",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/35"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hair Health — 1332 Gratiot Ave. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,887,912,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/36"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Swanson's — 3415 Hastings St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1720,988,831,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/37"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Arcade — Hastings & Napoleon — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1718,1040,850,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/38"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Universal — 3129 Hastings St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1717,1088,801,45",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/39"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Champion — Oakland & Holbrook — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1720,1190,914,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/40"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Horseshoe — 606 Club — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1718,1241,574,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/41"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Broad's — 8825 Oakland — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1718,1291,649,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/42"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Herman's — 3458 Buchanan — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,1341,724,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/43"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Flame — 4264 John R St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,1391,734,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/44"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bizerte — 9006 Oakland — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,1442,619,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/45"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Frolic — 4450 John R. St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,1492,687,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/46"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Royal Blue — 8401 Russell — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1712,1542,707,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/47"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Congo — 2337 Gratiot St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1720,1640,658,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/48"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Uncle Tom's — 8206 W. 8 Mile Rd. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,1688,946,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/49"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Johnson's — McGraw & 25th St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1715,1791,860,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/50"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Cobb's — Maple & Chene Sts. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1712,1840,807,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/51"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Homer's — 589 Madison Ave. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1712,1891,855,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/52"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Davis Motor Co. — 421 E. Vernon Highway — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1712,1988,1007,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/53"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kenilworth — 131 Kenilworth — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1717,2135,808,46",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/54"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Blair — 277 Gratiot St. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1710,2188,642,44",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/55"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Clay — Clay & Cameron Ave. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1711,2289,804,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/56"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Kay — 4766 McGraw Ave. — DETROIT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1708,2341,693,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/57"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "T. L. Wheeler — 1512 Liberty St. — FLINT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1711,2509,916,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/58"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Mrs. F. Taylor — 1615 Clifford St. — FLINT",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1710,2555,949,47",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/59"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Hamilton Farms — RFD No. 1 — GRAND JUNCTION",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1702,2736,810,42",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/60"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Lydia Inn — Box 81 — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1708,2916,529,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/61"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Casa Blanca — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1705,2964,366,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/62"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Oakmere — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1705,3016,255,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/63"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Paradise Gardens — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1702,3064,496,38",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/64"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "McKnight's — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1705,3113,317,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/65"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Phil Giles — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1702,3163,289,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/66"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Club El Morocco — Rt. No. 1, Box — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1705,3213,922,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/67"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Edinburgh Cottage — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1701,3311,931,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/68"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "B. Riddles — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1702,3362,310,37",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/69"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rainbow Manor — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1702,3409,459,39",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/70"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Douglas Manor — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1702,3459,435,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/71"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Bash Inn — B'way at Hemlock — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1702,3508,866,41",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/72"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Spizerinktom — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1702,3558,366,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/73"
+    },
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "Rest Haven — IDLEWILD",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/manifest.json/canvas/35#xywh=1701,3606,341,40",
+      "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json/entry/74"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/40a8efd0-1a71-0132-336d-58d385a7bbd0/0036_5213938_gemini-3.1-flash-lite-preview_box_annotations.json"
+}

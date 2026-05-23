@@ -1,0 +1,18 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "type": "AnnotationPage",
+  "items": [
+    {
+      "type": "Annotation",
+      "motivation": "commenting",
+      "body": {
+        "type": "TextualBody",
+        "value": "JOHNSON'S Shady Nook FARM — SOUTH HAVEN, MICHIGAN",
+        "format": "text/plain"
+      },
+      "target": "https://hadro.github.io/green-books/manifests/d0a3a6f0-6c52-0133-2c7f-00505686a51c/manifest.json/canvas/17#xywh=271,1677,2928,102",
+      "id": "https://hadro.github.io/green-books/manifests/d0a3a6f0-6c52-0133-2c7f-00505686a51c/0022_5488779_gemini-3.1-flash-lite-preview_box_annotations.json/entry/0"
+    }
+  ],
+  "id": "https://hadro.github.io/green-books/manifests/d0a3a6f0-6c52-0133-2c7f-00505686a51c/0022_5488779_gemini-3.1-flash-lite-preview_box_annotations.json"
+}
