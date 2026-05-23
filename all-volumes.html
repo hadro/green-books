@@ -368,10 +368,29 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 @media (prefers-contrast: more) { .map-frame { filter: none; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 .also-in-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 10px; font-weight: 500; }
-.also-year { display: inline-block; padding: 4px 10px; border-radius: 2px; font-family: var(--gb-font-mono); font-size: 0.786rem; cursor: pointer; margin: 2px 3px 2px 0; background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink); transition: all 0.1s ease; }
-.also-year:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
-.also-all-link { display: block; font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; margin-top: 8px; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
+.also-all-link { display: block; font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; margin-top: 12px; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
 .also-all-link:hover { border-bottom-style: dashed; }
+
+/* Coverage grid — heat-map of which (publication, year) pairs list this entry.
+   Years span the x-axis; publications span the y-axis. Each cell carries an
+   aria-label that names its state explicitly so color is never the only signal. */
+.coverage-grid { display: grid; column-gap: 1px; row-gap: 1px; align-items: center; font-family: var(--gb-font-mono); margin-bottom: 4px; }
+.coverage-grid .pub-label { font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink); padding-right: 8px; text-align: right; white-space: nowrap; display: flex; align-items: center; gap: 5px; justify-content: flex-end; }
+.coverage-grid .pub-label .pub-dot { margin-right: 0; }
+.coverage-grid .pub-label-current { font-weight: 600; }
+.coverage-grid .year-head { font-size: 0.571rem; color: var(--gb-ink-faint); text-align: center; line-height: 1; padding-bottom: 2px; letter-spacing: 0; }
+.coverage-cell { aspect-ratio: 1; min-height: 9px; border-radius: 1px; background: transparent; border: 0; padding: 0; }
+.coverage-cell-listed { cursor: pointer; transition: outline 0.1s ease; }
+.coverage-cell-listed:hover, .coverage-cell-listed:focus { outline: 1.5px solid var(--gb-ink); outline-offset: 1px; }
+.coverage-cell-current { outline: 2px solid var(--gb-ink); outline-offset: 1px; }
+.coverage-cell-empty { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); box-sizing: border-box; }
+.coverage-cell-inactive {
+  background-image: repeating-linear-gradient(45deg, transparent 0 2px, var(--gb-rule-faint) 2px 3px);
+  background-color: transparent;
+}
+.coverage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
+.coverage-legend-item { display: flex; align-items: center; gap: 5px; }
+.coverage-legend-swatch { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; }
 
 /* ── About modal ── */
 #about-backdrop { position: fixed; inset: 0; background: rgba(22, 19, 16, 0.42); z-index: 400; place-items: center; padding: 48px; backdrop-filter: blur(2px); display: none; }
@@ -536,6 +555,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   #detail-close { width: 44px; height: 44px; }
   #export-btn, #charts-toggle, #random-btn { padding: 9px 14px; }
   .facet-item { min-height: 36px; }
+  /* Mobile compact mode for the coverage grid is opt-in via the
+     data-compact attribute, set by the renderer when (max-width: 640px). */
 }
 </style>
 </head>
@@ -761,6 +782,35 @@ const PUBLICATION_COLORS = {
   "Smith's Tourist Guide":                          "#c96820",
   "Hackley & Harrison's Hotel and Apartment Guide": "#2a7a3c"
 };
+
+// Short display name for the coverage grid's row labels. Falls back to the
+// full publication name when not listed here.
+const PUBLICATION_SHORT_NAMES = {
+  "The Negro Motorist Green Book":                  "Green Book",
+  "Travelguide":                                    "Travelguide",
+  "Go, Guide to Pleasant Motoring":                 "Go Guide",
+  "The Travelers Guide":                            "Travelers Guide",
+  "NHA Directory and Guide to Travelers":           "NHA Directory",
+  "Smith's Tourist Guide":                          "Smith's",
+  "Hackley & Harrison's Hotel and Apartment Guide": "Hackley & Harrison's"
+};
+
+// publication → Set<year>, populated once both CSVs finish streaming. The
+// coverage grid uses this to distinguish "publication active but didn't list
+// this entry" from "publication wasn't published that year" — two cell states
+// that look identical without this lookup.
+let PUBLICATION_ACTIVE_YEARS = new Map();
+function gbComputePublicationActiveYears(rows) {
+  const m = new Map();
+  rows.forEach(r => {
+    const pub = r.publication;
+    const y = r.volume_year || r.year;
+    if (!pub || !y) return;
+    if (!m.has(pub)) m.set(pub, new Set());
+    m.get(pub).add(y);
+  });
+  return m;
+}
 
 // Compute facet value lists (top_values) from the merged rows. Category folds
 // raw values into their group key; volume_year sorts chronologically; every
@@ -1894,6 +1944,23 @@ function gbJumpToYear(year) {
   }
 }
 
+// Jump to a specific listing row. The coverage grid knows the exact target
+// row for each filled cell, so we can land on the (publication, year) the
+// user clicked rather than guessing by year alone.
+function gbJumpToListing(targetRow) {
+  if (!targetRow || !GB_YEAR_FIELD) return;
+  const year = targetRow[GB_YEAR_FIELD] || targetRow.year;
+  if (year) {
+    facetState[GB_YEAR_FIELD].clear();
+    facetState[GB_YEAR_FIELD].add(year);
+  }
+  _pushNextHistory = true;
+  renderAll();
+  selectedIdx = ALL_ENTRIES.indexOf(targetRow);
+  showDetail(targetRow);
+  renderTableBody();
+}
+
 // ── Monkey-patches ───────────────────────────────────────────────────────────
 
 // renderFacetSidebar: move volume_year to the top of the facet list
@@ -1932,49 +1999,177 @@ showDetail = function (row) {
 
   const city = (row.city || "").toLowerCase().trim();
   const key = gbNormName(nfVal) + "|" + city;
-  const others = gbNameIndex.get(key) || [];
-  const currentYear = row[GB_YEAR_FIELD] || "";
-  const otherYears = [...new Set(
-    others
-      .filter(r => r !== row)
-      .map(r => r[GB_YEAR_FIELD] || r.year)
-      .filter(Boolean)
-  )].sort();
+  const allListings = gbNameIndex.get(key) || [];
+  const others = allListings.filter(r => r !== row);
 
-  if (otherYears.length > 0) {
-    alsoEl.innerHTML = "";
-    const lbl = document.createElement("div");
-    lbl.className = "also-in-label";
-    lbl.textContent = "Also listed in";
-    alsoEl.appendChild(lbl);
-    otherYears.forEach(y => {
-      const btn = document.createElement("button");
-      btn.className = "also-year";
-      btn.textContent = y;
-      btn.setAttribute("aria-label", "Jump to " + y + " listing");
-      btn.addEventListener("click", () => gbJumpToYear(y));
-      alsoEl.appendChild(btn);
-    });
-    const allLink = document.createElement("a");
-    allLink.className = "also-all-link";
-    allLink.href = "#";
-    allLink.textContent = "See all likely match listings";
-    allLink.addEventListener("click", e => {
-      e.preventDefault();
-      searchQuery = nfVal;
-      document.getElementById("search").value = nfVal;
-      if (row.city) colFilters["city"] = row.city;
-      if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
-      document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
-      selectedIdx = null;
-      _pushNextHistory = true;
-      renderAll();
-    });
-    alsoEl.appendChild(allLink);
-    alsoEl.style.display = "";
-  } else {
-    alsoEl.style.display = "none";
+  // Hide the panel when there are no cross-listings — the grid has nothing
+  // interesting to show and the detail panel stays compact.
+  if (others.length === 0) { alsoEl.style.display = "none"; return; }
+  if (PUBLICATION_ACTIVE_YEARS.size === 0) {
+    // Streaming still in progress — bail until the final pass populates the
+    // publication-year lookup.
+    alsoEl.style.display = "none"; return;
   }
+
+  alsoEl.innerHTML = "";
+  alsoEl.style.display = "";
+  const heading = document.createElement("div");
+  heading.className = "also-in-label";
+  heading.textContent = "Coverage across publications";
+  alsoEl.appendChild(heading);
+
+  // Build the (publication, year) → row index for this entry's matches.
+  const listingByPubYear = new Map();
+  allListings.forEach(r => {
+    const pub = r.publication;
+    const y = r[GB_YEAR_FIELD] || r.year;
+    if (!pub || !y) return;
+    const k = pub + "" + y;
+    if (!listingByPubYear.has(k)) listingByPubYear.set(k, r);
+  });
+
+  // Row order: publications by earliest active year (chronological appearance).
+  const allPubs = [...PUBLICATION_ACTIVE_YEARS.keys()].sort((a, b) => {
+    const ya = Math.min(...PUBLICATION_ACTIVE_YEARS.get(a));
+    const yb = Math.min(...PUBLICATION_ACTIVE_YEARS.get(b));
+    return ya - yb || a.localeCompare(b);
+  });
+
+  // Mobile compact: only publications with ≥1 listing for this business.
+  const compact = window.matchMedia('(max-width: 640px)').matches;
+  const visiblePubs = compact
+    ? allPubs.filter(p => [...PUBLICATION_ACTIVE_YEARS.get(p)].some(y => listingByPubYear.has(p + "" + y) || allListings.some(r => r.publication === p)))
+    : allPubs;
+
+  // Column set: every integer year between the overall min and max, so the
+  // wartime gap (1942-1946, no publications active) and similar dead spans
+  // render as visible columns of "not published" cells. On mobile compact,
+  // restrict to years that any visible publication has a listing for.
+  const allYearsSet = new Set();
+  PUBLICATION_ACTIVE_YEARS.forEach(years => years.forEach(y => allYearsSet.add(y)));
+  const yearNums = [...allYearsSet].map(Number).filter(n => !isNaN(n)).sort((a, b) => a - b);
+  const minY = yearNums[0], maxY = yearNums[yearNums.length - 1];
+  let years = [];
+  for (let y = minY; y <= maxY; y++) years.push(String(y));
+  if (compact) {
+    const keep = new Set();
+    visiblePubs.forEach(p => {
+      allListings.forEach(r => {
+        if (r.publication === p) keep.add(r[GB_YEAR_FIELD] || r.year);
+      });
+    });
+    years = years.filter(y => keep.has(y));
+  }
+
+  const currentPub = row.publication;
+  const currentYear = row[GB_YEAR_FIELD] || row.year;
+
+  // Lay out as a CSS grid: first column is the publication label, next N are
+  // year cells. Row 1 is the year-axis header.
+  const grid = document.createElement("div");
+  grid.className = "coverage-grid";
+  grid.setAttribute("role", "grid");
+  grid.setAttribute("aria-label", "Coverage of " + nfVal + " across publications and years");
+  grid.style.gridTemplateColumns = "auto repeat(" + years.length + ", minmax(7px, 14px))";
+
+  // Year header row.
+  const corner = document.createElement("div");
+  grid.appendChild(corner);
+  years.forEach(y => {
+    const h = document.createElement("div");
+    h.className = "year-head";
+    // Show labels only on every 5th year so the header isn't a smear of digits.
+    h.textContent = (Number(y) % 5 === 0) ? y : "";
+    h.setAttribute("aria-hidden", "true");
+    grid.appendChild(h);
+  });
+
+  // One row per publication.
+  visiblePubs.forEach(pub => {
+    const label = document.createElement("div");
+    label.className = "pub-label" + (pub === currentPub ? " pub-label-current" : "");
+    const dot = document.createElement("span");
+    dot.className = "pub-dot";
+    dot.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink-faint)";
+    label.appendChild(dot);
+    label.appendChild(document.createTextNode(PUBLICATION_SHORT_NAMES[pub] || pub));
+    grid.appendChild(label);
+
+    const activeYears = PUBLICATION_ACTIVE_YEARS.get(pub) || new Set();
+    years.forEach(y => {
+      const listingRow = listingByPubYear.get(pub + "" + y);
+      const isActive = activeYears.has(y);
+      const isCurrent = listingRow === row;
+      let cell;
+      if (listingRow) {
+        cell = document.createElement("button");
+        cell.className = "coverage-cell coverage-cell-listed" + (isCurrent ? " coverage-cell-current" : "");
+        cell.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink)";
+        cell.setAttribute("aria-label",
+          isCurrent
+            ? pub + ", " + y + ": this entry"
+            : "Jump to " + pub + ", " + y);
+        cell.disabled = isCurrent;
+        if (!isCurrent) cell.addEventListener("click", () => gbJumpToListing(listingRow));
+      } else if (isActive) {
+        cell = document.createElement("div");
+        cell.className = "coverage-cell coverage-cell-empty";
+        cell.setAttribute("role", "gridcell");
+        cell.setAttribute("aria-label", pub + ", " + y + ": no listing");
+      } else {
+        cell = document.createElement("div");
+        cell.className = "coverage-cell coverage-cell-inactive";
+        cell.setAttribute("role", "gridcell");
+        cell.setAttribute("aria-label", pub + ", " + y + ": not published");
+      }
+      grid.appendChild(cell);
+    });
+  });
+
+  alsoEl.appendChild(grid);
+
+  // Legend — only on desktop, where all four cell states can be present.
+  if (!compact) {
+    const legend = document.createElement("div");
+    legend.className = "coverage-legend";
+    legend.setAttribute("aria-hidden", "true");
+    [
+      ["Listed",       { background: "var(--gb-ink)" }],
+      ["No listing",   { background: "var(--gb-paper-2)", border: "1px solid var(--gb-rule-faint)" }],
+      ["Not published",{ backgroundImage: "repeating-linear-gradient(45deg, transparent 0 2px, var(--gb-rule-faint) 2px 3px)" }],
+    ].forEach(([txt, style]) => {
+      const item = document.createElement("div");
+      item.className = "coverage-legend-item";
+      const sw = document.createElement("span");
+      sw.className = "coverage-legend-swatch";
+      Object.assign(sw.style, style);
+      item.appendChild(sw);
+      item.appendChild(document.createTextNode(txt));
+      legend.appendChild(item);
+    });
+    alsoEl.appendChild(legend);
+  }
+
+  // "See all likely match listings" — broaden filters to surface every
+  // candidate match across publications.
+  const allLink = document.createElement("a");
+  allLink.className = "also-all-link";
+  allLink.href = "#";
+  allLink.textContent = "See all likely match listings";
+  allLink.addEventListener("click", e => {
+    e.preventDefault();
+    searchQuery = nfVal;
+    document.getElementById("search").value = nfVal;
+    if (row.city) colFilters["city"] = row.city;
+    if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
+    if (facetState["publication"]) facetState["publication"].clear();
+    document.getElementById("detail").classList.remove("open");
+    document.getElementById("main").classList.remove("detail-open");
+    selectedIdx = null;
+    _pushNextHistory = true;
+    renderAll();
+  });
+  alsoEl.appendChild(allLink);
 };
 
 // ── Re-render everything now that monkey-patches are in place ────────────────
@@ -2178,6 +2373,7 @@ async function gbStreamCsv(url, onRow) {
     // Both streams done — final build + render covers everything the original
     // loader's .then() did after parsing.
     gbBuildFacets(ALL_ENTRIES);
+    PUBLICATION_ACTIVE_YEARS = gbComputePublicationActiveYears(ALL_ENTRIES);
     gbNameIndex.clear();
     const sample = ALL_ENTRIES[0];
     if (sample) {
