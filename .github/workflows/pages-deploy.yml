@@ -2,6 +2,7 @@
 #   - pushes to `main` deploy the full repo to the root of `gh-pages`
 #   - pushes to any other branch deploy that branch's HTML files (only) to
 #     `gh-pages/previews/<branch-slug>/`
+#   - deleting any non-main branch removes its preview folder
 #
 # Preview deploys inject a `<base href>` so relative fetches in the HTML
 # (CSVs, manifests, canvas-map JSON) resolve back to main's data — keeps
@@ -17,6 +18,7 @@ on:
   push:
     branches-ignore:
       - gh-pages
+  delete:
 
 # Only run the most recent push per branch; older runs are wasted work.
 concurrency:
@@ -25,6 +27,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -97,3 +100,40 @@ jobs:
             echo "Deployed preview for \`${GITHUB_REF#refs/heads/}\`." >> "$GITHUB_STEP_SUMMARY"
             echo "Preview URL: https://hadro.github.io/green-books/previews/${{ steps.target.outputs.slug }}/" >> "$GITHUB_STEP_SUMMARY"
           fi
+
+  cleanup-preview:
+    # Fires when a branch is deleted. Removes that branch's preview folder
+    # from gh-pages so the site doesn't accumulate stale URLs. Hard guarded
+    # against deleting main / gh-pages itself.
+    if: >-
+      github.event_name == 'delete' &&
+      github.event.ref_type == 'branch' &&
+      github.event.ref != 'main' &&
+      github.event.ref != 'gh-pages'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+
+      - name: Remove preview folder
+        env:
+          DELETED_REF: ${{ github.event.ref }}
+        run: |
+          set -euo pipefail
+          SLUG="${DELETED_REF//\//-}"
+          PREVIEW="previews/$SLUG"
+          if [ ! -d "$PREVIEW" ]; then
+            echo "No preview folder for \`$DELETED_REF\` — nothing to clean." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git rm -rf "$PREVIEW"
+          git commit -m "Remove preview for deleted branch $DELETED_REF"
+          git push origin gh-pages
+          echo "Removed \`$PREVIEW\` from gh-pages." >> "$GITHUB_STEP_SUMMARY"
