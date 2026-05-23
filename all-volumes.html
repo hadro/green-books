@@ -1892,6 +1892,61 @@ function gbNormName(s) {
   return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
 }
 
+// Conservative trailing-noise patterns. Stripping these from a business name
+// before keying lets us group cross-edition matches that differ only in
+// category-y suffixes — "Miami Carver" / "Miami Carver Hotel" / "Miami Carver
+// Hotel & Apartments" all collapse to the same key. Multi-word phrases first
+// so e.g. "Tourist Home" goes before lone "Home". Conservative on purpose —
+// over-stripping creates false merges.
+const GB_NAME_TAIL_NOISE = [
+  /\s+tourist\s+homes?$/i,
+  /\s+tourist\s+rooms?$/i,
+  /\s+guest\s+house$/i,
+  /\s+bar\s*&\s*grill$/i,
+  /\s+night\s+club$/i,
+  /\s+beauty\s+parlou?rs?$/i,
+  /\s+beauty\s+shop$/i,
+  /\s+barber\s+shop$/i,
+  /\s+service\s+station$/i,
+  /\s+drug\s+stores?$/i,
+  /\s+hotels?$/i,
+  /\s+motels?$/i,
+  /\s+restaurants?$/i,
+  /\s+cafes?$/i,
+  /\s+caf[ée]$/i,
+  /\s+cafeterias?$/i,
+  /\s+inns?$/i,
+  /\s+lodges?$/i,
+  /\s+lodgings?$/i,
+  /\s+taverns?$/i,
+  /\s+grills?$/i,
+  /\s+clubs?$/i,
+  /\s+rooms?$/i,
+  /\s+apartments?$/i,
+  /\s+apt\.?$/i,
+  /\s+pharmacy$/i,
+  /\s+&$/,         // dangling ampersand left by an earlier strip
+  /\s+and$/i,      // dangling "and" left by an earlier strip
+];
+function gbStripNameTail(name) {
+  let s = (name || "").trim();
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const re of GB_NAME_TAIL_NOISE) {
+      const next = s.replace(re, "").trim();
+      if (next !== s && next.length >= 3) { s = next; changed = true; break; }
+    }
+  }
+  return s;
+}
+
+// Canonical (name, city) key used by gbNameIndex — strips trailing noise
+// before normalising, so suffix variants of the same business group together.
+function gbIndexKey(name, city) {
+  return gbNormName(gbStripNameTail(name)) + "|" + (city || "").toLowerCase().trim();
+}
+
 // ── Name index: normalised (name|city) → [row objects] across all volumes ────
 const gbNameIndex = new Map();
 (function () {
@@ -1904,8 +1959,7 @@ const gbNameIndex = new Map();
     .find(k => k in sample);
   if (!nf) return;
   allRows.forEach(row => {
-    const city = (row.city || "").toLowerCase().trim();
-    const key = gbNormName(row[nf]) + "|" + city;
+    const key = gbIndexKey(row[nf], row.city);
     if (key.length >= 3) {
       if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
       gbNameIndex.get(key).push(row);
@@ -1924,9 +1978,7 @@ function gbJumpToYear(year) {
       const nf = ["name", "establishment_name", "firm_name", "business_name"]
         .find(k => cur[k] != null && cur[k] !== "");
       if (nf) {
-        const city = (cur.city || "").toLowerCase().trim();
-        const key = gbNormName(cur[nf]) + "|" + city;
-        const candidates = gbNameIndex.get(key) || [];
+        const candidates = gbNameIndex.get(gbIndexKey(cur[nf], cur.city)) || [];
         matchRow = candidates.find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
       }
     }
@@ -1997,9 +2049,9 @@ showDetail = function (row) {
   const nfVal = nf && row[nf];
   if (!nfVal || gbNameIndex.size === 0) { alsoEl.style.display = "none"; return; }
 
-  const city = (row.city || "").toLowerCase().trim();
-  const key = gbNormName(nfVal) + "|" + city;
-  const allListings = gbNameIndex.get(key) || [];
+  // Look up cross-listings via the suffix-stripping index so name variants
+  // ("Miami Carver" vs "Miami Carver Hotel") all collapse to the same key.
+  const allListings = gbNameIndex.get(gbIndexKey(nfVal, row.city)) || [];
   const others = allListings.filter(r => r !== row);
 
   // Hide the panel when there are no cross-listings — the grid has nothing
@@ -2158,8 +2210,11 @@ showDetail = function (row) {
   allLink.textContent = "See all likely match listings";
   allLink.addEventListener("click", e => {
     e.preventDefault();
-    searchQuery = nfVal;
-    document.getElementById("search").value = nfVal;
+    // Search on the stripped name so suffix variants surface as substring
+    // matches of the shorter query.
+    const q = gbStripNameTail(nfVal);
+    searchQuery = q;
+    document.getElementById("search").value = q;
     if (row.city) colFilters["city"] = row.city;
     if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
     if (facetState["publication"]) facetState["publication"].clear();
@@ -2380,8 +2435,7 @@ async function gbStreamCsv(url, onRow) {
       const nf = ['name', 'establishment_name', 'firm_name', 'business_name'].find(k => k in sample);
       if (nf) {
         ALL_ENTRIES.forEach(row => {
-          const city = (row.city || '').toLowerCase().trim();
-          const key = gbNormName(row[nf]) + '|' + city;
+          const key = gbIndexKey(row[nf], row.city);
           if (key.length >= 3) {
             if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
             gbNameIndex.get(key).push(row);
