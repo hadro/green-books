@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="https://hadro.github.io/green-books/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Green Books Directory Explorer — IIIF Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gb-paper:       #faf8f3;
+      --gb-paper-2:     #f0ece2;
+      --gb-ink:         #161310;
+      --gb-ink-soft:    #54504a;
+      --gb-ink-faint:   #9a948a;
+      --gb-rule-faint:  rgba(22, 19, 16, 0.12);
+      --gb-accent:      #1d4d2e;
+      --gb-highlight:   #c89028;
+      --gb-font-display: "Newsreader", Georgia, serif;
+      --gb-font-body:   "Source Sans 3", system-ui, sans-serif;
+      --gb-font-mono:   "JetBrains Mono", ui-monospace, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--gb-paper);
+      font-family: var(--gb-font-body);
+      display: flex; flex-direction: column;
+    }
+    header {
+      flex-shrink: 0;
+      display: flex; align-items: center; gap: 16px;
+      padding: 10px 24px;
+      background: var(--gb-paper-2);
+      border-bottom: 1px solid var(--gb-rule-faint);
+    }
+    header h1 {
+      font-family: var(--gb-font-display);
+      font-weight: 300; font-size: 17px;
+      color: var(--gb-ink); letter-spacing: -0.01em;
+    }
+    header h1 em { font-style: italic; color: var(--gb-accent); }
+    header a {
+      margin-left: auto;
+      font-family: var(--gb-font-mono); font-size: 11px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--gb-ink-soft); text-decoration: none;
+    }
+    header a:hover { color: var(--gb-accent); }
+    #viewer-wrap { flex: 1; min-height: 0; position: relative; }
+    clover-viewer { display: block; position: absolute; inset: 0; }
+    clover-viewer > div { height: 100%; }
+    #landing, #error {
+      display: none; position: absolute; inset: 0;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px; padding: 32px; text-align: center;
+    }
+    #landing.visible, #error.visible { display: flex; }
+    #landing p {
+      font-family: var(--gb-font-display); font-size: 16px;
+      color: var(--gb-ink-soft); max-width: 480px; line-height: 1.6;
+    }
+    #landing a {
+      display: inline-block; padding: 10px 22px;
+      background: var(--gb-accent); color: var(--gb-paper);
+      border-radius: 3px; text-decoration: none;
+      font-family: var(--gb-font-body); font-weight: 600; font-size: 14px;
+    }
+    #landing a:hover { background: var(--gb-accent-deep, #143a22); }
+    #error p { font-size: 13px; color: #b00; max-width: 520px; line-height: 1.5; }
+    .gb-entry-subtitle {
+      display: block;
+      font-family: var(--gb-font-mono, ui-monospace, monospace);
+      font-size: 11px; letter-spacing: 0.08em;
+      color: var(--gb-ink-soft, #54504a);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="viewer-heading">The <em>Green Book</em> Directory Explorer</h1>
+  <a id="back-link" href="explorer.html">← Back to explorer</a>
+</header>
+
+<div id="viewer-wrap">
+  <div id="landing">
+    <p>This viewer opens specific pages from the digitized Green Book volumes.
+       Use the explorer to find an entry and click its source link to open it here.</p>
+    <a href="explorer.html">Open the Green Book Explorer</a>
+  </div>
+  <div id="error"><p id="error-msg"></p></div>
+</div>
+
+<script>
+// NYPL info.json responses return "id":"http://iiif.nypl.org:443/..." — Chrome
+// blocks HTTP requests from an HTTPS page. Rewrite those URLs for both fetch
+// (info.json) and XMLHttpRequest (OSD tile loading) before Clover/OSD loads.
+(function () {
+  function fixNyplUrl(url) {
+    return typeof url === 'string'
+      ? url.replace(/^http:\/\/iiif\.nypl\.org(:\d+)?\//,'https://iiif.nypl.org/')
+      : url;
+  }
+  const _fetch = window.fetch;
+  window.fetch = function (input, init) {
+    return _fetch.call(this, fixNyplUrl(input), init).then(function (resp) {
+      // Also rewrite URLs embedded in JSON response bodies (info.json @id field)
+      const ct = resp.headers.get('content-type') || '';
+      if (!ct.includes('json')) return resp;
+      return resp.text().then(function (text) {
+        const fixed = text.replace(/http:\/\/iiif\.nypl\.org(:\d+)?\//g, 'https://iiif.nypl.org/');
+        return new Response(fixed, { status: resp.status, statusText: resp.statusText, headers: resp.headers });
+      });
+    });
+  };
+  const _open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function (method, url) {
+    return _open.apply(this, [method, fixNyplUrl(url)].concat(Array.prototype.slice.call(arguments, 2)));
+  };
+}());
+
+const BASE_URL = "https://hadro.github.io/green-books";
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+function showError(msg) {
+  document.getElementById("error-msg").textContent = msg;
+  document.getElementById("error").classList.add("visible");
+}
+
+function serviceId(service) {
+  if (!service) return "";
+  const s = Array.isArray(service) ? service[0] : service;
+  return (s && (s.id || s["@id"])) || "";
+}
+
+function buildCanvasIndex(manifest) {
+  const index = {};
+  for (const canvas of (manifest.items || [])) {
+    try {
+      const body = canvas.items[0].items[0].body;
+      // Index by service base URL (primary)
+      const svc = serviceId(body.service);
+      if (svc) index[svc] = canvas.id;
+      // Also index by body URL stripped to service base (NYPL canvas IDs are image URLs)
+      if (body.id) index[body.id.replace(/\/full\/.*$/, "")] = canvas.id;
+    } catch (e) {}
+  }
+  return index;
+}
+
+function buildCloverState(manifestId, canvasId, fragment, label) {
+  const target = {
+    type: "SpecificResource",
+    source: { id: canvasId, type: "Canvas", partOf: [{ id: manifestId, type: "Manifest" }] },
+  };
+  if (fragment) target.selector = { type: "FragmentSelector", value: fragment };
+  const state = {
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    id: canvasId + (fragment ? "#" + fragment : "") + "/content-state",
+    type: "Annotation",
+    motivation: ["contentState"],
+    target,
+  };
+  if (label) state.body = [{ type: "TextualBody", value: label, format: "text/plain" }];
+  return state;
+}
+
+function contentStateToBlobId(stateObj) {
+  return URL.createObjectURL(
+    new Blob([JSON.stringify(stateObj)], { type: "application/json" })
+  );
+}
+
+function closeInfoPanelAfterZoom(el, fallbackMs) {
+  let done = false;
+  function close() {
+    if (done) return;
+    done = true; obs.disconnect(); clearTimeout(timer);
+    const root = el.shadowRoot || el;
+    const btn = root.querySelector('[data-value="manifest-back"]');
+    // Clover hides this control via `display:none` on mobile (`@sm`-and-up
+    // only). .click() fires the handler regardless of display, and the handler
+    // exits content-state mode entirely — wiping zoom + highlight and dropping
+    // the user onto the manifest's page-thumbnail view. Skip the auto-dismiss
+    // on small viewports to preserve the deep-linked entry view.
+    if (btn && window.matchMedia('(min-width: 641px)').matches) btn.click();
+  }
+  const obs = new MutationObserver(mutations => {
+    for (const m of mutations) {
+      if (m.type === "attributes" && m.attributeName === "class" &&
+          m.target.className === "clover-iiif-content-state") { close(); return; }
+    }
+  });
+  obs.observe(el, { subtree: true, attributes: true, attributeFilter: ["class"] });
+  const timer = setTimeout(close, fallbackMs);
+}
+
+function launchClover(manifestId, cfUrl, label) {
+  const wrap = document.getElementById("viewer-wrap");
+  const old = wrap.querySelector("clover-viewer");
+  if (old) old.remove();
+
+  // Wait for the custom element to be defined before appending it.
+  // On cold loads, clover.umd.patched.js (1.7 MB) can finish downloading
+  // after the manifest fetches complete, leaving the element in the DOM as an
+  // unknown element. Clover upgrades it later, but by then the
+  // closeInfoPanelAfterZoom timer has already started — and usually fired.
+  const cloverReady = customElements.whenDefined("clover-viewer");
+
+  function attach(blobId) {
+    const el = document.createElement("clover-viewer");
+    el.setAttribute("id", blobId);
+    wrap.appendChild(el);
+    // 6 s fallback: the MutationObserver in closeInfoPanelAfterZoom cannot see
+    // into Clover's shadow DOM, so the timer is the only active path. 1500 ms
+    // is too short on uncached loads where Clover must fetch + process the
+    // content state after upgrade.
+    closeInfoPanelAfterZoom(el, 6000);
+  }
+
+  if (!cfUrl) {
+    cloverReady.then(() => attach(manifestId));
+    return;
+  }
+
+  const fragment = cfUrl.includes("#") ? cfUrl.split("#")[1] : "";
+  const cfBase   = cfUrl.includes("#") ? cfUrl.split("#")[0] : cfUrl;
+
+  // Run the manifest fetch and Clover registration in parallel; attach only
+  // when both are ready so the element is immediately active on connection.
+  Promise.all([cloverReady, fetch(manifestId).then(r => r.json())])
+    .then(([, manifest]) => {
+      const index = buildCanvasIndex(manifest);
+      const svcBase = cfBase.replace(/\/full\/.*$/, "");
+      const canvasId = index[svcBase] || index[cfBase] || cfBase;
+      attach(contentStateToBlobId(buildCloverState(manifestId, canvasId, fragment, label)));
+    })
+    .catch(() => {
+      cloverReady.then(() => attach(manifestId));
+    });
+}
+
+// ── Header: populate from URL params ─────────────────────────────────────────
+
+(function () {
+  const params = new URLSearchParams(location.search);
+  const cf   = params.get("cf");
+  const name = params.get("name");
+  if (cf) {
+    document.getElementById("back-link").href = "explorer.html?cf=" + encodeURIComponent(cf);
+  }
+  if (name) {
+    // Inject "Entry: [name]" as subtitle inside Clover's own header once it renders.
+    const obs = new MutationObserver(() => {
+      const titleEl = document.querySelector(".clover-viewer-header .label");
+      if (!titleEl || titleEl.querySelector(".gb-entry-subtitle")) return;
+      const sub = document.createElement("span");
+      sub.className = "gb-entry-subtitle";
+      sub.textContent = "Entry: " + name;
+      titleEl.appendChild(sub);
+      obs.disconnect();
+    });
+    obs.observe(document.getElementById("viewer-wrap"), { childList: true, subtree: true });
+  }
+})();
+
+// ── Route ────────────────────────────────────────────────────────────────────
+
+const _params = new URLSearchParams(location.search);
+const cf    = _params.get("cf");
+const name  = _params.get("name") || "";
+const label = _params.get("label") || name;
+
+if (!cf) {
+  document.getElementById("landing").classList.add("visible");
+} else {
+  const m = cf.match(/\/iiif\/\d+\/(\d+)\//);
+  if (!m) {
+    showError("Unrecognised canvas fragment URL: " + cf);
+  } else {
+    const imageId = m[1];
+    Promise.all([
+      fetch("image_to_volume.json").then(r => r.json()).catch(() => ({})),
+      fetch("travel_guides_image_to_volume.json").then(r => r.json()).catch(() => ({})),
+    ])
+      .then(([gbLookup, tgLookup]) => {
+        const uuid = gbLookup[imageId] || tgLookup[imageId];
+        if (!uuid) {
+          showError("No volume found for image ID " + imageId + ". The lookup table may be out of date.");
+          return;
+        }
+        launchClover(BASE_URL + "/manifests/" + uuid + "/manifest.json", cf, label);
+      })
+      .catch(err => showError("Could not load volume index: " + err.message));
+  }
+}
+</script>
+
+<script src="clover.umd.patched.js"></script>
+<!-- privacy-friendly analytics via GoatCounter -->
+<!-- Strip ?cf=... so every entry view aggregates under /index.html instead of fragmenting per-entry -->
+<script>window.goatcounter = { path: function (p) { return p.split('?')[0]; } };</script>
+<script data-goatcounter="https://green-books.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="https://hadro.github.io/green-books/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Address-Keying Comparison — Green Books Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gb-paper:       #faf8f3;
+    --gb-paper-2:     #f0ece2;
+    --gb-ink:         #161310;
+    --gb-ink-soft:    #54504a;
+    --gb-ink-faint:   #767069;
+    --gb-rule-faint:  rgba(22, 19, 16, 0.12);
+    --gb-rule:        #161310;
+    --gb-accent:      #1d4d2e;
+    --gb-accent-deep: #143a22;
+    --gb-warn:        #c0341d;
+    --gb-font-display: "Newsreader", Georgia, serif;
+    --gb-font-body:   "Source Sans 3", system-ui, sans-serif;
+    --gb-font-mono:   "JetBrains Mono", ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--gb-paper); font-family: var(--gb-font-body); color: var(--gb-ink); padding: 32px; max-width: 1600px; margin: 0 auto; line-height: 1.5; }
+  h1 { font-family: var(--gb-font-display); font-weight: 400; font-size: 2rem; margin-bottom: 8px; letter-spacing: -0.01em; }
+  h1 em { color: var(--gb-accent); font-style: italic; }
+  p.lede { font-family: var(--gb-font-display); font-size: 1rem; color: var(--gb-ink-soft); max-width: 80ch; margin-bottom: 24px; line-height: 1.55; }
+  p.lede code { font-family: var(--gb-font-mono); font-size: 0.9em; background: var(--gb-paper-2); padding: 1px 5px; border-radius: 2px; }
+
+  .add-case { margin-bottom: 24px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .add-case input { padding: 6px 10px; font-family: var(--gb-font-mono); font-size: 0.857rem; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper); color: var(--gb-ink); min-width: 200px; }
+  .add-case input:focus { outline: 2px solid var(--gb-accent); outline-offset: 1px; border-color: var(--gb-ink); }
+  .add-case button { padding: 6px 14px; background: var(--gb-accent); color: var(--gb-paper); border: none; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.857rem; letter-spacing: 0.04em; }
+  .add-case button:hover { background: var(--gb-accent-deep); }
+  .add-case .hint { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); }
+
+  .case { border: 1px solid var(--gb-rule-faint); margin-bottom: 24px; padding: 20px; background: var(--gb-paper-2); }
+  .case h2 { font-family: var(--gb-font-display); font-weight: 400; font-size: 1.4rem; margin-bottom: 4px; }
+  .case .meta { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 900px) { .compare { grid-template-columns: 1fr; } }
+  .col h3 { font-family: var(--gb-font-mono); font-size: 0.857rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--gb-rule-faint); }
+  .col h4 { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.04em; color: var(--gb-ink-soft); margin: 14px 0 6px; text-transform: lowercase; }
+
+  .group { background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); padding: 10px 12px; margin-bottom: 8px; }
+  .group-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+  .group-count { font-family: var(--gb-font-mono); font-size: 0.857rem; font-weight: 500; color: var(--gb-accent); }
+  .group-tag { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .group-warn { color: var(--gb-warn); font-weight: 500; }
+  .group-line { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); margin-bottom: 4px; word-wrap: break-word; }
+  .group-line strong { color: var(--gb-ink-soft); font-weight: 500; }
+  .group-sample { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink); margin-top: 6px; }
+  .group-sample div { padding: 2px 0; border-top: 1px dotted var(--gb-rule-faint); }
+  .group-sample div:first-child { border-top: 0; }
+  .group-sample .yr { color: var(--gb-accent); font-weight: 500; display: inline-block; min-width: 38px; }
+  .group-sample .pub { color: var(--gb-ink-soft); display: inline-block; min-width: 180px; }
+
+  .loading { font-family: var(--gb-font-mono); font-size: 0.857rem; color: var(--gb-ink-faint); padding: 12px 0; }
+  .err { color: var(--gb-warn); }
+  .no-rows { padding: 12px; font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); border: 1px dashed var(--gb-rule-faint); margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<h1>Address-keying comparison — <em>current vs. proposed</em></h1>
+<p class="lede">
+  Side-by-side view of how the current <code>name + city</code> index (left)
+  vs. the proposed <code>name + city + address-signature</code> resolver (right)
+  group cross-listings. The right column is what the new keying would treat as
+  one business. A &nbsp;<span class="group-warn group-tag">⚠ mixed categories</span>&nbsp;
+  badge on a group means it spans more than one category — a likely sign of
+  over-merge that warrants a closer look.
+</p>
+
+<div class="add-case">
+  <input id="add-name" placeholder="business name (e.g. West End)" autocomplete="off">
+  <input id="add-city" placeholder="city (optional — leave blank for top cities)" autocomplete="off">
+  <button id="add-btn">Add case</button>
+  <span class="hint">Cases also live in the <code>SAMPLE_CASES</code> array in source.</span>
+</div>
+
+<div id="status" class="loading">Loading 105,701 rows…</div>
+<div id="cases"></div>
+
+<script>
+// ────────────────────────────────────────────────────────────────────────────
+// Curated sample cases. Edit this list to add or remove. Empty `city`
+// resolves the top few cities where the name appears.
+// ────────────────────────────────────────────────────────────────────────────
+const SAMPLE_CASES = [
+  { name: "West End",            city: "St. Louis" },   // canonical false-merge case
+  { name: "Miami Carver Hotel",  city: "Miami" },        // suffix-strip win
+  { name: "Hotel Theresa",       city: "New York" },     // famous landmark, single business
+  { name: "Royal Hotel",         city: "" },             // common name across cities
+  { name: "Park Hotel",          city: "" },
+  { name: "Central Hotel",       city: "" },
+  { name: "Lincoln Hotel",       city: "" },
+];
+
+// ────────────────────────────────────────────────────────────────────────────
+// CSV parser — synchronous, RFC 4180 quoting. Strips a leading BOM.
+// ────────────────────────────────────────────────────────────────────────────
+function parseCSV(text) {
+  if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+  const result = [];
+  let headers = null;
+  let pos = 0;
+  const len = text.length;
+  while (pos < len) {
+    const row = [];
+    while (true) {
+      let field = "";
+      if (pos < len && text[pos] === '"') {
+        pos++;
+        while (pos < len) {
+          if (text[pos] === '"') {
+            if (pos + 1 < len && text[pos + 1] === '"') { field += '"'; pos += 2; }
+            else { pos++; break; }
+          } else { field += text[pos++]; }
+        }
+      } else {
+        while (pos < len && text[pos] !== "," && text[pos] !== "\r" && text[pos] !== "\n") {
+          field += text[pos++];
+        }
+      }
+      row.push(field);
+      if (pos < len && text[pos] === ",") { pos++; }
+      else { break; }
+    }
+    if (pos < len && text[pos] === "\r") pos++;
+    if (pos < len && text[pos] === "\n") pos++;
+    if (row.length === 0 || (row.length === 1 && row[0] === "")) continue;
+    if (!headers) { headers = row; continue; }
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = row[i] !== undefined ? row[i] : ""; });
+    result.push(obj);
+  }
+  return result;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Name helpers — copied from production so the OLD column matches what's
+// currently shipping.
+// ────────────────────────────────────────────────────────────────────────────
+function gbNormName(s) {
+  return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
+}
+const NAME_TAIL_NOISE = [
+  /\s+tourist\s+homes?$/i, /\s+tourist\s+rooms?$/i, /\s+guest\s+house$/i,
+  /\s+bar\s*&\s*grill$/i, /\s+night\s+club$/i, /\s+beauty\s+parlou?rs?$/i,
+  /\s+beauty\s+shop$/i, /\s+barber\s+shop$/i, /\s+service\s+station$/i,
+  /\s+drug\s+stores?$/i, /\s+hotels?$/i, /\s+motels?$/i, /\s+restaurants?$/i,
+  /\s+cafes?$/i, /\s+caf[ée]$/i, /\s+cafeterias?$/i, /\s+inns?$/i,
+  /\s+lodges?$/i, /\s+lodgings?$/i, /\s+taverns?$/i, /\s+grills?$/i,
+  /\s+clubs?$/i, /\s+rooms?$/i, /\s+apartments?$/i, /\s+apt\.?$/i,
+  /\s+pharmacy$/i, /\s+&$/, /\s+and$/i,
+];
+function gbStripNameTail(name) {
+  let s = (name || "").trim();
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const re of NAME_TAIL_NOISE) {
+      const next = s.replace(re, "").trim();
+      if (next !== s && next.length >= 3) { s = next; changed = true; break; }
+    }
+  }
+  return s;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Old keying — current production. One bucket per (stripped name, city).
+// ────────────────────────────────────────────────────────────────────────────
+function oldKey(row) {
+  const nf = ["name", "establishment_name", "firm_name", "business_name"]
+    .find(k => row[k]);
+  if (!nf) return null;
+  const stem = gbNormName(gbStripNameTail(row[nf]));
+  const city = (row.city || "").toLowerCase().trim();
+  if (stem.length < 3) return null;
+  return stem + "|" + city;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Proposed: parse address into { number, streets }, then group rows whose
+// signatures are "compatible" via pairwise union-find within each name+city
+// bucket. Compatibility = shared street token (fuzzy) AND matching-or-null
+// number.
+// ────────────────────────────────────────────────────────────────────────────
+const STREET_SUFFIXES = /\s*\b(sts?|streets?|aves?|avenues?|blvds?|boulevards?|rds?|roads?|pls?|places?|cts?|courts?|drs?|drives?|lns?|lanes?|hwys?|highways?|pkwys?|parkways?|terr?|terraces?|sqs?|squares?|way|circles?|cirs?)\.?\s*$/i;
+const STREET_DIRECTIONALS = /\b(north|south|east|west|n|s|e|w|ne|nw|se|sw)\b\.?/gi;
+const STREET_SPLIT = /\s*(?:&| and |\/|,)\s*/i;
+
+function parseAddress(addr) {
+  const raw = (addr || "").trim();
+  if (!raw) return { number: null, streets: new Set(), raw: "" };
+  const numMatch = raw.match(/^\s*(\d+)/);
+  const number = numMatch ? parseInt(numMatch[1], 10) : null;
+  const noNum = raw.replace(/^\s*\d+\s*/, "");
+  const parts = noNum.split(STREET_SPLIT);
+  const streets = new Set();
+  for (const p of parts) {
+    const cleaned = p
+      .replace(STREET_SUFFIXES, "")
+      .replace(STREET_DIRECTIONALS, "")
+      .replace(/[^a-zA-Z0-9\s]/g, "")  // keep digits so "3rd"/"42nd" survive
+      .trim()
+      .toLowerCase();
+    const tokens = cleaned.split(/\s+/).filter(t => t.length >= 3);
+    if (tokens.length > 0) streets.add(tokens[tokens.length - 1]);
+  }
+  return { number, streets, raw };
+}
+
+// Levenshtein distance ≤ 1 — handles single-character OCR drifts like
+// belle/beele/bell, vanderventer/vandeventer.
+function leq1(a, b) {
+  if (a === b) return true;
+  const la = a.length, lb = b.length;
+  if (Math.abs(la - lb) > 1) return false;
+  // Walk both strings; allow at most one mismatch.
+  let i = 0, j = 0, slack = 1;
+  while (i < la && j < lb) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (slack === 0) return false;
+    slack = 0;
+    if (la === lb)       { i++; j++; }   // substitution
+    else if (la < lb)    { j++; }         // insertion into a
+    else                  { i++; }         // deletion from a
+  }
+  return (la - i) + (lb - j) <= slack;
+}
+function streetsShareToken(a, b) {
+  for (const ta of a) for (const tb of b) if (leq1(ta, tb)) return true;
+  return false;
+}
+
+// Phase-based resolver. Numbered rows merge with each other on (same number,
+// fuzzy street match). Non-numbered rows then get *anchored* to one numbered
+// group via a "fewest-listings on shared street wins" rule — preventing
+// intersection addresses from bridging unrelated businesses on the corner.
+function resolveGroups(rows) {
+  const sigs = rows.map(r => parseAddress(r.address));
+  const parent = rows.map((_, i) => i);
+  function find(i) { while (parent[i] !== i) { parent[i] = parent[parent[i]]; i = parent[i]; } return i; }
+  function union(i, j) { const ri = find(i), rj = find(j); if (ri !== rj) parent[ri] = rj; }
+
+  const numberedIdx = [], nullIdx = [];
+  rows.forEach((_, i) => (sigs[i].number !== null ? numberedIdx : nullIdx).push(i));
+
+  // 1. Merge numbered rows pairwise: equal number AND (fuzzy street-token
+  //    match OR at least one street set is empty — empty means we couldn't
+  //    parse a street, not that the streets are different).
+  for (let a = 0; a < numberedIdx.length; a++) {
+    for (let b = a + 1; b < numberedIdx.length; b++) {
+      const i = numberedIdx[a], j = numberedIdx[b];
+      if (sigs[i].number !== sigs[j].number) continue;
+      const ei = sigs[i].streets.size === 0, ej = sigs[j].streets.size === 0;
+      if (ei || ej || streetsShareToken(sigs[i].streets, sigs[j].streets)) union(i, j);
+    }
+  }
+
+  // 2. Build a map of numbered groups → street tokens + size.
+  const numberedGroups = new Map();  // root → { streets: Set, size: number }
+  numberedIdx.forEach(i => {
+    const root = find(i);
+    if (!numberedGroups.has(root)) numberedGroups.set(root, { streets: new Set(), size: 0 });
+    sigs[i].streets.forEach(s => numberedGroups.get(root).streets.add(s));
+    numberedGroups.get(root).size++;
+  });
+
+  // 3. Anchor each non-numbered row to a numbered group ONLY when exactly
+  //    one numbered group shares any of its street tokens. Multiple
+  //    candidates means the intersection bridges different businesses on
+  //    the corner ("Belle & Vandevanter" sharing belle with the hotel AND
+  //    vandevanter with the tavern/club/liquor-store) — leave it as its
+  //    own row, to be merged in phase 4 only with other null-number rows
+  //    via shared streets.
+  nullIdx.forEach(nIdx => {
+    const nStreets = sigs[nIdx].streets;
+    if (nStreets.size === 0) return;
+    const candidates = [];
+    for (const [groot, g] of numberedGroups) {
+      if (streetsShareToken(nStreets, g.streets)) candidates.push(groot);
+    }
+    if (candidates.length === 1) union(nIdx, candidates[0]);
+  });
+
+  // 4. Merge remaining non-numbered singletons that share streets with each
+  //    other (intersection variants of the same intersection).
+  const stillSingleton = nullIdx.filter(i => find(i) === i);
+  for (let a = 0; a < stillSingleton.length; a++) {
+    for (let b = a + 1; b < stillSingleton.length; b++) {
+      const i = stillSingleton[a], j = stillSingleton[b];
+      if (find(i) === find(j)) continue;
+      if (sigs[i].streets.size && sigs[j].streets.size &&
+          streetsShareToken(sigs[i].streets, sigs[j].streets)) union(i, j);
+    }
+  }
+
+  const groups = new Map();
+  rows.forEach((r, i) => {
+    const root = find(i);
+    if (!groups.has(root)) groups.set(root, { rows: [], sigs: [] });
+    groups.get(root).rows.push(r);
+    groups.get(root).sigs.push(sigs[i]);
+  });
+  return [...groups.values()];
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Rendering
+// ────────────────────────────────────────────────────────────────────────────
+function uniq(xs) { return [...new Set(xs)]; }
+function trunc(s, n) { return s.length > n ? s.slice(0, n - 1) + "…" : s; }
+
+function renderGroup(rows, sigs) {
+  const cats = uniq(rows.map(r => r.category).filter(Boolean));
+  const addrs = uniq(rows.map(r => r.address).filter(Boolean));
+  const nameVariants = uniq(rows.map(r => r.name).filter(Boolean));
+
+  const div = document.createElement("div");
+  div.className = "group";
+
+  const head = document.createElement("div");
+  head.className = "group-head";
+  const cnt = document.createElement("span");
+  cnt.className = "group-count";
+  cnt.textContent = rows.length + " listing" + (rows.length === 1 ? "" : "s");
+  head.appendChild(cnt);
+  if (cats.length > 1) {
+    const warn = document.createElement("span");
+    warn.className = "group-warn group-tag";
+    warn.textContent = "⚠ mixed categories";
+    head.appendChild(warn);
+  }
+  if (nameVariants.length > 1) {
+    const nv = document.createElement("span");
+    nv.className = "group-tag";
+    nv.textContent = nameVariants.length + " name variants";
+    head.appendChild(nv);
+  }
+  div.appendChild(head);
+
+  const addrLine = document.createElement("div");
+  addrLine.className = "group-line";
+  addrLine.innerHTML = "<strong>Addresses:</strong> " + (addrs.length ? addrs.map(a => trunc(a, 40)).join("  ·  ") : "(none)");
+  div.appendChild(addrLine);
+
+  const catLine = document.createElement("div");
+  catLine.className = "group-line";
+  catLine.innerHTML = "<strong>Categories:</strong> " + (cats.length ? cats.join(", ") : "(none)");
+  div.appendChild(catLine);
+
+  // Show parsed signatures for debugging when sigs provided (only on NEW side).
+  if (sigs) {
+    const sigLine = document.createElement("div");
+    sigLine.className = "group-line";
+    const uniqSigs = uniq(sigs.map(s => `${s.number === null ? "—" : s.number}·{${[...s.streets].join(",")}}`));
+    sigLine.innerHTML = "<strong>Signatures:</strong> " + uniqSigs.join("  ·  ");
+    div.appendChild(sigLine);
+  }
+
+  const sample = document.createElement("div");
+  sample.className = "group-sample";
+  const sortedRows = [...rows].sort((a, b) => (a.volume_year || "").localeCompare(b.volume_year || ""));
+  sortedRows.slice(0, 6).forEach(r => {
+    const s = document.createElement("div");
+    const yr = document.createElement("span"); yr.className = "yr"; yr.textContent = r.volume_year || "?";
+    const pub = document.createElement("span"); pub.className = "pub"; pub.textContent = trunc(r.publication || "", 25);
+    s.appendChild(yr);
+    s.appendChild(pub);
+    s.appendChild(document.createTextNode("· " + trunc(r.name, 30) + " · " + trunc(r.address || "(no addr)", 30) + " · " + (r.category || "(no cat)")));
+    sample.appendChild(s);
+  });
+  if (rows.length > 6) {
+    const more = document.createElement("div");
+    more.style.color = "var(--gb-ink-faint)";
+    more.textContent = `…and ${rows.length - 6} more`;
+    sample.appendChild(more);
+  }
+  div.appendChild(sample);
+  return div;
+}
+
+function renderCase(caseDef, allRows) {
+  const stem = gbNormName(gbStripNameTail(caseDef.name));
+  if (!stem) return null;
+  const cityFilter = caseDef.city.toLowerCase().trim();
+  const matchingRows = allRows.filter(r => {
+    const rowStem = gbNormName(gbStripNameTail(r.name || ""));
+    if (rowStem !== stem) return false;
+    if (cityFilter && (r.city || "").toLowerCase().trim() !== cityFilter) return false;
+    return true;
+  });
+  if (matchingRows.length === 0) return null;
+
+  // OLD: bucket by (name, city). Single bucket if city is set.
+  const oldGroups = new Map();
+  matchingRows.forEach(r => {
+    const k = oldKey(r);
+    if (!oldGroups.has(k)) oldGroups.set(k, []);
+    oldGroups.get(k).push(r);
+  });
+
+  // NEW: within each name+city bucket, run address resolution.
+  const byCity = new Map();
+  matchingRows.forEach(r => {
+    const c = (r.city || "").toLowerCase().trim();
+    if (!byCity.has(c)) byCity.set(c, []);
+    byCity.get(c).push(r);
+  });
+  const newGroupSets = [...byCity.entries()]
+    .map(([city, rs]) => ({ city, originalCount: rs.length, groups: resolveGroups(rs) }))
+    .filter(x => cityFilter || x.originalCount >= 2)  // skip singleton cities when surveying
+    .sort((a, b) => b.originalCount - a.originalCount)
+    .slice(0, cityFilter ? 1 : 6);
+
+  const wrap = document.createElement("div");
+  wrap.className = "case";
+
+  const h2 = document.createElement("h2");
+  h2.textContent = caseDef.name + (caseDef.city ? ` / ${caseDef.city}` : "  (top cities)");
+  wrap.appendChild(h2);
+
+  const meta = document.createElement("div");
+  meta.className = "meta";
+  const totalNewGroups = newGroupSets.reduce((s, x) => s + x.groups.length, 0);
+  meta.textContent = `${matchingRows.length} total listings · OLD ${oldGroups.size} bucket${oldGroups.size === 1 ? "" : "s"} · NEW ${totalNewGroups} group${totalNewGroups === 1 ? "" : "s"}`
+    + (cityFilter ? "" : ` across ${newGroupSets.length} city${newGroupSets.length === 1 ? "" : "ies"}`);
+  wrap.appendChild(meta);
+
+  const compare = document.createElement("div");
+  compare.className = "compare";
+
+  // OLD column
+  const oldCol = document.createElement("div");
+  oldCol.className = "col";
+  const oldH3 = document.createElement("h3");
+  oldH3.textContent = "Current (name + city)";
+  oldCol.appendChild(oldH3);
+  [...oldGroups.entries()]
+    .sort((a, b) => b[1].length - a[1].length)
+    .forEach(([k, rs]) => {
+      if (!cityFilter) {
+        const lbl = document.createElement("h4");
+        lbl.textContent = k.split("|")[1] || "(no city)";
+        oldCol.appendChild(lbl);
+      }
+      oldCol.appendChild(renderGroup(rs, null));
+    });
+  compare.appendChild(oldCol);
+
+  // NEW column
+  const newCol = document.createElement("div");
+  newCol.className = "col";
+  const newH3 = document.createElement("h3");
+  newH3.textContent = "Proposed (with address signatures)";
+  newCol.appendChild(newH3);
+  newGroupSets.forEach(({ city, groups }) => {
+    if (!cityFilter) {
+      const cityLbl = document.createElement("h4");
+      cityLbl.textContent = city || "(no city)";
+      newCol.appendChild(cityLbl);
+    }
+    groups
+      .sort((a, b) => b.rows.length - a.rows.length)
+      .forEach(g => newCol.appendChild(renderGroup(g.rows, g.sigs)));
+  });
+  compare.appendChild(newCol);
+
+  wrap.appendChild(compare);
+  return wrap;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Boot
+// ────────────────────────────────────────────────────────────────────────────
+let ALL_ROWS = null;
+
+function renderAllCases() {
+  const cases = document.getElementById("cases");
+  cases.innerHTML = "";
+  for (const caseDef of SAMPLE_CASES) {
+    const el = renderCase(caseDef, ALL_ROWS);
+    if (el) cases.appendChild(el);
+    else {
+      const skip = document.createElement("div");
+      skip.className = "no-rows";
+      skip.textContent = `(no rows found for "${caseDef.name}"${caseDef.city ? " / " + caseDef.city : ""})`;
+      cases.appendChild(skip);
+    }
+  }
+}
+
+document.getElementById("add-btn").addEventListener("click", () => {
+  const name = document.getElementById("add-name").value.trim();
+  const city = document.getElementById("add-city").value.trim();
+  if (!name) return;
+  SAMPLE_CASES.unshift({ name, city });
+  document.getElementById("add-name").value = "";
+  document.getElementById("add-city").value = "";
+  if (ALL_ROWS) renderAllCases();
+});
+
+(async function () {
+  const status = document.getElementById("status");
+  try {
+    const t0 = performance.now();
+    const [gbText, tgText] = await Promise.all([
+      fetch("green_book_entries_all.csv").then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); }),
+      fetch("travel_guides_all.csv").then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); }),
+    ]);
+    const gbRows = parseCSV(gbText);
+    gbRows.forEach(r => { r.publication = "The Negro Motorist Green Book"; });
+    const tgRows = parseCSV(tgText);
+    ALL_ROWS = gbRows.concat(tgRows);
+    const dt = Math.round(performance.now() - t0);
+    status.textContent = `Loaded ${ALL_ROWS.length.toLocaleString()} rows in ${dt}ms.`;
+    setTimeout(renderAllCases, 30);
+  } catch (e) {
+    status.textContent = "Error loading data: " + e.message;
+    status.className = "loading err";
+  }
+})();
+</script>
+</body>
+</html>
