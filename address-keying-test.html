@@ -193,15 +193,33 @@ function oldKey(row) {
 // ────────────────────────────────────────────────────────────────────────────
 const STREET_SUFFIXES = /\s*\b(sts?|streets?|aves?|avenues?|blvds?|boulevards?|rds?|roads?|pls?|places?|cts?|courts?|drs?|drives?|lns?|lanes?|hwys?|highways?|pkwys?|parkways?|terr?|terraces?|sqs?|squares?|way|circles?|cirs?)\.?\s*$/i;
 const STREET_DIRECTIONALS = /\b(north|south|east|west|n|s|e|w|ne|nw|se|sw)\b\.?/gi;
-const STREET_SPLIT = /\s*(?:&| and |\/|,)\s*/i;
+// "at" joins intersection forms too: "7th Ave. at 125th St."
+const STREET_SPLIT = /\s*(?:&| and | at |\/|,)\s*/i;
 
-function parseAddress(addr) {
+// Spelled-out ordinals → numeric, so "Seventh Ave." and "7th Ave." produce
+// the same token. Covers the range that actually appears in street names.
+const SPELLED_ORDINALS = {
+  first: "1st", second: "2nd", third: "3rd", fourth: "4th", fifth: "5th",
+  sixth: "6th", seventh: "7th", eighth: "8th", ninth: "9th", tenth: "10th",
+  eleventh: "11th", twelfth: "12th",
+};
+
+function parseAddress(addr, city, state) {
   const raw = (addr || "").trim();
   if (!raw) return { number: null, streets: new Set(), raw: "" };
-  const numMatch = raw.match(/^\s*(\d+)/);
+  // House number = leading digits NOT followed by an ordinal suffix —
+  // "7th Ave. & 125th St." starts with a street name, not a house number.
+  const numMatch = raw.match(/^\s*(\d+)(?!\s*(?:st|nd|rd|th)\b)/i);
   const number = numMatch ? parseInt(numMatch[1], 10) : null;
-  const noNum = raw.replace(/^\s*\d+\s*/, "");
+  const noNum = number !== null ? raw.replace(/^\s*\d+\s*/, "") : raw;
   const parts = noNum.split(STREET_SPLIT);
+  // Address fields sometimes carry trailing city/state text ("…, New York 27,
+  // N. Y." / "Miami, Florida") — tokens from the row's own city or state
+  // fields are noise, not street names.
+  const cityWords = new Set(
+    ((city || "") + " " + (state || "")).toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(w => w.length >= 3)
+  );
   const streets = new Set();
   for (const p of parts) {
     const cleaned = p
@@ -210,7 +228,9 @@ function parseAddress(addr) {
       .replace(/[^a-zA-Z0-9\s]/g, "")  // keep digits so "3rd"/"42nd" survive
       .trim()
       .toLowerCase();
-    const tokens = cleaned.split(/\s+/).filter(t => t.length >= 3);
+    const tokens = cleaned.split(/\s+/)
+      .map(t => SPELLED_ORDINALS[t] || t)
+      .filter(t => t.length >= 3 && !cityWords.has(t));
     if (tokens.length > 0) streets.add(tokens[tokens.length - 1]);
   }
   return { number, streets, raw };
@@ -234,8 +254,16 @@ function leq1(a, b) {
   }
   return (la - i) + (lb - j) <= slack;
 }
+// Numbered streets must match exactly — Levenshtein ≤ 1 would merge adjacent
+// streets in grid cities ("7th" vs "8th", "5th" vs "6th").
+const NUMERIC_ORDINAL = /^\d+(st|nd|rd|th)?$/;
+function tokensMatch(a, b) {
+  if (a === b) return true;
+  if (NUMERIC_ORDINAL.test(a) || NUMERIC_ORDINAL.test(b)) return false;
+  return leq1(a, b);
+}
 function streetsShareToken(a, b) {
-  for (const ta of a) for (const tb of b) if (leq1(ta, tb)) return true;
+  for (const ta of a) for (const tb of b) if (tokensMatch(ta, tb)) return true;
   return false;
 }
 
@@ -244,7 +272,7 @@ function streetsShareToken(a, b) {
 // group via a "fewest-listings on shared street wins" rule — preventing
 // intersection addresses from bridging unrelated businesses on the corner.
 function resolveGroups(rows) {
-  const sigs = rows.map(r => parseAddress(r.address));
+  const sigs = rows.map(r => parseAddress(r.address, r.city, r.state));
   const parent = rows.map((_, i) => i);
   function find(i) { while (parent[i] !== i) { parent[i] = parent[parent[i]]; i = parent[i]; } return i; }
   function union(i, j) { const ri = find(i), rj = find(j); if (ri !== rj) parent[ri] = rj; }
@@ -302,6 +330,28 @@ function resolveGroups(rows) {
     }
   }
 
+  // 5. No-signal rows (blank address, or address that reduced to pure
+  //    city/state text). Ladder:
+  //      - bucket has exactly ONE signal-bearing group → join it (the only
+  //        plausible home)
+  //      - bucket has NO signal-bearing groups → merge no-signal rows with
+  //        each other (pure name+city fallback — matches old behavior for
+  //        the ~8% of rows with no address at all)
+  //      - bucket has 2+ signal groups → ambiguous; leave as singletons
+  const noSignal = rows.map((_, i) => i)
+    .filter(i => sigs[i].number === null && sigs[i].streets.size === 0);
+  const signalRoots = new Set(
+    rows.map((_, i) => i)
+      .filter(i => sigs[i].number !== null || sigs[i].streets.size > 0)
+      .map(find)
+  );
+  if (signalRoots.size === 1) {
+    const root = [...signalRoots][0];
+    noSignal.forEach(i => union(i, root));
+  } else if (signalRoots.size === 0) {
+    for (let a = 1; a < noSignal.length; a++) union(noSignal[a], noSignal[0]);
+  }
+
   const groups = new Map();
   rows.forEach((r, i) => {
     const root = find(i);
@@ -346,22 +396,23 @@ function renderGroup(rows, sigs) {
   }
   div.appendChild(head);
 
-  const addrLine = document.createElement("div");
-  addrLine.className = "group-line";
-  addrLine.innerHTML = "<strong>Addresses:</strong> " + (addrs.length ? addrs.map(a => trunc(a, 40)).join("  ·  ") : "(none)");
-  div.appendChild(addrLine);
-
-  const catLine = document.createElement("div");
-  catLine.className = "group-line";
-  catLine.innerHTML = "<strong>Categories:</strong> " + (cats.length ? cats.join(", ") : "(none)");
-  div.appendChild(catLine);
+  // CSV-derived strings go in via textContent, never innerHTML.
+  function labeledLine(label, text) {
+    const line = document.createElement("div");
+    line.className = "group-line";
+    const strong = document.createElement("strong");
+    strong.textContent = label + ": ";
+    line.appendChild(strong);
+    line.appendChild(document.createTextNode(text));
+    return line;
+  }
+  div.appendChild(labeledLine("Addresses", addrs.length ? addrs.map(a => trunc(a, 40)).join("  ·  ") : "(none)"));
+  div.appendChild(labeledLine("Categories", cats.length ? cats.join(", ") : "(none)"));
 
   // Show parsed signatures for debugging when sigs provided (only on NEW side).
   if (sigs) {
-    const sigLine = document.createElement("div");
-    sigLine.className = "group-line";
     const uniqSigs = uniq(sigs.map(s => `${s.number === null ? "—" : s.number}·{${[...s.streets].join(",")}}`));
-    sigLine.innerHTML = "<strong>Signatures:</strong> " + uniqSigs.join("  ·  ");
+    const sigLine = labeledLine("Signatures", uniqSigs.join("  ·  "));
     div.appendChild(sigLine);
   }
 
@@ -407,18 +458,23 @@ function renderCase(caseDef, allRows) {
     oldGroups.get(k).push(r);
   });
 
-  // NEW: within each name+city bucket, run address resolution.
+  // NEW: within each name+city bucket, run address resolution — over ALL
+  // cities, so the headline totals compare like with like. Display is
+  // limited to the top few cities below, for both columns equally.
   const byCity = new Map();
   matchingRows.forEach(r => {
     const c = (r.city || "").toLowerCase().trim();
     if (!byCity.has(c)) byCity.set(c, []);
     byCity.get(c).push(r);
   });
-  const newGroupSets = [...byCity.entries()]
-    .map(([city, rs]) => ({ city, originalCount: rs.length, groups: resolveGroups(rs) }))
+  const newAll = [...byCity.entries()]
+    .map(([city, rs]) => ({ city, originalCount: rs.length, groups: resolveGroups(rs) }));
+  const totalNewGroups = newAll.reduce((s, x) => s + x.groups.length, 0);
+  const newGroupSets = newAll
     .filter(x => cityFilter || x.originalCount >= 2)  // skip singleton cities when surveying
     .sort((a, b) => b.originalCount - a.originalCount)
     .slice(0, cityFilter ? 1 : 6);
+  const shownCities = new Set(newGroupSets.map(x => x.city));
 
   const wrap = document.createElement("div");
   wrap.className = "case";
@@ -429,9 +485,8 @@ function renderCase(caseDef, allRows) {
 
   const meta = document.createElement("div");
   meta.className = "meta";
-  const totalNewGroups = newGroupSets.reduce((s, x) => s + x.groups.length, 0);
   meta.textContent = `${matchingRows.length} total listings · OLD ${oldGroups.size} bucket${oldGroups.size === 1 ? "" : "s"} · NEW ${totalNewGroups} group${totalNewGroups === 1 ? "" : "s"}`
-    + (cityFilter ? "" : ` across ${newGroupSets.length} city${newGroupSets.length === 1 ? "" : "ies"}`);
+    + (cityFilter ? "" : ` (all cities; showing top ${newGroupSets.length})`);
   wrap.appendChild(meta);
 
   const compare = document.createElement("div");
@@ -444,6 +499,7 @@ function renderCase(caseDef, allRows) {
   oldH3.textContent = "Current (name + city)";
   oldCol.appendChild(oldH3);
   [...oldGroups.entries()]
+    .filter(([k]) => cityFilter || shownCities.has(k.split("|")[1] || ""))
     .sort((a, b) => b[1].length - a[1].length)
     .forEach(([k, rs]) => {
       if (!cityFilter) {
