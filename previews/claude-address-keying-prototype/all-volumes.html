@@ -1728,9 +1728,13 @@ function stateToHash() {
   for (const [field, valSet] of Object.entries(facetState)) {
     if (valSet.size) params.set("f_" + field, [...valSet].join("|"));
   }
+  // Pathname-anchored, never a bare "#…" fragment: the History API resolves
+  // relative URLs against the document base, so under a preview deploy's
+  // injected <base href> a bare fragment would rewrite the address bar to
+  // the site root (losing the preview path on refresh/share).
   const str = params.toString();
-  if (str) return "#" + str;
-  if (location.hash === '#about') return '#about';
+  if (str) return location.pathname + location.search + "#" + str;
+  if (location.hash === '#about') return location.pathname + location.search + '#about';
   return location.pathname + location.search;
 }
 
@@ -2212,7 +2216,9 @@ renderAll();
     opener = document.activeElement;
     document.getElementById('about-backdrop').classList.add('open');
     document.getElementById('about-modal').focus();
-    history.replaceState(null, '', '#about');
+    // Pathname-anchored — a bare "#about" resolves against <base href> in
+    // preview deploys and would rewrite the address bar to the site root.
+    history.replaceState(null, '', location.pathname + location.search + '#about');
   }
   function closeAbout() {
     document.getElementById('about-backdrop').classList.remove('open');
