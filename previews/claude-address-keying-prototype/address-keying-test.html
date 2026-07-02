@@ -69,9 +69,12 @@
 
 <h1>Address-keying comparison — <em>current vs. proposed</em></h1>
 <p class="lede">
-  Side-by-side view of how the current <code>name + city</code> index (left)
-  vs. the proposed <code>name + city + address-signature</code> resolver (right)
-  group cross-listings. The right column is what the new keying would treat as
+  Side-by-side view of how the current <code>name + raw city</code> index (left)
+  vs. the proposed <code>name + normalized city + address-signature</code>
+  resolver (right) group cross-listings. City normalization folds case,
+  punctuation, trailing state text, and parenthetical neighborhoods
+  ("NEW YORK, N.Y. (HARLEM)" → "new york") for keying only — displayed
+  values keep their original form. The right column is what the new keying would treat as
   one business. A &nbsp;<span class="group-warn group-tag">⚠ mixed categories</span>&nbsp;
   badge on a group means it spans more than one category — a likely sign of
   over-merge that warrants a closer look.
@@ -174,6 +177,27 @@ function gbStripNameTail(name) {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
+// City normalization (PROPOSED side only — keying, never display).
+// Rules verified against the data: 3,946 raw city strings → 2,601 keys.
+//   - parentheticals are sub_region leakage: "NEW YORK CITY (HARLEM)"
+//   - first comma starts state text: "St. Louis, Mo." / "New York, N. Y."
+//   - punctuation/whitespace folds "St. Louis"/"ST. LOUIS", kills "§CHICAGO"
+// The alias map is deliberately tiny: a generic "<X> city" → "<X>" fold is
+// WRONG on this data (elizabeth city NC ≠ elizabeth NJ; boulder city NV ≠
+// boulder CO; quebec city ≠ quebec province). Only aliases proven safe.
+// ────────────────────────────────────────────────────────────────────────────
+const CITY_ALIASES = {
+  "new york city": "new york",   // 3,028 + 3,151 rows — same place, both forms heavily used
+};
+function gbNormCity(c) {
+  let s = (c || "").toLowerCase();
+  s = s.replace(/\([^)]*\)/g, " ");
+  s = s.split(",")[0];
+  s = s.replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();
+  return CITY_ALIASES[s] || s;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
 // Old keying — current production. One bucket per (stripped name, city).
 // ────────────────────────────────────────────────────────────────────────────
 function oldKey(row) {
@@ -215,7 +239,9 @@ function parseAddress(addr, city, state) {
   if (!raw || ADDR_PLACEHOLDER.test(raw)) return { number: null, streets: new Set(), raw: "" };
   // House number = leading digits NOT followed by an ordinal suffix —
   // "7th Ave. & 125th St." starts with a street name, not a house number.
-  const numMatch = raw.match(/^\s*(\d+)(?!\s*(?:st|nd|rd|th)\b)/i);
+  // The (?!\d…) also blocks backtracking from matching a PREFIX of an
+  // ordinal ("125th" must not yield house number 12).
+  const numMatch = raw.match(/^\s*(\d+)(?!\d|\s*(?:st|nd|rd|th)\b)/i);
   const number = numMatch ? parseInt(numMatch[1], 10) : null;
   const noNum = number !== null ? raw.replace(/^\s*\d+\s*/, "") : raw;
   const parts = noNum.split(STREET_SPLIT);
@@ -307,21 +333,26 @@ function resolveGroups(rows) {
     numberedGroups.get(root).size++;
   });
 
-  // 3. Anchor each non-numbered row to a numbered group ONLY when exactly
-  //    one numbered group shares any of its street tokens. Multiple
-  //    candidates means the intersection bridges different businesses on
-  //    the corner ("Belle & Vandevanter" sharing belle with the hotel AND
-  //    vandevanter with the tavern/club/liquor-store) — leave it as its
-  //    own row, to be merged in phase 4 only with other null-number rows
-  //    via shared streets.
+  // 3. Anchor each non-numbered row to a numbered group when the choice is
+  //    unambiguous: a sole candidate sharing street tokens, or one candidate
+  //    dominating the runner-up ≥3× (a lone OCR-mangled house number like
+  //    "2029" beside eleven "2090" listings shouldn't veto anchoring).
+  //    Genuinely contested corners — West End's "Belle & Vandevanter"
+  //    bridging the hotel and three Vanderventer businesses of similar
+  //    weight — stay unanchored, to merge in phase 4 only with other
+  //    null-number rows via shared streets.
   nullIdx.forEach(nIdx => {
     const nStreets = sigs[nIdx].streets;
     if (nStreets.size === 0) return;
     const candidates = [];
     for (const [groot, g] of numberedGroups) {
-      if (streetsShareToken(nStreets, g.streets)) candidates.push(groot);
+      if (streetsShareToken(nStreets, g.streets)) candidates.push({ root: groot, size: g.size });
     }
-    if (candidates.length === 1) union(nIdx, candidates[0]);
+    candidates.sort((a, b) => b.size - a.size);
+    if (candidates.length === 1 ||
+        (candidates.length > 1 && candidates[0].size >= 3 * candidates[1].size)) {
+      union(nIdx, candidates[0].root);
+    }
   });
 
   // 4. Merge remaining non-numbered singletons that share streets with each
@@ -338,23 +369,25 @@ function resolveGroups(rows) {
 
   // 5. No-signal rows (blank address, or address that reduced to pure
   //    city/state text). Ladder:
-  //      - bucket has exactly ONE signal-bearing group → join it (the only
-  //        plausible home)
+  //      - bucket has ONE signal-bearing group, or one that dominates the
+  //        runner-up ≥3× → join it (the overwhelmingly plausible home)
   //      - bucket has NO signal-bearing groups → merge no-signal rows with
   //        each other (pure name+city fallback — matches old behavior for
   //        the ~8% of rows with no address at all)
-  //      - bucket has 2+ signal groups → ambiguous; leave as singletons
+  //      - otherwise → genuinely ambiguous; leave as singletons
   const noSignal = rows.map((_, i) => i)
     .filter(i => sigs[i].number === null && sigs[i].streets.size === 0);
-  const signalRoots = new Set(
-    rows.map((_, i) => i)
-      .filter(i => sigs[i].number !== null || sigs[i].streets.size > 0)
-      .map(find)
-  );
-  if (signalRoots.size === 1) {
-    const root = [...signalRoots][0];
-    noSignal.forEach(i => union(i, root));
-  } else if (signalRoots.size === 0) {
+  const signalRootSize = new Map();
+  rows.forEach((_, i) => {
+    if (sigs[i].number !== null || sigs[i].streets.size > 0) {
+      const r0 = find(i);
+      signalRootSize.set(r0, (signalRootSize.get(r0) || 0) + 1);
+    }
+  });
+  const ranked = [...signalRootSize.entries()].sort((a, b) => b[1] - a[1]);
+  if (ranked.length === 1 || (ranked.length > 1 && ranked[0][1] >= 3 * ranked[1][1])) {
+    noSignal.forEach(i => union(i, ranked[0][0]));
+  } else if (ranked.length === 0) {
     for (let a = 1; a < noSignal.length; a++) union(noSignal[a], noSignal[0]);
   }
 
@@ -447,16 +480,19 @@ function renderGroup(rows, sigs) {
 function renderCase(caseDef, allRows) {
   const stem = gbNormName(gbStripNameTail(caseDef.name));
   if (!stem) return null;
-  const cityFilter = caseDef.city.toLowerCase().trim();
+  // City matching uses the normalized form, so a "New York" case pulls in
+  // "NEW YORK CITY", "New York, N. Y. (Harlem)", etc.
+  const cityFilter = caseDef.city ? gbNormCity(caseDef.city) : "";
   const matchingRows = allRows.filter(r => {
     const rowStem = gbNormName(gbStripNameTail(r.name || ""));
     if (rowStem !== stem) return false;
-    if (cityFilter && (r.city || "").toLowerCase().trim() !== cityFilter) return false;
+    if (cityFilter && gbNormCity(r.city) !== cityFilter) return false;
     return true;
   });
   if (matchingRows.length === 0) return null;
 
-  // OLD: bucket by (name, city). Single bucket if city is set.
+  // OLD: bucket by (name, raw city) — production parity, so the left column
+  // shows how variants fragment today.
   const oldGroups = new Map();
   matchingRows.forEach(r => {
     const k = oldKey(r);
@@ -464,12 +500,12 @@ function renderCase(caseDef, allRows) {
     oldGroups.get(k).push(r);
   });
 
-  // NEW: within each name+city bucket, run address resolution — over ALL
-  // cities, so the headline totals compare like with like. Display is
-  // limited to the top few cities below, for both columns equally.
+  // NEW: bucket by NORMALIZED city, then run address resolution within each —
+  // over ALL cities, so the headline totals compare like with like. Display
+  // is limited to the top few cities below, for both columns equally.
   const byCity = new Map();
   matchingRows.forEach(r => {
-    const c = (r.city || "").toLowerCase().trim();
+    const c = gbNormCity(r.city);
     if (!byCity.has(c)) byCity.set(c, []);
     byCity.get(c).push(r);
   });
@@ -495,6 +531,24 @@ function renderCase(caseDef, allRows) {
     + (cityFilter ? "" : ` (all cities; showing top ${newGroupSets.length})`);
   wrap.appendChild(meta);
 
+  // For city-filtered cases, show which raw city variants the normalizer
+  // folded together — the evidence that OLD's fragmentation is variant noise.
+  if (cityFilter) {
+    const variantCounts = new Map();
+    matchingRows.forEach(r => {
+      const raw = (r.city || "").trim() || "(no city)";
+      variantCounts.set(raw, (variantCounts.get(raw) || 0) + 1);
+    });
+    if (variantCounts.size > 1) {
+      const vline = document.createElement("div");
+      vline.className = "meta";
+      vline.textContent = "City variants folded: " +
+        [...variantCounts.entries()].sort((a, b) => b[1] - a[1])
+          .map(([v, n]) => `${v} (${n})`).join("  ·  ");
+      wrap.appendChild(vline);
+    }
+  }
+
   const compare = document.createElement("div");
   compare.className = "compare";
 
@@ -502,13 +556,15 @@ function renderCase(caseDef, allRows) {
   const oldCol = document.createElement("div");
   oldCol.className = "col";
   const oldH3 = document.createElement("h3");
-  oldH3.textContent = "Current (name + city)";
+  oldH3.textContent = "Current (name + raw city)";
   oldCol.appendChild(oldH3);
   [...oldGroups.entries()]
-    .filter(([k]) => cityFilter || shownCities.has(k.split("|")[1] || ""))
+    .filter(([k]) => cityFilter || shownCities.has(gbNormCity(k.split("|")[1] || "")))
     .sort((a, b) => b[1].length - a[1].length)
     .forEach(([k, rs]) => {
-      if (!cityFilter) {
+      // Label buckets by raw city whenever there's more than one — for
+      // city-filtered cases this exposes today's variant fragmentation.
+      if (!cityFilter || oldGroups.size > 1) {
         const lbl = document.createElement("h4");
         lbl.textContent = k.split("|")[1] || "(no city)";
         oldCol.appendChild(lbl);
@@ -521,7 +577,7 @@ function renderCase(caseDef, allRows) {
   const newCol = document.createElement("div");
   newCol.className = "col";
   const newH3 = document.createElement("h3");
-  newH3.textContent = "Proposed (with address signatures)";
+  newH3.textContent = "Proposed (normalized city + address signatures)";
   newCol.appendChild(newH3);
   newGroupSets.forEach(({ city, groups }) => {
     if (!cityFilter) {
