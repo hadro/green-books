@@ -205,9 +205,14 @@ const SPELLED_ORDINALS = {
   eleventh: "11th", twelfth: "12th",
 };
 
+// Placeholder strings that mean "no address", not an address. Parsing them
+// would mint phantom street tokens ("specified"), creating a fake second
+// signal group that strands genuinely-blank rows as singletons.
+const ADDR_PLACEHOLDER = /^(n\/?a|not\s+specified|not\s+given|not\s+listed|none|unknown|unspecified|see\s+.*)$/i;
+
 function parseAddress(addr, city, state) {
   const raw = (addr || "").trim();
-  if (!raw) return { number: null, streets: new Set(), raw: "" };
+  if (!raw || ADDR_PLACEHOLDER.test(raw)) return { number: null, streets: new Set(), raw: "" };
   // House number = leading digits NOT followed by an ordinal suffix —
   // "7th Ave. & 125th St." starts with a street name, not a house number.
   const numMatch = raw.match(/^\s*(\d+)(?!\s*(?:st|nd|rd|th)\b)/i);
