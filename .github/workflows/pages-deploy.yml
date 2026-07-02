@@ -53,6 +53,7 @@ jobs:
       - name: Build deploy artifact
         env:
           IS_MAIN: ${{ steps.target.outputs.is_main }}
+          SLUG: ${{ steps.target.outputs.slug }}
         run: |
           set -euo pipefail
           mkdir _publish
@@ -67,14 +68,23 @@ jobs:
               --exclude='_publish' \
               ./ _publish/
           else
-            # Preview: HTML files only, with `<base href>` injected so
-            # relative fetches resolve to main's data files.
+            # Preview: HTML files (with `<base href>` injected so relative
+            # fetches resolve to main's data files) plus root-level JS —
+            # code the branch may have changed (e.g. gb-matching.js) must
+            # ship with the preview, not resolve to main's copy. Because the
+            # base href points at the site root, local script srcs must be
+            # rewritten to the preview folder explicitly.
             BASE_TAG='  <base href="https://hadro.github.io/green-books/">'
             for f in *.html; do
               awk -v tag="$BASE_TAG" '
                 { print }
                 !injected && tolower($0) ~ /<head[^>]*>/ { print tag; injected = 1 }
               ' "$f" > "_publish/$f"
+            done
+            cp *.js _publish/ 2>/dev/null || true
+            for js in *.js; do
+              [ -f "$js" ] || continue
+              sed -i "s|src=\"$js\"|src=\"previews/$SLUG/$js\"|g" _publish/*.html
             done
           fi
           ls -la _publish
