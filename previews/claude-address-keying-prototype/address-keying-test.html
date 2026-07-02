@@ -99,6 +99,9 @@ const SAMPLE_CASES = [
   { name: "West End",            city: "St. Louis" },   // canonical false-merge case
   { name: "Miami Carver Hotel",  city: "Miami" },        // suffix-strip win
   { name: "Hotel Theresa",       city: "New York" },     // famous landmark, single business
+  { name: "Dew Drop Inn",        city: "New Orleans" }, // "La Salle" vs "LaSalle" spacing
+  { name: "Rosebud",             city: "Fresno" },       // possessive: Rosebud vs Rosebud's
+  { name: "Rose Meta",           city: "New York" },     // multi-branch brand, name variants
   { name: "Royal Hotel",         city: "" },             // common name across cities
   { name: "Park Hotel",          city: "" },
   { name: "Central Hotel",       city: "" },
@@ -174,6 +177,21 @@ function gbStripNameTail(name) {
     }
   }
   return s;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Name stem (PROPOSED side only). On top of the production tail-strip:
+//   - parenthetical descriptors: "Dew Drop Inn (Nite Club)" → "Dew Drop Inn"
+//   - quoted taglines: 'ROSE META "House of Beauty"' → "ROSE META"
+//   - possessive 's: "Rosebud's" → "Rosebud" (apostrophe-explicit only —
+//     never strips a bare trailing s, so "Charles" is safe)
+// ────────────────────────────────────────────────────────────────────────────
+function gbNewNameStem(name) {
+  let s = (name || "").replace(/\([^)]*\)/g, " ");
+  const unquoted = s.replace(/"[^"]*"/g, " ").replace(/\s+/g, " ").trim();
+  if (unquoted.length >= 3) s = unquoted;
+  s = s.replace(/['’]s\b/g, "");
+  return gbNormName(gbStripNameTail(s));
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -260,10 +278,25 @@ function parseAddress(addr, city, state) {
       .replace(/[^a-zA-Z0-9\s]/g, "")  // keep digits so "3rd"/"42nd" survive
       .trim()
       .toLowerCase();
-    const tokens = cleaned.split(/\s+/)
+    const words = cleaned.split(/\s+/)
       .map(t => SPELLED_ORDINALS[t] || t)
-      .filter(t => t.length >= 3 && !cityWords.has(t));
+      // Canonicalize numeric ordinals to bare digits so "148 St." and
+      // "148th St." produce the same token (exact digit equality still
+      // applies — "125" never matches "126").
+      .map(t => t.replace(/^(\d+)(?:st|nd|rd|th)$/i, "$1"))
+      .filter(t => t && !cityWords.has(t));
+    // The 3-char floor drops alphabetic particles ("la", "de") but numeric
+    // street tokens are meaningful at any length ("7" ← "7th Ave").
+    const tokens = words.filter(t => t.length >= 3 || /^\d+$/.test(t));
     if (tokens.length > 0) streets.add(tokens[tokens.length - 1]);
+    // Also add the concatenation of the part's words, so spacing variants of
+    // the same street match: "La Salle" → {salle, lasalle} meets "LaSalle" →
+    // {lasalle}. Short particles ("la", "de") survive inside the concat even
+    // though they fall below the standalone token floor.
+    if (words.length >= 2) {
+      const concat = words.join("");
+      if (concat.length >= 3) streets.add(concat);
+    }
   }
   return { number, streets, raw };
 }
@@ -478,14 +511,14 @@ function renderGroup(rows, sigs) {
 }
 
 function renderCase(caseDef, allRows) {
-  const stem = gbNormName(gbStripNameTail(caseDef.name));
+  const stem = gbNewNameStem(caseDef.name);
   if (!stem) return null;
-  // City matching uses the normalized form, so a "New York" case pulls in
-  // "NEW YORK CITY", "New York, N. Y. (Harlem)", etc.
+  // Row matching uses the proposed stem (parenthetical/quote/possessive
+  // folds) and normalized city, so a "Rosebud" / "New York" case pulls in
+  // "Rosebud's" / "NEW YORK CITY (HARLEM)" variants too.
   const cityFilter = caseDef.city ? gbNormCity(caseDef.city) : "";
   const matchingRows = allRows.filter(r => {
-    const rowStem = gbNormName(gbStripNameTail(r.name || ""));
-    if (rowStem !== stem) return false;
+    if (gbNewNameStem(r.name || "") !== stem) return false;
     if (cityFilter && gbNormCity(r.city) !== cityFilter) return false;
     return true;
   });
