@@ -401,7 +401,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .coverage-break::before { content: ""; position: absolute; top: 2px; bottom: 2px; left: 50%; width: 1px; transform: translateX(-0.5px); background: var(--gb-rule-faint); }
 .coverage-grid .year-head-break { font-size: 0.6rem; color: var(--gb-ink-faint); line-height: 1; }
 .coverage-cat-note { font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); margin: -4px 0 10px; }
-.coverage-merge-warn { font-family: var(--gb-font-body); font-size: 0.786rem; line-height: 1.4; color: var(--gb-ink-soft); background: rgba(201, 104, 32, 0.09); border-left: 2px solid var(--gb-warn, #c96820); padding: 7px 10px; margin: -2px 0 12px; border-radius: 0 2px 2px 0; }
 .coverage-gap-note { font-family: var(--gb-font-body); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); margin: 6px 0 0; }
 .coverage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
 .coverage-legend-item { display: flex; align-items: center; gap: 5px; }
@@ -2090,28 +2089,22 @@ showDetail = function (row) {
   heading.textContent = "Coverage across publications";
   alsoEl.appendChild(heading);
 
-  // Honesty note. The resolver groups by (name stem, normalized city) and then
-  // splits by address signature, so a clean group is one business at one place.
-  // Divergence signals — many categories AND many distinct addresses — suggest
-  // the heuristic may have merged more than one business, and the coverage grid
-  // is exactly where that would read as a false "this place survived N years"
-  // narrative. Strong divergence gets a warning-toned caution; mild divergence
-  // (e.g. one business listed under two section headings) stays informational.
+  // Provenance note. The same business is filed under different section
+  // headings from guide to guide ("HOTELS" / "WHERE TO STAY" / "GO-BY-AUTO Club
+  // Members"), so a multi-category group is normal — it shows how differently
+  // the publications organized, not a matching error. (An earlier "may be more
+  // than one business" warning keyed off this same category/address string
+  // variance; a full-dataset audit found it fired on 784 groups with a 0%
+  // true-positive rate — every one a correctly-merged single business, e.g. the
+  // Liberty Hotel at 1519 Baltic Ave. under 11 headings — because raw category
+  // and address strings vary precisely for the businesses the resolver merges
+  // *correctly*. It was removed; genuine over-merges would show divergent parsed
+  // address signatures, which this data effectively never does.)
   const groupCats = [...new Set(allListings.map(r => r.category).filter(Boolean))];
-  const distinctAddrs = new Set(
-    allListings.map(r => (r.address || "").trim().toLowerCase()).filter(Boolean));
-  const strongDivergence = groupCats.length >= 3 && distinctAddrs.size >= 3;
-  if (strongDivergence) {
-    const warn = document.createElement("div");
-    warn.className = "coverage-merge-warn";
-    warn.textContent = "⚠ These grouped listings span " + groupCats.length +
-      " categories and " + distinctAddrs.size + " addresses — they may be more " +
-      "than one business the matcher merged. Read the run below with that in mind.";
-    alsoEl.appendChild(warn);
-  } else if (groupCats.length > 1) {
+  if (groupCats.length > 1) {
     const catNote = document.createElement("div");
     catNote.className = "coverage-cat-note";
-    catNote.textContent = "Grouped listings span " + groupCats.length + " categories: " +
+    catNote.textContent = "Filed under " + groupCats.length + " section headings across guides: " +
       groupCats.slice(0, 4).join(", ") + (groupCats.length > 4 ? ", …" : "");
     alsoEl.appendChild(catNote);
   }

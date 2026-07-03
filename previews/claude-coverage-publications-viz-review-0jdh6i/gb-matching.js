@@ -193,6 +193,46 @@ function streetsShareToken(a, b) {
   return false;
 }
 
+// Bounded Levenshtein: true iff edit distance ≤ max. Early-exits per row so
+// short street tokens stay cheap.
+function levLE(a, b, max) {
+  const la = a.length, lb = b.length;
+  if (Math.abs(la - lb) > max) return false;
+  let prev = new Array(lb + 1);
+  for (let j = 0; j <= lb; j++) prev[j] = j;
+  for (let i = 1; i <= la; i++) {
+    const cur = new Array(lb + 1);
+    cur[0] = i;
+    let rowMin = cur[0];
+    const ai = a[i - 1];
+    for (let j = 1; j <= lb; j++) {
+      const cost = ai === b[j - 1] ? 0 : 1;
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost);
+      if (cur[j] < rowMin) rowMin = cur[j];
+    }
+    if (rowMin > max) return false;
+    prev = cur;
+  }
+  return prev[lb] <= max;
+}
+// Looser token match, used ONLY where an exact house number already anchors the
+// pair (phase 1). A shared house number + name stem + city makes a same-number
+// street collision between two *different* businesses vanishingly unlikely, so
+// we can absorb 2-edit OCR drift on longer street names ("albemarle" /
+// "albermarle" / "albermale"; "willis" / "wlis") that Levenshtein ≤1 misses.
+// The 2-edit budget applies only to tokens length ≥6, so short tokens ("oak" vs
+// "elm") can't collapse; numbered streets stay exact (never merge 7th/8th).
+function tokensMatchLoose(a, b) {
+  if (a === b) return true;
+  if (NUMERIC_ORDINAL.test(a) || NUMERIC_ORDINAL.test(b)) return false;
+  const cap = Math.max(a.length, b.length) >= 6 ? 2 : 1;
+  return levLE(a, b, cap);
+}
+function streetsShareTokenLoose(a, b) {
+  for (const ta of a) for (const tb of b) if (tokensMatchLoose(ta, tb)) return true;
+  return false;
+}
+
 // Phase-based resolver. Numbered rows merge with each other on (same number,
 // fuzzy street match). Non-numbered rows then get *anchored* to one numbered
 // group via a "fewest-listings on shared street wins" rule — preventing
@@ -208,13 +248,16 @@ function gbResolveGroups(rows) {
 
   // 1. Merge numbered rows pairwise: equal number AND (fuzzy street-token
   //    match OR at least one street set is empty — empty means we couldn't
-  //    parse a street, not that the streets are different).
+  //    parse a street, not that the streets are different). The street test is
+  //    the *loose* one here because the exact house number already anchors the
+  //    pair, so 2-edit OCR drift on the street ("willis"/"wlis") shouldn't
+  //    strand the same address as separate businesses.
   for (let a = 0; a < numberedIdx.length; a++) {
     for (let b = a + 1; b < numberedIdx.length; b++) {
       const i = numberedIdx[a], j = numberedIdx[b];
       if (sigs[i].number !== sigs[j].number) continue;
       const ei = sigs[i].streets.size === 0, ej = sigs[j].streets.size === 0;
-      if (ei || ej || streetsShareToken(sigs[i].streets, sigs[j].streets)) union(i, j);
+      if (ei || ej || streetsShareTokenLoose(sigs[i].streets, sigs[j].streets)) union(i, j);
     }
   }
 
