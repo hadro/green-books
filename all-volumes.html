@@ -388,6 +388,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   background-image: repeating-linear-gradient(45deg, transparent 0 2px, var(--gb-rule-faint) 2px 3px);
   background-color: transparent;
 }
+.coverage-cat-note { font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); margin: -4px 0 10px; }
 .coverage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
 .coverage-legend-item { display: flex; align-items: center; gap: 5px; }
 .coverage-legend-swatch { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; }
@@ -746,6 +747,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   </div>
 </div>
 
+<script src="gb-matching.js"></script>
 <script>
 var _gbAboutOnLoad = location.hash === '#about';
 const ALL_INITIAL_ENTRIES = [];
@@ -984,7 +986,12 @@ function getFiltered() {
     // Column header filters
     for (const [col, val] of Object.entries(colFilters)) {
       if (!val) continue;
-      if (!(row[col] || "").toLowerCase().includes(val.toLowerCase())) return false;
+      if ((row[col] || "").toLowerCase().includes(val.toLowerCase())) continue;
+      // City is punctuation- and variant-noisy ("ST. LOUIS", "New York,
+      // N. Y. (Harlem)") — also accept a match with both sides normalized.
+      // Additive only: raw matches still pass above.
+      if (col === "city" && gbNormCity(row[col]).includes(gbNormCity(val))) continue;
+      return false;
     }
     return true;
   });
@@ -1720,9 +1727,13 @@ function stateToHash() {
   for (const [field, valSet] of Object.entries(facetState)) {
     if (valSet.size) params.set("f_" + field, [...valSet].join("|"));
   }
+  // Pathname-anchored, never a bare "#…" fragment: the History API resolves
+  // relative URLs against the document base, so under a preview deploy's
+  // injected <base href> a bare fragment would rewrite the address bar to
+  // the site root (losing the preview path on refresh/share).
   const str = params.toString();
-  if (str) return "#" + str;
-  if (location.hash === '#about') return '#about';
+  if (str) return location.pathname + location.search + "#" + str;
+  if (location.hash === '#about') return location.pathname + location.search + '#about';
   return location.pathname + location.search;
 }
 
@@ -1887,85 +1898,19 @@ const GB_YEAR_FIELD = (() => {
   return f ? f.name : null;
 })();
 
-// ── Name + city normalisation helper ────────────────────────────────────────
-function gbNormName(s) {
-  return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
-}
+// ── Cross-listing match index ────────────────────────────────────────────────
+// Normalization + resolver live in gb-matching.js (shared with the validation
+// harness at address-keying-test.html). Rows bucket by (name stem, normalized
+// city), then split into business-level groups by address signature. Built
+// once in the streaming loader's final pass; empty until then.
+let gbNameIndex = new Map();   // groupKey → [row objects]
+let gbRowToKey  = new Map();   // row object → groupKey
 
-// Conservative trailing-noise patterns. Stripping these from a business name
-// before keying lets us group cross-edition matches that differ only in
-// category-y suffixes — "Miami Carver" / "Miami Carver Hotel" / "Miami Carver
-// Hotel & Apartments" all collapse to the same key. Multi-word phrases first
-// so e.g. "Tourist Home" goes before lone "Home". Conservative on purpose —
-// over-stripping creates false merges.
-const GB_NAME_TAIL_NOISE = [
-  /\s+tourist\s+homes?$/i,
-  /\s+tourist\s+rooms?$/i,
-  /\s+guest\s+house$/i,
-  /\s+bar\s*&\s*grill$/i,
-  /\s+night\s+club$/i,
-  /\s+beauty\s+parlou?rs?$/i,
-  /\s+beauty\s+shop$/i,
-  /\s+barber\s+shop$/i,
-  /\s+service\s+station$/i,
-  /\s+drug\s+stores?$/i,
-  /\s+hotels?$/i,
-  /\s+motels?$/i,
-  /\s+restaurants?$/i,
-  /\s+cafes?$/i,
-  /\s+caf[ée]$/i,
-  /\s+cafeterias?$/i,
-  /\s+inns?$/i,
-  /\s+lodges?$/i,
-  /\s+lodgings?$/i,
-  /\s+taverns?$/i,
-  /\s+grills?$/i,
-  /\s+clubs?$/i,
-  /\s+rooms?$/i,
-  /\s+apartments?$/i,
-  /\s+apt\.?$/i,
-  /\s+pharmacy$/i,
-  /\s+&$/,         // dangling ampersand left by an earlier strip
-  /\s+and$/i,      // dangling "and" left by an earlier strip
-];
-function gbStripNameTail(name) {
-  let s = (name || "").trim();
-  let changed = true;
-  while (changed) {
-    changed = false;
-    for (const re of GB_NAME_TAIL_NOISE) {
-      const next = s.replace(re, "").trim();
-      if (next !== s && next.length >= 3) { s = next; changed = true; break; }
-    }
-  }
-  return s;
+// All cross-listings for a row's resolved business group (including itself).
+function gbCrossListings(row) {
+  const key = gbRowToKey.get(row);
+  return (key !== undefined && gbNameIndex.get(key)) || [];
 }
-
-// Canonical (name, city) key used by gbNameIndex — strips trailing noise
-// before normalising, so suffix variants of the same business group together.
-function gbIndexKey(name, city) {
-  return gbNormName(gbStripNameTail(name)) + "|" + (city || "").toLowerCase().trim();
-}
-
-// ── Name index: normalised (name|city) → [row objects] across all volumes ────
-const gbNameIndex = new Map();
-(function () {
-  const allRows = Object.keys(VOLUMES).length
-    ? Object.values(VOLUMES).flatMap(v => v.rows)
-    : ALL_INITIAL_ENTRIES;
-  const sample = allRows[0];
-  if (!sample) return;
-  const nf = ["name", "establishment_name", "firm_name", "business_name"]
-    .find(k => k in sample);
-  if (!nf) return;
-  allRows.forEach(row => {
-    const key = gbIndexKey(row[nf], row.city);
-    if (key.length >= 3) {
-      if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
-      gbNameIndex.get(key).push(row);
-    }
-  });
-})();
 
 function gbJumpToYear(year) {
   if (!GB_YEAR_FIELD) return;
@@ -1975,12 +1920,8 @@ function gbJumpToYear(year) {
   if (selectedIdx !== null) {
     const cur = ALL_ENTRIES[selectedIdx];
     if (cur) {
-      const nf = ["name", "establishment_name", "firm_name", "business_name"]
-        .find(k => cur[k] != null && cur[k] !== "");
-      if (nf) {
-        const candidates = gbNameIndex.get(gbIndexKey(cur[nf], cur.city)) || [];
-        matchRow = candidates.find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
-      }
+      matchRow = gbCrossListings(cur)
+        .find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
     }
   }
 
@@ -2049,9 +1990,12 @@ showDetail = function (row) {
   const nfVal = nf && row[nf];
   if (!nfVal || gbNameIndex.size === 0) { alsoEl.style.display = "none"; return; }
 
-  // Look up cross-listings via the suffix-stripping index so name variants
-  // ("Miami Carver" vs "Miami Carver Hotel") all collapse to the same key.
-  const allListings = gbNameIndex.get(gbIndexKey(nfVal, row.city)) || [];
+  // Cross-listings for this row's resolved business group — the resolver in
+  // gb-matching.js folds name variants ("Miami Carver" / "Miami Carver
+  // Hotel"), city variants ("NEW YORK CITY (HARLEM)"), and address-form
+  // variants ("La Salle" / "LaSalle") while splitting same-name businesses
+  // at different addresses (four "West End"s on one St. Louis block).
+  const allListings = gbCrossListings(row);
   const others = allListings.filter(r => r !== row);
 
   // Hide the panel when there are no cross-listings — the grid has nothing
@@ -2069,6 +2013,18 @@ showDetail = function (row) {
   heading.className = "also-in-label";
   heading.textContent = "Coverage across publications";
   alsoEl.appendChild(heading);
+
+  // Honesty note: when the resolved group spans multiple categories, say so —
+  // it may be one business listed under different sections, or a sign the
+  // heuristic merged neighbors. Informational, not an alarm.
+  const groupCats = [...new Set(allListings.map(r => r.category).filter(Boolean))];
+  if (groupCats.length > 1) {
+    const catNote = document.createElement("div");
+    catNote.className = "coverage-cat-note";
+    catNote.textContent = "Grouped listings span " + groupCats.length + " categories: " +
+      groupCats.slice(0, 4).join(", ") + (groupCats.length > 4 ? ", …" : "");
+    alsoEl.appendChild(catNote);
+  }
 
   // Build the (publication, year) → row index for this entry's matches.
   const listingByPubYear = new Map();
@@ -2210,12 +2166,15 @@ showDetail = function (row) {
   allLink.textContent = "See all likely match listings";
   allLink.addEventListener("click", e => {
     e.preventDefault();
-    // Search on the stripped name so suffix variants surface as substring
-    // matches of the shorter query.
-    const q = gbStripNameTail(nfVal);
+    // Search on the stripped name (suffixes, descriptors, possessives) so
+    // all variants surface as substring matches of the shorter query.
+    const q = gbSearchQueryName(nfVal);
     searchQuery = q;
     document.getElementById("search").value = q;
-    if (row.city) colFilters["city"] = row.city;
+    // Normalized city as the column filter: the filter is a substring match,
+    // so "new york" catches "NEW YORK CITY" and "NEW YORK, N.Y. (HARLEM)",
+    // where the raw variant string would match only itself.
+    if (row.city) colFilters["city"] = gbNormCity(row.city);
     if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
     if (facetState["publication"]) facetState["publication"].clear();
     document.getElementById("detail").classList.remove("open");
@@ -2256,7 +2215,9 @@ renderAll();
     opener = document.activeElement;
     document.getElementById('about-backdrop').classList.add('open');
     document.getElementById('about-modal').focus();
-    history.replaceState(null, '', '#about');
+    // Pathname-anchored — a bare "#about" resolves against <base href> in
+    // preview deploys and would rewrite the address bar to the site root.
+    history.replaceState(null, '', location.pathname + location.search + '#about');
   }
   function closeAbout() {
     document.getElementById('about-backdrop').classList.remove('open');
@@ -2429,20 +2390,7 @@ async function gbStreamCsv(url, onRow) {
     // loader's .then() did after parsing.
     gbBuildFacets(ALL_ENTRIES);
     PUBLICATION_ACTIVE_YEARS = gbComputePublicationActiveYears(ALL_ENTRIES);
-    gbNameIndex.clear();
-    const sample = ALL_ENTRIES[0];
-    if (sample) {
-      const nf = ['name', 'establishment_name', 'firm_name', 'business_name'].find(k => k in sample);
-      if (nf) {
-        ALL_ENTRIES.forEach(row => {
-          const key = gbIndexKey(row[nf], row.city);
-          if (key.length >= 3) {
-            if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
-            gbNameIndex.get(key).push(row);
-          }
-        });
-      }
-    }
+    ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     renderAll();
     applyHashState();
     const cf = new URLSearchParams(location.search).get('cf');
