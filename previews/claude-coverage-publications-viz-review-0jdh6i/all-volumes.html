@@ -374,25 +374,44 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 /* Coverage grid — heat-map of which (publication, year) pairs list this entry.
    Years span the x-axis; publications span the y-axis. Each cell carries an
-   aria-label that names its state explicitly so color is never the only signal. */
-.coverage-grid { display: grid; column-gap: 1px; row-gap: 1px; align-items: center; font-family: var(--gb-font-mono); margin-bottom: 4px; }
-.coverage-grid .pub-label { font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink); padding-right: 8px; text-align: right; white-space: nowrap; display: flex; align-items: center; gap: 5px; justify-content: flex-end; }
+   aria-label that names its state explicitly so color is never the only signal.
+   The grid sits in a horizontally-scrollable frame; the label column is sticky
+   so publication names stay pinned when a wide time span scrolls. */
+.coverage-summary { font-family: var(--gb-font-body); font-size: 0.857rem; line-height: 1.4; color: var(--gb-ink-soft); margin: -2px 0 12px; }
+.coverage-summary strong { color: var(--gb-ink); font-weight: 600; }
+.coverage-scroll { overflow-x: auto; overflow-y: hidden; margin-bottom: 4px; scrollbar-width: thin; }
+.coverage-grid { display: grid; column-gap: 1px; row-gap: 2px; align-items: center; font-family: var(--gb-font-mono); width: 100%; }
+.coverage-grid .pub-label { font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink); padding-right: 8px; text-align: right; white-space: nowrap; display: flex; align-items: center; gap: 5px; justify-content: flex-end; position: sticky; left: 0; background: var(--gb-paper); z-index: 2; }
 .coverage-grid .pub-label .pub-dot { margin-right: 0; }
 .coverage-grid .pub-label-current { font-weight: 600; }
+.coverage-corner { position: sticky; left: 0; background: var(--gb-paper); z-index: 3; }
 .coverage-grid .year-head { font-size: 0.571rem; color: var(--gb-ink-faint); text-align: center; line-height: 1; padding-bottom: 2px; letter-spacing: 0; }
-.coverage-cell { aspect-ratio: 1; min-height: 9px; border-radius: 1px; background: transparent; border: 0; padding: 0; }
+.coverage-cell { aspect-ratio: 1; min-height: 0; min-width: 0; border-radius: 1px; background: transparent; border: 0; padding: 0; box-sizing: border-box; }
 .coverage-cell-listed { cursor: pointer; transition: outline 0.1s ease; }
-.coverage-cell-listed:hover, .coverage-cell-listed:focus { outline: 1.5px solid var(--gb-ink); outline-offset: 1px; }
-.coverage-cell-current { outline: 2px solid var(--gb-ink); outline-offset: 1px; }
-.coverage-cell-empty { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); box-sizing: border-box; }
+.coverage-cell-listed:hover, .coverage-cell-listed:focus-visible { outline: 1.5px solid var(--gb-ink); outline-offset: 0; }
+.coverage-cell-current { outline: 2px solid var(--gb-ink); outline-offset: 0; }
+.coverage-cell-empty { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); }
 .coverage-cell-inactive {
-  background-image: repeating-linear-gradient(45deg, transparent 0 2px, var(--gb-rule-faint) 2px 3px);
+  background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(22, 19, 16, 0.05) 3px 4px);
   background-color: transparent;
+  background-clip: border-box;
 }
+/* Collapsed dead-span break: a narrow column with a faint vertical rule. */
+.coverage-break { position: relative; min-width: 8px; align-self: stretch; }
+.coverage-break::before { content: ""; position: absolute; top: 2px; bottom: 2px; left: 50%; width: 1px; transform: translateX(-0.5px); background: var(--gb-rule-faint); }
+.coverage-grid .year-head-break { font-size: 0.6rem; color: var(--gb-ink-faint); line-height: 1; }
 .coverage-cat-note { font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); margin: -4px 0 10px; }
+.coverage-merge-warn { font-family: var(--gb-font-body); font-size: 0.786rem; line-height: 1.4; color: var(--gb-ink-soft); background: rgba(201, 104, 32, 0.09); border-left: 2px solid var(--gb-warn, #c96820); padding: 7px 10px; margin: -2px 0 12px; border-radius: 0 2px 2px 0; }
+.coverage-gap-note { font-family: var(--gb-font-body); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); margin: 6px 0 0; }
 .coverage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
 .coverage-legend-item { display: flex; align-items: center; gap: 5px; }
-.coverage-legend-swatch { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; }
+.coverage-legend-swatch { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; box-sizing: border-box; }
+.coverage-legend-swatch-hatch { background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(22, 19, 16, 0.05) 3px 4px); }
+/* Coverage cell tooltip — enhances; every value is also in the aria-label + table. */
+.coverage-tip { position: fixed; z-index: 500; pointer-events: none; background: var(--gb-ink); color: var(--gb-paper); font-family: var(--gb-font-mono); font-size: 0.7rem; line-height: 1.35; padding: 6px 9px; border-radius: 2px; max-width: 230px; box-shadow: 0 6px 20px -6px rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.08s ease; }
+.coverage-tip.show { opacity: 1; }
+.coverage-tip .tip-val { font-family: var(--gb-font-body); font-weight: 600; font-size: 0.786rem; display: block; }
+.coverage-tip .tip-sub { color: rgba(250, 248, 243, 0.72); display: block; }
 
 /* ── About modal ── */
 #about-backdrop { position: fixed; inset: 0; background: rgba(22, 19, 16, 0.42); z-index: 400; place-items: center; padding: 48px; backdrop-filter: blur(2px); display: none; }
@@ -775,15 +794,23 @@ const FIELD_META  = [
 // with this value on load so the merged `publication` facet has 7 values.
 const GREEN_BOOK_PUBLICATION = "The Negro Motorist Green Book";
 
-// Publication → highlight color. Used for the table row stripe and facet dots.
+// Publication → highlight color. Used for the table row stripe, facet dots, and
+// coverage-grid cells. A categorical palette validated for colour-vision
+// deficiency (dataviz validate_palette, light surface #faf8f3): all seven pass
+// the lightness band, chroma floor, and contrast checks; the closest adjacent
+// pair sits at ΔE 9.3 (protan), inside the 8–12 band that is sound because every
+// use of these colours is paired with a text label or dot. The old palette had
+// two near-identical greens (Green Book / Hackley) and a purple/blue pair that
+// deuteranopia collapsed to ΔE ~2; the greens are split and the cool pair is now
+// separated by lightness.
 const PUBLICATION_COLORS = {
-  "The Negro Motorist Green Book":                  "#1d4d2e",
+  "The Negro Motorist Green Book":                  "#4a7d1c",
   "Travelguide":                                    "#c0341d",
-  "Go, Guide to Pleasant Motoring":                 "#1a5fa8",
-  "The Travelers Guide":                            "#7040a0",
-  "NHA Directory and Guide to Travelers":           "#0d7a74",
-  "Smith's Tourist Guide":                          "#c96820",
-  "Hackley & Harrison's Hotel and Apartment Guide": "#2a7a3c"
+  "Go, Guide to Pleasant Motoring":                 "#1f5aa8",
+  "The Travelers Guide":                            "#a06fd0",
+  "NHA Directory and Guide to Travelers":           "#0093a0",
+  "Smith's Tourist Guide":                          "#cf7a12",
+  "Hackley & Harrison's Hotel and Apartment Guide": "#b8447e"
 };
 
 // Short display name for the coverage grid's row labels. Falls back to the
@@ -795,7 +822,7 @@ const PUBLICATION_SHORT_NAMES = {
   "The Travelers Guide":                            "Travelers Guide",
   "NHA Directory and Guide to Travelers":           "NHA Directory",
   "Smith's Tourist Guide":                          "Smith's",
-  "Hackley & Harrison's Hotel and Apartment Guide": "Hackley & Harrison's"
+  "Hackley & Harrison's Hotel and Apartment Guide": "Hackley's"
 };
 
 // publication → Set<year>, populated once both CSVs finish streaming. The
@@ -1955,6 +1982,54 @@ function gbJumpToListing(targetRow) {
   renderTableBody();
 }
 
+// ── Coverage-cell tooltip ────────────────────────────────────────────────────
+// A single reusable tooltip node, shown on pointer/focus of any coverage cell.
+// Enhances only: every value it shows is also in the cell's aria-label and the
+// table view, so nothing is gated behind hover. Strings come from CSV data, so
+// they go in via textContent — never innerHTML.
+let _gbTip = null;
+function gbTipEl() {
+  if (!_gbTip) {
+    _gbTip = document.createElement("div");
+    _gbTip.className = "coverage-tip";
+    _gbTip.setAttribute("role", "tooltip");
+    document.body.appendChild(_gbTip);
+  }
+  return _gbTip;
+}
+function gbShowTip(lines, x, y) {
+  const tip = gbTipEl();
+  tip.innerHTML = "";
+  lines.forEach(([txt, cls]) => {
+    if (txt == null || txt === "") return;
+    const s = document.createElement("span");
+    s.className = cls;
+    s.textContent = txt;
+    tip.appendChild(s);
+  });
+  tip.classList.add("show");
+  // Position after paint so we can measure. Clamp within the viewport.
+  const r = tip.getBoundingClientRect();
+  let left = x + 12, top = y + 14;
+  if (left + r.width > window.innerWidth - 8) left = x - r.width - 12;
+  if (top + r.height > window.innerHeight - 8) top = y - r.height - 10;
+  tip.style.left = Math.max(8, left) + "px";
+  tip.style.top = Math.max(8, top) + "px";
+}
+function gbHideTip() { if (_gbTip) _gbTip.classList.remove("show"); }
+// Attach hover + keyboard-focus tooltip to a coverage cell. `lines` is an
+// array of [text, className] pairs (value first, then secondary details).
+function gbAttachTip(cell, lines) {
+  cell.addEventListener("pointerenter", e => gbShowTip(lines, e.clientX, e.clientY));
+  cell.addEventListener("pointermove", e => gbShowTip(lines, e.clientX, e.clientY));
+  cell.addEventListener("pointerleave", gbHideTip);
+  cell.addEventListener("focus", () => {
+    const b = cell.getBoundingClientRect();
+    gbShowTip(lines, b.left + b.width / 2, b.bottom);
+  });
+  cell.addEventListener("blur", gbHideTip);
+}
+
 // ── Monkey-patches ───────────────────────────────────────────────────────────
 
 // renderFacetSidebar: move volume_year to the top of the facet list
@@ -2015,11 +2090,25 @@ showDetail = function (row) {
   heading.textContent = "Coverage across publications";
   alsoEl.appendChild(heading);
 
-  // Honesty note: when the resolved group spans multiple categories, say so —
-  // it may be one business listed under different sections, or a sign the
-  // heuristic merged neighbors. Informational, not an alarm.
+  // Honesty note. The resolver groups by (name stem, normalized city) and then
+  // splits by address signature, so a clean group is one business at one place.
+  // Divergence signals — many categories AND many distinct addresses — suggest
+  // the heuristic may have merged more than one business, and the coverage grid
+  // is exactly where that would read as a false "this place survived N years"
+  // narrative. Strong divergence gets a warning-toned caution; mild divergence
+  // (e.g. one business listed under two section headings) stays informational.
   const groupCats = [...new Set(allListings.map(r => r.category).filter(Boolean))];
-  if (groupCats.length > 1) {
+  const distinctAddrs = new Set(
+    allListings.map(r => (r.address || "").trim().toLowerCase()).filter(Boolean));
+  const strongDivergence = groupCats.length >= 3 && distinctAddrs.size >= 3;
+  if (strongDivergence) {
+    const warn = document.createElement("div");
+    warn.className = "coverage-merge-warn";
+    warn.textContent = "⚠ These grouped listings span " + groupCats.length +
+      " categories and " + distinctAddrs.size + " addresses — they may be more " +
+      "than one business the matcher merged. Read the run below with that in mind.";
+    alsoEl.appendChild(warn);
+  } else if (groupCats.length > 1) {
     const catNote = document.createElement("div");
     catNote.className = "coverage-cat-note";
     catNote.textContent = "Grouped listings span " + groupCats.length + " categories: " +
@@ -2033,9 +2122,40 @@ showDetail = function (row) {
     const pub = r.publication;
     const y = r[GB_YEAR_FIELD] || r.year;
     if (!pub || !y) return;
-    const k = pub + "" + y;
+    const k = pub + "|" + y;
     if (!listingByPubYear.has(k)) listingByPubYear.set(k, r);
   });
+
+  // Union of all (publication, active-year) pairs — used to tell "publication
+  // active but didn't list this entry" from "publication wasn't published then".
+  const allYearsSet = new Set();
+  PUBLICATION_ACTIVE_YEARS.forEach(years => years.forEach(y => allYearsSet.add(String(y))));
+  const yearNums = [...allYearsSet].map(Number).filter(n => !isNaN(n)).sort((a, b) => a - b);
+  const minY = yearNums[0], maxY = yearNums[yearNums.length - 1];
+
+  const currentPub = row.publication;
+  const currentYear = String(row[GB_YEAR_FIELD] || row.year);
+
+  // ── Summary headline: lead with the number this grid knows ─────────────────
+  const listedPubSet = new Set(allListings.map(r => r.publication).filter(Boolean));
+  const listingYearNums = allListings
+    .map(r => Number(r[GB_YEAR_FIELD] || r.year)).filter(n => !isNaN(n));
+  const firstListed = Math.min(...listingYearNums);
+  const lastListed = Math.max(...listingYearNums);
+  const totalPubs = PUBLICATION_ACTIVE_YEARS.size;
+  const rangeTxt = firstListed === lastListed
+    ? String(firstListed) : firstListed + "–" + lastListed;
+  const summary = document.createElement("div");
+  summary.className = "coverage-summary";
+  const nList = allListings.length;
+  const strong = t => { const s = document.createElement("strong"); s.textContent = t; return s; };
+  summary.appendChild(strong(nList + (nList === 1 ? " listing" : " listings")));
+  summary.appendChild(document.createTextNode(" across "));
+  summary.appendChild(strong(listedPubSet.size + " of " + totalPubs));
+  summary.appendChild(document.createTextNode(
+    " publication" + (totalPubs === 1 ? "" : "s") + " · "));
+  summary.appendChild(strong(rangeTxt));
+  alsoEl.appendChild(summary);
 
   // Row order: publications by earliest active year (chronological appearance).
   const allPubs = [...PUBLICATION_ACTIVE_YEARS.keys()].sort((a, b) => {
@@ -2044,127 +2164,215 @@ showDetail = function (row) {
     return ya - yb || a.localeCompare(b);
   });
 
-  // Mobile compact: only publications with ≥1 listing for this business.
+  // Mobile compact: only publications this entry was actually listed in.
   const compact = window.matchMedia('(max-width: 640px)').matches;
-  const visiblePubs = compact
-    ? allPubs.filter(p => [...PUBLICATION_ACTIVE_YEARS.get(p)].some(y => listingByPubYear.has(p + "" + y) || allListings.some(r => r.publication === p)))
-    : allPubs;
+  const visiblePubs = compact ? allPubs.filter(p => listedPubSet.has(p)) : allPubs;
 
-  // Column set: every integer year between the overall min and max, so the
-  // wartime gap (1942-1946, no publications active) and similar dead spans
-  // render as visible columns of "not published" cells. On mobile compact,
-  // restrict to years that any visible publication has a listing for.
-  const allYearsSet = new Set();
-  PUBLICATION_ACTIVE_YEARS.forEach(years => years.forEach(y => allYearsSet.add(y)));
-  const yearNums = [...allYearsSet].map(Number).filter(n => !isNaN(n)).sort((a, b) => a - b);
-  const minY = yearNums[0], maxY = yearNums[yearNums.length - 1];
-  let years = [];
-  for (let y = minY; y <= maxY; y++) years.push(String(y));
-  if (compact) {
-    const keep = new Set();
-    visiblePubs.forEach(p => {
-      allListings.forEach(r => {
-        if (r.publication === p) keep.add(r[GB_YEAR_FIELD] || r.year);
-      });
-    });
-    years = years.filter(y => keep.has(y));
+  // ── Column model ───────────────────────────────────────────────────────────
+  // Columns span the year window. A maximal run of >=2 consecutive years in
+  // which *no* publication was active collapses into one narrow "break" column,
+  // so the dead spans (1932-36, the 1942-46 wartime pause, 1964-65) don't
+  // dominate the ink. Isolated dead years (e.g. 1958) stay as visible cells.
+  // On mobile compact the window trims to this entry's own listing span (+/-1yr)
+  // while staying contiguous, so the time axis is never silently rescaled.
+  let windowMin = minY, windowMax = maxY;
+  if (compact && listingYearNums.length) {
+    windowMin = Math.max(minY, firstListed - 1);
+    windowMax = Math.min(maxY, lastListed + 1);
+  }
+  const columns = [];
+  let deadStart = null;
+  const flushDead = end => {
+    if ((end - deadStart + 1) >= 2) columns.push({ type: "break", from: deadStart, to: end });
+    else for (let d = deadStart; d <= end; d++) columns.push({ type: "year", y: String(d) });
+    deadStart = null;
+  };
+  for (let y = windowMin; y <= windowMax; y++) {
+    if (!allYearsSet.has(String(y))) { if (deadStart === null) deadStart = y; continue; }
+    if (deadStart !== null) flushDead(y - 1);
+    columns.push({ type: "year", y: String(y) });
+  }
+  if (deadStart !== null) flushDead(windowMax);
+
+  const yearCols = columns.filter(c => c.type === "year");
+  const labelFirstLast = new Set();  // years that always show a header label
+  if (yearCols.length) {
+    labelFirstLast.add(yearCols[0].y);
+    labelFirstLast.add(yearCols[yearCols.length - 1].y);
   }
 
-  const currentPub = row.publication;
-  const currentYear = row[GB_YEAR_FIELD] || row.year;
-
-  // Lay out as a CSS grid: first column is the publication label, next N are
-  // year cells. Row 1 is the year-axis header.
+  // Lay out as a CSS grid: first column is the sticky publication label, then
+  // one flexible column per year (or a narrow one per break). Row 1 is the axis.
   const grid = document.createElement("div");
   grid.className = "coverage-grid";
-  grid.setAttribute("role", "grid");
-  grid.setAttribute("aria-label", "Coverage of " + nfVal + " across publications and years");
-  grid.style.gridTemplateColumns = "auto repeat(" + years.length + ", minmax(7px, 14px))";
+  grid.setAttribute("role", "group");
+  grid.setAttribute("aria-label",
+    "Coverage of " + nfVal + ": " + nList + (nList === 1 ? " listing" : " listings") +
+    " across " + listedPubSet.size + " of " + totalPubs + " publications, " +
+    firstListed + " to " + lastListed + ". Each cell is a publication in one year.");
+  grid.style.gridTemplateColumns = "auto " +
+    columns.map(c => c.type === "break" ? "8px" : "minmax(7px, 1fr)").join(" ");
 
   // Year header row.
   const corner = document.createElement("div");
+  corner.className = "coverage-corner";
   grid.appendChild(corner);
-  years.forEach(y => {
+  columns.forEach(c => {
     const h = document.createElement("div");
-    h.className = "year-head";
-    // Show labels only on every 5th year so the header isn't a smear of digits.
-    h.textContent = (Number(y) % 5 === 0) ? y : "";
+    if (c.type === "break") {
+      h.className = "year-head year-head-break";
+      h.textContent = "⋯";  // horizontal ellipsis marks collapsed time
+    } else {
+      h.className = "year-head";
+      // Label every 5th year, plus always the first and last, so the span is
+      // anchored even when its ends don't fall on a round year. Anchor the end
+      // labels inward (a 4-digit label is wider than an 8px track) so they
+      // don't spill past the grid edge and force a stray scrollbar.
+      // Force first/last labels only in compact mode, where short spans need
+      // anchoring; on desktop the 5-year ticks + the summary's stated range
+      // carry it, and forcing a 4-digit label onto the edge track spills it.
+      const forced = compact && labelFirstLast.has(c.y);
+      h.textContent = (Number(c.y) % 5 === 0 || forced) ? c.y : "";
+      if (yearCols.length && c.y === yearCols[0].y) h.style.textAlign = "left";
+      else if (yearCols.length && c.y === yearCols[yearCols.length - 1].y) h.style.textAlign = "right";
+    }
     h.setAttribute("aria-hidden", "true");
     grid.appendChild(h);
   });
 
   // One row per publication.
   visiblePubs.forEach(pub => {
+    const shortName = PUBLICATION_SHORT_NAMES[pub] || pub;
     const label = document.createElement("div");
     label.className = "pub-label" + (pub === currentPub ? " pub-label-current" : "");
     const dot = document.createElement("span");
     dot.className = "pub-dot";
     dot.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink-faint)";
     label.appendChild(dot);
-    label.appendChild(document.createTextNode(PUBLICATION_SHORT_NAMES[pub] || pub));
+    label.appendChild(document.createTextNode(shortName));
     grid.appendChild(label);
 
     const activeYears = PUBLICATION_ACTIVE_YEARS.get(pub) || new Set();
-    years.forEach(y => {
-      const listingRow = listingByPubYear.get(pub + "" + y);
+    columns.forEach(c => {
+      if (c.type === "break") {
+        const brk = document.createElement("div");
+        brk.className = "coverage-break";
+        brk.setAttribute("role", "img");
+        brk.setAttribute("aria-label", shortName + ": no guides published " + c.from + "–" + c.to);
+        gbAttachTip(brk, [
+          ["No guides published", "tip-val"],
+          [c.from + "–" + c.to, "tip-sub"],
+        ]);
+        grid.appendChild(brk);
+        return;
+      }
+      const y = c.y;
+      const listingRow = listingByPubYear.get(pub + "|" + y);
       const isActive = activeYears.has(y);
       const isCurrent = listingRow === row;
       let cell;
       if (listingRow) {
         cell = document.createElement("button");
+        cell.type = "button";
         cell.className = "coverage-cell coverage-cell-listed" + (isCurrent ? " coverage-cell-current" : "");
         cell.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink)";
-        cell.setAttribute("aria-label",
-          isCurrent
-            ? pub + ", " + y + ": this entry"
-            : "Jump to " + pub + ", " + y);
-        cell.disabled = isCurrent;
-        if (!isCurrent) cell.addEventListener("click", () => gbJumpToListing(listingRow));
+        if (isCurrent) {
+          // "You are here": keep it focusable (not disabled) so keyboard users
+          // can find it; mark aria-current and make activation a no-op.
+          cell.setAttribute("aria-current", "true");
+          cell.setAttribute("aria-label", shortName + ", " + y + ": this entry");
+          cell.addEventListener("click", e => e.preventDefault());
+        } else {
+          cell.setAttribute("aria-label", "Jump to " + shortName + ", " + y +
+            (listingRow.name ? " (" + listingRow.name + ")" : ""));
+          cell.addEventListener("click", () => { gbHideTip(); gbJumpToListing(listingRow); });
+        }
+        // Tooltip shows the name-as-printed + address for this pub-year — the
+        // resolver folds name variants, so exposing the printed form is a feature.
+        gbAttachTip(cell, [
+          [shortName + " · " + y, "tip-val"],
+          [listingRow.name || "", "tip-sub"],
+          [listingRow.address || "", "tip-sub"],
+          [isCurrent ? "← this entry" : "Click to open this listing", "tip-sub"],
+        ]);
       } else if (isActive) {
         cell = document.createElement("div");
         cell.className = "coverage-cell coverage-cell-empty";
-        cell.setAttribute("role", "gridcell");
-        cell.setAttribute("aria-label", pub + ", " + y + ": no listing");
+        cell.setAttribute("role", "img");
+        cell.setAttribute("aria-label", shortName + ", " + y + ": published, but this entry not listed");
+        gbAttachTip(cell, [
+          [shortName + " · " + y, "tip-val"],
+          ["Published — not listed this year", "tip-sub"],
+        ]);
       } else {
         cell = document.createElement("div");
         cell.className = "coverage-cell coverage-cell-inactive";
-        cell.setAttribute("role", "gridcell");
-        cell.setAttribute("aria-label", pub + ", " + y + ": not published");
+        cell.setAttribute("role", "img");
+        cell.setAttribute("aria-label", shortName + ", " + y + ": not published this year");
+        gbAttachTip(cell, [
+          [shortName + " · " + y, "tip-val"],
+          ["Not published this year", "tip-sub"],
+        ]);
       }
       grid.appendChild(cell);
     });
   });
 
-  alsoEl.appendChild(grid);
+  const scroll = document.createElement("div");
+  scroll.className = "coverage-scroll";
+  scroll.appendChild(grid);
+  alsoEl.appendChild(scroll);
 
-  // Legend — only on desktop, where all four cell states can be present.
-  if (!compact) {
-    const legend = document.createElement("div");
-    legend.className = "coverage-legend";
-    legend.setAttribute("aria-hidden", "true");
-    [
-      ["Listed",       { background: "var(--gb-ink)" }],
-      ["No listing",   { background: "var(--gb-paper-2)", border: "1px solid var(--gb-rule-faint)" }],
-      ["Not published",{ backgroundImage: "repeating-linear-gradient(45deg, transparent 0 2px, var(--gb-rule-faint) 2px 3px)" }],
-    ].forEach(([txt, style]) => {
-      const item = document.createElement("div");
-      item.className = "coverage-legend-item";
-      const sw = document.createElement("span");
-      sw.className = "coverage-legend-swatch";
-      Object.assign(sw.style, style);
-      item.appendChild(sw);
-      item.appendChild(document.createTextNode(txt));
-      legend.appendChild(item);
-    });
-    alsoEl.appendChild(legend);
+  // Name the wartime pause explicitly — the most historically meaningful break.
+  const wwiiBreak = columns.find(c => c.type === "break" && c.from <= 1942 && c.to >= 1945);
+  if (wwiiBreak) {
+    const note = document.createElement("div");
+    note.className = "coverage-gap-note";
+    note.textContent = wwiiBreak.from + "–" + wwiiBreak.to +
+      ": no guides in the dataset were published — the wartime pause.";
+    alsoEl.appendChild(note);
   }
 
-  // "See all likely match listings" — broaden filters to surface every
-  // candidate match across publications.
+  // Legend. Listed cells are colored per publication (matching the row dots and
+  // the table stripes), so the "Listed" swatch uses this entry's own colour and
+  // the label says so — otherwise a single ink swatch would contradict the grid.
+  // Whichever secondary states are actually present get a legend item, so the
+  // legend is honest on mobile too (where "not published" breaks may be absent).
+  const legend = document.createElement("div");
+  legend.className = "coverage-legend";
+  legend.setAttribute("aria-hidden", "true");
+  const hasEmpty = grid.querySelector(".coverage-cell-empty");
+  const hasInactive = grid.querySelector(".coverage-cell-inactive");
+  const hasBreak = grid.querySelector(".coverage-break");
+  const legendItems = [
+    ["Listed — colored by publication", { background: PUBLICATION_COLORS[currentPub] || "var(--gb-ink)" }, false],
+  ];
+  if (hasEmpty) legendItems.push(
+    ["Published, not listed", { background: "var(--gb-paper-2)", border: "1px solid var(--gb-rule-faint)" }, false]);
+  if (hasInactive) legendItems.push(
+    ["Not published that year", {}, true]);
+  if (hasBreak) legendItems.push(
+    ["⋯ years with no guides (collapsed)", { background: "transparent",
+      backgroundImage: "linear-gradient(var(--gb-rule-faint), var(--gb-rule-faint))",
+      backgroundSize: "1px 100%", backgroundPosition: "center", backgroundRepeat: "no-repeat" }, false]);
+  legendItems.forEach(([txt, style, hatch]) => {
+    const item = document.createElement("div");
+    item.className = "coverage-legend-item";
+    const sw = document.createElement("span");
+    sw.className = "coverage-legend-swatch" + (hatch ? " coverage-legend-swatch-hatch" : "");
+    Object.assign(sw.style, style);
+    item.appendChild(sw);
+    item.appendChild(document.createTextNode(txt));
+    legend.appendChild(item);
+  });
+  alsoEl.appendChild(legend);
+
+  // Broaden filters to surface every candidate match across publications. The
+  // count reuses the summary total so the link says what it will show.
   const allLink = document.createElement("a");
   allLink.className = "also-all-link";
   allLink.href = "#";
-  allLink.textContent = "See all likely match listings";
+  allLink.textContent = "Show all " + nList + " matching listings in the table →";
   allLink.addEventListener("click", e => {
     e.preventDefault();
     // Search on the stripped name (suffixes, descriptors, possessives) so
