@@ -400,6 +400,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .coverage-break::before { content: ""; position: absolute; top: 2px; bottom: 2px; left: 50%; width: 1px; transform: translateX(-0.5px); background: var(--gb-rule-faint); }
 .coverage-grid .year-head-break { font-size: 0.6rem; color: var(--gb-ink-faint); line-height: 1; }
 .coverage-cat-note { font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); margin: -4px 0 10px; }
+.coverage-merge-warn { font-family: var(--gb-font-body); font-size: 0.786rem; line-height: 1.4; color: var(--gb-ink-soft); background: rgba(201, 104, 32, 0.09); border-left: 2px solid var(--gb-warn, #c96820); padding: 7px 10px; margin: -2px 0 12px; border-radius: 0 2px 2px 0; }
 .coverage-gap-note { font-family: var(--gb-font-body); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); margin: 6px 0 0; }
 .coverage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
 .coverage-legend-item { display: flex; align-items: center; gap: 5px; }
@@ -792,15 +793,23 @@ const FIELD_META  = [
 // with this value on load so the merged `publication` facet has 7 values.
 const GREEN_BOOK_PUBLICATION = "The Negro Motorist Green Book";
 
-// Publication → highlight color. Used for the table row stripe and facet dots.
+// Publication → highlight color. Used for the table row stripe, facet dots, and
+// coverage-grid cells. A categorical palette validated for colour-vision
+// deficiency (dataviz validate_palette, light surface #faf8f3): all seven pass
+// the lightness band, chroma floor, and contrast checks; the closest adjacent
+// pair sits at ΔE 9.3 (protan), inside the 8–12 band that is sound because every
+// use of these colours is paired with a text label or dot. The old palette had
+// two near-identical greens (Green Book / Hackley) and a purple/blue pair that
+// deuteranopia collapsed to ΔE ~2; the greens are split and the cool pair is now
+// separated by lightness.
 const PUBLICATION_COLORS = {
-  "The Negro Motorist Green Book":                  "#1d4d2e",
+  "The Negro Motorist Green Book":                  "#4a7d1c",
   "Travelguide":                                    "#c0341d",
-  "Go, Guide to Pleasant Motoring":                 "#1a5fa8",
-  "The Travelers Guide":                            "#7040a0",
-  "NHA Directory and Guide to Travelers":           "#0d7a74",
-  "Smith's Tourist Guide":                          "#c96820",
-  "Hackley & Harrison's Hotel and Apartment Guide": "#2a7a3c"
+  "Go, Guide to Pleasant Motoring":                 "#1f5aa8",
+  "The Travelers Guide":                            "#a06fd0",
+  "NHA Directory and Guide to Travelers":           "#0093a0",
+  "Smith's Tourist Guide":                          "#cf7a12",
+  "Hackley & Harrison's Hotel and Apartment Guide": "#b8447e"
 };
 
 // Short display name for the coverage grid's row labels. Falls back to the
@@ -2080,11 +2089,25 @@ showDetail = function (row) {
   heading.textContent = "Coverage across publications";
   alsoEl.appendChild(heading);
 
-  // Honesty note: when the resolved group spans multiple categories, say so —
-  // it may be one business listed under different sections, or a sign the
-  // heuristic merged neighbors. Informational, not an alarm.
+  // Honesty note. The resolver groups by (name stem, normalized city) and then
+  // splits by address signature, so a clean group is one business at one place.
+  // Divergence signals — many categories AND many distinct addresses — suggest
+  // the heuristic may have merged more than one business, and the coverage grid
+  // is exactly where that would read as a false "this place survived N years"
+  // narrative. Strong divergence gets a warning-toned caution; mild divergence
+  // (e.g. one business listed under two section headings) stays informational.
   const groupCats = [...new Set(allListings.map(r => r.category).filter(Boolean))];
-  if (groupCats.length > 1) {
+  const distinctAddrs = new Set(
+    allListings.map(r => (r.address || "").trim().toLowerCase()).filter(Boolean));
+  const strongDivergence = groupCats.length >= 3 && distinctAddrs.size >= 3;
+  if (strongDivergence) {
+    const warn = document.createElement("div");
+    warn.className = "coverage-merge-warn";
+    warn.textContent = "⚠ These grouped listings span " + groupCats.length +
+      " categories and " + distinctAddrs.size + " addresses — they may be more " +
+      "than one business the matcher merged. Read the run below with that in mind.";
+    alsoEl.appendChild(warn);
+  } else if (groupCats.length > 1) {
     const catNote = document.createElement("div");
     catNote.className = "coverage-cat-note";
     catNote.textContent = "Grouped listings span " + groupCats.length + " categories: " +
