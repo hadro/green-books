@@ -1,0 +1,2842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="https://hadro.github.io/green-books/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Green Books &amp; Black Travel Guides — All Volumes Explorer</title>
+<meta property="og:title"        content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
+<meta property="og:description"  content="Search and browse more than 105,000 entries from the Green Books and six other Black travel guides, 1930–1966.">
+<meta property="og:type"         content="website">
+<meta property="og:url"          content="https://hadro.github.io/green-books/all-volumes">
+<meta property="og:image"        content="https://hadro.github.io/green-books/social-preview.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
+<meta name="twitter:description" content="Search and browse more than 105,000 entries from the Green Books and six other Black travel guides, 1930–1966.">
+<meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231d4d2e'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23faf8f3'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231d4d2e'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%23767069'/%3E%3C/svg%3E">
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/dist/plot.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gb-paper:        #faf8f3;
+  --gb-paper-2:      #f0ece2;
+  --gb-ink:          #161310;
+  --gb-ink-soft:     #54504a;
+  --gb-ink-faint:    #767069;
+  --gb-rule:         #161310;
+  --gb-rule-faint:   rgba(22, 19, 16, 0.12);
+  --gb-accent:       #1d4d2e;
+  --gb-accent-deep:  #143a22;
+  --gb-accent-soft:  rgba(29, 77, 46, 0.08);
+  --gb-highlight:    #c89028;
+  --gb-highlight-soft: rgba(200, 144, 40, 0.32);
+  --gb-row-hover:    rgba(22, 19, 16, 0.03);
+  --gb-row-active:   rgba(29, 77, 46, 0.08);
+  --gb-font-display: "Newsreader", "Source Serif 4", Georgia, serif;
+  --gb-font-body:    "Source Sans 3", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --gb-font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { height: 100%; font-size: clamp(14px, 0.9vw, 18px); }
+body {
+  margin: 0; padding: 0;
+  background: var(--gb-paper); color: var(--gb-ink);
+  font-family: var(--gb-font-body);
+  font-size: 1rem; line-height: 1.45;
+  display: flex; flex-direction: column; min-height: 100vh;
+}
+a { color: var(--gb-accent); }
+.skip-link {
+  position: absolute; top: -40px; left: 0;
+  background: var(--gb-accent); color: var(--gb-paper);
+  padding: 6px 12px; z-index: 1000; text-decoration: none; font-size: 0.929rem;
+}
+.skip-link:focus { top: 0; }
+
+/* ── Hero ── */
+.gb-hero {
+  padding: 72px 80px 56px;
+  border-bottom: 1px solid var(--gb-rule-faint);
+  position: relative; background: var(--gb-paper); flex-shrink: 0;
+}
+.gb-hero::before {
+  content: ""; position: absolute;
+  left: 32px; top: 72px; bottom: 56px;
+  width: 4px; background: var(--gb-accent);
+}
+.gb-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 64px; align-items: start;
+}
+.gb-hero-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--gb-font-mono); font-size: 0.786rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gb-ink-soft); margin-bottom: 28px;
+}
+.gb-hero-eyebrow-dot { font-size: 0.429rem; color: var(--gb-accent); }
+.gb-hero-title {
+  font-family: var(--gb-font-display); font-weight: 300;
+  font-size: 4.286rem; line-height: 1.05; letter-spacing: -0.025em;
+  margin: 0 0 24px; color: var(--gb-ink);
+}
+.gb-hero-title em { font-style: italic; color: var(--gb-accent); font-weight: 400; }
+.gb-hero-lede {
+  font-family: var(--gb-font-display); font-size: 1.286rem;
+  line-height: 1.55; color: var(--gb-ink-soft); margin: 0 0 32px; max-width: 56ch;
+}
+.gb-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 32px; }
+.gb-btn-primary {
+  font-family: var(--gb-font-body); font-size: 0.929rem; font-weight: 500;
+  padding: 11px 20px; background: var(--gb-accent); color: var(--gb-paper);
+  border: 1px solid var(--gb-accent); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; border-radius: 0;
+}
+.gb-btn-primary:hover { background: var(--gb-accent-deep); border-color: var(--gb-accent-deep); color: var(--gb-paper); }
+.gb-btn-ghost {
+  font-family: var(--gb-font-body); font-size: 0.929rem; font-weight: 500;
+  padding: 11px 20px; background: transparent; color: var(--gb-ink-soft);
+  border: 1px solid var(--gb-rule-faint); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px; border-radius: 0;
+}
+.gb-btn-ghost:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
+.gb-hero-credit {
+  font-size: 0.786rem; line-height: 1.5; color: var(--gb-ink-faint);
+  font-style: italic; margin: 0; padding: 0;
+}
+.gb-hero-featured { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.gb-hero-featured-label {
+  font-family: var(--gb-font-mono); font-size: 0.714rem;
+  letter-spacing: 0.16em; color: var(--gb-ink-faint);
+  display: flex; align-items: center; gap: 12px; margin-bottom: 4px;
+}
+.gb-hero-featured-label::after { content: ""; flex: 1; height: 1px; background: var(--gb-rule-faint); }
+.gb-hero-featured-stack { display: flex; flex-direction: column; gap: 12px; }
+.gb-hero-card {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--gb-rule-faint); background: var(--gb-paper);
+  cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease;
+  text-decoration: none; overflow: hidden;
+}
+.gb-hero-card:hover { border-color: var(--gb-rule); transform: translateY(-2px); }
+.gb-hero-card:focus-visible { border-color: var(--gb-rule); transform: translateY(-2px); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
+.gb-hero-card-thumb {
+  width: 100%; height: 110px; background: var(--gb-paper-2);
+  border-bottom: 1px solid var(--gb-rule-faint); overflow: hidden; flex-shrink: 0;
+}
+.gb-hero-card-thumb img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: left; }
+.gb-hero-card-meta { display: flex; flex-direction: column; gap: 3px; padding: 8px 10px 10px; min-width: 0; }
+.gb-hero-card-name {
+  font-family: var(--gb-font-display); font-size: 1.286rem; font-weight: 400;
+  color: var(--gb-ink); letter-spacing: -0.005em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.gb-hero-card-line { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-soft); text-transform: uppercase; }
+.gb-hero-card-cat { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em; color: var(--gb-accent); text-transform: uppercase; }
+.gb-hero-stats {
+  margin-top: 48px; border-top: 1px solid var(--gb-rule-faint); padding-top: 24px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+}
+.gb-hero-stat-num {
+  font-family: var(--gb-font-display); font-size: 2.571rem; font-weight: 400;
+  line-height: 1; letter-spacing: -0.02em; color: var(--gb-ink); margin-bottom: 6px;
+  position: relative; padding-left: 14px;
+}
+.gb-hero-stat-num::before {
+  content: ""; position: absolute; left: 0; top: 14px;
+  width: 6px; height: 6px; background: var(--gb-accent); border-radius: 50%;
+}
+.gb-hero-stat-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gb-ink-faint); }
+.gb-hero-caveat {
+  margin: 56px 0 0; padding: 28px 0 0; border-top: 1px solid var(--gb-rule-faint);
+  display: grid; grid-template-columns: 4px 1fr; gap: 24px; max-width: 820px;
+}
+.gb-hero-caveat-rule { background: var(--gb-accent); }
+.gb-hero-caveat-body { display: flex; flex-direction: column; gap: 8px; }
+.gb-hero-caveat-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.18em; color: var(--gb-accent); font-weight: 600; text-transform: uppercase; }
+.gb-hero-caveat-text { font-family: var(--gb-font-display); font-size: 1.071rem; line-height: 1.55; color: var(--gb-ink); margin: 0; max-width: 64ch; }
+.gb-hero-caveat-text strong { font-weight: 600; }
+.gb-hero-caveat-text em { font-style: italic; color: var(--gb-ink-soft); }
+.gb-hero-caveat-link {
+  background: none; border: none; border-bottom: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); margin-top: 4px; font-size: 0.714rem;
+  letter-spacing: 0.14em; color: var(--gb-ink-soft); text-decoration: none;
+  text-transform: uppercase; width: max-content; padding: 0 0 2px 0; cursor: pointer;
+}
+.gb-hero-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
+
+/* ── Explorer layout ── */
+#app { display: flex; position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--gb-paper); }
+
+/* ── Sidebar ── */
+#sidebar {
+  width: 240px; min-width: 240px; background: var(--gb-paper);
+  border-right: 1px solid var(--gb-rule-faint);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+#sidebar:focus { outline: none; }  /* container focus target for the mobile drawer */
+#sidebar-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--gb-rule-faint); }
+.sidebar-brand {
+  font-family: var(--gb-font-mono); font-size: 0.714rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.16em; color: var(--gb-ink-faint); margin: 0 0 8px;
+}
+.sidebar-brand a { color: inherit; text-decoration: none; }
+#sidebar-header h2 { font-family: var(--gb-font-display); font-size: 1rem; font-weight: 400; color: var(--gb-ink); margin: 0 0 2px; letter-spacing: -0.005em; }
+.gb-sidebar-desc { font-size: 0.857rem; line-height: 1.45; color: var(--gb-ink-soft); margin: 6px 0 0; font-family: var(--gb-font-body); }
+#sidebar-header .sub { font-size: 0.786rem; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); letter-spacing: 0.04em; }
+.gb-tagline { display: none; }
+#volume-wrap { margin-top: 10px; background: var(--gb-accent-soft); border: 1px solid rgba(29,77,46,0.25); padding: 8px 10px; }
+#volume-select { width: 100%; font-size: 0.857rem; padding: 4px 6px; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper); color: var(--gb-ink); cursor: pointer; font-family: var(--gb-font-body); }
+#sidebar-cta { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+#gb-explore-btn {
+  background: none; border: 1px solid var(--gb-accent);
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-accent); cursor: pointer;
+  padding: 8px 10px; text-align: left; width: 100%;
+}
+#gb-explore-btn:hover { background: var(--gb-accent-soft); border-color: var(--gb-accent-deep); color: var(--gb-accent-deep); }
+#random-year-btn {
+  background: none; border: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
+  padding: 8px 10px; text-align: left; width: 100%;
+}
+#random-year-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
+#about-btn {
+  background: none; border: none;
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer;
+  padding: 4px 0; text-align: left; width: 100%;
+}
+#about-btn:hover { color: var(--gb-ink-soft); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+#sidebar-scroll { overflow-y: auto; flex: 1; padding: 16px 20px 24px; }
+.sidebar-filter-hd {
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gb-ink-faint);
+  margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--gb-rule-faint);
+}
+#sidebar-scroll > hr { border: none; border-top: 1px solid var(--gb-rule-faint); margin: 0 0 16px; }
+.facet-group { margin-bottom: 24px; }
+.facet-group + .facet-group { border-top: 1px solid var(--gb-rule-faint); padding-top: 20px; }
+.facet-label {
+  font-family: var(--gb-font-display); font-size: 1rem; font-weight: 600;
+  margin-bottom: 8px; letter-spacing: -0.005em; color: var(--gb-ink);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.facet-clear {
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gb-accent);
+  cursor: pointer; background: none; border: none; padding: 2px 4px; font-weight: 400;
+}
+.facet-clear:hover { color: var(--gb-accent-deep); }
+.facet-item {
+  display: grid; grid-template-columns: 14px 1fr auto; gap: 8px;
+  align-items: center; padding: 4px 0; cursor: pointer;
+  font-size: 0.929rem; color: var(--gb-ink-soft); user-select: none;
+}
+.facet-item:hover { color: var(--gb-ink); }
+.facet-item input[type=checkbox] {
+  appearance: none; -webkit-appearance: none;
+  width: 14px; height: 14px; border: 1px solid var(--gb-ink-faint);
+  background: var(--gb-paper); cursor: pointer; flex-shrink: 0;
+  position: relative; margin: 0;
+}
+.facet-item input[type=checkbox]:checked { background: var(--gb-accent); border-color: var(--gb-accent); }
+.facet-item input[type=checkbox]:checked::after {
+  content: ""; position: absolute; inset: 2px; background: var(--gb-paper);
+  clip-path: polygon(15% 50%, 40% 75%, 90% 18%, 78% 8%, 40% 55%, 28% 40%);
+}
+.facet-item .val { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.929rem; font-family: var(--gb-font-body); }
+.pub-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; vertical-align: middle; margin-right: 5px; }
+.facet-item .cnt { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+.facet-more { background: none; border: none; font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-accent); cursor: pointer; padding: 4px 0; margin-top: 4px; text-align: left; }
+.facet-more:hover { color: var(--gb-accent-deep); }
+
+/* ── Main ── */
+#main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: var(--gb-paper); }
+#mobile-header { display: none; }
+
+/* ── Toolbar ── */
+#toolbar { padding: 16px 24px 12px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper); display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+#search-wrap { position: relative; display: flex; align-items: center; gap: 10px; }
+#search-wrap::before { content: "⌕"; position: absolute; left: 12px; color: var(--gb-ink-faint); font-size: 1.143rem; pointer-events: none; z-index: 1; }
+#search {
+  flex: 1; font-family: var(--gb-font-display); font-size: 1.286rem; font-weight: 400;
+  background: transparent; border: 1px solid var(--gb-rule-faint);
+  padding: 10px 14px 10px 36px; color: var(--gb-ink); outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+#search::placeholder { color: var(--gb-ink-faint); font-style: italic; }
+#search:focus { border-color: var(--gb-ink); background: var(--gb-paper-2); outline: 2px solid var(--gb-accent); outline-offset: 1px; }
+#search-scope-label { display: none; }
+.toolbar-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+#count-label { font-size: 0.857rem; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
+#clear-filters-btn {
+  display: none; background: var(--gb-highlight-soft);
+  border: 1px solid rgba(200, 144, 40, 0.6);
+  font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #5c3d00; cursor: pointer;
+  padding: 3px 10px; flex-shrink: 0;
+}
+#clear-filters-btn:hover { background: rgba(200, 144, 40, 0.25); color: #5c3d00; }
+#meta-strip { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+.meta-chip { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); padding: 2px 8px; color: var(--gb-ink-faint); border-radius: 2px; }
+.meta-link { color: var(--gb-accent); text-decoration: none; }
+.meta-link:hover { background: var(--gb-accent-soft); border-color: var(--gb-accent); }
+#export-btn { padding: 6px 14px; background: var(--gb-accent); color: var(--gb-paper); border: none; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+#export-btn:hover { background: var(--gb-accent-deep); }
+/* Transient toast under the toolbar; also announced via aria-live. */
+#export-feedback { position: absolute; right: 0; top: calc(100% + 6px); z-index: 5; background: var(--gb-ink); color: var(--gb-paper); font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.04em; padding: 6px 10px; border-radius: 2px; pointer-events: none; }
+#export-feedback:empty { display: none; }
+#random-btn { padding: 6px 14px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gb-ink-soft); }
+#random-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
+#filter-btn { display: none; }
+
+/* ── Table ── */
+#content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+#table-wrap { flex: 1; overflow-y: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.929rem; }
+thead { position: sticky; top: 0; background: var(--gb-paper); z-index: 1; }
+thead th {
+  text-align: left; font-family: var(--gb-font-mono); font-size: 0.714rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gb-ink-faint);
+  padding: 14px 12px; font-weight: 500; border-bottom: 1px solid var(--gb-rule);
+  background: var(--gb-paper); white-space: nowrap; cursor: pointer; user-select: none;
+}
+thead th:hover { color: var(--gb-ink); }
+thead th[aria-sort="none"]::after { content: " ↕"; color: var(--gb-ink-faint); font-size: 0.571rem; }
+thead th.sorted-asc::after { content: " ↑"; color: var(--gb-accent); }
+thead th.sorted-desc::after { content: " ↓"; color: var(--gb-accent); }
+thead tr.filter-row th { position: sticky; top: 33px; background: var(--gb-paper-2); padding: 5px 8px; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); }
+.col-filter-input { width: 100%; font-size: 0.786rem; font-family: var(--gb-font-body); padding: 3px 6px; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper); color: var(--gb-ink); }
+.col-filter-input:focus { outline: 2px solid var(--gb-accent); outline-offset: 1px; border-color: var(--gb-accent); }
+tbody tr { border-bottom: 1px solid var(--gb-rule-faint); cursor: pointer; transition: background 0.1s ease; }
+tbody tr:hover { background: var(--gb-row-hover); }
+tbody tr.selected { background: var(--gb-row-active) !important; }
+td { padding: 11px 12px; color: var(--gb-ink-soft); vertical-align: top; font-size: 0.929rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+tbody td:first-child { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); padding-left: 24px; width: 64px; }
+tbody td:nth-child(2) { font-family: var(--gb-font-display); font-size: 1.071rem; font-weight: 500; color: var(--gb-ink); letter-spacing: -0.005em; }
+tbody tr.selected td:nth-child(2) { color: var(--gb-accent-deep); box-shadow: inset 2px 0 0 var(--gb-accent); padding-left: 10px; }
+mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2px; border-radius: 1px; }
+.table-end-sentinel td { text-align: center; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; padding: 14px; border-top: 1px solid var(--gb-rule-faint); }
+.table-end-sentinel button { margin-left: 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); padding: 4px 12px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-accent); }
+.table-end-sentinel button:hover { border-color: var(--gb-accent); background: var(--gb-accent-soft); }
+#no-results { padding: 40px; text-align: center; color: var(--gb-ink-soft); font-family: var(--gb-font-display); font-size: 1.143rem; display: none; }
+#no-results p { margin: 6px 0 0; font-size: 1rem; color: var(--gb-ink-faint); }
+#no-results p.no-results-active { margin: 10px auto 0; }
+.no-results-active { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; color: var(--gb-accent); background: var(--gb-accent-soft); padding: 6px 12px; margin: 10px auto 0; max-width: 520px; text-align: center; }
+#clear-all-btn { display: inline-block; margin-top: 14px; padding: 8px 18px; background: var(--gb-highlight-soft); border: 1px solid rgba(200, 144, 40, 0.6); color: #5c3d00; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em; text-transform: uppercase; }
+#clear-all-btn:hover { background: rgba(200, 144, 40, 0.25); color: #5c3d00; }
+.source-cell { text-align: center; }
+.src-btn { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); padding: 3px 8px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-soft); }
+.src-btn:hover { background: var(--gb-paper); color: var(--gb-accent); border-color: var(--gb-accent); }
+.detail-col { text-align: center; width: 28px; padding: 4px; }
+.detail-col-head { width: 28px; padding: 4px; text-align: center; }
+.detail-btn { background: none; border: none; cursor: pointer; font-size: 0.929rem; color: var(--gb-ink-faint); padding: 2px 4px; }
+.detail-btn:hover, tbody tr:hover .detail-btn { color: var(--gb-accent); }
+tbody tr.selected .detail-btn { color: var(--gb-accent); }
+
+/* ── Detail panel ── */
+#main.detail-open #table-wrap { padding-right: 420px; }
+#detail { position: fixed; top: 0; right: 0; width: 420px; min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
+#detail.open { display: flex; }
+.detail-hero { position: relative; height: 280px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+#detail-thumb-link { display: contents; }
+#detail-thumb { width: 100%; height: 100%; object-fit: contain; display: none; cursor: pointer; }
+#detail-close { position: absolute; top: 12px; right: 12px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); width: 28px; height: 28px; cursor: pointer; display: grid; place-items: center; color: var(--gb-ink-soft); font-size: 1.143rem; z-index: 1; }
+#detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
+#detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
+#detail-title { font-family: var(--gb-font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.005em; line-height: 1.1; margin: 0 0 20px; color: var(--gb-ink); }
+.detail-fields { display: grid; grid-template-columns: 80px 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
+.df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
+.df-val { color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
+#detail-page-context { text-align: right; margin-bottom: 8px; min-height: 0; }
+#detail-page-context:empty { display: none; }
+#detail-page-context a { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
+#detail-page-context a:hover { border-bottom-style: dashed; }
+.detail-source { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); display: flex; flex-direction: column; gap: 8px; }
+.detail-source a { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
+.detail-source a:hover { border-bottom-style: dashed; }
+#detail-also-in { margin-top: 16px; padding-top: 16px; }
+#detail-map { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+.map-frame { width: 100%; height: 190px; border: 1px solid var(--gb-rule-faint); display: block; margin-top: 8px; filter: grayscale(60%); }
+.map-disclaimer { font-size: 0.786rem; font-family: var(--gb-font-mono); color: var(--gb-ink-faint); margin: 6px 0 0; }
+.map-disclaimer a { color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
+.map-disclaimer a:hover { border-bottom-style: dashed; }
+.map-loading { font-size: 0.857rem; font-family: var(--gb-font-mono); color: var(--gb-ink-faint); margin: 8px 0 0; }
+@media (prefers-contrast: more) { .map-frame { filter: none; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+.also-in-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 10px; font-weight: 500; }
+.also-all-link { display: block; font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; margin-top: 12px; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
+.also-all-link:hover { border-bottom-style: dashed; }
+
+/* Coverage grid — heat-map of which (publication, year) pairs list this entry.
+   Years span the x-axis; publications span the y-axis. Each cell carries an
+   aria-label that names its state explicitly so color is never the only signal.
+   The grid sits in a horizontally-scrollable frame; the label column is sticky
+   so publication names stay pinned when a wide time span scrolls. */
+.coverage-summary { font-family: var(--gb-font-body); font-size: 0.857rem; line-height: 1.4; color: var(--gb-ink-soft); margin: -2px 0 12px; }
+.coverage-pending { font-size: 0.857rem; font-family: var(--gb-font-body); font-style: italic; color: var(--gb-ink-faint); margin: 0; }
+.coverage-summary strong { color: var(--gb-ink); font-weight: 600; }
+.coverage-scroll { overflow-x: auto; overflow-y: hidden; margin-bottom: 4px; scrollbar-width: thin; }
+.coverage-grid { display: grid; column-gap: 1px; row-gap: 2px; align-items: center; font-family: var(--gb-font-mono); width: 100%; }
+.coverage-grid .pub-label { font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink); padding-right: 8px; text-align: right; white-space: nowrap; display: flex; align-items: center; gap: 5px; justify-content: flex-end; position: sticky; left: 0; background: var(--gb-paper); z-index: 2; }
+.coverage-grid .pub-label .pub-dot { margin-right: 0; }
+.coverage-grid .pub-label-current { font-weight: 600; }
+.coverage-corner { position: sticky; left: 0; background: var(--gb-paper); z-index: 3; }
+.coverage-grid .year-head { font-size: 0.643rem; color: var(--gb-ink-faint); text-align: center; line-height: 1; padding-bottom: 2px; letter-spacing: 0; }
+.coverage-cell { aspect-ratio: 1; min-height: 0; min-width: 0; border-radius: 1px; background: transparent; border: 0; padding: 0; box-sizing: border-box; }
+.coverage-cell-listed { cursor: pointer; transition: outline 0.1s ease; }
+.coverage-cell-listed:hover, .coverage-cell-listed:focus-visible { outline: 1.5px solid var(--gb-ink); outline-offset: 0; }
+.coverage-cell-current { outline: 2px solid var(--gb-ink); outline-offset: 0; }
+.coverage-cell-empty { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); }
+.coverage-cell-inactive {
+  background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(22, 19, 16, 0.05) 3px 4px);
+  background-color: transparent;
+  background-clip: border-box;
+}
+/* Collapsed dead-span break: a narrow column with a faint vertical rule. */
+.coverage-break { position: relative; min-width: 8px; align-self: stretch; }
+.coverage-break::before { content: ""; position: absolute; top: 2px; bottom: 2px; left: 50%; width: 1px; transform: translateX(-0.5px); background: var(--gb-rule-faint); }
+.coverage-grid .year-head-break { font-size: 0.643rem; color: var(--gb-ink-faint); line-height: 1; }
+.coverage-cat-note { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); margin: -4px 0 10px; }
+.coverage-gap-note { font-family: var(--gb-font-body); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); margin: 6px 0 0; }
+.coverage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
+.coverage-legend-item { display: flex; align-items: center; gap: 5px; }
+.coverage-legend-swatch { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; box-sizing: border-box; }
+.coverage-legend-swatch-hatch { background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(22, 19, 16, 0.05) 3px 4px); }
+/* Coverage cell tooltip — enhances; every value is also in the aria-label + table. */
+.coverage-tip { position: fixed; z-index: 500; pointer-events: none; background: var(--gb-ink); color: var(--gb-paper); font-family: var(--gb-font-mono); font-size: 0.714rem; line-height: 1.35; padding: 6px 9px; border-radius: 2px; max-width: 230px; box-shadow: 0 6px 20px -6px rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.08s ease; }
+.coverage-tip.show { opacity: 1; }
+.coverage-tip .tip-val { font-family: var(--gb-font-body); font-weight: 600; font-size: 0.786rem; display: block; }
+.coverage-tip .tip-sub { color: rgba(250, 248, 243, 0.72); display: block; }
+
+/* ── About modal ── */
+#about-backdrop { position: fixed; inset: 0; background: rgba(22, 19, 16, 0.42); z-index: 400; place-items: center; padding: 48px; backdrop-filter: blur(2px); display: none; }
+#about-backdrop.open { display: grid; }
+#about-modal { background: var(--gb-paper); width: 100%; max-width: 1080px; max-height: calc(100vh - 96px); display: flex; flex-direction: column; border: 1px solid var(--gb-rule); box-shadow: 0 30px 80px -20px rgba(0,0,0,0.4); overflow: hidden; position: relative; }
+#about-modal::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gb-accent); }
+.about-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px 0; flex-shrink: 0; }
+.about-modal-eyebrow { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gb-ink-faint); }
+.close-about { background: transparent; border: 1px solid var(--gb-rule-faint); width: 32px; height: 32px; cursor: pointer; display: grid; place-items: center; color: var(--gb-ink-soft); font-size: 1.143rem; }
+.close-about:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
+.about-modal-body { padding: 24px 56px 56px; overflow-y: auto; }
+.about-modal-title { font-family: var(--gb-font-display); font-weight: 300; font-size: 3.143rem; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 40px; color: var(--gb-ink); }
+.about-modal-title em { color: var(--gb-accent); font-style: italic; font-weight: 400; }
+.about-modal-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr); gap: 56px; align-items: start; }
+.about-modal-prose { font-family: var(--gb-font-display); font-size: 1.143rem; line-height: 1.65; color: var(--gb-ink-soft); }
+.about-modal-prose p { margin: 0 0 18px; max-width: 60ch; }
+.about-modal-prose strong { color: var(--gb-ink); font-weight: 600; }
+.about-modal-lede { font-size: 1.286rem; color: var(--gb-ink); }
+.about-modal-h3 { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gb-ink-faint); margin: 32px 0 12px; font-weight: 500; }
+.about-modal-emphasis { border-left: 2px solid var(--gb-accent); padding-left: 18px; font-style: italic; color: var(--gb-ink) !important; margin: 0 0 18px; }
+.about-modal-list { margin: 0 0 18px; padding-left: 24px; counter-reset: gbsteps; list-style: none; }
+.about-modal-list li { position: relative; padding: 6px 0 6px 8px; counter-increment: gbsteps; font-family: var(--gb-font-display); font-size: 1.143rem; color: var(--gb-ink-soft); line-height: 1.65; }
+.about-modal-list li::before { content: counter(gbsteps, decimal-leading-zero); position: absolute; left: -28px; top: 8px; font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-accent); }
+.about-modal-pubs { list-style: none; margin: 0 0 18px; padding: 0; }
+.about-modal-pubs li { display: flex; align-items: baseline; gap: 9px; padding: 4px 0; font-family: var(--gb-font-display); font-size: 1.071rem; color: var(--gb-ink-soft); line-height: 1.5; }
+.about-modal-pubs li em { color: var(--gb-ink); }
+.about-modal-pubs .pub-dot { flex-shrink: 0; align-self: center; margin-right: 0; }
+.about-modal-link { color: var(--gb-accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.about-modal-link:hover { text-decoration-style: dashed; }
+.about-modal-side { border-left: 1px solid var(--gb-rule-faint); padding-left: 32px; display: flex; flex-direction: column; gap: 28px; }
+.about-modal-side-block { display: flex; flex-direction: column; gap: 4px; }
+.about-modal-side-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 4px; }
+.about-modal-side-stat { font-family: var(--gb-font-display); font-size: 2.571rem; font-weight: 300; line-height: 1; letter-spacing: -0.02em; color: var(--gb-ink); }
+.about-modal-side-stat-text { font-family: var(--gb-font-display); font-size: 1.571rem; font-weight: 400; color: var(--gb-ink); line-height: 1.1; }
+.about-modal-side-sub { font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.45; }
+.about-modal-credit { margin-top: 16px; padding-top: 20px; border-top: 1px solid var(--gb-rule-faint); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); line-height: 1.5; }
+
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  #sidebar { position: fixed; top: 0; left: 0; width: 85vw; max-width: 300px; height: 100dvh; z-index: 200; min-width: 0; transform: translateX(-100%); transition: transform 0.22s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.18); }
+  #app.sidebar-open #sidebar { transform: translateX(0); }
+  #sidebar-backdrop { display: none !important; position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 199; }
+  #app.sidebar-open #sidebar-backdrop { display: block !important; }
+  #filter-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; background: none; border: 1px solid var(--gb-rule-faint); cursor: pointer; font-size: 0.929rem; color: var(--gb-ink-soft); white-space: nowrap; flex-shrink: 0; }
+  #table-wrap { overflow-x: auto; }
+  #main, #content, #table-wrap { min-width: 0; }
+  #main.detail-open #table-wrap { padding-right: 0; }
+  #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
+  #mobile-header { display: block; padding: 14px 16px 12px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
+  .mobile-hero-title { margin: 0 0 4px; font-family: var(--gb-font-display); font-size: 1.214rem; font-weight: 500; color: var(--gb-ink); line-height: 1.2; }
+  .mobile-hero-desc { margin: 0 0 10px; font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.4; }
+  .mobile-hero-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .mobile-hero-actions button { flex: 1; padding: 7px 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-soft); white-space: nowrap; }
+  .mobile-hero-actions button:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
+  .gb-hero { padding: 32px 24px; overflow-x: hidden; }
+  .gb-hero::before { display: none; }
+  .gb-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .gb-hero-title { font-size: 2.571rem; }
+  .gb-hero-stats { grid-template-columns: repeat(2, 1fr); }
+  #about-backdrop { padding: 16px; }
+  .about-modal-grid { grid-template-columns: 1fr; }
+  .about-modal-body { padding: 20px 24px 40px; }
+  .about-modal-title { font-size: 2rem; }
+  .gb-hero-featured-stack {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0;
+    margin: 0 -24px;
+    padding: 0 24px;
+    min-width: 0;
+  }
+  .gb-hero-featured-stack::-webkit-scrollbar { display: none; }
+  .gb-hero-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+    margin-right: 12px;
+  }
+  #detail-close { width: 44px; height: 44px; }
+  #export-btn, #random-btn { padding: 9px 14px; }
+  .facet-item { min-height: 36px; }
+  /* Mobile compact mode for the coverage grid is opt-in via the
+     data-compact attribute, set by the renderer when (max-width: 640px). */
+}
+</style>
+</head>
+<body>
+<a href="#search" class="skip-link">Skip to search</a>
+
+<section class="gb-hero" id="gb-hero" aria-label="Green Book Directory Explorer">
+  <div class="gb-hero-grid">
+    <div>
+      <div class="gb-hero-eyebrow">
+        <span>Green Books Travel Guide Explorer</span>
+        <!-- <span>EST. 1936</span> -->
+        <!-- <span class="gb-hero-eyebrow-dot">&#x25CF;</span> -->
+        <!-- <span id="hero-eyebrow-stats">63,185 ENTRIES &middot; 23 VOLUMES</span> -->
+      </div>
+      <h1 class="gb-hero-title">A directory of places that welcomed Black travelers, <em>1930&nbsp;&ndash;&nbsp;1966.</em></h1>
+      <p class="gb-hero-lede">The Negro Motorist Green Book and other African American travel guides listed hotels, restaurants, beauty parlors, and other businesses safe to visit during the Jim Crow era of segregation. This explorer makes those records searchable across every volume and publication.</p>
+      <div class="gb-hero-cta">
+        <button class="gb-btn-primary" onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start exploring &rarr;</button>
+        <button class="gb-btn-ghost" id="random-btn-hero">Open a random entry</button>
+        <p class="gb-hero-credit">Source material held by the New York Public Library, Schomburg Center for Research in Black Culture.<br>Data extracted using an LLM-enhanced <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">Directory Pipeline</a> for OCR and named-entity recognition.</p>
+      </div>
+      <aside class="gb-hero-caveat" role="note" aria-label="A note on accuracy">
+        <div class="gb-hero-caveat-rule" aria-hidden="true"></div>
+        <div class="gb-hero-caveat-body">
+          <div class="gb-hero-caveat-label">A NOTE ON ACCURACY</div>
+          <p class="gb-hero-caveat-text">There are OCR, entity-extraction, and entry alignment errors in this data viewer, always use the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, <em>not a replacement for them</em>. Data has not been reviewed for 100% accuracy.</p>
+          <button class="gb-hero-caveat-link" id="caveat-about-btn">READ MORE ABOUT THE DATA AND EXPLORER&rarr;</button>
+        </div>
+      </aside>
+    </div>
+    <div class="gb-hero-featured">
+      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span></div>
+      <div class="gb-hero-featured-stack" id="hero-featured-stack">
+        <div class="gb-hero-card" style="opacity:0.35;pointer-events:none"><div class="gb-hero-card-thumb"></div><div class="gb-hero-card-meta"><div class="gb-hero-card-name">Loading entries&hellip;</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="gb-hero-stats">
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">105,701</div><div class="gb-hero-stat-label">individual listings</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">45</div><div class="gb-hero-stat-label">published volumes</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">25</div><div class="gb-hero-stat-label">business categories</div></div>
+  </div>
+</section>
+
+<div id="app">
+<aside id="sidebar" role="complementary" aria-label="Filters">
+  <div id="sidebar-header">
+    <p class="sidebar-brand"><a href="#" onclick="location.href=location.pathname;return false;">Green Books Travel Guide Explorer</a></p>
+    <p class="gb-sidebar-desc">Explore the directory of safe businesses and services for Black travelers, 1930&ndash;1966</p>
+    <span id="doc-title" style="display:none"></span>
+    <span id="doc-sub" style="display:none"></span>
+    <div id="volume-wrap" style="display:none">
+      <label for="volume-select" style="display:block;font-family:var(--gb-font-mono);font-size: 0.714rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gb-ink-faint);margin-bottom:3px;">Select volume</label>
+      <select id="volume-select"></select>
+    </div>
+    <div id="sidebar-cta">
+      <button id="about-btn">About this explorer</button>
+      <button id="random-year-btn">Jump to a random year</button>
+      <button id="gb-explore-btn">Open a random entry</button>
+    </div>
+  </div>
+  <div id="sidebar-scroll">
+    <div class="sidebar-filter-hd">Filter by</div>
+    <div id="facet-controls"></div>
+  </div>
+</aside>
+<div id="sidebar-backdrop" aria-hidden="true"></div>
+
+<main id="main">
+  <div id="mobile-header">
+    <p class="mobile-hero-title">Green Books Travel Guide Explorer</p>
+    <p class="mobile-hero-desc">Explore the directory of safe businesses and services for Black travelers, 1930&ndash;1966</p>
+    <div class="mobile-hero-actions">
+      <button id="mobile-about-btn">About this explorer</button>
+      <button id="mobile-random-btn">Open a random entry</button>
+    </div>
+    <select id="mobile-volume-select" aria-label="Select volume" style="display:none"></select>
+  </div>
+  <div id="toolbar">
+    <button id="filter-btn" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
+    <div id="search-wrap">
+      <input id="search" type="search" placeholder="Search names, addresses, notes…  ( press / )" autocomplete="off" aria-label="Search all fields" aria-keyshortcuts="/">
+      <button id="export-btn">Export CSV</button>
+      <span id="export-feedback" aria-live="polite"></span>
+    </div>
+    <div class="toolbar-meta-row">
+      <span id="count-label" aria-live="polite" aria-atomic="true"></span>
+      <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
+    </div>
+  </div>
+  <button id="random-btn" style="display:none"></button>
+  <div id="content">
+    <div id="table-wrap">
+      <table id="results-table" aria-label="Green Book entries">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+      <div id="no-results">
+        No entries match the current filters.
+        <p>Try removing filters or adjusting your search.</p>
+        <button id="clear-all-btn">× Clear all filters</button>
+      </div>
+    </div>
+    <div id="detail" role="complementary" aria-label="Entry details">
+      <div class="detail-hero">
+        <a id="detail-thumb-link" target="_blank"><img id="detail-thumb" alt="" style="display:none;cursor:pointer"></a>
+        <button id="detail-close" aria-label="Close detail panel">&#x2715;</button>
+      </div>
+      <div id="detail-inner">
+        <div id="detail-page-context"></div>
+        <h2 id="detail-title"></h2>
+        <div class="detail-fields" id="detail-fields"></div>
+        <div id="detail-also-in" style="display:none"></div>
+        <div id="detail-map" style="display:none"></div>
+        <div class="detail-source" id="detail-source"></div>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+
+<div id="about-backdrop">
+  <div id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-title" tabindex="-1">
+    <div class="about-modal-head">
+      <div class="about-modal-eyebrow">ABOUT THIS EXPLORER</div>
+      <button class="close-about" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="about-modal-body">
+      <h2 id="about-title" class="about-modal-title">An exploration tool for data from <em>The Negro Motorist Green&nbsp;Book</em> and other Black travel guides, extracted from page scans, 1930&nbsp;&ndash;&nbsp;1966.</h2>
+      <div class="about-modal-grid">
+        <div class="about-modal-prose">
+          <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966, alongside six other travel guides published for Black Americans between 1930 and 1962 &mdash; guides that helped Black travelers find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
+          <h3 class="about-modal-h3">The source</h3>
+          <p>The Green Book was published annually by Victor H. Green &amp; Co. from 1936 to 1966 as a guide for Black Americans navigating the Jim Crow era. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
+          <h3 class="about-modal-h3">The publications</h3>
+          <p>This explorer searches across seven publications at once. Colors mark each publication throughout the site &mdash; on table rows, sidebar filters, and the coverage grid in each entry&rsquo;s detail panel:</p>
+          <ul class="about-modal-pubs">
+            <li><span class="pub-dot" style="background:#4a7d1c"></span><em>The Negro Motorist Green Book</em>&ensp;1937&ndash;1966</li>
+            <li><span class="pub-dot" style="background:#b8447e"></span><em>Hackley &amp; Harrison&rsquo;s Hotel and Apartment Guide</em>&ensp;1930</li>
+            <li><span class="pub-dot" style="background:#a06fd0"></span><em>The Travelers Guide</em>&ensp;1931</li>
+            <li><span class="pub-dot" style="background:#cf7a12"></span><em>Smith&rsquo;s Tourist Guide</em>&ensp;1940</li>
+            <li><span class="pub-dot" style="background:#c0341d"></span><em>Travelguide</em>&ensp;1947&ndash;1962</li>
+            <li><span class="pub-dot" style="background:#1f5aa8"></span><em>Go, Guide to Pleasant Motoring</em>&ensp;1952&ndash;1959</li>
+            <li><span class="pub-dot" style="background:#0093a0"></span><em>NHA Directory and Guide to Travelers</em>&ensp;1959</li>
+          </ul>
+          <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
+          <h3 class="about-modal-h3">A note on accuracy</h3>
+          <p class="about-modal-emphasis">There are OCR, entity-extraction, and entry alignment errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
+          <h3 class="about-modal-h3">How to use this site</h3>
+          <ol class="about-modal-list">
+            <li>Filter by <strong>year</strong>, <strong>name</strong>, <strong>address</strong>, <strong>state</strong>, <strong>city</strong>, or <strong>category</strong> at the top of the explorer.</li>
+            <li>Filter by <strong>year</strong> or <strong>category</strong> in the left sidebar &mdash; counts update live.</li>
+            <li>Use the <strong>search bar</strong> to find names, addresses, or notes across all editions at once.</li>
+            <li><strong>Click any row</strong> to open the full entry alongside a thumbnail of the source scan.</li>
+            <li>Use <strong>Export CSV</strong> to download the currently filtered selection for your own work.</li>
+          </ol>
+        </div>
+        <aside class="about-modal-side">
+          <div class="about-modal-side-block">
+            <div class="about-modal-side-label">DATASET</div>
+            <div class="about-modal-side-stat" id="about-stat-entries">63,185</div>
+            <div class="about-modal-side-sub">individual listings, extracted</div>
+          </div>
+          <div class="about-modal-side-block">
+            <div class="about-modal-side-label">VOLUMES</div>
+            <div class="about-modal-side-stat" id="about-stat-volumes">45</div>
+            <div class="about-modal-side-sub">across 7 publications, covering 1930 &mdash; 1966</div>
+          </div>
+          <div class="about-modal-side-block">
+            <div class="about-modal-side-label">PIPELINE</div>
+            <div class="about-modal-side-stat-text">Directory Pipeline</div>
+            <div class="about-modal-side-sub">Created by Josh Hadro, using an open-source tool for extracting structured data from digitized historical directories. <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
+          </div>
+          <div class="about-modal-credit">Source material held by the Schomburg Center for Research in Black Culture, The New York Public Library.</div>
+          <div class="about-modal-credit" style="margin-top:10px;">
+            <a class="about-modal-link" href="https://github.com/hadro/green-books" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-style:normal;">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              View explorer source on GitHub
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="previews/claude-all-volumes-ux-review-6qxlb1/gb-matching.js"></script>
+<script>
+var _gbAboutOnLoad = location.hash === '#about';
+const ALL_INITIAL_ENTRIES = [];
+const VOLUMES     = {};
+// Field schema for the merged Green Book + travel-guide dataset. top_values
+// (the facet value lists) start empty and are computed at runtime by
+// gbBuildFacets() once both CSVs are loaded — a baked-in blob can't survive
+// the merge. The category `groups` fold OCR/case variants together.
+const FIELD_META  = [
+  {"name": "volume_year",     "type": "facet",  "top_values": []},
+  {"name": "publication",     "type": "facet",  "top_values": []},
+  {"name": "name",            "type": "search", "top_values": []},
+  {"name": "address",         "type": "search", "top_values": []},
+  {"name": "city",            "type": "search", "top_values": []},
+  {"name": "state",           "type": "search", "top_values": []},
+  {"name": "category",        "type": "facet",  "top_values": [],
+   "groups": {"Blank or no specific category": ["Hotels - Motels - Tourist Homes - Restaurants", "General", ""], "MOTEL": ["Motel", "MOTEL"], "TOURIST HOMES": ["TOURIST HOMES", "LOURIST"], "WINE & LIQUOR STORES": ["WINE & LIQUOR STORES", "LQIUOR STORES"], "GARAGES": ["GARAGES", "GARAGE", "Garage"], "DRUG STORES": ["DRUG STORES", "DRUGGIST", "PHARMACY", "Pharmacy", "DRUGS"], "VACATION SECTION": ["VACATION SECTION", "Vacation Section"], "LODGINGS": ["LODGINGS", "LODGING", "LOGDINGS"], "COUNTRY CLUBS": ["COUNTRY CLUBS", "COUNTRY CLUB", "Country Club"], "AUTOMOTIVE": ["AUTOMOTIVE", "AUTOMOTIVES"]}},
+  {"name": "notes",           "type": "search", "top_values": []},
+  {"name": "canvas_fragment", "type": "id",     "top_values": []},
+  {"name": "image",           "type": "id",     "top_values": []}
+];
+
+// The Green Book CSV has no `publication` column; its rows are backfilled
+// with this value on load so the merged `publication` facet has 7 values.
+const GREEN_BOOK_PUBLICATION = "The Negro Motorist Green Book";
+
+// Publication → highlight color. Used for the table row stripe, facet dots, and
+// coverage-grid cells. A categorical palette validated for colour-vision
+// deficiency (dataviz validate_palette, light surface #faf8f3): all seven pass
+// the lightness band, chroma floor, and contrast checks; the closest adjacent
+// pair sits at ΔE 9.3 (protan), inside the 8–12 band that is sound because every
+// use of these colours is paired with a text label or dot. The old palette had
+// two near-identical greens (Green Book / Hackley) and a purple/blue pair that
+// deuteranopia collapsed to ΔE ~2; the greens are split and the cool pair is now
+// separated by lightness.
+const PUBLICATION_COLORS = {
+  "The Negro Motorist Green Book":                  "#4a7d1c",
+  "Travelguide":                                    "#c0341d",
+  "Go, Guide to Pleasant Motoring":                 "#1f5aa8",
+  "The Travelers Guide":                            "#a06fd0",
+  "NHA Directory and Guide to Travelers":           "#0093a0",
+  "Smith's Tourist Guide":                          "#cf7a12",
+  "Hackley & Harrison's Hotel and Apartment Guide": "#b8447e"
+};
+
+// Short display name for the coverage grid's row labels. Falls back to the
+// full publication name when not listed here.
+const PUBLICATION_SHORT_NAMES = {
+  "The Negro Motorist Green Book":                  "Green Book",
+  "Travelguide":                                    "Travelguide",
+  "Go, Guide to Pleasant Motoring":                 "Go Guide",
+  "The Travelers Guide":                            "Travelers Guide",
+  "NHA Directory and Guide to Travelers":           "NHA Directory",
+  "Smith's Tourist Guide":                          "Smith's",
+  "Hackley & Harrison's Hotel and Apartment Guide": "Hackley's"
+};
+
+// publication → Set<year>, populated once both CSVs finish streaming. The
+// coverage grid uses this to distinguish "publication active but didn't list
+// this entry" from "publication wasn't published that year" — two cell states
+// that look identical without this lookup.
+let PUBLICATION_ACTIVE_YEARS = new Map();
+function gbComputePublicationActiveYears(rows) {
+  const m = new Map();
+  rows.forEach(r => {
+    const pub = r.publication;
+    const y = r.volume_year || r.year;
+    if (!pub || !y) return;
+    if (!m.has(pub)) m.set(pub, new Set());
+    m.get(pub).add(y);
+  });
+  return m;
+}
+
+// Compute facet value lists (top_values) from the merged rows. Category folds
+// raw values into their group key; volume_year sorts chronologically; every
+// other facet sorts by descending count.
+function gbBuildFacets(rows) {
+  FIELD_META.forEach(f => {
+    if (f.type !== "facet") return;
+    const raw = {};
+    rows.forEach(r => { const v = r[f.name] || ""; if (v) raw[v] = (raw[v] || 0) + 1; });
+    let pairs;
+    if (f.groups) {
+      const rawToGroup = {};
+      Object.entries(f.groups).forEach(([g, vals]) => vals.forEach(v => { rawToGroup[v] = g; }));
+      const folded = {};
+      Object.entries(raw).forEach(([v, c]) => {
+        const key = rawToGroup[v] || v;
+        folded[key] = (folded[key] || 0) + c;
+      });
+      pairs = Object.entries(folded);
+    } else {
+      pairs = Object.entries(raw);
+    }
+    if (f.name === "volume_year") pairs.sort((a, b) => a[0].localeCompare(b[0]));
+    else pairs.sort((a, b) => b[1] - a[1]);
+    f.top_values = pairs;
+    f.cardinality = pairs.length;
+  });
+}
+let CANVAS_MAP = {};
+const DOC_TITLE   = "Green Book and Travel Guides";
+const VIEWER_URL  = "";
+const MANIFEST_URL = "";
+const FULL_PAGE_THUMBS = false;
+let activeManifestUrl = MANIFEST_URL;
+let ALL_ENTRIES = ALL_INITIAL_ENTRIES;
+
+// ── Field display-name and value-label overrides ──────────────────────────
+const FIELD_LABELS = {
+  "is_new_firm": "New listing",
+  "is new firm": "New listing",
+  "volume_year": "Year",
+  "publication": "Publication",
+  "category": "Category",
+  "canvas_fragment": "Source",
+};
+const VALUE_LABELS = {
+  "True": "Yes",
+  "False": "No",
+  "true": "Yes",
+  "false": "No",
+};
+
+// ── State ──────────────────────────────────────────────────────────────────
+let currentDocMeta = {};
+const facetState = {};   // {fieldName: Set<value>}
+let searchQuery = "";
+let sortCol = null;
+let sortDir = 1;  // 1 = asc, -1 = desc
+let selectedIdx = null;
+let _yearScrollAnchor = null;  // ALL_ENTRIES index used to center window for year-jump (no selection change)
+let _winStart = 0;             // persists across renders so re-selecting an in-window row doesn't re-center
+const WINDOW_STEP = 2000;      // rows added per "Show more" / auto-extend
+let _winSize = WINDOW_STEP;    // current render-window size; reset by renderAll()
+// Row → ALL_ENTRIES index. Rows are stamped with _i as they stream in; the
+// indexOf fallback covers rows from any other source (none in this build).
+const rowIdx = r => (r._i !== undefined ? r._i : ALL_ENTRIES.indexOf(r));
+let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
+function gcEvent(name) {
+  if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
+}
+let colFilters = {};  // fieldName → filter string
+const showAllFacets = new Set();  // field names with expanded value list
+try { const _s = sessionStorage.getItem('showAllFacets'); if (_s) JSON.parse(_s).forEach(n => showAllFacets.add(n)); } catch(e) {}
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+document.getElementById("doc-title").textContent = DOC_TITLE;
+document.getElementById("doc-sub").textContent =
+    ALL_ENTRIES.length.toLocaleString() + " entries";
+document.getElementById("mobile-about-btn").addEventListener("click", () => document.getElementById("about-btn").click());
+document.getElementById("mobile-random-btn").addEventListener("click", () => document.getElementById("gb-explore-btn").click());
+
+
+let facetFields = FIELD_META.filter(f => f.type === "facet");
+let displayFields = FIELD_META.filter(f => f.type !== "id");
+
+// Init facet state
+facetFields.forEach(f => { facetState[f.name] = new Set(); });
+
+// ── Load a volume by label (data + UI reset, no render) ──────────────────
+function loadVolume(label) {
+  const vol = VOLUMES[label];
+  if (!vol) return;
+  ALL_ENTRIES = vol.rows;
+  facetFields = vol.field_meta.filter(f => f.type === "facet");
+  displayFields = vol.field_meta.filter(f => f.type !== "id");
+  Object.keys(facetState).forEach(k => delete facetState[k]);
+  facetFields.forEach(f => { facetState[f.name] = new Set(); });
+  searchQuery = "";
+  sortCol = null;
+  sortDir = 1;
+  selectedIdx = null;
+  colFilters = {};
+  showAllFacets.clear();
+  try { sessionStorage.removeItem('showAllFacets'); } catch(e) {}
+  document.getElementById("search").value = "";
+  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+  document.getElementById("doc-title").textContent = label;
+  document.getElementById("doc-sub").textContent =
+    ALL_ENTRIES.length.toLocaleString() + " entries";
+  currentDocMeta = vol.doc_meta || {};
+  activeManifestUrl = currentDocMeta.manifest_url || MANIFEST_URL;
+  renderMetaStrip(currentDocMeta);
+}
+
+// ── Volume selector ─────────────────────────────────────────────────────────
+(function () {
+  const volLabels = Object.keys(VOLUMES);
+  if (volLabels.length === 0) return;
+  const wrap = document.getElementById("volume-wrap");
+  const sel  = document.getElementById("volume-select");
+  wrap.style.display = "block";
+  volLabels.forEach(label => {
+    const opt = document.createElement("option");
+    opt.value = label;
+    opt.textContent = label + "  (" + VOLUMES[label].rows.length.toLocaleString() + ")";
+    sel.appendChild(opt);
+  });
+  // Set h1 and meta strip to first volume on load
+  document.getElementById("doc-title").textContent = volLabels[0];
+  currentDocMeta = VOLUMES[volLabels[0]].doc_meta || {};
+  activeManifestUrl = currentDocMeta.manifest_url || MANIFEST_URL;
+  renderMetaStrip(currentDocMeta);
+
+  // Build mobile volume select
+  const msel = document.getElementById("mobile-volume-select");
+  volLabels.forEach(label => {
+    const opt = document.createElement("option");
+    opt.value = label; opt.textContent = label;
+    msel.appendChild(opt);
+  });
+  msel.classList.add("visible");
+  msel.addEventListener("change", () => {
+    sel.value = msel.value;
+    sel.dispatchEvent(new Event("change"));
+  });
+
+  sel.addEventListener("change", () => {
+    loadVolume(sel.value);
+    document.getElementById("mobile-volume-select").value = sel.value;
+    renderAll();
+  });
+})();
+
+// ── Filtering ──────────────────────────────────────────────────────────────
+// Memoized: one render pass calls getFiltered() from the table body, the
+// facet sidebar, and each facet column head. The key captures every input the
+// filter reads (including ALL_ENTRIES.length, which grows while streaming),
+// so no manual invalidation is needed anywhere.
+let _fcKey = null, _fcRows = null;
+function _filterKey() {
+  const fs = facetFields.map(f => f.name + ":" + [...facetState[f.name]].join("|")).join(";");
+  return [ALL_ENTRIES.length, displayFields.map(f => f.name).join(","),
+          searchQuery, JSON.stringify(colFilters), fs].join("");
+}
+function getFiltered() {
+  const key = _filterKey();
+  if (key === _fcKey && _fcRows) return _fcRows;
+  const q = searchQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+  const result = ALL_ENTRIES.filter(row => {
+    // Search filter — the normalized haystack is cached on the row (data is
+    // immutable after load), so repeat searches don't re-normalize 100k rows.
+    if (q) {
+      if (row._hay === undefined) {
+        row._hay = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+      }
+      if (!row._hay.includes(q)) return false;
+    }
+    // Facet filters
+    for (const f of facetFields) {
+      const sel = facetState[f.name];
+      if (sel.size === 0) continue;
+      const rawVal = row[f.name] || "";
+      let matched = sel.has(rawVal);
+      if (!matched && f.groups) {
+        for (const selVal of sel) {
+          if (f.groups[selVal] && f.groups[selVal].includes(rawVal)) { matched = true; break; }
+        }
+      }
+      if (!matched) return false;
+    }
+    // Column header filters
+    for (const [col, val] of Object.entries(colFilters)) {
+      if (!val) continue;
+      if ((row[col] || "").toLowerCase().includes(val.toLowerCase())) continue;
+      // City is punctuation- and variant-noisy ("ST. LOUIS", "New York,
+      // N. Y. (Harlem)") — also accept a match with both sides normalized.
+      // Additive only: raw matches still pass above.
+      if (col === "city" && gbNormCity(row[col]).includes(gbNormCity(val))) continue;
+      return false;
+    }
+    return true;
+  });
+  _fcKey = key;
+  _fcRows = result;
+  return result;
+}
+
+// ── Sort ───────────────────────────────────────────────────────────────────
+function getSorted(rows) {
+  if (!sortCol) return rows;
+  return [...rows].sort((a, b) => {
+    const av = (a[sortCol] || "").toLowerCase();
+    const bv = (b[sortCol] || "").toLowerCase();
+    return av < bv ? -sortDir : av > bv ? sortDir : 0;
+  });
+}
+
+// ── Search match highlighting ─────────────────────────────────────────────
+function escapeHtml(str) {
+  const t = document.createElement("span");
+  t.textContent = str;
+  return t.innerHTML;
+}
+function highlightMatch(text, query) {
+  if (!query || !text) return document.createTextNode(text || "");
+  const idx = text.toLowerCase().indexOf(query.toLowerCase());
+  if (idx === -1) return document.createTextNode(text);
+  const span = document.createElement("span");
+  span.innerHTML =
+    escapeHtml(text.slice(0, idx)) +
+    "<mark>" + escapeHtml(text.slice(idx, idx + query.length)) + "</mark>" +
+    escapeHtml(text.slice(idx + query.length));
+  return span;
+}
+
+// ── Canvas page extraction ─────────────────────────────────────────────────
+function canvasId(cf) {
+  return cf ? cf.split('#')[0] : '';
+}
+
+// ── Render: table body only (preserves thead / focus) ──────────────────────
+
+// Build one result row. Factored out of renderTableBody so extendWindow()
+// can append rows without rebuilding the whole window.
+function buildRowTr(row, q) {
+  const tr = document.createElement("tr");
+  const idx = rowIdx(row);
+  const isSelected = idx === selectedIdx;
+  if (isSelected) {
+    tr.classList.add("selected");
+    tr.setAttribute("aria-current", "true");
+  }
+  // Roving tabindex: the table is a single Tab stop (the selected row, or the
+  // first row as a fallback set by the caller); ArrowUp/Down move between rows.
+  tr.setAttribute("tabindex", isSelected ? "0" : "-1");
+  tr.dataset.idx = idx;
+  const pubColor = PUBLICATION_COLORS[row.publication];
+  displayFields.forEach(f => {
+    const td = document.createElement("td");
+    if (f.name === "publication" && pubColor) {
+      td.style.borderLeft = `5px solid ${pubColor}`;
+    }
+    const cellText = row[f.name] || "";
+    td.title = cellText;
+    td.appendChild(highlightMatch(cellText, q));
+    tr.appendChild(td);
+  });
+  const tdSrc = document.createElement("td");
+  tdSrc.className = "source-cell";
+  if (row.canvas_fragment) {
+    const btn = document.createElement("button");
+    btn.className = "src-btn";
+    btn.textContent = "View page ↗";
+    btn.title = "Open original digitized page image";
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      openSource(row.canvas_fragment);
+    });
+    tdSrc.appendChild(btn);
+  }
+  tr.appendChild(tdSrc);
+  const rowHandler = () => {
+    const wrap = document.getElementById('table-wrap');
+    const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
+    const trRect = tr.getBoundingClientRect();
+    const alreadyVisible = wrapRect &&
+      trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
+    const savedScroll = wrap ? wrap.scrollTop : 0;
+    selectedIdx = idx;
+    showDetail(row);
+    renderTableBody();
+    if (wrap) {
+      if (alreadyVisible) {
+        wrap.scrollTop = savedScroll;
+      } else {
+        scrollToSelected();
+      }
+    }
+  };
+  tr.addEventListener("click", rowHandler);
+  tr.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); return; }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
+      if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
+        tr.setAttribute("tabindex", "-1");
+        next.setAttribute("tabindex", "0");
+        next.focus();
+      }
+    }
+  });
+  const tdDetail = document.createElement("td");
+  tdDetail.className = "detail-col";
+  const detailBtn = document.createElement("button");
+  detailBtn.className = "detail-btn";
+  detailBtn.setAttribute("aria-label", "Open entry details");
+  detailBtn.setAttribute("tabindex", "-1");
+  detailBtn.textContent = "▸";
+  detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
+  tdDetail.appendChild(detailBtn);
+  tr.appendChild(tdDetail);
+  return tr;
+}
+
+// End-of-window sentinel: reports how much is shown and, when more rows
+// remain below the window, offers "Show more" + auto-extends via an
+// IntersectionObserver as it scrolls into view.
+let _sentinelObserver = null;
+function renderSentinel(tbody, sorted, winStart) {
+  if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
+  if (sorted.length === 0) return;
+  const shownEnd = Math.min(sorted.length, winStart + _winSize);
+  const remaining = sorted.length - shownEnd;
+  const sentinelTr = document.createElement("tr");
+  sentinelTr.className = "table-end-sentinel";
+  const sentinelTd = document.createElement("td");
+  sentinelTd.colSpan = displayFields.length + 1;
+  if (remaining > 0) {
+    sentinelTd.textContent = `Showing ${(shownEnd - winStart).toLocaleString()} of ${sorted.length.toLocaleString()} entries `;
+    const more = document.createElement("button");
+    more.type = "button";
+    more.textContent = `Show ${Math.min(WINDOW_STEP, remaining).toLocaleString()} more`;
+    more.addEventListener("click", extendWindow);
+    sentinelTd.appendChild(more);
+    _sentinelObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) extendWindow();
+    }, { root: document.getElementById("table-wrap"), rootMargin: "200px" });
+    _sentinelObserver.observe(sentinelTr);
+  } else if (winStart > 0) {
+    sentinelTd.textContent = `Showing entries ${(winStart + 1).toLocaleString()}–${shownEnd.toLocaleString()} of ${sorted.length.toLocaleString()}`;
+  } else {
+    sentinelTd.textContent = `Showing all ${sorted.length.toLocaleString()} entries`;
+  }
+  sentinelTr.appendChild(sentinelTd);
+  tbody.appendChild(sentinelTr);
+}
+
+// Grow the render window in place: append only the new slice, keep scroll.
+function extendWindow() {
+  const sorted = getSorted(getFiltered());
+  const tbody = document.getElementById("table-body");
+  const oldEnd = _winStart + _winSize;
+  if (oldEnd >= sorted.length) return;
+  _winSize += WINDOW_STEP;
+  const q = searchQuery.trim().toLowerCase();
+  const sentinel = tbody.querySelector("tr.table-end-sentinel");
+  if (sentinel) sentinel.remove();
+  const frag = document.createDocumentFragment();
+  sorted.slice(oldEnd, Math.min(sorted.length, _winStart + _winSize))
+    .forEach(row => frag.appendChild(buildRowTr(row, q)));
+  tbody.appendChild(frag);
+  renderSentinel(tbody, sorted, _winStart);
+}
+
+function renderTableBody() {
+  const filtered = getFiltered();
+  const sorted   = getSorted(filtered);
+
+  const countText = `${sorted.length.toLocaleString()} of ${ALL_ENTRIES.length.toLocaleString()} entries`;
+  document.getElementById("count-label").textContent = countText;
+  const tbl = document.getElementById("results-table");
+  if (tbl) tbl.setAttribute("aria-label", `Green Book entries — ${countText}`);
+
+  const tbody = document.getElementById("table-body");
+  tbody.innerHTML = "";
+  let winStart = 0;
+  if (_yearScrollAnchor !== null) {
+    // Year-jump and close-restore always take priority over selection centering.
+    const anchorPos = sorted.findIndex(row => rowIdx(row) === _yearScrollAnchor);
+    if (anchorPos >= 0 && anchorPos > _winSize - 200) winStart = Math.max(0, anchorPos - Math.floor(_winSize / 2));
+  } else if (selectedIdx !== null) {
+    const selPos = sorted.findIndex(row => rowIdx(row) === selectedIdx);
+    if (selPos >= 0) {
+      if (selPos >= _winStart && selPos < _winStart + _winSize) {
+        winStart = _winStart;  // row already in window — don't re-center
+      } else if (selPos > _winSize - 200) {
+        winStart = Math.max(0, selPos - Math.floor(_winSize / 2));
+      }
+    }
+  }
+  _winStart = winStart;
+  const q = searchQuery.trim().toLowerCase();
+  const frag = document.createDocumentFragment();
+  let anySelected = false;
+  sorted.slice(winStart, winStart + _winSize).forEach(row => {
+    const tr = buildRowTr(row, q);
+    if (tr.classList.contains("selected")) anySelected = true;
+    frag.appendChild(tr);
+  });
+  tbody.appendChild(frag);
+  // Roving-tabindex fallback: with no selected row in the window, the first
+  // row is the table's single Tab stop.
+  if (!anySelected && tbody.firstElementChild) tbody.firstElementChild.setAttribute("tabindex", "0");
+
+  renderSentinel(tbody, sorted, winStart);
+
+  const noResults = document.getElementById("no-results");
+  if (sorted.length === 0) {
+    noResults.style.display = "block";
+    if (ALL_ENTRIES.length === 0) {
+      noResults.innerHTML = '<p style="font-size: 1rem;color:#595959;margin:0">Loading entries…</p>';
+    } else {
+      const activeDesc = [];
+      if (searchQuery.trim()) activeDesc.push(`searching for “${searchQuery.trim()}”`);
+      Object.entries(facetState).filter(([,s]) => s.size > 0)
+        .forEach(([k,s]) => activeDesc.push(`${FIELD_LABELS[k] || k.replace(/_/g,' ')}: ${[...s].join(', ')}`));
+      Object.entries(colFilters).filter(([,v]) => v)
+        .forEach(([k,v]) => activeDesc.push(`${FIELD_LABELS[k] || k.replace(/_/g,' ')}: “${v}”`));
+      const summary = activeDesc.length ? `<p class="no-results-active">Active filters: ${activeDesc.join(' · ')}</p>` : '';
+      noResults.innerHTML = 'No entries match the current filters.' + summary + '<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">× Clear all filters</button>';
+    }
+  } else {
+    noResults.style.display = "none";
+  }
+}
+
+// ── Render: table head (sort row + filter row) ──────────────────────────────
+function renderTableHead() {
+  const head = document.getElementById("table-head");
+  head.innerHTML = "";
+
+  // Sort row
+  const tr = document.createElement("tr");
+  displayFields.forEach(f => {
+    const th = document.createElement("th");
+    th.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+    th.dataset.col = f.name;
+    th.setAttribute("tabindex", "0");
+    if (sortCol === f.name) {
+      th.className = sortDir > 0 ? "sorted-asc" : "sorted-desc";
+      th.setAttribute("aria-sort", sortDir > 0 ? "ascending" : "descending");
+    } else {
+      th.setAttribute("aria-sort", "none");
+    }
+    const sortHandler = () => {
+      if (sortCol === f.name) sortDir = -sortDir;
+      else { sortCol = f.name; sortDir = 1; }
+      renderTableHead();
+      renderTableBody();
+    };
+    th.addEventListener("click", sortHandler);
+    th.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortHandler(); }
+    });
+    tr.appendChild(th);
+  });
+  const thSrc = document.createElement("th");
+  thSrc.textContent = "Source";
+  tr.appendChild(thSrc);
+  const thDetail = document.createElement("th");
+  thDetail.className = "detail-col-head";
+  thDetail.setAttribute("aria-label", "Open details");
+  tr.appendChild(thDetail);
+  head.appendChild(tr);
+
+  // Filter row — inputs call renderTableBody only, preserving focus
+  const filterRow = document.createElement("tr");
+  filterRow.className = "filter-row";
+  displayFields.forEach(f => {
+    const fth = document.createElement("th");
+    if (f.type === "facet" && f.top_values.length > 0) {
+      const sel = document.createElement("select");
+      sel.className = "col-filter-input";
+      sel.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
+      const opt0 = document.createElement("option");
+      opt0.value = ""; opt0.textContent = "(all)";
+      sel.appendChild(opt0);
+      // Only show values present in the current filtered result set
+      const presentVals = new Set(getFiltered().map(r => r[f.name] || "").filter(Boolean));
+      if (colFilters[f.name] && !presentVals.has(colFilters[f.name])) colFilters[f.name] = "";
+      const visibleVals = f.top_values.filter(([val]) => presentVals.has(val));
+      visibleVals.forEach(([val]) => {
+        const opt = document.createElement("option");
+        opt.value = val; opt.textContent = val || "(empty)";
+        if (colFilters[f.name] === val) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      if (f.name === "volume_year") {
+        // This control navigates rather than filters — the ↓ and the option
+        // labels signal that, not just a title tooltip touch users never see.
+        // Keep the closed-state label short: the column is ~64px wide.
+        opt0.textContent = "↓ Go to…";
+        for (let i = 1; i < sel.options.length; i++) sel.options[i].textContent = "↓ " + sel.options[i].textContent;
+        sel.setAttribute("aria-label", "Jump to year — scrolls the table to that year, does not filter");
+        sel.setAttribute("title", "Select a year to scroll the table to that year — does not filter");
+      }
+      sel.addEventListener("change", () => {
+        if (f.name === "volume_year" && sel.value) {
+          const yr = sel.value;
+          sel.value = "";
+          scrollToYear(yr);
+        } else {
+          colFilters[f.name] = sel.value; renderTableBody(); renderFacetSidebar(); syncFilterUI();
+        }
+      });
+      fth.appendChild(sel);
+    } else {
+      const inp = document.createElement("input");
+      inp.type = "text"; inp.className = "col-filter-input"; inp.placeholder = "filter…";
+      inp.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
+      inp.value = colFilters[f.name] || "";
+      // Same debounce as the main search — a full-dataset re-render per
+      // keystroke makes typing feel sticky.
+      let colTimer;
+      inp.addEventListener("input", () => {
+        clearTimeout(colTimer);
+        colTimer = setTimeout(() => {
+          colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); syncFilterUI();
+        }, 180);
+      });
+      fth.appendChild(inp);
+    }
+    filterRow.appendChild(fth);
+  });
+  filterRow.appendChild(document.createElement("th"));  // Source column
+  filterRow.appendChild(document.createElement("th"));  // Details column
+  head.appendChild(filterRow);
+}
+
+// ── Render: table (head + body) ─────────────────────────────────────────────
+function renderTable() {
+  renderTableHead();
+  renderTableBody();
+}
+
+// ── Resolve canvas_fragment → human-browseable viewer URL ──────────────────
+function viewerUrl(canvas_fragment) {
+  if (!canvas_fragment) return "";
+  const cid = canvasId(canvas_fragment);
+
+  // CANVAS_MAP entry[3] is a pre-built viewer URL (e.g. NYPL Digital Collections)
+  const entry = CANVAS_MAP[cid];
+  if (entry && entry[3]) return entry[3];
+
+  // Internet Archive: https://iiif.archive.org/iiif/{identifier}${page}/canvas
+  const iaMatch = cid.match(/https:\/\/iiif\.archive\.org\/iiif\/([^$]+)\$(\d+)\/canvas/);
+  if (iaMatch) {
+    return `https://archive.org/details/${iaMatch[1]}/page/n${iaMatch[2]}/mode/2up`;
+  }
+
+  // Library of Congress: https://www.loc.gov/item/{id}/canvas/{num}
+  const locMatch = cid.match(/https:\/\/www\.loc\.gov\/item\/([^/]+)\/canvas\/(\d+)/);
+  if (locMatch) {
+    if (currentDocMeta && currentDocMeta.resource_url) {
+      return currentDocMeta.resource_url.replace(/\/?$/, "/") + `?sp=${parseInt(locMatch[2])}`;
+    }
+    // Derive resource URL + correct per-volume page number from CANVAS_MAP service ID.
+    // Service ID format: https://tile.loc.gov/image-services/iiif/service:rbc:lcrbmrp:t8073:001
+    // → resource lcrbmrp.t8073, sp=1 (not the global canvas number, which spans volumes).
+    const mapEntry = CANVAS_MAP[cid];
+    if (mapEntry && mapEntry[0]) {
+      const svcId = mapEntry[0].split("/").pop();
+      const svcMatch = svcId.match(/^service:(?:[^:]+):([^:]+):([^:]+):(\d+)$/);
+      if (svcMatch) {
+        return `https://www.loc.gov/resource/${svcMatch[1]}.${svcMatch[2]}/?sp=${parseInt(svcMatch[3])}`;
+      }
+    }
+    return `https://www.loc.gov/resource/${locMatch[1]}/?sp=${parseInt(locMatch[2])}`;
+  }
+
+  // Fall back to the raw canvas URI
+  return canvas_fragment;
+}
+
+function openSource(canvas_fragment) {
+  const url = viewerUrl(canvas_fragment);
+  if (url) window.open(url, "_blank");
+}
+
+// ── IIIF Content State deep-link ────────────────────────────────────────────
+function contentStateUrl(canvas_fragment) {
+  const mUrl = activeManifestUrl || MANIFEST_URL;
+  if (!VIEWER_URL || !mUrl || !canvas_fragment) return "";
+  const cid = canvasId(canvas_fragment);
+  if (!cid) return "";
+  const state = {
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    "type": "Annotation",
+    "motivation": "contentState",
+    "target": {
+      "id": canvas_fragment,
+      "type": "Canvas",
+      "partOf": [{"id": mUrl, "type": "Manifest"}]
+    }
+  };
+  // base64url (RFC 4648 §5): standard base64 with + → -, / → _, padding stripped
+  const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
+  const encoded = b64.replace(/[+]/g, "-").replace(/[/]/g, "_").replace(/=+$/, "");
+  return VIEWER_URL.replace(/\/$/, "") + "?iiif-content=" + encoded;
+}
+
+// ── Detail panel ───────────────────────────────────────────────────────────
+function thumbUrl(row, hAnchor) {
+  const cf = row.canvas_fragment || "";
+  if (!cf) {
+    // No canvas fragment — fall back to the local page image (full page, no crop)
+    return row.image ? row.image : "";
+  }
+  const cid = canvasId(cf);
+  const svc = CANVAS_MAP[cid];
+  if (!svc) return "";
+  if (!FULL_PAGE_THUMBS && cf.includes("#xywh=")) {
+    const xywh = cf.split("#xywh=")[1].split(",").map(Number);
+    if (xywh.length !== 4 || xywh[2] <= 0 || xywh[3] <= 0) return "";
+    const [cw, ch] = [svc[1], svc[2]];
+    if (!cw || !ch) return "";
+    const padV = Math.max(xywh[3], 60), tw = 400;
+    const minW = 600;
+    let rx, rw;
+    if (hAnchor === "left") {
+      // Anchor crop at the entry's left edge so the entry sits flush left
+      // when displayed with object-position:left.
+      rx = Math.max(0, xywh[0] - 8);
+      rw = Math.min(cw, rx + Math.max(minW, xywh[2] + 240)) - rx;
+    } else {
+      // Center the crop window on the entry midpoint (used by the detail panel,
+      // which displays with object-fit:contain rather than object-position:left).
+      const padH = Math.max(40, Math.ceil((minW - xywh[2]) / 2));
+      const entryCx = xywh[0] + Math.round(xywh[2] / 2);
+      const halfW   = Math.max(padH + Math.ceil(xywh[2] / 2), Math.ceil(minW / 2));
+      rx  = Math.max(0, entryCx - halfW);
+      rw  = Math.min(cw, entryCx + halfW) - rx;
+    }
+    const ry  = Math.max(0, xywh[1] - padV);
+    const rh  = (xywh[1] + xywh[3] + padV) - ry;
+    const xp = (rx / cw * 100).toFixed(4);
+    const yp = (ry / ch * 100).toFixed(4);
+    const wp = (rw / cw * 100).toFixed(4);
+    const hp = (rh / ch * 100).toFixed(4);
+    return `${svc[0]}/pct:${xp},${yp},${wp},${hp}/${tw},/0/default.jpg`;
+  }
+  return `${svc[0]}/full/400,/0/default.jpg`;
+}
+
+function showDetail(row) {
+  const panel = document.getElementById("detail");
+  panel.classList.add("open");
+  document.getElementById("main").classList.add("detail-open");
+
+  const nameField = displayFields.find(f => f.name.includes("name") || f.name.includes("title"));
+  document.getElementById("detail-title").textContent =
+    (nameField && row[nameField.name]) || "(entry)";
+
+  const entryName = (nameField && row[nameField.name]) || "entry";
+  const img = document.getElementById("detail-thumb");
+  const thumbLink = document.getElementById("detail-thumb-link");
+  const url = thumbUrl(row);
+  if (url) {
+    img.src = url;
+    img.alt = `Scan showing ${entryName}`;
+    img.style.display = "block";
+    img.onerror = () => { img.style.display = "none"; };
+    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}`;
+    thumbLink.title = "View this entry highlighted in the original scan";
+    thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
+  } else {
+    img.style.display = "none";
+    img.alt = "";
+    thumbLink.removeAttribute("href");
+    thumbLink.removeAttribute("aria-label");
+  }
+
+  const fields = document.getElementById("detail-fields");
+  fields.innerHTML = "";
+  displayFields.forEach(f => {
+    const val = row[f.name] || "";
+    if (!val) return;
+    const k = document.createElement("div");
+    k.className = "df-key";
+    k.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+    const v = document.createElement("div");
+    v.className = "df-val";
+    v.textContent = VALUE_LABELS[val] || val;
+    fields.appendChild(k);
+    fields.appendChild(v);
+  });
+
+  const pageCtx = document.getElementById("detail-page-context");
+  const src = document.getElementById("detail-source");
+  if (row.canvas_fragment) {
+    const cityState = [row.city, row.state].filter(Boolean).join(", ");
+    const overlayLabel = [entryName, row.address, cityState].filter(Boolean).join(" – ");
+    const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent(overlayLabel)}`;
+    pageCtx.innerHTML = `<a href="index.html?${viewerParams}" target="_blank">View in page context ↗</a>`;
+    const links = [];
+    const srcUrl = viewerUrl(row.canvas_fragment);
+    if (srcUrl) links.push(`<a href="${srcUrl}" target="_blank">Open original NYPL source page ↗</a>`);
+    const csUrl = contentStateUrl(row.canvas_fragment);
+    if (csUrl) links.push(`<a href="${csUrl}" target="_blank">View in source document ↗</a>`);
+    src.innerHTML = links.length ? `<div class="also-in-label">Source</div>` + links.join("") : "";
+  } else {
+    pageCtx.innerHTML = "";
+    src.innerHTML = "";
+  }
+  document.getElementById("detail-close").focus();
+  renderDetailMap(row);
+}
+
+// ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
+// Session-level geocode cache: re-opening an entry (or another entry that
+// falls back to the same city query) reuses the earlier result instead of
+// re-hitting Nominatim — friendlier to its 1 req/s usage policy while a user
+// browses quickly. Empty results are cached too.
+const _geoCache = new Map();
+function gbGeocode(query, signal) {
+  if (_geoCache.has(query)) return Promise.resolve(_geoCache.get(query));
+  return fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query), { signal })
+    .then(r => r.json())
+    .then(results => { _geoCache.set(query, results); return results; });
+}
+let _mapAbort = null;
+function renderDetailMap(row) {
+  const mapEl = document.getElementById("detail-map");
+  mapEl.style.display = "none";
+  mapEl.innerHTML = "";
+  if (_mapAbort) { _mapAbort.abort(); _mapAbort = null; }
+
+  const addr = (row.address || "").trim();
+  const city = (row.city || "").trim();
+  const state = (row.state || "").trim();
+  if (!addr || !city || !state) return;
+
+  const addrQuery = [addr, city, state].join(", ");
+  const cityQuery = [city, state].join(", ");
+  const osmSearchUrl = "https://www.openstreetmap.org/search?query=" + encodeURIComponent(addrQuery);
+
+  mapEl.style.display = "";
+  mapEl.innerHTML = '<div class="also-in-label">Approximate location</div><p class="map-loading">Loading map…</p>';
+
+  const controller = new AbortController();
+  _mapAbort = controller;
+
+  function showEmbed(lat, lon, d, disclaimer) {
+    const bbox = [lon - d, lat - d, lon + d, lat + d].join(",");
+    const marker = d < 0.05 ? "&marker=" + lat + "," + lon : "";
+    const embedUrl = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=mapnik" + marker;
+    mapEl.innerHTML =
+      '<div class="also-in-label">Approximate location</div>' +
+      '<iframe class="map-frame" src="' + embedUrl + '" loading="lazy" title="Map showing approximate location of this listing"></iframe>' +
+      '<p class="map-disclaimer">' + disclaimer + ' <a href="' + osmSearchUrl + '" target="_blank">Search on OpenStreetMap ↗</a></p>';
+  }
+
+  function tryCity() {
+    gbGeocode(cityQuery, controller.signal)
+      .then(results => {
+        if (!results.length) throw new Error("no results");
+        const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
+        showEmbed(lat, lon, 0.1, "Specific address not found — showing city area.");
+      })
+      .catch(err => {
+        if (err.name === "AbortError") return;
+        mapEl.innerHTML =
+          '<div class="also-in-label">Approximate location</div>' +
+          '<p class="map-disclaimer"><a href="' + osmSearchUrl + '" target="_blank">Search this address on OpenStreetMap ↗</a></p>';
+      });
+  }
+
+  gbGeocode(addrQuery, controller.signal)
+    .then(results => {
+      if (!results.length) { tryCity(); return; }
+      const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
+      showEmbed(lat, lon, 0.006, "Note: Streets and addresses change over time, and historical addresses often don't match contemporary locations -- use with caution.");
+    })
+    .catch(err => {
+      if (err.name === "AbortError") return;
+      tryCity();
+    });
+}
+
+document.getElementById("detail-close").addEventListener("click", () => {
+  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+  const u = new URL(location.href);
+  u.searchParams.delete('cf');
+  const qs = u.searchParams.toString();
+  history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + (location.hash || ''));
+  const prevIdx = selectedIdx;
+  const wrap = document.getElementById("table-wrap");
+  const savedScroll = wrap ? wrap.scrollTop : 0;
+  selectedIdx = null;
+  // Keep the render window anchored to the previously-selected row so the
+  // table doesn't jump back to row 0 after deselection.
+  _yearScrollAnchor = prevIdx;
+  renderTable();
+  _yearScrollAnchor = null;
+  if (wrap) wrap.scrollTop = savedScroll;
+  if (prevIdx !== null) {
+    const prevRow = document.querySelector('#table-body tr[data-idx="' + prevIdx + '"]');
+    if (prevRow) prevRow.focus();
+  }
+});
+
+// ── Render: facet sidebar ──────────────────────────────────────────────────
+function renderFacetSidebar() {
+  const container = document.getElementById("facet-controls");
+  container.innerHTML = "";
+
+  // Build live counts from the currently-filtered dataset so sidebar counts
+  // always reflect column filters and global search, not just static top_values.
+  const filteredForCounts = getFiltered();
+  const liveCount = {};
+  facetFields.forEach(f => {
+    liveCount[f.name] = {};
+    filteredForCounts.forEach(r => {
+      const v = r[f.name] || "";
+      liveCount[f.name][v] = (liveCount[f.name][v] || 0) + 1;
+    });
+  });
+
+  facetFields.forEach(f => {
+    const grp = document.createElement("div");
+    grp.className = "facet-group";
+
+    const lbl = document.createElement("div");
+    lbl.className = "facet-label";
+    const labelText = document.createElement("span");
+    labelText.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+    lbl.appendChild(labelText);
+    if (facetState[f.name].size > 0) {
+      const clr = document.createElement("button");
+      clr.className = "facet-clear";
+      clr.textContent = "clear";
+      clr.setAttribute("aria-label", `Clear ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")} filter`);
+      clr.addEventListener("click", () => {
+        _pushNextHistory = true;
+        facetState[f.name].clear();
+        renderAll();
+      });
+      lbl.appendChild(clr);
+    }
+    grp.appendChild(lbl);
+
+    const showAll = showAllFacets.has(f.name);
+    const topN = showAll ? f.top_values.length : Math.min(10, f.top_values.length);
+    f.top_values.slice(0, topN).forEach(([val, cnt]) => {
+      const item = document.createElement("label");
+      item.className = "facet-item";
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = facetState[f.name].has(val);
+      cb.addEventListener("change", () => {
+        _pushNextHistory = true;
+        if (cb.checked) facetState[f.name].add(val);
+        else facetState[f.name].delete(val);
+        renderAll();
+      });
+      const valSpan = document.createElement("span");
+      valSpan.className = "val";
+      if (f.name === "publication" && PUBLICATION_COLORS[val]) {
+        const dot = document.createElement("span");
+        dot.className = "pub-dot";
+        dot.style.background = PUBLICATION_COLORS[val];
+        valSpan.appendChild(dot);
+      }
+      valSpan.appendChild(document.createTextNode(VALUE_LABELS[val] || val || "(empty)"));
+      valSpan.title = VALUE_LABELS[val] || val;
+      const cntSpan = document.createElement("span");
+      cntSpan.className = "cnt";
+      let _cnt = liveCount[f.name][val] || 0;
+      if (f.groups && f.groups[val]) _cnt = f.groups[val].reduce((s, rv) => s + (liveCount[f.name][rv] || 0), 0);
+      cntSpan.textContent = _cnt.toLocaleString();
+      item.appendChild(cb);
+      item.appendChild(valSpan);
+      item.appendChild(cntSpan);
+      grp.appendChild(item);
+    });
+
+    if (!showAll && f.top_values.length > 10) {
+      const more = document.createElement("button");
+      more.className = "facet-more";
+      more.textContent = `+ ${f.top_values.length - 10} more…`;
+      more.setAttribute("aria-label", `Show ${f.top_values.length - 10} more ${f.name.replace(/_/g, " ")} values`);
+      more.addEventListener("click", () => {
+        showAllFacets.add(f.name);
+        try { sessionStorage.setItem('showAllFacets', JSON.stringify([...showAllFacets])); } catch(e) {}
+        renderFacetSidebar();
+      });
+      grp.appendChild(more);
+    }
+    container.appendChild(grp);
+  });
+}
+
+
+// ── Export CSV ─────────────────────────────────────────────────────────────
+document.getElementById("export-btn").addEventListener("click", () => {
+  gcEvent('export-csv');
+  const btn = document.getElementById("export-btn");
+  btn.disabled = true;
+  btn.textContent = "Exporting…";
+  const filtered = getSorted(getFiltered());
+  const cols = FIELD_META.map(f => f.name);
+  const lines = [cols.map(c => JSON.stringify(c || "")).join(",")];
+  filtered.forEach(row => {
+    lines.push(cols.map(c => JSON.stringify(row[c] || "")).join(","));
+  });
+  const blob = new Blob([lines.join("\n")], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = (DOC_TITLE || "entries").replace(/\s+/g, "_") + "_filtered.csv";
+  a.click();
+  setTimeout(() => {
+    btn.disabled = false; btn.textContent = "Export CSV";
+    const fb = document.getElementById("export-feedback");
+    if (fb) { fb.textContent = `Exported ${filtered.length.toLocaleString()} entries as CSV.`; setTimeout(() => { fb.textContent = ""; }, 4000); }
+  }, 600);
+});
+
+// ── Clear all filters (empty-state button) ─────────────────────────────────
+function clearAllFilters() {
+  const savedRow = selectedIdx !== null ? ALL_ENTRIES[selectedIdx] : null;
+  _pushNextHistory = true;
+  Object.values(facetState).forEach(s => s.clear());
+  colFilters = {};
+  sortCol = null;
+  sortDir = 1;
+  showAllFacets.clear();
+  try { sessionStorage.removeItem('showAllFacets'); } catch(e) {}
+  searchQuery = "";
+  document.getElementById("search").value = "";
+  renderAll();
+  if (savedRow) {
+    selectedIdx = rowIdx(savedRow);
+    showDetail(savedRow);
+    renderTableBody();
+    scrollToSelected(100);
+  } else {
+    scrollToYear("1938");
+  }
+}
+document.getElementById("clear-all-btn").addEventListener("click", clearAllFilters);
+// Delegated handler covers the dynamically-recreated button inside #no-results
+document.getElementById("no-results").addEventListener("click", e => {
+  if (e.target && e.target.id === "clear-all-btn") clearAllFilters();
+});
+
+// ── Mobile sidebar toggle ──────────────────────────────────────────────────
+(function () {
+  const filterBtn = document.getElementById("filter-btn");
+  const backdrop  = document.getElementById("sidebar-backdrop");
+  const app       = document.getElementById("app");
+  const sidebar   = document.getElementById("sidebar");
+  function openSidebar()  {
+    app.classList.add("sidebar-open");
+    filterBtn.setAttribute("aria-expanded", "true");
+    sidebar.setAttribute("tabindex", "-1");
+    sidebar.focus();
+  }
+  function closeSidebar(returnFocus) {
+    if (!app.classList.contains("sidebar-open")) return;
+    app.classList.remove("sidebar-open");
+    filterBtn.setAttribute("aria-expanded", "false");
+    if (returnFocus) filterBtn.focus();
+  }
+  filterBtn.addEventListener("click", () => app.classList.contains("sidebar-open") ? closeSidebar(false) : openSidebar());
+  backdrop.addEventListener("click", () => closeSidebar(false));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && app.classList.contains("sidebar-open")) closeSidebar(true);
+  });
+  document.getElementById("facet-controls").addEventListener("change", () => {
+    if (window.innerWidth <= 640) closeSidebar(false);
+  });
+})();
+
+// ── Search input ───────────────────────────────────────────────────────────
+let searchTimer;
+document.getElementById("search").addEventListener("input", e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    searchQuery = e.target.value;
+    renderAll();
+  }, 180);
+});
+
+// "/" focuses search from anywhere that isn't already a text control.
+document.addEventListener("keydown", e => {
+  if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey) return;
+  const t = e.target;
+  if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+  const s = document.getElementById("search");
+  if (!s) return;
+  e.preventDefault();
+  s.focus();
+  s.select();
+});
+
+// ── Sync filter UI: URL hash + clear-filters button visibility ───────────
+function syncFilterUI() {
+  try {
+    if (_pushNextHistory) { history.pushState(null, "", stateToHash()); _pushNextHistory = false; }
+    else history.replaceState(null, "", stateToHash());
+  } catch(e) {}
+  const anyActive = !!searchQuery ||
+    Object.values(colFilters).some(v => v) ||
+    Object.values(facetState).some(s => s.size > 0);
+  document.getElementById("clear-filters-btn").style.display = anyActive ? "inline-block" : "none";
+}
+
+document.getElementById("clear-filters-btn").addEventListener("click", clearAllFilters);
+
+// ── URL hash state (shareable filtered links) ─────────────────────────────
+function stateToHash() {
+  const params = new URLSearchParams();
+  const volLabels = Object.keys(VOLUMES);
+  if (volLabels.length > 1) {
+    const sel = document.getElementById("volume-select");
+    if (sel) {
+      const idx = volLabels.indexOf(sel.value);
+      if (idx > 0) params.set("vol", idx);
+    }
+  }
+  if (searchQuery) params.set("q", searchQuery);
+  if (sortCol) params.set("sort", sortCol + ":" + (sortDir > 0 ? "asc" : "desc"));
+  for (const [col, val] of Object.entries(colFilters)) {
+    if (val) params.set("cf_" + col, val);
+  }
+  for (const [field, valSet] of Object.entries(facetState)) {
+    if (valSet.size) params.set("f_" + field, [...valSet].join("|"));
+  }
+  // Pathname-anchored, never a bare "#…" fragment: the History API resolves
+  // relative URLs against the document base, so under a preview deploy's
+  // injected <base href> a bare fragment would rewrite the address bar to
+  // the site root (losing the preview path on refresh/share).
+  const str = params.toString();
+  if (str) return location.pathname + location.search + "#" + str;
+  if (location.hash === '#about') return location.pathname + location.search + '#about';
+  return location.pathname + location.search;
+}
+
+function applyHashState() {
+  const raw = location.hash.slice(1);
+  if (!raw) return;
+  const params = new URLSearchParams(raw);
+
+  // Volume: load data + reset filters, then apply overrides below
+  if (params.has("vol")) {
+    const volLabels = Object.keys(VOLUMES);
+    const idx = parseInt(params.get("vol"), 10);
+    if (idx > 0 && idx < volLabels.length) {
+      const label = volLabels[idx];
+      loadVolume(label);
+      const sel = document.getElementById("volume-select");
+      if (sel) sel.value = label;
+      const msel = document.getElementById("mobile-volume-select");
+      if (msel) msel.value = label;
+    }
+  }
+
+  // Search query
+  const q = params.get("q");
+  if (q) {
+    searchQuery = q;
+    const el = document.getElementById("search");
+    if (el) el.value = q;
+  }
+
+  // Sort
+  const sort = params.get("sort");
+  if (sort && sort.includes(":")) {
+    const [col, dir] = sort.split(":");
+    sortCol = col;
+    sortDir = dir === "desc" ? -1 : 1;
+  }
+
+  // Column filters
+  for (const [key, val] of params.entries()) {
+    if (key.startsWith("cf_") && val) colFilters[key.slice(3)] = val;
+  }
+
+  // Facet filters
+  for (const [key, val] of params.entries()) {
+    if (key.startsWith("f_")) {
+      const field = key.slice(2);
+      if (facetState[field]) val.split("|").forEach(v => { if (v) facetState[field].add(v); });
+    }
+  }
+}
+
+// ── Render all ─────────────────────────────────────────────────────────────
+function renderAll() {
+  // Auto-close the detail panel whenever filters/search change so users
+  // never see a stale record juxtaposed against a new result set.
+  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+  selectedIdx = null;
+  _winSize = WINDOW_STEP;  // shrink an extended window back to one page
+  renderFacetSidebar();
+  renderTable();
+  syncFilterUI();
+}
+
+// ── Random entry ────────────────────────────────────────────────────────────
+function scrollToSelected(delayMs = 0) {
+  setTimeout(() => {
+    const tr = document.querySelector('#table-body tr.selected');
+    const wrap = document.getElementById('table-wrap');
+    if (!tr || !wrap) return;
+    const trRect = tr.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    wrap.scrollTop += trRect.top - wrapRect.top - (wrap.clientHeight / 2) + (tr.offsetHeight / 2);
+  }, delayMs);
+}
+
+function scrollToYear(year) {
+  const sorted = getSorted(getFiltered());
+  const targetRow = sorted.find(r => (r.volume_year || r.year || '') === year);
+  if (!targetRow) return;
+  const targetIdx = rowIdx(targetRow);
+  _yearScrollAnchor = targetIdx;
+  renderTableBody();
+  _yearScrollAnchor = null;
+  setTimeout(() => {
+    const tr = document.querySelector(`#table-body tr[data-idx="${targetIdx}"]`);
+    const wrap = document.getElementById('table-wrap');
+    if (!tr || !wrap) return;
+    const thead = wrap.querySelector('thead');
+    const headerH = thead ? thead.getBoundingClientRect().height : 48;
+    const trRect = tr.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    wrap.scrollTop += trRect.top - wrapRect.top - headerH;
+  }, 0);
+}
+
+document.getElementById("random-btn").addEventListener("click", () => {
+  gcEvent('random-entry');
+  const all = getSorted(getFiltered());
+  const pool = all.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
+  if (!pool.length) return;
+  const r = pool[Math.floor(Math.random() * pool.length)];
+  selectedIdx = rowIdx(r);
+  showDetail(r);
+  renderTableBody();
+  scrollToSelected();
+});
+
+document.getElementById("random-year-btn").addEventListener("click", () => {
+  const yearField = FIELD_META.find(f => f.name === GB_YEAR_FIELD);
+  if (!yearField || !yearField.top_values.length) return;
+  const years = yearField.top_values.map(([y]) => y);
+  gbJumpToYear(years[Math.floor(Math.random() * years.length)]);
+});
+
+// ── Back/forward navigation via popstate ────────────────────────────────────
+window.addEventListener("popstate", function () {
+  // Reset all filter state to empty before re-reading URL
+  Object.values(facetState).forEach(s => s.clear());
+  colFilters = {};
+  sortCol = null;
+  sortDir = 1;
+  searchQuery = "";
+  const searchEl = document.getElementById("search");
+  if (searchEl) searchEl.value = "";
+  showAllFacets.clear();
+  // Re-apply filters from new URL hash
+  applyHashState();
+  renderAll();  // closes detail panel
+  // Re-open detail if ?cf= is present in the new URL
+  const cf = new URLSearchParams(location.search).get("cf");
+  if (cf) {
+    const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
+    if (match) {
+      selectedIdx = rowIdx(match);
+      showDetail(match);
+      renderTableBody();
+      scrollToSelected();
+    }
+  }
+});
+
+applyHashState();
+renderAll();
+
+// If the URL has any hash state, skip the hero and jump to the explorer
+if (location.hash && location.hash.length > 1) {
+  history.scrollRestoration = 'manual';
+  setTimeout(() => {
+    const app = document.getElementById('app');
+    if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+  }, 0);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// Green Book extensions — year facets + "Also in" (appended by
+// analysis/build_greenbook_explorer.py; do not edit the base template)
+// ════════════════════════════════════════════════════════════════════════════
+
+// ── Auto-detect the edition-year field name ──────────────────────────────────
+const GB_YEAR_FIELD = (() => {
+  const f = FIELD_META.find(f => f.name === "volume_year" || f.name === "year");
+  return f ? f.name : null;
+})();
+
+// ── Cross-listing match index ────────────────────────────────────────────────
+// Normalization + resolver live in gb-matching.js (shared with the validation
+// harness at address-keying-test.html). Rows bucket by (name stem, normalized
+// city), then split into business-level groups by address signature. Built
+// once in the streaming loader's final pass; empty until then.
+let gbNameIndex = new Map();   // groupKey → [row objects]
+let gbRowToKey  = new Map();   // row object → groupKey
+let gbDataLoaded = false;      // true once both CSV streams have finished
+
+// All cross-listings for a row's resolved business group (including itself).
+function gbCrossListings(row) {
+  const key = gbRowToKey.get(row);
+  return (key !== undefined && gbNameIndex.get(key)) || [];
+}
+
+function gbJumpToYear(year) {
+  if (!GB_YEAR_FIELD) return;
+
+  // Find the same establishment in the target year before clearing state
+  let matchRow = null;
+  if (selectedIdx !== null) {
+    const cur = ALL_ENTRIES[selectedIdx];
+    if (cur) {
+      matchRow = gbCrossListings(cur)
+        .find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
+    }
+  }
+
+  facetState[GB_YEAR_FIELD].clear();
+  facetState[GB_YEAR_FIELD].add(year);
+  _pushNextHistory = true;
+  renderAll();  // closes drawer, applies year filter, re-renders table
+
+  if (matchRow) {
+    selectedIdx = rowIdx(matchRow);
+    showDetail(matchRow);
+    renderTableBody();  // re-render to show selection highlight
+  }
+}
+
+// Jump to a specific listing row. The coverage grid knows the exact target
+// row for each filled cell, so we can land on the (publication, year) the
+// user clicked rather than guessing by year alone.
+function gbJumpToListing(targetRow) {
+  if (!targetRow || !GB_YEAR_FIELD) return;
+  const year = targetRow[GB_YEAR_FIELD] || targetRow.year;
+  if (year) {
+    facetState[GB_YEAR_FIELD].clear();
+    facetState[GB_YEAR_FIELD].add(year);
+  }
+  _pushNextHistory = true;
+  renderAll();
+  selectedIdx = rowIdx(targetRow);
+  showDetail(targetRow);
+  renderTableBody();
+}
+
+// ── Coverage-cell tooltip ────────────────────────────────────────────────────
+// A single reusable tooltip node, shown on pointer/focus of any coverage cell.
+// Enhances only: every value it shows is also in the cell's aria-label and the
+// table view, so nothing is gated behind hover. Strings come from CSV data, so
+// they go in via textContent — never innerHTML.
+let _gbTip = null;
+function gbTipEl() {
+  if (!_gbTip) {
+    _gbTip = document.createElement("div");
+    _gbTip.className = "coverage-tip";
+    _gbTip.setAttribute("role", "tooltip");
+    document.body.appendChild(_gbTip);
+  }
+  return _gbTip;
+}
+function gbShowTip(lines, x, y) {
+  const tip = gbTipEl();
+  tip.innerHTML = "";
+  lines.forEach(([txt, cls]) => {
+    if (txt == null || txt === "") return;
+    const s = document.createElement("span");
+    s.className = cls;
+    s.textContent = txt;
+    tip.appendChild(s);
+  });
+  tip.classList.add("show");
+  // Position after paint so we can measure. Clamp within the viewport.
+  const r = tip.getBoundingClientRect();
+  let left = x + 12, top = y + 14;
+  if (left + r.width > window.innerWidth - 8) left = x - r.width - 12;
+  if (top + r.height > window.innerHeight - 8) top = y - r.height - 10;
+  tip.style.left = Math.max(8, left) + "px";
+  tip.style.top = Math.max(8, top) + "px";
+}
+function gbHideTip() { if (_gbTip) _gbTip.classList.remove("show"); }
+// Attach hover + keyboard-focus tooltip to a coverage cell. `lines` is an
+// array of [text, className] pairs (value first, then secondary details).
+function gbAttachTip(cell, lines) {
+  cell.addEventListener("pointerenter", e => gbShowTip(lines, e.clientX, e.clientY));
+  cell.addEventListener("pointermove", e => gbShowTip(lines, e.clientX, e.clientY));
+  cell.addEventListener("pointerleave", gbHideTip);
+  cell.addEventListener("focus", () => {
+    const b = cell.getBoundingClientRect();
+    gbShowTip(lines, b.left + b.width / 2, b.bottom);
+  });
+  cell.addEventListener("blur", gbHideTip);
+}
+
+// ── Monkey-patches ───────────────────────────────────────────────────────────
+
+// renderFacetSidebar: move volume_year to the top of the facet list
+const _gbOrigRFS = renderFacetSidebar;
+renderFacetSidebar = function () {
+  const orig = facetFields;
+  facetFields = [
+    ...facetFields.filter(f => f.name === GB_YEAR_FIELD),
+    ...facetFields.filter(f => f.name !== GB_YEAR_FIELD),
+  ];
+  _gbOrigRFS();
+  facetFields = orig;
+};
+
+// showDetail: sync ?cf= URL param + append "Also in" section
+const _gbOrigSD = showDetail;
+showDetail = function (row) {
+  _gbOrigSD(row);
+  if (row) gcEvent('detail-open');
+
+  // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
+  // closes it); switching entries while it's already open replaces, so Back
+  // doesn't walk through every row the user ever clicked.
+  if (row && row.canvas_fragment) {
+    const u = new URL(location.href);
+    const wasOpen = u.searchParams.has('cf');
+    u.searchParams.set('cf', row.canvas_fragment);
+    const url = u.pathname + '?' + u.searchParams + (location.hash || '');
+    if (wasOpen) history.replaceState(null, '', url);
+    else history.pushState(null, '', url);
+  }
+
+  const alsoEl = document.getElementById("detail-also-in");
+  if (!alsoEl) return;
+
+  // Find the name field for this row
+  const nf = ["name", "establishment_name", "firm_name", "business_name"]
+    .find(k => row[k] != null && row[k] !== "");
+  const nfVal = nf && row[nf];
+  // While the CSVs are still streaming, say why the coverage grid isn't here
+  // yet instead of silently omitting a section that will appear later.
+  if (!gbDataLoaded && nfVal) {
+    alsoEl.style.display = "";
+    alsoEl.innerHTML = '<div class="also-in-label">Coverage across publications</div>' +
+      '<p class="coverage-pending">Cross-publication matches will appear here once all entries finish loading…</p>';
+    return;
+  }
+  if (!nfVal || gbNameIndex.size === 0) { alsoEl.style.display = "none"; return; }
+
+  // Cross-listings for this row's resolved business group — the resolver in
+  // gb-matching.js folds name variants ("Miami Carver" / "Miami Carver
+  // Hotel"), city variants ("NEW YORK CITY (HARLEM)"), and address-form
+  // variants ("La Salle" / "LaSalle") while splitting same-name businesses
+  // at different addresses (four "West End"s on one St. Louis block).
+  const allListings = gbCrossListings(row);
+  const others = allListings.filter(r => r !== row);
+
+  // Hide the panel when there are no cross-listings — the grid has nothing
+  // interesting to show and the detail panel stays compact.
+  if (others.length === 0) { alsoEl.style.display = "none"; return; }
+  if (PUBLICATION_ACTIVE_YEARS.size === 0) {
+    // Streaming still in progress — bail until the final pass populates the
+    // publication-year lookup.
+    alsoEl.style.display = "none"; return;
+  }
+
+  alsoEl.innerHTML = "";
+  alsoEl.style.display = "";
+  const heading = document.createElement("div");
+  heading.className = "also-in-label";
+  heading.textContent = "Coverage across publications";
+  alsoEl.appendChild(heading);
+
+  // Provenance note. The same business is filed under different section
+  // headings from guide to guide ("HOTELS" / "WHERE TO STAY" / "GO-BY-AUTO Club
+  // Members"), so a multi-category group is normal — it shows how differently
+  // the publications organized, not a matching error. (An earlier "may be more
+  // than one business" warning keyed off this same category/address string
+  // variance; a full-dataset audit found it fired on 784 groups with a 0%
+  // true-positive rate — every one a correctly-merged single business, e.g. the
+  // Liberty Hotel at 1519 Baltic Ave. under 11 headings — because raw category
+  // and address strings vary precisely for the businesses the resolver merges
+  // *correctly*. It was removed; genuine over-merges would show divergent parsed
+  // address signatures, which this data effectively never does.)
+  const groupCats = [...new Set(allListings.map(r => r.category).filter(Boolean))];
+  if (groupCats.length > 1) {
+    const catNote = document.createElement("div");
+    catNote.className = "coverage-cat-note";
+    catNote.textContent = "Filed under " + groupCats.length + " section headings across guides: " +
+      groupCats.slice(0, 4).join(", ") + (groupCats.length > 4 ? ", …" : "");
+    alsoEl.appendChild(catNote);
+  }
+
+  // Build the (publication, year) → row index for this entry's matches.
+  const listingByPubYear = new Map();
+  allListings.forEach(r => {
+    const pub = r.publication;
+    const y = r[GB_YEAR_FIELD] || r.year;
+    if (!pub || !y) return;
+    const k = pub + "|" + y;
+    if (!listingByPubYear.has(k)) listingByPubYear.set(k, r);
+  });
+
+  // Union of all (publication, active-year) pairs — used to tell "publication
+  // active but didn't list this entry" from "publication wasn't published then".
+  const allYearsSet = new Set();
+  PUBLICATION_ACTIVE_YEARS.forEach(years => years.forEach(y => allYearsSet.add(String(y))));
+  const yearNums = [...allYearsSet].map(Number).filter(n => !isNaN(n)).sort((a, b) => a - b);
+  const minY = yearNums[0], maxY = yearNums[yearNums.length - 1];
+
+  const currentPub = row.publication;
+  const currentYear = String(row[GB_YEAR_FIELD] || row.year);
+
+  // ── Summary headline: lead with the number this grid knows ─────────────────
+  const listedPubSet = new Set(allListings.map(r => r.publication).filter(Boolean));
+  const listingYearNums = allListings
+    .map(r => Number(r[GB_YEAR_FIELD] || r.year)).filter(n => !isNaN(n));
+  const firstListed = Math.min(...listingYearNums);
+  const lastListed = Math.max(...listingYearNums);
+  const totalPubs = PUBLICATION_ACTIVE_YEARS.size;
+  const rangeTxt = firstListed === lastListed
+    ? String(firstListed) : firstListed + "–" + lastListed;
+  const summary = document.createElement("div");
+  summary.className = "coverage-summary";
+  const nList = allListings.length;
+  const strong = t => { const s = document.createElement("strong"); s.textContent = t; return s; };
+  summary.appendChild(strong(nList + (nList === 1 ? " listing" : " listings")));
+  summary.appendChild(document.createTextNode(" across "));
+  summary.appendChild(strong(listedPubSet.size + " of " + totalPubs));
+  summary.appendChild(document.createTextNode(
+    " publication" + (totalPubs === 1 ? "" : "s") + " · "));
+  summary.appendChild(strong(rangeTxt));
+  alsoEl.appendChild(summary);
+
+  // Row order: publications by earliest active year (chronological appearance).
+  const allPubs = [...PUBLICATION_ACTIVE_YEARS.keys()].sort((a, b) => {
+    const ya = Math.min(...PUBLICATION_ACTIVE_YEARS.get(a));
+    const yb = Math.min(...PUBLICATION_ACTIVE_YEARS.get(b));
+    return ya - yb || a.localeCompare(b);
+  });
+
+  // Mobile compact: only publications this entry was actually listed in.
+  const compact = window.matchMedia('(max-width: 640px)').matches;
+  const visiblePubs = compact ? allPubs.filter(p => listedPubSet.has(p)) : allPubs;
+
+  // ── Column model ───────────────────────────────────────────────────────────
+  // Columns span the year window. A maximal run of >=2 consecutive years in
+  // which *no* publication was active collapses into one narrow "break" column,
+  // so the dead spans (1932-36, the 1942-46 wartime pause, 1964-65) don't
+  // dominate the ink. Isolated dead years (e.g. 1958) stay as visible cells.
+  // On mobile compact the window trims to this entry's own listing span (+/-1yr)
+  // while staying contiguous, so the time axis is never silently rescaled.
+  let windowMin = minY, windowMax = maxY;
+  if (compact && listingYearNums.length) {
+    windowMin = Math.max(minY, firstListed - 1);
+    windowMax = Math.min(maxY, lastListed + 1);
+  }
+  const columns = [];
+  let deadStart = null;
+  const flushDead = end => {
+    if ((end - deadStart + 1) >= 2) columns.push({ type: "break", from: deadStart, to: end });
+    else for (let d = deadStart; d <= end; d++) columns.push({ type: "year", y: String(d) });
+    deadStart = null;
+  };
+  for (let y = windowMin; y <= windowMax; y++) {
+    if (!allYearsSet.has(String(y))) { if (deadStart === null) deadStart = y; continue; }
+    if (deadStart !== null) flushDead(y - 1);
+    columns.push({ type: "year", y: String(y) });
+  }
+  if (deadStart !== null) flushDead(windowMax);
+
+  const yearCols = columns.filter(c => c.type === "year");
+  const labelFirstLast = new Set();  // years that always show a header label
+  if (yearCols.length) {
+    labelFirstLast.add(yearCols[0].y);
+    labelFirstLast.add(yearCols[yearCols.length - 1].y);
+  }
+
+  // Lay out as a CSS grid: first column is the sticky publication label, then
+  // one flexible column per year (or a narrow one per break). Row 1 is the axis.
+  const grid = document.createElement("div");
+  grid.className = "coverage-grid";
+  grid.setAttribute("role", "group");
+  grid.setAttribute("aria-label",
+    "Coverage of " + nfVal + ": " + nList + (nList === 1 ? " listing" : " listings") +
+    " across " + listedPubSet.size + " of " + totalPubs + " publications, " +
+    firstListed + " to " + lastListed + ". Each cell is a publication in one year.");
+  grid.style.gridTemplateColumns = "auto " +
+    columns.map(c => c.type === "break" ? "8px" : "minmax(7px, 1fr)").join(" ");
+
+  // Year header row.
+  const corner = document.createElement("div");
+  corner.className = "coverage-corner";
+  grid.appendChild(corner);
+  columns.forEach(c => {
+    const h = document.createElement("div");
+    if (c.type === "break") {
+      h.className = "year-head year-head-break";
+      h.textContent = "⋯";  // horizontal ellipsis marks collapsed time
+    } else {
+      h.className = "year-head";
+      // Label every 5th year, plus always the first and last, so the span is
+      // anchored even when its ends don't fall on a round year. Anchor the end
+      // labels inward (a 4-digit label is wider than an 8px track) so they
+      // don't spill past the grid edge and force a stray scrollbar.
+      // Force first/last labels only in compact mode, where short spans need
+      // anchoring; on desktop the 5-year ticks + the summary's stated range
+      // carry it, and forcing a 4-digit label onto the edge track spills it.
+      const forced = compact && labelFirstLast.has(c.y);
+      h.textContent = (Number(c.y) % 5 === 0 || forced) ? c.y : "";
+      if (yearCols.length && c.y === yearCols[0].y) h.style.textAlign = "left";
+      else if (yearCols.length && c.y === yearCols[yearCols.length - 1].y) h.style.textAlign = "right";
+    }
+    h.setAttribute("aria-hidden", "true");
+    grid.appendChild(h);
+  });
+
+  // One row per publication.
+  visiblePubs.forEach(pub => {
+    const shortName = PUBLICATION_SHORT_NAMES[pub] || pub;
+    const label = document.createElement("div");
+    label.className = "pub-label" + (pub === currentPub ? " pub-label-current" : "");
+    const dot = document.createElement("span");
+    dot.className = "pub-dot";
+    dot.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink-faint)";
+    label.appendChild(dot);
+    label.appendChild(document.createTextNode(shortName));
+    grid.appendChild(label);
+
+    const activeYears = PUBLICATION_ACTIVE_YEARS.get(pub) || new Set();
+    columns.forEach(c => {
+      if (c.type === "break") {
+        const brk = document.createElement("div");
+        brk.className = "coverage-break";
+        brk.setAttribute("role", "img");
+        brk.setAttribute("aria-label", shortName + ": no guides published " + c.from + "–" + c.to);
+        gbAttachTip(brk, [
+          ["No guides published", "tip-val"],
+          [c.from + "–" + c.to, "tip-sub"],
+        ]);
+        grid.appendChild(brk);
+        return;
+      }
+      const y = c.y;
+      const listingRow = listingByPubYear.get(pub + "|" + y);
+      const isActive = activeYears.has(y);
+      const isCurrent = listingRow === row;
+      let cell;
+      if (listingRow) {
+        cell = document.createElement("button");
+        cell.type = "button";
+        cell.className = "coverage-cell coverage-cell-listed" + (isCurrent ? " coverage-cell-current" : "");
+        cell.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink)";
+        if (isCurrent) {
+          // "You are here": keep it focusable (not disabled) so keyboard users
+          // can find it; mark aria-current and make activation a no-op.
+          cell.setAttribute("aria-current", "true");
+          cell.setAttribute("aria-label", shortName + ", " + y + ": this entry");
+          cell.addEventListener("click", e => e.preventDefault());
+        } else {
+          cell.setAttribute("aria-label", "Jump to " + shortName + ", " + y +
+            (listingRow.name ? " (" + listingRow.name + ")" : ""));
+          cell.addEventListener("click", () => { gbHideTip(); gbJumpToListing(listingRow); });
+        }
+        // Tooltip shows the name-as-printed + address for this pub-year — the
+        // resolver folds name variants, so exposing the printed form is a feature.
+        gbAttachTip(cell, [
+          [shortName + " · " + y, "tip-val"],
+          [listingRow.name || "", "tip-sub"],
+          [listingRow.address || "", "tip-sub"],
+          [isCurrent ? "← this entry" : "Click to open this listing", "tip-sub"],
+        ]);
+      } else if (isActive) {
+        cell = document.createElement("div");
+        cell.className = "coverage-cell coverage-cell-empty";
+        cell.setAttribute("role", "img");
+        cell.setAttribute("aria-label", shortName + ", " + y + ": published, but this entry not listed");
+        gbAttachTip(cell, [
+          [shortName + " · " + y, "tip-val"],
+          ["Published — not listed this year", "tip-sub"],
+        ]);
+      } else {
+        cell = document.createElement("div");
+        cell.className = "coverage-cell coverage-cell-inactive";
+        cell.setAttribute("role", "img");
+        cell.setAttribute("aria-label", shortName + ", " + y + ": not published this year");
+        gbAttachTip(cell, [
+          [shortName + " · " + y, "tip-val"],
+          ["Not published this year", "tip-sub"],
+        ]);
+      }
+      grid.appendChild(cell);
+    });
+  });
+
+  const scroll = document.createElement("div");
+  scroll.className = "coverage-scroll";
+  scroll.appendChild(grid);
+  alsoEl.appendChild(scroll);
+
+  // Name the wartime pause explicitly — the most historically meaningful break.
+  const wwiiBreak = columns.find(c => c.type === "break" && c.from <= 1942 && c.to >= 1945);
+  if (wwiiBreak) {
+    const note = document.createElement("div");
+    note.className = "coverage-gap-note";
+    note.textContent = wwiiBreak.from + "–" + wwiiBreak.to +
+      ": no guides in the dataset were published — the wartime pause.";
+    alsoEl.appendChild(note);
+  }
+
+  // Legend. Listed cells are colored per publication (matching the row dots and
+  // the table stripes), so the "Listed" swatch uses this entry's own colour and
+  // the label says so — otherwise a single ink swatch would contradict the grid.
+  // Whichever secondary states are actually present get a legend item, so the
+  // legend is honest on mobile too (where "not published" breaks may be absent).
+  const legend = document.createElement("div");
+  legend.className = "coverage-legend";
+  legend.setAttribute("aria-hidden", "true");
+  const hasEmpty = grid.querySelector(".coverage-cell-empty");
+  const hasInactive = grid.querySelector(".coverage-cell-inactive");
+  const hasBreak = grid.querySelector(".coverage-break");
+  const legendItems = [
+    ["Listed — colored by publication", { background: PUBLICATION_COLORS[currentPub] || "var(--gb-ink)" }, false],
+  ];
+  if (hasEmpty) legendItems.push(
+    ["Published, not listed", { background: "var(--gb-paper-2)", border: "1px solid var(--gb-rule-faint)" }, false]);
+  if (hasInactive) legendItems.push(
+    ["Not published that year", {}, true]);
+  if (hasBreak) legendItems.push(
+    ["⋯ years with no guides (collapsed)", { background: "transparent",
+      backgroundImage: "linear-gradient(var(--gb-rule-faint), var(--gb-rule-faint))",
+      backgroundSize: "1px 100%", backgroundPosition: "center", backgroundRepeat: "no-repeat" }, false]);
+  legendItems.forEach(([txt, style, hatch]) => {
+    const item = document.createElement("div");
+    item.className = "coverage-legend-item";
+    const sw = document.createElement("span");
+    sw.className = "coverage-legend-swatch" + (hatch ? " coverage-legend-swatch-hatch" : "");
+    Object.assign(sw.style, style);
+    item.appendChild(sw);
+    item.appendChild(document.createTextNode(txt));
+    legend.appendChild(item);
+  });
+  alsoEl.appendChild(legend);
+
+  // Broaden filters to surface every candidate match across publications. The
+  // count reuses the summary total so the link says what it will show.
+  const allLink = document.createElement("a");
+  allLink.className = "also-all-link";
+  allLink.href = "#";
+  allLink.textContent = "Show all " + nList + " matching listings in the table →";
+  allLink.addEventListener("click", e => {
+    e.preventDefault();
+    // Search on the stripped name (suffixes, descriptors, possessives) so
+    // all variants surface as substring matches of the shorter query.
+    const q = gbSearchQueryName(nfVal);
+    searchQuery = q;
+    document.getElementById("search").value = q;
+    // Normalized city as the column filter: the filter is a substring match,
+    // so "new york" catches "NEW YORK CITY" and "NEW YORK, N.Y. (HARLEM)",
+    // where the raw variant string would match only itself.
+    if (row.city) colFilters["city"] = gbNormCity(row.city);
+    if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
+    if (facetState["publication"]) facetState["publication"].clear();
+    document.getElementById("detail").classList.remove("open");
+    document.getElementById("main").classList.remove("detail-open");
+    selectedIdx = null;
+    _pushNextHistory = true;
+    renderAll();
+  });
+  alsoEl.appendChild(allLink);
+};
+
+// ── Re-render everything now that monkey-patches are in place ────────────────
+// The base renderAll() at the bottom of the main script runs *before* this
+// block executes, so volume_year checkboxes would still be visible without
+// this second pass.
+renderAll();
+
+
+// ── Deep-link: ?cf=<canvas_fragment> opens entry detail on load ──────────────
+(function () {
+  const cf = new URLSearchParams(location.search).get('cf');
+  if (!cf) return;
+  const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
+  if (!match) return;
+  selectedIdx = rowIdx(match);
+  showDetail(match);
+  renderTableBody();
+  history.scrollRestoration = 'manual';
+  const app = document.getElementById('app');
+  if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+  scrollToSelected(100);
+})();
+
+// ── About modal ──────────────────────────────────────────────────────────────
+(function () {
+  let opener = null;
+  function openAbout() {
+    opener = document.activeElement;
+    document.getElementById('about-backdrop').classList.add('open');
+    document.getElementById('about-modal').focus();
+    // Pathname-anchored — a bare "#about" resolves against <base href> in
+    // preview deploys and would rewrite the address bar to the site root.
+    history.replaceState(null, '', location.pathname + location.search + '#about');
+  }
+  function closeAbout() {
+    document.getElementById('about-backdrop').classList.remove('open');
+    if (opener) { opener.focus(); opener = null; }
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  document.getElementById('about-btn').addEventListener('click', openAbout);
+  if (window._gbAboutOnLoad) openAbout();
+  document.addEventListener('click', (e) => {
+    const backdrop = document.getElementById('about-backdrop');
+    if (!backdrop || !backdrop.classList.contains('open')) return;
+    if (e.target === backdrop || e.target.closest('.close-about')) closeAbout();
+  });
+  document.addEventListener('keydown', (e) => {
+    const backdrop = document.getElementById('about-backdrop');
+    if (!backdrop || !backdrop.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeAbout(); return; }
+    if (e.key === 'Tab') {
+      const modal = document.getElementById('about-modal');
+      const focusable = Array.from(
+        modal.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])')
+      ).filter(el => !el.disabled);
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    }
+  });
+}());
+
+// ── Detail panel: Escape everywhere; focus trap only on mobile, where the
+// panel actually covers the whole screen. On desktop it sits beside the
+// table (which stays interactive), so trapping Tab would contradict the
+// non-modal role and strand keyboard users.
+document.getElementById('detail').addEventListener('keydown', e => {
+  const detail = document.getElementById('detail');
+  if (!detail.classList.contains('open')) return;
+  if (e.key === 'Escape') { document.getElementById('detail-close').click(); return; }
+  if (e.key === 'Tab') {
+    if (!window.matchMedia('(max-width: 640px)').matches) return;
+    const focusable = Array.from(
+      detail.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])')
+    ).filter(el => !el.disabled && el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  }
+});
+
+// ── Sidebar random-entry CTA ──────────────────────────────────────────────────
+(function () {
+  const btn = document.getElementById('gb-explore-btn');
+  if (btn) btn.addEventListener('click', () => document.getElementById('random-btn').click());
+}());
+
+// ── Streaming CSV loader ──────────────────────────────────────────────────────
+// Both CSVs are ~32 MB raw / ~4 MB gzipped over the wire. Streaming the parse
+// lets the table show a usable subset within a second or two instead of waiting
+// for the full download. We render once at a first-paint threshold (so the
+// user sees something fast) and once more when both streams finish.
+
+// State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
+// quoting (escaped quotes, embedded commas and newlines) across arbitrary
+// chunk boundaries.
+function gbCreateStreamingCSVParser(onRow) {
+  let headers = null;
+  let field = '';
+  let row = [];
+  let inQuote = false;
+  let pendingQuote = false;  // saw `"` while in quote — next char decides escape vs end
+  let pendingCR = false;     // saw `\r` — swallow following `\n` if any
+  function flushField() { row.push(field); field = ''; }
+  function flushRow() {
+    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; return; }
+    if (!headers) { headers = row; row = []; return; }
+    const obj = {};
+    for (let i = 0; i < headers.length; i++) obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    onRow(obj);
+    row = [];
+  }
+  return {
+    feed(text) {
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (pendingQuote) {
+          pendingQuote = false;
+          if (c === '"') { field += '"'; continue; }
+          inQuote = false;
+          // fall through to handle c outside quotes
+        }
+        if (inQuote) {
+          if (c === '"') pendingQuote = true;
+          else field += c;
+          continue;
+        }
+        if (pendingCR) {
+          pendingCR = false;
+          if (c === '\n') continue;
+        }
+        if (c === '"') inQuote = true;
+        else if (c === ',') flushField();
+        else if (c === '\r') { flushField(); flushRow(); pendingCR = true; }
+        else if (c === '\n') { flushField(); flushRow(); }
+        else field += c;
+      }
+    },
+    end() { if (field !== '' || row.length > 0) { flushField(); flushRow(); } }
+  };
+}
+
+async function gbStreamCsv(url, onRow) {
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + url);
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder('utf-8');
+  const parser = gbCreateStreamingCSVParser(onRow);
+  // Sub-chunk size: yielding between sub-chunks lets the browser paint the
+  // first-paint render (and successive incremental updates) instead of being
+  // blocked by a single multi-MB synchronous parse on fast connections.
+  const SUBCHUNK = 128 * 1024;
+  const yieldToBrowser = () => new Promise(r => setTimeout(r, 0));
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) { parser.feed(decoder.decode()); parser.end(); return; }
+    const text = decoder.decode(value, { stream: true });
+    for (let off = 0; off < text.length; off += SUBCHUNK) {
+      parser.feed(text.substring(off, Math.min(off + SUBCHUNK, text.length)));
+      await yieldToBrowser();
+    }
+  }
+}
+
+(async function () {
+  const GB_CSV_URL = 'green_book_entries_all.csv';
+  const TG_CSV_URL = 'travel_guides_all.csv';
+  const FIRST_PAINT_AT = 2000;
+  let firstPainted = false;
+  function maybeFirstPaint() {
+    if (firstPainted || ALL_ENTRIES.length < FIRST_PAINT_AT) return;
+    firstPainted = true;
+    gbBuildFacets(ALL_ENTRIES);
+    renderAll();
+    // renderAll set count-label to "X of N" where N is the partial total. Make
+    // it clear more is still streaming — the final renderAll() corrects it.
+    const cl = document.getElementById('count-label');
+    if (cl) cl.textContent = 'Showing first ' + FIRST_PAINT_AT.toLocaleString() + ' entries — loading more…';
+  }
+  // Live progress while streaming. Only overwrites the count label while it
+  // still shows our own loading text — the moment a user interaction re-renders
+  // it to a real "X of Y" count, we stop touching it.
+  function gbProgressTick() {
+    if (!firstPainted || ALL_ENTRIES.length % 10000 !== 0) return;
+    const cl = document.getElementById('count-label');
+    if (cl && /loading more…$/.test(cl.textContent)) {
+      cl.textContent = 'Loaded ' + ALL_ENTRIES.length.toLocaleString() + ' entries — loading more…';
+    }
+  }
+  const getJson = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
+  try {
+    const [gbCanvas, tgCanvas] = await Promise.all([
+      fetch('canvas_map.json').then(getJson),
+      fetch('travel_guides_canvas_map.json').then(getJson)
+    ]);
+    CANVAS_MAP = Object.assign({}, gbCanvas, tgCanvas);
+    await Promise.all([
+      gbStreamCsv(GB_CSV_URL, row => {
+        row.publication = GREEN_BOOK_PUBLICATION;
+        row._i = ALL_ENTRIES.length;
+        ALL_ENTRIES.push(row);
+        maybeFirstPaint();
+        gbProgressTick();
+      }),
+      gbStreamCsv(TG_CSV_URL, row => {
+        row._i = ALL_ENTRIES.length;
+        ALL_ENTRIES.push(row);
+        maybeFirstPaint();
+        gbProgressTick();
+      })
+    ]);
+    // Both streams done — final build + render covers everything the original
+    // loader's .then() did after parsing.
+    gbBuildFacets(ALL_ENTRIES);
+    PUBLICATION_ACTIVE_YEARS = gbComputePublicationActiveYears(ALL_ENTRIES);
+    ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
+    gbDataLoaded = true;
+    gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
+    // If the user opened an entry while data was still streaming, keep it open
+    // through the final render — its coverage grid can now be filled in.
+    const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
+      ? ALL_ENTRIES[selectedIdx] : null;
+    renderAll();
+    applyHashState();
+    const cf = new URLSearchParams(location.search).get('cf');
+    if (cf) {
+      const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
+      if (match) {
+        selectedIdx = rowIdx(match);
+        showDetail(match);
+        renderTableBody();
+        const app = document.getElementById('app');
+        if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+        scrollToSelected(100);
+      }
+    } else if (openRow) {
+      selectedIdx = rowIdx(openRow);
+      showDetail(openRow);
+      renderTableBody();
+      scrollToSelected(100);
+    } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
+               && !location.hash.includes('volume_year')) {
+      scrollToYear("1938");
+    }
+  } catch (err) {
+    const noRes = document.getElementById("no-results");
+    if (noRes) {
+      noRes.style.display = 'block';
+      noRes.innerHTML =
+        '<p style="color:#c00;margin:0">Could not load entries: ' + err.message + '.</p>' +
+        '<p style="font-size: 0.857rem;margin:6px 0 0">Open this file from a web server rather than file://.</p>';
+    }
+  }
+})();
+
+
+// ── Hero + Timeline additions ─────────────────────────────────────────────────
+
+document.getElementById('random-btn-hero').addEventListener('click', () => {
+  document.getElementById('random-btn').click();
+  setTimeout(() => document.getElementById('app').scrollIntoView({ behavior: 'smooth' }), 50);
+  scrollToSelected(500);
+});
+document.getElementById('caveat-about-btn').addEventListener('click', () => {
+  document.getElementById('about-btn').click();
+});
+
+// Hero + About stat counters, separated from featured-card generation so the
+// loader's final pass can refresh the numbers without re-rolling the cards.
+// (The hero observer fires as soon as *any* rows have streamed in, so counts
+// written at that moment reflect a partial dataset.)
+function gbUpdateStats() {
+  if (!ALL_ENTRIES.length) return;
+  const volumes = new Set(ALL_ENTRIES.map(r => r.volume_id).filter(Boolean));
+  const n = ALL_ENTRIES.length;
+  // Only the counts the data answers reliably are live. States/countries and
+  // categories stay at their curated baked-in values: counting raw distinct
+  // strings gives OCR-noise numbers ("N.Y." vs "NY" → 264 "states") that would
+  // misrepresent the dataset.
+  document.getElementById('hero-stat-entries').textContent = n.toLocaleString();
+  document.getElementById('hero-stat-editions').textContent = String(volumes.size);
+  document.getElementById('about-stat-entries').textContent = n.toLocaleString();
+  document.getElementById('about-stat-volumes').textContent = String(volumes.size);
+}
+
+function gbUpdateHero() {
+  if (!ALL_ENTRIES.length) return;
+  gbUpdateStats();
+
+  const withImg = ALL_ENTRIES.filter(r => {
+    if (!r.address || !r.canvas_fragment || !r.canvas_fragment.includes('#xywh=')) return false;
+    try {
+      const xywh = r.canvas_fragment.split('#xywh=')[1].split(',').map(Number);
+      const svc  = CANVAS_MAP[canvasId(r.canvas_fragment)];
+      if (svc && svc[1]) return xywh[2] / svc[1] <= 0.45;
+    } catch (_) {}
+    return true;
+  });
+  if (!withImg.length) return;
+  const featured = [], seen = new Set();
+  for (let t = 0; t < 800 && featured.length < 3; t++) {
+    const r = withImg[Math.floor(Math.random() * withImg.length)];
+    const nf = ['name','establishment_name','firm_name','business_name'].find(k => r[k]);
+    if (!nf) continue;
+    const key = r[nf] + '|' + (r.city || '');
+    if (!seen.has(key)) { seen.add(key); featured.push(r); }
+  }
+  const stack = document.getElementById('hero-featured-stack');
+  stack.innerHTML = '';
+  featured.forEach(r => {
+    const nf = ['name','establishment_name','firm_name','business_name'].find(k => r[k]) || 'name';
+    const year = r.volume_year || r.year || '';
+    const cat = (r.category || '').toUpperCase();
+    const city = (r.city || '').toUpperCase();
+    const state = (r.state || '').toUpperCase();
+    // A real link: keyboard-focusable, right/middle-clickable (the href is the
+    // entry's ?cf= deep link); a plain left click is intercepted to open the
+    // detail panel in place instead of reloading.
+    const card = document.createElement('a');
+    card.className = 'gb-hero-card';
+    card.href = location.pathname + '?cf=' + encodeURIComponent(r.canvas_fragment || '');
+    const thumbDiv = document.createElement('div');
+    thumbDiv.className = 'gb-hero-card-thumb';
+    const ts = thumbUrl(r, 'left');
+    if (ts) {
+      const img = document.createElement('img');
+      img.src = ts; img.alt = '';
+      img.onerror = () => { img.style.display = 'none'; };
+      thumbDiv.appendChild(img);
+    }
+    const meta = document.createElement('div');
+    meta.className = 'gb-hero-card-meta';
+    meta.innerHTML = '<div class="gb-hero-card-name">' + (r[nf] || '') + '</div>' +
+      '<div class="gb-hero-card-line">' + year + (city ? ' \u00B7 ' + city + (state ? ', ' + state : '') : '') + '</div>' +
+      '<div class="gb-hero-card-cat">' + cat + '</div>';
+    card.appendChild(thumbDiv);
+    card.appendChild(meta);
+    card.addEventListener('click', e => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      selectedIdx = rowIdx(r);
+      showDetail(r);
+      renderTableBody();
+      document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+      scrollToSelected(500);
+    });
+    stack.appendChild(card);
+  });
+}
+let _heroUpdated = false;
+// Only build hero thumbnails (IIIF requests) when the hero section is actually
+// visible. If the user refreshes while scrolled past the hero, skip entirely.
+const _heroSection = document.getElementById('gb-hero');
+const _heroObserver = new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting) return;
+  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
+    _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
+  }
+}, { threshold: 0 });
+_heroObserver.observe(_heroSection);
+// Fallback interval in case data arrives after the hero is already visible
+const _checkHero = setInterval(() => {
+  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
+    const rect = _heroSection.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      _heroUpdated = true; clearInterval(_checkHero); _heroObserver.disconnect(); gbUpdateHero();
+    }
+  }
+  if (_heroUpdated) clearInterval(_checkHero);
+}, 200);
+
+
+</script>
+<!-- privacy-friendly analytics via GoatCounter -->
+<script data-goatcounter="https://green-books.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
