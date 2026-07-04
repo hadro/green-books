@@ -3,18 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Green Books Travel Guide Explorer</title>
-<meta property="og:title"        content="Green Books Travel Guide Explorer">
-<meta property="og:description"  content="Explore and view entries of the businesses and services listed in the Green Books from 1933-1966.">
+<title>Green Books &amp; Black Travel Guides — All Volumes Explorer</title>
+<meta property="og:title"        content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
+<meta property="og:description"  content="Search and browse more than 105,000 entries from the Green Books and six other Black travel guides, 1930–1966.">
 <meta property="og:type"         content="website">
-<meta property="og:url"          content="https://hadro.github.io/green-books/explorer">
+<meta property="og:url"          content="https://hadro.github.io/green-books/all-volumes">
 <meta property="og:image"        content="https://hadro.github.io/green-books/social-preview.png">
 <meta property="og:image:width"  content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="Green Books Travel Guide Explorer">
-<meta name="twitter:description" content="Explore and view entries of the businesses and services listed in the Green Books from 1933-1966.">
+<meta name="twitter:title"       content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
+<meta name="twitter:description" content="Search and browse more than 105,000 entries from the Green Books and six other Black travel guides, 1930–1966.">
 <meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231d4d2e'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23faf8f3'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231d4d2e'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%23767069'/%3E%3C/svg%3E">
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/dist/plot.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,6 +126,7 @@ a { color: var(--gb-accent); }
   text-decoration: none; overflow: hidden;
 }
 .gb-hero-card:hover { border-color: var(--gb-rule); transform: translateY(-2px); }
+.gb-hero-card:focus-visible { border-color: var(--gb-rule); transform: translateY(-2px); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
 .gb-hero-card-thumb {
   width: 100%; height: 110px; background: var(--gb-paper-2);
   border-bottom: 1px solid var(--gb-rule-faint); overflow: hidden; flex-shrink: 0;
@@ -137,7 +139,7 @@ a { color: var(--gb-accent); }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .gb-hero-card-line { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-soft); text-transform: uppercase; }
-.gb-hero-card-cat { font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.16em; color: var(--gb-accent); text-transform: uppercase; }
+.gb-hero-card-cat { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em; color: var(--gb-accent); text-transform: uppercase; }
 .gb-hero-stats {
   margin-top: 48px; border-top: 1px solid var(--gb-rule-faint); padding-top: 24px;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
@@ -179,6 +181,7 @@ a { color: var(--gb-accent); }
   border-right: 1px solid var(--gb-rule-faint);
   display: flex; flex-direction: column; overflow: hidden;
 }
+#sidebar:focus { outline: none; }  /* container focus target for the mobile drawer */
 #sidebar-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--gb-rule-faint); }
 .sidebar-brand {
   font-family: var(--gb-font-mono); font-size: 0.714rem; font-weight: 500;
@@ -287,10 +290,11 @@ a { color: var(--gb-accent); }
 .meta-chip { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); padding: 2px 8px; color: var(--gb-ink-faint); border-radius: 2px; }
 .meta-link { color: var(--gb-accent); text-decoration: none; }
 .meta-link:hover { background: var(--gb-accent-soft); border-color: var(--gb-accent); }
-#charts-toggle { background: none; border: 1px solid var(--gb-rule-faint); font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer; padding: 4px 10px; }
-#charts-toggle:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
 #export-btn { padding: 6px 14px; background: var(--gb-accent); color: var(--gb-paper); border: none; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
 #export-btn:hover { background: var(--gb-accent-deep); }
+/* Transient toast under the toolbar; also announced via aria-live. */
+#export-feedback { position: absolute; right: 0; top: calc(100% + 6px); z-index: 5; background: var(--gb-ink); color: var(--gb-paper); font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.04em; padding: 6px 10px; border-radius: 2px; pointer-events: none; }
+#export-feedback:empty { display: none; }
 #random-btn { padding: 6px 14px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gb-ink-soft); }
 #random-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
 #filter-btn { display: none; }
@@ -322,6 +326,8 @@ tbody td:nth-child(2) { font-family: var(--gb-font-display); font-size: 1.071rem
 tbody tr.selected td:nth-child(2) { color: var(--gb-accent-deep); box-shadow: inset 2px 0 0 var(--gb-accent); padding-left: 10px; }
 mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2px; border-radius: 1px; }
 .table-end-sentinel td { text-align: center; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; padding: 14px; border-top: 1px solid var(--gb-rule-faint); }
+.table-end-sentinel button { margin-left: 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); padding: 4px 12px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-accent); }
+.table-end-sentinel button:hover { border-color: var(--gb-accent); background: var(--gb-accent-soft); }
 #no-results { padding: 40px; text-align: center; color: var(--gb-ink-soft); font-family: var(--gb-font-display); font-size: 1.143rem; display: none; }
 #no-results p { margin: 6px 0 0; font-size: 1rem; color: var(--gb-ink-faint); }
 #no-results p.no-results-active { margin: 10px auto 0; }
@@ -377,6 +383,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
    The grid sits in a horizontally-scrollable frame; the label column is sticky
    so publication names stay pinned when a wide time span scrolls. */
 .coverage-summary { font-family: var(--gb-font-body); font-size: 0.857rem; line-height: 1.4; color: var(--gb-ink-soft); margin: -2px 0 12px; }
+.coverage-pending { font-size: 0.857rem; font-family: var(--gb-font-body); font-style: italic; color: var(--gb-ink-faint); margin: 0; }
 .coverage-summary strong { color: var(--gb-ink); font-weight: 600; }
 .coverage-scroll { overflow-x: auto; overflow-y: hidden; margin-bottom: 4px; scrollbar-width: thin; }
 .coverage-grid { display: grid; column-gap: 1px; row-gap: 2px; align-items: center; font-family: var(--gb-font-mono); width: 100%; }
@@ -384,7 +391,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .coverage-grid .pub-label .pub-dot { margin-right: 0; }
 .coverage-grid .pub-label-current { font-weight: 600; }
 .coverage-corner { position: sticky; left: 0; background: var(--gb-paper); z-index: 3; }
-.coverage-grid .year-head { font-size: 0.571rem; color: var(--gb-ink-faint); text-align: center; line-height: 1; padding-bottom: 2px; letter-spacing: 0; }
+.coverage-grid .year-head { font-size: 0.643rem; color: var(--gb-ink-faint); text-align: center; line-height: 1; padding-bottom: 2px; letter-spacing: 0; }
 .coverage-cell { aspect-ratio: 1; min-height: 0; min-width: 0; border-radius: 1px; background: transparent; border: 0; padding: 0; box-sizing: border-box; }
 .coverage-cell-listed { cursor: pointer; transition: outline 0.1s ease; }
 .coverage-cell-listed:hover, .coverage-cell-listed:focus-visible { outline: 1.5px solid var(--gb-ink); outline-offset: 0; }
@@ -398,15 +405,15 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 /* Collapsed dead-span break: a narrow column with a faint vertical rule. */
 .coverage-break { position: relative; min-width: 8px; align-self: stretch; }
 .coverage-break::before { content: ""; position: absolute; top: 2px; bottom: 2px; left: 50%; width: 1px; transform: translateX(-0.5px); background: var(--gb-rule-faint); }
-.coverage-grid .year-head-break { font-size: 0.6rem; color: var(--gb-ink-faint); line-height: 1; }
-.coverage-cat-note { font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); margin: -4px 0 10px; }
+.coverage-grid .year-head-break { font-size: 0.643rem; color: var(--gb-ink-faint); line-height: 1; }
+.coverage-cat-note { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); margin: -4px 0 10px; }
 .coverage-gap-note { font-family: var(--gb-font-body); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); margin: 6px 0 0; }
-.coverage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
+.coverage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
 .coverage-legend-item { display: flex; align-items: center; gap: 5px; }
 .coverage-legend-swatch { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; box-sizing: border-box; }
 .coverage-legend-swatch-hatch { background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(22, 19, 16, 0.05) 3px 4px); }
 /* Coverage cell tooltip — enhances; every value is also in the aria-label + table. */
-.coverage-tip { position: fixed; z-index: 500; pointer-events: none; background: var(--gb-ink); color: var(--gb-paper); font-family: var(--gb-font-mono); font-size: 0.7rem; line-height: 1.35; padding: 6px 9px; border-radius: 2px; max-width: 230px; box-shadow: 0 6px 20px -6px rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.08s ease; }
+.coverage-tip { position: fixed; z-index: 500; pointer-events: none; background: var(--gb-ink); color: var(--gb-paper); font-family: var(--gb-font-mono); font-size: 0.714rem; line-height: 1.35; padding: 6px 9px; border-radius: 2px; max-width: 230px; box-shadow: 0 6px 20px -6px rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.08s ease; }
 .coverage-tip.show { opacity: 1; }
 .coverage-tip .tip-val { font-family: var(--gb-font-body); font-weight: 600; font-size: 0.786rem; display: block; }
 .coverage-tip .tip-sub { color: rgba(250, 248, 243, 0.72); display: block; }
@@ -433,6 +440,10 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .about-modal-list { margin: 0 0 18px; padding-left: 24px; counter-reset: gbsteps; list-style: none; }
 .about-modal-list li { position: relative; padding: 6px 0 6px 8px; counter-increment: gbsteps; font-family: var(--gb-font-display); font-size: 1.143rem; color: var(--gb-ink-soft); line-height: 1.65; }
 .about-modal-list li::before { content: counter(gbsteps, decimal-leading-zero); position: absolute; left: -28px; top: 8px; font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-accent); }
+.about-modal-pubs { list-style: none; margin: 0 0 18px; padding: 0; }
+.about-modal-pubs li { display: flex; align-items: baseline; gap: 9px; padding: 4px 0; font-family: var(--gb-font-display); font-size: 1.071rem; color: var(--gb-ink-soft); line-height: 1.5; }
+.about-modal-pubs li em { color: var(--gb-ink); }
+.about-modal-pubs .pub-dot { flex-shrink: 0; align-self: center; margin-right: 0; }
 .about-modal-link { color: var(--gb-accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .about-modal-link:hover { text-decoration-style: dashed; }
 .about-modal-side { border-left: 1px solid var(--gb-rule-faint); padding-left: 32px; display: flex; flex-direction: column; gap: 28px; }
@@ -443,89 +454,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .about-modal-side-sub { font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.45; }
 .about-modal-credit { margin-top: 16px; padding-top: 20px; border-top: 1px solid var(--gb-rule-faint); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); line-height: 1.5; }
 
-/* ── Timeline ── */
-#timeline-view { position: fixed; inset: 0; z-index: 300; background: var(--gb-paper); color: var(--gb-ink); font-family: var(--gb-font-body); display: none; flex-direction: column; overflow: hidden; }
-#timeline-view.open { display: flex; }
-.gb-tl-topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-bottom: 1px solid var(--gb-rule-faint); flex-shrink: 0; }
-.gb-tl-back { background: none; border: none; font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer; padding: 0; }
-.gb-tl-back:hover { color: var(--gb-accent); }
-.gb-tl-crumb { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gb-ink-faint); }
-.gb-tl-grid { display: grid; grid-template-columns: 320px 1fr; flex: 1; min-height: 0; }
-.gb-tl-rail { border-right: 1px solid var(--gb-rule-faint); padding: 40px 32px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
-.gb-tl-rail-eyebrow { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gb-accent); }
-.gb-tl-title { font-family: var(--gb-font-display); font-size: 2.286rem; font-weight: 400; letter-spacing: -0.015em; line-height: 1.1; margin: 0; color: var(--gb-ink); }
-.gb-tl-place { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.12em; color: var(--gb-ink-faint); text-transform: uppercase; }
-.gb-tl-rail-stats { margin-top: 16px; padding: 20px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.gb-tl-rail-stat { display: flex; flex-direction: column; gap: 4px; }
-.gb-tl-rail-num { font-family: var(--gb-font-display); font-size: 2rem; font-weight: 400; line-height: 1; color: var(--gb-ink); }
-.gb-tl-rail-lbl { font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.12em; color: var(--gb-ink-faint); line-height: 1.3; text-transform: uppercase; }
-.gb-tl-rail-section { display: flex; flex-direction: column; gap: 8px; }
-.gb-tl-rail-sec-title { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gb-ink-faint); }
-.gb-tl-rail-prose { font-family: var(--gb-font-display); font-size: 0.929rem; line-height: 1.55; color: var(--gb-ink-soft); margin: 0; }
-.gb-tl-rail-caveat { display: grid; grid-template-columns: 3px 1fr; gap: 12px; padding: 12px 0; }
-.gb-tl-rail-caveat-rule { background: var(--gb-accent); }
-.gb-tl-rail-caveat p { font-family: var(--gb-font-display); font-size: 0.857rem; line-height: 1.5; color: var(--gb-ink-soft); margin: 0; font-style: italic; }
-.gb-tl-rail-caveat strong { color: var(--gb-ink); font-style: normal; font-weight: 600; }
-.gb-tl-rail-actions { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
-.gb-tl-rail-actions button { background: none; border: 1px solid var(--gb-rule-faint); padding: 6px 12px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gb-ink-soft); }
-.gb-tl-rail-actions button:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
-.gb-tl-main { padding: 40px 40px 32px; display: flex; flex-direction: column; gap: 28px; overflow: auto; }
-.gb-tl-strip-head { display: flex; flex-direction: column; gap: 6px; }
-.gb-tl-strip-title { font-family: var(--gb-font-display); font-size: 1.571rem; font-weight: 400; letter-spacing: -0.005em; margin: 0; color: var(--gb-ink); }
-.gb-tl-strip-sub { font-family: var(--gb-font-display); font-size: 1rem; color: var(--gb-ink-soft); margin: 0; font-style: italic; }
-.gb-tl-ruler { display: grid; grid-template-columns: repeat(22, 1fr); gap: 4px; padding: 12px 0 16px; border-top: 1px solid var(--gb-rule); border-bottom: 1px solid var(--gb-rule-faint); }
-.gb-tl-ruler-tick { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.gb-tl-ruler-dot { width: 8px; height: 8px; border: 1px solid var(--gb-ink-faint); background: var(--gb-paper); border-radius: 50%; transition: all 0.15s; }
-.gb-tl-ruler-tick.is-present .gb-tl-ruler-dot { background: var(--gb-accent); border-color: var(--gb-accent); box-shadow: 0 0 0 3px var(--gb-accent-soft); }
-.gb-tl-ruler-tick.is-absent .gb-tl-ruler-dot { opacity: 0.3; }
-.gb-tl-ruler-yr { font-family: var(--gb-font-mono); font-size: 0.643rem; color: var(--gb-ink-faint); letter-spacing: 0.04em; }
-.gb-tl-ruler-tick.is-present .gb-tl-ruler-yr { color: var(--gb-accent); font-weight: 600; }
-.gb-tl-flow { display: flex; flex-direction: column; gap: 8px; }
-.gb-tl-run { display: flex; flex-direction: column; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper); padding: 16px 20px; gap: 12px; }
-.gb-tl-run-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--gb-rule-faint); padding-bottom: 10px; }
-.gb-tl-run-yr { font-family: var(--gb-font-display); font-size: 1.286rem; font-weight: 500; color: var(--gb-ink); }
-.gb-tl-run-count { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; color: var(--gb-ink-faint); }
-.gb-tl-run-flag { margin-left: auto; font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.16em; color: var(--gb-accent); background: var(--gb-accent-soft); padding: 3px 8px; border: 1px solid var(--gb-accent); }
-.gb-tl-run-body { display: grid; grid-template-columns: 100px 1fr; gap: 18px; align-items: start; }
-.gb-tl-run-scan { height: 110px; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; }
-.gb-tl-run-meta { display: flex; flex-direction: column; gap: 8px; }
-.gb-tl-run-addr { font-family: var(--gb-font-display); font-size: 1.286rem; font-weight: 400; color: var(--gb-ink); }
-.gb-tl-run-detail { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; color: var(--gb-ink-faint); text-transform: uppercase; }
-.gb-tl-run-yearchips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-.gb-tl-yearchip { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-soft); background: var(--gb-paper-2); padding: 2px 6px; border: 1px solid var(--gb-rule-faint); }
-.gb-tl-diff { display: grid; grid-template-columns: 32px 1fr; gap: 0; margin: 4px 0; }
-.gb-tl-diff-rail { position: relative; display: flex; justify-content: center; }
-.gb-tl-diff-rail-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--gb-rule-faint); transform: translateX(-50%); }
-.gb-tl-diff-rail-dot { position: relative; margin-top: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--gb-paper); border: 2px solid var(--gb-ink-faint); z-index: 1; }
-.gb-tl-diff.is-conf-high .gb-tl-diff-rail-dot { border-color: var(--gb-accent); background: var(--gb-accent); }
-.gb-tl-diff.is-conf-medium .gb-tl-diff-rail-dot { border-color: var(--gb-accent); }
-.gb-tl-diff.is-conf-low .gb-tl-diff-rail-dot { border-style: dashed; }
-.gb-tl-diff-card { border: 1px solid var(--gb-rule-faint); padding: 12px 16px 14px; background: var(--gb-paper); display: flex; flex-direction: column; gap: 10px; }
-.gb-tl-diff.is-conf-high .gb-tl-diff-card { border-left: 3px solid var(--gb-accent); }
-.gb-tl-diff.is-conf-low .gb-tl-diff-card { border-style: dashed; background: var(--gb-paper-2); }
-.gb-tl-diff-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.gb-tl-diff-flag { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.14em; color: var(--gb-ink); font-weight: 600; text-transform: uppercase; }
-.gb-tl-diff-conf { display: inline-flex; align-items: center; gap: 6px; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--gb-rule-faint); }
-.gb-tl-diff-conf-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gb-ink-faint); }
-.gb-tl-diff-conf.is-conf-high { color: var(--gb-accent); border-color: var(--gb-accent); }
-.gb-tl-diff-conf.is-conf-high .gb-tl-diff-conf-dot { background: var(--gb-accent); }
-.gb-tl-diff-conf.is-conf-medium { color: var(--gb-ink); }
-.gb-tl-diff-conf.is-conf-medium .gb-tl-diff-conf-dot { background: var(--gb-ink); }
-.gb-tl-diff-conf.is-conf-low { color: var(--gb-ink-soft); border-style: dashed; }
-.gb-tl-diff-conf.is-conf-low .gb-tl-diff-conf-dot { background: var(--gb-paper); border: 1px solid var(--gb-ink-faint); }
-.gb-tl-diff-compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; padding: 8px 0; }
-.gb-tl-diff-side { display: flex; flex-direction: column; gap: 4px; }
-.gb-tl-diff-side-yr { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.1em; color: var(--gb-ink-faint); }
-.gb-tl-diff-side-addr { font-family: var(--gb-font-mono); font-size: 1rem; color: var(--gb-ink); background: var(--gb-paper-2); padding: 6px 10px; border: 1px solid var(--gb-rule-faint); }
-.gb-tl-diff-arrow { font-family: var(--gb-font-display); font-size: 1.571rem; color: var(--gb-ink-faint); font-weight: 300; }
-.gb-tl-diff-actions { display: flex; gap: 12px; border-top: 1px solid var(--gb-rule-faint); padding-top: 10px; }
-.gb-tl-diff-btn { background: none; border: none; padding: 0; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em; color: var(--gb-ink-soft); cursor: pointer; text-transform: uppercase; border-bottom: 1px solid var(--gb-rule-faint); padding-bottom: 2px; }
-.gb-tl-diff-btn:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
-.gb-tl-gap-v2 { display: flex; flex-direction: column; padding: 16px 20px; background: var(--gb-paper-2); border: 1px dashed var(--gb-rule-faint); margin-top: 4px; }
-.gb-tl-gap-rule { height: 1px; background-image: linear-gradient(90deg, var(--gb-ink-faint) 0 4px, transparent 4px 8px); background-size: 8px 1px; margin-bottom: 12px; }
-.gb-tl-gap-num { font-family: var(--gb-font-mono); font-size: 1rem; color: var(--gb-ink); font-weight: 600; margin-bottom: 4px; }
-.gb-tl-gap-lbl { font-family: var(--gb-font-display); font-size: 0.929rem; color: var(--gb-ink); font-style: italic; margin-bottom: 8px; }
-.gb-tl-gap-note { font-size: 0.786rem; color: var(--gb-ink-soft); line-height: 1.45; }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
@@ -553,7 +481,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   .about-modal-grid { grid-template-columns: 1fr; }
   .about-modal-body { padding: 20px 24px 40px; }
   .about-modal-title { font-size: 2rem; }
-  .gb-tl-grid { grid-template-columns: 1fr; }
   .gb-hero-featured-stack {
     flex-direction: row;
     overflow-x: auto;
@@ -572,7 +499,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     margin-right: 12px;
   }
   #detail-close { width: 44px; height: 44px; }
-  #export-btn, #charts-toggle, #random-btn { padding: 9px 14px; }
+  #export-btn, #random-btn { padding: 9px 14px; }
   .facet-item { min-height: 36px; }
   /* Mobile compact mode for the coverage grid is opt-in via the
      data-compact attribute, set by the renderer when (max-width: 640px). */
@@ -615,10 +542,10 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
   </div>
   <div class="gb-hero-stats">
-    <div class="gb-hero-stat" aria-label="105,701 individual listings"><div class="gb-hero-stat-num" id="hero-stat-entries" aria-hidden="true">105,701</div><div class="gb-hero-stat-label" aria-hidden="true">individual listings</div></div>
-    <div class="gb-hero-stat" aria-label="45 published volumes"><div class="gb-hero-stat-num" id="hero-stat-editions" aria-hidden="true">45</div><div class="gb-hero-stat-label" aria-hidden="true">published volumes</div></div>
-    <div class="gb-hero-stat" aria-label="49 states represented"><div class="gb-hero-stat-num" id="hero-stat-states" aria-hidden="true">89</div><div class="gb-hero-stat-label" aria-hidden="true">states and countries represented</div></div>
-    <div class="gb-hero-stat" aria-label="20 business categories"><div class="gb-hero-stat-num" id="hero-stat-cats" aria-hidden="true">25</div><div class="gb-hero-stat-label" aria-hidden="true">business categories</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">105,701</div><div class="gb-hero-stat-label">individual listings</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">45</div><div class="gb-hero-stat-label">published volumes</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">25</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
 </section>
 
@@ -626,7 +553,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 <aside id="sidebar" role="complementary" aria-label="Filters">
   <div id="sidebar-header">
     <p class="sidebar-brand"><a href="#" onclick="location.href=location.pathname;return false;">Green Books Travel Guide Explorer</a></p>
-    <p class="gb-sidebar-desc">Explore the directory of safe businesses and services for Black travelers, 1937&ndash;1966</p>
+    <p class="gb-sidebar-desc">Explore the directory of safe businesses and services for Black travelers, 1930&ndash;1966</p>
     <span id="doc-title" style="display:none"></span>
     <span id="doc-sub" style="display:none"></span>
     <div id="volume-wrap" style="display:none">
@@ -649,7 +576,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 <main id="main">
   <div id="mobile-header">
     <p class="mobile-hero-title">Green Books Travel Guide Explorer</p>
-    <p class="mobile-hero-desc">Explore the directory of safe businesses and services for Black travelers, 1937&ndash;1966</p>
+    <p class="mobile-hero-desc">Explore the directory of safe businesses and services for Black travelers, 1930&ndash;1966</p>
     <div class="mobile-hero-actions">
       <button id="mobile-about-btn">About this explorer</button>
       <button id="mobile-random-btn">Open a random entry</button>
@@ -657,11 +584,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <select id="mobile-volume-select" aria-label="Select volume" style="display:none"></select>
   </div>
   <div id="toolbar">
-    <button id="filter-btn" style="display:none" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
+    <button id="filter-btn" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
     <div id="search-wrap">
-      <input id="search" type="search" placeholder="Search names, addresses, notes…" autocomplete="off" aria-label="Search all fields">
+      <input id="search" type="search" placeholder="Search names, addresses, notes…  ( press / )" autocomplete="off" aria-label="Search all fields" aria-keyshortcuts="/">
       <button id="export-btn">Export CSV</button>
-      <span id="export-feedback" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
+      <span id="export-feedback" aria-live="polite"></span>
     </div>
     <div class="toolbar-meta-row">
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
@@ -669,7 +596,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
   </div>
   <button id="random-btn" style="display:none"></button>
-  <button id="charts-toggle" style="display:none"></button>
   <div id="content">
     <div id="table-wrap">
       <table id="results-table" aria-label="Green Book entries">
@@ -682,7 +608,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <button id="clear-all-btn">× Clear all filters</button>
       </div>
     </div>
-    <div id="detail" role="dialog" aria-modal="true" aria-label="Entry details">
+    <div id="detail" role="complementary" aria-label="Entry details">
       <div class="detail-hero">
         <a id="detail-thumb-link" target="_blank"><img id="detail-thumb" alt="" style="display:none;cursor:pointer"></a>
         <button id="detail-close" aria-label="Close detail panel">&#x2715;</button>
@@ -700,16 +626,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 </main>
 </div>
 
-<!-- <div id="timeline-view" role="dialog" aria-label="Cross-edition timeline" aria-modal="true">
-  <div class="gb-tl-topbar">
-    <button class="gb-tl-back" id="tl-back-btn">&larr; Back to results</button>
-    <div class="gb-tl-crumb">ENTRY &middot; CROSS-EDITION VIEW</div>
-  </div>
-  <div class="gb-tl-grid">
-    <aside class="gb-tl-rail" id="tl-rail"></aside>
-    <main class="gb-tl-main" id="tl-main"></main>
-  </div>
-</div> -->
 
 <div id="about-backdrop">
   <div id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-title" tabindex="-1">
@@ -718,12 +634,23 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <button class="close-about" aria-label="Close">&#x2715;</button>
     </div>
     <div class="about-modal-body">
-      <h2 id="about-title" class="about-modal-title">An exploration tool for data from <em>The Negro Motorist Green&nbsp;Book</em>, extracted from page scans, 1937&nbsp;&ndash;&nbsp;1966.</h2>
+      <h2 id="about-title" class="about-modal-title">An exploration tool for data from <em>The Negro Motorist Green&nbsp;Book</em> and other Black travel guides, extracted from page scans, 1930&nbsp;&ndash;&nbsp;1966.</h2>
       <div class="about-modal-grid">
         <div class="about-modal-prose">
-          <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966 &mdash; annual travel guides that helped Black Americans find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
+          <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966, alongside six other travel guides published for Black Americans between 1930 and 1962 &mdash; guides that helped Black travelers find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
           <h3 class="about-modal-h3">The source</h3>
           <p>The Green Book was published annually by Victor H. Green &amp; Co. from 1936 to 1966 as a guide for Black Americans navigating the Jim Crow era. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
+          <h3 class="about-modal-h3">The publications</h3>
+          <p>This explorer searches across seven publications at once. Colors mark each publication throughout the site &mdash; on table rows, sidebar filters, and the coverage grid in each entry&rsquo;s detail panel:</p>
+          <ul class="about-modal-pubs">
+            <li><span class="pub-dot" style="background:#4a7d1c"></span><em>The Negro Motorist Green Book</em>&ensp;1937&ndash;1966</li>
+            <li><span class="pub-dot" style="background:#b8447e"></span><em>Hackley &amp; Harrison&rsquo;s Hotel and Apartment Guide</em>&ensp;1930</li>
+            <li><span class="pub-dot" style="background:#a06fd0"></span><em>The Travelers Guide</em>&ensp;1931</li>
+            <li><span class="pub-dot" style="background:#cf7a12"></span><em>Smith&rsquo;s Tourist Guide</em>&ensp;1940</li>
+            <li><span class="pub-dot" style="background:#c0341d"></span><em>Travelguide</em>&ensp;1947&ndash;1962</li>
+            <li><span class="pub-dot" style="background:#1f5aa8"></span><em>Go, Guide to Pleasant Motoring</em>&ensp;1952&ndash;1959</li>
+            <li><span class="pub-dot" style="background:#0093a0"></span><em>NHA Directory and Guide to Travelers</em>&ensp;1959</li>
+          </ul>
           <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
           <p class="about-modal-emphasis">There are OCR, entity-extraction, and entry alignment errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
@@ -744,8 +671,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           </div>
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">VOLUMES</div>
-            <div class="about-modal-side-stat">23</div>
-            <div class="about-modal-side-sub">covering 1937 &mdash; 1966</div>
+            <div class="about-modal-side-stat" id="about-stat-volumes">45</div>
+            <div class="about-modal-side-sub">across 7 publications, covering 1930 &mdash; 1966</div>
           </div>
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">PIPELINE</div>
@@ -900,6 +827,11 @@ let sortDir = 1;  // 1 = asc, -1 = desc
 let selectedIdx = null;
 let _yearScrollAnchor = null;  // ALL_ENTRIES index used to center window for year-jump (no selection change)
 let _winStart = 0;             // persists across renders so re-selecting an in-window row doesn't re-center
+const WINDOW_STEP = 2000;      // rows added per "Show more" / auto-extend
+let _winSize = WINDOW_STEP;    // current render-window size; reset by renderAll()
+// Row → ALL_ENTRIES index. Rows are stamped with _i as they stream in; the
+// indexOf fallback covers rows from any other source (none in this build).
+const rowIdx = r => (r._i !== undefined ? r._i : ALL_ENTRIES.indexOf(r));
 let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
 function gcEvent(name) {
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
@@ -988,13 +920,28 @@ function loadVolume(label) {
 })();
 
 // ── Filtering ──────────────────────────────────────────────────────────────
+// Memoized: one render pass calls getFiltered() from the table body, the
+// facet sidebar, and each facet column head. The key captures every input the
+// filter reads (including ALL_ENTRIES.length, which grows while streaming),
+// so no manual invalidation is needed anywhere.
+let _fcKey = null, _fcRows = null;
+function _filterKey() {
+  const fs = facetFields.map(f => f.name + ":" + [...facetState[f.name]].join("|")).join(";");
+  return [ALL_ENTRIES.length, displayFields.map(f => f.name).join(","),
+          searchQuery, JSON.stringify(colFilters), fs].join("");
+}
 function getFiltered() {
+  const key = _filterKey();
+  if (key === _fcKey && _fcRows) return _fcRows;
   const q = searchQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
-  return ALL_ENTRIES.filter(row => {
-    // Search filter
+  const result = ALL_ENTRIES.filter(row => {
+    // Search filter — the normalized haystack is cached on the row (data is
+    // immutable after load), so repeat searches don't re-normalize 100k rows.
     if (q) {
-      const haystack = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
-      if (!haystack.includes(q)) return false;
+      if (row._hay === undefined) {
+        row._hay = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+      }
+      if (!row._hay.includes(q)) return false;
     }
     // Facet filters
     for (const f of facetFields) {
@@ -1021,6 +968,9 @@ function getFiltered() {
     }
     return true;
   });
+  _fcKey = key;
+  _fcRows = result;
+  return result;
 }
 
 // ── Sort ───────────────────────────────────────────────────────────────────
@@ -1057,6 +1007,140 @@ function canvasId(cf) {
 }
 
 // ── Render: table body only (preserves thead / focus) ──────────────────────
+
+// Build one result row. Factored out of renderTableBody so extendWindow()
+// can append rows without rebuilding the whole window.
+function buildRowTr(row, q) {
+  const tr = document.createElement("tr");
+  const idx = rowIdx(row);
+  const isSelected = idx === selectedIdx;
+  if (isSelected) {
+    tr.classList.add("selected");
+    tr.setAttribute("aria-current", "true");
+  }
+  // Roving tabindex: the table is a single Tab stop (the selected row, or the
+  // first row as a fallback set by the caller); ArrowUp/Down move between rows.
+  tr.setAttribute("tabindex", isSelected ? "0" : "-1");
+  tr.dataset.idx = idx;
+  const pubColor = PUBLICATION_COLORS[row.publication];
+  displayFields.forEach(f => {
+    const td = document.createElement("td");
+    if (f.name === "publication" && pubColor) {
+      td.style.borderLeft = `5px solid ${pubColor}`;
+    }
+    const cellText = row[f.name] || "";
+    td.title = cellText;
+    td.appendChild(highlightMatch(cellText, q));
+    tr.appendChild(td);
+  });
+  const tdSrc = document.createElement("td");
+  tdSrc.className = "source-cell";
+  if (row.canvas_fragment) {
+    const btn = document.createElement("button");
+    btn.className = "src-btn";
+    btn.textContent = "View page ↗";
+    btn.title = "Open original digitized page image";
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      openSource(row.canvas_fragment);
+    });
+    tdSrc.appendChild(btn);
+  }
+  tr.appendChild(tdSrc);
+  const rowHandler = () => {
+    const wrap = document.getElementById('table-wrap');
+    const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
+    const trRect = tr.getBoundingClientRect();
+    const alreadyVisible = wrapRect &&
+      trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
+    const savedScroll = wrap ? wrap.scrollTop : 0;
+    selectedIdx = idx;
+    showDetail(row);
+    renderTableBody();
+    if (wrap) {
+      if (alreadyVisible) {
+        wrap.scrollTop = savedScroll;
+      } else {
+        scrollToSelected();
+      }
+    }
+  };
+  tr.addEventListener("click", rowHandler);
+  tr.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); return; }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
+      if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
+        tr.setAttribute("tabindex", "-1");
+        next.setAttribute("tabindex", "0");
+        next.focus();
+      }
+    }
+  });
+  const tdDetail = document.createElement("td");
+  tdDetail.className = "detail-col";
+  const detailBtn = document.createElement("button");
+  detailBtn.className = "detail-btn";
+  detailBtn.setAttribute("aria-label", "Open entry details");
+  detailBtn.setAttribute("tabindex", "-1");
+  detailBtn.textContent = "▸";
+  detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
+  tdDetail.appendChild(detailBtn);
+  tr.appendChild(tdDetail);
+  return tr;
+}
+
+// End-of-window sentinel: reports how much is shown and, when more rows
+// remain below the window, offers "Show more" + auto-extends via an
+// IntersectionObserver as it scrolls into view.
+let _sentinelObserver = null;
+function renderSentinel(tbody, sorted, winStart) {
+  if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
+  if (sorted.length === 0) return;
+  const shownEnd = Math.min(sorted.length, winStart + _winSize);
+  const remaining = sorted.length - shownEnd;
+  const sentinelTr = document.createElement("tr");
+  sentinelTr.className = "table-end-sentinel";
+  const sentinelTd = document.createElement("td");
+  sentinelTd.colSpan = displayFields.length + 1;
+  if (remaining > 0) {
+    sentinelTd.textContent = `Showing ${(shownEnd - winStart).toLocaleString()} of ${sorted.length.toLocaleString()} entries `;
+    const more = document.createElement("button");
+    more.type = "button";
+    more.textContent = `Show ${Math.min(WINDOW_STEP, remaining).toLocaleString()} more`;
+    more.addEventListener("click", extendWindow);
+    sentinelTd.appendChild(more);
+    _sentinelObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) extendWindow();
+    }, { root: document.getElementById("table-wrap"), rootMargin: "200px" });
+    _sentinelObserver.observe(sentinelTr);
+  } else if (winStart > 0) {
+    sentinelTd.textContent = `Showing entries ${(winStart + 1).toLocaleString()}–${shownEnd.toLocaleString()} of ${sorted.length.toLocaleString()}`;
+  } else {
+    sentinelTd.textContent = `Showing all ${sorted.length.toLocaleString()} entries`;
+  }
+  sentinelTr.appendChild(sentinelTd);
+  tbody.appendChild(sentinelTr);
+}
+
+// Grow the render window in place: append only the new slice, keep scroll.
+function extendWindow() {
+  const sorted = getSorted(getFiltered());
+  const tbody = document.getElementById("table-body");
+  const oldEnd = _winStart + _winSize;
+  if (oldEnd >= sorted.length) return;
+  _winSize += WINDOW_STEP;
+  const q = searchQuery.trim().toLowerCase();
+  const sentinel = tbody.querySelector("tr.table-end-sentinel");
+  if (sentinel) sentinel.remove();
+  const frag = document.createDocumentFragment();
+  sorted.slice(oldEnd, Math.min(sorted.length, _winStart + _winSize))
+    .forEach(row => frag.appendChild(buildRowTr(row, q)));
+  tbody.appendChild(frag);
+  renderSentinel(tbody, sorted, _winStart);
+}
+
 function renderTableBody() {
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
@@ -1068,104 +1152,36 @@ function renderTableBody() {
 
   const tbody = document.getElementById("table-body");
   tbody.innerHTML = "";
-  const WINDOW = 2000;
   let winStart = 0;
   if (_yearScrollAnchor !== null) {
     // Year-jump and close-restore always take priority over selection centering.
-    const anchorPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === _yearScrollAnchor);
-    if (anchorPos >= 0 && anchorPos > WINDOW - 200) winStart = Math.max(0, anchorPos - Math.floor(WINDOW / 2));
+    const anchorPos = sorted.findIndex(row => rowIdx(row) === _yearScrollAnchor);
+    if (anchorPos >= 0 && anchorPos > _winSize - 200) winStart = Math.max(0, anchorPos - Math.floor(_winSize / 2));
   } else if (selectedIdx !== null) {
-    const selPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === selectedIdx);
+    const selPos = sorted.findIndex(row => rowIdx(row) === selectedIdx);
     if (selPos >= 0) {
-      if (selPos >= _winStart && selPos < _winStart + WINDOW) {
+      if (selPos >= _winStart && selPos < _winStart + _winSize) {
         winStart = _winStart;  // row already in window — don't re-center
-      } else if (selPos > WINDOW - 200) {
-        winStart = Math.max(0, selPos - Math.floor(WINDOW / 2));
+      } else if (selPos > _winSize - 200) {
+        winStart = Math.max(0, selPos - Math.floor(_winSize / 2));
       }
     }
   }
   _winStart = winStart;
-  sorted.slice(winStart, winStart + WINDOW).forEach(row => {
-    const tr = document.createElement("tr");
-    const isSelected = ALL_ENTRIES.indexOf(row) === selectedIdx;
-    if (isSelected) tr.classList.add("selected");
-    tr.setAttribute("tabindex", "0");
-    tr.setAttribute("aria-selected", isSelected ? "true" : "false");
-    tr.dataset.idx = ALL_ENTRIES.indexOf(row);
-    const q = searchQuery.trim().toLowerCase();
-    const pubColor = PUBLICATION_COLORS[row.publication];
-    displayFields.forEach(f => {
-      const td = document.createElement("td");
-      if (f.name === "publication" && pubColor) {
-        td.style.borderLeft = `5px solid ${pubColor}`;
-      }
-      const cellText = row[f.name] || "";
-      td.title = cellText;
-      td.appendChild(highlightMatch(cellText, q));
-      tr.appendChild(td);
-    });
-    const tdSrc = document.createElement("td");
-    tdSrc.className = "source-cell";
-    if (row.canvas_fragment) {
-      const btn = document.createElement("button");
-      btn.className = "src-btn";
-      btn.textContent = "View page ↗";
-      btn.title = "Open original digitized page image";
-      btn.addEventListener("click", e => {
-        e.stopPropagation();
-        openSource(row.canvas_fragment);
-      });
-      tdSrc.appendChild(btn);
-    }
-    tr.appendChild(tdSrc);
-    const rowHandler = () => {
-      const wrap = document.getElementById('table-wrap');
-      const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
-      const trRect = tr.getBoundingClientRect();
-      const alreadyVisible = wrapRect &&
-        trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
-      const savedScroll = wrap ? wrap.scrollTop : 0;
-      selectedIdx = ALL_ENTRIES.indexOf(row);
-      showDetail(row);
-      renderTableBody();
-      if (wrap) {
-        if (alreadyVisible) {
-          wrap.scrollTop = savedScroll;
-        } else {
-          scrollToSelected();
-        }
-      }
-    };
-    tr.addEventListener("click", rowHandler);
-    tr.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); }
-    });
-    const tdDetail = document.createElement("td");
-    tdDetail.className = "detail-col";
-    const detailBtn = document.createElement("button");
-    detailBtn.className = "detail-btn";
-    detailBtn.setAttribute("aria-label", "Open entry details");
-    detailBtn.setAttribute("tabindex", "-1");
-    detailBtn.textContent = "▸";
-    detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
-    tdDetail.appendChild(detailBtn);
-    tr.appendChild(tdDetail);
-    tbody.appendChild(tr);
+  const q = searchQuery.trim().toLowerCase();
+  const frag = document.createDocumentFragment();
+  let anySelected = false;
+  sorted.slice(winStart, winStart + _winSize).forEach(row => {
+    const tr = buildRowTr(row, q);
+    if (tr.classList.contains("selected")) anySelected = true;
+    frag.appendChild(tr);
   });
+  tbody.appendChild(frag);
+  // Roving-tabindex fallback: with no selected row in the window, the first
+  // row is the table's single Tab stop.
+  if (!anySelected && tbody.firstElementChild) tbody.firstElementChild.setAttribute("tabindex", "0");
 
-  // End-of-results sentinel
-  if (sorted.length > 0) {
-    const sentinelTr = document.createElement("tr");
-    sentinelTr.className = "table-end-sentinel";
-    const sentinelTd = document.createElement("td");
-    sentinelTd.colSpan = displayFields.length + 1;
-    const cap = sorted.length > 2000
-      ? `Showing first 2,000 of ${sorted.length.toLocaleString()} entries`
-      : `Showing all ${sorted.length.toLocaleString()} entries`;
-    sentinelTd.textContent = cap;
-    sentinelTr.appendChild(sentinelTd);
-    tbody.appendChild(sentinelTr);
-  }
+  renderSentinel(tbody, sorted, winStart);
 
   const noResults = document.getElementById("no-results");
   if (sorted.length === 0) {
@@ -1197,15 +1213,6 @@ function renderTableHead() {
   displayFields.forEach(f => {
     const th = document.createElement("th");
     th.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
-    // Add explanation tooltip for the "codes" column
-    if (f.name === "codes") {
-      const info = document.createElement("span");
-      info.textContent = " ⓘ";
-      info.title = "Classification codes from the directory’s key — e.g. L = Lager brewery, P = Porter/Ale brewery, M = Maltster, B-D = Brewery & Distillery, followed by a size class (1–6)";
-      info.style.cssText = "cursor:help;font-size: 0.786rem;color:#888;font-weight:400;";
-      info.addEventListener("click", e => e.stopPropagation());
-      th.appendChild(info);
-    }
     th.dataset.col = f.name;
     th.setAttribute("tabindex", "0");
     if (sortCol === f.name) {
@@ -1258,7 +1265,12 @@ function renderTableHead() {
         sel.appendChild(opt);
       });
       if (f.name === "volume_year") {
-        opt0.textContent = "Jump to year…";
+        // This control navigates rather than filters — the ↓ and the option
+        // labels signal that, not just a title tooltip touch users never see.
+        // Keep the closed-state label short: the column is ~64px wide.
+        opt0.textContent = "↓ Go to…";
+        for (let i = 1; i < sel.options.length; i++) sel.options[i].textContent = "↓ " + sel.options[i].textContent;
+        sel.setAttribute("aria-label", "Jump to year — scrolls the table to that year, does not filter");
         sel.setAttribute("title", "Select a year to scroll the table to that year — does not filter");
       }
       sel.addEventListener("change", () => {
@@ -1276,7 +1288,15 @@ function renderTableHead() {
       inp.type = "text"; inp.className = "col-filter-input"; inp.placeholder = "filter…";
       inp.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
       inp.value = colFilters[f.name] || "";
-      inp.addEventListener("input", () => { colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); syncFilterUI(); });
+      // Same debounce as the main search — a full-dataset re-render per
+      // keystroke makes typing feel sticky.
+      let colTimer;
+      inp.addEventListener("input", () => {
+        clearTimeout(colTimer);
+        colTimer = setTimeout(() => {
+          colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); syncFilterUI();
+        }, 180);
+      });
       fth.appendChild(inp);
     }
     filterRow.appendChild(fth);
@@ -1414,7 +1434,6 @@ function showDetail(row) {
   const img = document.getElementById("detail-thumb");
   const thumbLink = document.getElementById("detail-thumb-link");
   const url = thumbUrl(row);
-  const csUrl = contentStateUrl(row.canvas_fragment);
   if (url) {
     img.src = url;
     img.alt = `Scan showing ${entryName}`;
@@ -1467,6 +1486,17 @@ function showDetail(row) {
 }
 
 // ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
+// Session-level geocode cache: re-opening an entry (or another entry that
+// falls back to the same city query) reuses the earlier result instead of
+// re-hitting Nominatim — friendlier to its 1 req/s usage policy while a user
+// browses quickly. Empty results are cached too.
+const _geoCache = new Map();
+function gbGeocode(query, signal) {
+  if (_geoCache.has(query)) return Promise.resolve(_geoCache.get(query));
+  return fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query), { signal })
+    .then(r => r.json())
+    .then(results => { _geoCache.set(query, results); return results; });
+}
 let _mapAbort = null;
 function renderDetailMap(row) {
   const mapEl = document.getElementById("detail-map");
@@ -1500,8 +1530,7 @@ function renderDetailMap(row) {
   }
 
   function tryCity() {
-    fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(cityQuery), { signal: controller.signal })
-      .then(r => r.json())
+    gbGeocode(cityQuery, controller.signal)
       .then(results => {
         if (!results.length) throw new Error("no results");
         const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
@@ -1515,8 +1544,7 @@ function renderDetailMap(row) {
       });
   }
 
-  fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(addrQuery), { signal: controller.signal })
-    .then(r => r.json())
+  gbGeocode(addrQuery, controller.signal)
     .then(results => {
       if (!results.length) { tryCity(); return; }
       const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
@@ -1680,7 +1708,7 @@ function clearAllFilters() {
   document.getElementById("search").value = "";
   renderAll();
   if (savedRow) {
-    selectedIdx = ALL_ENTRIES.indexOf(savedRow);
+    selectedIdx = rowIdx(savedRow);
     showDetail(savedRow);
     renderTableBody();
     scrollToSelected(100);
@@ -1694,19 +1722,31 @@ document.getElementById("no-results").addEventListener("click", e => {
   if (e.target && e.target.id === "clear-all-btn") clearAllFilters();
 });
 
-// ── Charts toggle ──────────────────────────────────────────────────────────
-
 // ── Mobile sidebar toggle ──────────────────────────────────────────────────
 (function () {
   const filterBtn = document.getElementById("filter-btn");
   const backdrop  = document.getElementById("sidebar-backdrop");
   const app       = document.getElementById("app");
-  function openSidebar()  { app.classList.add("sidebar-open");    filterBtn.setAttribute("aria-expanded", "true");  }
-  function closeSidebar() { app.classList.remove("sidebar-open"); filterBtn.setAttribute("aria-expanded", "false"); }
-  filterBtn.addEventListener("click", () => app.classList.contains("sidebar-open") ? closeSidebar() : openSidebar());
-  backdrop.addEventListener("click", closeSidebar);
+  const sidebar   = document.getElementById("sidebar");
+  function openSidebar()  {
+    app.classList.add("sidebar-open");
+    filterBtn.setAttribute("aria-expanded", "true");
+    sidebar.setAttribute("tabindex", "-1");
+    sidebar.focus();
+  }
+  function closeSidebar(returnFocus) {
+    if (!app.classList.contains("sidebar-open")) return;
+    app.classList.remove("sidebar-open");
+    filterBtn.setAttribute("aria-expanded", "false");
+    if (returnFocus) filterBtn.focus();
+  }
+  filterBtn.addEventListener("click", () => app.classList.contains("sidebar-open") ? closeSidebar(false) : openSidebar());
+  backdrop.addEventListener("click", () => closeSidebar(false));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && app.classList.contains("sidebar-open")) closeSidebar(true);
+  });
   document.getElementById("facet-controls").addEventListener("change", () => {
-    if (window.innerWidth <= 640) closeSidebar();
+    if (window.innerWidth <= 640) closeSidebar(false);
   });
 })();
 
@@ -1718,6 +1758,18 @@ document.getElementById("search").addEventListener("input", e => {
     searchQuery = e.target.value;
     renderAll();
   }, 180);
+});
+
+// "/" focuses search from anywhere that isn't already a text control.
+document.addEventListener("keydown", e => {
+  if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey) return;
+  const t = e.target;
+  if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+  const s = document.getElementById("search");
+  if (!s) return;
+  e.preventDefault();
+  s.focus();
+  s.select();
 });
 
 // ── Sync filter UI: URL hash + clear-filters button visibility ───────────
@@ -1818,6 +1870,7 @@ function renderAll() {
   // never see a stale record juxtaposed against a new result set.
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   selectedIdx = null;
+  _winSize = WINDOW_STEP;  // shrink an extended window back to one page
   renderFacetSidebar();
   renderTable();
   syncFilterUI();
@@ -1839,7 +1892,7 @@ function scrollToYear(year) {
   const sorted = getSorted(getFiltered());
   const targetRow = sorted.find(r => (r.volume_year || r.year || '') === year);
   if (!targetRow) return;
-  const targetIdx = ALL_ENTRIES.indexOf(targetRow);
+  const targetIdx = rowIdx(targetRow);
   _yearScrollAnchor = targetIdx;
   renderTableBody();
   _yearScrollAnchor = null;
@@ -1861,7 +1914,7 @@ document.getElementById("random-btn").addEventListener("click", () => {
   const pool = all.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
   if (!pool.length) return;
   const r = pool[Math.floor(Math.random() * pool.length)];
-  selectedIdx = ALL_ENTRIES.indexOf(r);
+  selectedIdx = rowIdx(r);
   showDetail(r);
   renderTableBody();
   scrollToSelected();
@@ -1893,7 +1946,7 @@ window.addEventListener("popstate", function () {
   if (cf) {
     const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
     if (match) {
-      selectedIdx = ALL_ENTRIES.indexOf(match);
+      selectedIdx = rowIdx(match);
       showDetail(match);
       renderTableBody();
       scrollToSelected();
@@ -1931,6 +1984,7 @@ const GB_YEAR_FIELD = (() => {
 // once in the streaming loader's final pass; empty until then.
 let gbNameIndex = new Map();   // groupKey → [row objects]
 let gbRowToKey  = new Map();   // row object → groupKey
+let gbDataLoaded = false;      // true once both CSV streams have finished
 
 // All cross-listings for a row's resolved business group (including itself).
 function gbCrossListings(row) {
@@ -1957,7 +2011,7 @@ function gbJumpToYear(year) {
   renderAll();  // closes drawer, applies year filter, re-renders table
 
   if (matchRow) {
-    selectedIdx = ALL_ENTRIES.indexOf(matchRow);
+    selectedIdx = rowIdx(matchRow);
     showDetail(matchRow);
     renderTableBody();  // re-render to show selection highlight
   }
@@ -1975,7 +2029,7 @@ function gbJumpToListing(targetRow) {
   }
   _pushNextHistory = true;
   renderAll();
-  selectedIdx = ALL_ENTRIES.indexOf(targetRow);
+  selectedIdx = rowIdx(targetRow);
   showDetail(targetRow);
   renderTableBody();
 }
@@ -2048,11 +2102,16 @@ showDetail = function (row) {
   _gbOrigSD(row);
   if (row) gcEvent('detail-open');
 
-  // Push the open entry to history so the back button can return to previous state
+  // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
+  // closes it); switching entries while it's already open replaces, so Back
+  // doesn't walk through every row the user ever clicked.
   if (row && row.canvas_fragment) {
     const u = new URL(location.href);
+    const wasOpen = u.searchParams.has('cf');
     u.searchParams.set('cf', row.canvas_fragment);
-    history.pushState(null, '', u.pathname + '?' + u.searchParams + (location.hash || ''));
+    const url = u.pathname + '?' + u.searchParams + (location.hash || '');
+    if (wasOpen) history.replaceState(null, '', url);
+    else history.pushState(null, '', url);
   }
 
   const alsoEl = document.getElementById("detail-also-in");
@@ -2062,6 +2121,14 @@ showDetail = function (row) {
   const nf = ["name", "establishment_name", "firm_name", "business_name"]
     .find(k => row[k] != null && row[k] !== "");
   const nfVal = nf && row[nf];
+  // While the CSVs are still streaming, say why the coverage grid isn't here
+  // yet instead of silently omitting a section that will appear later.
+  if (!gbDataLoaded && nfVal) {
+    alsoEl.style.display = "";
+    alsoEl.innerHTML = '<div class="also-in-label">Coverage across publications</div>' +
+      '<p class="coverage-pending">Cross-publication matches will appear here once all entries finish loading…</p>';
+    return;
+  }
   if (!nfVal || gbNameIndex.size === 0) { alsoEl.style.display = "none"; return; }
 
   // Cross-listings for this row's resolved business group — the resolver in
@@ -2400,7 +2467,7 @@ renderAll();
   if (!cf) return;
   const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
   if (!match) return;
-  selectedIdx = ALL_ENTRIES.indexOf(match);
+  selectedIdx = rowIdx(match);
   showDetail(match);
   renderTableBody();
   history.scrollRestoration = 'manual';
@@ -2452,12 +2519,16 @@ renderAll();
   });
 }());
 
-// ── Detail panel: focus trap + Escape ────────────────────────────────────────
+// ── Detail panel: Escape everywhere; focus trap only on mobile, where the
+// panel actually covers the whole screen. On desktop it sits beside the
+// table (which stays interactive), so trapping Tab would contradict the
+// non-modal role and strand keyboard users.
 document.getElementById('detail').addEventListener('keydown', e => {
   const detail = document.getElementById('detail');
   if (!detail.classList.contains('open')) return;
   if (e.key === 'Escape') { document.getElementById('detail-close').click(); return; }
   if (e.key === 'Tab') {
+    if (!window.matchMedia('(max-width: 640px)').matches) return;
     const focusable = Array.from(
       detail.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])')
     ).filter(el => !el.disabled && el.offsetParent !== null);
@@ -2569,6 +2640,16 @@ async function gbStreamCsv(url, onRow) {
     const cl = document.getElementById('count-label');
     if (cl) cl.textContent = 'Showing first ' + FIRST_PAINT_AT.toLocaleString() + ' entries — loading more…';
   }
+  // Live progress while streaming. Only overwrites the count label while it
+  // still shows our own loading text — the moment a user interaction re-renders
+  // it to a real "X of Y" count, we stop touching it.
+  function gbProgressTick() {
+    if (!firstPainted || ALL_ENTRIES.length % 10000 !== 0) return;
+    const cl = document.getElementById('count-label');
+    if (cl && /loading more…$/.test(cl.textContent)) {
+      cl.textContent = 'Loaded ' + ALL_ENTRIES.length.toLocaleString() + ' entries — loading more…';
+    }
+  }
   const getJson = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
   try {
     const [gbCanvas, tgCanvas] = await Promise.all([
@@ -2579,12 +2660,16 @@ async function gbStreamCsv(url, onRow) {
     await Promise.all([
       gbStreamCsv(GB_CSV_URL, row => {
         row.publication = GREEN_BOOK_PUBLICATION;
+        row._i = ALL_ENTRIES.length;
         ALL_ENTRIES.push(row);
         maybeFirstPaint();
+        gbProgressTick();
       }),
       gbStreamCsv(TG_CSV_URL, row => {
+        row._i = ALL_ENTRIES.length;
         ALL_ENTRIES.push(row);
         maybeFirstPaint();
+        gbProgressTick();
       })
     ]);
     // Both streams done — final build + render covers everything the original
@@ -2592,19 +2677,30 @@ async function gbStreamCsv(url, onRow) {
     gbBuildFacets(ALL_ENTRIES);
     PUBLICATION_ACTIVE_YEARS = gbComputePublicationActiveYears(ALL_ENTRIES);
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
+    gbDataLoaded = true;
+    gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
+    // If the user opened an entry while data was still streaming, keep it open
+    // through the final render — its coverage grid can now be filled in.
+    const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
+      ? ALL_ENTRIES[selectedIdx] : null;
     renderAll();
     applyHashState();
     const cf = new URLSearchParams(location.search).get('cf');
     if (cf) {
       const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
       if (match) {
-        selectedIdx = ALL_ENTRIES.indexOf(match);
+        selectedIdx = rowIdx(match);
         showDetail(match);
         renderTableBody();
         const app = document.getElementById('app');
         if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
         scrollToSelected(100);
       }
+    } else if (openRow) {
+      selectedIdx = rowIdx(openRow);
+      showDetail(openRow);
+      renderTableBody();
+      scrollToSelected(100);
     } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
                && !location.hash.includes('volume_year')) {
       scrollToYear("1938");
@@ -2632,28 +2728,27 @@ document.getElementById('caveat-about-btn').addEventListener('click', () => {
   document.getElementById('about-btn').click();
 });
 
-function gbUpdateHero() {
+// Hero + About stat counters, separated from featured-card generation so the
+// loader's final pass can refresh the numbers without re-rolling the cards.
+// (The hero observer fires as soon as *any* rows have streamed in, so counts
+// written at that moment reflect a partial dataset.)
+function gbUpdateStats() {
   if (!ALL_ENTRIES.length) return;
-  const states = new Set(ALL_ENTRIES.map(r => r.state).filter(Boolean));
-  const cats = new Set(ALL_ENTRIES.map(r => r.category).filter(Boolean));
   const volumes = new Set(ALL_ENTRIES.map(r => r.volume_id).filter(Boolean));
   const n = ALL_ENTRIES.length;
-  const catMeta = FIELD_META.find(f => f.name === 'category');
-  // Set both the visible number and the parent's aria-label, which carries a
-  // baked-in placeholder count until the merged data lands.
-  function setStat(id, value) {
-    const el = document.getElementById(id);
-    el.textContent = value;
-    const stat = el.closest('.gb-hero-stat');
-    const label = stat && stat.querySelector('.gb-hero-stat-label');
-    if (stat && label) stat.setAttribute('aria-label', value + ' ' + label.textContent);
-  }
-  setStat('hero-stat-entries', n.toLocaleString());
-  setStat('hero-stat-editions', String(volumes.size));
-  setStat('hero-stat-states', String(states.size));
-  setStat('hero-stat-cats', String(catMeta ? catMeta.top_values.length : cats.size));
-  // document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
+  // Only the counts the data answers reliably are live. States/countries and
+  // categories stay at their curated baked-in values: counting raw distinct
+  // strings gives OCR-noise numbers ("N.Y." vs "NY" → 264 "states") that would
+  // misrepresent the dataset.
+  document.getElementById('hero-stat-entries').textContent = n.toLocaleString();
+  document.getElementById('hero-stat-editions').textContent = String(volumes.size);
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
+  document.getElementById('about-stat-volumes').textContent = String(volumes.size);
+}
+
+function gbUpdateHero() {
+  if (!ALL_ENTRIES.length) return;
+  gbUpdateStats();
 
   const withImg = ALL_ENTRIES.filter(r => {
     if (!r.address || !r.canvas_fragment || !r.canvas_fragment.includes('#xywh=')) return false;
@@ -2681,14 +2776,18 @@ function gbUpdateHero() {
     const cat = (r.category || '').toUpperCase();
     const city = (r.city || '').toUpperCase();
     const state = (r.state || '').toUpperCase();
-    const card = document.createElement('div');
+    // A real link: keyboard-focusable, right/middle-clickable (the href is the
+    // entry's ?cf= deep link); a plain left click is intercepted to open the
+    // detail panel in place instead of reloading.
+    const card = document.createElement('a');
     card.className = 'gb-hero-card';
+    card.href = location.pathname + '?cf=' + encodeURIComponent(r.canvas_fragment || '');
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gb-hero-card-thumb';
     const ts = thumbUrl(r, 'left');
     if (ts) {
       const img = document.createElement('img');
-      img.src = ts; img.alt = r[nf] || '';
+      img.src = ts; img.alt = '';
       img.onerror = () => { img.style.display = 'none'; };
       thumbDiv.appendChild(img);
     }
@@ -2699,8 +2798,10 @@ function gbUpdateHero() {
       '<div class="gb-hero-card-cat">' + cat + '</div>';
     card.appendChild(thumbDiv);
     card.appendChild(meta);
-    card.addEventListener('click', () => {
-      selectedIdx = ALL_ENTRIES.indexOf(r);
+    card.addEventListener('click', e => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      selectedIdx = rowIdx(r);
       showDetail(r);
       renderTableBody();
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
@@ -2731,114 +2832,6 @@ const _checkHero = setInterval(() => {
   if (_heroUpdated) clearInterval(_checkHero);
 }, 200);
 
-// // ── Cross-edition timeline ────────────────────────────────────────────────────
-// const _ALL_EDITION_YEARS = [1937,1938,1939,1940,1941,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1959,1960,1961,1962,1963,1966];
-
-// function _buildTLSegs(appearances) {
-//   const segs = []; let i = 0;
-//   while (i < appearances.length) {
-//     let j = i;
-//     while (j + 1 < appearances.length && appearances[j+1].address === appearances[i].address) j++;
-//     segs.push({ kind: 'run', address: appearances[i].address, years: appearances.slice(i, j+1).map(a => a.year), count: j-i+1, firstNote: appearances[i].note });
-//     if (j + 1 < appearances.length) {
-//       segs.push({ kind: 'diff', from: { address: appearances[j].address, year: appearances[j].year }, to: { address: appearances[j+1].address, year: appearances[j+1].year }, confidence: appearances[j+1].diffConfidence || 'medium' });
-//     }
-//     i = j + 1;
-//   }
-//   return segs;
-// }
-
-// function openTimeline(row) {
-//   const nf = ['name','establishment_name','firm_name','business_name'].find(k => row[k] != null && row[k] !== '');
-//   if (!nf || !row[nf]) return;
-//   const city = (row.city || '').toLowerCase().trim();
-//   const key = gbNormName(row[nf]) + '|' + city;
-//   const allRows = gbNameIndex.get(key) || [];
-//   if (allRows.length < 2) return;
-//   const sorted = [...allRows].sort((a, b) => parseInt(a.volume_year || a.year || 0) - parseInt(b.volume_year || b.year || 0));
-//   const appearances = sorted.map(r => ({ year: parseInt(r.volume_year || r.year || 0), address: r.address || '' })).filter(a => a.year > 0);
-//   if (appearances.length < 2) return;
-//   const presentYears = new Set(appearances.map(a => a.year));
-//   const segs = _buildTLSegs(appearances);
-//   const diffCount = segs.filter(s => s.kind === 'diff').length;
-//   const yearsSpan = appearances[0].year + '\u2013' + appearances[appearances.length-1].year;
-//   const category = (row.category || '').toUpperCase();
-//   const cityD = (row.city || '').toUpperCase();
-//   const stateD = (row.state || '').toUpperCase();
-
-//   document.getElementById('tl-rail').innerHTML =
-//     '<div class="gb-tl-rail-eyebrow">' + category + '</div>' +
-//     '<h1 class="gb-tl-title">' + row[nf] + '</h1>' +
-//     '<div class="gb-tl-place">' + cityD + (stateD ? ', ' + stateD : '') + '</div>' +
-//     '<div class="gb-tl-rail-stats">' +
-//       '<div class="gb-tl-rail-stat"><div class="gb-tl-rail-num">' + appearances.length + '</div><div class="gb-tl-rail-lbl">Editions listed</div></div>' +
-//       '<div class="gb-tl-rail-stat"><div class="gb-tl-rail-num">' + yearsSpan + '</div><div class="gb-tl-rail-lbl">Years present</div></div>' +
-//       '<div class="gb-tl-rail-stat"><div class="gb-tl-rail-num">' + diffCount + '</div><div class="gb-tl-rail-lbl">Address diffs</div></div>' +
-//     '</div>' +
-//     '<div class="gb-tl-rail-section"><div class="gb-tl-rail-sec-title">Match confidence</div><p class="gb-tl-rail-prose">These entries are linked by matching name and city across consecutive editions.</p></div>' +
-//     '<div class="gb-tl-rail-caveat"><div class="gb-tl-rail-caveat-rule"></div><p>Address differences are <strong>often OCR or extraction errors</strong>, not real relocations. Each diff below offers a side-by-side comparison so you can judge.</p></div>' +
-//     '<div class="gb-tl-rail-actions"><button onclick="closeTimeline()">Cite this view</button><button onclick="closeTimeline()">Export entries</button></div>';
-
-//   const rulerHTML = _ALL_EDITION_YEARS.map(y => {
-//     const cls = presentYears.has(y) ? 'is-present' : 'is-absent';
-//     return '<div class="gb-tl-ruler-tick ' + cls + '"><div class="gb-tl-ruler-dot"></div><div class="gb-tl-ruler-yr">' + y + '</div></div>';
-//   }).join('');
-
-//   const segsHTML = segs.map(seg => {
-//     if (seg.kind === 'run') {
-//       const yl = seg.count === 1 ? String(seg.years[0]) : seg.years[0] + ' \u2013 ' + seg.years[seg.years.length-1];
-//       const el = seg.count === 1 ? 'single edition' : seg.count + ' consecutive editions';
-//       const flagH = seg.firstNote === 'First appearance' ? '<div class="gb-tl-run-flag">FIRST APPEARANCE</div>' : '';
-//       const chips = seg.years.map(y => '<span class="gb-tl-yearchip">' + y + '</span>').join('');
-//       return '<article class="gb-tl-run"><header class="gb-tl-run-head"><div class="gb-tl-run-yr">' + yl + '</div><div class="gb-tl-run-count">\u00B7 ' + el + '</div>' + flagH + '</header><div class="gb-tl-run-body"><div class="gb-tl-run-scan"></div><div class="gb-tl-run-meta"><div class="gb-tl-run-addr">' + seg.address + '</div><div class="gb-tl-run-detail">No textual change across this run.</div><div class="gb-tl-run-yearchips">' + chips + '</div></div></div></article>';
-//     }
-//     if (seg.kind === 'diff') {
-//       const confLabels = { high: 'Likely real change', medium: 'Possible change', low: 'Likely OCR error' };
-//       const cl = confLabels[seg.confidence] || 'Possible change';
-//       const cc = 'is-conf-' + seg.confidence;
-//       return '<div class="gb-tl-diff ' + cc + '"><div class="gb-tl-diff-rail"><div class="gb-tl-diff-rail-line"></div><div class="gb-tl-diff-rail-dot"></div></div><div class="gb-tl-diff-card"><header class="gb-tl-diff-head"><div class="gb-tl-diff-flag">ADDRESS DIFFERS \u00B7 ' + seg.from.year + ' \u2192 ' + seg.to.year + '</div><div class="gb-tl-diff-conf ' + cc + '"><span class="gb-tl-diff-conf-dot"></span>' + cl + '</div></header><div class="gb-tl-diff-compare"><div class="gb-tl-diff-side"><div class="gb-tl-diff-side-yr">' + seg.from.year + '</div><div class="gb-tl-diff-side-addr">' + seg.from.address + '</div></div><div class="gb-tl-diff-arrow">\u2192</div><div class="gb-tl-diff-side"><div class="gb-tl-diff-side-yr">' + seg.to.year + '</div><div class="gb-tl-diff-side-addr">' + seg.to.address + '</div></div></div><footer class="gb-tl-diff-actions"><button class="gb-tl-diff-btn">View both source scans \u2192</button><button class="gb-tl-diff-btn">Flag interpretation</button></footer></div></div>';
-//     }
-//     return '';
-//   }).join('');
-
-//   document.getElementById('tl-main').innerHTML =
-//     '<div class="gb-tl-strip-head"><h2 class="gb-tl-strip-title">Listings across editions</h2><p class="gb-tl-strip-sub">Consecutive editions with no change have been collapsed into runs. Address differences are flagged for review.</p></div>' +
-//     '<div class="gb-tl-ruler">' + rulerHTML + '</div>' +
-//     '<div class="gb-tl-flow">' + segsHTML + '</div>';
-
-//   document.getElementById('timeline-view').classList.add('open');
-//   document.body.style.overflow = 'hidden';
-// }
-
-// function closeTimeline() {
-//   document.getElementById('timeline-view').classList.remove('open');
-//   document.body.style.overflow = '';
-// }
-// document.getElementById('tl-back-btn').addEventListener('click', closeTimeline);
-// document.addEventListener('keydown', e => {
-//   if (e.key === 'Escape' && document.getElementById('timeline-view').classList.contains('open')) closeTimeline();
-// });
-
-// // Patch showDetail to add "View timeline" button
-// const _gbOrigSD3 = showDetail;
-// showDetail = function(row) {
-//   _gbOrigSD3(row);
-//   const nf = ['name','establishment_name','firm_name','business_name'].find(k => row[k] != null && row[k] !== '');
-//   if (!nf || !row[nf] || gbNameIndex.size === 0) return;
-//   const city = (row.city || '').toLowerCase().trim();
-//   const key = gbNormName(row[nf]) + '|' + city;
-//   const others = gbNameIndex.get(key) || [];
-//   if (others.length >= 2) {
-//     const src = document.getElementById('detail-source');
-//     if (src) {
-//       const btn = document.createElement('button');
-//       btn.style.cssText = 'background:none;border:none;padding:0 0 1px;font-family:var(--gb-font-mono);font-size: 0.786rem;letter-spacing:0.08em;color:var(--gb-accent);cursor:pointer;border-bottom:1px solid var(--gb-accent);width:max-content;text-transform:uppercase;margin-top:4px;display:block;';
-//       btn.textContent = 'View cross-edition timeline (' + others.length + ' editions) \u2192';
-//       btn.addEventListener('click', () => openTimeline(row));
-//       src.appendChild(btn);
-//     }
-//   }
-// };
 
 </script>
 <!-- privacy-friendly analytics via GoatCounter -->
