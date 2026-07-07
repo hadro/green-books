@@ -16,7 +16,7 @@ This repository powers a public website for browsing and viewing the digitized e
 | `image_to_volume.json` | Lookup table mapping NYPL image IDs to volume UUIDs, used by the viewer to route deep-links |
 | `canvas_map.json` | Lookup table mapping IIIF canvas IDs to image service URLs, used by the explorer for thumbnail generation |
 | `manifests/` | IIIF Presentation 3 manifests for each of the 23 volumes, patched to serve from this repository |
-| `clover.umd.patched.js` | Vendored [Clover IIIF](https://github.com/samvera-labs/clover-iiif) viewer bundle with patches for content-state deep-link rendering and HTTP→HTTPS URL rewriting for NYPL tile requests |
+| `clover.umd-3.11.0.js` | Vendored, **unmodified** [Clover IIIF](https://github.com/samvera-labs/clover-iiif) viewer bundle — `@samvera/clover-iiif@3.11.0`, `dist/web-components/index.umd.js` from the [npm package](https://registry.npmjs.org/@samvera/clover-iiif/-/clover-iiif-3.11.0.tgz). Configured via the `options` attribute set in `index.html`; content-state deep-linking and HTTP→HTTPS URL rewriting for NYPL tile requests are handled entirely in `index.html`, no bundle patching needed. |
 
 ---
 
