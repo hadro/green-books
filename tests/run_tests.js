@@ -193,8 +193,11 @@ async function newPage(browser, viewport) {
 
 // External resources index.html references that are unreachable (or
 // pointless) from the test sandbox / CI: analytics, web fonts, favicon.
+// net::ERR_ABORTED is a cancellation, not a failure: the driver closes the
+// info panel as soon as the overlay registers, which unmounts the panel's
+// region-thumbnail <img> and aborts its (delay-simulated) in-flight request.
 function isBenignNoise(text) {
-  return /gc\.zgo\.at|goatcounter|fonts\.googleapis|fonts\.gstatic|favicon\.ico/i.test(text);
+  return /gc\.zgo\.at|goatcounter|fonts\.googleapis|fonts\.gstatic|favicon\.ico|net::ERR_ABORTED/i.test(text);
 }
 
 async function runCaseDesktop(browser, { delayMs, label, timeoutMs }) {
