@@ -1,0 +1,43 @@
+{
+  "id": "__ORIGIN__/manifests/9999-test/manifest.json",
+  "type": "Manifest",
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "label": { "en": ["Test Volume"] },
+  "items": [
+    {
+      "id": "__ORIGIN__/manifests/9999-test/manifest.json/canvas/0",
+      "type": "Canvas",
+      "label": { "en": ["1"] },
+      "height": 3000,
+      "width": 2000,
+      "items": [
+        {
+          "id": "__ORIGIN__/manifests/9999-test/manifest.json/canvas/0/page/0",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "__ORIGIN__/manifests/9999-test/manifest.json/canvas/0/page/0/annotation/0",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "__ORIGIN__/manifests/9999-test/manifest.json/canvas/0",
+              "body": {
+                "id": "__ORIGIN__/iiif/2/9990001/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2000,
+                "height": 3000,
+                "service": [
+                  {
+                    "id": "__ORIGIN__/iiif/2/9990001",
+                    "type": "ImageService2",
+                    "profile": "level0"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -76,6 +76,25 @@
       color: var(--gb-ink-soft, #54504a);
       margin-top: 2px;
     }
+    /* While the deep-link driver (ensureZoomThenClosePanel) is opening and
+       closing Clover's info panel to register the content-state overlay,
+       hide the panel chrome so it doesn't flash on load. Selectors taken
+       from the rendered 3.11.0 DOM: the panel is aside[data-aside-active],
+       its resize handle is div[data-dragging], and its toggle is
+       button[data-aside-active] (Clover's stitches class names are build
+       hashes — attribute selectors are the stable handle; the
+       [data-aside-active] wrapper div is deliberately NOT matched, it
+       contains the whole viewer). opacity, NOT display:none — the panel
+       must stay mounted with stable layout for Clover to register the
+       overlay and for OSD sizing. JS .click() still works on
+       pointer-events:none elements, so the driver's toggle/manifest-back
+       clicks are unaffected. */
+    clover-viewer.gb-zoom-pending aside[data-aside-active],
+    clover-viewer.gb-zoom-pending div[data-dragging],
+    clover-viewer.gb-zoom-pending button[data-aside-active] {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
   </style>
 </head>
 <body>
@@ -238,11 +257,18 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
   let lastToggleClick = -Infinity;
   let panelClosed = false;
 
+  // Hide the panel chrome (see the gb-zoom-pending CSS rule) for the whole
+  // "panel mounted but not yet closed" window, so the open→close dance
+  // doesn't flash on screen. Cleared right after the manifest-back click,
+  // and on the give-up path so the panel is never left invisible.
+  el.classList.add("gb-zoom-pending");
+
   function openPanelIfCollapsed() {
     if (elapsed < TOGGLE_GRACE_MS || elapsed - lastToggleClick < TOGGLE_RETRY_MS) return;
     // Scoped to Clover's aside toggle: it is the only button carrying a
     // data-aside-active attribute (verified in 3.11.0 DOM at 400px and
-    // 1280px), so this cannot match other aria-expanded widgets.
+    // 1280px), so this cannot match other aria-expanded widgets. JS .click()
+    // fires its handler even under the pending rule's pointer-events:none.
     const toggle = el.querySelector('button[data-aside-active][aria-expanded="false"]');
     if (toggle) {
       lastToggleClick = elapsed;
@@ -261,6 +287,7 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
       panelClosed = true;
       const btn = el.querySelector('[data-value="manifest-back"]');
       if (btn) btn.click();
+      el.classList.remove("gb-zoom-pending");
     } else {
       const rect = overlay.getBoundingClientRect();
       const sane = Number.isFinite(rect.width) && Number.isFinite(rect.height) &&
@@ -275,7 +302,10 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
       }
     }
     elapsed += POLL_MS;
-    if (elapsed >= MAX_MS) return; // give up rather than zoom to a bogus rect
+    if (elapsed >= MAX_MS) {
+      el.classList.remove("gb-zoom-pending"); // never leave the panel invisible
+      return; // give up rather than zoom to a bogus rect
+    }
     setTimeout(poll, POLL_MS);
   }
 

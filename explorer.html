@@ -1272,7 +1272,7 @@ function showDetail(row) {
     img.alt = `Scan showing ${entryName}`;
     img.style.display = "block";
     img.onerror = () => { img.style.display = "none"; };
-    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}`;
+    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}`;
     thumbLink.title = "View this entry highlighted in the original scan";
     thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
   } else {
@@ -1300,9 +1300,7 @@ function showDetail(row) {
   const pageCtx = document.getElementById("detail-page-context");
   const src = document.getElementById("detail-source");
   if (row.canvas_fragment) {
-    const cityState = [row.city, row.state].filter(Boolean).join(", ");
-    const overlayLabel = [entryName, row.address, cityState].filter(Boolean).join(" – ");
-    const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent(overlayLabel)}`;
+    const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}`;
     pageCtx.innerHTML = `<a href="index.html?${viewerParams}" target="_blank">View in page context ↗</a>`;
     const links = [];
     const srcUrl = viewerUrl(row.canvas_fragment);
