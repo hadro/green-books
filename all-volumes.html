@@ -354,6 +354,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
 #detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
 #detail-title { font-family: var(--gb-font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.005em; line-height: 1.1; margin: 0 0 20px; color: var(--gb-ink); }
+#detail-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: -12px 0 16px; }
+#detail-badges:empty { display: none; }
+.detail-badge { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); background: var(--gb-paper-2); }
+.detail-badge-rec { color: #5c3d00; background: var(--gb-highlight-soft); border-color: rgba(200, 144, 40, 0.6); }
+.rec-star { color: var(--gb-highlight); font-size: 0.786rem; }
 .detail-fields { display: grid; grid-template-columns: 80px 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
 .df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
 .df-val { color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
@@ -616,6 +621,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div id="detail-inner">
         <div id="detail-page-context"></div>
         <h2 id="detail-title"></h2>
+        <div id="detail-badges"></div>
         <div class="detail-fields" id="detail-fields"></div>
         <div id="detail-also-in" style="display:none"></div>
         <div id="detail-map" style="display:none"></div>
@@ -818,6 +824,35 @@ const VALUE_LABELS = {
   "false": "No",
 };
 
+// Rich fields present in the CSVs but not shown as table columns. They render
+// in the detail panel, join the search haystack, and ride along in CSV export.
+const DETAIL_FIELDS = ["phone", "proprietor", "personnel", "rates", "amenities_services", "sub_region"];
+Object.assign(FIELD_LABELS, {
+  "phone": "Phone",
+  "proprietor": "Proprietor",
+  "personnel": "Personnel",
+  "rates": "Rates",
+  "amenities_services": "Amenities",
+  "sub_region": "Area",
+});
+
+// Boolean flags arrive as True/TRUE/true (and False variants) across the two CSVs.
+function gbIsTrue(v) { return /^true$/i.test((v || "").trim()); }
+
+// Green Book rates come through as stringified dicts ("{'single': '$6.50',
+// 'double': '$10.50'}"); travel-guide rates are plain strings ("$3 up").
+function gbFormatRates(v) {
+  if (!v || v[0] !== "{") return v;
+  const parts = [];
+  const re = /'(\w+)':\s*(?:'([^']*)'|None)/g;
+  let m;
+  while ((m = re.exec(v)) !== null) {
+    if (!m[2]) continue;
+    parts.push(m[1].charAt(0).toUpperCase() + m[1].slice(1) + " " + m[2]);
+  }
+  return parts.length ? parts.join(" · ") : v;
+}
+
 // ── State ──────────────────────────────────────────────────────────────────
 let currentDocMeta = {};
 const facetState = {};   // {fieldName: Set<value>}
@@ -939,7 +974,9 @@ function getFiltered() {
     // immutable after load), so repeat searches don't re-normalize 100k rows.
     if (q) {
       if (row._hay === undefined) {
-        row._hay = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+        row._hay = displayFields.map(f => (row[f.name] || ""))
+          .concat(DETAIL_FIELDS.map(n => row[n] || ""))
+          .join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       }
       if (!row._hay.includes(q)) return false;
     }
@@ -1031,6 +1068,14 @@ function buildRowTr(row, q) {
     const cellText = row[f.name] || "";
     td.title = cellText;
     td.appendChild(highlightMatch(cellText, q));
+    if (f.name === "name" && gbIsTrue(row.is_recommended)) {
+      const star = document.createElement("span");
+      star.className = "rec-star";
+      star.textContent = " ★";
+      star.title = "Marked as recommended in the original guide";
+      star.setAttribute("aria-label", "Recommended in the original guide");
+      td.appendChild(star);
+    }
     tr.appendChild(td);
   });
   const tdSrc = document.createElement("td");
@@ -1449,19 +1494,46 @@ function showDetail(row) {
     thumbLink.removeAttribute("aria-label");
   }
 
+  // Badges: flags the guides themselves printed, worth surfacing prominently.
+  const badges = document.getElementById("detail-badges");
+  badges.innerHTML = "";
+  if (gbIsTrue(row.is_recommended)) {
+    const b = document.createElement("span");
+    b.className = "detail-badge detail-badge-rec";
+    b.textContent = "★ Recommended";
+    b.title = "Marked as recommended in the original guide";
+    badges.appendChild(b);
+  }
+  if (gbIsTrue(row.is_advertisement)) {
+    const b = document.createElement("span");
+    b.className = "detail-badge";
+    b.textContent = "Advertisement";
+    b.title = "Extracted from a display advertisement rather than a directory line";
+    badges.appendChild(b);
+  }
+
   const fields = document.getElementById("detail-fields");
   fields.innerHTML = "";
-  displayFields.forEach(f => {
-    const val = row[f.name] || "";
-    if (!val) return;
+  const addField = (label, val) => {
     const k = document.createElement("div");
     k.className = "df-key";
-    k.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+    k.textContent = label;
     const v = document.createElement("div");
     v.className = "df-val";
     v.textContent = VALUE_LABELS[val] || val;
     fields.appendChild(k);
     fields.appendChild(v);
+  };
+  displayFields.forEach(f => {
+    const val = row[f.name] || "";
+    if (!val) return;
+    addField(FIELD_LABELS[f.name] || f.name.replace(/_/g, " "), val);
+  });
+  DETAIL_FIELDS.forEach(fname => {
+    let val = row[fname] || "";
+    if (!val) return;
+    if (fname === "rates") val = gbFormatRates(val);
+    addField(FIELD_LABELS[fname] || fname.replace(/_/g, " "), val);
   });
 
   const pageCtx = document.getElementById("detail-page-context");
@@ -1677,7 +1749,7 @@ document.getElementById("export-btn").addEventListener("click", () => {
   btn.disabled = true;
   btn.textContent = "Exporting…";
   const filtered = getSorted(getFiltered());
-  const cols = FIELD_META.map(f => f.name);
+  const cols = FIELD_META.map(f => f.name).concat(DETAIL_FIELDS, ["is_recommended", "is_advertisement"]);
   const lines = [cols.map(c => JSON.stringify(c || "")).join(",")];
   filtered.forEach(row => {
     lines.push(cols.map(c => JSON.stringify(row[c] || "")).join(","));
