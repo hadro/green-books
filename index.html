@@ -253,9 +253,20 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
   const ASPECT_TOLERANCE = 0.2; // relative
   const TOGGLE_GRACE_MS = 1000;    // don't touch the toggle before Clover settles
   const TOGGLE_RETRY_MS = 3000;    // re-click at most this often if still collapsed
+  const STABLE_TICKS = 2;          // sane rect must hold this many ticks before zooming
+  const VERIFY_MS = 1000;          // wait this long after a dispatch before checking it took
+  const MAX_DISPATCHES = 4;
+  // Post-zoom the fragment fills most of the viewport, so the overlay spans a
+  // large share of the viewer in at least one axis; at OSD's home view it
+  // doesn't. Used to verify a dispatched zoom actually took.
+  const ZOOMED_MIN_FRACTION = 0.25;
   let elapsed = 0;
   let lastToggleClick = -Infinity;
   let panelClosed = false;
+  let lastRect = null;
+  let stableTicks = 0;
+  let dispatches = 0;
+  let dispatchedAt = null;
 
   // Hide the panel chrome (see the gb-zoom-pending CSS rule) for the whole
   // "panel mounted but not yet closed" window, so the open→close dance
@@ -290,15 +301,45 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
       el.classList.remove("gb-zoom-pending");
     } else {
       const rect = overlay.getBoundingClientRect();
-      const sane = Number.isFinite(rect.width) && Number.isFinite(rect.height) &&
-        rect.width > 0 && rect.height > 0;
-      const aspectOk = !expectedAspect ||
-        Math.abs((rect.width / rect.height) - expectedAspect) / expectedAspect <= ASPECT_TOLERANCE;
-      if (sane && aspectOk) {
-        // Trigger Clover's own handler for the correct fitBounds rect.
-        // Idempotent if Clover already zoomed on its own.
-        overlay.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
-        return;
+      const viewer = el.getBoundingClientRect();
+      const zoomed = viewer.width > 0 && viewer.height > 0 &&
+        (rect.width / viewer.width >= ZOOMED_MIN_FRACTION ||
+         rect.height / viewer.height >= ZOOMED_MIN_FRACTION);
+      if (dispatchedAt !== null) {
+        // Verify a dispatched zoom actually took. OSD re-fits the viewport to
+        // home bounds up to 3 times (~150ms) after the image finishes loading
+        // (fitBoundsOnAllLoaded), and a home-fit landing after our fitBounds
+        // silently undoes the zoom — observed on fast CI runners. Re-dispatch
+        // until the overlay occupies a real share of the viewer.
+        if (elapsed - dispatchedAt >= VERIFY_MS) {
+          if (zoomed) return; // done
+          if (dispatches >= MAX_DISPATCHES) {
+            return; // give up; class already cleared at panel close
+          }
+          dispatches++;
+          dispatchedAt = elapsed;
+          overlay.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+        }
+      } else {
+        const sane = Number.isFinite(rect.width) && Number.isFinite(rect.height) &&
+          rect.width > 0 && rect.height > 0;
+        const aspectOk = !expectedAspect ||
+          Math.abs((rect.width / rect.height) - expectedAspect) / expectedAspect <= ASPECT_TOLERANCE;
+        // Require the sane rect to hold still across consecutive ticks before
+        // zooming: a fresh overlay redraw lands together with OSD's home-fit
+        // retry window, and dispatching inside it gets overridden.
+        const stable = sane && aspectOk && lastRect &&
+          Math.abs(rect.x - lastRect.x) < 1 && Math.abs(rect.y - lastRect.y) < 1 &&
+          Math.abs(rect.width - lastRect.width) < 1 && Math.abs(rect.height - lastRect.height) < 1;
+        stableTicks = stable ? stableTicks + 1 : 0;
+        lastRect = (sane && aspectOk) ? rect : null;
+        if (stableTicks >= STABLE_TICKS) {
+          // Trigger Clover's own handler for the correct fitBounds rect.
+          // Idempotent if Clover already zoomed on its own.
+          dispatches++;
+          dispatchedAt = elapsed;
+          overlay.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+        }
       }
     }
     elapsed += POLL_MS;
