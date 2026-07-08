@@ -16,8 +16,6 @@
 <meta name="twitter:description" content="Search and browse more than 105,000 entries from the Green Books and six other Black travel guides, 1930–1966.">
 <meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231d4d2e'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23faf8f3'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231d4d2e'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%23767069'/%3E%3C/svg%3E">
-<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/dist/plot.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
@@ -171,6 +169,58 @@ a { color: var(--gb-accent); }
   text-transform: uppercase; width: max-content; padding: 0 0 2px 0; cursor: pointer;
 }
 .gb-hero-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
+
+/* ── Trends: "the guides at a glance" ── */
+#gb-trends { padding: 48px 80px 56px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper); }
+.trends-head { margin-bottom: 28px; }
+.trends-eyebrow {
+  font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gb-ink-soft);
+  display: flex; align-items: center; gap: 12px;
+}
+.trends-eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--gb-rule-faint); }
+.trends-sub { margin: 10px 0 0; font-size: 0.857rem; color: var(--gb-ink-faint); font-family: var(--gb-font-body); }
+.trends-loading { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); margin: 0; }
+.trend-fig { margin: 0 0 36px; }
+.trend-caption { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.trend-title { font-family: var(--gb-font-display); font-size: 1.143rem; font-weight: 500; color: var(--gb-ink); }
+.trend-note { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
+.trend-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 10px; font-size: 0.786rem; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
+.trend-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.trend-chart svg { display: block; }
+.trend-chart .trend-tick { font-family: var(--gb-font-mono); font-size: 10px; fill: var(--gb-ink-faint); }
+.trend-chart .trend-grid { stroke: var(--gb-rule-faint); stroke-width: 1; }
+.trend-chart .trend-annot { font-family: var(--gb-font-body); font-size: 10px; font-style: italic; fill: var(--gb-ink-faint); }
+.trend-col-hit { fill: transparent; cursor: pointer; }
+.trend-col-hit:hover, .trend-col-hit:focus-visible { fill: rgba(22, 19, 16, 0.05); outline: none; }
+.trend-col-hit:focus-visible { stroke: var(--gb-accent); stroke-width: 1.5; }
+.trends-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; }
+.trend-bars { display: flex; flex-direction: column; gap: 2px; }
+.trend-row {
+  display: grid; grid-template-columns: 168px 1fr 60px; align-items: center; gap: 10px;
+  background: none; border: none; padding: 4px 2px; cursor: pointer; text-align: left;
+  font-family: var(--gb-font-body); width: 100%;
+}
+.trend-row:hover, .trend-row:focus-visible { background: var(--gb-row-hover); outline: none; }
+.trend-row:focus-visible { box-shadow: inset 0 0 0 1.5px var(--gb-accent); }
+.trend-row-label { font-size: 0.786rem; color: var(--gb-ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trend-row:hover .trend-row-label { color: var(--gb-ink); }
+.trend-row-track { height: 10px; position: relative; }
+.trend-row-bar { height: 10px; background: var(--gb-accent); border-radius: 0 4px 4px 0; min-width: 2px; }
+.trend-row-val { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); font-variant-numeric: tabular-nums; text-align: right; }
+.trend-table { margin-top: 4px; }
+.trend-table summary { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer; }
+.trend-table summary:hover { color: var(--gb-accent); }
+.trend-table-scroll { overflow-x: auto; margin-top: 8px; }
+.trend-table table { font-size: 0.786rem; border-collapse: collapse; }
+.trend-table th, .trend-table td { padding: 3px 10px; text-align: right; font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-soft); white-space: nowrap; border-bottom: 1px solid var(--gb-rule-faint); }
+.trend-table th { color: var(--gb-ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+.trend-table th:first-child, .trend-table td:first-child { text-align: left; }
+@media (max-width: 900px) {
+  #gb-trends { padding: 32px 24px 40px; }
+  .trends-grid { grid-template-columns: 1fr; }
+  .trend-row { grid-template-columns: 120px 1fr 56px; }
+}
 
 /* ── Explorer layout ── */
 #app { display: flex; position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--gb-paper); }
@@ -584,6 +634,44 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   </div>
 </section>
 
+<section id="gb-trends" aria-label="The guides at a glance">
+  <div class="trends-head">
+    <div class="trends-eyebrow">The guides at a glance</div>
+    <p class="trends-sub">Counts are extracted listings, not unique businesses. Click any bar to filter the explorer below.</p>
+  </div>
+  <p class="trends-loading" id="trends-loading">Charts appear once all entries finish loading&hellip;</p>
+  <div id="trends-body" style="display:none">
+    <figure class="trend-fig">
+      <figcaption class="trend-caption">
+        <span class="trend-title">Listings per year</span>
+        <span class="trend-note">stacked by publication &middot; the 1942&ndash;46 gap is the wartime publishing pause</span>
+      </figcaption>
+      <div class="trend-legend" id="trend-years-legend"></div>
+      <div class="trend-chart" id="trend-years"></div>
+      <details class="trend-table">
+        <summary>View as table</summary>
+        <div class="trend-table-scroll" id="trend-years-table"></div>
+      </details>
+    </figure>
+    <div class="trends-grid">
+      <figure class="trend-fig">
+        <figcaption class="trend-caption">
+          <span class="trend-title">Most-listed categories</span>
+          <span class="trend-note">top 10 section headings, folded across spelling variants</span>
+        </figcaption>
+        <div class="trend-bars" id="trend-cats"></div>
+      </figure>
+      <figure class="trend-fig">
+        <figcaption class="trend-caption">
+          <span class="trend-title">Most-listed states</span>
+          <span class="trend-note">top 12 by listings across all guides</span>
+        </figcaption>
+        <div class="trend-bars" id="trend-states"></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <div id="app">
 <aside id="sidebar" role="complementary" aria-label="Filters">
   <div id="sidebar-header">
@@ -750,7 +838,7 @@ const FIELD_META  = [
   {"name": "city",            "type": "search", "top_values": []},
   {"name": "state",           "type": "search", "top_values": []},
   {"name": "category",        "type": "facet",  "top_values": [],
-   "groups": {"Blank or no specific category": ["Hotels - Motels - Tourist Homes - Restaurants", "General", ""], "MOTEL": ["Motel", "MOTEL"], "TOURIST HOMES": ["TOURIST HOMES", "LOURIST"], "WINE & LIQUOR STORES": ["WINE & LIQUOR STORES", "LQIUOR STORES"], "GARAGES": ["GARAGES", "GARAGE", "Garage"], "DRUG STORES": ["DRUG STORES", "DRUGGIST", "PHARMACY", "Pharmacy", "DRUGS"], "VACATION SECTION": ["VACATION SECTION", "Vacation Section"], "LODGINGS": ["LODGINGS", "LODGING", "LOGDINGS"], "COUNTRY CLUBS": ["COUNTRY CLUBS", "COUNTRY CLUB", "Country Club"], "AUTOMOTIVE": ["AUTOMOTIVE", "AUTOMOTIVES"]}},
+   "groups": {"Blank or no specific category": ["Hotels - Motels - Tourist Homes - Restaurants", "General", "GENERAL", ""], "MOTEL": ["Motel", "MOTEL"], "TOURIST HOMES": ["TOURIST HOMES", "LOURIST"], "WINE & LIQUOR STORES": ["WINE & LIQUOR STORES", "LQIUOR STORES"], "GARAGES": ["GARAGES", "GARAGE", "Garage"], "DRUG STORES": ["DRUG STORES", "DRUGGIST", "PHARMACY", "Pharmacy", "DRUGS"], "VACATION SECTION": ["VACATION SECTION", "Vacation Section"], "LODGINGS": ["LODGINGS", "LODGING", "LOGDINGS"], "COUNTRY CLUBS": ["COUNTRY CLUBS", "COUNTRY CLUB", "Country Club"], "AUTOMOTIVE": ["AUTOMOTIVE", "AUTOMOTIVES"]}},
   {"name": "notes",           "type": "search", "top_values": []},
   {"name": "canvas_fragment", "type": "id",     "top_values": []},
   {"name": "image",           "type": "id",     "top_values": []}
@@ -3171,6 +3259,7 @@ async function gbStreamCsv(url, onRow) {
       estBtn.title = "One row per business, matched across volumes and publications";
     }
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
+    gbRenderTrends();
     // If the user opened an entry while data was still streaming, keep it open
     // through the final render — its coverage grid can now be filled in.
     const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
@@ -3208,6 +3297,298 @@ async function gbStreamCsv(url, onRow) {
   }
 })();
 
+
+// ── Trends: "the guides at a glance" ─────────────────────────────────────────
+// Three aggregate views rendered once both CSV streams finish: listings per
+// year stacked by publication (SVG columns), and two single-hue bar lists
+// (categories, states). Every mark filters the explorer on click; every value
+// is reachable without hover (bar lists label each value; the year chart has
+// a table-view twin).
+
+let _trendAgg = null;
+function gbTrendAggregates() {
+  if (_trendAgg) return _trendAgg;
+  const yearPub = new Map();   // year number → Map(publication → count)
+  const cats = new Map();      // folded category → count
+  const states = new Map();    // uppercased state → count
+  const fold = gbCatFoldMap();
+  ALL_ENTRIES.forEach(r => {
+    const y = Number(r.volume_year || r.year);
+    if (y >= 1930 && y <= 1966) {
+      let m = yearPub.get(y);
+      if (!m) yearPub.set(y, m = new Map());
+      const p = r.publication || "";
+      m.set(p, (m.get(p) || 0) + 1);
+    }
+    const c = fold[r.category || ""] || r.category || "";
+    if (c && c !== "Blank or no specific category") cats.set(c, (cats.get(c) || 0) + 1);
+    const s = (r.state || "").trim().toUpperCase();
+    if (s) states.set(s, (states.get(s) || 0) + 1);
+  });
+  _trendAgg = { yearPub, cats, states };
+  return _trendAgg;
+}
+
+// Publication stack order: chronological by first active year — the same
+// order as the coverage grid's rows, so color + position stay consistent.
+function gbTrendPubOrder() {
+  return [...PUBLICATION_ACTIVE_YEARS.keys()].sort((a, b) => {
+    const ya = Math.min(...PUBLICATION_ACTIVE_YEARS.get(a));
+    const yb = Math.min(...PUBLICATION_ACTIVE_YEARS.get(b));
+    return ya - yb || a.localeCompare(b);
+  });
+}
+
+const svgNS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs) {
+  const el = document.createElementNS(svgNS, tag);
+  for (const k in attrs) el.setAttribute(k, attrs[k]);
+  return el;
+}
+// Rounded top corners, square baseline — the spec for a column's data-end.
+function gbRoundedTopRect(x, y, w, h, r) {
+  r = Math.min(r, w / 2, h);
+  return `M${x},${y + h} L${x},${y + r} Q${x},${y} ${x + r},${y} L${x + w - r},${y} Q${x + w},${y} ${x + w},${y + r} L${x + w},${y + h} Z`;
+}
+
+function gbTrendFilterYear(y) {
+  if (!GB_YEAR_FIELD || !facetState[GB_YEAR_FIELD]) return;
+  gcEvent("trend-year");
+  facetState[GB_YEAR_FIELD].clear();
+  facetState[GB_YEAR_FIELD].add(y);
+  _pushNextHistory = true;
+  renderAll();
+  document.getElementById("app").scrollIntoView({ behavior: "smooth" });
+}
+function gbTrendFilterCategory(cat) {
+  if (!facetState.category) return;
+  gcEvent("trend-category");
+  facetState.category.clear();
+  facetState.category.add(cat);
+  _pushNextHistory = true;
+  renderAll();
+  document.getElementById("app").scrollIntoView({ behavior: "smooth" });
+}
+function gbTrendFilterState(s) {
+  gcEvent("trend-state");
+  colFilters.state = s;
+  _pushNextHistory = true;
+  renderAll();
+  document.getElementById("app").scrollIntoView({ behavior: "smooth" });
+}
+
+function gbDrawYearChart() {
+  const host = document.getElementById("trend-years");
+  if (!host) return;
+  host.innerHTML = "";
+  const { yearPub } = gbTrendAggregates();
+  const pubOrder = gbTrendPubOrder();
+  const years = [];
+  for (let y = 1930; y <= 1966; y++) years.push(y);
+  const totals = years.map(y => {
+    let t = 0;
+    const m = yearPub.get(y);
+    if (m) m.forEach(v => { t += v; });
+    return t;
+  });
+  const maxT = Math.max(...totals, 1);
+  const step = [250, 500, 1000, 2000, 2500, 5000, 10000].find(s => maxT / s <= 5) || 10000;
+  const niceMax = step * Math.ceil(maxT / step);
+  const W = Math.max(320, host.clientWidth || 900);
+  const H = 250, mL = 48, mR = 6, mT = 10, mB = 26;
+  const innerW = W - mL - mR, innerH = H - mT - mB;
+  const slot = innerW / years.length;
+  const barW = Math.min(24, slot * 0.7);
+  const yPix = v => mT + innerH - (v / niceMax) * innerH;
+  const svg = svgEl("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
+
+  // Recessive horizontal grid + y ticks (comma'd clean numbers).
+  for (let v = step; v <= niceMax; v += step) {
+    svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(v), y2: yPix(v), class: "trend-grid" }));
+    const t = svgEl("text", { x: mL - 6, y: yPix(v) + 3, "text-anchor": "end", class: "trend-tick" });
+    t.textContent = v.toLocaleString();
+    svg.appendChild(t);
+  }
+  svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(0), y2: yPix(0), class: "trend-grid" }));
+
+  years.forEach((yr, i) => {
+    const m = yearPub.get(yr);
+    const x0 = mL + i * slot;
+    const bx = x0 + (slot - barW) / 2;
+    if (m) {
+      let cum = 0;
+      const segs = pubOrder.map(p => [p, m.get(p) || 0]).filter(([, n]) => n > 0);
+      segs.forEach(([p, n], si) => {
+        const yT = yPix(cum + n), yB = yPix(cum);
+        const h = yB - yT;
+        // 2px surface gap between stacked segments (carved from the segment's
+        // bottom, so the baseline segment stays square on the axis).
+        const drawH = (si > 0 && h > 4) ? h - 2 : h;
+        const fill = PUBLICATION_COLORS[p] || "var(--gb-ink)";
+        if (si === segs.length - 1 && drawH >= 3) {
+          svg.appendChild(svgEl("path", { d: gbRoundedTopRect(bx, yT, barW, drawH, 4), fill }));
+        } else {
+          svg.appendChild(svgEl("rect", { x: bx, y: yT, width: barW, height: Math.max(drawH, 0.5), fill }));
+        }
+        cum += n;
+      });
+    }
+    // Full-column hit target: hover tooltip, keyboard focus, click-to-filter.
+    const total = totals[i];
+    const hit = svgEl("rect", { x: x0, y: mT, width: slot, height: innerH, class: "trend-col-hit", tabindex: 0, role: "button" });
+    hit.setAttribute("aria-label", total
+      ? `${yr}: ${total.toLocaleString()} listings. Filter the explorer to ${yr}.`
+      : `${yr}: no guides in the dataset`);
+    const tipLines = [[String(yr), "tip-val"],
+      [total ? total.toLocaleString() + " listings — click to filter" : "No guides in the dataset", "tip-sub"]];
+    if (m) pubOrder.forEach(p => {
+      const n = m.get(p);
+      if (n) tipLines.push([(PUBLICATION_SHORT_NAMES[p] || p) + "  " + n.toLocaleString(), "tip-sub"]);
+    });
+    gbAttachTip(hit, tipLines);
+    if (total) {
+      const go = () => { gbHideTip(); gbTrendFilterYear(String(yr)); };
+      hit.addEventListener("click", go);
+      hit.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    } else {
+      hit.style.cursor = "default";
+    }
+    svg.appendChild(hit);
+  });
+
+  // X ticks every 5 years.
+  years.forEach((yr, i) => {
+    if (yr % 5 !== 0) return;
+    const t = svgEl("text", { x: mL + i * slot + slot / 2, y: H - 8, "text-anchor": "middle", class: "trend-tick" });
+    t.textContent = yr;
+    svg.appendChild(t);
+  });
+
+  // Name the wartime pause in place when it is empty in the data and there's room.
+  const i42 = years.indexOf(1942);
+  const warTotal = totals.slice(i42, i42 + 5).reduce((a, b) => a + b, 0);
+  if (warTotal === 0 && slot * 5 > 96) {
+    const t = svgEl("text", { x: mL + (i42 + 2.5) * slot, y: yPix(0) - 10, "text-anchor": "middle", class: "trend-annot" });
+    t.textContent = "wartime pause — no guides";
+    svg.appendChild(t);
+  }
+  host.appendChild(svg);
+
+  // Legend (7 series — identity must not be color-matching against memory).
+  const leg = document.getElementById("trend-years-legend");
+  if (leg) {
+    leg.innerHTML = "";
+    pubOrder.forEach(p => {
+      const item = document.createElement("span");
+      item.className = "trend-legend-item";
+      const dot = document.createElement("span");
+      dot.className = "pub-dot";
+      dot.style.background = PUBLICATION_COLORS[p] || "var(--gb-ink)";
+      item.appendChild(dot);
+      item.appendChild(document.createTextNode(PUBLICATION_SHORT_NAMES[p] || p));
+      leg.appendChild(item);
+    });
+  }
+}
+
+// Table-view twin for the year chart: every plotted value, no hover needed.
+function gbBuildYearTable() {
+  const host = document.getElementById("trend-years-table");
+  if (!host) return;
+  host.innerHTML = "";
+  const { yearPub } = gbTrendAggregates();
+  const pubOrder = gbTrendPubOrder();
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const hr = document.createElement("tr");
+  ["Year", ...pubOrder.map(p => PUBLICATION_SHORT_NAMES[p] || p), "Total"].forEach(h => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  [...yearPub.keys()].sort((a, b) => a - b).forEach(y => {
+    const m = yearPub.get(y);
+    const tr = document.createElement("tr");
+    let total = 0;
+    const tds = [String(y)];
+    pubOrder.forEach(p => {
+      const n = m.get(p) || 0;
+      total += n;
+      tds.push(n ? n.toLocaleString() : "–");
+    });
+    tds.push(total.toLocaleString());
+    tds.forEach(v => {
+      const td = document.createElement("td");
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  host.appendChild(table);
+}
+
+// Single-hue horizontal bar list (nominal categories → one color, value at
+// the bar tip; the rows are buttons, so keyboard and click both filter).
+function gbDrawBarList(hostId, entries, opts) {
+  const host = document.getElementById(hostId);
+  if (!host) return;
+  host.innerHTML = "";
+  const max = entries.length ? entries[0][1] : 1;
+  entries.forEach(([label, n]) => {
+    const row = document.createElement("button");
+    row.type = "button";
+    row.className = "trend-row";
+    row.setAttribute("aria-label", `${label}: ${n.toLocaleString()} listings. ${opts.actionLabel}`);
+    const lab = document.createElement("span");
+    lab.className = "trend-row-label";
+    lab.textContent = label;
+    lab.title = label;
+    const track = document.createElement("span");
+    track.className = "trend-row-track";
+    const bar = document.createElement("span");
+    bar.className = "trend-row-bar";
+    bar.style.display = "block";
+    bar.style.width = (n / max * 100).toFixed(2) + "%";
+    track.appendChild(bar);
+    const val = document.createElement("span");
+    val.className = "trend-row-val";
+    val.textContent = n.toLocaleString();
+    row.appendChild(lab);
+    row.appendChild(track);
+    row.appendChild(val);
+    row.addEventListener("click", () => opts.onClick(label));
+    host.appendChild(row);
+  });
+}
+
+let _trendsRendered = false;
+function gbRenderTrends() {
+  if (!gbDataLoaded) return;
+  const body = document.getElementById("trends-body");
+  if (!body) return;
+  const loading = document.getElementById("trends-loading");
+  if (loading) loading.style.display = "none";
+  body.style.display = "";  // must be visible before clientWidth is measured
+  const agg = gbTrendAggregates();
+  gbDrawYearChart();
+  gbBuildYearTable();
+  gbDrawBarList("trend-cats",
+    [...agg.cats.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10),
+    { onClick: gbTrendFilterCategory, actionLabel: "Filter the explorer to this category." });
+  gbDrawBarList("trend-states",
+    [...agg.states.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12),
+    { onClick: gbTrendFilterState, actionLabel: "Filter the explorer to this state." });
+  _trendsRendered = true;
+}
+window.addEventListener("resize", () => {
+  if (!_trendsRendered) return;
+  clearTimeout(gbRenderTrends._rt);
+  gbRenderTrends._rt = setTimeout(gbDrawYearChart, 200);
+});
 
 // ── Hero + Timeline additions ─────────────────────────────────────────────────
 
