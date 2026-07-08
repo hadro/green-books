@@ -299,9 +299,39 @@ a { color: var(--gb-accent); }
 #random-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
 #filter-btn { display: none; }
 
+/* ── View-mode toggle (Listings / Establishments) ── */
+#view-toggle { display: inline-flex; border: 1px solid var(--gb-rule-faint); }
+.view-btn {
+  background: var(--gb-paper); border: none; cursor: pointer;
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gb-ink-soft); padding: 5px 12px;
+}
+.view-btn + .view-btn { border-left: 1px solid var(--gb-rule-faint); }
+.view-btn:hover:not(:disabled):not(.view-btn-active) { color: var(--gb-ink); }
+.view-btn:disabled { color: var(--gb-ink-faint); cursor: not-allowed; opacity: 0.6; }
+.view-btn-active { background: var(--gb-accent); color: var(--gb-paper); }
+#est-mode-note { margin: 0; font-size: 0.786rem; color: var(--gb-ink-faint); font-style: italic; }
+
+/* ── Establishments table ── */
+.est-num { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-soft); font-variant-numeric: tabular-nums; text-align: right; }
+th.est-num-head { text-align: right; }
+.est-spark {
+  width: 130px; height: 12px; background-color: var(--gb-paper-2);
+  border: 1px solid var(--gb-rule-faint); box-sizing: border-box;
+}
+td.est-spark-cell { overflow: visible; }
+/* Establishment columns get explicit budgets so the coverage sparkline stays
+   on-screen at common desktop widths instead of overflowing to the right. */
+table.est-mode td { padding: 11px 10px; }
+table.est-mode tbody td:first-child { width: 100px; }
+table.est-mode td:nth-child(2) { max-width: 230px; }
+table.est-mode td:nth-child(3) { max-width: 185px; }
+table.est-mode td:nth-child(4) { max-width: 170px; }
+table.est-mode td:nth-child(5) { max-width: 130px; }
+
 /* ── Table ── */
 #content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-#table-wrap { flex: 1; overflow-y: auto; }
+#table-wrap { flex: 1; overflow-y: auto; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 0.929rem; }
 thead { position: sticky; top: 0; background: var(--gb-paper); z-index: 1; }
 thead th {
@@ -596,9 +626,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <span id="export-feedback" aria-live="polite"></span>
     </div>
     <div class="toolbar-meta-row">
+      <div id="view-toggle" role="group" aria-label="View mode">
+        <button id="view-listings-btn" class="view-btn view-btn-active" aria-pressed="true">Listings</button>
+        <button id="view-estabs-btn" class="view-btn" aria-pressed="false" disabled title="Available once all entries finish loading">Establishments</button>
+      </div>
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
+    <p id="est-mode-note" style="display:none">One row per business — listings matched across volumes and publications by name and address. Click a row to open its most recent listing.</p>
   </div>
   <button id="random-btn" style="display:none"></button>
   <div id="content">
@@ -872,6 +907,15 @@ function gcEvent(name) {
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
 }
 let colFilters = {};  // fieldName → filter string
+// ── Establishments view state ──
+// "listings" shows one row per extracted entry (the classic table);
+// "establishments" aggregates the same filtered rows into one row per
+// resolved business group (via gb-matching.js) with lifespan stats.
+let viewMode = "listings";
+let estabSortCol = "nYears";   // establishment-table sort, separate from listing sort
+let estabSortDir = -1;
+const ESTAB_WINDOW_STEP = 1000;
+let _estabWinSize = ESTAB_WINDOW_STEP;
 const showAllFacets = new Set();  // field names with expanded value list
 try { const _s = sessionStorage.getItem('showAllFacets'); if (_s) JSON.parse(_s).forEach(n => showAllFacets.add(n)); } catch(e) {}
 
@@ -1187,6 +1231,7 @@ function extendWindow() {
 }
 
 function renderTableBody() {
+  if (viewMode === "establishments") { renderEstabBody(); return; }
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
 
@@ -1250,6 +1295,7 @@ function renderTableBody() {
 
 // ── Render: table head (sort row + filter row) ──────────────────────────────
 function renderTableHead() {
+  if (viewMode === "establishments") { renderEstabHead(); return; }
   const head = document.getElementById("table-head");
   head.innerHTML = "";
 
@@ -1748,21 +1794,39 @@ document.getElementById("export-btn").addEventListener("click", () => {
   const btn = document.getElementById("export-btn");
   btn.disabled = true;
   btn.textContent = "Exporting…";
-  const filtered = getSorted(getFiltered());
-  const cols = FIELD_META.map(f => f.name).concat(DETAIL_FIELDS, ["is_recommended", "is_advertisement"]);
-  const lines = [cols.map(c => JSON.stringify(c || "")).join(",")];
-  filtered.forEach(row => {
-    lines.push(cols.map(c => JSON.stringify(row[c] || "")).join(","));
-  });
+  let lines, count, unit, suffix;
+  if (viewMode === "establishments") {
+    // Aggregated export: one row per resolved business group.
+    const groups = getSortedEstabs(getEstablishments());
+    const cols = ["name", "address", "city", "state", "category", "first_year", "last_year",
+                  "years_listed", "listings", "publications_count", "publications", "years"];
+    lines = [cols.map(c => JSON.stringify(c)).join(",")];
+    groups.forEach(g => {
+      lines.push([
+        g.name, g.address, g.city, g.state, g.category,
+        g.firstYear || "", g.lastYear || "", g.nYears, g.nListings, g.nPubs,
+        [...g.pubs].join("; "), [...g.yearPub.keys()].sort().join("; ")
+      ].map(v => JSON.stringify(String(v == null ? "" : v))).join(","));
+    });
+    count = groups.length; unit = "establishments"; suffix = "_establishments.csv";
+  } else {
+    const filtered = getSorted(getFiltered());
+    const cols = FIELD_META.map(f => f.name).concat(DETAIL_FIELDS, ["is_recommended", "is_advertisement"]);
+    lines = [cols.map(c => JSON.stringify(c || "")).join(",")];
+    filtered.forEach(row => {
+      lines.push(cols.map(c => JSON.stringify(row[c] || "")).join(","));
+    });
+    count = filtered.length; unit = "entries"; suffix = "_filtered.csv";
+  }
   const blob = new Blob([lines.join("\n")], { type: "text/csv" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = (DOC_TITLE || "entries").replace(/\s+/g, "_") + "_filtered.csv";
+  a.download = (DOC_TITLE || "entries").replace(/\s+/g, "_") + suffix;
   a.click();
   setTimeout(() => {
     btn.disabled = false; btn.textContent = "Export CSV";
     const fb = document.getElementById("export-feedback");
-    if (fb) { fb.textContent = `Exported ${filtered.length.toLocaleString()} entries as CSV.`; setTimeout(() => { fb.textContent = ""; }, 4000); }
+    if (fb) { fb.textContent = `Exported ${count.toLocaleString()} ${unit} as CSV.`; setTimeout(() => { fb.textContent = ""; }, 4000); }
   }, 600);
 });
 
@@ -1869,6 +1933,7 @@ function stateToHash() {
       if (idx > 0) params.set("vol", idx);
     }
   }
+  if (viewMode === "establishments") params.set("view", "est");
   if (searchQuery) params.set("q", searchQuery);
   if (sortCol) params.set("sort", sortCol + ":" + (sortDir > 0 ? "asc" : "desc"));
   for (const [col, val] of Object.entries(colFilters)) {
@@ -1905,6 +1970,11 @@ function applyHashState() {
       if (msel) msel.value = label;
     }
   }
+
+  // View mode (establishments needs the match index; before it's built the
+  // establishment body renders a loading note, and the post-load renderAll
+  // fills it in)
+  if (params.get("view") === "est") viewMode = "establishments";
 
   // Search query
   const q = params.get("q");
@@ -1943,6 +2013,8 @@ function renderAll() {
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   selectedIdx = null;
   _winSize = WINDOW_STEP;  // shrink an extended window back to one page
+  _estabWinSize = ESTAB_WINDOW_STEP;
+  syncViewToggleUI();
   renderFacetSidebar();
   renderTable();
   syncFilterUI();
@@ -1961,6 +2033,7 @@ function scrollToSelected(delayMs = 0) {
 }
 
 function scrollToYear(year) {
+  if (viewMode !== "listings") return;  // the establishments table has no year rows
   const sorted = getSorted(getFiltered());
   const targetRow = sorted.find(r => (r.volume_year || r.year || '') === year);
   if (!targetRow) return;
@@ -1999,6 +2072,344 @@ document.getElementById("random-year-btn").addEventListener("click", () => {
   gbJumpToYear(years[Math.floor(Math.random() * years.length)]);
 });
 
+// ── Establishments view ──────────────────────────────────────────────────────
+// One row per resolved business group instead of one row per extracted
+// listing. The pipeline is: getFiltered() (search/facets/column filters all
+// still apply, to listings) → collapse to the distinct business groups those
+// listings belong to → per-group lifespan stats computed from the FULL group
+// (so a year filter finds businesses active that year but still shows each
+// one's whole 1930–1966 story).
+
+// Stable per-row group key. Rows the resolver skipped (name stem < 3 chars)
+// become singleton establishments under a synthetic key; "\u0000" cannot
+// collide with real keys, which always contain "|".
+function gbEstabKeyOf(row) {
+  const k = gbRowToKey.get(row);
+  return k !== undefined ? k : "\u0000" + rowIdx(row);
+}
+
+// category raw value → folded group name (same folding the facet uses).
+let _gbCatFold = null;
+function gbCatFoldMap() {
+  if (!_gbCatFold) {
+    _gbCatFold = {};
+    const f = FIELD_META.find(f => f.name === "category");
+    if (f && f.groups) Object.entries(f.groups).forEach(([g, vals]) => vals.forEach(v => { _gbCatFold[v] = g; }));
+  }
+  return _gbCatFold;
+}
+
+function gbComputeEstabStats(key, rows) {
+  const nameCount = new Map();
+  const yearPub = new Map();   // year string → publication of the (first) listing that year
+  const pubs = new Set();
+  const catCount = new Map();
+  const foldMap = gbCatFoldMap();
+  let rep = rows[0], repY = -1;
+  rows.forEach(r => {
+    const y = Number(r[GB_YEAR_FIELD] || r.year) || 0;
+    if (y >= repY) { repY = y; rep = r; }  // representative = most recent listing
+    if (r.name) nameCount.set(r.name, (nameCount.get(r.name) || 0) + 1);
+    const ys = String(r[GB_YEAR_FIELD] || r.year || "");
+    if (ys && !yearPub.has(ys)) yearPub.set(ys, r.publication || "");
+    if (r.publication) pubs.add(r.publication);
+    const cat = foldMap[r.category || ""] || r.category || "";
+    if (cat && cat !== "Blank or no specific category") catCount.set(cat, (catCount.get(cat) || 0) + 1);
+  });
+  // Display name: the most common printed form; ties go to the longer one.
+  let name = "", best = 0;
+  nameCount.forEach((c, n) => { if (c > best || (c === best && n.length > name.length)) { best = c; name = n; } });
+  let category = "", cbest = 0;
+  catCount.forEach((c, n) => { if (c > cbest) { cbest = c; category = n; } });
+  const yrs = [...yearPub.keys()].map(Number).filter(n => !isNaN(n)).sort((a, b) => a - b);
+  return {
+    key, rep, name: name || "(unnamed)",
+    address: rep.address || "", city: rep.city || "", state: rep.state || "",
+    category,
+    firstYear: yrs[0] || 0, lastYear: yrs[yrs.length - 1] || 0,
+    nYears: yrs.length, nListings: rows.length, nPubs: pubs.size,
+    pubs, yearPub,
+  };
+}
+
+// Memoized like getFiltered(): the key captures every filter input.
+let _ecKey = null, _ecGroups = null;
+function getEstablishments() {
+  const key = _filterKey();
+  if (key === _ecKey && _ecGroups) return _ecGroups;
+  const groups = [];
+  const seen = new Set();
+  getFiltered().forEach(row => {
+    const k = gbEstabKeyOf(row);
+    if (seen.has(k)) return;
+    seen.add(k);
+    groups.push(gbComputeEstabStats(k, gbNameIndex.get(k) || [row]));
+  });
+  _ecKey = key;
+  _ecGroups = groups;
+  return groups;
+}
+
+function getSortedEstabs(groups) {
+  const col = estabSortCol, dir = estabSortDir;
+  const strCols = new Set(["name", "address", "city", "state", "category"]);
+  const val = strCols.has(col) ? (g => (g[col] || "").toLowerCase()) : (g => g[col] || 0);
+  return [...groups].sort((a, b) => {
+    const av = val(a), bv = val(b);
+    if (av < bv) return -dir;
+    if (av > bv) return dir;
+    return b.nListings - a.nListings || (a.name || "").localeCompare(b.name || "");
+  });
+}
+
+function estabRangeText(g) {
+  if (!g.firstYear) return "";
+  return g.firstYear === g.lastYear ? String(g.firstYear) : g.firstYear + "–" + g.lastYear;
+}
+
+// Lifespan sparkline: a fixed 1930–1966 track; each listed year is a stripe
+// colored by the publication that listed it that year (matching the dots and
+// coverage grid). One element + one gradient, cheap enough for 1,000 rows.
+const SPARK_Y0 = 1930, SPARK_Y1 = 1966;
+function estabSparkline(g) {
+  const el = document.createElement("div");
+  el.className = "est-spark";
+  const span = SPARK_Y1 - SPARK_Y0 + 1;
+  const years = [...g.yearPub.entries()]
+    .map(([y, pub]) => [Number(y), pub])
+    .filter(([y]) => !isNaN(y) && y >= SPARK_Y0 && y <= SPARK_Y1)
+    .sort((a, b) => a[0] - b[0]);
+  if (years.length) {
+    const stops = [];
+    let cursor = 0;
+    years.forEach(([y, pub]) => {
+      const a = (y - SPARK_Y0) / span * 100;
+      const b = (y - SPARK_Y0 + 1) / span * 100;
+      if (a > cursor) stops.push(`transparent ${cursor.toFixed(2)}% ${a.toFixed(2)}%`);
+      stops.push(`${PUBLICATION_COLORS[pub] || "var(--gb-ink)"} ${a.toFixed(2)}% ${b.toFixed(2)}%`);
+      cursor = b;
+    });
+    if (cursor < 100) stops.push(`transparent ${cursor.toFixed(2)}% 100%`);
+    el.style.backgroundImage = `linear-gradient(90deg, ${stops.join(", ")})`;
+  }
+  const plural = g.nYears === 1 ? "" : "s";
+  el.setAttribute("role", "img");
+  el.setAttribute("aria-label", `Listed ${g.nYears} year${plural}, ${estabRangeText(g)}`);
+  el.title = `Listed ${estabRangeText(g)} · ${g.nYears} year${plural}`;
+  return el;
+}
+
+const ESTAB_NUM_COLS = new Set(["nYears", "nListings", "nPubs"]);
+function buildEstabTr(g, q, selKey) {
+  const tr = document.createElement("tr");
+  const isSelected = selKey !== null && g.key === selKey;
+  if (isSelected) { tr.classList.add("selected"); tr.setAttribute("aria-current", "true"); }
+  tr.setAttribute("tabindex", isSelected ? "0" : "-1");
+  tr.dataset.key = g.key;
+  const cells = [
+    ["span", estabRangeText(g)],
+    ["name", g.name],
+    ["address", g.address],
+    ["city", [g.city, g.state].filter(Boolean).join(", ")],
+    ["category", g.category],
+    ["nYears", g.nYears],
+    ["nListings", g.nListings],
+  ];
+  cells.forEach(([k, v]) => {
+    const td = document.createElement("td");
+    const txt = String(v == null ? "" : v);
+    if (ESTAB_NUM_COLS.has(k)) {
+      td.className = "est-num";
+      td.textContent = txt;
+    } else {
+      td.title = txt;
+      td.appendChild(highlightMatch(txt, q));
+    }
+    tr.appendChild(td);
+  });
+  const tdSpark = document.createElement("td");
+  tdSpark.className = "est-spark-cell";
+  tdSpark.appendChild(estabSparkline(g));
+  tr.appendChild(tdSpark);
+  const open = () => {
+    selectedIdx = rowIdx(g.rep);
+    showDetail(g.rep);
+    const wrap = document.getElementById("table-wrap");
+    const saved = wrap ? wrap.scrollTop : 0;
+    renderEstabBody();
+    if (wrap) wrap.scrollTop = saved;
+  };
+  tr.addEventListener("click", open);
+  tr.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); return; }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
+      if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
+        tr.setAttribute("tabindex", "-1");
+        next.setAttribute("tabindex", "0");
+        next.focus();
+      }
+    }
+  });
+  return tr;
+}
+
+const ESTAB_COLUMNS = [
+  ["firstYear", "Span", false],
+  ["name", "Name", false],
+  ["address", "Address", false],
+  ["city", "Location", false],
+  ["category", "Category", false],
+  ["nYears", "Years", true],
+  ["nListings", "Listings", true],
+  [null, "Coverage 1930–66", false],
+];
+function renderEstabHead() {
+  const head = document.getElementById("table-head");
+  head.innerHTML = "";
+  const tr = document.createElement("tr");
+  ESTAB_COLUMNS.forEach(([key, label, num]) => {
+    const th = document.createElement("th");
+    th.textContent = label;
+    if (num) th.classList.add("est-num-head");
+    if (!key) { th.style.cursor = "default"; tr.appendChild(th); return; }
+    th.setAttribute("tabindex", "0");
+    if (estabSortCol === key) {
+      th.classList.add(estabSortDir > 0 ? "sorted-asc" : "sorted-desc");
+      th.setAttribute("aria-sort", estabSortDir > 0 ? "ascending" : "descending");
+    } else {
+      th.setAttribute("aria-sort", "none");
+    }
+    const sortHandler = () => {
+      if (estabSortCol === key) estabSortDir = -estabSortDir;
+      else {
+        estabSortCol = key;
+        // Text columns start ascending; year/count columns start descending
+        // (the interesting end: longest-listed, most listings, earliest span).
+        estabSortDir = ["name", "address", "city", "state", "category"].includes(key) ? 1 : -1;
+      }
+      renderEstabHead();
+      renderEstabBody();
+    };
+    th.addEventListener("click", sortHandler);
+    th.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortHandler(); }
+    });
+    tr.appendChild(th);
+  });
+  head.appendChild(tr);
+}
+
+function renderEstabBody() {
+  const tbody = document.getElementById("table-body");
+  const noResults = document.getElementById("no-results");
+  const cl = document.getElementById("count-label");
+  if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
+  if (!gbDataLoaded) {
+    tbody.innerHTML = "";
+    noResults.style.display = "block";
+    noResults.innerHTML = '<p style="font-size: 1rem;color:#595959;margin:0">Establishments become available once all entries finish loading…</p>';
+    if (cl) cl.textContent = "";
+    return;
+  }
+  const groups = getSortedEstabs(getEstablishments());
+  const countText = `${groups.length.toLocaleString()} establishments · from ${getFiltered().length.toLocaleString()} matching listings`;
+  if (cl) cl.textContent = countText;
+  const tbl = document.getElementById("results-table");
+  if (tbl) tbl.setAttribute("aria-label", `Establishments — ${countText}`);
+  tbody.innerHTML = "";
+  const q = searchQuery.trim().toLowerCase();
+  const selKey = (selectedIdx !== null && ALL_ENTRIES[selectedIdx]) ? gbEstabKeyOf(ALL_ENTRIES[selectedIdx]) : null;
+  const frag = document.createDocumentFragment();
+  let anySelected = false;
+  groups.slice(0, _estabWinSize).forEach(g => {
+    const tr = buildEstabTr(g, q, selKey);
+    if (tr.classList.contains("selected")) anySelected = true;
+    frag.appendChild(tr);
+  });
+  tbody.appendChild(frag);
+  if (!anySelected && tbody.firstElementChild) tbody.firstElementChild.setAttribute("tabindex", "0");
+  renderEstabSentinel(tbody, groups);
+  if (groups.length === 0) {
+    noResults.style.display = "block";
+    noResults.innerHTML = 'No establishments match the current filters.' +
+      '<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">× Clear all filters</button>';
+  } else {
+    noResults.style.display = "none";
+  }
+}
+
+function renderEstabSentinel(tbody, groups) {
+  if (groups.length === 0) return;
+  const shown = Math.min(groups.length, _estabWinSize);
+  const remaining = groups.length - shown;
+  const trS = document.createElement("tr");
+  trS.className = "table-end-sentinel";
+  const td = document.createElement("td");
+  td.colSpan = ESTAB_COLUMNS.length;
+  if (remaining > 0) {
+    td.textContent = `Showing ${shown.toLocaleString()} of ${groups.length.toLocaleString()} establishments `;
+    const more = document.createElement("button");
+    more.type = "button";
+    more.textContent = `Show ${Math.min(ESTAB_WINDOW_STEP, remaining).toLocaleString()} more`;
+    more.addEventListener("click", extendEstabWindow);
+    td.appendChild(more);
+    _sentinelObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) extendEstabWindow();
+    }, { root: document.getElementById("table-wrap"), rootMargin: "200px" });
+    _sentinelObserver.observe(trS);
+  } else {
+    td.textContent = `Showing all ${groups.length.toLocaleString()} establishments`;
+  }
+  trS.appendChild(td);
+  tbody.appendChild(trS);
+}
+
+function extendEstabWindow() {
+  const groups = getSortedEstabs(getEstablishments());
+  const tbody = document.getElementById("table-body");
+  const oldEnd = _estabWinSize;
+  if (oldEnd >= groups.length) return;
+  _estabWinSize += ESTAB_WINDOW_STEP;
+  if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
+  const sentinel = tbody.querySelector("tr.table-end-sentinel");
+  if (sentinel) sentinel.remove();
+  const q = searchQuery.trim().toLowerCase();
+  const selKey = (selectedIdx !== null && ALL_ENTRIES[selectedIdx]) ? gbEstabKeyOf(ALL_ENTRIES[selectedIdx]) : null;
+  const frag = document.createDocumentFragment();
+  groups.slice(oldEnd, Math.min(groups.length, _estabWinSize))
+    .forEach(g => frag.appendChild(buildEstabTr(g, q, selKey)));
+  tbody.appendChild(frag);
+  renderEstabSentinel(tbody, groups);
+}
+
+// ── View-mode toggle wiring ──────────────────────────────────────────────────
+function syncViewToggleUI() {
+  const lb = document.getElementById("view-listings-btn");
+  const eb = document.getElementById("view-estabs-btn");
+  const note = document.getElementById("est-mode-note");
+  if (!lb || !eb) return;
+  const est = viewMode === "establishments";
+  lb.classList.toggle("view-btn-active", !est);
+  lb.setAttribute("aria-pressed", String(!est));
+  eb.classList.toggle("view-btn-active", est);
+  eb.setAttribute("aria-pressed", String(est));
+  const tbl = document.getElementById("results-table");
+  if (tbl) tbl.classList.toggle("est-mode", est);
+  if (note) note.style.display = est ? "" : "none";
+}
+function setViewMode(mode) {
+  if (mode === viewMode) return;
+  if (mode === "establishments" && !gbDataLoaded) return;
+  viewMode = mode;
+  gcEvent("view-" + mode);
+  _pushNextHistory = true;
+  renderAll();
+}
+document.getElementById("view-listings-btn").addEventListener("click", () => setViewMode("listings"));
+document.getElementById("view-estabs-btn").addEventListener("click", () => setViewMode("establishments"));
+
 // ── Back/forward navigation via popstate ────────────────────────────────────
 window.addEventListener("popstate", function () {
   // Reset all filter state to empty before re-reading URL
@@ -2006,6 +2417,7 @@ window.addEventListener("popstate", function () {
   colFilters = {};
   sortCol = null;
   sortDir = 1;
+  viewMode = "listings";
   searchQuery = "";
   const searchEl = document.getElementById("search");
   if (searchEl) searchEl.value = "";
@@ -2054,9 +2466,12 @@ const GB_YEAR_FIELD = (() => {
 // harness at address-keying-test.html). Rows bucket by (name stem, normalized
 // city), then split into business-level groups by address signature. Built
 // once in the streaming loader's final pass; empty until then.
-let gbNameIndex = new Map();   // groupKey → [row objects]
-let gbRowToKey  = new Map();   // row object → groupKey
-let gbDataLoaded = false;      // true once both CSV streams have finished
+// `var`, not `let`: the base renderAll() call above runs before this section
+// evaluates, and a #view=est hash routes it into renderEstabBody, which reads
+// gbDataLoaded — var hoists as undefined instead of throwing a TDZ error.
+var gbNameIndex = new Map();   // groupKey → [row objects]
+var gbRowToKey  = new Map();   // row object → groupKey
+var gbDataLoaded = false;      // true once both CSV streams have finished
 
 // All cross-listings for a row's resolved business group (including itself).
 function gbCrossListings(row) {
@@ -2750,6 +3165,11 @@ async function gbStreamCsv(url, onRow) {
     PUBLICATION_ACTIVE_YEARS = gbComputePublicationActiveYears(ALL_ENTRIES);
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
+    const estBtn = document.getElementById('view-estabs-btn');
+    if (estBtn) {
+      estBtn.disabled = false;
+      estBtn.title = "One row per business, matched across volumes and publications";
+    }
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
     // If the user opened an entry while data was still streaming, keep it open
     // through the final render — its coverage grid can now be filled in.
