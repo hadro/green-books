@@ -15,15 +15,28 @@ const http = require('http');
 const PORT = Number(process.env.TEST_PORT || 8765);
 const ORIGIN = `http://127.0.0.1:${PORT}`;
 const CANVAS_ID = `${ORIGIN}/manifests/9999-test/manifest.json/canvas/0`;
-const FRAGMENT = 'xywh=400,600,600,400';
-const STATE_ID = `${CANVAS_ID}#${FRAGMENT}/content-state`;
-const CF_URL = `${ORIGIN}/iiif/2/9990001/full/max/0/default.jpg#${FRAGMENT}`;
 
-// Fragment is xywh=400,600,600,400 -> pixel aspect ratio 600/400 = 1.5.
-// Mirror the aspect-ratio sanity check index.html's own driver uses, so the
-// test measures readiness by the same criteria as production code (a bare
-// non-zero rect can still be a transient placeholder).
-const EXPECTED_ASPECT = 1.5;
+// Each scenario runs against one fragment spec on the 2000x3000 test canvas.
+// - BIG: a large block, the original scenario.
+// - TINY: a single-directory-line sliver at real-entry scale (regression for
+//   the Dew Drop Inn report: xywh=1535,3000,94,31 — the highlight rendered
+//   but the page never zoomed). Post-zoom a sliver only ever spans ~13% of
+//   the viewer width (Clover pads its fitBounds target by fixed world units
+//   that dwarf the rect), so tiny specs assert a width fraction + centering
+//   instead of the BIG spec's area ratio.
+function makeSpec(fragment, tiny) {
+  const m = /^xywh=(\d+),(\d+),(\d+),(\d+)$/.exec(fragment);
+  return {
+    fragment,
+    tiny: !!tiny,
+    aspect: Number(m[3]) / Number(m[4]),
+    stateId: `${CANVAS_ID}#${fragment}/content-state`,
+    cfUrl: `${ORIGIN}/iiif/2/9990001/full/max/0/default.jpg#${fragment}`,
+  };
+}
+const BIG = makeSpec('xywh=400,600,600,400');
+const TINY = makeSpec('xywh=1535,2400,94,31', true);
+
 const ASPECT_TOLERANCE = 0.2;
 
 function httpGet(path) {
@@ -40,33 +53,42 @@ function setDelay(ms) {
   return httpGet(`/_control/delay?ms=${ms}`);
 }
 
-async function readOverlay(page) {
+async function readOverlay(page, spec) {
   return page.evaluate((id) => {
     const el = document.getElementById(id);
     if (!el) return null;
     const r = el.getBoundingClientRect();
-    return { width: r.width, height: r.height, x: r.x, y: r.y };
-  }, STATE_ID);
+    // Style-based size mirrors the driver: OSD's inline style is the exact
+    // world-derived rect; the bounding rect adds the highlight's border
+    // (+4px per axis), which skews the aspect of tiny fragments.
+    return {
+      width: r.width, height: r.height, x: r.x, y: r.y,
+      styleWidth: parseFloat(el.style.width), styleHeight: parseFloat(el.style.height),
+    };
+  }, spec.stateId);
 }
 
-function isSane(info) {
+function isSane(info, spec) {
   if (!info || !Number.isFinite(info.width) || !Number.isFinite(info.height) ||
       info.width <= 0 || info.height <= 0) {
     return false;
   }
-  const actual = info.width / info.height;
-  return Math.abs(actual - EXPECTED_ASPECT) / EXPECTED_ASPECT <= ASPECT_TOLERANCE;
+  const actual = (Number.isFinite(info.styleWidth) && Number.isFinite(info.styleHeight) &&
+                  info.styleWidth > 0 && info.styleHeight > 0)
+    ? info.styleWidth / info.styleHeight
+    : info.width / info.height;
+  return Math.abs(actual - spec.aspect) / spec.aspect <= ASPECT_TOLERANCE;
 }
 
 // Wait for the overlay to have a sane rect, then keep sampling for a settle
 // window: the sane rect first appears mid zoom-animation (OSD's fitBounds
 // animates the viewport), and we want the rect after the animation settles.
-async function pollOverlay(page, timeoutMs, settleMs = 4000) {
+async function pollOverlay(page, spec, timeoutMs, settleMs = 4000) {
   const start = Date.now();
   let firstSane = null;
   while (Date.now() - start < timeoutMs) {
-    const info = await readOverlay(page);
-    if (isSane(info)) { firstSane = info; break; }
+    const info = await readOverlay(page, spec);
+    if (isSane(info, spec)) { firstSane = info; break; }
     await page.waitForTimeout(300);
   }
   if (!firstSane) return null;
@@ -74,8 +96,8 @@ async function pollOverlay(page, timeoutMs, settleMs = 4000) {
   const settleStart = Date.now();
   while (Date.now() - settleStart < settleMs) {
     await page.waitForTimeout(250);
-    const info = await readOverlay(page);
-    if (isSane(info)) last = info;
+    const info = await readOverlay(page, spec);
+    if (isSane(info, spec)) last = info;
   }
   return last;
 }
@@ -142,12 +164,12 @@ async function getPendingCleared(page) {
   });
 }
 
-async function checkGhostLabel(page) {
+async function checkGhostLabel(page, spec) {
   return page.evaluate((id) => {
     const el = document.getElementById(id);
     if (!el) return null;
     return (el.textContent || '').trim();
-  }, STATE_ID);
+  }, spec.stateId);
 }
 
 async function checkNoDownloadOrBadge(page) {
@@ -165,18 +187,23 @@ function fmtRect(r) {
   return `x=${r.x.toFixed(1)} y=${r.y.toFixed(1)} w=${r.width.toFixed(1)} h=${r.height.toFixed(1)}`;
 }
 
-function assertOverlaySane(overlay, viewer, label, results) {
+function assertOverlaySane(overlay, viewer, spec, label, results) {
   if (!overlay) {
     results.push([false, `${label}: overlay never appeared / never got a sane rect`]);
     return;
   }
   const areaRatio = (overlay.width * overlay.height) / (viewer.width * viewer.height);
+  const widthFrac = overlay.width / viewer.width;
   const dxFrac = Math.abs((overlay.x + overlay.width / 2) - (viewer.x + viewer.width / 2)) / viewer.width;
   const dyFrac = Math.abs((overlay.y + overlay.height / 2) - (viewer.y + viewer.height / 2)) / viewer.height;
-  const substantial = areaRatio > 0.05; // overlay occupies a meaningful chunk of the viewer
+  // BIG fragments fill a meaningful share of the viewer area post-zoom. TINY
+  // fragments can't (see makeSpec comment) — for them, post-zoom width lands
+  // at ~8-15% of the viewer vs ~2% at OSD's home view, so a 5% width
+  // fraction separates zoomed from not-zoomed with margin on both sides.
+  const substantial = spec.tiny ? widthFrac > 0.05 : areaRatio > 0.05;
   const centered = dxFrac < 0.25 && dyFrac < 0.25;
   results.push([substantial && centered,
-    `${label}: overlay=${fmtRect(overlay)} viewer=${fmtRect(viewer)} areaRatio=${areaRatio.toFixed(3)} dxFrac=${dxFrac.toFixed(3)} dyFrac=${dyFrac.toFixed(3)}`]);
+    `${label}: overlay=${fmtRect(overlay)} viewer=${fmtRect(viewer)} areaRatio=${areaRatio.toFixed(3)} widthFrac=${widthFrac.toFixed(3)} dxFrac=${dxFrac.toFixed(3)} dyFrac=${dyFrac.toFixed(3)}`]);
 }
 
 async function newPage(browser, viewport) {
@@ -200,22 +227,22 @@ function isBenignNoise(text) {
   return /gc\.zgo\.at|goatcounter|fonts\.googleapis|fonts\.gstatic|favicon\.ico|net::ERR_ABORTED/i.test(text);
 }
 
-async function runCaseDesktop(browser, { delayMs, label, timeoutMs }) {
+async function runCaseDesktop(browser, { delayMs, label, timeoutMs, spec = BIG }) {
   console.log(`\n=== ${label} ===`);
   await setDelay(delayMs);
   const { page, consoleErrors, pageErrors, requestFailures } = await newPage(browser, { width: 1280, height: 800 });
-  const url = `${ORIGIN}/index.html?cf=${encodeURIComponent(CF_URL)}&name=TestEntry`;
+  const url = `${ORIGIN}/index.html?cf=${encodeURIComponent(spec.cfUrl)}&name=TestEntry`;
   const t0 = Date.now();
   await page.goto(url);
   const flashWatch = delayMs > 0 ? watchFlashHidden(page, timeoutMs) : null;
-  const overlay = await pollOverlay(page, timeoutMs);
+  const overlay = await pollOverlay(page, spec, timeoutMs);
   const elapsed = Date.now() - t0;
   const flash = flashWatch ? await flashWatch : null;
   const viewer = await getViewerRect(page);
   const panelOpen = await getPanelOpen(page);
   const manifestBackExists = await getManifestBackExists(page);
   const pendingCleared = await getPendingCleared(page);
-  const ghostText = await checkGhostLabel(page);
+  const ghostText = await checkGhostLabel(page, spec);
   const dlBadge = await checkNoDownloadOrBadge(page);
   const subtitlePresent = await page.evaluate(() =>
     !!document.querySelector('.gb-entry-subtitle') &&
@@ -227,7 +254,7 @@ async function runCaseDesktop(browser, { delayMs, label, timeoutMs }) {
     results.push([elapsed >= 6000, `total load time exceeded 6s (was ${elapsed}ms) — cold-load regression scenario`]);
   }
   results.push([elapsed < timeoutMs, `zoom detected+settled within ${elapsed}ms (cap ${timeoutMs}ms)`]);
-  assertOverlaySane(overlay, viewer, 'overlay geometry', results);
+  assertOverlaySane(overlay, viewer, spec, 'overlay geometry', results);
   results.push([panelOpen === 'false', `info panel closed (data-information-panel-open=${panelOpen})`]);
   results.push([!manifestBackExists, `manifest-back button removed from DOM (exists=${manifestBackExists})`]);
   results.push([pendingCleared === true, `gb-zoom-pending cleared after driver finished (cleared=${pendingCleared})`]);
@@ -255,15 +282,15 @@ async function runCaseDesktop(browser, { delayMs, label, timeoutMs }) {
 // overlay, closing the panel as soon as the overlay registers (an open panel
 // covers the viewer at phone widths and stalls OSD), then zooming. These
 // cases assert the full desired behavior at 400x800.
-async function runCaseMobile(browser, { delayMs, label, timeoutMs }) {
+async function runCaseMobile(browser, { delayMs, label, timeoutMs, spec = BIG }) {
   console.log(`\n=== ${label} ===`);
   await setDelay(delayMs);
   const { page, consoleErrors, pageErrors, requestFailures } = await newPage(browser, { width: 400, height: 800 });
-  const url = `${ORIGIN}/index.html?cf=${encodeURIComponent(CF_URL)}&name=TestEntry`;
+  const url = `${ORIGIN}/index.html?cf=${encodeURIComponent(spec.cfUrl)}&name=TestEntry`;
   const t0 = Date.now();
   await page.goto(url);
   const flashWatch = delayMs > 0 ? watchFlashHidden(page, timeoutMs) : null;
-  const overlay = await pollOverlay(page, timeoutMs);
+  const overlay = await pollOverlay(page, spec, timeoutMs);
   const elapsed = Date.now() - t0;
   const flash = flashWatch ? await flashWatch : null;
   const viewer = await getViewerRect(page);
@@ -278,7 +305,7 @@ async function runCaseMobile(browser, { delayMs, label, timeoutMs }) {
     results.push([elapsed >= 6000, `total load time exceeded 6s (was ${elapsed}ms) — mobile + cold-load scenario`]);
   }
   results.push([elapsed < timeoutMs, `zoom detected+settled within ${elapsed}ms (cap ${timeoutMs}ms)`]);
-  assertOverlaySane(overlay, viewer, 'overlay geometry (400px viewport)', results);
+  assertOverlaySane(overlay, viewer, spec, 'overlay geometry (400px viewport)', results);
   results.push([panelOpen === 'false', `info panel closed after zoom (data-information-panel-open=${panelOpen})`]);
   results.push([!manifestBackExists, `manifest-back button removed from DOM (exists=${manifestBackExists})`]);
   results.push([pendingCleared === true, `gb-zoom-pending cleared after driver finished (cleared=${pendingCleared})`]);
@@ -306,8 +333,12 @@ async function runCaseMobile(browser, { delayMs, label, timeoutMs }) {
     const r2 = await runCaseDesktop(browser, { delayMs: 7000, label: 'Test 2: desktop 1280x800, slow load (regression case)', timeoutMs: 45000 });
     const r3 = await runCaseMobile(browser, { delayMs: 0, label: 'Test 3: mobile 400x800, fast load', timeoutMs: 25000 });
     const r4 = await runCaseMobile(browser, { delayMs: 7000, label: 'Test 4: mobile 400x800, slow load', timeoutMs: 45000 });
+    const r5 = await runCaseDesktop(browser, { delayMs: 0, label: 'Test 5: desktop, fast load, tiny fragment', timeoutMs: 25000, spec: TINY });
+    const r6 = await runCaseDesktop(browser, { delayMs: 7000, label: 'Test 6: desktop, slow load, tiny fragment', timeoutMs: 45000, spec: TINY });
+    const r7 = await runCaseMobile(browser, { delayMs: 0, label: 'Test 7: mobile, fast load, tiny fragment', timeoutMs: 25000, spec: TINY });
     spamSeen = r1.spamPresent || r2.spamPresent;
-    for (const [name, r] of [['Test1-desktop-fast', r1], ['Test2-desktop-slow', r2], ['Test3-mobile-fast', r3], ['Test4-mobile-slow', r4]]) {
+    for (const [name, r] of [['Test1-desktop-fast', r1], ['Test2-desktop-slow', r2], ['Test3-mobile-fast', r3], ['Test4-mobile-slow', r4],
+                             ['Test5-desktop-fast-tiny', r5], ['Test6-desktop-slow-tiny', r6], ['Test7-mobile-fast-tiny', r7]]) {
       console.log(`\n--- ${name} results ---`);
       for (const [ok, msg] of r.results) {
         console.log((ok ? 'PASS' : 'FAIL'), '-', msg);

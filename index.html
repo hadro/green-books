@@ -256,10 +256,15 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
   const STABLE_TICKS = 2;          // sane rect must hold this many ticks before zooming
   const VERIFY_MS = 1000;          // wait this long after a dispatch before checking it took
   const MAX_DISPATCHES = 4;
-  // Post-zoom the fragment fills most of the viewport, so the overlay spans a
-  // large share of the viewer in at least one axis; at OSD's home view it
-  // doesn't. Used to verify a dispatched zoom actually took.
+  // Two signals that a dispatched zoom actually took: for large fragments the
+  // overlay ends up spanning a big share of the viewer in some axis; tiny
+  // fragments (single directory lines, e.g. 94x31px) never reach that —
+  // Clover pads its fitBounds target by fixed world units (+0.2/+0.5) that
+  // dwarf a sliver, leaving the overlay at ~13% of the viewer even when fully
+  // zoomed — so also accept the overlay having grown well past its at-dispatch
+  // (home view) size.
   const ZOOMED_MIN_FRACTION = 0.25;
+  const ZOOMED_MIN_GROWTH = 1.5;
   let elapsed = 0;
   let lastToggleClick = -Infinity;
   let panelClosed = false;
@@ -267,6 +272,19 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
   let stableTicks = 0;
   let dispatches = 0;
   let dispatchedAt = null;
+  let rectAtDispatch = null;
+
+  // Aspect must be measured from OSD's inline style (exact, world-derived
+  // px values), not getBoundingClientRect(): the highlight overlay carries a
+  // 2px border per side, and the +4px per axis skews the on-screen aspect of
+  // tiny fragments far outside any reasonable tolerance (e.g. a 20.9x6.9px
+  // sliver measures 24.9x10.9 -> aspect 2.29 vs the fragment's true 3.03).
+  function overlayAspect(overlay, rect) {
+    const w = parseFloat(overlay.style.width);
+    const h = parseFloat(overlay.style.height);
+    if (Number.isFinite(w) && Number.isFinite(h) && w > 0 && h > 0) return w / h;
+    return rect.height > 0 ? rect.width / rect.height : NaN;
+  }
 
   // Hide the panel chrome (see the gb-zoom-pending CSS rule) for the whole
   // "panel mounted but not yet closed" window, so the open→close dance
@@ -303,14 +321,18 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
       const rect = overlay.getBoundingClientRect();
       const viewer = el.getBoundingClientRect();
       const zoomed = viewer.width > 0 && viewer.height > 0 &&
-        (rect.width / viewer.width >= ZOOMED_MIN_FRACTION ||
-         rect.height / viewer.height >= ZOOMED_MIN_FRACTION);
+        ((rect.width / viewer.width >= ZOOMED_MIN_FRACTION ||
+          rect.height / viewer.height >= ZOOMED_MIN_FRACTION) ||
+         (rectAtDispatch !== null &&
+          (rect.width >= rectAtDispatch.width * ZOOMED_MIN_GROWTH ||
+           rect.height >= rectAtDispatch.height * ZOOMED_MIN_GROWTH)));
       if (dispatchedAt !== null) {
         // Verify a dispatched zoom actually took. OSD re-fits the viewport to
         // home bounds up to 3 times (~150ms) after the image finishes loading
         // (fitBoundsOnAllLoaded), and a home-fit landing after our fitBounds
         // silently undoes the zoom — observed on fast CI runners. Re-dispatch
-        // until the overlay occupies a real share of the viewer.
+        // until the overlay grows past its at-dispatch size (or spans a real
+        // share of the viewer, for large fragments).
         if (elapsed - dispatchedAt >= VERIFY_MS) {
           if (zoomed) return; // done
           if (dispatches >= MAX_DISPATCHES) {
@@ -323,8 +345,9 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
       } else {
         const sane = Number.isFinite(rect.width) && Number.isFinite(rect.height) &&
           rect.width > 0 && rect.height > 0;
+        const aspect = overlayAspect(overlay, rect);
         const aspectOk = !expectedAspect ||
-          Math.abs((rect.width / rect.height) - expectedAspect) / expectedAspect <= ASPECT_TOLERANCE;
+          Math.abs(aspect - expectedAspect) / expectedAspect <= ASPECT_TOLERANCE;
         // Require the sane rect to hold still across consecutive ticks before
         // zooming: a fresh overlay redraw lands together with OSD's home-fit
         // retry window, and dispatching inside it gets overridden.
@@ -338,6 +361,7 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
           // Idempotent if Clover already zoomed on its own.
           dispatches++;
           dispatchedAt = elapsed;
+          rectAtDispatch = rect; // growth baseline for the zoom verification
           overlay.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
         }
       }
