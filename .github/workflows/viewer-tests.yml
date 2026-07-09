@@ -1,0 +1,35 @@
+name: Viewer tests
+
+on:
+  push:
+    paths:
+      - "index.html"
+      - "clover.umd-*.js"
+      - "tests/**"
+  pull_request:
+    paths:
+      - "index.html"
+      - "clover.umd-*.js"
+      - "tests/**"
+
+jobs:
+  viewer-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install test dependencies
+        working-directory: tests
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        working-directory: tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Run viewer tests
+        run: tests/run.sh
