@@ -119,7 +119,16 @@ a { color: var(--gb-accent); }
   letter-spacing: 0.16em; color: var(--gb-ink-faint);
   display: flex; align-items: center; gap: 12px; margin-bottom: 4px;
 }
-.gb-hero-featured-label::after { content: ""; flex: 1; height: 1px; background: var(--gb-rule-faint); }
+.gb-hero-featured-rule { flex: 1; height: 1px; background: var(--gb-rule-faint); }
+#hero-shuffle {
+  flex-shrink: 0; background: none; border: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
+  padding: 4px 9px; display: inline-flex; align-items: center; gap: 6px;
+}
+#hero-shuffle:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
+#hero-shuffle:focus-visible { border-color: var(--gb-ink); color: var(--gb-ink); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
+#hero-shuffle .hero-shuffle-icon { font-size: 0.929rem; line-height: 1; }
 .gb-hero-featured-stack { display: flex; flex-direction: column; gap: 12px; }
 .gb-hero-card {
   display: flex; flex-direction: column;
@@ -537,7 +546,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       </aside>
     </div>
     <div class="gb-hero-featured">
-      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span></div>
+      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span><span class="gb-hero-featured-rule" aria-hidden="true"></span><button type="button" id="hero-shuffle" aria-label="Shuffle featured entries" title="Shuffle"><span class="hero-shuffle-icon" aria-hidden="true">&#x21BB;</span>Shuffle</button></div>
       <div class="gb-hero-featured-stack" id="hero-featured-stack">
         <div class="gb-hero-card" style="opacity:0.35;pointer-events:none"><div class="gb-hero-card-thumb"></div><div class="gb-hero-card-meta"><div class="gb-hero-card-name">Loading entries&hellip;</div></div></div>
       </div>
@@ -2681,6 +2690,7 @@ async function gbStreamCsv(url, onRow) {
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
+    gbMaybeBuildHero();  // build the featured trio now that all volumes are present
     // If the user opened an entry while data was still streaming, keep it open
     // through the final render — its coverage grid can now be filled in.
     const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
@@ -2812,27 +2822,34 @@ function gbUpdateHero() {
     stack.appendChild(card);
   });
 }
-let _heroUpdated = false;
+let _heroUpdated = false, _heroVisible = false;
 // Only build hero thumbnails (IIIF requests) when the hero section is actually
 // visible. If the user refreshes while scrolled past the hero, skip entirely.
 const _heroSection = document.getElementById('gb-hero');
+// Build the featured trio only once the hero is visible AND the full dataset
+// has streamed in. The CSV is sorted by year, so sampling mid-stream would draw
+// only from the earliest volumes (1937/1938) — gbDataLoaded guarantees an
+// all-volumes pool. gbMaybeBuildHero is called from every entry point below and
+// from the post-stream block; whichever satisfies both conditions last wins.
+function gbMaybeBuildHero() {
+  if (_heroUpdated || !_heroVisible || !gbDataLoaded || !ALL_ENTRIES.length) return;
+  _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
+}
 const _heroObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
-  }
+  _heroVisible = true; gbMaybeBuildHero();
 }, { threshold: 0 });
 _heroObserver.observe(_heroSection);
 // Fallback interval in case data arrives after the hero is already visible
 const _checkHero = setInterval(() => {
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    const rect = _heroSection.getBoundingClientRect();
-    if (rect.bottom > 0 && rect.top < window.innerHeight) {
-      _heroUpdated = true; clearInterval(_checkHero); _heroObserver.disconnect(); gbUpdateHero();
-    }
-  }
+  const rect = _heroSection.getBoundingClientRect();
+  if (rect.bottom > 0 && rect.top < window.innerHeight) { _heroVisible = true; gbMaybeBuildHero(); }
   if (_heroUpdated) clearInterval(_checkHero);
 }, 200);
+// Reshuffle on demand — gbUpdateHero rebuilds the stack from a fresh random draw.
+document.getElementById('hero-shuffle').addEventListener('click', () => {
+  if (gbDataLoaded) gbUpdateHero();
+});
 
 
 </script>
