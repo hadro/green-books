@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Green Books Directory Explorer — IIIF Viewer</title>
+  <meta name="description" content="Viewer for digitized pages of the Green Books and other Black travel guides, opened at the exact entry location.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231d4d2e'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23faf8f3'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231d4d2e'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%23767069'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
@@ -51,23 +53,29 @@
     #viewer-wrap { flex: 1; min-height: 0; position: relative; }
     clover-viewer { display: block; position: absolute; inset: 0; }
     clover-viewer > div { height: 100%; }
-    #landing, #error {
+    #landing, #error, #loading {
       display: none; position: absolute; inset: 0;
       align-items: center; justify-content: center;
       flex-direction: column; gap: 16px; padding: 32px; text-align: center;
     }
-    #landing.visible, #error.visible { display: flex; }
-    #landing p {
+    #landing.visible, #error.visible, #loading.visible { display: flex; }
+    #landing p, #loading p {
       font-family: var(--gb-font-display); font-size: 16px;
       color: var(--gb-ink-soft); max-width: 480px; line-height: 1.6;
     }
-    #landing a {
+    #landing a, #error a {
       display: inline-block; padding: 10px 22px;
       background: var(--gb-accent); color: var(--gb-paper);
       border-radius: 3px; text-decoration: none;
       font-family: var(--gb-font-body); font-weight: 600; font-size: 14px;
     }
-    #landing a:hover { background: var(--gb-accent-deep, #143a22); }
+    #landing a:hover, #error a:hover { background: var(--gb-accent-deep, #143a22); }
+    #landing .gb-secondary-link {
+      display: inline-block; background: none; padding: 0;
+      color: var(--gb-ink-soft); text-decoration: underline;
+      font-family: var(--gb-font-body); font-weight: 400; font-size: 13px;
+    }
+    #landing .gb-secondary-link:hover { color: var(--gb-accent); }
     #error p { font-size: 13px; color: #b00; max-width: 520px; line-height: 1.5; }
     .gb-entry-subtitle {
       display: block;
@@ -100,17 +108,20 @@
 <body>
 
 <header>
-  <h1 id="viewer-heading">The <em>Green Book</em> Directory Explorer</h1>
+  <h1 id="viewer-heading">Green Books &amp; Travel Guides — <em>Page Viewer</em></h1>
   <a id="back-link" href="explorer.html">← Back to explorer</a>
 </header>
 
 <div id="viewer-wrap">
   <div id="landing">
-    <p>This viewer opens specific pages from the digitized Green Book volumes.
-       Use the explorer to find an entry and click its source link to open it here.</p>
+    <p>This viewer opens specific pages from the digitized Green Book volumes and other
+       Black travel guides. Use one of the explorers below to find an entry and open its
+       source page here.</p>
     <a href="explorer.html">Open the Green Book Explorer</a>
+    <a href="all-volumes.html" class="gb-secondary-link">Search across all seven publications →</a>
   </div>
-  <div id="error"><p id="error-msg"></p></div>
+  <div id="loading"><p></p></div>
+  <div id="error"><p id="error-msg"></p><a id="error-back-link" href="explorer.html">← Back to explorer</a></div>
 </div>
 
 <script>
@@ -141,13 +152,29 @@
   };
 }());
 
-const BASE_URL = "https://hadro.github.io/green-books";
+// Manifests are committed in-repo, so forks, local dev, and preview deploys
+// should resolve them relative to the page rather than the canonical host.
+// Manifest `id` fields are still baked with the absolute hadro.github.io URL,
+// but Clover's vault tolerates the request URL not matching the manifest id.
+// NOTE: tests/run.sh rewires this statement to the local origin — keep the
+// literal shape in sync if you change it.
+const BASE_URL = location.hostname === "hadro.github.io"
+  ? "https://hadro.github.io/green-books"
+  : new URL(".", location.href).href.replace(/\/$/, "");
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function showError(msg) {
+  document.getElementById("loading").classList.remove("visible");
   document.getElementById("error-msg").textContent = msg;
   document.getElementById("error").classList.add("visible");
+}
+
+// Whitelist for the `from` param — never interpolate its raw value into a URL.
+function resolveBackTarget(params) {
+  return params.get("from") === "all-volumes"
+    ? { page: "all-volumes.html", text: "← Back to all volumes" }
+    : { page: "explorer.html", text: "← Back to explorer" };
 }
 
 function serviceId(service) {
@@ -398,6 +425,10 @@ function launchClover(manifestId, cfUrl) {
       canvasHeight: "auto", showDownload: false, showIIIFBadge: false,
     }));
     wrap.appendChild(el);
+    document.getElementById("loading").classList.remove("visible");
+    // NB: do not revoke the content-state blob URL here — Clover 3.11.0 reads
+    // it asynchronously after connection, so revoking (even deferred) races
+    // that read and the manifest 404s. The one-per-load blob leak is fine.
     // Only content-state loads (a specific canvas fragment) have a zoom
     // target and an info panel worth auto-dismissing. The no-cfUrl and
     // manifest-fetch-failure fallback paths below attach with just the bare
@@ -435,10 +466,19 @@ function launchClover(manifestId, cfUrl) {
   const params = new URLSearchParams(location.search);
   const cf   = params.get("cf");
   const name = params.get("name");
-  if (cf) {
-    document.getElementById("back-link").href = "explorer.html?cf=" + encodeURIComponent(cf);
-  }
+  const back = resolveBackTarget(params);
+  const backHref = back.page + (cf ? "?cf=" + encodeURIComponent(cf) : "");
+
+  const backLink = document.getElementById("back-link");
+  backLink.href = backHref;
+  backLink.textContent = back.text;
+
+  const errorBackLink = document.getElementById("error-back-link");
+  errorBackLink.href = backHref;
+  errorBackLink.textContent = back.text;
+
   if (name) {
+    document.title = name + " — Green Books Page Viewer";
     // Inject "Entry: [name]" as subtitle inside Clover's own header once it renders.
     const obs = new MutationObserver(() => {
       const titleEl = document.querySelector(".clover-viewer-header .label");
@@ -467,6 +507,21 @@ if (!cf) {
     showError("Unrecognised canvas fragment URL: " + cf);
   } else {
     const imageId = m[1];
+
+    document.querySelector("#loading p").textContent =
+      name ? "Loading page scan for " + name + "…" : "Loading page scan…";
+    document.getElementById("loading").classList.add("visible");
+
+    // If clover.umd-3.11.0.js (~2 MB) stalls or fails outright, don't leave
+    // the loading state spinning forever — the manifest fetch below can
+    // succeed while the viewer element itself never upgrades.
+    const watchdog = setTimeout(() => {
+      if (!customElements.get("clover-viewer")) {
+        showError("The page viewer failed to load. Use the back link to return to the explorer.");
+      }
+    }, 12000);
+    customElements.whenDefined("clover-viewer").then(() => clearTimeout(watchdog));
+
     Promise.all([
       fetch("image_to_volume.json").then(r => r.json()).catch(() => ({})),
       fetch("travel_guides_image_to_volume.json").then(r => r.json()).catch(() => ({})),

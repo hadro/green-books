@@ -53,11 +53,15 @@ python3 - "$SERVE_DIR/site" "$ORIGIN" "$TESTS_DIR" << 'PYEOF'
 import json, os, sys
 site, origin, tests_dir = sys.argv[1], sys.argv[2], sys.argv[3]
 
-# 1. BASE_URL -> local origin
+# 1. BASE_URL -> local origin. index.html computes BASE_URL host-relatively
+# (a ternary spanning several lines); replace the whole statement with an
+# explicit local-origin constant so the test drives a known value.
 index_path = os.path.join(site, "index.html")
 text = open(index_path, encoding="utf-8").read()
-needle = 'const BASE_URL = "https://hadro.github.io/green-books";'
-assert needle in text, "BASE_URL line not found in index.html — update tests/run.sh"
+needle = ('const BASE_URL = location.hostname === "hadro.github.io"\n'
+          '  ? "https://hadro.github.io/green-books"\n'
+          '  : new URL(".", location.href).href.replace(/\\/$/, "");')
+assert needle in text, "BASE_URL statement not found in index.html — update tests/run.sh"
 open(index_path, "w", encoding="utf-8").write(
     text.replace(needle, 'const BASE_URL = "%s";' % origin))
 
