@@ -23,6 +23,10 @@
 :root {
   --gb-paper:        #faf8f3;
   --gb-paper-2:      #f0ece2;
+  /* Detail panel grows with the viewport: a fixed 420px starves the coverage
+     grid on large monitors, where the root font scales up but the panel
+     doesn't. Shared by #detail and the table's padding-right. */
+  --gb-detail-w:     clamp(420px, 30vw, 720px);
   --gb-ink:          #161310;
   --gb-ink-soft:     #54504a;
   --gb-ink-faint:    #767069;
@@ -424,8 +428,8 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 /* ── Detail panel ── */
-#main.detail-open #table-wrap { padding-right: 420px; }
-#detail { position: fixed; top: 0; right: 0; width: 420px; min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
+#main.detail-open #table-wrap { padding-right: var(--gb-detail-w); }
+#detail { position: fixed; top: 0; right: 0; width: var(--gb-detail-w); min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
 #detail.open { display: flex; }
 .detail-hero { position: relative; height: 280px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 #detail-thumb-link { display: contents; }
@@ -439,7 +443,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .detail-badge { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); background: var(--gb-paper-2); }
 .detail-badge-rec { color: #5c3d00; background: var(--gb-highlight-soft); border-color: rgba(200, 144, 40, 0.6); }
 .rec-star { color: var(--gb-highlight); font-size: 0.786rem; }
-.detail-fields { display: grid; grid-template-columns: 80px 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
+.detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
 .df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
 .df-val { color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
 #detail-page-context { text-align: right; margin-bottom: 8px; min-height: 0; }
@@ -471,7 +475,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .coverage-pending { font-size: 0.857rem; font-family: var(--gb-font-body); font-style: italic; color: var(--gb-ink-faint); margin: 0; }
 .coverage-summary strong { color: var(--gb-ink); font-weight: 600; }
 .coverage-scroll { overflow-x: auto; overflow-y: hidden; margin-bottom: 4px; scrollbar-width: thin; }
-.coverage-grid { display: grid; column-gap: 1px; row-gap: 2px; align-items: center; font-family: var(--gb-font-mono); width: 100%; }
+.coverage-grid { display: grid; column-gap: 2px; row-gap: 3px; align-items: center; font-family: var(--gb-font-mono); width: 100%; }
 .coverage-grid .pub-label { font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink); padding-right: 8px; text-align: right; white-space: nowrap; display: flex; align-items: center; gap: 5px; justify-content: flex-end; position: sticky; left: 0; background: var(--gb-paper); z-index: 2; }
 .coverage-grid .pub-label .pub-dot { margin-right: 0; }
 .coverage-grid .pub-label-current { font-weight: 600; }
@@ -1618,7 +1622,7 @@ function showDetail(row) {
     img.alt = `Scan showing ${entryName}`;
     img.style.display = "block";
     img.onerror = () => { img.style.display = "none"; };
-    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}`;
+    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}&from=all-volumes`;
     thumbLink.title = "View this entry highlighted in the original scan";
     thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
   } else {
@@ -1675,7 +1679,7 @@ function showDetail(row) {
   if (row.canvas_fragment) {
     const cityState = [row.city, row.state].filter(Boolean).join(", ");
     const overlayLabel = [entryName, row.address, cityState].filter(Boolean).join(" – ");
-    const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent(overlayLabel)}`;
+    const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent(overlayLabel)}&from=all-volumes`;
     pageCtx.innerHTML = `<a href="index.html?${viewerParams}" target="_blank">View in page context ↗</a>`;
     const links = [];
     const srcUrl = viewerUrl(row.canvas_fragment);
@@ -2845,7 +2849,7 @@ showDetail = function (row) {
     " across " + listedPubSet.size + " of " + totalPubs + " publications, " +
     firstListed + " to " + lastListed + ". Each cell is a publication in one year.");
   grid.style.gridTemplateColumns = "auto " +
-    columns.map(c => c.type === "break" ? "8px" : "minmax(7px, 1fr)").join(" ");
+    columns.map(c => c.type === "break" ? "8px" : "minmax(12px, 1fr)").join(" ");
 
   // Year header row.
   const corner = document.createElement("div");
