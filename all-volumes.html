@@ -174,8 +174,9 @@ a { color: var(--gb-accent); }
 }
 .gb-hero-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
 
-/* ── Trends: "the guides at a glance" ── */
-#gb-trends { padding: 48px 80px 56px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper); }
+/* ── Trends: "the guides at a glance" (a view inside the explorer) ── */
+#trends-panel { display: none; flex: 1; overflow-y: auto; padding: 28px 32px 56px; background: var(--gb-paper); }
+#trends-panel.open { display: block; }
 .trends-head { margin-bottom: 28px; }
 .trends-eyebrow {
   font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.12em;
@@ -221,7 +222,7 @@ a { color: var(--gb-accent); }
 .trend-table th { color: var(--gb-ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
 .trend-table th:first-child, .trend-table td:first-child { text-align: left; }
 @media (max-width: 900px) {
-  #gb-trends { padding: 32px 24px 40px; }
+  #trends-panel { padding: 20px 16px 40px; }
   .trends-grid { grid-template-columns: 1fr; }
   .trend-row { grid-template-columns: 120px 1fr 56px; }
 }
@@ -638,44 +639,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   </div>
 </section>
 
-<section id="gb-trends" aria-label="The guides at a glance">
-  <div class="trends-head">
-    <div class="trends-eyebrow">The guides at a glance</div>
-    <p class="trends-sub">Counts are extracted listings, not unique businesses. Click any bar to filter the explorer below.</p>
-  </div>
-  <p class="trends-loading" id="trends-loading">Charts appear once all entries finish loading&hellip;</p>
-  <div id="trends-body" style="display:none">
-    <figure class="trend-fig">
-      <figcaption class="trend-caption">
-        <span class="trend-title">Listings per year</span>
-        <span class="trend-note">stacked by publication &middot; the 1942&ndash;46 gap is the wartime publishing pause</span>
-      </figcaption>
-      <div class="trend-legend" id="trend-years-legend"></div>
-      <div class="trend-chart" id="trend-years"></div>
-      <details class="trend-table">
-        <summary>View as table</summary>
-        <div class="trend-table-scroll" id="trend-years-table"></div>
-      </details>
-    </figure>
-    <div class="trends-grid">
-      <figure class="trend-fig">
-        <figcaption class="trend-caption">
-          <span class="trend-title">Most-listed categories</span>
-          <span class="trend-note">top 10 section headings, folded across spelling variants</span>
-        </figcaption>
-        <div class="trend-bars" id="trend-cats"></div>
-      </figure>
-      <figure class="trend-fig">
-        <figcaption class="trend-caption">
-          <span class="trend-title">Most-listed states</span>
-          <span class="trend-note">top 12 by listings across all guides</span>
-        </figcaption>
-        <div class="trend-bars" id="trend-states"></div>
-      </figure>
-    </div>
-  </div>
-</section>
-
 <div id="app">
 <aside id="sidebar" role="complementary" aria-label="Filters">
   <div id="sidebar-header">
@@ -721,6 +684,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div id="view-toggle" role="group" aria-label="View mode">
         <button id="view-listings-btn" class="view-btn view-btn-active" aria-pressed="true">Listings</button>
         <button id="view-estabs-btn" class="view-btn" aria-pressed="false" disabled title="Available once all entries finish loading">Establishments</button>
+        <button id="view-trends-btn" class="view-btn" aria-pressed="false" disabled title="Available once all entries finish loading">Trends</button>
       </div>
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
@@ -729,6 +693,43 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   </div>
   <button id="random-btn" style="display:none"></button>
   <div id="content">
+    <div id="trends-panel" aria-label="The guides at a glance">
+      <div class="trends-head">
+        <div class="trends-eyebrow">The guides at a glance</div>
+        <p class="trends-sub">Counts are extracted listings, not unique businesses, and cover the full dataset. Click any bar to see those listings.</p>
+      </div>
+      <p class="trends-loading" id="trends-loading">Charts appear once all entries finish loading&hellip;</p>
+      <div id="trends-body" style="display:none">
+        <figure class="trend-fig">
+          <figcaption class="trend-caption">
+            <span class="trend-title">Listings per year</span>
+            <span class="trend-note">stacked by publication &middot; the 1942&ndash;46 gap is the wartime publishing pause</span>
+          </figcaption>
+          <div class="trend-legend" id="trend-years-legend"></div>
+          <div class="trend-chart" id="trend-years"></div>
+          <details class="trend-table">
+            <summary>View as table</summary>
+            <div class="trend-table-scroll" id="trend-years-table"></div>
+          </details>
+        </figure>
+        <div class="trends-grid">
+          <figure class="trend-fig">
+            <figcaption class="trend-caption">
+              <span class="trend-title">Most-listed categories</span>
+              <span class="trend-note">top 10 section headings, folded across spelling variants</span>
+            </figcaption>
+            <div class="trend-bars" id="trend-cats"></div>
+          </figure>
+          <figure class="trend-fig">
+            <figcaption class="trend-caption">
+              <span class="trend-title">Most-listed states</span>
+              <span class="trend-note">top 12 by listings across all guides</span>
+            </figcaption>
+            <div class="trend-bars" id="trend-states"></div>
+          </figure>
+        </div>
+      </div>
+    </div>
     <div id="table-wrap">
       <table id="results-table" aria-label="Green Book entries">
         <thead id="table-head"></thead>
@@ -1324,6 +1325,14 @@ function extendWindow() {
 
 function renderTableBody() {
   if (viewMode === "establishments") { renderEstabBody(); return; }
+  if (viewMode === "trends") {
+    // The table is hidden; the count label describes what the charts show.
+    const cl = document.getElementById("count-label");
+    if (cl) cl.textContent = gbDataLoaded
+      ? "Charts cover all " + ALL_ENTRIES.length.toLocaleString() + " listings"
+      : "";
+    return;
+  }
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
 
@@ -1388,6 +1397,7 @@ function renderTableBody() {
 // ── Render: table head (sort row + filter row) ──────────────────────────────
 function renderTableHead() {
   if (viewMode === "establishments") { renderEstabHead(); return; }
+  if (viewMode === "trends") return;  // table hidden behind the trends panel
   const head = document.getElementById("table-head");
   head.innerHTML = "";
 
@@ -2026,6 +2036,7 @@ function stateToHash() {
     }
   }
   if (viewMode === "establishments") params.set("view", "est");
+  else if (viewMode === "trends") params.set("view", "trends");
   if (searchQuery) params.set("q", searchQuery);
   if (sortCol) params.set("sort", sortCol + ":" + (sortDir > 0 ? "asc" : "desc"));
   for (const [col, val] of Object.entries(colFilters)) {
@@ -2063,10 +2074,11 @@ function applyHashState() {
     }
   }
 
-  // View mode (establishments needs the match index; before it's built the
-  // establishment body renders a loading note, and the post-load renderAll
-  // fills it in)
+  // View mode (establishments/trends need the loaded dataset; before it's
+  // ready both views render a loading note, and the post-load renderAll
+  // fills them in)
   if (params.get("view") === "est") viewMode = "establishments";
+  else if (params.get("view") === "trends") viewMode = "trends";
 
   // Search query
   const q = params.get("q");
@@ -2478,29 +2490,44 @@ function extendEstabWindow() {
 
 // ── View-mode toggle wiring ──────────────────────────────────────────────────
 function syncViewToggleUI() {
-  const lb = document.getElementById("view-listings-btn");
-  const eb = document.getElementById("view-estabs-btn");
-  const note = document.getElementById("est-mode-note");
-  if (!lb || !eb) return;
+  const buttons = {
+    listings: document.getElementById("view-listings-btn"),
+    establishments: document.getElementById("view-estabs-btn"),
+    trends: document.getElementById("view-trends-btn"),
+  };
+  if (!buttons.listings) return;
+  Object.entries(buttons).forEach(([mode, btn]) => {
+    if (!btn) return;
+    btn.classList.toggle("view-btn-active", viewMode === mode);
+    btn.setAttribute("aria-pressed", String(viewMode === mode));
+  });
   const est = viewMode === "establishments";
-  lb.classList.toggle("view-btn-active", !est);
-  lb.setAttribute("aria-pressed", String(!est));
-  eb.classList.toggle("view-btn-active", est);
-  eb.setAttribute("aria-pressed", String(est));
+  const trends = viewMode === "trends";
   const tbl = document.getElementById("results-table");
   if (tbl) tbl.classList.toggle("est-mode", est);
+  const note = document.getElementById("est-mode-note");
   if (note) note.style.display = est ? "" : "none";
+  // Trends replaces the table; search/export/clear act on listings, so they
+  // hide with it rather than sit there doing nothing.
+  const panel = document.getElementById("trends-panel");
+  if (panel) panel.classList.toggle("open", trends);
+  const wrap = document.getElementById("table-wrap");
+  if (wrap) wrap.style.display = trends ? "none" : "";
+  const searchWrap = document.getElementById("search-wrap");
+  if (searchWrap) searchWrap.style.display = trends ? "none" : "";
 }
 function setViewMode(mode) {
   if (mode === viewMode) return;
-  if (mode === "establishments" && !gbDataLoaded) return;
+  if (mode !== "listings" && !gbDataLoaded) return;
   viewMode = mode;
   gcEvent("view-" + mode);
   _pushNextHistory = true;
   renderAll();
+  if (mode === "trends") gbRenderTrends();
 }
 document.getElementById("view-listings-btn").addEventListener("click", () => setViewMode("listings"));
 document.getElementById("view-estabs-btn").addEventListener("click", () => setViewMode("establishments"));
+document.getElementById("view-trends-btn").addEventListener("click", () => setViewMode("trends"));
 
 // ── Back/forward navigation via popstate ────────────────────────────────────
 window.addEventListener("popstate", function () {
@@ -2517,6 +2544,7 @@ window.addEventListener("popstate", function () {
   // Re-apply filters from new URL hash
   applyHashState();
   renderAll();  // closes detail panel
+  if (viewMode === "trends") gbRenderTrends();  // back/forward into the trends view
   // Re-open detail if ?cf= is present in the new URL
   const cf = new URLSearchParams(location.search).get("cf");
   if (cf) {
@@ -3262,8 +3290,13 @@ async function gbStreamCsv(url, onRow) {
       estBtn.disabled = false;
       estBtn.title = "One row per business, matched across volumes and publications";
     }
+    const trendsBtn = document.getElementById('view-trends-btn');
+    if (trendsBtn) {
+      trendsBtn.disabled = false;
+      trendsBtn.title = "Charts of the whole dataset: listings per year, top categories, top states";
+    }
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
-    gbRenderTrends();
+    if (viewMode === "trends") gbRenderTrends();  // arrived via #view=trends before data was ready
     // If the user opened an entry while data was still streaming, keep it open
     // through the final render — its coverage grid can now be filled in.
     const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
@@ -3355,30 +3388,32 @@ function gbRoundedTopRect(x, y, w, h, r) {
   return `M${x},${y + h} L${x},${y + r} Q${x},${y} ${x + r},${y} L${x + w - r},${y} Q${x + w},${y} ${x + w},${y + r} L${x + w},${y + h} Z`;
 }
 
+// Clicking a chart mark applies the filter and lands the user in the
+// Listings view, where the filtered rows are visible.
 function gbTrendFilterYear(y) {
   if (!GB_YEAR_FIELD || !facetState[GB_YEAR_FIELD]) return;
   gcEvent("trend-year");
   facetState[GB_YEAR_FIELD].clear();
   facetState[GB_YEAR_FIELD].add(y);
+  viewMode = "listings";
   _pushNextHistory = true;
   renderAll();
-  document.getElementById("app").scrollIntoView({ behavior: "smooth" });
 }
 function gbTrendFilterCategory(cat) {
   if (!facetState.category) return;
   gcEvent("trend-category");
   facetState.category.clear();
   facetState.category.add(cat);
+  viewMode = "listings";
   _pushNextHistory = true;
   renderAll();
-  document.getElementById("app").scrollIntoView({ behavior: "smooth" });
 }
 function gbTrendFilterState(s) {
   gcEvent("trend-state");
   colFilters.state = s;
+  viewMode = "listings";
   _pushNextHistory = true;
   renderAll();
-  document.getElementById("app").scrollIntoView({ behavior: "smooth" });
 }
 
 function gbDrawYearChart() {
@@ -3569,27 +3604,29 @@ function gbDrawBarList(hostId, entries, opts) {
   });
 }
 
-let _trendsRendered = false;
+// (Re)draw all three charts. Called on every entry into the Trends view —
+// aggregates are memoized and the DOM rebuild is cheap, and redrawing on
+// entry means the year chart always matches the current panel width even if
+// the window was resized while another view was active.
 function gbRenderTrends() {
-  if (!gbDataLoaded) return;
+  if (!gbDataLoaded || viewMode !== "trends") return;
   const body = document.getElementById("trends-body");
   if (!body) return;
   const loading = document.getElementById("trends-loading");
   if (loading) loading.style.display = "none";
-  body.style.display = "";  // must be visible before clientWidth is measured
+  body.style.display = "";  // the panel must be open before clientWidth is measured
   const agg = gbTrendAggregates();
   gbDrawYearChart();
   gbBuildYearTable();
   gbDrawBarList("trend-cats",
     [...agg.cats.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10),
-    { onClick: gbTrendFilterCategory, actionLabel: "Filter the explorer to this category." });
+    { onClick: gbTrendFilterCategory, actionLabel: "Show these listings." });
   gbDrawBarList("trend-states",
     [...agg.states.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12),
-    { onClick: gbTrendFilterState, actionLabel: "Filter the explorer to this state." });
-  _trendsRendered = true;
+    { onClick: gbTrendFilterState, actionLabel: "Show these listings." });
 }
 window.addEventListener("resize", () => {
-  if (!_trendsRendered) return;
+  if (viewMode !== "trends" || !gbDataLoaded) return;
   clearTimeout(gbRenderTrends._rt);
   gbRenderTrends._rt = setTimeout(gbDrawYearChart, 200);
 });
