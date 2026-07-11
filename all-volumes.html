@@ -952,7 +952,14 @@ function getFiltered() {
     // immutable after load), so repeat searches don't re-normalize 100k rows.
     if (q) {
       if (row._hay === undefined) {
-        row._hay = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+        // The facet sidebar shows folded gbCategoryGroup() labels (e.g.
+        // "DRUG STORES" absorbing raw DRUGGIST/PHARMACY/DRUGS), so search
+        // must match against the folded label too, not just the raw value.
+        // Skip blank categories so "Blank or no specific category" doesn't
+        // become searchable text matching thousands of unrelated rows.
+        const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
+        row._hay = (displayFields.map(f => (row[f.name] || "")).join(" ") + " " + foldedCat)
+          .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       }
       if (!row._hay.includes(q)) return false;
     }
@@ -2168,15 +2175,22 @@ showDetail = function (row) {
   // Provenance note. The same business is filed under different section
   // headings from guide to guide ("HOTELS" / "WHERE TO STAY" / "GO-BY-AUTO Club
   // Members"), so a multi-category group is normal — it shows how differently
-  // the publications organized, not a matching error. (An earlier "may be more
-  // than one business" warning keyed off this same category/address string
-  // variance; a full-dataset audit found it fired on 784 groups with a 0%
-  // true-positive rate — every one a correctly-merged single business, e.g. the
-  // Liberty Hotel at 1519 Baltic Ave. under 11 headings — because raw category
-  // and address strings vary precisely for the businesses the resolver merges
-  // *correctly*. It was removed; genuine over-merges would show divergent parsed
-  // address signatures, which this data effectively never does.)
-  const groupCats = [...new Set(allListings.map(r => r.category).filter(Boolean))];
+  // the publications organized, not a matching error. The list below is
+  // deduped case/whitespace-insensitively but deliberately NOT folded through
+  // gbCategoryGroup(): the full fold would collapse genuinely distinct
+  // headings like "WHERE TO STAY" and "HOTELS AND MOTELS" into the same
+  // "Blank or no specific category" bucket, destroying the provenance signal
+  // this note exists to show. (An earlier "may be more than one business"
+  // warning keyed off this same category/address string variance; a
+  // full-dataset audit found it fired on 784 groups with a 0% true-positive
+  // rate — every one a correctly-merged single business, e.g. the Liberty
+  // Hotel at 1519 Baltic Ave. under 11 headings — because raw category and
+  // address strings vary precisely for the businesses the resolver merges
+  // *correctly*. It was removed; genuine over-merges would show divergent
+  // parsed address signatures, which this data effectively never does.)
+  const groupCats = [...new Set(
+    allListings.map(r => (r.category || "").trim().toUpperCase()).filter(Boolean)
+  )];
   if (groupCats.length > 1) {
     const catNote = document.createElement("div");
     catNote.className = "coverage-cat-note";
