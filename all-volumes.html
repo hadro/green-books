@@ -237,6 +237,8 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 }
 .trend-row:hover, .trend-row:focus-visible { background: var(--gb-row-hover); outline: none; }
 .trend-row:focus-visible { box-shadow: inset 0 0 0 1.5px var(--gb-accent); }
+.trend-row-static { cursor: default; }
+.trend-row-static:hover { background: none; }
 .trend-row-label { font-size: 0.786rem; color: var(--gb-ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .trend-row:hover .trend-row-label { color: var(--gb-ink); }
 .trend-row-track { height: 10px; position: relative; }
@@ -726,7 +728,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div id="trends-panel" aria-label="The guides at a glance">
       <div class="trends-head">
         <div class="trends-eyebrow">The guides at a glance</div>
-        <p class="trends-sub">Counts are extracted listings, not unique businesses, and cover the full dataset. Click any bar to see those listings.</p>
+        <p class="trends-sub">Charts cover the full dataset — counting extracted listings, or resolved businesses where noted. Click a year, category, state, or cell to see its listings.</p>
       </div>
       <p class="trends-loading" id="trends-loading">Charts appear once all entries finish loading&hellip;</p>
       <div id="trends-body" style="display:none">
@@ -740,6 +742,18 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <details class="trend-table">
             <summary>View as table</summary>
             <div class="trend-table-scroll" id="trend-years-table"></div>
+          </details>
+        </figure>
+        <figure class="trend-fig">
+          <figcaption class="trend-caption">
+            <span class="trend-title">First-time vs. returning listings</span>
+            <span class="trend-note">a listing is first-time when the cross-guide resolver has never seen that business in an earlier year</span>
+          </figcaption>
+          <div class="trend-legend" id="trend-churn-legend"></div>
+          <div class="trend-chart" id="trend-churn"></div>
+          <details class="trend-table">
+            <summary>View as table</summary>
+            <div class="trend-table-scroll" id="trend-churn-table"></div>
           </details>
         </figure>
         <figure class="trend-fig">
@@ -768,6 +782,22 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
               <span class="trend-note">top 12 by listings across all guides</span>
             </figcaption>
             <div class="trend-bars" id="trend-states"></div>
+          </figure>
+        </div>
+        <div class="trends-grid">
+          <figure class="trend-fig">
+            <figcaption class="trend-caption">
+              <span class="trend-title">How long businesses stayed listed</span>
+              <span class="trend-note">distinct years listed per resolved business (see the Establishments view)</span>
+            </figcaption>
+            <div class="trend-bars" id="trend-lifespan"></div>
+          </figure>
+          <figure class="trend-fig">
+            <figcaption class="trend-caption">
+              <span class="trend-title">Cross-guide overlap</span>
+              <span class="trend-note">which guides each resolved business appeared in</span>
+            </figcaption>
+            <div class="trend-bars" id="trend-overlap"></div>
           </figure>
         </div>
       </div>
@@ -3437,6 +3467,67 @@ function gbTrendAggregates() {
   return _trendAgg;
 }
 
+// Resolver-derived aggregates: per-business (not per-listing) shapes computed
+// from the same cross-guide match index the Establishments view uses.
+let _gbResolverAgg = null;
+const GB_LIFE_BUCKETS = [
+  ["1 year", 1, 1], ["2 years", 2, 2], ["3–5 years", 3, 5],
+  ["6–10 years", 6, 10], ["11–15 years", 11, 15], ["16–23 years", 16, 23],
+];
+function gbResolverAggregates() {
+  if (_gbResolverAgg) return _gbResolverAgg;
+  const groupFirst = new Map();  // group key → earliest listed year
+  const groupYears = new Map();  // group key → Set(years listed)
+  const groupPubs = new Map();   // group key → Set(publications)
+  ALL_ENTRIES.forEach(r => {
+    const y = Number(r.volume_year || r.year);
+    if (!(y >= 1930 && y <= 1966)) return;
+    const k = gbEstabKeyOf(r);
+    if (!groupFirst.has(k) || y < groupFirst.get(k)) groupFirst.set(k, y);
+    let ys = groupYears.get(k);
+    if (!ys) groupYears.set(k, ys = new Set());
+    ys.add(y);
+    if (r.publication) {
+      let ps = groupPubs.get(k);
+      if (!ps) groupPubs.set(k, ps = new Set());
+      ps.add(r.publication);
+    }
+  });
+  // Churn: each listing is "first-time" if its year is its business's first.
+  const churn = new Map();  // year → { fresh, ret }
+  ALL_ENTRIES.forEach(r => {
+    const y = Number(r.volume_year || r.year);
+    if (!(y >= 1930 && y <= 1966)) return;
+    let c = churn.get(y);
+    if (!c) churn.set(y, c = { fresh: 0, ret: 0 });
+    if (y === groupFirst.get(gbEstabKeyOf(r))) c.fresh++;
+    else c.ret++;
+  });
+  // Lifespan distribution: distinct years listed per business, bucketed.
+  const lifespans = GB_LIFE_BUCKETS.map(([label]) => [label, 0]);
+  groupYears.forEach(ys => {
+    const i = GB_LIFE_BUCKETS.findIndex(([, lo, hi]) => ys.size >= lo && ys.size <= hi);
+    if (i >= 0) lifespans[i][1]++;
+  });
+  // Cross-guide overlap: which combination of publications listed each
+  // business. Top combinations only; the tail folds into "Other".
+  const pubOrder = gbTrendPubOrder();
+  const comboCount = new Map();
+  groupPubs.forEach(ps => {
+    const key = [...ps]
+      .sort((a, b) => pubOrder.indexOf(a) - pubOrder.indexOf(b))
+      .map(p => PUBLICATION_SHORT_NAMES[p] || p)
+      .join(" + ") + (ps.size === 1 ? " only" : "");
+    comboCount.set(key, (comboCount.get(key) || 0) + 1);
+  });
+  const comboPairs = [...comboCount.entries()].sort((a, b) => b[1] - a[1]);
+  const combos = comboPairs.slice(0, 7);
+  const rest = comboPairs.slice(7).reduce((s, [, n]) => s + n, 0);
+  if (rest) combos.push(["Other combinations", rest]);
+  _gbResolverAgg = { churn, lifespans, combos, nBusinesses: groupYears.size };
+  return _gbResolverAgg;
+}
+
 // Historical milestones annotated on the year chart. `label` is the short
 // in-chart text; `text` is the full sentence carried by the tooltip and
 // aria-label. The 1942–46 wartime pause keeps its own in-plot note.
@@ -3853,18 +3944,148 @@ function gbBuildHeatTable() {
   host.appendChild(table);
 }
 
+// ── First-time vs. returning listings ────────────────────────────────────────
+// Two-step single-hue stack: returning listings (dark) anchored to the
+// baseline, first-time listings (light) on top. "First-time" means the
+// resolver has never seen that business in an earlier year.
+const CHURN_COLORS = { ret: "#245e19", fresh: "#9aba78" };
+function gbDrawChurnChart() {
+  const host = document.getElementById("trend-churn");
+  if (!host) return;
+  host.innerHTML = "";
+  const { churn } = gbResolverAggregates();
+  const years = [];
+  for (let y = 1930; y <= 1966; y++) years.push(y);
+  const totals = years.map(y => { const c = churn.get(y); return c ? c.fresh + c.ret : 0; });
+  const maxT = Math.max(...totals, 1);
+  const step = [250, 500, 1000, 2000, 2500, 5000, 10000].find(s => maxT / s <= 5) || 10000;
+  const niceMax = step * Math.ceil(maxT / step);
+  const W = Math.max(320, host.clientWidth || 900);
+  const H = 216, mL = 48, mR = 6, mT = 12, mB = 26;
+  const innerW = W - mL - mR, innerH = H - mT - mB;
+  const slot = innerW / years.length;
+  const barW = Math.min(24, slot * 0.7);
+  const yPix = v => mT + innerH - (v / niceMax) * innerH;
+  const svg = svgEl("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
+  for (let v = step; v <= niceMax; v += step) {
+    svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(v), y2: yPix(v), class: "trend-grid" }));
+    const t = svgEl("text", { x: mL - 6, y: yPix(v) + 3, "text-anchor": "end", class: "trend-tick" });
+    t.textContent = v.toLocaleString();
+    svg.appendChild(t);
+  }
+  svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(0), y2: yPix(0), class: "trend-grid" }));
+  years.forEach((yr, i) => {
+    const c = churn.get(yr);
+    const x0 = mL + i * slot;
+    const bx = x0 + (slot - barW) / 2;
+    if (c) {
+      const segs = [["ret", c.ret], ["fresh", c.fresh]].filter(([, n]) => n > 0);
+      let cum = 0;
+      segs.forEach(([k, n], si) => {
+        const yT = yPix(cum + n), yB = yPix(cum);
+        const h = yB - yT;
+        const drawH = (si > 0 && h > 4) ? h - 2 : h;
+        if (si === segs.length - 1 && drawH >= 3) {
+          svg.appendChild(svgEl("path", { d: gbRoundedTopRect(bx, yT, barW, drawH, 4), fill: CHURN_COLORS[k] }));
+        } else {
+          svg.appendChild(svgEl("rect", { x: bx, y: yT, width: barW, height: Math.max(drawH, 0.5), fill: CHURN_COLORS[k] }));
+        }
+        cum += n;
+      });
+    }
+    const total = totals[i];
+    const hit = svgEl("rect", { x: x0, y: mT, width: slot, height: innerH, class: "trend-col-hit", tabindex: 0, role: "button" });
+    hit.setAttribute("aria-label", total
+      ? `${yr}: ${total.toLocaleString()} listings — ${c.fresh.toLocaleString()} first-time, ${c.ret.toLocaleString()} returning. Filter the explorer to ${yr}.`
+      : `${yr}: no guides in the dataset`);
+    const tipLines = [[String(yr), "tip-val"]];
+    if (total) {
+      tipLines.push([total.toLocaleString() + " listings — click to filter", "tip-sub"]);
+      tipLines.push(["First-time  " + c.fresh.toLocaleString() + " (" + Math.round(c.fresh / total * 100) + "%)", "tip-sub"]);
+      tipLines.push(["Returning  " + c.ret.toLocaleString(), "tip-sub"]);
+    } else {
+      tipLines.push(["No guides in the dataset", "tip-sub"]);
+    }
+    gbAttachTip(hit, tipLines);
+    if (total) {
+      const go = () => { gbHideTip(); gbTrendFilterYear(String(yr)); };
+      hit.addEventListener("click", go);
+      hit.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    } else {
+      hit.style.cursor = "default";
+    }
+    svg.appendChild(hit);
+  });
+  years.forEach((yr, i) => {
+    if (yr % 5 !== 0) return;
+    const t = svgEl("text", { x: mL + i * slot + slot / 2, y: H - 8, "text-anchor": "middle", class: "trend-tick" });
+    t.textContent = yr;
+    svg.appendChild(t);
+  });
+  host.appendChild(svg);
+  const leg = document.getElementById("trend-churn-legend");
+  if (leg) {
+    leg.innerHTML = "";
+    [["Returning listings", CHURN_COLORS.ret], ["First-time listings", CHURN_COLORS.fresh]].forEach(([txt, color]) => {
+      const item = document.createElement("span");
+      item.className = "trend-legend-item";
+      const dot = document.createElement("span");
+      dot.className = "pub-dot";
+      dot.style.background = color;
+      item.appendChild(dot);
+      item.appendChild(document.createTextNode(txt));
+      leg.appendChild(item);
+    });
+  }
+}
+function gbBuildChurnTable() {
+  const host = document.getElementById("trend-churn-table");
+  if (!host) return;
+  host.innerHTML = "";
+  const { churn } = gbResolverAggregates();
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const hr = document.createElement("tr");
+  ["Year", "First-time", "Returning", "Total", "First-time %"].forEach(h => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  [...churn.keys()].sort((a, b) => a - b).forEach(y => {
+    const c = churn.get(y);
+    const total = c.fresh + c.ret;
+    const tr = document.createElement("tr");
+    [String(y), c.fresh.toLocaleString(), c.ret.toLocaleString(), total.toLocaleString(),
+     Math.round(c.fresh / total * 100) + "%"].forEach(v => {
+      const td = document.createElement("td");
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  host.appendChild(table);
+}
+
 // Single-hue horizontal bar list (nominal categories → one color, value at
-// the bar tip; the rows are buttons, so keyboard and click both filter).
+// the bar tip). With an onClick the rows are buttons that filter; without
+// one they are static display rows (every value is directly labeled).
 function gbDrawBarList(hostId, entries, opts) {
   const host = document.getElementById(hostId);
   if (!host) return;
   host.innerHTML = "";
-  const max = entries.length ? entries[0][1] : 1;
+  const max = Math.max(1, ...entries.map(([, n]) => n));
   entries.forEach(([label, n]) => {
-    const row = document.createElement("button");
-    row.type = "button";
-    row.className = "trend-row";
-    row.setAttribute("aria-label", `${label}: ${n.toLocaleString()} listings. ${opts.actionLabel}`);
+    const row = document.createElement(opts.onClick ? "button" : "div");
+    row.className = "trend-row" + (opts.onClick ? "" : " trend-row-static");
+    if (opts.onClick) {
+      row.type = "button";
+      row.setAttribute("aria-label", `${label}: ${n.toLocaleString()} listings. ${opts.actionLabel}`);
+      row.addEventListener("click", () => opts.onClick(label));
+    }
     const lab = document.createElement("span");
     lab.className = "trend-row-label";
     lab.textContent = label;
@@ -3882,7 +4103,6 @@ function gbDrawBarList(hostId, entries, opts) {
     row.appendChild(lab);
     row.appendChild(track);
     row.appendChild(val);
-    row.addEventListener("click", () => opts.onClick(label));
     host.appendChild(row);
   });
 }
@@ -3899,8 +4119,11 @@ function gbRenderTrends() {
   if (loading) loading.style.display = "none";
   body.style.display = "";  // the panel must be open before clientWidth is measured
   const agg = gbTrendAggregates();
+  const resolver = gbResolverAggregates();
   gbDrawYearChart();
   gbBuildYearTable();
+  gbDrawChurnChart();
+  gbBuildChurnTable();
   gbDrawStateHeatmap();
   gbBuildHeatTable();
   gbDrawBarList("trend-cats",
@@ -3909,11 +4132,18 @@ function gbRenderTrends() {
   gbDrawBarList("trend-states",
     [...agg.states.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12),
     { onClick: gbTrendFilterState, actionLabel: "Show these listings." });
+  gbDrawBarList("trend-lifespan", resolver.lifespans, {});
+  gbDrawBarList("trend-overlap", resolver.combos, {});
+}
+// SVG charts bake their pixel width at draw time; redraw them on resize.
+function gbRedrawTrendSvgs() {
+  gbDrawYearChart();
+  gbDrawChurnChart();
 }
 window.addEventListener("resize", () => {
   if (viewMode !== "trends" || !gbDataLoaded) return;
   clearTimeout(gbRenderTrends._rt);
-  gbRenderTrends._rt = setTimeout(gbDrawYearChart, 200);
+  gbRenderTrends._rt = setTimeout(gbRedrawTrendSvgs, 200);
 });
 
 // ── Hero + Timeline additions ─────────────────────────────────────────────────
