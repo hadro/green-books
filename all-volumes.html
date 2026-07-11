@@ -1161,6 +1161,9 @@ function getFiltered() {
       // N. Y. (Harlem)") — also accept a match with both sides normalized.
       // Additive only: raw matches still pass above.
       if (col === "city" && gbNormCity(row[col]).includes(gbNormCity(val))) continue;
+      // Category dropdown values are folded labels — also accept a match in
+      // folded space so "DRUG STORES" catches rows filed as "PHARMACY".
+      if (col === "category" && gbCategoryGroup(row[col]).toLowerCase().includes(val.toLowerCase())) continue;
       return false;
     }
     return true;
@@ -1470,8 +1473,12 @@ function renderTableHead() {
       const opt0 = document.createElement("option");
       opt0.value = ""; opt0.textContent = "(all)";
       sel.appendChild(opt0);
-      // Only show values present in the current filtered result set
-      const presentVals = new Set(getFiltered().map(r => r[f.name] || "").filter(Boolean));
+      // Only show values present in the current filtered result set. Folded
+      // facets (category) compare in folded space: top_values holds canonical
+      // gbCategoryGroup() labels, which raw values rarely equal verbatim.
+      const presentVals = new Set(getFiltered()
+        .map(r => f.folded ? gbCategoryGroup(r[f.name]) : (r[f.name] || ""))
+        .filter(Boolean));
       if (colFilters[f.name] && !presentVals.has(colFilters[f.name])) colFilters[f.name] = "";
       const visibleVals = f.top_values.filter(([val]) => presentVals.has(val));
       visibleVals.forEach(([val]) => {
