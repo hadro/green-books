@@ -3418,31 +3418,39 @@ function gbRoundedTopRect(x, y, w, h, r) {
   return `M${x},${y + h} L${x},${y + r} Q${x},${y} ${x + r},${y} L${x + w - r},${y} Q${x + w},${y} ${x + w},${y + r} L${x + w},${y + h} Z`;
 }
 
-// Clicking a chart mark applies the filter and lands the user in the
-// Listings view, where the filtered rows are visible.
+// Clicking a chart mark lands the user in the Listings view showing exactly
+// the rows the bar counted. The charts aggregate the FULL dataset, so any
+// filters left over from earlier browsing (a search query, a year facet, a
+// column filter) must be cleared first — otherwise the click delivers an
+// unasked-for intersection, which can be empty ("blank" results after
+// clicking a bar that plainly says 2,180).
+function gbTrendResetFilters() {
+  searchQuery = "";
+  const s = document.getElementById("search");
+  if (s) s.value = "";
+  colFilters = {};
+  Object.values(facetState).forEach(set => set.clear());
+  viewMode = "listings";
+  _pushNextHistory = true;
+}
 function gbTrendFilterYear(y) {
   if (!GB_YEAR_FIELD || !facetState[GB_YEAR_FIELD]) return;
   gcEvent("trend-year");
-  facetState[GB_YEAR_FIELD].clear();
+  gbTrendResetFilters();
   facetState[GB_YEAR_FIELD].add(y);
-  viewMode = "listings";
-  _pushNextHistory = true;
   renderAll();
 }
 function gbTrendFilterCategory(cat) {
   if (!facetState.category) return;
   gcEvent("trend-category");
-  facetState.category.clear();
+  gbTrendResetFilters();
   facetState.category.add(cat);
-  viewMode = "listings";
-  _pushNextHistory = true;
   renderAll();
 }
 function gbTrendFilterState(s) {
   gcEvent("trend-state");
+  gbTrendResetFilters();
   colFilters.state = s;
-  viewMode = "listings";
-  _pushNextHistory = true;
   renderAll();
 }
 
