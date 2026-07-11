@@ -556,7 +556,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">105,701</div><div class="gb-hero-stat-label">individual listings</div></div>
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">45</div><div class="gb-hero-stat-label">published volumes</div></div>
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">25</div><div class="gb-hero-stat-label">business categories</div></div>
+    <!-- 41 = folded gbCategoryGroup() labels with >=100 entries across the merged green_book_entries_all.csv + travel_guides_all.csv dataset, excluding the "Blank or no specific category" bucket. Regenerate by folding both CSVs' category columns through gb-categories.js's gbCategoryGroup() and counting labels. -->
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">41</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
 </section>
 
@@ -704,6 +705,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 </div>
 
 <script src="gb-matching.js"></script>
+<script src="gb-categories.js"></script>
 <script>
 var _gbAboutOnLoad = location.hash === '#about';
 const ALL_INITIAL_ENTRIES = [];
@@ -711,7 +713,8 @@ const VOLUMES     = {};
 // Field schema for the merged Green Book + travel-guide dataset. top_values
 // (the facet value lists) start empty and are computed at runtime by
 // gbBuildFacets() once both CSVs are loaded — a baked-in blob can't survive
-// the merge. The category `groups` fold OCR/case variants together.
+// the merge. The category facet is folded through gbCategoryGroup() (see
+// gb-categories.js) rather than an inline groups map.
 const FIELD_META  = [
   {"name": "volume_year",     "type": "facet",  "top_values": []},
   {"name": "publication",     "type": "facet",  "top_values": []},
@@ -719,12 +722,15 @@ const FIELD_META  = [
   {"name": "address",         "type": "search", "top_values": []},
   {"name": "city",            "type": "search", "top_values": []},
   {"name": "state",           "type": "search", "top_values": []},
-  {"name": "category",        "type": "facet",  "top_values": [],
-   "groups": {"Blank or no specific category": ["Hotels - Motels - Tourist Homes - Restaurants", "General", ""], "MOTEL": ["Motel", "MOTEL"], "TOURIST HOMES": ["TOURIST HOMES", "LOURIST"], "WINE & LIQUOR STORES": ["WINE & LIQUOR STORES", "LQIUOR STORES"], "GARAGES": ["GARAGES", "GARAGE", "Garage"], "DRUG STORES": ["DRUG STORES", "DRUGGIST", "PHARMACY", "Pharmacy", "DRUGS"], "VACATION SECTION": ["VACATION SECTION", "Vacation Section"], "LODGINGS": ["LODGINGS", "LODGING", "LOGDINGS"], "COUNTRY CLUBS": ["COUNTRY CLUBS", "COUNTRY CLUB", "Country Club"], "AUTOMOTIVE": ["AUTOMOTIVE", "AUTOMOTIVES"]}},
+  {"name": "category",        "type": "facet",  "top_values": [], "folded": true},
   {"name": "notes",           "type": "search", "top_values": []},
   {"name": "canvas_fragment", "type": "id",     "top_values": []},
   {"name": "image",           "type": "id",     "top_values": []}
 ];
+
+// Cap on category facet values offered in the UI — matches explorer.html's
+// baked top-25 category list.
+const CATEGORY_FACET_TOP_N = 25;
 
 // The Green Book CSV has no `publication` column; its rows are backfilled
 // with this value on load so the merged `publication` facet has 7 values.
@@ -779,30 +785,35 @@ function gbComputePublicationActiveYears(rows) {
 }
 
 // Compute facet value lists (top_values) from the merged rows. Category folds
-// raw values into their group key; volume_year sorts chronologically; every
-// other facet sorts by descending count.
+// every row (including blanks) through gbCategoryGroup(); volume_year sorts
+// chronologically; every other facet sorts by descending count and skips
+// blanks as before.
 function gbBuildFacets(rows) {
   FIELD_META.forEach(f => {
     if (f.type !== "facet") return;
     const raw = {};
-    rows.forEach(r => { const v = r[f.name] || ""; if (v) raw[v] = (raw[v] || 0) + 1; });
-    let pairs;
-    if (f.groups) {
-      const rawToGroup = {};
-      Object.entries(f.groups).forEach(([g, vals]) => vals.forEach(v => { rawToGroup[v] = g; }));
-      const folded = {};
-      Object.entries(raw).forEach(([v, c]) => {
-        const key = rawToGroup[v] || v;
-        folded[key] = (folded[key] || 0) + c;
+    if (f.folded) {
+      // Category: fold every row through gbCategoryGroup(), including blanks
+      // — gbCategoryGroup("") resolves to "Blank or no specific category", so
+      // the ~2,145 blank-category rows count into that bucket instead of
+      // being dropped.
+      rows.forEach(r => {
+        const key = gbCategoryGroup(r[f.name]);
+        raw[key] = (raw[key] || 0) + 1;
       });
-      pairs = Object.entries(folded);
     } else {
-      pairs = Object.entries(raw);
+      rows.forEach(r => { const v = r[f.name] || ""; if (v) raw[v] = (raw[v] || 0) + 1; });
     }
+    const pairs = Object.entries(raw);
     if (f.name === "volume_year") pairs.sort((a, b) => a[0].localeCompare(b[0]));
     else pairs.sort((a, b) => b[1] - a[1]);
-    f.top_values = pairs;
     f.cardinality = pairs.length;
+    // The merged dataset folds to ~460 category labels, most in a long tail
+    // of rare values. Offer only the top 25 in the sidebar and column-filter
+    // dropdown, mirroring explorer.html's baked top-25 category facet; rare
+    // categories stay reachable via text search, and a category filter
+    // restored from a shared URL still applies even without a rendered chip.
+    f.top_values = f.folded ? pairs.slice(0, CATEGORY_FACET_TOP_N) : pairs;
   });
 }
 let CANVAS_MAP = {};
@@ -950,22 +961,25 @@ function getFiltered() {
     // immutable after load), so repeat searches don't re-normalize 100k rows.
     if (q) {
       if (row._hay === undefined) {
-        row._hay = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+        // The facet sidebar shows folded gbCategoryGroup() labels (e.g.
+        // "DRUG STORES" absorbing raw DRUGGIST/PHARMACY/DRUGS), so search
+        // must match against the folded label too, not just the raw value.
+        // Skip blank categories so "Blank or no specific category" doesn't
+        // become searchable text matching thousands of unrelated rows.
+        const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
+        row._hay = (displayFields.map(f => (row[f.name] || "")).join(" ") + " " + foldedCat)
+          .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       }
       if (!row._hay.includes(q)) return false;
     }
-    // Facet filters
+    // Facet filters. Category is folded through gbCategoryGroup() so a
+    // selected canonical label (e.g. "Blank or no specific category") matches
+    // every row that folds to it, not just rows whose raw value equals it.
     for (const f of facetFields) {
       const sel = facetState[f.name];
       if (sel.size === 0) continue;
-      const rawVal = row[f.name] || "";
-      let matched = sel.has(rawVal);
-      if (!matched && f.groups) {
-        for (const selVal of sel) {
-          if (f.groups[selVal] && f.groups[selVal].includes(rawVal)) { matched = true; break; }
-        }
-      }
-      if (!matched) return false;
+      const val = f.folded ? gbCategoryGroup(row[f.name]) : (row[f.name] || "");
+      if (!sel.has(val)) return false;
     }
     // Column header filters
     for (const [col, val] of Object.entries(colFilters)) {
@@ -1601,7 +1615,7 @@ function renderFacetSidebar() {
   facetFields.forEach(f => {
     liveCount[f.name] = {};
     filteredForCounts.forEach(r => {
-      const v = r[f.name] || "";
+      const v = f.folded ? gbCategoryGroup(r[f.name]) : (r[f.name] || "");
       liveCount[f.name][v] = (liveCount[f.name][v] || 0) + 1;
     });
   });
@@ -1655,8 +1669,9 @@ function renderFacetSidebar() {
       valSpan.title = VALUE_LABELS[val] || val;
       const cntSpan = document.createElement("span");
       cntSpan.className = "cnt";
-      let _cnt = liveCount[f.name][val] || 0;
-      if (f.groups && f.groups[val]) _cnt = f.groups[val].reduce((s, rv) => s + (liveCount[f.name][rv] || 0), 0);
+      // liveCount is already keyed by canonical label for folded facets (see
+      // above), so a straight lookup is enough — no per-variant reduce needed.
+      const _cnt = liveCount[f.name][val] || 0;
       cntSpan.textContent = _cnt.toLocaleString();
       item.appendChild(cb);
       item.appendChild(valSpan);
@@ -2169,15 +2184,22 @@ showDetail = function (row) {
   // Provenance note. The same business is filed under different section
   // headings from guide to guide ("HOTELS" / "WHERE TO STAY" / "GO-BY-AUTO Club
   // Members"), so a multi-category group is normal — it shows how differently
-  // the publications organized, not a matching error. (An earlier "may be more
-  // than one business" warning keyed off this same category/address string
-  // variance; a full-dataset audit found it fired on 784 groups with a 0%
-  // true-positive rate — every one a correctly-merged single business, e.g. the
-  // Liberty Hotel at 1519 Baltic Ave. under 11 headings — because raw category
-  // and address strings vary precisely for the businesses the resolver merges
-  // *correctly*. It was removed; genuine over-merges would show divergent parsed
-  // address signatures, which this data effectively never does.)
-  const groupCats = [...new Set(allListings.map(r => r.category).filter(Boolean))];
+  // the publications organized, not a matching error. The list below is
+  // deduped case/whitespace-insensitively but deliberately NOT folded through
+  // gbCategoryGroup(): the full fold would collapse genuinely distinct
+  // headings like "WHERE TO STAY" and "HOTELS AND MOTELS" into the same
+  // "Blank or no specific category" bucket, destroying the provenance signal
+  // this note exists to show. (An earlier "may be more than one business"
+  // warning keyed off this same category/address string variance; a
+  // full-dataset audit found it fired on 784 groups with a 0% true-positive
+  // rate — every one a correctly-merged single business, e.g. the Liberty
+  // Hotel at 1519 Baltic Ave. under 11 headings — because raw category and
+  // address strings vary precisely for the businesses the resolver merges
+  // *correctly*. It was removed; genuine over-merges would show divergent
+  // parsed address signatures, which this data effectively never does.)
+  const groupCats = [...new Set(
+    allListings.map(r => (r.category || "").trim().toUpperCase()).filter(Boolean)
+  )];
   if (groupCats.length > 1) {
     const catNote = document.createElement("div");
     catNote.className = "coverage-cat-note";
@@ -2785,7 +2807,7 @@ function gbUpdateHero() {
   featured.forEach(r => {
     const nf = ['name','establishment_name','firm_name','business_name'].find(k => r[k]) || 'name';
     const year = r.volume_year || r.year || '';
-    const cat = (r.category || '').toUpperCase();
+    const cat = r.category ? gbCategoryGroup(r.category) : '';
     const city = (r.city || '').toUpperCase();
     const state = (r.state || '').toUpperCase();
     // A real link: keyboard-focusable, right/middle-clickable (the href is the
