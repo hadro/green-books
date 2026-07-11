@@ -206,6 +206,26 @@ a { color: var(--gb-accent); }
 .trend-chart .trend-tick { font-family: var(--gb-font-mono); font-size: 10px; fill: var(--gb-ink-faint); }
 .trend-chart .trend-grid { stroke: var(--gb-rule-faint); stroke-width: 1; }
 .trend-chart .trend-annot { font-family: var(--gb-font-body); font-size: 10px; font-style: italic; fill: var(--gb-ink-faint); }
+.trend-chart .trend-annot-rule { stroke: var(--gb-rule-faint); stroke-width: 1; }
+.trend-chart .trend-annot-dot { fill: var(--gb-highlight); }
+.trend-chart .trend-annot-label { font-family: var(--gb-font-mono); font-size: 9.5px; fill: var(--gb-ink-soft); }
+.trend-chart rect[role="img"]:focus-visible { outline: none; stroke: var(--gb-accent); stroke-width: 1.5; }
+/* ── State × year heatmap ── */
+.trend-heat-scroll { overflow-x: auto; }
+.trend-heat-grid { display: grid; column-gap: 2px; row-gap: 2px; min-width: 640px; align-items: stretch; }
+.heat-year { font-family: var(--gb-font-mono); font-size: 0.643rem; color: var(--gb-ink-faint); text-align: center; padding-bottom: 2px; }
+.heat-state {
+  background: none; border: none; cursor: pointer; text-align: right;
+  padding: 0 8px 0 0; font-family: var(--gb-font-body); font-size: 0.786rem;
+  color: var(--gb-ink-soft); white-space: nowrap; line-height: 1;
+}
+.heat-state:hover, .heat-state:focus-visible { color: var(--gb-accent); outline: none; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
+.heat-cell { height: 15px; border: 0; padding: 0; border-radius: 1px; box-sizing: border-box; }
+button.heat-cell { cursor: pointer; }
+button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid var(--gb-ink); outline-offset: 0; }
+.heat-cell-zero { background: transparent; }
+.trend-heat-legend { display: flex; align-items: center; gap: 5px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); flex-wrap: wrap; }
+.heat-swatch { width: 16px; height: 10px; border-radius: 1px; flex-shrink: 0; }
 .trend-col-hit { fill: transparent; cursor: pointer; }
 .trend-col-hit:hover, .trend-col-hit:focus-visible { fill: rgba(22, 19, 16, 0.05); outline: none; }
 .trend-col-hit:focus-visible { stroke: var(--gb-accent); stroke-width: 1.5; }
@@ -721,6 +741,18 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <details class="trend-table">
             <summary>View as table</summary>
             <div class="trend-table-scroll" id="trend-years-table"></div>
+          </details>
+        </figure>
+        <figure class="trend-fig">
+          <figcaption class="trend-caption">
+            <span class="trend-title">Listings by state and year</span>
+            <span class="trend-note">top 20 states &middot; darker green = more listings &middot; click a cell to filter</span>
+          </figcaption>
+          <div class="trend-heat-scroll"><div id="trend-heat"></div></div>
+          <div class="trend-heat-legend" id="trend-heat-legend" aria-hidden="true"></div>
+          <details class="trend-table">
+            <summary>View as table</summary>
+            <div class="trend-table-scroll" id="trend-heat-table"></div>
           </details>
         </figure>
         <div class="trends-grid">
@@ -3378,9 +3410,11 @@ function gbTrendAggregates() {
   const yearPub = new Map();   // year number → Map(publication → count)
   const cats = new Map();      // folded category → count
   const states = new Map();    // uppercased state → count
+  const stateYear = new Map(); // uppercased state → Map(year number → count)
   ALL_ENTRIES.forEach(r => {
     const y = Number(r.volume_year || r.year);
-    if (y >= 1930 && y <= 1966) {
+    const inRange = y >= 1930 && y <= 1966;
+    if (inRange) {
       let m = yearPub.get(y);
       if (!m) yearPub.set(y, m = new Map());
       const p = r.publication || "";
@@ -3391,11 +3425,34 @@ function gbTrendAggregates() {
     const c = gbCategoryGroup(r.category);
     if (c !== "Blank or no specific category") cats.set(c, (cats.get(c) || 0) + 1);
     const s = (r.state || "").trim().toUpperCase();
-    if (s) states.set(s, (states.get(s) || 0) + 1);
+    if (s) {
+      states.set(s, (states.get(s) || 0) + 1);
+      if (inRange) {
+        let sm = stateYear.get(s);
+        if (!sm) stateYear.set(s, sm = new Map());
+        sm.set(y, (sm.get(y) || 0) + 1);
+      }
+    }
   });
-  _trendAgg = { yearPub, cats, states };
+  _trendAgg = { yearPub, cats, states, stateYear };
   return _trendAgg;
 }
+
+// Historical milestones annotated on the year chart. `label` is the short
+// in-chart text; `text` is the full sentence carried by the tooltip and
+// aria-label. The 1942–46 wartime pause keeps its own in-plot note.
+const GB_MILESTONES = [
+  { y: 1936, label: "First Green Book",
+    text: "Victor H. Green publishes the first Negro Motorist Green Book; the earliest digitized edition here is 1937." },
+  { y: 1954, label: "Brown v. Board",
+    text: "Brown v. Board of Education strikes down school segregation." },
+  { y: 1956, label: "Interstate Act",
+    text: "The Federal-Aid Highway Act launches the interstate system — the motel era begins." },
+  { y: 1964, label: "Civil Rights Act",
+    text: "Civil Rights Act Title II outlaws discrimination in public accommodations." },
+  { y: 1966, label: "Final edition",
+    text: "The last Green Book is published, three decades after the first." },
+];
 
 // Publication stack order: chronological by first active year — the same
 // order as the coverage grid's rows, so color + position stay consistent.
@@ -3454,6 +3511,13 @@ function gbTrendFilterState(s) {
   colFilters.state = s;
   renderAll();
 }
+function gbTrendFilterStateYear(s, y) {
+  gcEvent("trend-heat");
+  gbTrendResetFilters();
+  colFilters.state = s;
+  if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].add(String(y));
+  renderAll();
+}
 
 function gbDrawYearChart() {
   const host = document.getElementById("trend-years");
@@ -3473,7 +3537,8 @@ function gbDrawYearChart() {
   const step = [250, 500, 1000, 2000, 2500, 5000, 10000].find(s => maxT / s <= 5) || 10000;
   const niceMax = step * Math.ceil(maxT / step);
   const W = Math.max(320, host.clientWidth || 900);
-  const H = 250, mL = 48, mR = 6, mT = 10, mB = 26;
+  // mT reserves an annotation band above the plot for milestone markers.
+  const H = 274, mL = 48, mR = 6, mT = 34, mB = 26;
   const innerW = W - mL - mR, innerH = H - mT - mB;
   const slot = innerW / years.length;
   const barW = Math.min(24, slot * 0.7);
@@ -3488,6 +3553,16 @@ function gbDrawYearChart() {
     svg.appendChild(t);
   }
   svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(0), y2: yPix(0), class: "trend-grid" }));
+
+  // Milestone rules, drawn before the columns so bars cover them — the rule
+  // reads as a drop line from the marker to wherever the data starts.
+  const msByYear = new Map(GB_MILESTONES.map(e => [e.y, e]));
+  GB_MILESTONES.forEach(ev => {
+    const idx = years.indexOf(ev.y);
+    if (idx < 0) return;
+    const x = mL + idx * slot + slot / 2;
+    svg.appendChild(svgEl("line", { x1: x, x2: x, y1: 30, y2: yPix(0), class: "trend-annot-rule" }));
+  });
 
   years.forEach((yr, i) => {
     const m = yearPub.get(yr);
@@ -3523,6 +3598,8 @@ function gbDrawYearChart() {
       const n = m.get(p);
       if (n) tipLines.push([(PUBLICATION_SHORT_NAMES[p] || p) + "  " + n.toLocaleString(), "tip-sub"]);
     });
+    const ev = msByYear.get(yr);
+    if (ev) tipLines.push(["◆ " + ev.text, "tip-sub"]);
     gbAttachTip(hit, tipLines);
     if (total) {
       const go = () => { gbHideTip(); gbTrendFilterYear(String(yr)); };
@@ -3550,6 +3627,47 @@ function gbDrawYearChart() {
     t.textContent = "wartime pause — no guides";
     svg.appendChild(t);
   }
+
+  // Milestone markers in the annotation band. Diamonds sit on one line at the
+  // top of the plot; short labels take one of two text rows above, chosen by
+  // collision (adjacent events like 1954/1956 alternate rows). Full sentences
+  // live in the tooltip/aria-label, and also in that year's column tooltip,
+  // so narrow screens that drop the labels lose nothing.
+  const showAnnotLabels = W >= 700;
+  const dotY = 27;
+  const rowEnd = [-Infinity, -Infinity];  // rightmost label edge per text row
+  GB_MILESTONES.forEach(ev => {
+    const idx = years.indexOf(ev.y);
+    if (idx < 0) return;
+    const x = mL + idx * slot + slot / 2;
+    const sz = 3.4;
+    svg.appendChild(svgEl("path", {
+      d: `M${x},${dotY - sz} L${x + sz},${dotY} L${x},${dotY + sz} L${x - sz},${dotY} Z`,
+      class: "trend-annot-dot",
+    }));
+    if (showAnnotLabels) {
+      const labW = ev.label.length * 5.8 + 4;
+      const anchorEnd = x + 6 + labW > W - mR;
+      const startX = anchorEnd ? x - 6 - labW : x + 6;
+      let row = startX >= rowEnd[0] ? 0 : (startX >= rowEnd[1] ? 1 : -1);
+      if (row >= 0) {
+        rowEnd[row] = startX + labW + 8;
+        const t = svgEl("text", {
+          x: anchorEnd ? x - 6 : x + 6,
+          y: row === 0 ? 12 : 22,
+          "text-anchor": anchorEnd ? "end" : "start",
+          class: "trend-annot-label",
+        });
+        t.textContent = ev.label;
+        t.setAttribute("aria-hidden", "true");
+        svg.appendChild(t);
+      }
+    }
+    const hitA = svgEl("rect", { x: x - 9, y: dotY - 9, width: 18, height: 18, fill: "transparent", tabindex: 0, role: "img" });
+    hitA.setAttribute("aria-label", ev.y + ": " + ev.text);
+    gbAttachTip(hitA, [[ev.y + " — " + ev.label, "tip-val"], [ev.text, "tip-sub"]]);
+    svg.appendChild(hitA);
+  });
   host.appendChild(svg);
 
   // Legend (7 series — identity must not be color-matching against memory).
@@ -3609,6 +3727,133 @@ function gbBuildYearTable() {
   host.appendChild(table);
 }
 
+// ── State × year heatmap ─────────────────────────────────────────────────────
+// Geography over time without geocoding: top-20 states as rows, 1930–1966 as
+// columns, a single-hue sequential ramp (light → dark) on listings count.
+// Counts are bucketed on a square-root scale so the long tail of small-state
+// years stays visible next to New York's peaks; exact values are in the cell
+// tooltips, aria-labels, and the table twin.
+const HEAT_RAMP = ["#dfe6d2", "#bed3a4", "#9aba78", "#71a050", "#4a832f", "#245e19"];
+const HEAT_TOP_STATES = 20;
+function gbHeatData() {
+  const { stateYear } = gbTrendAggregates();
+  const states = [...stateYear.entries()]
+    .map(([s, m]) => { let t = 0; m.forEach(v => { t += v; }); return [s, t]; })
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, HEAT_TOP_STATES);
+  const years = [];
+  for (let y = 1930; y <= 1966; y++) years.push(y);
+  let maxC = 1;
+  states.forEach(([s]) => {
+    stateYear.get(s).forEach(c => { if (c > maxC) maxC = c; });
+  });
+  return { stateYear, states, years, maxC };
+}
+function gbHeatBucket(c, maxC) {
+  if (!c) return -1;
+  return Math.min(HEAT_RAMP.length - 1, Math.floor(Math.sqrt(c / maxC) * HEAT_RAMP.length));
+}
+function gbDrawStateHeatmap() {
+  const host = document.getElementById("trend-heat");
+  if (!host) return;
+  host.innerHTML = "";
+  const { stateYear, states, years, maxC } = gbHeatData();
+  const grid = document.createElement("div");
+  grid.className = "trend-heat-grid";
+  grid.setAttribute("role", "group");
+  grid.setAttribute("aria-label", "Listings by state and year, top " + states.length +
+    " states, 1930 to 1966. Darker cells mean more listings; each cell filters the explorer.");
+  grid.style.gridTemplateColumns = "max-content repeat(" + years.length + ", minmax(10px, 1fr))";
+  const corner = document.createElement("div");
+  grid.appendChild(corner);
+  years.forEach(y => {
+    const h = document.createElement("div");
+    h.className = "heat-year";
+    h.textContent = y % 5 === 0 ? y : "";
+    h.setAttribute("aria-hidden", "true");
+    grid.appendChild(h);
+  });
+  states.forEach(([s, tot]) => {
+    const lab = document.createElement("button");
+    lab.type = "button";
+    lab.className = "heat-state";
+    lab.textContent = s;
+    lab.title = tot.toLocaleString() + " listings — click to filter to " + s;
+    lab.setAttribute("aria-label", s + ": " + tot.toLocaleString() + " listings total. Filter the explorer to this state.");
+    lab.addEventListener("click", () => { gbHideTip(); gbTrendFilterState(s); });
+    grid.appendChild(lab);
+    const ym = stateYear.get(s);
+    years.forEach(y => {
+      const c = ym.get(y) || 0;
+      let cell;
+      if (c) {
+        cell = document.createElement("button");
+        cell.type = "button";
+        cell.className = "heat-cell";
+        cell.style.background = HEAT_RAMP[gbHeatBucket(c, maxC)];
+        cell.setAttribute("aria-label", s + ", " + y + ": " + c.toLocaleString() +
+          " listings. Filter the explorer to this state and year.");
+        cell.addEventListener("click", () => { gbHideTip(); gbTrendFilterStateYear(s, y); });
+        gbAttachTip(cell, [[s + " · " + y, "tip-val"], [c.toLocaleString() + " listings — click to filter", "tip-sub"]]);
+      } else {
+        cell = document.createElement("div");
+        cell.className = "heat-cell heat-cell-zero";
+        cell.setAttribute("aria-hidden", "true");
+      }
+      grid.appendChild(cell);
+    });
+  });
+  host.appendChild(grid);
+
+  const leg = document.getElementById("trend-heat-legend");
+  if (leg) {
+    leg.innerHTML = "";
+    const label = document.createElement("span");
+    label.textContent = "1";
+    leg.appendChild(label);
+    HEAT_RAMP.forEach(color => {
+      const sw = document.createElement("span");
+      sw.className = "heat-swatch";
+      sw.style.background = color;
+      leg.appendChild(sw);
+    });
+    const maxLab = document.createElement("span");
+    maxLab.textContent = maxC.toLocaleString() + " listings (square-root scale) · blank = none";
+    leg.appendChild(maxLab);
+  }
+}
+// Table-view twin for the heatmap: every state × year value, no hover needed.
+function gbBuildHeatTable() {
+  const host = document.getElementById("trend-heat-table");
+  if (!host) return;
+  host.innerHTML = "";
+  const { stateYear, states, years } = gbHeatData();
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const hr = document.createElement("tr");
+  ["State", ...years, "Total"].forEach(h => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  states.forEach(([s, tot]) => {
+    const tr = document.createElement("tr");
+    const ym = stateYear.get(s);
+    const tds = [s, ...years.map(y => { const c = ym.get(y) || 0; return c ? c.toLocaleString() : "–"; }), tot.toLocaleString()];
+    tds.forEach(v => {
+      const td = document.createElement("td");
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  host.appendChild(table);
+}
+
 // Single-hue horizontal bar list (nominal categories → one color, value at
 // the bar tip; the rows are buttons, so keyboard and click both filter).
 function gbDrawBarList(hostId, entries, opts) {
@@ -3657,6 +3902,8 @@ function gbRenderTrends() {
   const agg = gbTrendAggregates();
   gbDrawYearChart();
   gbBuildYearTable();
+  gbDrawStateHeatmap();
+  gbBuildHeatTable();
   gbDrawBarList("trend-cats",
     [...agg.cats.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10),
     { onClick: gbTrendFilterCategory, actionLabel: "Show these listings." });
