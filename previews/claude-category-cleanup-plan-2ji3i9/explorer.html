@@ -867,7 +867,14 @@ function getFiltered() {
   return ALL_ENTRIES.filter(row => {
     // Search filter
     if (q) {
-      const haystack = displayFields.map(f => (row[f.name] || "")).join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+      // The facet sidebar shows folded gbCategoryGroup() labels (e.g.
+      // "DRUG STORES" absorbing raw DRUGGIST/PHARMACY/DRUGS), so search must
+      // match against the folded label too, not just the raw value. Skip
+      // blank categories so "Blank or no specific category" doesn't become
+      // searchable text matching thousands of unrelated rows.
+      const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
+      const haystack = (displayFields.map(f => (row[f.name] || "")).join(" ") + " " + foldedCat)
+        .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       if (!haystack.includes(q)) return false;
     }
     // Facet filters. Category is folded through gbCategoryGroup() so a
