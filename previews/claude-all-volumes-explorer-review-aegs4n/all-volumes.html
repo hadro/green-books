@@ -120,7 +120,16 @@ a { color: var(--gb-accent); }
   letter-spacing: 0.16em; color: var(--gb-ink-faint);
   display: flex; align-items: center; gap: 12px; margin-bottom: 4px;
 }
-.gb-hero-featured-label::after { content: ""; flex: 1; height: 1px; background: var(--gb-rule-faint); }
+.gb-hero-featured-rule { flex: 1; height: 1px; background: var(--gb-rule-faint); }
+#hero-shuffle {
+  flex-shrink: 0; background: none; border: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
+  padding: 4px 9px; display: inline-flex; align-items: center; gap: 6px;
+}
+#hero-shuffle:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
+#hero-shuffle:focus-visible { border-color: var(--gb-ink); color: var(--gb-ink); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
+#hero-shuffle .hero-shuffle-icon { font-size: 0.929rem; line-height: 1; }
 .gb-hero-featured-stack { display: flex; flex-direction: column; gap: 12px; }
 .gb-hero-card {
   display: flex; flex-direction: column;
@@ -626,7 +635,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       </aside>
     </div>
     <div class="gb-hero-featured">
-      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span></div>
+      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span><span class="gb-hero-featured-rule" aria-hidden="true"></span><button type="button" id="hero-shuffle" aria-label="Shuffle featured entries" title="Shuffle"><span class="hero-shuffle-icon" aria-hidden="true">&#x21BB;</span>Shuffle</button></div>
       <div class="gb-hero-featured-stack" id="hero-featured-stack">
         <div class="gb-hero-card" style="opacity:0.35;pointer-events:none"><div class="gb-hero-card-thumb"></div><div class="gb-hero-card-meta"><div class="gb-hero-card-name">Loading entries&hellip;</div></div></div>
       </div>
@@ -636,7 +645,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">105,701</div><div class="gb-hero-stat-label">individual listings</div></div>
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">45</div><div class="gb-hero-stat-label">published volumes</div></div>
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">25</div><div class="gb-hero-stat-label">business categories</div></div>
+    <!-- 41 = folded gbCategoryGroup() labels with >=100 entries across the merged green_book_entries_all.csv + travel_guides_all.csv dataset, excluding the "Blank or no specific category" bucket. Regenerate by folding both CSVs' category columns through gb-categories.js's gbCategoryGroup() and counting labels. -->
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">41</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
 </section>
 
@@ -828,6 +838,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 </div>
 
 <script src="previews/claude-all-volumes-explorer-review-aegs4n/gb-matching.js"></script>
+<script src="previews/claude-all-volumes-explorer-review-aegs4n/gb-categories.js"></script>
 <script>
 var _gbAboutOnLoad = location.hash === '#about';
 const ALL_INITIAL_ENTRIES = [];
@@ -835,7 +846,8 @@ const VOLUMES     = {};
 // Field schema for the merged Green Book + travel-guide dataset. top_values
 // (the facet value lists) start empty and are computed at runtime by
 // gbBuildFacets() once both CSVs are loaded — a baked-in blob can't survive
-// the merge. The category `groups` fold OCR/case variants together.
+// the merge. The category facet is folded through gbCategoryGroup() (see
+// gb-categories.js) rather than an inline groups map.
 const FIELD_META  = [
   {"name": "volume_year",     "type": "facet",  "top_values": []},
   {"name": "publication",     "type": "facet",  "top_values": []},
@@ -843,12 +855,15 @@ const FIELD_META  = [
   {"name": "address",         "type": "search", "top_values": []},
   {"name": "city",            "type": "search", "top_values": []},
   {"name": "state",           "type": "search", "top_values": []},
-  {"name": "category",        "type": "facet",  "top_values": [],
-   "groups": {"Blank or no specific category": ["Hotels - Motels - Tourist Homes - Restaurants", "General", "GENERAL", ""], "MOTEL": ["Motel", "MOTEL"], "TOURIST HOMES": ["TOURIST HOMES", "LOURIST"], "WINE & LIQUOR STORES": ["WINE & LIQUOR STORES", "LQIUOR STORES"], "GARAGES": ["GARAGES", "GARAGE", "Garage"], "DRUG STORES": ["DRUG STORES", "DRUGGIST", "PHARMACY", "Pharmacy", "DRUGS"], "VACATION SECTION": ["VACATION SECTION", "Vacation Section"], "LODGINGS": ["LODGINGS", "LODGING", "LOGDINGS"], "COUNTRY CLUBS": ["COUNTRY CLUBS", "COUNTRY CLUB", "Country Club"], "AUTOMOTIVE": ["AUTOMOTIVE", "AUTOMOTIVES"]}},
+  {"name": "category",        "type": "facet",  "top_values": [], "folded": true},
   {"name": "notes",           "type": "search", "top_values": []},
   {"name": "canvas_fragment", "type": "id",     "top_values": []},
   {"name": "image",           "type": "id",     "top_values": []}
 ];
+
+// Cap on category facet values offered in the UI — matches explorer.html's
+// baked top-25 category list.
+const CATEGORY_FACET_TOP_N = 25;
 
 // The Green Book CSV has no `publication` column; its rows are backfilled
 // with this value on load so the merged `publication` facet has 7 values.
@@ -903,30 +918,35 @@ function gbComputePublicationActiveYears(rows) {
 }
 
 // Compute facet value lists (top_values) from the merged rows. Category folds
-// raw values into their group key; volume_year sorts chronologically; every
-// other facet sorts by descending count.
+// every row (including blanks) through gbCategoryGroup(); volume_year sorts
+// chronologically; every other facet sorts by descending count and skips
+// blanks as before.
 function gbBuildFacets(rows) {
   FIELD_META.forEach(f => {
     if (f.type !== "facet") return;
     const raw = {};
-    rows.forEach(r => { const v = r[f.name] || ""; if (v) raw[v] = (raw[v] || 0) + 1; });
-    let pairs;
-    if (f.groups) {
-      const rawToGroup = {};
-      Object.entries(f.groups).forEach(([g, vals]) => vals.forEach(v => { rawToGroup[v] = g; }));
-      const folded = {};
-      Object.entries(raw).forEach(([v, c]) => {
-        const key = rawToGroup[v] || v;
-        folded[key] = (folded[key] || 0) + c;
+    if (f.folded) {
+      // Category: fold every row through gbCategoryGroup(), including blanks
+      // — gbCategoryGroup("") resolves to "Blank or no specific category", so
+      // the ~2,145 blank-category rows count into that bucket instead of
+      // being dropped.
+      rows.forEach(r => {
+        const key = gbCategoryGroup(r[f.name]);
+        raw[key] = (raw[key] || 0) + 1;
       });
-      pairs = Object.entries(folded);
     } else {
-      pairs = Object.entries(raw);
+      rows.forEach(r => { const v = r[f.name] || ""; if (v) raw[v] = (raw[v] || 0) + 1; });
     }
+    const pairs = Object.entries(raw);
     if (f.name === "volume_year") pairs.sort((a, b) => a[0].localeCompare(b[0]));
     else pairs.sort((a, b) => b[1] - a[1]);
-    f.top_values = pairs;
     f.cardinality = pairs.length;
+    // The merged dataset folds to ~460 category labels, most in a long tail
+    // of rare values. Offer only the top 25 in the sidebar and column-filter
+    // dropdown, mirroring explorer.html's baked top-25 category facet; rare
+    // categories stay reachable via text search, and a category filter
+    // restored from a shared URL still applies even without a rendered chip.
+    f.top_values = f.folded ? pairs.slice(0, CATEGORY_FACET_TOP_N) : pairs;
   });
 }
 let CANVAS_MAP = {};
@@ -1112,24 +1132,27 @@ function getFiltered() {
     // immutable after load), so repeat searches don't re-normalize 100k rows.
     if (q) {
       if (row._hay === undefined) {
-        row._hay = displayFields.map(f => (row[f.name] || ""))
+        // The facet sidebar shows folded gbCategoryGroup() labels (e.g.
+        // "DRUG STORES" absorbing raw DRUGGIST/PHARMACY/DRUGS), so search
+        // must match against the folded label too, not just the raw value.
+        // Skip blank categories so "Blank or no specific category" doesn't
+        // become searchable text matching thousands of unrelated rows.
+        const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
+        row._hay = (displayFields.map(f => (row[f.name] || ""))
           .concat(DETAIL_FIELDS.map(n => row[n] || ""))
-          .join(" ").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+          .join(" ") + " " + foldedCat)
+          .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       }
       if (!row._hay.includes(q)) return false;
     }
-    // Facet filters
+    // Facet filters. Category is folded through gbCategoryGroup() so a
+    // selected canonical label (e.g. "Blank or no specific category") matches
+    // every row that folds to it, not just rows whose raw value equals it.
     for (const f of facetFields) {
       const sel = facetState[f.name];
       if (sel.size === 0) continue;
-      const rawVal = row[f.name] || "";
-      let matched = sel.has(rawVal);
-      if (!matched && f.groups) {
-        for (const selVal of sel) {
-          if (f.groups[selVal] && f.groups[selVal].includes(rawVal)) { matched = true; break; }
-        }
-      }
-      if (!matched) return false;
+      const val = f.folded ? gbCategoryGroup(row[f.name]) : (row[f.name] || "");
+      if (!sel.has(val)) return false;
     }
     // Column header filters
     for (const [col, val] of Object.entries(colFilters)) {
@@ -1139,6 +1162,9 @@ function getFiltered() {
       // N. Y. (Harlem)") — also accept a match with both sides normalized.
       // Additive only: raw matches still pass above.
       if (col === "city" && gbNormCity(row[col]).includes(gbNormCity(val))) continue;
+      // Category dropdown values are folded labels — also accept a match in
+      // folded space so "DRUG STORES" catches rows filed as "PHARMACY".
+      if (col === "category" && gbCategoryGroup(row[col]).toLowerCase().includes(val.toLowerCase())) continue;
       return false;
     }
     return true;
@@ -1448,8 +1474,12 @@ function renderTableHead() {
       const opt0 = document.createElement("option");
       opt0.value = ""; opt0.textContent = "(all)";
       sel.appendChild(opt0);
-      // Only show values present in the current filtered result set
-      const presentVals = new Set(getFiltered().map(r => r[f.name] || "").filter(Boolean));
+      // Only show values present in the current filtered result set. Folded
+      // facets (category) compare in folded space: top_values holds canonical
+      // gbCategoryGroup() labels, which raw values rarely equal verbatim.
+      const presentVals = new Set(getFiltered()
+        .map(r => f.folded ? gbCategoryGroup(r[f.name]) : (r[f.name] || ""))
+        .filter(Boolean));
       if (colFilters[f.name] && !presentVals.has(colFilters[f.name])) colFilters[f.name] = "";
       const visibleVals = f.top_values.filter(([val]) => presentVals.has(val));
       visibleVals.forEach(([val]) => {
@@ -1811,7 +1841,7 @@ function renderFacetSidebar() {
   facetFields.forEach(f => {
     liveCount[f.name] = {};
     filteredForCounts.forEach(r => {
-      const v = r[f.name] || "";
+      const v = f.folded ? gbCategoryGroup(r[f.name]) : (r[f.name] || "");
       liveCount[f.name][v] = (liveCount[f.name][v] || 0) + 1;
     });
   });
@@ -1865,8 +1895,9 @@ function renderFacetSidebar() {
       valSpan.title = VALUE_LABELS[val] || val;
       const cntSpan = document.createElement("span");
       cntSpan.className = "cnt";
-      let _cnt = liveCount[f.name][val] || 0;
-      if (f.groups && f.groups[val]) _cnt = f.groups[val].reduce((s, rv) => s + (liveCount[f.name][rv] || 0), 0);
+      // liveCount is already keyed by canonical label for folded facets (see
+      // above), so a straight lookup is enough — no per-variant reduce needed.
+      const _cnt = liveCount[f.name][val] || 0;
       cntSpan.textContent = _cnt.toLocaleString();
       item.appendChild(cb);
       item.appendChild(valSpan);
@@ -2193,23 +2224,11 @@ function gbEstabKeyOf(row) {
   return k !== undefined ? k : "\u0000" + rowIdx(row);
 }
 
-// category raw value → folded group name (same folding the facet uses).
-let _gbCatFold = null;
-function gbCatFoldMap() {
-  if (!_gbCatFold) {
-    _gbCatFold = {};
-    const f = FIELD_META.find(f => f.name === "category");
-    if (f && f.groups) Object.entries(f.groups).forEach(([g, vals]) => vals.forEach(v => { _gbCatFold[v] = g; }));
-  }
-  return _gbCatFold;
-}
-
 function gbComputeEstabStats(key, rows) {
   const nameCount = new Map();
   const yearPub = new Map();   // year string → publication of the (first) listing that year
   const pubs = new Set();
   const catCount = new Map();
-  const foldMap = gbCatFoldMap();
   let rep = rows[0], repY = -1;
   rows.forEach(r => {
     const y = Number(r[GB_YEAR_FIELD] || r.year) || 0;
@@ -2218,8 +2237,10 @@ function gbComputeEstabStats(key, rows) {
     const ys = String(r[GB_YEAR_FIELD] || r.year || "");
     if (ys && !yearPub.has(ys)) yearPub.set(ys, r.publication || "");
     if (r.publication) pubs.add(r.publication);
-    const cat = foldMap[r.category || ""] || r.category || "";
-    if (cat && cat !== "Blank or no specific category") catCount.set(cat, (catCount.get(cat) || 0) + 1);
+    // Same fold the facet uses (gb-categories.js); the blank bucket carries
+    // no signal for a business's primary category, so it doesn't compete.
+    const cat = gbCategoryGroup(r.category);
+    if (cat !== "Blank or no specific category") catCount.set(cat, (catCount.get(cat) || 0) + 1);
   });
   // Display name: the most common printed form; ties go to the longer one.
   let name = "", best = 0;
@@ -2766,15 +2787,22 @@ showDetail = function (row) {
   // Provenance note. The same business is filed under different section
   // headings from guide to guide ("HOTELS" / "WHERE TO STAY" / "GO-BY-AUTO Club
   // Members"), so a multi-category group is normal — it shows how differently
-  // the publications organized, not a matching error. (An earlier "may be more
-  // than one business" warning keyed off this same category/address string
-  // variance; a full-dataset audit found it fired on 784 groups with a 0%
-  // true-positive rate — every one a correctly-merged single business, e.g. the
-  // Liberty Hotel at 1519 Baltic Ave. under 11 headings — because raw category
-  // and address strings vary precisely for the businesses the resolver merges
-  // *correctly*. It was removed; genuine over-merges would show divergent parsed
-  // address signatures, which this data effectively never does.)
-  const groupCats = [...new Set(allListings.map(r => r.category).filter(Boolean))];
+  // the publications organized, not a matching error. The list below is
+  // deduped case/whitespace-insensitively but deliberately NOT folded through
+  // gbCategoryGroup(): the full fold would collapse genuinely distinct
+  // headings like "WHERE TO STAY" and "HOTELS AND MOTELS" into the same
+  // "Blank or no specific category" bucket, destroying the provenance signal
+  // this note exists to show. (An earlier "may be more than one business"
+  // warning keyed off this same category/address string variance; a
+  // full-dataset audit found it fired on 784 groups with a 0% true-positive
+  // rate — every one a correctly-merged single business, e.g. the Liberty
+  // Hotel at 1519 Baltic Ave. under 11 headings — because raw category and
+  // address strings vary precisely for the businesses the resolver merges
+  // *correctly*. It was removed; genuine over-merges would show divergent
+  // parsed address signatures, which this data effectively never does.)
+  const groupCats = [...new Set(
+    allListings.map(r => (r.category || "").trim().toUpperCase()).filter(Boolean)
+  )];
   if (groupCats.length > 1) {
     const catNote = document.createElement("div");
     catNote.className = "coverage-cat-note";
@@ -3298,6 +3326,7 @@ async function gbStreamCsv(url, onRow) {
     }
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
     if (viewMode === "trends") gbRenderTrends();  // arrived via #view=trends before data was ready
+    gbMaybeBuildHero();  // build the featured trio now that all volumes are present
     // If the user opened an entry while data was still streaming, keep it open
     // through the final render — its coverage grid can now be filled in.
     const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
@@ -3349,7 +3378,6 @@ function gbTrendAggregates() {
   const yearPub = new Map();   // year number → Map(publication → count)
   const cats = new Map();      // folded category → count
   const states = new Map();    // uppercased state → count
-  const fold = gbCatFoldMap();
   ALL_ENTRIES.forEach(r => {
     const y = Number(r.volume_year || r.year);
     if (y >= 1930 && y <= 1966) {
@@ -3358,8 +3386,10 @@ function gbTrendAggregates() {
       const p = r.publication || "";
       m.set(p, (m.get(p) || 0) + 1);
     }
-    const c = fold[r.category || ""] || r.category || "";
-    if (c && c !== "Blank or no specific category") cats.set(c, (cats.get(c) || 0) + 1);
+    // Same fold the facet uses (gb-categories.js); the blank bucket is a
+    // catch-all, not a business type, so it stays out of the top-10 chart.
+    const c = gbCategoryGroup(r.category);
+    if (c !== "Blank or no specific category") cats.set(c, (cats.get(c) || 0) + 1);
     const s = (r.state || "").trim().toUpperCase();
     if (s) states.set(s, (states.get(s) || 0) + 1);
   });
@@ -3688,7 +3718,7 @@ function gbUpdateHero() {
   featured.forEach(r => {
     const nf = ['name','establishment_name','firm_name','business_name'].find(k => r[k]) || 'name';
     const year = r.volume_year || r.year || '';
-    const cat = (r.category || '').toUpperCase();
+    const cat = r.category ? gbCategoryGroup(r.category) : '';
     const city = (r.city || '').toUpperCase();
     const state = (r.state || '').toUpperCase();
     // A real link: keyboard-focusable, right/middle-clickable (the href is the
@@ -3725,27 +3755,34 @@ function gbUpdateHero() {
     stack.appendChild(card);
   });
 }
-let _heroUpdated = false;
+let _heroUpdated = false, _heroVisible = false;
 // Only build hero thumbnails (IIIF requests) when the hero section is actually
 // visible. If the user refreshes while scrolled past the hero, skip entirely.
 const _heroSection = document.getElementById('gb-hero');
+// Build the featured trio only once the hero is visible AND the full dataset
+// has streamed in. The CSV is sorted by year, so sampling mid-stream would draw
+// only from the earliest volumes (1937/1938) — gbDataLoaded guarantees an
+// all-volumes pool. gbMaybeBuildHero is called from every entry point below and
+// from the post-stream block; whichever satisfies both conditions last wins.
+function gbMaybeBuildHero() {
+  if (_heroUpdated || !_heroVisible || !gbDataLoaded || !ALL_ENTRIES.length) return;
+  _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
+}
 const _heroObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
-  }
+  _heroVisible = true; gbMaybeBuildHero();
 }, { threshold: 0 });
 _heroObserver.observe(_heroSection);
 // Fallback interval in case data arrives after the hero is already visible
 const _checkHero = setInterval(() => {
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    const rect = _heroSection.getBoundingClientRect();
-    if (rect.bottom > 0 && rect.top < window.innerHeight) {
-      _heroUpdated = true; clearInterval(_checkHero); _heroObserver.disconnect(); gbUpdateHero();
-    }
-  }
+  const rect = _heroSection.getBoundingClientRect();
+  if (rect.bottom > 0 && rect.top < window.innerHeight) { _heroVisible = true; gbMaybeBuildHero(); }
   if (_heroUpdated) clearInterval(_checkHero);
 }, 200);
+// Reshuffle on demand — gbUpdateHero rebuilds the stack from a fresh random draw.
+document.getElementById('hero-shuffle').addEventListener('click', () => {
+  if (gbDataLoaded) gbUpdateHero();
+});
 
 
 </script>
