@@ -729,6 +729,10 @@ const FIELD_META  = [
   {"name": "image",           "type": "id",     "top_values": []}
 ];
 
+// Cap on category facet values offered in the UI — matches explorer.html's
+// baked top-25 category list.
+const CATEGORY_FACET_TOP_N = 25;
+
 // The Green Book CSV has no `publication` column; its rows are backfilled
 // with this value on load so the merged `publication` facet has 7 values.
 const GREEN_BOOK_PUBLICATION = "The Negro Motorist Green Book";
@@ -804,8 +808,13 @@ function gbBuildFacets(rows) {
     const pairs = Object.entries(raw);
     if (f.name === "volume_year") pairs.sort((a, b) => a[0].localeCompare(b[0]));
     else pairs.sort((a, b) => b[1] - a[1]);
-    f.top_values = pairs;
     f.cardinality = pairs.length;
+    // The merged dataset folds to ~460 category labels, most in a long tail
+    // of rare values. Offer only the top 25 in the sidebar and column-filter
+    // dropdown, mirroring explorer.html's baked top-25 category facet; rare
+    // categories stay reachable via text search, and a category filter
+    // restored from a shared URL still applies even without a rendered chip.
+    f.top_values = f.folded ? pairs.slice(0, CATEGORY_FACET_TOP_N) : pairs;
   });
 }
 let CANVAS_MAP = {};
