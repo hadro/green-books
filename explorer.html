@@ -121,7 +121,16 @@ a { color: var(--gb-accent); }
   letter-spacing: 0.16em; color: var(--gb-ink-faint);
   display: flex; align-items: center; gap: 12px; margin-bottom: 4px;
 }
-.gb-hero-featured-label::after { content: ""; flex: 1; height: 1px; background: var(--gb-rule-faint); }
+.gb-hero-featured-rule { flex: 1; height: 1px; background: var(--gb-rule-faint); }
+#hero-shuffle {
+  flex-shrink: 0; background: none; border: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
+  padding: 4px 9px; display: inline-flex; align-items: center; gap: 6px;
+}
+#hero-shuffle:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
+#hero-shuffle:focus-visible { border-color: var(--gb-ink); color: var(--gb-ink); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
+#hero-shuffle .hero-shuffle-icon { font-size: 0.929rem; line-height: 1; }
 .gb-hero-featured-stack { display: flex; flex-direction: column; gap: 12px; }
 .gb-hero-card {
   display: flex; flex-direction: column;
@@ -130,6 +139,7 @@ a { color: var(--gb-accent); }
   text-decoration: none; overflow: hidden;
 }
 .gb-hero-card:hover { border-color: var(--gb-rule); transform: translateY(-2px); }
+.gb-hero-card:focus-visible { border-color: var(--gb-rule); transform: translateY(-2px); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
 .gb-hero-card-thumb {
   width: 100%; height: 110px; background: var(--gb-paper-2);
   border-bottom: 1px solid var(--gb-rule-faint); overflow: hidden; flex-shrink: 0;
@@ -575,18 +585,18 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       </aside>
     </div>
     <div class="gb-hero-featured">
-      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span></div>
+      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span><span class="gb-hero-featured-rule" aria-hidden="true"></span><button type="button" id="hero-shuffle" aria-label="Shuffle featured entries" title="Shuffle"><span class="hero-shuffle-icon" aria-hidden="true">&#x21BB;</span>Shuffle</button></div>
       <div class="gb-hero-featured-stack" id="hero-featured-stack">
         <div class="gb-hero-card" style="opacity:0.35;pointer-events:none"><div class="gb-hero-card-thumb"></div><div class="gb-hero-card-meta"><div class="gb-hero-card-name">Loading entries&hellip;</div></div></div>
       </div>
     </div>
   </div>
   <div class="gb-hero-stats">
-    <div class="gb-hero-stat" aria-label="63,185 individual listings"><div class="gb-hero-stat-num" id="hero-stat-entries" aria-hidden="true">63,185</div><div class="gb-hero-stat-label" aria-hidden="true">individual listings</div></div>
-    <div class="gb-hero-stat" aria-label="23 published volumes"><div class="gb-hero-stat-num" id="hero-stat-editions" aria-hidden="true">23</div><div class="gb-hero-stat-label" aria-hidden="true">published volumes</div></div>
-    <div class="gb-hero-stat" aria-label="49 states represented"><div class="gb-hero-stat-num" id="hero-stat-states" aria-hidden="true">89</div><div class="gb-hero-stat-label" aria-hidden="true">states and countries represented</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">63,185</div><div class="gb-hero-stat-label">individual listings</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">23</div><div class="gb-hero-stat-label">published volumes</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
     <!-- 24 = folded gbCategoryGroup() labels with >=100 entries in green_book_entries_all.csv, excluding the "Blank or no specific category" bucket. Regenerate by folding the CSV's category column through gb-categories.js's gbCategoryGroup() and counting labels. -->
-    <div class="gb-hero-stat" aria-label="24 business categories"><div class="gb-hero-stat-num" id="hero-stat-cats" aria-hidden="true">24</div><div class="gb-hero-stat-label" aria-hidden="true">business categories</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">24</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
 </section>
 
@@ -2316,14 +2326,18 @@ function gbUpdateHero() {
     const cat = r.category ? gbCategoryGroup(r.category) : '';
     const city = (r.city || '').toUpperCase();
     const state = (r.state || '').toUpperCase();
-    const card = document.createElement('div');
+    // A real link: keyboard-focusable, right/middle-clickable (the href is the
+    // entry's ?cf= deep link); a plain left click is intercepted to open the
+    // detail panel in place instead of reloading.
+    const card = document.createElement('a');
     card.className = 'gb-hero-card';
+    card.href = location.pathname + '?cf=' + encodeURIComponent(r.canvas_fragment || '');
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gb-hero-card-thumb';
     const ts = thumbUrl(r, 'left');
     if (ts) {
       const img = document.createElement('img');
-      img.src = ts; img.alt = r[nf] || '';
+      img.src = ts; img.alt = '';
       img.onerror = () => { img.style.display = 'none'; };
       thumbDiv.appendChild(img);
     }
@@ -2334,7 +2348,9 @@ function gbUpdateHero() {
       '<div class="gb-hero-card-cat">' + cat + '</div>';
     card.appendChild(thumbDiv);
     card.appendChild(meta);
-    card.addEventListener('click', () => {
+    card.addEventListener('click', e => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
       selectedIdx = rowIdx(r);
       showDetail(r);
       renderTableBody();
@@ -2365,6 +2381,10 @@ const _checkHero = setInterval(() => {
   }
   if (_heroUpdated) clearInterval(_checkHero);
 }, 200);
+// Reshuffle on demand — gbUpdateHero rebuilds the stack from a fresh random draw.
+document.getElementById('hero-shuffle').addEventListener('click', () => {
+  gbUpdateHero();
+});
 
 // // ── Cross-edition timeline ────────────────────────────────────────────────────
 // const _ALL_EDITION_YEARS = [1937,1938,1939,1940,1941,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1959,1960,1961,1962,1963,1966];
