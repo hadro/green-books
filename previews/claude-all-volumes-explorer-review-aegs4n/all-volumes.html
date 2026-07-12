@@ -488,6 +488,16 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 .source-cell { text-align: center; }
 .src-btn { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); padding: 3px 8px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-soft); }
 .src-btn:hover { background: var(--gb-paper); color: var(--gb-accent); border-color: var(--gb-accent); }
+/* ── Mobile result cards (shared by listings + establishments) ── */
+.mcard { display: flex; flex-direction: column; gap: 3px; }
+.mcard-top { display: flex; align-items: center; gap: 7px; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; color: var(--gb-ink-faint); }
+.mcard-year { color: var(--gb-ink-soft); }
+.mcard-top .pub-dot { margin-right: 0; }
+.mcard-name { font-family: var(--gb-font-display); font-size: 1.143rem; font-weight: 500; color: var(--gb-ink); line-height: 1.25; }
+.mcard-line { font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.35; }
+.mcard-cat { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gb-accent); margin-top: 1px; }
+.mcard .est-spark { width: 100%; margin-top: 5px; }
+
 .detail-col { text-align: center; width: 28px; padding: 4px; }
 .detail-col-head { width: 28px; padding: 4px; text-align: center; }
 .detail-btn { background: none; border: none; cursor: pointer; font-size: 0.929rem; color: var(--gb-ink-faint); padding: 2px 4px; }
@@ -620,6 +630,13 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   #filter-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; background: none; border: 1px solid var(--gb-rule-faint); cursor: pointer; font-size: 0.929rem; color: var(--gb-ink-soft); white-space: nowrap; flex-shrink: 0; }
   #table-wrap { overflow-x: auto; }
   #main, #content, #table-wrap { min-width: 0; }
+  /* Card layout: rows render one full-width cell (built in buildRowTr /
+     buildEstabTr); the column header row has nothing to head. Sorting and
+     column filters fold into the sidebar + search on phones. */
+  #results-table thead { display: none; }
+  td.mcard-cell, table.est-mode td.mcard-cell { max-width: none; white-space: normal; overflow: visible; padding: 12px 16px; width: auto; }
+  tbody td.mcard-cell:first-child, table.est-mode tbody td.mcard-cell:first-child { width: auto; padding-left: 16px; font-family: var(--gb-font-body); font-size: 1rem; color: inherit; }
+  tbody tr.selected td.mcard-cell { box-shadow: inset 3px 0 0 var(--gb-accent); color: inherit; }
   #main.detail-open #table-wrap { padding-right: 0; }
   #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
   #mobile-header { display: block; padding: 14px 16px 12px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
@@ -1340,6 +1357,65 @@ function canvasId(cf) {
 
 // ── Render: table body only (preserves thead / focus) ──────────────────────
 
+// Under the mobile breakpoint the table renders as a card list: same
+// <tr> skeleton (so selection, roving tabindex, windowing, and scroll
+// anchoring are untouched) but one full-width cell of card content instead
+// of nine truncated columns that force horizontal scrolling.
+function gbMobileCards() {
+  return window.matchMedia("(max-width: 640px)").matches;
+}
+
+// One-cell card body for a listing row.
+function gbBuildListingCardTd(row, q) {
+  const td = document.createElement("td");
+  td.className = "mcard-cell";
+  td.colSpan = displayFields.length + 2;
+  const card = document.createElement("div");
+  card.className = "mcard";
+  const top = document.createElement("div");
+  top.className = "mcard-top";
+  const year = document.createElement("span");
+  year.className = "mcard-year";
+  year.textContent = row.volume_year || row.year || "";
+  top.appendChild(year);
+  if (row.publication) {
+    const dot = document.createElement("span");
+    dot.className = "pub-dot";
+    dot.style.background = PUBLICATION_COLORS[row.publication] || "var(--gb-ink-faint)";
+    top.appendChild(dot);
+    top.appendChild(document.createTextNode(PUBLICATION_SHORT_NAMES[row.publication] || row.publication));
+  }
+  card.appendChild(top);
+  const name = document.createElement("div");
+  name.className = "mcard-name";
+  name.appendChild(highlightMatch(row.name || "(unnamed)", q));
+  if (gbIsTrue(row.is_recommended)) {
+    const star = document.createElement("span");
+    star.className = "rec-star";
+    star.textContent = " ★";
+    star.setAttribute("aria-label", "Recommended in the original guide");
+    name.appendChild(star);
+  }
+  card.appendChild(name);
+  const placeTxt = [row.address, [row.city, row.state].filter(Boolean).join(", ")]
+    .filter(Boolean).join(" · ");
+  if (placeTxt) {
+    const place = document.createElement("div");
+    place.className = "mcard-line";
+    place.appendChild(highlightMatch(placeTxt, q));
+    card.appendChild(place);
+  }
+  const cat = gbCategoryGroup(row.category);
+  if (row.category && cat !== "Blank or no specific category") {
+    const c = document.createElement("div");
+    c.className = "mcard-cat";
+    c.textContent = cat;
+    card.appendChild(c);
+  }
+  td.appendChild(card);
+  return td;
+}
+
 // Build one result row. Factored out of renderTableBody so extendWindow()
 // can append rows without rebuilding the whole window.
 function buildRowTr(row, q) {
@@ -1354,39 +1430,6 @@ function buildRowTr(row, q) {
   // first row as a fallback set by the caller); ArrowUp/Down move between rows.
   tr.setAttribute("tabindex", isSelected ? "0" : "-1");
   tr.dataset.idx = idx;
-  const pubColor = PUBLICATION_COLORS[row.publication];
-  displayFields.forEach(f => {
-    const td = document.createElement("td");
-    if (f.name === "publication" && pubColor) {
-      td.style.borderLeft = `5px solid ${pubColor}`;
-    }
-    const cellText = row[f.name] || "";
-    td.title = cellText;
-    td.appendChild(highlightMatch(cellText, q));
-    if (f.name === "name" && gbIsTrue(row.is_recommended)) {
-      const star = document.createElement("span");
-      star.className = "rec-star";
-      star.textContent = " ★";
-      star.title = "Marked as recommended in the original guide";
-      star.setAttribute("aria-label", "Recommended in the original guide");
-      td.appendChild(star);
-    }
-    tr.appendChild(td);
-  });
-  const tdSrc = document.createElement("td");
-  tdSrc.className = "source-cell";
-  if (row.canvas_fragment) {
-    const btn = document.createElement("button");
-    btn.className = "src-btn";
-    btn.textContent = "View page ↗";
-    btn.title = "Open original digitized page image";
-    btn.addEventListener("click", e => {
-      e.stopPropagation();
-      openSource(row.canvas_fragment);
-    });
-    tdSrc.appendChild(btn);
-  }
-  tr.appendChild(tdSrc);
   const rowHandler = () => {
     const wrap = document.getElementById('table-wrap');
     const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
@@ -1405,6 +1448,53 @@ function buildRowTr(row, q) {
       }
     }
   };
+  if (gbMobileCards()) {
+    tr.appendChild(gbBuildListingCardTd(row, q));
+  } else {
+    const pubColor = PUBLICATION_COLORS[row.publication];
+    displayFields.forEach(f => {
+      const td = document.createElement("td");
+      if (f.name === "publication" && pubColor) {
+        td.style.borderLeft = `5px solid ${pubColor}`;
+      }
+      const cellText = row[f.name] || "";
+      td.title = cellText;
+      td.appendChild(highlightMatch(cellText, q));
+      if (f.name === "name" && gbIsTrue(row.is_recommended)) {
+        const star = document.createElement("span");
+        star.className = "rec-star";
+        star.textContent = " ★";
+        star.title = "Marked as recommended in the original guide";
+        star.setAttribute("aria-label", "Recommended in the original guide");
+        td.appendChild(star);
+      }
+      tr.appendChild(td);
+    });
+    const tdSrc = document.createElement("td");
+    tdSrc.className = "source-cell";
+    if (row.canvas_fragment) {
+      const btn = document.createElement("button");
+      btn.className = "src-btn";
+      btn.textContent = "View page ↗";
+      btn.title = "Open original digitized page image";
+      btn.addEventListener("click", e => {
+        e.stopPropagation();
+        openSource(row.canvas_fragment);
+      });
+      tdSrc.appendChild(btn);
+    }
+    tr.appendChild(tdSrc);
+    const tdDetail = document.createElement("td");
+    tdDetail.className = "detail-col";
+    const detailBtn = document.createElement("button");
+    detailBtn.className = "detail-btn";
+    detailBtn.setAttribute("aria-label", "Open entry details");
+    detailBtn.setAttribute("tabindex", "-1");
+    detailBtn.textContent = "▸";
+    detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
+    tdDetail.appendChild(detailBtn);
+    tr.appendChild(tdDetail);
+  }
   tr.addEventListener("click", rowHandler);
   tr.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); return; }
@@ -1418,16 +1508,6 @@ function buildRowTr(row, q) {
       }
     }
   });
-  const tdDetail = document.createElement("td");
-  tdDetail.className = "detail-col";
-  const detailBtn = document.createElement("button");
-  detailBtn.className = "detail-btn";
-  detailBtn.setAttribute("aria-label", "Open entry details");
-  detailBtn.setAttribute("tabindex", "-1");
-  detailBtn.textContent = "▸";
-  detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
-  tdDetail.appendChild(detailBtn);
-  tr.appendChild(tdDetail);
   return tr;
 }
 
@@ -1657,6 +1737,15 @@ function renderTable() {
   renderTableHead();
   renderTableBody();
 }
+
+// Re-render rows when the viewport crosses the card breakpoint, so a
+// rotation or window resize swaps between the card and column layouts.
+(function () {
+  const mq = window.matchMedia("(max-width: 640px)");
+  const onChange = () => renderTable();
+  if (mq.addEventListener) mq.addEventListener("change", onChange);
+  else if (mq.addListener) mq.addListener(onChange);
+})();
 
 // ── Resolve canvas_fragment → human-browseable viewer URL ──────────────────
 function viewerUrl(canvas_fragment) {
@@ -2449,12 +2538,56 @@ function estabSparkline(g) {
 }
 
 const ESTAB_NUM_COLS = new Set(["nYears", "nListings", "nPubs"]);
+
+// One-cell card body for an establishment row (mobile).
+function gbBuildEstabCardTd(g, q) {
+  const td = document.createElement("td");
+  td.className = "mcard-cell";
+  td.colSpan = ESTAB_COLUMNS.length;
+  const card = document.createElement("div");
+  card.className = "mcard";
+  const top = document.createElement("div");
+  top.className = "mcard-top";
+  const span = document.createElement("span");
+  span.className = "mcard-year";
+  span.textContent = estabRangeText(g);
+  top.appendChild(span);
+  top.appendChild(document.createTextNode(
+    g.nYears + (g.nYears === 1 ? " year" : " years") + " · " +
+    g.nListings + (g.nListings === 1 ? " listing" : " listings")));
+  card.appendChild(top);
+  const name = document.createElement("div");
+  name.className = "mcard-name";
+  name.appendChild(highlightMatch(g.name, q));
+  card.appendChild(name);
+  const placeTxt = [g.address, [g.city, g.state].filter(Boolean).join(", ")]
+    .filter(Boolean).join(" · ");
+  if (placeTxt) {
+    const place = document.createElement("div");
+    place.className = "mcard-line";
+    place.appendChild(highlightMatch(placeTxt, q));
+    card.appendChild(place);
+  }
+  if (g.category) {
+    const c = document.createElement("div");
+    c.className = "mcard-cat";
+    c.textContent = g.category;
+    card.appendChild(c);
+  }
+  card.appendChild(estabSparkline(g));
+  td.appendChild(card);
+  return td;
+}
+
 function buildEstabTr(g, q, selKey) {
   const tr = document.createElement("tr");
   const isSelected = selKey !== null && g.key === selKey;
   if (isSelected) { tr.classList.add("selected"); tr.setAttribute("aria-current", "true"); }
   tr.setAttribute("tabindex", isSelected ? "0" : "-1");
   tr.dataset.key = g.key;
+  if (gbMobileCards()) {
+    tr.appendChild(gbBuildEstabCardTd(g, q));
+  } else {
   const cells = [
     ["span", estabRangeText(g)],
     ["name", g.name],
@@ -2480,6 +2613,7 @@ function buildEstabTr(g, q, selKey) {
   tdSpark.className = "est-spark-cell";
   tdSpark.appendChild(estabSparkline(g));
   tr.appendChild(tdSpark);
+  }
   const open = () => {
     selectedIdx = rowIdx(g.rep);
     showDetail(g.rep);
