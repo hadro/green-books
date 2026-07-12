@@ -743,6 +743,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   </div>
 </div>
 
+<script src="gb-matching.js"></script>
 <script src="gb-categories.js"></script>
 <script src="gb-geo.js"></script>
 <script>
@@ -1927,31 +1928,19 @@ const GB_YEAR_FIELD = (() => {
   return f ? f.name : null;
 })();
 
-// ── Name + city normalisation helper ────────────────────────────────────────
-function gbNormName(s) {
-  return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
-}
+// ── Cross-listing match index ────────────────────────────────────────────────
+// Normalization + resolver live in gb-matching.js (shared with the validation
+// harness at address-keying-test.html). Rows bucket by (name stem, normalized
+// city), then split into business-level groups by address signature. Built
+// once after the CSV loads; empty until then.
+let gbNameIndex = new Map();   // groupKey → [row objects]
+let gbRowToKey  = new Map();   // row object → groupKey
 
-// ── Name index: normalised (name|city) → [row objects] across all volumes ────
-const gbNameIndex = new Map();
-(function () {
-  const allRows = Object.keys(VOLUMES).length
-    ? Object.values(VOLUMES).flatMap(v => v.rows)
-    : ALL_INITIAL_ENTRIES;
-  const sample = allRows[0];
-  if (!sample) return;
-  const nf = ["name", "establishment_name", "firm_name", "business_name"]
-    .find(k => k in sample);
-  if (!nf) return;
-  allRows.forEach(row => {
-    const city = (row.city || "").toLowerCase().trim();
-    const key = gbNormName(row[nf]) + "|" + city;
-    if (key.length >= 3) {
-      if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
-      gbNameIndex.get(key).push(row);
-    }
-  });
-})();
+// All cross-listings for a row's resolved business group (including itself).
+function gbCrossListings(row) {
+  const key = gbRowToKey.get(row);
+  return (key !== undefined && gbNameIndex.get(key)) || [];
+}
 
 function gbJumpToYear(year) {
   if (!GB_YEAR_FIELD) return;
@@ -1961,14 +1950,8 @@ function gbJumpToYear(year) {
   if (selectedIdx !== null) {
     const cur = ALL_ENTRIES[selectedIdx];
     if (cur) {
-      const nf = ["name", "establishment_name", "firm_name", "business_name"]
-        .find(k => cur[k] != null && cur[k] !== "");
-      if (nf) {
-        const city = (cur.city || "").toLowerCase().trim();
-        const key = gbNormName(cur[nf]) + "|" + city;
-        const candidates = gbNameIndex.get(key) || [];
-        matchRow = candidates.find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
-      }
+      matchRow = gbCrossListings(cur)
+        .find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
     }
   }
 
@@ -2025,13 +2008,14 @@ showDetail = function (row) {
   const nfVal = nf && row[nf];
   if (!nfVal || gbNameIndex.size === 0) { alsoEl.style.display = "none"; return; }
 
-  const city = (row.city || "").toLowerCase().trim();
-  const key = gbNormName(nfVal) + "|" + city;
-  const others = gbNameIndex.get(key) || [];
-  const currentYear = row[GB_YEAR_FIELD] || "";
+  // Cross-listings for this row's resolved business group — the resolver in
+  // gb-matching.js folds name variants ("Miami Carver" / "Miami Carver
+  // Hotel"), city variants ("NEW YORK CITY (HARLEM)"), and address-form
+  // variants ("La Salle" / "LaSalle") while splitting same-name businesses
+  // at different addresses (four "West End"s on one St. Louis block).
+  const others = gbCrossListings(row).filter(r => r !== row);
   const otherYears = [...new Set(
     others
-      .filter(r => r !== row)
       .map(r => r[GB_YEAR_FIELD] || r.year)
       .filter(Boolean)
   )].sort();
@@ -2056,9 +2040,15 @@ showDetail = function (row) {
     allLink.textContent = "See all likely match listings";
     allLink.addEventListener("click", e => {
       e.preventDefault();
-      searchQuery = nfVal;
-      document.getElementById("search").value = nfVal;
-      if (row.city) colFilters["city"] = row.city;
+      // Search on the stripped name (suffixes, descriptors, possessives) so
+      // all variants surface as substring matches of the shorter query.
+      const q = gbSearchQueryName(nfVal);
+      searchQuery = q;
+      document.getElementById("search").value = q;
+      // Normalized city as the column filter: the filter is a substring match,
+      // so "new york" catches "NEW YORK CITY" and "NEW YORK, N.Y. (HARLEM)",
+      // where the raw variant string would match only itself.
+      if (row.city) colFilters["city"] = gbNormCity(row.city);
       if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
       document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
       selectedIdx = null;
@@ -2218,23 +2208,8 @@ document.getElementById('detail').addEventListener('keydown', e => {
       // Stamp each row with its ALL_ENTRIES index once, up front, so render
       // code can look it up via rowIdx() instead of calling indexOf() per row.
       ALL_ENTRIES.forEach((row, i) => { row._i = i; });
-      // Rebuild name index now that data is available
-      gbNameIndex.clear();
-      const sample = ALL_ENTRIES[0];
-      if (sample) {
-        const nf = ['name', 'establishment_name', 'firm_name', 'business_name']
-          .find(k => k in sample);
-        if (nf) {
-          ALL_ENTRIES.forEach(row => {
-            const city = (row.city || '').toLowerCase().trim();
-            const key = gbNormName(row[nf]) + '|' + city;
-            if (key.length >= 3) {
-              if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
-              gbNameIndex.get(key).push(row);
-            }
-          });
-        }
-      }
+      // Build the cross-listing match index now that data is available
+      ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
       renderAll();
       // Re-apply URL state now that rows exist
       applyHashState();
