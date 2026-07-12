@@ -2002,11 +2002,16 @@ showDetail = function (row) {
   _gbOrigSD(row);
   if (row) gcEvent('detail-open');
 
-  // Push the open entry to history so the back button can return to previous state
+  // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
+  // closes it); switching entries while it's already open replaces, so Back
+  // doesn't walk through every row the user ever clicked.
   if (row && row.canvas_fragment) {
     const u = new URL(location.href);
+    const wasOpen = u.searchParams.has('cf');
     u.searchParams.set('cf', row.canvas_fragment);
-    history.pushState(null, '', u.pathname + '?' + u.searchParams + (location.hash || ''));
+    const url = u.pathname + '?' + u.searchParams + (location.hash || '');
+    if (wasOpen) history.replaceState(null, '', url);
+    else history.pushState(null, '', url);
   }
 
   const alsoEl = document.getElementById("detail-also-in");
