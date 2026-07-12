@@ -180,7 +180,8 @@ a { color: var(--gb-accent); }
   background: none; border: none; border-bottom: 1px solid var(--gb-rule-faint);
   font-family: var(--gb-font-mono); margin-top: 4px; font-size: 0.714rem;
   letter-spacing: 0.14em; color: var(--gb-ink-soft); text-decoration: none;
-  text-transform: uppercase; width: max-content; padding: 0 0 2px 0; cursor: pointer;
+  text-transform: uppercase; width: max-content; max-width: 100%; white-space: normal;
+  line-height: 1.7; text-align: left; padding: 0 0 2px 0; cursor: pointer;
 }
 .gb-hero-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
 
@@ -197,14 +198,15 @@ button.about-modal-link { background: none; border: none; padding: 0; cursor: po
 /* Panel-level caveat, echoing the hero's accuracy note. */
 .trends-caveat { display: grid; grid-template-columns: 3px 1fr; gap: 18px; margin: 0 0 30px; max-width: 880px; }
 .trends-caveat-rule { background: var(--gb-accent); }
-.trends-caveat-body { display: flex; flex-direction: column; gap: 7px; }
+.trends-caveat-body { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
 .trends-caveat-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em; color: var(--gb-accent); font-weight: 600; text-transform: uppercase; }
 .trends-caveat-text { font-family: var(--gb-font-display); font-size: 1rem; line-height: 1.55; color: var(--gb-ink); margin: 0; max-width: 72ch; }
 .trends-caveat-text em { font-style: italic; color: var(--gb-ink-soft); }
 .trends-caveat-link {
   font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.14em;
   color: var(--gb-ink-soft); text-decoration: none; text-transform: uppercase;
-  border-bottom: 1px solid var(--gb-rule-faint); width: max-content; padding-bottom: 2px; margin-top: 2px;
+  border-bottom: 1px solid var(--gb-rule-faint); width: max-content; max-width: 100%;
+  white-space: normal; line-height: 1.7; padding-bottom: 2px; margin-top: 2px;
 }
 .trends-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
 /* One-line interpretive caveat under a chart's caption. */
@@ -225,7 +227,7 @@ button.about-modal-link { background: none; border: none; padding: 0; cursor: po
 .trend-chart rect[role="img"]:focus-visible { outline: none; stroke: var(--gb-accent); stroke-width: 1.5; }
 /* ── State × year heatmap ── */
 .trend-heat-scroll { overflow-x: auto; }
-.trend-heat-grid { display: grid; column-gap: 2px; row-gap: 2px; min-width: 640px; align-items: stretch; }
+.trend-heat-grid { display: grid; column-gap: 2px; row-gap: 2px; min-width: 0; align-items: stretch; }
 .heat-year { font-family: var(--gb-font-mono); font-size: 0.643rem; color: var(--gb-ink-faint); text-align: center; padding-bottom: 2px; }
 .heat-state {
   background: none; border: none; cursor: pointer; text-align: right;
@@ -287,6 +289,8 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
   .trends-modal-body { padding: 12px 16px 32px; }
   .trends-grid { grid-template-columns: 1fr; }
   .trend-row { grid-template-columns: 120px 1fr 56px; }
+  .trend-heat-grid { column-gap: 1px; }
+  .heat-state { font-size: 0.714rem; padding-right: 5px; }
 }
 
 /* ── Explorer layout ── */
@@ -836,7 +840,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <figure class="trend-fig">
           <figcaption class="trend-caption">
             <span class="trend-title">Listings by state and year</span>
-            <span class="trend-note">top 20 states &middot; darker green = more listings &middot; click a cell to filter</span>
+            <span class="trend-note">top 20 states &middot; darker green = more listings &middot; &#x22EF; = years with no guides, collapsed &middot; click a cell to filter</span>
           </figcaption>
           <p class="trend-caveat">Depends on machine-extracted state fields and on which guides are digitized for each year &mdash; a thin row can reflect the corpus rather than the era.</p>
           <div class="trend-heat-scroll"><div id="trend-heat"></div></div>
@@ -3676,7 +3680,7 @@ function gbDrawYearChart() {
   const maxT = Math.max(...totals, 1);
   const step = [250, 500, 1000, 2000, 2500, 5000, 10000].find(s => maxT / s <= 5) || 10000;
   const niceMax = step * Math.ceil(maxT / step);
-  const W = Math.max(320, host.clientWidth || 900);
+  const W = Math.max(240, host.clientWidth || 900);
   // mT reserves an annotation band above the plot for milestone markers.
   const H = 274, mL = 48, mR = 6, mT = 34, mB = 26;
   const innerW = W - mL - mR, innerH = H - mT - mB;
@@ -3876,7 +3880,7 @@ function gbBuildYearTable() {
 const HEAT_RAMP = ["#dfe6d2", "#bed3a4", "#9aba78", "#71a050", "#4a832f", "#245e19"];
 const HEAT_TOP_STATES = 20;
 function gbHeatData() {
-  const { stateYear } = gbTrendAggregates();
+  const { stateYear, yearPub } = gbTrendAggregates();
   const states = [...stateYear.entries()]
     .map(([s, m]) => { let t = 0; m.forEach(v => { t += v; }); return [s, t]; })
     .sort((a, b) => b[1] - a[1])
@@ -3887,7 +3891,24 @@ function gbHeatData() {
   states.forEach(([s]) => {
     stateYear.get(s).forEach(c => { if (c > maxC) maxC = c; });
   });
-  return { stateYear, states, years, maxC };
+  // Column model: runs of >=2 consecutive years with no guides at all
+  // (1932–36, the wartime pause, 1964–65) collapse into one narrow break
+  // column, same as the coverage grid — 37 columns become 25 + 3 breaks,
+  // which fits a phone without horizontal scrolling.
+  const columns = [];
+  let deadStart = null;
+  const flushDead = end => {
+    if (end - deadStart + 1 >= 2) columns.push({ type: "break", from: deadStart, to: end });
+    else for (let d = deadStart; d <= end; d++) columns.push({ type: "year", y: d });
+    deadStart = null;
+  };
+  years.forEach(y => {
+    if (!yearPub.has(y)) { if (deadStart === null) deadStart = y; return; }
+    if (deadStart !== null) flushDead(y - 1);
+    columns.push({ type: "year", y });
+  });
+  if (deadStart !== null) flushDead(years[years.length - 1]);
+  return { stateYear, states, years, columns, maxC };
 }
 function gbHeatBucket(c, maxC) {
   if (!c) return -1;
@@ -3897,19 +3918,27 @@ function gbDrawStateHeatmap() {
   const host = document.getElementById("trend-heat");
   if (!host) return;
   host.innerHTML = "";
-  const { stateYear, states, years, maxC } = gbHeatData();
+  const { stateYear, states, columns, maxC } = gbHeatData();
   const grid = document.createElement("div");
   grid.className = "trend-heat-grid";
   grid.setAttribute("role", "group");
   grid.setAttribute("aria-label", "Listings by state and year, top " + states.length +
-    " states, 1930 to 1966. Darker cells mean more listings; each cell filters the explorer.");
-  grid.style.gridTemplateColumns = "max-content repeat(" + years.length + ", minmax(10px, 1fr))";
+    " states, 1930 to 1966. Darker cells mean more listings; each cell filters the explorer. " +
+    "Spans of years with no guides are collapsed.");
+  grid.style.gridTemplateColumns = "max-content " +
+    columns.map(c => c.type === "break" ? "6px" : "minmax(5px, 1fr)").join(" ");
   const corner = document.createElement("div");
   grid.appendChild(corner);
-  years.forEach(y => {
+  columns.forEach(c => {
     const h = document.createElement("div");
-    h.className = "heat-year";
-    h.textContent = y % 5 === 0 ? y : "";
+    if (c.type === "break") {
+      h.className = "heat-year";
+      h.textContent = "⋯";
+      h.title = "No guides " + c.from + "–" + c.to;
+    } else {
+      h.className = "heat-year";
+      h.textContent = c.y % 5 === 0 ? c.y : "";
+    }
     h.setAttribute("aria-hidden", "true");
     grid.appendChild(h);
   });
@@ -3923,7 +3952,15 @@ function gbDrawStateHeatmap() {
     lab.addEventListener("click", () => { gbHideTip(); gbTrendFilterState(s); });
     grid.appendChild(lab);
     const ym = stateYear.get(s);
-    years.forEach(y => {
+    columns.forEach(col => {
+      if (col.type === "break") {
+        const brk = document.createElement("div");
+        brk.className = "coverage-break";
+        brk.setAttribute("aria-hidden", "true");
+        grid.appendChild(brk);
+        return;
+      }
+      const y = col.y;
       const c = ym.get(y) || 0;
       let cell;
       if (c) {
@@ -4010,7 +4047,7 @@ function gbDrawChurnChart() {
   const maxT = Math.max(...totals, 1);
   const step = [250, 500, 1000, 2000, 2500, 5000, 10000].find(s => maxT / s <= 5) || 10000;
   const niceMax = step * Math.ceil(maxT / step);
-  const W = Math.max(320, host.clientWidth || 900);
+  const W = Math.max(240, host.clientWidth || 900);
   const H = 216, mL = 48, mR = 6, mT = 12, mB = 26;
   const innerW = W - mL - mR, innerH = H - mT - mB;
   const slot = innerW / years.length;
