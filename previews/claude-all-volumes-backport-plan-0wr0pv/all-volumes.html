@@ -707,6 +707,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 <script src="previews/claude-all-volumes-backport-plan-0wr0pv/gb-matching.js"></script>
 <script src="previews/claude-all-volumes-backport-plan-0wr0pv/gb-categories.js"></script>
+<script src="previews/claude-all-volumes-backport-plan-0wr0pv/gb-geo.js"></script>
 <script>
 var _gbAboutOnLoad = location.hash === '#about';
 const ALL_INITIAL_ENTRIES = [];
@@ -1512,17 +1513,8 @@ function showDetail(row) {
 }
 
 // ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
-// Session-level geocode cache: re-opening an entry (or another entry that
-// falls back to the same city query) reuses the earlier result instead of
-// re-hitting Nominatim — friendlier to its 1 req/s usage policy while a user
-// browses quickly. Empty results are cached too.
-const _geoCache = new Map();
-function gbGeocode(query, signal) {
-  if (_geoCache.has(query)) return Promise.resolve(_geoCache.get(query));
-  return fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query), { signal })
-    .then(r => r.json())
-    .then(results => { _geoCache.set(query, results); return results; });
-}
+// gbGeocode() is shared with explorer.html via gb-geo.js (localStorage-backed
+// cache).
 let _mapAbort = null;
 function renderDetailMap(row) {
   const mapEl = document.getElementById("detail-map");
