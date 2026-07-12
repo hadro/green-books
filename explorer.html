@@ -779,6 +779,9 @@ let sortDir = 1;  // 1 = asc, -1 = desc
 let selectedIdx = null;
 let _yearScrollAnchor = null;  // ALL_ENTRIES index used to center window for year-jump (no selection change)
 let _winStart = 0;             // persists across renders so re-selecting an in-window row doesn't re-center
+// Row → ALL_ENTRIES index. Rows are stamped with _i when the CSV loads; the
+// indexOf fallback covers rows from any other source (none in this build).
+const rowIdx = r => (r._i !== undefined ? r._i : ALL_ENTRIES.indexOf(r));
 let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
 function gcEvent(name) {
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
@@ -867,20 +870,35 @@ function loadVolume(label) {
 })();
 
 // ── Filtering ──────────────────────────────────────────────────────────────
+// Memoized: one render pass calls getFiltered() from the table body, the
+// facet sidebar, and each facet column head. The key captures every input the
+// filter reads (including ALL_ENTRIES.length, which changes once the CSV
+// finishes loading), so no manual invalidation is needed anywhere.
+let _fcKey = null, _fcRows = null;
+function _filterKey() {
+  const fs = facetFields.map(f => f.name + ":" + [...facetState[f.name]].join("|")).join(";");
+  return [ALL_ENTRIES.length, displayFields.map(f => f.name).join(","),
+          searchQuery, JSON.stringify(colFilters), fs].join("");
+}
 function getFiltered() {
+  const key = _filterKey();
+  if (key === _fcKey && _fcRows) return _fcRows;
   const q = searchQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
-  return ALL_ENTRIES.filter(row => {
-    // Search filter
+  const result = ALL_ENTRIES.filter(row => {
+    // Search filter — the normalized haystack is cached on the row (data is
+    // immutable after load), so repeat searches don't re-normalize 100k rows.
     if (q) {
       // The facet sidebar shows folded gbCategoryGroup() labels (e.g.
       // "DRUG STORES" absorbing raw DRUGGIST/PHARMACY/DRUGS), so search must
       // match against the folded label too, not just the raw value. Skip
       // blank categories so "Blank or no specific category" doesn't become
       // searchable text matching thousands of unrelated rows.
-      const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
-      const haystack = (displayFields.map(f => (row[f.name] || "")).join(" ") + " " + foldedCat)
-        .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
-      if (!haystack.includes(q)) return false;
+      if (row._hay === undefined) {
+        const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
+        row._hay = (displayFields.map(f => (row[f.name] || "")).join(" ") + " " + foldedCat)
+          .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+      }
+      if (!row._hay.includes(q)) return false;
     }
     // Facet filters. Category is folded through gbCategoryGroup() so a
     // selected canonical label (e.g. "Blank or no specific category") matches
@@ -898,6 +916,9 @@ function getFiltered() {
     }
     return true;
   });
+  _fcKey = key;
+  _fcRows = result;
+  return result;
 }
 
 // ── Sort ───────────────────────────────────────────────────────────────────
@@ -949,10 +970,10 @@ function renderTableBody() {
   let winStart = 0;
   if (_yearScrollAnchor !== null) {
     // Year-jump and close-restore always take priority over selection centering.
-    const anchorPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === _yearScrollAnchor);
+    const anchorPos = sorted.findIndex(row => rowIdx(row) === _yearScrollAnchor);
     if (anchorPos >= 0 && anchorPos > WINDOW - 200) winStart = Math.max(0, anchorPos - Math.floor(WINDOW / 2));
   } else if (selectedIdx !== null) {
-    const selPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === selectedIdx);
+    const selPos = sorted.findIndex(row => rowIdx(row) === selectedIdx);
     if (selPos >= 0) {
       if (selPos >= _winStart && selPos < _winStart + WINDOW) {
         winStart = _winStart;  // row already in window — don't re-center
@@ -964,11 +985,11 @@ function renderTableBody() {
   _winStart = winStart;
   sorted.slice(winStart, winStart + WINDOW).forEach(row => {
     const tr = document.createElement("tr");
-    const isSelected = ALL_ENTRIES.indexOf(row) === selectedIdx;
+    const isSelected = rowIdx(row) === selectedIdx;
     if (isSelected) tr.classList.add("selected");
     tr.setAttribute("tabindex", "0");
     tr.setAttribute("aria-selected", isSelected ? "true" : "false");
-    tr.dataset.idx = ALL_ENTRIES.indexOf(row);
+    tr.dataset.idx = rowIdx(row);
     const q = searchQuery.trim().toLowerCase();
     displayFields.forEach(f => {
       const td = document.createElement("td");
@@ -998,7 +1019,7 @@ function renderTableBody() {
       const alreadyVisible = wrapRect &&
         trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
       const savedScroll = wrap ? wrap.scrollTop : 0;
-      selectedIdx = ALL_ENTRIES.indexOf(row);
+      selectedIdx = rowIdx(row);
       showDetail(row);
       renderTableBody();
       if (wrap) {
@@ -1546,7 +1567,7 @@ function clearAllFilters() {
   document.getElementById("search").value = "";
   renderAll();
   if (savedRow) {
-    selectedIdx = ALL_ENTRIES.indexOf(savedRow);
+    selectedIdx = rowIdx(savedRow);
     showDetail(savedRow);
     renderTableBody();
     scrollToSelected(100);
@@ -1719,7 +1740,7 @@ function scrollToYear(year) {
   const sorted = getSorted(getFiltered());
   const targetRow = sorted.find(r => (r.volume_year || r.year || '') === year);
   if (!targetRow) return;
-  const targetIdx = ALL_ENTRIES.indexOf(targetRow);
+  const targetIdx = rowIdx(targetRow);
   _yearScrollAnchor = targetIdx;
   renderTableBody();
   _yearScrollAnchor = null;
@@ -1741,7 +1762,7 @@ document.getElementById("random-btn").addEventListener("click", () => {
   const pool = all.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
   if (!pool.length) return;
   const r = pool[Math.floor(Math.random() * pool.length)];
-  selectedIdx = ALL_ENTRIES.indexOf(r);
+  selectedIdx = rowIdx(r);
   showDetail(r);
   renderTableBody();
   scrollToSelected();
@@ -1773,7 +1794,7 @@ window.addEventListener("popstate", function () {
   if (cf) {
     const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
     if (match) {
-      selectedIdx = ALL_ENTRIES.indexOf(match);
+      selectedIdx = rowIdx(match);
       showDetail(match);
       renderTableBody();
       scrollToSelected();
@@ -1855,7 +1876,7 @@ function gbJumpToYear(year) {
   renderAll();  // closes drawer, applies year filter, re-renders table
 
   if (matchRow) {
-    selectedIdx = ALL_ENTRIES.indexOf(matchRow);
+    selectedIdx = rowIdx(matchRow);
     showDetail(matchRow);
     renderTableBody();  // re-render to show selection highlight
   }
@@ -1957,7 +1978,7 @@ renderAll();
   if (!cf) return;
   const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
   if (!match) return;
-  selectedIdx = ALL_ENTRIES.indexOf(match);
+  selectedIdx = rowIdx(match);
   showDetail(match);
   renderTableBody();
   history.scrollRestoration = 'manual';
@@ -2083,6 +2104,9 @@ document.getElementById('detail').addEventListener('keydown', e => {
     .then(([text, canvasData]) => {
       CANVAS_MAP = canvasData;
       ALL_ENTRIES = gbParseCSV(text);
+      // Stamp each row with its ALL_ENTRIES index once, up front, so render
+      // code can look it up via rowIdx() instead of calling indexOf() per row.
+      ALL_ENTRIES.forEach((row, i) => { row._i = i; });
       // Rebuild name index now that data is available
       gbNameIndex.clear();
       const sample = ALL_ENTRIES[0];
@@ -2107,7 +2131,7 @@ document.getElementById('detail').addEventListener('keydown', e => {
       if (cf) {
         const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
         if (match) {
-          selectedIdx = ALL_ENTRIES.indexOf(match);
+          selectedIdx = rowIdx(match);
           showDetail(match);
           renderTableBody();
           const app = document.getElementById('app');
@@ -2202,7 +2226,7 @@ function gbUpdateHero() {
     card.appendChild(thumbDiv);
     card.appendChild(meta);
     card.addEventListener('click', () => {
-      selectedIdx = ALL_ENTRIES.indexOf(r);
+      selectedIdx = rowIdx(r);
       showDetail(r);
       renderTableBody();
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
