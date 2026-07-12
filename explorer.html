@@ -179,6 +179,7 @@ a { color: var(--gb-accent); }
   border-right: 1px solid var(--gb-rule-faint);
   display: flex; flex-direction: column; overflow: hidden;
 }
+#sidebar:focus { outline: none; }  /* container focus target for the mobile drawer */
 #sidebar-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--gb-rule-faint); }
 .sidebar-brand {
   font-family: var(--gb-font-mono); font-size: 0.714rem; font-weight: 500;
@@ -617,7 +618,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <select id="mobile-volume-select" aria-label="Select volume" style="display:none"></select>
   </div>
   <div id="toolbar">
-    <button id="filter-btn" style="display:none" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
+    <button id="filter-btn" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
     <div id="search-wrap">
       <input id="search" type="search" placeholder="Search names, addresses, notes…" autocomplete="off" aria-label="Search all fields">
       <button id="export-btn">Export CSV</button>
@@ -1561,12 +1562,26 @@ document.getElementById("no-results").addEventListener("click", e => {
   const filterBtn = document.getElementById("filter-btn");
   const backdrop  = document.getElementById("sidebar-backdrop");
   const app       = document.getElementById("app");
-  function openSidebar()  { app.classList.add("sidebar-open");    filterBtn.setAttribute("aria-expanded", "true");  }
-  function closeSidebar() { app.classList.remove("sidebar-open"); filterBtn.setAttribute("aria-expanded", "false"); }
-  filterBtn.addEventListener("click", () => app.classList.contains("sidebar-open") ? closeSidebar() : openSidebar());
-  backdrop.addEventListener("click", closeSidebar);
+  const sidebar   = document.getElementById("sidebar");
+  function openSidebar()  {
+    app.classList.add("sidebar-open");
+    filterBtn.setAttribute("aria-expanded", "true");
+    sidebar.setAttribute("tabindex", "-1");
+    sidebar.focus();
+  }
+  function closeSidebar(returnFocus) {
+    if (!app.classList.contains("sidebar-open")) return;
+    app.classList.remove("sidebar-open");
+    filterBtn.setAttribute("aria-expanded", "false");
+    if (returnFocus) filterBtn.focus();
+  }
+  filterBtn.addEventListener("click", () => app.classList.contains("sidebar-open") ? closeSidebar(false) : openSidebar());
+  backdrop.addEventListener("click", () => closeSidebar(false));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && app.classList.contains("sidebar-open")) closeSidebar(true);
+  });
   document.getElementById("facet-controls").addEventListener("change", () => {
-    if (window.innerWidth <= 640) closeSidebar();
+    if (window.innerWidth <= 640) closeSidebar(false);
   });
 })();
 
