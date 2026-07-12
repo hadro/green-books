@@ -3315,17 +3315,31 @@ showDetail = function (row) {
   allLink.textContent = "Show all " + nList + " matching listings in the table →";
   allLink.addEventListener("click", e => {
     e.preventDefault();
-    // Search on the stripped name (suffixes, descriptors, possessives) so
-    // all variants surface as substring matches of the shorter query.
-    const q = gbSearchQueryName(nfVal);
-    searchQuery = q;
-    document.getElementById("search").value = q;
-    // Normalized city as the column filter: the filter is a substring match,
-    // so "new york" catches "NEW YORK CITY" and "NEW YORK, N.Y. (HARLEM)",
-    // where the raw variant string would match only itself.
-    if (row.city) colFilters["city"] = gbNormCity(row.city);
     if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
     if (facetState["publication"]) facetState["publication"].clear();
+    // Search on the stripped name (suffixes, descriptors, possessives) so
+    // all variants surface as substring matches of the shorter query — but
+    // VERIFY each candidate actually returns rows before committing to it.
+    // Stripping can break self-matching: "Ada's Cottage" strips to
+    // "Ada Cottage", which is not a substring of the row's own normalized
+    // haystack "adas cottage", and the link would land on an empty table.
+    // Fall back to the raw name, then to the raw name without the city
+    // filter; the raw name always matches the clicked row itself.
+    // (City filter: normalized substring match, so "new york" catches
+    // "NEW YORK CITY" and "NEW YORK, N.Y. (HARLEM)".)
+    const cityVal = row.city ? gbNormCity(row.city) : "";
+    const candidates = [
+      [gbSearchQueryName(nfVal), cityVal],
+      [nfVal, cityVal],
+      [nfVal, ""],
+    ].filter(([cand]) => cand);
+    for (const [cand, cityF] of candidates) {
+      searchQuery = cand;
+      if (cityF) colFilters["city"] = cityF;
+      else delete colFilters["city"];
+      if (getFiltered().length > 0) break;
+    }
+    document.getElementById("search").value = searchQuery;
     document.getElementById("detail").classList.remove("open");
     document.getElementById("main").classList.remove("detail-open");
     selectedIdx = null;
