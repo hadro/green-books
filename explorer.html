@@ -1170,7 +1170,15 @@ function renderTableHead() {
       inp.type = "text"; inp.className = "col-filter-input"; inp.placeholder = "filter…";
       inp.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
       inp.value = colFilters[f.name] || "";
-      inp.addEventListener("input", () => { colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); syncFilterUI(); });
+      // Same debounce as the main search — a full-dataset re-render per
+      // keystroke makes typing feel sticky.
+      let colTimer;
+      inp.addEventListener("input", () => {
+        clearTimeout(colTimer);
+        colTimer = setTimeout(() => {
+          colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); syncFilterUI();
+        }, 180);
+      });
       fth.appendChild(inp);
     }
     filterRow.appendChild(fth);
