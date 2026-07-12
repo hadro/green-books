@@ -184,17 +184,15 @@ a { color: var(--gb-accent); }
 }
 .gb-hero-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
 
-/* ── Trends: "the guides at a glance" (a view inside the explorer) ── */
-#trends-panel { display: none; flex: 1; overflow-y: auto; padding: 28px 32px 56px; background: var(--gb-paper); }
-#trends-panel.open { display: block; }
-.trends-head { margin-bottom: 28px; }
-.trends-eyebrow {
-  font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gb-ink-soft);
-  display: flex; align-items: center; gap: 12px;
-}
-.trends-eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--gb-rule-faint); }
-.trends-sub { margin: 10px 0 0; font-size: 0.857rem; color: var(--gb-ink-faint); font-family: var(--gb-font-body); }
+/* ── Trends: "the guides at a glance" (a didactic modal, like About) ── */
+#trends-backdrop { position: fixed; inset: 0; background: rgba(22, 19, 16, 0.42); z-index: 400; place-items: center; padding: 40px; backdrop-filter: blur(2px); display: none; }
+#trends-backdrop.open { display: grid; }
+#trends-modal { background: var(--gb-paper); width: 100%; max-width: 1280px; max-height: calc(100vh - 80px); display: flex; flex-direction: column; border: 1px solid var(--gb-rule); box-shadow: 0 30px 80px -20px rgba(0,0,0,0.4); overflow: hidden; position: relative; }
+#trends-modal::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gb-accent); }
+.trends-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 22px 32px 0; flex-shrink: 0; }
+.trends-modal-body { padding: 14px 40px 48px; overflow-y: auto; }
+.trends-sub { margin: 0 0 18px; font-size: 0.857rem; color: var(--gb-ink-faint); font-family: var(--gb-font-body); }
+button.about-modal-link { background: none; border: none; padding: 0; cursor: pointer; font: inherit; }
 .trends-loading { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); margin: 0; }
 /* Panel-level caveat, echoing the hero's accuracy note. */
 .trends-caveat { display: grid; grid-template-columns: 3px 1fr; gap: 18px; margin: 0 0 30px; max-width: 880px; }
@@ -283,7 +281,10 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 .trend-table th { color: var(--gb-ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
 .trend-table th:first-child, .trend-table td:first-child { text-align: left; }
 @media (max-width: 900px) {
-  #trends-panel { padding: 20px 16px 40px; }
+  #trends-backdrop { padding: 12px; }
+  #trends-modal { max-height: calc(100vh - 24px); }
+  .trends-modal-head { padding: 16px 16px 0; }
+  .trends-modal-body { padding: 12px 16px 32px; }
   .trends-grid { grid-template-columns: 1fr; }
   .trend-row { grid-template-columns: 120px 1fr 56px; }
 }
@@ -699,6 +700,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <!-- 41 = folded gbCategoryGroup() labels with >=100 entries across the merged green_book_entries_all.csv + travel_guides_all.csv dataset, excluding the "Blank or no specific category" bucket. Regenerate by folding both CSVs' category columns through gb-categories.js's gbCategoryGroup() and counting labels. -->
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">41</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
+  <button class="gb-hero-caveat-link" id="hero-trends-btn" style="margin-top:20px">SEE THE FULL PICTURE &mdash; CHARTS OF THE WHOLE DATASET&rarr;</button>
 </section>
 
 <div id="app">
@@ -714,6 +716,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
     <div id="sidebar-cta">
       <button id="about-btn">About this explorer</button>
+      <button id="trends-btn">Charts &amp; trends</button>
       <button id="random-year-btn">Jump to a random year</button>
       <button id="gb-explore-btn">Open a random entry</button>
     </div>
@@ -730,8 +733,9 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <p class="mobile-hero-title">Green Books Travel Guide Explorer</p>
     <p class="mobile-hero-desc">Explore the directory of safe businesses and services for Black travelers, 1930&ndash;1966</p>
     <div class="mobile-hero-actions">
-      <button id="mobile-about-btn">About this explorer</button>
-      <button id="mobile-random-btn">Open a random entry</button>
+      <button id="mobile-about-btn">About</button>
+      <button id="mobile-trends-btn">Charts</button>
+      <button id="mobile-random-btn">Random entry</button>
     </div>
     <select id="mobile-volume-select" aria-label="Select volume" style="display:none"></select>
   </div>
@@ -746,7 +750,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div id="view-toggle" role="group" aria-label="View mode">
         <button id="view-listings-btn" class="view-btn view-btn-active" aria-pressed="true">Listings</button>
         <button id="view-estabs-btn" class="view-btn" aria-pressed="false" disabled title="Available once all entries finish loading">Establishments</button>
-        <button id="view-trends-btn" class="view-btn" aria-pressed="false" disabled title="Available once all entries finish loading">Trends</button>
       </div>
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
@@ -755,11 +758,45 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   </div>
   <button id="random-btn" style="display:none"></button>
   <div id="content">
-    <div id="trends-panel" aria-label="The guides at a glance">
-      <div class="trends-head">
-        <div class="trends-eyebrow">The guides at a glance</div>
-        <p class="trends-sub">Charts cover the full dataset — counting extracted listings, or resolved businesses where noted. Click a year, category, state, or cell to see its listings.</p>
+    <div id="table-wrap">
+      <table id="results-table" aria-label="Green Book entries">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+      <div id="no-results">
+        No entries match the current filters.
+        <p>Try removing filters or adjusting your search.</p>
+        <button id="clear-all-btn">× Clear all filters</button>
       </div>
+    </div>
+    <div id="detail" role="complementary" aria-label="Entry details">
+      <div class="detail-hero">
+        <a id="detail-thumb-link" target="_blank"><img id="detail-thumb" alt="" style="display:none;cursor:pointer"></a>
+        <button id="detail-close" aria-label="Close detail panel">&#x2715;</button>
+      </div>
+      <div id="detail-inner">
+        <div id="detail-page-context"></div>
+        <h2 id="detail-title"></h2>
+        <div id="detail-badges"></div>
+        <div class="detail-fields" id="detail-fields"></div>
+        <div id="detail-also-in" style="display:none"></div>
+        <div id="detail-map" style="display:none"></div>
+        <div class="detail-source" id="detail-source"></div>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+
+<div id="trends-backdrop">
+  <div id="trends-modal" role="dialog" aria-modal="true" aria-labelledby="trends-modal-title" tabindex="-1">
+    <div class="trends-modal-head">
+      <div class="about-modal-eyebrow" id="trends-modal-title">THE GUIDES AT A GLANCE</div>
+      <button class="close-about close-trends" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="trends-modal-body">
+      <p class="trends-sub">Charts cover the full dataset — counting extracted listings, or resolved businesses where noted. Click a year, category, state, or cell to see its listings and leave the charts.</p>
       <aside class="trends-caveat" role="note" aria-label="What these charts can and cannot measure">
         <div class="trends-caveat-rule" aria-hidden="true"></div>
         <div class="trends-caveat-body">
@@ -857,36 +894,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         </div>
       </div>
     </div>
-    <div id="table-wrap">
-      <table id="results-table" aria-label="Green Book entries">
-        <thead id="table-head"></thead>
-        <tbody id="table-body"></tbody>
-      </table>
-      <div id="no-results">
-        No entries match the current filters.
-        <p>Try removing filters or adjusting your search.</p>
-        <button id="clear-all-btn">× Clear all filters</button>
-      </div>
-    </div>
-    <div id="detail" role="complementary" aria-label="Entry details">
-      <div class="detail-hero">
-        <a id="detail-thumb-link" target="_blank"><img id="detail-thumb" alt="" style="display:none;cursor:pointer"></a>
-        <button id="detail-close" aria-label="Close detail panel">&#x2715;</button>
-      </div>
-      <div id="detail-inner">
-        <div id="detail-page-context"></div>
-        <h2 id="detail-title"></h2>
-        <div id="detail-badges"></div>
-        <div class="detail-fields" id="detail-fields"></div>
-        <div id="detail-also-in" style="display:none"></div>
-        <div id="detail-map" style="display:none"></div>
-        <div class="detail-source" id="detail-source"></div>
-      </div>
-    </div>
   </div>
-</main>
 </div>
-
 
 <div id="about-backdrop">
   <div id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-title" tabindex="-1">
@@ -915,7 +924,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
           <p class="about-modal-emphasis">There are OCR, entity-extraction, and entry alignment errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
-          <p>The dataset also reaches only as far as digitization has: it covers the 45 digitized volumes across these seven publications. Other Black travel guides &mdash; such as the <em>Afro-American&rsquo;s Travel Guide</em> (1939) and <em>The Black American Travel Guide</em> (1971), held in the Schomburg Center&rsquo;s Jean Blackwell Hutson Research and Reference Division but not digitized here &mdash; are not represented, so charts and counts describe the digitized corpus, not the full historical record. <a class="about-modal-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">See NYPL&rsquo;s research guide, &ldquo;More African American Travel Guides!&rdquo; &rarr;</a></p>
+          <p>The dataset also reaches only as far as digitization has: it covers the 45 digitized volumes across these seven publications. Other Black travel guides &mdash; such as the <em>Afro-American&rsquo;s Travel Guide</em> (1939) and <em>The Black American Travel Guide</em> (1971), held in the Schomburg Center&rsquo;s Jean Blackwell Hutson Research and Reference Division but not digitized here &mdash; are not represented, so charts and counts describe the digitized corpus, not the full historical record. <a class="about-modal-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">See NYPL&rsquo;s research guide, &ldquo;More African American Travel Guides!&rdquo; &rarr;</a> You can explore the shape of the digitized corpus in <button type="button" id="about-trends-link" class="about-modal-link">charts &amp; trends</button>.</p>
           <h3 class="about-modal-h3">How to use this site</h3>
           <ol class="about-modal-list">
             <li>Filter by <strong>year</strong>, <strong>name</strong>, <strong>address</strong>, <strong>state</strong>, <strong>city</strong>, or <strong>category</strong> at the top of the explorer.</li>
@@ -958,6 +967,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 <script src="previews/claude-all-volumes-explorer-review-aegs4n/gb-categories.js"></script>
 <script>
 var _gbAboutOnLoad = location.hash === '#about';
+var _gbTrendsOnLoad = location.hash === '#trends';
 const ALL_INITIAL_ENTRIES = [];
 const VOLUMES     = {};
 // Field schema for the merged Green Book + travel-guide dataset. top_values
@@ -1469,14 +1479,6 @@ function extendWindow() {
 
 function renderTableBody() {
   if (viewMode === "establishments") { renderEstabBody(); return; }
-  if (viewMode === "trends") {
-    // The table is hidden; the count label describes what the charts show.
-    const cl = document.getElementById("count-label");
-    if (cl) cl.textContent = gbDataLoaded
-      ? "Charts cover all " + ALL_ENTRIES.length.toLocaleString() + " listings"
-      : "";
-    return;
-  }
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
 
@@ -1541,7 +1543,6 @@ function renderTableBody() {
 // ── Render: table head (sort row + filter row) ──────────────────────────────
 function renderTableHead() {
   if (viewMode === "establishments") { renderEstabHead(); return; }
-  if (viewMode === "trends") return;  // table hidden behind the trends panel
   const head = document.getElementById("table-head");
   head.innerHTML = "";
 
@@ -2185,7 +2186,6 @@ function stateToHash() {
     }
   }
   if (viewMode === "establishments") params.set("view", "est");
-  else if (viewMode === "trends") params.set("view", "trends");
   if (searchQuery) params.set("q", searchQuery);
   if (sortCol) params.set("sort", sortCol + ":" + (sortDir > 0 ? "asc" : "desc"));
   for (const [col, val] of Object.entries(colFilters)) {
@@ -2201,6 +2201,7 @@ function stateToHash() {
   const str = params.toString();
   if (str) return location.pathname + location.search + "#" + str;
   if (location.hash === '#about') return location.pathname + location.search + '#about';
+  if (location.hash === '#trends') return location.pathname + location.search + '#trends';
   return location.pathname + location.search;
 }
 
@@ -2223,11 +2224,12 @@ function applyHashState() {
     }
   }
 
-  // View mode (establishments/trends need the loaded dataset; before it's
-  // ready both views render a loading note, and the post-load renderAll
-  // fills them in)
+  // View mode (establishments needs the loaded dataset; before it's built
+  // the establishment body renders a loading note, and the post-load
+  // renderAll fills it in). "view=trends" is a legacy alias from when the
+  // charts were a third view — it now opens the Trends modal.
   if (params.get("view") === "est") viewMode = "establishments";
-  else if (params.get("view") === "trends") viewMode = "trends";
+  else if (params.get("view") === "trends") _gbTrendsOnLoad = true;
 
   // Search query
   const q = params.get("q");
@@ -2632,7 +2634,6 @@ function syncViewToggleUI() {
   const buttons = {
     listings: document.getElementById("view-listings-btn"),
     establishments: document.getElementById("view-estabs-btn"),
-    trends: document.getElementById("view-trends-btn"),
   };
   if (!buttons.listings) return;
   Object.entries(buttons).forEach(([mode, btn]) => {
@@ -2641,19 +2642,10 @@ function syncViewToggleUI() {
     btn.setAttribute("aria-pressed", String(viewMode === mode));
   });
   const est = viewMode === "establishments";
-  const trends = viewMode === "trends";
   const tbl = document.getElementById("results-table");
   if (tbl) tbl.classList.toggle("est-mode", est);
   const note = document.getElementById("est-mode-note");
   if (note) note.style.display = est ? "" : "none";
-  // Trends replaces the table; search/export/clear act on listings, so they
-  // hide with it rather than sit there doing nothing.
-  const panel = document.getElementById("trends-panel");
-  if (panel) panel.classList.toggle("open", trends);
-  const wrap = document.getElementById("table-wrap");
-  if (wrap) wrap.style.display = trends ? "none" : "";
-  const searchWrap = document.getElementById("search-wrap");
-  if (searchWrap) searchWrap.style.display = trends ? "none" : "";
 }
 function setViewMode(mode) {
   if (mode === viewMode) return;
@@ -2662,11 +2654,9 @@ function setViewMode(mode) {
   gcEvent("view-" + mode);
   _pushNextHistory = true;
   renderAll();
-  if (mode === "trends") gbRenderTrends();
 }
 document.getElementById("view-listings-btn").addEventListener("click", () => setViewMode("listings"));
 document.getElementById("view-estabs-btn").addEventListener("click", () => setViewMode("establishments"));
-document.getElementById("view-trends-btn").addEventListener("click", () => setViewMode("trends"));
 
 // ── Back/forward navigation via popstate ────────────────────────────────────
 window.addEventListener("popstate", function () {
@@ -2683,7 +2673,7 @@ window.addEventListener("popstate", function () {
   // Re-apply filters from new URL hash
   applyHashState();
   renderAll();  // closes detail panel
-  if (viewMode === "trends") gbRenderTrends();  // back/forward into the trends view
+  if (_gbTrendsOnLoad && !gbTrendsModalOpen()) gbOpenTrendsModal();  // legacy #view=trends link via back/forward
   // Re-open detail if ?cf= is present in the new URL
   const cf = new URLSearchParams(location.search).get("cf");
   if (cf) {
@@ -3436,13 +3426,8 @@ async function gbStreamCsv(url, onRow) {
       estBtn.disabled = false;
       estBtn.title = "One row per business, matched across volumes and publications";
     }
-    const trendsBtn = document.getElementById('view-trends-btn');
-    if (trendsBtn) {
-      trendsBtn.disabled = false;
-      trendsBtn.title = "Charts of the whole dataset: listings per year, top categories, top states";
-    }
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
-    if (viewMode === "trends") gbRenderTrends();  // arrived via #view=trends before data was ready
+    if (gbTrendsModalOpen()) gbRenderTrends();  // modal opened before data was ready
     gbMaybeBuildHero();  // build the featured trio now that all volumes are present
     // If the user opened an entry while data was still streaming, keep it open
     // through the final render — its coverage grid can now be filled in.
@@ -3637,6 +3622,7 @@ function gbRoundedTopRect(x, y, w, h, r) {
 // unasked-for intersection, which can be empty ("blank" results after
 // clicking a bar that plainly says 2,180).
 function gbTrendResetFilters() {
+  gbCloseTrendsModal(true);  // hand off from the didactic layer to the working one
   searchQuery = "";
   const s = document.getElementById("search");
   if (s) s.value = "";
@@ -4331,7 +4317,7 @@ function gbDrawBarList(hostId, entries, opts) {
 // entry means the year chart always matches the current panel width even if
 // the window was resized while another view was active.
 function gbRenderTrends() {
-  if (!gbDataLoaded || viewMode !== "trends") return;
+  if (!gbDataLoaded || !gbTrendsModalOpen()) return;
   const body = document.getElementById("trends-body");
   if (!body) return;
   const loading = document.getElementById("trends-loading");
@@ -4363,10 +4349,72 @@ function gbRedrawTrendSvgs() {
   gbDrawCategoryMultiples();
 }
 window.addEventListener("resize", () => {
-  if (viewMode !== "trends" || !gbDataLoaded) return;
+  if (!gbDataLoaded || !gbTrendsModalOpen()) return;
   clearTimeout(gbRenderTrends._rt);
   gbRenderTrends._rt = setTimeout(gbRedrawTrendSvgs, 200);
 });
+
+// ── Trends modal chrome ──────────────────────────────────────────────────────
+// The charts are didactic, like the About modal — a layer you visit and
+// leave — so they share its interaction contract: #trends hash, backdrop and
+// Escape to close, focus trap, focus restored to the opener.
+function gbTrendsModalOpen() {
+  const b = document.getElementById("trends-backdrop");
+  return !!b && b.classList.contains("open");
+}
+let _gbTrendsOpener = null;
+function gbOpenTrendsModal() {
+  if (gbTrendsModalOpen()) return;
+  _gbTrendsOpener = document.activeElement;
+  document.getElementById("trends-backdrop").classList.add("open");
+  document.getElementById("trends-modal").focus();
+  gcEvent("trends-open");
+  // Pathname-anchored, mirroring the About modal's #about handling.
+  try { history.replaceState(null, "", location.pathname + location.search + "#trends"); } catch (e) {}
+  gbRenderTrends();  // charts need a visible container to measure width
+}
+function gbCloseTrendsModal(skipFocus) {
+  const b = document.getElementById("trends-backdrop");
+  if (!b || !b.classList.contains("open")) return;
+  b.classList.remove("open");
+  // Restore the filter-state hash the modal's #trends replaced.
+  try { history.replaceState(null, "", stateToHash()); } catch (e) {}
+  if (!skipFocus && _gbTrendsOpener && _gbTrendsOpener.focus) _gbTrendsOpener.focus();
+  _gbTrendsOpener = null;
+}
+(function () {
+  ["trends-btn", "hero-trends-btn", "mobile-trends-btn"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("click", gbOpenTrendsModal);
+  });
+  const aboutLink = document.getElementById("about-trends-link");
+  if (aboutLink) aboutLink.addEventListener("click", () => {
+    const closeAboutBtn = document.querySelector("#about-modal .close-about");
+    if (closeAboutBtn) closeAboutBtn.click();
+    gbOpenTrendsModal();
+  });
+  document.addEventListener("click", e => {
+    const backdrop = document.getElementById("trends-backdrop");
+    if (!backdrop || !backdrop.classList.contains("open")) return;
+    if (e.target === backdrop || e.target.closest(".close-trends")) gbCloseTrendsModal();
+  });
+  document.addEventListener("keydown", e => {
+    const backdrop = document.getElementById("trends-backdrop");
+    if (!backdrop || !backdrop.classList.contains("open")) return;
+    if (e.key === "Escape") { gbCloseTrendsModal(); return; }
+    if (e.key === "Tab") {
+      const modal = document.getElementById("trends-modal");
+      const focusable = Array.from(
+        modal.querySelectorAll('a[href], button, summary, [tabindex]:not([tabindex="-1"])')
+      ).filter(el => !el.disabled && el.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  if (_gbTrendsOnLoad) gbOpenTrendsModal();
+})();
 
 // ── Hero + Timeline additions ─────────────────────────────────────────────────
 
