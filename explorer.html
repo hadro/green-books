@@ -625,7 +625,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   <div id="toolbar">
     <button id="filter-btn" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
     <div id="search-wrap">
-      <input id="search" type="search" placeholder="Search names, addresses, notes…" autocomplete="off" aria-label="Search all fields">
+      <input id="search" type="search" placeholder="Search names, addresses, notes…  ( press / )" autocomplete="off" aria-label="Search all fields" aria-keyshortcuts="/">
       <button id="export-btn">Export CSV</button>
       <span id="export-feedback" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
     </div>
@@ -1627,6 +1627,18 @@ document.getElementById("search").addEventListener("input", e => {
     searchQuery = e.target.value;
     renderAll();
   }, 180);
+});
+
+// "/" focuses search from anywhere that isn't already a text control.
+document.addEventListener("keydown", e => {
+  if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey) return;
+  const t = e.target;
+  if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+  const s = document.getElementById("search");
+  if (!s) return;
+  e.preventDefault();
+  s.focus();
+  s.select();
 });
 
 // ── Sync filter UI: URL hash + clear-filters button visibility ───────────
