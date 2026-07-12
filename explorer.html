@@ -1367,6 +1367,17 @@ function showDetail(row) {
 }
 
 // ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
+// Session-level geocode cache: re-opening an entry (or another entry that
+// falls back to the same city query) reuses the earlier result instead of
+// re-hitting Nominatim — friendlier to its 1 req/s usage policy while a user
+// browses quickly. Empty results are cached too.
+const _geoCache = new Map();
+function gbGeocode(query, signal) {
+  if (_geoCache.has(query)) return Promise.resolve(_geoCache.get(query));
+  return fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query), { signal })
+    .then(r => r.json())
+    .then(results => { _geoCache.set(query, results); return results; });
+}
 let _mapAbort = null;
 function renderDetailMap(row) {
   const mapEl = document.getElementById("detail-map");
@@ -1400,8 +1411,7 @@ function renderDetailMap(row) {
   }
 
   function tryCity() {
-    fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(cityQuery), { signal: controller.signal })
-      .then(r => r.json())
+    gbGeocode(cityQuery, controller.signal)
       .then(results => {
         if (!results.length) throw new Error("no results");
         const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
@@ -1415,8 +1425,7 @@ function renderDetailMap(row) {
       });
   }
 
-  fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(addrQuery), { signal: controller.signal })
-    .then(r => r.json())
+  gbGeocode(addrQuery, controller.signal)
     .then(results => {
       if (!results.length) { tryCity(); return; }
       const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
