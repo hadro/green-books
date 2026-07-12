@@ -327,6 +327,8 @@ tbody td:nth-child(2) { font-family: var(--gb-font-display); font-size: 1.071rem
 tbody tr.selected td:nth-child(2) { color: var(--gb-accent-deep); box-shadow: inset 2px 0 0 var(--gb-accent); padding-left: 10px; }
 mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2px; border-radius: 1px; }
 .table-end-sentinel td { text-align: center; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; padding: 14px; border-top: 1px solid var(--gb-rule-faint); }
+.table-end-sentinel button { margin-left: 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); padding: 4px 12px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-accent); }
+.table-end-sentinel button:hover { border-color: var(--gb-accent); background: var(--gb-accent-soft); }
 #no-results { padding: 40px; text-align: center; color: var(--gb-ink-soft); font-family: var(--gb-font-display); font-size: 1.143rem; display: none; }
 #no-results p { margin: 6px 0 0; font-size: 1rem; color: var(--gb-ink-faint); }
 #no-results p.no-results-active { margin: 10px auto 0; }
@@ -779,6 +781,8 @@ let sortDir = 1;  // 1 = asc, -1 = desc
 let selectedIdx = null;
 let _yearScrollAnchor = null;  // ALL_ENTRIES index used to center window for year-jump (no selection change)
 let _winStart = 0;             // persists across renders so re-selecting an in-window row doesn't re-center
+const WINDOW_STEP = 2000;      // rows added per "Show more" / auto-extend
+let _winSize = WINDOW_STEP;    // current render-window size; reset by renderAll()
 // Row → ALL_ENTRIES index. Rows are stamped with _i when the CSV loads; the
 // indexOf fallback covers rows from any other source (none in this build).
 const rowIdx = r => (r._i !== undefined ? r._i : ALL_ENTRIES.indexOf(r));
@@ -1035,6 +1039,56 @@ function buildRowTr(row, q) {
   return tr;
 }
 
+// End-of-window sentinel: reports how much is shown and, when more rows
+// remain below the window, offers "Show more" + auto-extends via an
+// IntersectionObserver as it scrolls into view.
+let _sentinelObserver = null;
+function renderSentinel(tbody, sorted, winStart) {
+  if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
+  if (sorted.length === 0) return;
+  const shownEnd = Math.min(sorted.length, winStart + _winSize);
+  const remaining = sorted.length - shownEnd;
+  const sentinelTr = document.createElement("tr");
+  sentinelTr.className = "table-end-sentinel";
+  const sentinelTd = document.createElement("td");
+  sentinelTd.colSpan = displayFields.length + 1;
+  if (remaining > 0) {
+    sentinelTd.textContent = `Showing ${(shownEnd - winStart).toLocaleString()} of ${sorted.length.toLocaleString()} entries `;
+    const more = document.createElement("button");
+    more.type = "button";
+    more.textContent = `Show ${Math.min(WINDOW_STEP, remaining).toLocaleString()} more`;
+    more.addEventListener("click", extendWindow);
+    sentinelTd.appendChild(more);
+    _sentinelObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) extendWindow();
+    }, { root: document.getElementById("table-wrap"), rootMargin: "200px" });
+    _sentinelObserver.observe(sentinelTr);
+  } else if (winStart > 0) {
+    sentinelTd.textContent = `Showing entries ${(winStart + 1).toLocaleString()}–${shownEnd.toLocaleString()} of ${sorted.length.toLocaleString()}`;
+  } else {
+    sentinelTd.textContent = `Showing all ${sorted.length.toLocaleString()} entries`;
+  }
+  sentinelTr.appendChild(sentinelTd);
+  tbody.appendChild(sentinelTr);
+}
+
+// Grow the render window in place: append only the new slice, keep scroll.
+function extendWindow() {
+  const sorted = getSorted(getFiltered());
+  const tbody = document.getElementById("table-body");
+  const oldEnd = _winStart + _winSize;
+  if (oldEnd >= sorted.length) return;
+  _winSize += WINDOW_STEP;
+  const q = searchQuery.trim().toLowerCase();
+  const sentinel = tbody.querySelector("tr.table-end-sentinel");
+  if (sentinel) sentinel.remove();
+  const frag = document.createDocumentFragment();
+  sorted.slice(oldEnd, Math.min(sorted.length, _winStart + _winSize))
+    .forEach(row => frag.appendChild(buildRowTr(row, q)));
+  tbody.appendChild(frag);
+  renderSentinel(tbody, sorted, _winStart);
+}
+
 function renderTableBody() {
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
@@ -1046,19 +1100,18 @@ function renderTableBody() {
 
   const tbody = document.getElementById("table-body");
   tbody.innerHTML = "";
-  const WINDOW = 2000;
   let winStart = 0;
   if (_yearScrollAnchor !== null) {
     // Year-jump and close-restore always take priority over selection centering.
     const anchorPos = sorted.findIndex(row => rowIdx(row) === _yearScrollAnchor);
-    if (anchorPos >= 0 && anchorPos > WINDOW - 200) winStart = Math.max(0, anchorPos - Math.floor(WINDOW / 2));
+    if (anchorPos >= 0 && anchorPos > _winSize - 200) winStart = Math.max(0, anchorPos - Math.floor(_winSize / 2));
   } else if (selectedIdx !== null) {
     const selPos = sorted.findIndex(row => rowIdx(row) === selectedIdx);
     if (selPos >= 0) {
-      if (selPos >= _winStart && selPos < _winStart + WINDOW) {
+      if (selPos >= _winStart && selPos < _winStart + _winSize) {
         winStart = _winStart;  // row already in window — don't re-center
-      } else if (selPos > WINDOW - 200) {
-        winStart = Math.max(0, selPos - Math.floor(WINDOW / 2));
+      } else if (selPos > _winSize - 200) {
+        winStart = Math.max(0, selPos - Math.floor(_winSize / 2));
       }
     }
   }
@@ -1066,7 +1119,7 @@ function renderTableBody() {
   const q = searchQuery.trim().toLowerCase();
   const frag = document.createDocumentFragment();
   let anySelected = false;
-  sorted.slice(winStart, winStart + WINDOW).forEach(row => {
+  sorted.slice(winStart, winStart + _winSize).forEach(row => {
     const tr = buildRowTr(row, q);
     if (tr.classList.contains("selected")) anySelected = true;
     frag.appendChild(tr);
@@ -1076,19 +1129,7 @@ function renderTableBody() {
   // row is the table's single Tab stop.
   if (!anySelected && tbody.firstElementChild) tbody.firstElementChild.setAttribute("tabindex", "0");
 
-  // End-of-results sentinel
-  if (sorted.length > 0) {
-    const sentinelTr = document.createElement("tr");
-    sentinelTr.className = "table-end-sentinel";
-    const sentinelTd = document.createElement("td");
-    sentinelTd.colSpan = displayFields.length + 1;
-    const cap = sorted.length > 2000
-      ? `Showing first 2,000 of ${sorted.length.toLocaleString()} entries`
-      : `Showing all ${sorted.length.toLocaleString()} entries`;
-    sentinelTd.textContent = cap;
-    sentinelTr.appendChild(sentinelTd);
-    tbody.appendChild(sentinelTr);
-  }
+  renderSentinel(tbody, sorted, winStart);
 
   const noResults = document.getElementById("no-results");
   if (sorted.length === 0) {
@@ -1777,6 +1818,7 @@ function renderAll() {
   // never see a stale record juxtaposed against a new result set.
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   selectedIdx = null;
+  _winSize = WINDOW_STEP;  // shrink an extended window back to one page
   renderFacetSidebar();
   renderTable();
   syncFilterUI();
