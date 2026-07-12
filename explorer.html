@@ -290,6 +290,7 @@ a { color: var(--gb-accent); }
 #search-scope-label { display: none; }
 .toolbar-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 #count-label { font-size: 0.857rem; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
+#load-status { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); }
 #clear-filters-btn {
   display: none; background: var(--gb-highlight-soft);
   border: 1px solid rgba(200, 144, 40, 0.6);
@@ -643,6 +644,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
     <div class="toolbar-meta-row">
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
+      <span id="load-status"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
   </div>
@@ -799,6 +801,11 @@ let _winSize = WINDOW_STEP;    // current render-window size; reset by renderAll
 // indexOf fallback covers rows from any other source (none in this build).
 const rowIdx = r => (r._i !== undefined ? r._i : ALL_ENTRIES.indexOf(r));
 let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
+// Declared here (rather than down by the rest of the cross-listing state,
+// where it conceptually belongs) so renderTableBody()'s "so far" suffix can
+// safely reference it — renderAll() runs once before the loader section
+// below would otherwise have declared it.
+let gbDataLoaded = false;      // true once the CSV stream has finished
 function gcEvent(name) {
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
 }
@@ -1105,7 +1112,7 @@ function renderTableBody() {
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
 
-  const countText = `${sorted.length.toLocaleString()} of ${ALL_ENTRIES.length.toLocaleString()} entries`;
+  const countText = `${sorted.length.toLocaleString()} of ${ALL_ENTRIES.length.toLocaleString()} entries` + (gbDataLoaded ? '' : ' so far');
   document.getElementById("count-label").textContent = countText;
   const tbl = document.getElementById("results-table");
   if (tbl) tbl.setAttribute("aria-label", `Green Book entries — ${countText}`);
@@ -1148,6 +1155,8 @@ function renderTableBody() {
     noResults.style.display = "block";
     if (ALL_ENTRIES.length === 0) {
       noResults.innerHTML = '<p style="font-size: 1rem;color:#595959;margin:0">Loading entries…</p>';
+    } else if (!gbDataLoaded) {
+      noResults.innerHTML = '<p style="font-size: 1rem;color:#595959;margin:0">No matches yet — entries are still loading</p>';
     } else {
       const activeDesc = [];
       if (searchQuery.trim()) activeDesc.push(`searching for “${searchQuery.trim()}”`);
@@ -1935,7 +1944,6 @@ const GB_YEAR_FIELD = (() => {
 // once after the CSV loads; empty until then.
 let gbNameIndex = new Map();   // groupKey → [row objects]
 let gbRowToKey  = new Map();   // row object → groupKey
-let gbDataLoaded = false;      // true once the CSV stream has finished
 
 // All cross-listings for a row's resolved business group (including itself).
 function gbCrossListings(row) {
@@ -2163,6 +2171,13 @@ document.getElementById('detail').addEventListener('keydown', e => {
 // the full download. We render once at a first-paint threshold (so the user
 // sees something fast) and once more when the stream finishes.
 
+// Approximate row count, baked via `tail -n +2 green_book_entries_all.csv |
+// wc -l`. Used only to show a "Loading entries — N%" progress indicator while
+// the CSV streams in; the real count everywhere else comes from
+// ALL_ENTRIES.length. Regenerate by re-running the command above if the CSV
+// is ever regenerated with a different row count.
+const GB_ENTRIES_TOTAL_APPROX = 63590;
+
 // State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
 // quoting (escaped quotes, embedded commas and newlines) across arbitrary
 // chunk boundaries.
@@ -2238,6 +2253,13 @@ async function gbStreamCsv(url, onRow) {
   const GB_CSV_URL = 'green_book_entries_all.csv';
   const FIRST_PAINT_AT = 2000;
   let firstPainted = false;
+  // Persistent stream-status text, independent of #count-label (which a user
+  // interaction can overwrite with a real "X of Y" count mid-stream). Capped
+  // at 99% until the stream actually finishes.
+  function gbLoadStatusText() {
+    const pct = Math.min(99, Math.floor(ALL_ENTRIES.length / GB_ENTRIES_TOTAL_APPROX * 100));
+    return 'Loading entries — ' + pct + '%';
+  }
   function maybeFirstPaint() {
     if (firstPainted || ALL_ENTRIES.length < FIRST_PAINT_AT) return;
     firstPainted = true;
@@ -2249,14 +2271,21 @@ async function gbStreamCsv(url, onRow) {
   }
   // Live progress while streaming. Only overwrites the count label while it
   // still shows our own loading text — the moment a user interaction re-renders
-  // it to a real "X of Y" count, we stop touching it.
+  // it to a real "X of Y" count, we stop touching it. #load-status is cheaper
+  // to keep current: it always reflects the latest tick, gated to every 10k
+  // rows so the onRow path stays cheap.
   function gbProgressTick() {
-    if (!firstPainted || ALL_ENTRIES.length % 10000 !== 0) return;
+    if (ALL_ENTRIES.length % 10000 !== 0) return;
+    const ls = document.getElementById('load-status');
+    if (ls) ls.textContent = gbLoadStatusText();
+    if (!firstPainted) return;
     const cl = document.getElementById('count-label');
     if (cl && /loading more…$/.test(cl.textContent)) {
       cl.textContent = 'Loaded ' + ALL_ENTRIES.length.toLocaleString() + ' entries — loading more…';
     }
   }
+  const loadStatusEl = document.getElementById('load-status');
+  if (loadStatusEl) loadStatusEl.textContent = gbLoadStatusText();  // initial text, before streaming starts
   try {
     CANVAS_MAP = await fetch('canvas_map.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
     await gbStreamCsv(GB_CSV_URL, row => {
@@ -2267,19 +2296,24 @@ async function gbStreamCsv(url, onRow) {
       maybeFirstPaint();
       gbProgressTick();
     });
-    // Stream done — final build + render covers everything the original
-    // loader's .then() did after parsing.
+    // Stream done. Capture any detail panel the user opened mid-stream before
+    // renderAll() below closes it (renderAll() always resets selectedIdx).
+    const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
+      ? ALL_ENTRIES[selectedIdx] : null;
+    // Re-apply URL state now that all rows exist, then paint the full table
+    // right away — gbBuildMatchIndex() below is heavy (~800ms on desktop,
+    // longer on mobile) and would otherwise freeze the UI on stale,
+    // still-partial content for its whole duration.
+    applyHashState();
+    renderAll();
+    if (loadStatusEl) loadStatusEl.textContent = 'Indexing cross-listings…';
+    await new Promise(r => setTimeout(r, 0));  // yield so the browser paints before the heavy index build
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
     gbMaybeBuildHero();  // build the featured trio now that the full dataset is present
-    // If the user opened an entry while data was still streaming, keep it open
-    // through the final render.
-    const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
-      ? ALL_ENTRIES[selectedIdx] : null;
-    renderAll();
-    // Re-apply URL state now that all rows exist
-    applyHashState();
+    // These need the cross-listing index (for "Also listed in" chips), so they
+    // run after gbBuildMatchIndex() above.
     const cf = new URLSearchParams(location.search).get('cf');
     if (cf) {
       const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
@@ -2300,6 +2334,7 @@ async function gbStreamCsv(url, onRow) {
                && !location.hash.includes('volume_year')) {
       scrollToYear("1938");
     }
+    if (loadStatusEl) { loadStatusEl.textContent = ''; loadStatusEl.style.display = 'none'; }
   } catch (err) {
     const noRes = document.getElementById("no-results");
     if (noRes) {
