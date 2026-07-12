@@ -1935,6 +1935,7 @@ const GB_YEAR_FIELD = (() => {
 // once after the CSV loads; empty until then.
 let gbNameIndex = new Map();   // groupKey → [row objects]
 let gbRowToKey  = new Map();   // row object → groupKey
+let gbDataLoaded = false;      // true once the CSV stream has finished
 
 // All cross-listings for a row's resolved business group (including itself).
 function gbCrossListings(row) {
@@ -2156,88 +2157,158 @@ document.getElementById('detail').addEventListener('keydown', e => {
   if (btn) btn.addEventListener('click', () => document.getElementById('random-btn').click());
 }());
 
-// ── Lazy CSV loader ───────────────────────────────────────────────────────────
-(function () {
-  const GB_CSV_URL = 'green_book_entries_all.csv';
+// ── Streaming CSV loader ──────────────────────────────────────────────────────
+// The CSV is ~20 MB raw / ~2 MB gzipped over the wire. Streaming the parse lets
+// the table show a usable subset within a second or two instead of waiting for
+// the full download. We render once at a first-paint threshold (so the user
+// sees something fast) and once more when the stream finishes.
 
-  // RFC 4180-compliant parser — handles quoted fields, embedded commas/newlines
-  function gbParseCSV(text) {
-    const result = [];
-    let headers = null;
-    let pos = 0;
-    const len = text.length;
-    while (pos < len) {
-      const row = [];
-      while (true) {
-        let field = '';
-        if (pos < len && text[pos] === '"') {
-          pos++;
-          while (pos < len) {
-            if (text[pos] === '"') {
-              if (pos + 1 < len && text[pos + 1] === '"') { field += '"'; pos += 2; }
-              else { pos++; break; }
-            } else { field += text[pos++]; }
-          }
-        } else {
-          while (pos < len && text[pos] !== ',' && text[pos] !== '\r' && text[pos] !== '\n') {
-            field += text[pos++];
-          }
-        }
-        row.push(field);
-        if (pos < len && text[pos] === ',') { pos++; }
-        else { break; }
-      }
-      if (pos < len && text[pos] === '\r') pos++;
-      if (pos < len && text[pos] === '\n') pos++;
-      if (row.length === 0 || (row.length === 1 && row[0] === '')) continue;
-      if (!headers) { headers = row; continue; }
-      const obj = {};
-      headers.forEach((h, i) => { obj[h] = row[i] !== undefined ? row[i] : ''; });
-      result.push(obj);
-    }
-    return result;
+// State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
+// quoting (escaped quotes, embedded commas and newlines) across arbitrary
+// chunk boundaries.
+function gbCreateStreamingCSVParser(onRow) {
+  let headers = null;
+  let field = '';
+  let row = [];
+  let inQuote = false;
+  let pendingQuote = false;  // saw `"` while in quote — next char decides escape vs end
+  let pendingCR = false;     // saw `\r` — swallow following `\n` if any
+  function flushField() { row.push(field); field = ''; }
+  function flushRow() {
+    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; return; }
+    if (!headers) { headers = row; row = []; return; }
+    const obj = {};
+    for (let i = 0; i < headers.length; i++) obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    onRow(obj);
+    row = [];
   }
+  return {
+    feed(text) {
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (pendingQuote) {
+          pendingQuote = false;
+          if (c === '"') { field += '"'; continue; }
+          inQuote = false;
+          // fall through to handle c outside quotes
+        }
+        if (inQuote) {
+          if (c === '"') pendingQuote = true;
+          else field += c;
+          continue;
+        }
+        if (pendingCR) {
+          pendingCR = false;
+          if (c === '\n') continue;
+        }
+        if (c === '"') inQuote = true;
+        else if (c === ',') flushField();
+        else if (c === '\r') { flushField(); flushRow(); pendingCR = true; }
+        else if (c === '\n') { flushField(); flushRow(); }
+        else field += c;
+      }
+    },
+    end() { if (field !== '' || row.length > 0) { flushField(); flushRow(); } }
+  };
+}
 
-  Promise.all([
-    fetch(GB_CSV_URL).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }),
-    fetch('canvas_map.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  ])
-    .then(([text, canvasData]) => {
-      CANVAS_MAP = canvasData;
-      ALL_ENTRIES = gbParseCSV(text);
+async function gbStreamCsv(url, onRow) {
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + url);
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder('utf-8');
+  const parser = gbCreateStreamingCSVParser(onRow);
+  // Sub-chunk size: yielding between sub-chunks lets the browser paint the
+  // first-paint render (and successive incremental updates) instead of being
+  // blocked by a single multi-MB synchronous parse on fast connections.
+  const SUBCHUNK = 128 * 1024;
+  const yieldToBrowser = () => new Promise(r => setTimeout(r, 0));
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) { parser.feed(decoder.decode()); parser.end(); return; }
+    const text = decoder.decode(value, { stream: true });
+    for (let off = 0; off < text.length; off += SUBCHUNK) {
+      parser.feed(text.substring(off, Math.min(off + SUBCHUNK, text.length)));
+      await yieldToBrowser();
+    }
+  }
+}
+
+(async function () {
+  const GB_CSV_URL = 'green_book_entries_all.csv';
+  const FIRST_PAINT_AT = 2000;
+  let firstPainted = false;
+  function maybeFirstPaint() {
+    if (firstPainted || ALL_ENTRIES.length < FIRST_PAINT_AT) return;
+    firstPainted = true;
+    renderAll();
+    // renderAll set count-label to "X of N" where N is the partial total. Make
+    // it clear more is still streaming — the final renderAll() corrects it.
+    const cl = document.getElementById('count-label');
+    if (cl) cl.textContent = 'Showing first ' + FIRST_PAINT_AT.toLocaleString() + ' entries — loading more…';
+  }
+  // Live progress while streaming. Only overwrites the count label while it
+  // still shows our own loading text — the moment a user interaction re-renders
+  // it to a real "X of Y" count, we stop touching it.
+  function gbProgressTick() {
+    if (!firstPainted || ALL_ENTRIES.length % 10000 !== 0) return;
+    const cl = document.getElementById('count-label');
+    if (cl && /loading more…$/.test(cl.textContent)) {
+      cl.textContent = 'Loaded ' + ALL_ENTRIES.length.toLocaleString() + ' entries — loading more…';
+    }
+  }
+  try {
+    CANVAS_MAP = await fetch('canvas_map.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    await gbStreamCsv(GB_CSV_URL, row => {
       // Stamp each row with its ALL_ENTRIES index once, up front, so render
       // code can look it up via rowIdx() instead of calling indexOf() per row.
-      ALL_ENTRIES.forEach((row, i) => { row._i = i; });
-      // Build the cross-listing match index now that data is available
-      ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
-      renderAll();
-      // Re-apply URL state now that rows exist
-      applyHashState();
-      const cf = new URLSearchParams(location.search).get('cf');
-      if (cf) {
-        const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
-        if (match) {
-          selectedIdx = rowIdx(match);
-          showDetail(match);
-          renderTableBody();
-          const app = document.getElementById('app');
-          if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
-          scrollToSelected(100);
-        }
-      } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
-                 && !location.hash.includes('volume_year')) {
-        scrollToYear("1938");
-      }
-    })
-    .catch(err => {
-      const noRes = document.getElementById("no-results");
-      if (noRes) {
-        noRes.style.display = 'block';
-        noRes.innerHTML =
-          '<p style="color:#c00;margin:0">Could not load entries: ' + err.message + '.</p>' +
-          '<p style="font-size: 0.857rem;margin:6px 0 0">Open this file from a web server rather than file://.</p>';
-      }
+      row._i = ALL_ENTRIES.length;
+      ALL_ENTRIES.push(row);
+      maybeFirstPaint();
+      gbProgressTick();
     });
+    // Stream done — final build + render covers everything the original
+    // loader's .then() did after parsing.
+    ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
+    gbDataLoaded = true;
+    gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
+    gbMaybeBuildHero();  // build the featured trio now that the full dataset is present
+    // If the user opened an entry while data was still streaming, keep it open
+    // through the final render.
+    const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
+      ? ALL_ENTRIES[selectedIdx] : null;
+    renderAll();
+    // Re-apply URL state now that all rows exist
+    applyHashState();
+    const cf = new URLSearchParams(location.search).get('cf');
+    if (cf) {
+      const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
+      if (match) {
+        selectedIdx = rowIdx(match);
+        showDetail(match);
+        renderTableBody();
+        const app = document.getElementById('app');
+        if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+        scrollToSelected(100);
+      }
+    } else if (openRow) {
+      selectedIdx = rowIdx(openRow);
+      showDetail(openRow);
+      renderTableBody();
+      scrollToSelected(100);
+    } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
+               && !location.hash.includes('volume_year')) {
+      scrollToYear("1938");
+    }
+  } catch (err) {
+    const noRes = document.getElementById("no-results");
+    if (noRes) {
+      noRes.style.display = 'block';
+      noRes.innerHTML =
+        '<p style="color:#c00;margin:0">Could not load entries: ' + err.message + '.</p>' +
+        '<p style="font-size: 0.857rem;margin:6px 0 0">Open this file from a web server rather than file://.</p>';
+    }
+  }
 }());
 
 
@@ -2252,7 +2323,11 @@ document.getElementById('caveat-about-btn').addEventListener('click', () => {
   document.getElementById('about-btn').click();
 });
 
-function gbUpdateHero() {
+// Hero + About stat counters, separated from featured-card generation so the
+// loader's final pass can refresh the numbers without re-rolling the cards.
+// (The hero observer fires as soon as *any* rows have streamed in, so counts
+// written at that moment reflect a partial dataset.)
+function gbUpdateStats() {
   if (!ALL_ENTRIES.length) return;
   const states = new Set(ALL_ENTRIES.map(r => r.state).filter(Boolean));
   const volumes = new Set(ALL_ENTRIES.map(r => r.volume_id).filter(Boolean));
@@ -2264,8 +2339,13 @@ function gbUpdateHero() {
   // value (see the comment above the hero markup). FIELD_META's category
   // top_values is truncated to the top 25, so counting its length would
   // clobber the real >=100-entries count with an unrelated smaller number.
-  // document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
+  // document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES · ' + volumes.size + ' VOLUMES';
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
+}
+
+function gbUpdateHero() {
+  if (!ALL_ENTRIES.length) return;
+  gbUpdateStats();
 
   const withImg = ALL_ENTRIES.filter(r => {
     if (!r.address || !r.canvas_fragment || !r.canvas_fragment.includes('#xywh=')) return false;
@@ -2311,7 +2391,7 @@ function gbUpdateHero() {
     const meta = document.createElement('div');
     meta.className = 'gb-hero-card-meta';
     meta.innerHTML = '<div class="gb-hero-card-name">' + (r[nf] || '') + '</div>' +
-      '<div class="gb-hero-card-line">' + year + (city ? ' \u00B7 ' + city + (state ? ', ' + state : '') : '') + '</div>' +
+      '<div class="gb-hero-card-line">' + year + (city ? ' · ' + city + (state ? ', ' + state : '') : '') + '</div>' +
       '<div class="gb-hero-card-cat">' + cat + '</div>';
     card.appendChild(thumbDiv);
     card.appendChild(meta);
@@ -2327,33 +2407,38 @@ function gbUpdateHero() {
     stack.appendChild(card);
   });
 }
-let _heroUpdated = false;
+let _heroUpdated = false, _heroVisible = false;
 // Only build hero thumbnails (IIIF requests) when the hero section is actually
 // visible. If the user refreshes while scrolled past the hero, skip entirely.
 const _heroSection = document.getElementById('gb-hero');
+// Build the featured trio only once the hero is visible AND the full dataset
+// has streamed in. The CSV is sorted by year, so sampling mid-stream would draw
+// only from the earliest volumes (1937/1938) — gbDataLoaded guarantees a
+// full-dataset pool. gbMaybeBuildHero is called from every entry point below and
+// from the loader's post-stream block; whichever satisfies both conditions last
+// wins.
+function gbMaybeBuildHero() {
+  if (_heroUpdated || !_heroVisible || !gbDataLoaded || !ALL_ENTRIES.length) return;
+  _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
+}
 const _heroObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
-  }
+  _heroVisible = true; gbMaybeBuildHero();
 }, { threshold: 0 });
 _heroObserver.observe(_heroSection);
 // Fallback interval in case data arrives after the hero is already visible
 const _checkHero = setInterval(() => {
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    const rect = _heroSection.getBoundingClientRect();
-    if (rect.bottom > 0 && rect.top < window.innerHeight) {
-      _heroUpdated = true; clearInterval(_checkHero); _heroObserver.disconnect(); gbUpdateHero();
-    }
-  }
+  const rect = _heroSection.getBoundingClientRect();
+  if (rect.bottom > 0 && rect.top < window.innerHeight) { _heroVisible = true; gbMaybeBuildHero(); }
   if (_heroUpdated) clearInterval(_checkHero);
 }, 200);
 // Reshuffle on demand — gbUpdateHero rebuilds the stack from a fresh random draw.
 document.getElementById('hero-shuffle').addEventListener('click', () => {
-  gbUpdateHero();
+  if (gbDataLoaded) gbUpdateHero();
 });
 
 // // ── Cross-edition timeline ────────────────────────────────────────────────────
+// const _ALL_EDITION_YEARS = [1937,1938,1939,1940,1941,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1959,1960,1961,1962,1963,1966];
 // const _ALL_EDITION_YEARS = [1937,1938,1939,1940,1941,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1959,1960,1961,1962,1963,1966];
 
 // function _buildTLSegs(appearances) {
