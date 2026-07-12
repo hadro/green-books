@@ -25,6 +25,10 @@
 :root {
   --gb-paper:        #faf8f3;
   --gb-paper-2:      #f0ece2;
+  /* Detail panel grows with the viewport: a fixed 420px wastes space on
+     large monitors, where the root font scales up but the panel doesn't.
+     Shared by #detail and the table's padding-right. */
+  --gb-detail-w:     clamp(420px, 30vw, 720px);
   --gb-ink:          #161310;
   --gb-ink-soft:     #54504a;
   --gb-ink-faint:    #767069;
@@ -339,8 +343,8 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 /* ── Detail panel ── */
-#main.detail-open #table-wrap { padding-right: 420px; }
-#detail { position: fixed; top: 0; right: 0; width: 420px; min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
+#main.detail-open #table-wrap { padding-right: var(--gb-detail-w); }
+#detail { position: fixed; top: 0; right: 0; width: var(--gb-detail-w); min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
 #detail.open { display: flex; }
 .detail-hero { position: relative; height: 280px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 #detail-thumb-link { display: contents; }
@@ -349,7 +353,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
 #detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
 #detail-title { font-family: var(--gb-font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.005em; line-height: 1.1; margin: 0 0 20px; color: var(--gb-ink); }
-.detail-fields { display: grid; grid-template-columns: 80px 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
+.detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
 .df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
 .df-val { color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
 #detail-page-context { text-align: right; margin-bottom: 8px; min-height: 0; }
