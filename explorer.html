@@ -955,6 +955,86 @@ function canvasId(cf) {
 }
 
 // ── Render: table body only (preserves thead / focus) ──────────────────────
+
+// Build one result row. Factored out of renderTableBody so extendWindow()
+// can append rows without rebuilding the whole window.
+function buildRowTr(row, q) {
+  const tr = document.createElement("tr");
+  const idx = rowIdx(row);
+  const isSelected = idx === selectedIdx;
+  if (isSelected) {
+    tr.classList.add("selected");
+    tr.setAttribute("aria-current", "true");
+  }
+  // Roving tabindex: the table is a single Tab stop (the selected row, or the
+  // first row as a fallback set by the caller); ArrowUp/Down move between rows.
+  tr.setAttribute("tabindex", isSelected ? "0" : "-1");
+  tr.dataset.idx = idx;
+  displayFields.forEach(f => {
+    const td = document.createElement("td");
+    const cellText = row[f.name] || "";
+    td.title = cellText;
+    td.appendChild(highlightMatch(cellText, q));
+    tr.appendChild(td);
+  });
+  const tdSrc = document.createElement("td");
+  tdSrc.className = "source-cell";
+  if (row.canvas_fragment) {
+    const btn = document.createElement("button");
+    btn.className = "src-btn";
+    btn.textContent = "View page ↗";
+    btn.title = "Open original digitized page image";
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      openSource(row.canvas_fragment);
+    });
+    tdSrc.appendChild(btn);
+  }
+  tr.appendChild(tdSrc);
+  const rowHandler = () => {
+    const wrap = document.getElementById('table-wrap');
+    const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
+    const trRect = tr.getBoundingClientRect();
+    const alreadyVisible = wrapRect &&
+      trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
+    const savedScroll = wrap ? wrap.scrollTop : 0;
+    selectedIdx = idx;
+    showDetail(row);
+    renderTableBody();
+    if (wrap) {
+      if (alreadyVisible) {
+        wrap.scrollTop = savedScroll;
+      } else {
+        scrollToSelected();
+      }
+    }
+  };
+  tr.addEventListener("click", rowHandler);
+  tr.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); return; }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
+      if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
+        tr.setAttribute("tabindex", "-1");
+        next.setAttribute("tabindex", "0");
+        next.focus();
+      }
+    }
+  });
+  const tdDetail = document.createElement("td");
+  tdDetail.className = "detail-col";
+  const detailBtn = document.createElement("button");
+  detailBtn.className = "detail-btn";
+  detailBtn.setAttribute("aria-label", "Open entry details");
+  detailBtn.setAttribute("tabindex", "-1");
+  detailBtn.textContent = "▸";
+  detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
+  tdDetail.appendChild(detailBtn);
+  tr.appendChild(tdDetail);
+  return tr;
+}
+
 function renderTableBody() {
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
@@ -983,69 +1063,18 @@ function renderTableBody() {
     }
   }
   _winStart = winStart;
+  const q = searchQuery.trim().toLowerCase();
+  const frag = document.createDocumentFragment();
+  let anySelected = false;
   sorted.slice(winStart, winStart + WINDOW).forEach(row => {
-    const tr = document.createElement("tr");
-    const isSelected = rowIdx(row) === selectedIdx;
-    if (isSelected) tr.classList.add("selected");
-    tr.setAttribute("tabindex", "0");
-    tr.setAttribute("aria-selected", isSelected ? "true" : "false");
-    tr.dataset.idx = rowIdx(row);
-    const q = searchQuery.trim().toLowerCase();
-    displayFields.forEach(f => {
-      const td = document.createElement("td");
-      const cellText = row[f.name] || "";
-      td.title = cellText;
-      td.appendChild(highlightMatch(cellText, q));
-      tr.appendChild(td);
-    });
-    const tdSrc = document.createElement("td");
-    tdSrc.className = "source-cell";
-    if (row.canvas_fragment) {
-      const btn = document.createElement("button");
-      btn.className = "src-btn";
-      btn.textContent = "View page ↗";
-      btn.title = "Open original digitized page image";
-      btn.addEventListener("click", e => {
-        e.stopPropagation();
-        openSource(row.canvas_fragment);
-      });
-      tdSrc.appendChild(btn);
-    }
-    tr.appendChild(tdSrc);
-    const rowHandler = () => {
-      const wrap = document.getElementById('table-wrap');
-      const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
-      const trRect = tr.getBoundingClientRect();
-      const alreadyVisible = wrapRect &&
-        trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
-      const savedScroll = wrap ? wrap.scrollTop : 0;
-      selectedIdx = rowIdx(row);
-      showDetail(row);
-      renderTableBody();
-      if (wrap) {
-        if (alreadyVisible) {
-          wrap.scrollTop = savedScroll;
-        } else {
-          scrollToSelected();
-        }
-      }
-    };
-    tr.addEventListener("click", rowHandler);
-    tr.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); }
-    });
-    const tdDetail = document.createElement("td");
-    tdDetail.className = "detail-col";
-    const detailBtn = document.createElement("button");
-    detailBtn.className = "detail-btn";
-    detailBtn.setAttribute("aria-label", "Open entry details");
-    detailBtn.setAttribute("tabindex", "-1");
-    detailBtn.textContent = "▸";
-    detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
-    tdDetail.appendChild(detailBtn);
-    tr.appendChild(tdDetail);
-    tbody.appendChild(tr);
+    const tr = buildRowTr(row, q);
+    if (tr.classList.contains("selected")) anySelected = true;
+    frag.appendChild(tr);
   });
+  tbody.appendChild(frag);
+  // Roving-tabindex fallback: with no selected row in the window, the first
+  // row is the table's single Tab stop.
+  if (!anySelected && tbody.firstElementChild) tbody.firstElementChild.setAttribute("tabindex", "0");
 
   // End-of-results sentinel
   if (sorted.length > 0) {
