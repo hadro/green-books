@@ -196,6 +196,21 @@ a { color: var(--gb-accent); }
 .trends-eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--gb-rule-faint); }
 .trends-sub { margin: 10px 0 0; font-size: 0.857rem; color: var(--gb-ink-faint); font-family: var(--gb-font-body); }
 .trends-loading { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); margin: 0; }
+/* Panel-level caveat, echoing the hero's accuracy note. */
+.trends-caveat { display: grid; grid-template-columns: 3px 1fr; gap: 18px; margin: 0 0 30px; max-width: 880px; }
+.trends-caveat-rule { background: var(--gb-accent); }
+.trends-caveat-body { display: flex; flex-direction: column; gap: 7px; }
+.trends-caveat-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em; color: var(--gb-accent); font-weight: 600; text-transform: uppercase; }
+.trends-caveat-text { font-family: var(--gb-font-display); font-size: 1rem; line-height: 1.55; color: var(--gb-ink); margin: 0; max-width: 72ch; }
+.trends-caveat-text em { font-style: italic; color: var(--gb-ink-soft); }
+.trends-caveat-link {
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.14em;
+  color: var(--gb-ink-soft); text-decoration: none; text-transform: uppercase;
+  border-bottom: 1px solid var(--gb-rule-faint); width: max-content; padding-bottom: 2px; margin-top: 2px;
+}
+.trends-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
+/* One-line interpretive caveat under a chart's caption. */
+.trend-caveat { font-family: var(--gb-font-body); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); margin: -8px 0 10px; max-width: 96ch; }
 .trend-fig { margin: 0 0 36px; }
 .trend-caption { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
 .trend-title { font-family: var(--gb-font-display); font-size: 1.143rem; font-weight: 500; color: var(--gb-ink); }
@@ -745,6 +760,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <div class="trends-eyebrow">The guides at a glance</div>
         <p class="trends-sub">Charts cover the full dataset — counting extracted listings, or resolved businesses where noted. Click a year, category, state, or cell to see its listings.</p>
       </div>
+      <aside class="trends-caveat" role="note" aria-label="What these charts can and cannot measure">
+        <div class="trends-caveat-rule" aria-hidden="true"></div>
+        <div class="trends-caveat-body">
+          <div class="trends-caveat-label">WHAT THESE CHARTS CAN &mdash; AND CAN&rsquo;T &mdash; MEASURE</div>
+          <p class="trends-caveat-text">These charts count machine-extracted listings, so OCR and entity-recognition errors in years, states, and categories flow through them uncorrected. They can also only measure what has been digitized and processed: the 45 volumes in this dataset. Other Black travel guides &mdash; including titles held by the Schomburg Center that have not been digitized &mdash; are not represented, and some years are covered by a single publication. Read an empty year or a thin state as <em>absent from the digitized corpus</em>, not absent from history.</p>
+          <a class="trends-caveat-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">MORE GUIDES BEYOND THIS DATASET &mdash; NYPL RESEARCH GUIDE&rarr;</a>
+        </div>
+      </aside>
       <p class="trends-loading" id="trends-loading">Charts appear once all entries finish loading&hellip;</p>
       <div id="trends-body" style="display:none">
         <figure class="trend-fig">
@@ -752,6 +775,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <span class="trend-title">Listings per year</span>
             <span class="trend-note">stacked by publication &middot; the 1942&ndash;46 gap is the wartime publishing pause</span>
           </figcaption>
+          <p class="trend-caveat">Rises and dips partly track which guides survive in the digitized corpus &mdash; some years are covered by a single publication, others by several.</p>
           <div class="trend-legend" id="trend-years-legend"></div>
           <div class="trend-chart" id="trend-years"></div>
           <details class="trend-table">
@@ -764,6 +788,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <span class="trend-title">First-time vs. returning listings</span>
             <span class="trend-note">a listing is first-time when the cross-guide resolver has never seen that business in an earlier year</span>
           </figcaption>
+          <p class="trend-caveat">&ldquo;First-time&rdquo; means first appearance in the digitized corpus, not first year in business &mdash; and OCR name variants the resolver can&rsquo;t match can count one business as several.</p>
           <div class="trend-legend" id="trend-churn-legend"></div>
           <div class="trend-chart" id="trend-churn"></div>
           <details class="trend-table">
@@ -776,6 +801,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <span class="trend-title">Listings by state and year</span>
             <span class="trend-note">top 20 states &middot; darker green = more listings &middot; click a cell to filter</span>
           </figcaption>
+          <p class="trend-caveat">Depends on machine-extracted state fields and on which guides are digitized for each year &mdash; a thin row can reflect the corpus rather than the era.</p>
           <div class="trend-heat-scroll"><div id="trend-heat"></div></div>
           <div class="trend-heat-legend" id="trend-heat-legend" aria-hidden="true"></div>
           <details class="trend-table">
@@ -788,6 +814,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <span class="trend-title">The changing mix</span>
             <span class="trend-note">top 8 categories &middot; each panel is that category&rsquo;s share of the year&rsquo;s listings &middot; shared scale &middot; click a panel to filter</span>
           </figcaption>
+          <p class="trend-caveat">Categories are the guides&rsquo; own printed section headings &mdash; shifts reflect each publication&rsquo;s editorial choices as much as the market itself.</p>
           <div class="trend-multi-grid" id="trend-multi"></div>
           <details class="trend-table">
             <summary>View as table</summary>
@@ -816,6 +843,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
               <span class="trend-title">How long businesses stayed listed</span>
               <span class="trend-note">distinct years listed per resolved business (see the Establishments view)</span>
             </figcaption>
+            <p class="trend-caveat">A floor, not a lifespan: unmatched name variants can split one business&rsquo;s run, and a listing ending doesn&rsquo;t mean the business closed.</p>
             <div class="trend-bars" id="trend-lifespan"></div>
           </figure>
           <figure class="trend-fig">
@@ -823,6 +851,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
               <span class="trend-title">Cross-guide overlap</span>
               <span class="trend-note">which guides each resolved business appeared in</span>
             </figcaption>
+            <p class="trend-caveat">Sensitive to cross-guide matching &mdash; OCR noise can understate overlap, and loose matches can overstate it.</p>
             <div class="trend-bars" id="trend-overlap"></div>
           </figure>
         </div>
@@ -886,6 +915,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
           <p class="about-modal-emphasis">There are OCR, entity-extraction, and entry alignment errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
+          <p>The dataset also reaches only as far as digitization has: it covers the 45 digitized volumes across these seven publications. Other Black travel guides &mdash; including titles held by the Schomburg Center that have not been digitized &mdash; are not represented here, so charts and counts describe the digitized corpus, not the full historical record. <a class="about-modal-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">See NYPL&rsquo;s research guide for more titles &rarr;</a></p>
           <h3 class="about-modal-h3">How to use this site</h3>
           <ol class="about-modal-list">
             <li>Filter by <strong>year</strong>, <strong>name</strong>, <strong>address</strong>, <strong>state</strong>, <strong>city</strong>, or <strong>category</strong> at the top of the explorer.</li>
