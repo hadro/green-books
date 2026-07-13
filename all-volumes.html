@@ -847,7 +847,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <figure class="trend-fig">
           <figcaption class="trend-caption">
             <span class="trend-title">First-time vs. returning listings</span>
-            <span class="trend-note">a listing is first-time when the cross-guide resolver has never seen that business in an earlier year</span>
+            <span class="trend-note">a listing is first-time when the cross-guide resolver has never seen that business in an earlier year &middot; address-less boilerplate excluded</span>
           </figcaption>
           <p class="trend-caveat">&ldquo;First-time&rdquo; means first appearance in the digitized corpus, not first year in business &mdash; and OCR name variants the resolver can&rsquo;t match can count one business as several.</p>
           <div class="trend-legend" id="trend-churn-legend"></div>
@@ -902,7 +902,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <figure class="trend-fig">
             <figcaption class="trend-caption">
               <span class="trend-title">How long businesses stayed listed</span>
-              <span class="trend-note">distinct years listed per resolved business (see the Establishments view)</span>
+              <span class="trend-note">distinct years listed per resolved business (see the Establishments view) &middot; address-less boilerplate excluded</span>
             </figcaption>
             <p class="trend-caveat">A floor, not a lifespan: unmatched name variants can split one business&rsquo;s run, and a listing ending doesn&rsquo;t mean the business closed.</p>
             <div class="trend-bars" id="trend-lifespan"></div>
@@ -910,7 +910,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <figure class="trend-fig">
             <figcaption class="trend-caption">
               <span class="trend-title">Cross-guide overlap</span>
-              <span class="trend-note">which guides each resolved business appeared in</span>
+              <span class="trend-note">which guides each resolved business appeared in &middot; address-less boilerplate excluded</span>
             </figcaption>
             <p class="trend-caveat">Sensitive to cross-guide matching &mdash; OCR noise can understate overlap, and loose matches can overstate it.</p>
             <div class="trend-bars" id="trend-overlap"></div>
@@ -3657,9 +3657,10 @@ const GB_LIFE_BUCKETS = [
 ];
 function gbResolverAggregates() {
   if (_gbResolverAgg) return _gbResolverAgg;
-  const groupFirst = new Map();  // group key → earliest listed year
-  const groupYears = new Map();  // group key → Set(years listed)
-  const groupPubs = new Map();   // group key → Set(publications)
+  const groupFirst = new Map();    // group key → earliest listed year
+  const groupYears = new Map();    // group key → Set(years listed)
+  const groupPubs = new Map();     // group key → Set(publications)
+  const groupHasAddr = new Set();  // group keys with >=1 real street address
   ALL_ENTRIES.forEach(r => {
     const y = Number(r.volume_year || r.year);
     if (!(y >= 1930 && y <= 1966)) return;
@@ -3673,20 +3674,30 @@ function gbResolverAggregates() {
       if (!ps) groupPubs.set(k, ps = new Set());
       ps.add(r.publication);
     }
+    const a = (r.address || "").trim();
+    if (a && !ADDR_PLACEHOLDER.test(a)) groupHasAddr.add(k);
   });
+  // Address-less groups are directory boilerplate (repeated section headers,
+  // reference-page text), not businesses — the same filter the
+  // Establishments view applies, so both surfaces agree.
   // Churn: each listing is "first-time" if its year is its business's first.
   const churn = new Map();  // year → { fresh, ret }
   ALL_ENTRIES.forEach(r => {
     const y = Number(r.volume_year || r.year);
     if (!(y >= 1930 && y <= 1966)) return;
+    const k = gbEstabKeyOf(r);
+    if (!groupHasAddr.has(k)) return;
     let c = churn.get(y);
     if (!c) churn.set(y, c = { fresh: 0, ret: 0 });
-    if (y === groupFirst.get(gbEstabKeyOf(r))) c.fresh++;
+    if (y === groupFirst.get(k)) c.fresh++;
     else c.ret++;
   });
   // Lifespan distribution: distinct years listed per business, bucketed.
   const lifespans = GB_LIFE_BUCKETS.map(([label]) => [label, 0]);
-  groupYears.forEach(ys => {
+  let nBusinesses = 0;
+  groupYears.forEach((ys, k) => {
+    if (!groupHasAddr.has(k)) return;
+    nBusinesses++;
     const i = GB_LIFE_BUCKETS.findIndex(([, lo, hi]) => ys.size >= lo && ys.size <= hi);
     if (i >= 0) lifespans[i][1]++;
   });
@@ -3694,7 +3705,8 @@ function gbResolverAggregates() {
   // business. Top combinations only; the tail folds into "Other".
   const pubOrder = gbTrendPubOrder();
   const comboCount = new Map();
-  groupPubs.forEach(ps => {
+  groupPubs.forEach((ps, k) => {
+    if (!groupHasAddr.has(k)) return;
     const key = [...ps]
       .sort((a, b) => pubOrder.indexOf(a) - pubOrder.indexOf(b))
       .map(p => PUBLICATION_SHORT_NAMES[p] || p)
@@ -3705,7 +3717,7 @@ function gbResolverAggregates() {
   const combos = comboPairs.slice(0, 7);
   const rest = comboPairs.slice(7).reduce((s, [, n]) => s + n, 0);
   if (rest) combos.push(["Other combinations", rest]);
-  _gbResolverAgg = { churn, lifespans, combos, nBusinesses: groupYears.size };
+  _gbResolverAgg = { churn, lifespans, combos, nBusinesses };
   return _gbResolverAgg;
 }
 
