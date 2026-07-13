@@ -282,6 +282,18 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 .trend-table th, .trend-table td { padding: 3px 10px; text-align: right; font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-soft); white-space: nowrap; border-bottom: 1px solid var(--gb-rule-faint); }
 .trend-table th { color: var(--gb-ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
 .trend-table th:first-child, .trend-table td:first-child { text-align: left; }
+/* Neutralize the results-table's global row styling, which otherwise leaks
+   into these table twins (serif display font on every second column, mono
+   width/padding on the first, pointer cursor and hover tint on rows). */
+.trend-table tbody tr { cursor: default; }
+.trend-table tbody tr:hover { background: none; }
+.trend-table thead th { cursor: default; }
+.trend-table thead th:hover { color: var(--gb-ink-faint); }
+.trend-table tbody td:first-child, .trend-table tbody td:nth-child(2) {
+  font-family: var(--gb-font-mono); font-size: 0.714rem; font-weight: 400;
+  color: var(--gb-ink-soft); width: auto; max-width: none;
+  padding: 3px 10px; letter-spacing: normal;
+}
 @media (max-width: 900px) {
   #trends-backdrop { padding: 12px; }
   #trends-modal { max-height: calc(100vh - 24px); }
@@ -323,20 +335,13 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
   padding: 8px 10px; text-align: left; width: 100%;
 }
 #gb-explore-btn:hover { background: var(--gb-accent-soft); border-color: var(--gb-accent-deep); color: var(--gb-accent-deep); }
-#random-year-btn {
-  background: none; border: 1px solid var(--gb-rule-faint);
-  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
-  padding: 8px 10px; text-align: left; width: 100%;
-}
-#random-year-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
-#about-btn {
+#about-btn, #trends-btn {
   background: none; border: none;
   font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer;
   padding: 4px 0; text-align: left; width: 100%;
 }
-#about-btn:hover { color: var(--gb-ink-soft); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+#about-btn:hover, #trends-btn:hover { color: var(--gb-ink-soft); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
 #sidebar-scroll { overflow-y: auto; flex: 1; padding: 16px 20px 24px; }
 .sidebar-filter-hd {
   font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em;
@@ -738,7 +743,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div id="sidebar-cta">
       <button id="about-btn">About this explorer</button>
       <button id="trends-btn">Charts &amp; trends</button>
-      <button id="random-year-btn">Jump to a random year</button>
       <button id="gb-explore-btn">Open a random entry</button>
     </div>
   </div>
@@ -775,7 +779,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
-    <p id="est-mode-note" style="display:none">One row per business — listings matched across volumes and publications by name and address. Click a row to open its most recent listing.</p>
+    <p id="est-mode-note" style="display:none">One row per business — listings matched across volumes and publications by name and address; entries that never carry an address (section headers, boilerplate) are hidden. Click a row to open its most recent listing.</p>
   </div>
   <button id="random-btn" style="display:none"></button>
   <div id="content">
@@ -2413,13 +2417,6 @@ document.getElementById("random-btn").addEventListener("click", () => {
   scrollToSelected();
 });
 
-document.getElementById("random-year-btn").addEventListener("click", () => {
-  const yearField = FIELD_META.find(f => f.name === GB_YEAR_FIELD);
-  if (!yearField || !yearField.top_values.length) return;
-  const years = yearField.top_values.map(([y]) => y);
-  gbJumpToYear(years[Math.floor(Math.random() * years.length)]);
-});
-
 // ── Establishments view ──────────────────────────────────────────────────────
 // One row per resolved business group instead of one row per extracted
 // listing. The pipeline is: getFiltered() (search/facets/column filters all
@@ -2460,10 +2457,18 @@ function gbComputeEstabStats(key, rows) {
   let category = "", cbest = 0;
   catCount.forEach((c, n) => { if (c > cbest) { cbest = c; category = n; } });
   const yrs = [...yearPub.keys()].map(Number).filter(n => !isNaN(n)).sort((a, b) => a - b);
+  // A group where no listing ever carries a street address is directory
+  // boilerplate, not a business — repeated section headers ("HAND SIGNALS",
+  // "SCHOOL BUSES"), reference-page text, ads for the guide itself. Real
+  // businesses have an address in at least one year.
+  const hasAddress = rows.some(r => {
+    const a = (r.address || "").trim();
+    return a && !ADDR_PLACEHOLDER.test(a);
+  });
   return {
     key, rep, name: name || "(unnamed)",
     address: rep.address || "", city: rep.city || "", state: rep.state || "",
-    category,
+    category, hasAddress,
     firstYear: yrs[0] || 0, lastYear: yrs[yrs.length - 1] || 0,
     nYears: yrs.length, nListings: rows.length, nPubs: pubs.size,
     pubs, yearPub,
@@ -2481,7 +2486,8 @@ function getEstablishments() {
     const k = gbEstabKeyOf(row);
     if (seen.has(k)) return;
     seen.add(k);
-    groups.push(gbComputeEstabStats(k, gbNameIndex.get(k) || [row]));
+    const g = gbComputeEstabStats(k, gbNameIndex.get(k) || [row]);
+    if (g.hasAddress) groups.push(g);
   });
   _ecKey = key;
   _ecGroups = groups;
@@ -2864,31 +2870,6 @@ var gbDataLoaded = false;      // true once both CSV streams have finished
 function gbCrossListings(row) {
   const key = gbRowToKey.get(row);
   return (key !== undefined && gbNameIndex.get(key)) || [];
-}
-
-function gbJumpToYear(year) {
-  if (!GB_YEAR_FIELD) return;
-
-  // Find the same establishment in the target year before clearing state
-  let matchRow = null;
-  if (selectedIdx !== null) {
-    const cur = ALL_ENTRIES[selectedIdx];
-    if (cur) {
-      matchRow = gbCrossListings(cur)
-        .find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
-    }
-  }
-
-  facetState[GB_YEAR_FIELD].clear();
-  facetState[GB_YEAR_FIELD].add(year);
-  _pushNextHistory = true;
-  renderAll();  // closes drawer, applies year filter, re-renders table
-
-  if (matchRow) {
-    selectedIdx = rowIdx(matchRow);
-    showDetail(matchRow);
-    renderTableBody();  // re-render to show selection highlight
-  }
 }
 
 // Jump to a specific listing row. The coverage grid knows the exact target
