@@ -16,23 +16,29 @@
   <meta name="twitter:title"       content="Green Books &amp; Travel Guides — Page Viewer">
   <meta name="twitter:description" content="Viewer for digitized pages of the Green Books and other Black travel guides, opened at the exact entry location.">
   <meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231d4d2e'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23faf8f3'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231d4d2e'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%23767069'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231e5231'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23f6f1e5'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231e5231'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%2375705f'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gb-paper:       #faf8f3;
-      --gb-paper-2:     #f0ece2;
-      --gb-ink:         #161310;
-      --gb-ink-soft:    #54504a;
-      --gb-ink-faint:   #9a948a;
-      --gb-rule-faint:  rgba(22, 19, 16, 0.12);
-      --gb-accent:      #1d4d2e;
-      --gb-highlight:   #c89028;
-      --gb-font-display: "Newsreader", Georgia, serif;
-      --gb-font-body:   "Source Sans 3", system-ui, sans-serif;
-      --gb-font-mono:   "JetBrains Mono", ui-monospace, monospace;
+      --gb-paper:        #f6f1e5;
+      --gb-paper-2:      #ebe3d0;
+      --gb-ink:          #1a1712;
+      --gb-ink-soft:     #524d45;
+      --gb-ink-faint:    #75705f;
+      --gb-rule:         #1a1712;
+      --gb-rule-faint:   rgba(26, 23, 18, 0.16);
+      --gb-accent:       #1e5231;
+      --gb-accent-deep:  #143a22;
+      --gb-accent-soft:  rgba(30, 82, 49, 0.08);
+      --gb-highlight:    #b8860b;
+      --gb-highlight-soft: rgba(184, 134, 11, 0.30);
+      --gb-row-hover:    rgba(26, 23, 18, 0.04);
+      --gb-row-active:   rgba(30, 82, 49, 0.08);
+      --gb-font-display: "Oswald", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
+      --gb-font-body:    "Libre Franklin", "Franklin Gothic Medium", "Segoe UI", sans-serif;
+      --gb-font-mono:    "Courier Prime", "Courier New", Courier, monospace;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
@@ -50,14 +56,14 @@
     }
     header h1 {
       font-family: var(--gb-font-display);
-      font-weight: 300; font-size: 17px;
-      color: var(--gb-ink); letter-spacing: -0.01em;
+      font-weight: 500; font-size: 17px;
+      color: var(--gb-ink); text-transform: uppercase; letter-spacing: 0.01em;
     }
-    header h1 em { font-style: italic; color: var(--gb-accent); }
+    header h1 em { font-style: normal; color: var(--gb-accent); }
     header a {
       margin-left: auto;
       font-family: var(--gb-font-mono); font-size: 11px;
-      letter-spacing: 0.06em; text-transform: uppercase;
+      letter-spacing: 0.05em; text-transform: uppercase;
       color: var(--gb-ink-soft); text-decoration: none;
     }
     header a:hover { color: var(--gb-accent); }
@@ -77,8 +83,9 @@
     #landing a, #error a {
       display: inline-block; padding: 10px 22px;
       background: var(--gb-accent); color: var(--gb-paper);
-      border-radius: 3px; text-decoration: none;
+      border-radius: 0; text-decoration: none;
       font-family: var(--gb-font-body); font-weight: 600; font-size: 14px;
+      text-transform: uppercase; letter-spacing: 0.04em;
     }
     #landing a:hover, #error a:hover { background: var(--gb-accent-deep, #143a22); }
     #landing .gb-secondary-link {
@@ -91,7 +98,7 @@
     .gb-entry-subtitle {
       display: block;
       font-family: var(--gb-font-mono, ui-monospace, monospace);
-      font-size: 11px; letter-spacing: 0.08em;
+      font-size: 11px; letter-spacing: 0.05em;
       color: var(--gb-ink-soft, #54504a);
       margin-top: 2px;
     }
