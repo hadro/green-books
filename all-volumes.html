@@ -492,7 +492,10 @@ tbody tr:hover { background: var(--gb-row-hover); }
 tbody tr.selected { background: var(--gb-row-active) !important; }
 td { padding: 11px 12px; color: var(--gb-ink-soft); vertical-align: top; font-size: 0.929rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 tbody td:first-child { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); padding-left: 24px; width: 64px; }
-tbody td:nth-child(2) { font-family: var(--gb-font-display); font-size: 1.071rem; font-weight: 500; color: var(--gb-ink); letter-spacing: -0.005em; }
+tbody td:nth-child(2) { font-family: var(--gb-font-body); font-size: 0.929rem; font-weight: 400; color: var(--gb-ink); }
+/* Establishments view: column 2 is the business name, the row's anchor — keep it
+   semibold (Franklin, not Oswald, so it doesn't overpower the row). */
+table.est-mode tbody td:nth-child(2) { font-weight: 600; }
 tbody tr.selected td:nth-child(2) { color: var(--gb-accent-deep); box-shadow: inset 2px 0 0 var(--gb-accent); padding-left: 10px; }
 mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2px; border-radius: 1px; }
 .table-end-sentinel td { text-align: center; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; padding: 14px; border-top: 1px solid var(--gb-rule-faint); }
