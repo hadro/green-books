@@ -2862,10 +2862,10 @@ const GB_YEAR_FIELD = (() => {
   
 // `var`, not `let`: the base renderAll() call above runs before this section
 // evaluates, and a #view=est hash routes it into renderEstabBody, which reads
-// gbDataLoaded — var hoists as undefined instead of throwing a TDZ error.
+// these — var hoists as undefined instead of throwing a TDZ error.
 var gbNameIndex = new Map();   // groupKey → [row objects]
 var gbRowToKey  = new Map();   // row object → groupKey
-var gbDataLoaded = false;      // true once both CSV streams have finished
+// gbDataLoaded is declared with the render state near the top of the script.
 
 
 // All cross-listings for a row's resolved business group (including itself).
