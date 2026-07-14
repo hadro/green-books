@@ -1413,7 +1413,7 @@ function showDetail(row) {
     img.alt = `Scan showing ${entryName}`;
     img.style.display = "block";
     img.onerror = () => { img.style.display = "none"; };
-    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}`;
+    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&from=explorer`;
     thumbLink.title = "View this entry highlighted in the original scan";
     thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
   } else {
@@ -1441,7 +1441,7 @@ function showDetail(row) {
   const pageCtx = document.getElementById("detail-page-context");
   const src = document.getElementById("detail-source");
   if (row.canvas_fragment) {
-    const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}`;
+    const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&from=explorer`;
     pageCtx.innerHTML = `<a href="index.html?${viewerParams}" target="_blank">View in page context ↗</a>`;
     const links = [];
     const srcUrl = viewerUrl(row.canvas_fragment);
