@@ -16,6 +16,7 @@
 <meta name="twitter:title"       content="Green Books Travel Guide Explorer">
 <meta name="twitter:description" content="Explore and view entries of the businesses and services listed in the Green Books from 1933-1966.">
 <meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231d4d2e'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23faf8f3'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231d4d2e'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%23767069'/%3E%3C/svg%3E">
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/dist/plot.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +26,10 @@
 :root {
   --gb-paper:        #faf8f3;
   --gb-paper-2:      #f0ece2;
+  /* Detail panel grows with the viewport: a fixed 420px wastes space on
+     large monitors, where the root font scales up but the panel doesn't.
+     Shared by #detail and the table's padding-right. */
+  --gb-detail-w:     clamp(420px, 30vw, 720px);
   --gb-ink:          #161310;
   --gb-ink-soft:     #54504a;
   --gb-ink-faint:    #767069;
@@ -117,7 +122,16 @@ a { color: var(--gb-accent); }
   letter-spacing: 0.16em; color: var(--gb-ink-faint);
   display: flex; align-items: center; gap: 12px; margin-bottom: 4px;
 }
-.gb-hero-featured-label::after { content: ""; flex: 1; height: 1px; background: var(--gb-rule-faint); }
+.gb-hero-featured-rule { flex: 1; height: 1px; background: var(--gb-rule-faint); }
+#hero-shuffle {
+  flex-shrink: 0; background: none; border: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
+  padding: 4px 9px; display: inline-flex; align-items: center; gap: 6px;
+}
+#hero-shuffle:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
+#hero-shuffle:focus-visible { border-color: var(--gb-ink); color: var(--gb-ink); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
+#hero-shuffle .hero-shuffle-icon { font-size: 0.929rem; line-height: 1; }
 .gb-hero-featured-stack { display: flex; flex-direction: column; gap: 12px; }
 .gb-hero-card {
   display: flex; flex-direction: column;
@@ -126,6 +140,7 @@ a { color: var(--gb-accent); }
   text-decoration: none; overflow: hidden;
 }
 .gb-hero-card:hover { border-color: var(--gb-rule); transform: translateY(-2px); }
+.gb-hero-card:focus-visible { border-color: var(--gb-rule); transform: translateY(-2px); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
 .gb-hero-card-thumb {
   width: 100%; height: 110px; background: var(--gb-paper-2);
   border-bottom: 1px solid var(--gb-rule-faint); overflow: hidden; flex-shrink: 0;
@@ -180,6 +195,7 @@ a { color: var(--gb-accent); }
   border-right: 1px solid var(--gb-rule-faint);
   display: flex; flex-direction: column; overflow: hidden;
 }
+#sidebar:focus { outline: none; }  /* container focus target for the mobile drawer */
 #sidebar-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--gb-rule-faint); }
 .sidebar-brand {
   font-family: var(--gb-font-mono); font-size: 0.714rem; font-weight: 500;
@@ -275,6 +291,7 @@ a { color: var(--gb-accent); }
 #search-scope-label { display: none; }
 .toolbar-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 #count-label { font-size: 0.857rem; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
+#load-status { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); }
 #clear-filters-btn {
   display: none; background: var(--gb-highlight-soft);
   border: 1px solid rgba(200, 144, 40, 0.6);
@@ -322,6 +339,8 @@ tbody td:nth-child(2) { font-family: var(--gb-font-display); font-size: 1.071rem
 tbody tr.selected td:nth-child(2) { color: var(--gb-accent-deep); box-shadow: inset 2px 0 0 var(--gb-accent); padding-left: 10px; }
 mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2px; border-radius: 1px; }
 .table-end-sentinel td { text-align: center; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; padding: 14px; border-top: 1px solid var(--gb-rule-faint); }
+.table-end-sentinel button { margin-left: 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); padding: 4px 12px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-accent); }
+.table-end-sentinel button:hover { border-color: var(--gb-accent); background: var(--gb-accent-soft); }
 #no-results { padding: 40px; text-align: center; color: var(--gb-ink-soft); font-family: var(--gb-font-display); font-size: 1.143rem; display: none; }
 #no-results p { margin: 6px 0 0; font-size: 1rem; color: var(--gb-ink-faint); }
 #no-results p.no-results-active { margin: 10px auto 0; }
@@ -338,8 +357,8 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 /* ── Detail panel ── */
-#main.detail-open #table-wrap { padding-right: 420px; }
-#detail { position: fixed; top: 0; right: 0; width: 420px; min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
+#main.detail-open #table-wrap { padding-right: var(--gb-detail-w); }
+#detail { position: fixed; top: 0; right: 0; width: var(--gb-detail-w); min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
 #detail.open { display: flex; }
 .detail-hero { position: relative; height: 280px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 #detail-thumb-link { display: contents; }
@@ -348,7 +367,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
 #detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
 #detail-title { font-family: var(--gb-font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.005em; line-height: 1.1; margin: 0 0 20px; color: var(--gb-ink); }
-.detail-fields { display: grid; grid-template-columns: 80px 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
+.detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
 .df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
 .df-val { color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
 #detail-page-context { text-align: right; margin-bottom: 8px; min-height: 0; }
@@ -568,18 +587,18 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       </aside>
     </div>
     <div class="gb-hero-featured">
-      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span></div>
+      <div class="gb-hero-featured-label"><span>Start exploring with a random entry:</span><span class="gb-hero-featured-rule" aria-hidden="true"></span><button type="button" id="hero-shuffle" aria-label="Shuffle featured entries" title="Shuffle"><span class="hero-shuffle-icon" aria-hidden="true">&#x21BB;</span>Shuffle</button></div>
       <div class="gb-hero-featured-stack" id="hero-featured-stack">
         <div class="gb-hero-card" style="opacity:0.35;pointer-events:none"><div class="gb-hero-card-thumb"></div><div class="gb-hero-card-meta"><div class="gb-hero-card-name">Loading entries&hellip;</div></div></div>
       </div>
     </div>
   </div>
   <div class="gb-hero-stats">
-    <div class="gb-hero-stat" aria-label="63,185 individual listings"><div class="gb-hero-stat-num" id="hero-stat-entries" aria-hidden="true">63,185</div><div class="gb-hero-stat-label" aria-hidden="true">individual listings</div></div>
-    <div class="gb-hero-stat" aria-label="23 published volumes"><div class="gb-hero-stat-num" id="hero-stat-editions" aria-hidden="true">23</div><div class="gb-hero-stat-label" aria-hidden="true">published volumes</div></div>
-    <div class="gb-hero-stat" aria-label="49 states represented"><div class="gb-hero-stat-num" id="hero-stat-states" aria-hidden="true">89</div><div class="gb-hero-stat-label" aria-hidden="true">states and countries represented</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">63,185</div><div class="gb-hero-stat-label">individual listings</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">23</div><div class="gb-hero-stat-label">published volumes</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
     <!-- 24 = folded gbCategoryGroup() labels with >=100 entries in green_book_entries_all.csv, excluding the "Blank or no specific category" bucket. Regenerate by folding the CSV's category column through gb-categories.js's gbCategoryGroup() and counting labels. -->
-    <div class="gb-hero-stat" aria-label="24 business categories"><div class="gb-hero-stat-num" id="hero-stat-cats" aria-hidden="true">24</div><div class="gb-hero-stat-label" aria-hidden="true">business categories</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">24</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
 </section>
 
@@ -618,14 +637,15 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <select id="mobile-volume-select" aria-label="Select volume" style="display:none"></select>
   </div>
   <div id="toolbar">
-    <button id="filter-btn" style="display:none" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
+    <button id="filter-btn" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
     <div id="search-wrap">
-      <input id="search" type="search" placeholder="Search names, addresses, notes…" autocomplete="off" aria-label="Search all fields">
+      <input id="search" type="search" placeholder="Search names, addresses, notes…  ( press / )" autocomplete="off" aria-label="Search all fields" aria-keyshortcuts="/">
       <button id="export-btn">Export CSV</button>
       <span id="export-feedback" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
     </div>
     <div class="toolbar-meta-row">
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
+      <span id="load-status"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
   </div>
@@ -643,7 +663,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <button id="clear-all-btn">× Clear all filters</button>
       </div>
     </div>
-    <div id="detail" role="dialog" aria-modal="true" aria-label="Entry details">
+    <div id="detail" role="complementary" aria-label="Entry details">
       <div class="detail-hero">
         <a id="detail-thumb-link" target="_blank"><img id="detail-thumb" alt="" style="display:none;cursor:pointer"></a>
         <button id="detail-close" aria-label="Close detail panel">&#x2715;</button>
@@ -726,7 +746,9 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   </div>
 </div>
 
+<script src="previews/claude-all-volumes-explorer-review-aegs4n/gb-matching.js"></script>
 <script src="previews/claude-all-volumes-explorer-review-aegs4n/gb-categories.js"></script>
+<script src="previews/claude-all-volumes-explorer-review-aegs4n/gb-geo.js"></script>
 <script>
 var _gbAboutOnLoad = location.hash === '#about';
 const ALL_INITIAL_ENTRIES = [];
@@ -774,7 +796,17 @@ let sortDir = 1;  // 1 = asc, -1 = desc
 let selectedIdx = null;
 let _yearScrollAnchor = null;  // ALL_ENTRIES index used to center window for year-jump (no selection change)
 let _winStart = 0;             // persists across renders so re-selecting an in-window row doesn't re-center
+const WINDOW_STEP = 2000;      // rows added per "Show more" / auto-extend
+let _winSize = WINDOW_STEP;    // current render-window size; reset by renderAll()
+// Row → ALL_ENTRIES index. Rows are stamped with _i when the CSV loads; the
+// indexOf fallback covers rows from any other source (none in this build).
+const rowIdx = r => (r._i !== undefined ? r._i : ALL_ENTRIES.indexOf(r));
 let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
+// Declared here (rather than down by the rest of the cross-listing state,
+// where it conceptually belongs) so renderTableBody()'s "so far" suffix can
+// safely reference it — renderAll() runs once before the loader section
+// below would otherwise have declared it.
+let gbDataLoaded = false;      // true once the CSV stream has finished
 function gcEvent(name) {
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
 }
@@ -862,20 +894,35 @@ function loadVolume(label) {
 })();
 
 // ── Filtering ──────────────────────────────────────────────────────────────
+// Memoized: one render pass calls getFiltered() from the table body, the
+// facet sidebar, and each facet column head. The key captures every input the
+// filter reads (including ALL_ENTRIES.length, which changes once the CSV
+// finishes loading), so no manual invalidation is needed anywhere.
+let _fcKey = null, _fcRows = null;
+function _filterKey() {
+  const fs = facetFields.map(f => f.name + ":" + [...facetState[f.name]].join("|")).join(";");
+  return [ALL_ENTRIES.length, displayFields.map(f => f.name).join(","),
+          searchQuery, JSON.stringify(colFilters), fs].join("");
+}
 function getFiltered() {
+  const key = _filterKey();
+  if (key === _fcKey && _fcRows) return _fcRows;
   const q = searchQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
-  return ALL_ENTRIES.filter(row => {
-    // Search filter
+  const result = ALL_ENTRIES.filter(row => {
+    // Search filter — the normalized haystack is cached on the row (data is
+    // immutable after load), so repeat searches don't re-normalize 100k rows.
     if (q) {
       // The facet sidebar shows folded gbCategoryGroup() labels (e.g.
       // "DRUG STORES" absorbing raw DRUGGIST/PHARMACY/DRUGS), so search must
       // match against the folded label too, not just the raw value. Skip
       // blank categories so "Blank or no specific category" doesn't become
       // searchable text matching thousands of unrelated rows.
-      const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
-      const haystack = (displayFields.map(f => (row[f.name] || "")).join(" ") + " " + foldedCat)
-        .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
-      if (!haystack.includes(q)) return false;
+      if (row._hay === undefined) {
+        const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
+        row._hay = (displayFields.map(f => (row[f.name] || "")).join(" ") + " " + foldedCat)
+          .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+      }
+      if (!row._hay.includes(q)) return false;
     }
     // Facet filters. Category is folded through gbCategoryGroup() so a
     // selected canonical label (e.g. "Blank or no specific category") matches
@@ -893,6 +940,9 @@ function getFiltered() {
     }
     return true;
   });
+  _fcKey = key;
+  _fcRows = result;
+  return result;
 }
 
 // ── Sort ───────────────────────────────────────────────────────────────────
@@ -929,117 +979,185 @@ function canvasId(cf) {
 }
 
 // ── Render: table body only (preserves thead / focus) ──────────────────────
+
+// Build one result row. Factored out of renderTableBody so extendWindow()
+// can append rows without rebuilding the whole window.
+function buildRowTr(row, q) {
+  const tr = document.createElement("tr");
+  const idx = rowIdx(row);
+  const isSelected = idx === selectedIdx;
+  if (isSelected) {
+    tr.classList.add("selected");
+    tr.setAttribute("aria-current", "true");
+  }
+  // Roving tabindex: the table is a single Tab stop (the selected row, or the
+  // first row as a fallback set by the caller); ArrowUp/Down move between rows.
+  tr.setAttribute("tabindex", isSelected ? "0" : "-1");
+  tr.dataset.idx = idx;
+  displayFields.forEach(f => {
+    const td = document.createElement("td");
+    const cellText = row[f.name] || "";
+    td.title = cellText;
+    td.appendChild(highlightMatch(cellText, q));
+    tr.appendChild(td);
+  });
+  const tdSrc = document.createElement("td");
+  tdSrc.className = "source-cell";
+  if (row.canvas_fragment) {
+    const btn = document.createElement("button");
+    btn.className = "src-btn";
+    btn.textContent = "View page ↗";
+    btn.title = "Open original digitized page image";
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      openSource(row.canvas_fragment);
+    });
+    tdSrc.appendChild(btn);
+  }
+  tr.appendChild(tdSrc);
+  const rowHandler = () => {
+    const wrap = document.getElementById('table-wrap');
+    const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
+    const trRect = tr.getBoundingClientRect();
+    const alreadyVisible = wrapRect &&
+      trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
+    const savedScroll = wrap ? wrap.scrollTop : 0;
+    selectedIdx = idx;
+    showDetail(row);
+    renderTableBody();
+    if (wrap) {
+      if (alreadyVisible) {
+        wrap.scrollTop = savedScroll;
+      } else {
+        scrollToSelected();
+      }
+    }
+  };
+  tr.addEventListener("click", rowHandler);
+  tr.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); return; }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
+      if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
+        tr.setAttribute("tabindex", "-1");
+        next.setAttribute("tabindex", "0");
+        next.focus();
+      }
+    }
+  });
+  const tdDetail = document.createElement("td");
+  tdDetail.className = "detail-col";
+  const detailBtn = document.createElement("button");
+  detailBtn.className = "detail-btn";
+  detailBtn.setAttribute("aria-label", "Open entry details");
+  detailBtn.setAttribute("tabindex", "-1");
+  detailBtn.textContent = "▸";
+  detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
+  tdDetail.appendChild(detailBtn);
+  tr.appendChild(tdDetail);
+  return tr;
+}
+
+// End-of-window sentinel: reports how much is shown and, when more rows
+// remain below the window, offers "Show more" + auto-extends via an
+// IntersectionObserver as it scrolls into view.
+let _sentinelObserver = null;
+function renderSentinel(tbody, sorted, winStart) {
+  if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
+  if (sorted.length === 0) return;
+  const shownEnd = Math.min(sorted.length, winStart + _winSize);
+  const remaining = sorted.length - shownEnd;
+  const sentinelTr = document.createElement("tr");
+  sentinelTr.className = "table-end-sentinel";
+  const sentinelTd = document.createElement("td");
+  sentinelTd.colSpan = displayFields.length + 1;
+  if (remaining > 0) {
+    sentinelTd.textContent = `Showing ${(shownEnd - winStart).toLocaleString()} of ${sorted.length.toLocaleString()} entries `;
+    const more = document.createElement("button");
+    more.type = "button";
+    more.textContent = `Show ${Math.min(WINDOW_STEP, remaining).toLocaleString()} more`;
+    more.addEventListener("click", extendWindow);
+    sentinelTd.appendChild(more);
+    _sentinelObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) extendWindow();
+    }, { root: document.getElementById("table-wrap"), rootMargin: "200px" });
+    _sentinelObserver.observe(sentinelTr);
+  } else if (winStart > 0) {
+    sentinelTd.textContent = `Showing entries ${(winStart + 1).toLocaleString()}–${shownEnd.toLocaleString()} of ${sorted.length.toLocaleString()}`;
+  } else {
+    sentinelTd.textContent = `Showing all ${sorted.length.toLocaleString()} entries`;
+  }
+  sentinelTr.appendChild(sentinelTd);
+  tbody.appendChild(sentinelTr);
+}
+
+// Grow the render window in place: append only the new slice, keep scroll.
+function extendWindow() {
+  const sorted = getSorted(getFiltered());
+  const tbody = document.getElementById("table-body");
+  const oldEnd = _winStart + _winSize;
+  if (oldEnd >= sorted.length) return;
+  _winSize += WINDOW_STEP;
+  const q = searchQuery.trim().toLowerCase();
+  const sentinel = tbody.querySelector("tr.table-end-sentinel");
+  if (sentinel) sentinel.remove();
+  const frag = document.createDocumentFragment();
+  sorted.slice(oldEnd, Math.min(sorted.length, _winStart + _winSize))
+    .forEach(row => frag.appendChild(buildRowTr(row, q)));
+  tbody.appendChild(frag);
+  renderSentinel(tbody, sorted, _winStart);
+}
+
 function renderTableBody() {
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
 
-  const countText = `${sorted.length.toLocaleString()} of ${ALL_ENTRIES.length.toLocaleString()} entries`;
+  const countText = `${sorted.length.toLocaleString()} of ${ALL_ENTRIES.length.toLocaleString()} entries` + (gbDataLoaded ? '' : ' so far');
   document.getElementById("count-label").textContent = countText;
   const tbl = document.getElementById("results-table");
   if (tbl) tbl.setAttribute("aria-label", `Green Book entries — ${countText}`);
 
   const tbody = document.getElementById("table-body");
   tbody.innerHTML = "";
-  const WINDOW = 2000;
   let winStart = 0;
   if (_yearScrollAnchor !== null) {
     // Year-jump and close-restore always take priority over selection centering.
-    const anchorPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === _yearScrollAnchor);
-    if (anchorPos >= 0 && anchorPos > WINDOW - 200) winStart = Math.max(0, anchorPos - Math.floor(WINDOW / 2));
+    const anchorPos = sorted.findIndex(row => rowIdx(row) === _yearScrollAnchor);
+    if (anchorPos >= 0 && anchorPos > _winSize - 200) winStart = Math.max(0, anchorPos - Math.floor(_winSize / 2));
   } else if (selectedIdx !== null) {
-    const selPos = sorted.findIndex(row => ALL_ENTRIES.indexOf(row) === selectedIdx);
+    const selPos = sorted.findIndex(row => rowIdx(row) === selectedIdx);
     if (selPos >= 0) {
-      if (selPos >= _winStart && selPos < _winStart + WINDOW) {
+      if (selPos >= _winStart && selPos < _winStart + _winSize) {
         winStart = _winStart;  // row already in window — don't re-center
-      } else if (selPos > WINDOW - 200) {
-        winStart = Math.max(0, selPos - Math.floor(WINDOW / 2));
+      } else if (selPos > _winSize - 200) {
+        winStart = Math.max(0, selPos - Math.floor(_winSize / 2));
       }
     }
   }
   _winStart = winStart;
-  sorted.slice(winStart, winStart + WINDOW).forEach(row => {
-    const tr = document.createElement("tr");
-    const isSelected = ALL_ENTRIES.indexOf(row) === selectedIdx;
-    if (isSelected) tr.classList.add("selected");
-    tr.setAttribute("tabindex", "0");
-    tr.setAttribute("aria-selected", isSelected ? "true" : "false");
-    tr.dataset.idx = ALL_ENTRIES.indexOf(row);
-    const q = searchQuery.trim().toLowerCase();
-    displayFields.forEach(f => {
-      const td = document.createElement("td");
-      const cellText = row[f.name] || "";
-      td.title = cellText;
-      td.appendChild(highlightMatch(cellText, q));
-      tr.appendChild(td);
-    });
-    const tdSrc = document.createElement("td");
-    tdSrc.className = "source-cell";
-    if (row.canvas_fragment) {
-      const btn = document.createElement("button");
-      btn.className = "src-btn";
-      btn.textContent = "View page ↗";
-      btn.title = "Open original digitized page image";
-      btn.addEventListener("click", e => {
-        e.stopPropagation();
-        openSource(row.canvas_fragment);
-      });
-      tdSrc.appendChild(btn);
-    }
-    tr.appendChild(tdSrc);
-    const rowHandler = () => {
-      const wrap = document.getElementById('table-wrap');
-      const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
-      const trRect = tr.getBoundingClientRect();
-      const alreadyVisible = wrapRect &&
-        trRect.top >= wrapRect.top && trRect.bottom <= wrapRect.bottom;
-      const savedScroll = wrap ? wrap.scrollTop : 0;
-      selectedIdx = ALL_ENTRIES.indexOf(row);
-      showDetail(row);
-      renderTableBody();
-      if (wrap) {
-        if (alreadyVisible) {
-          wrap.scrollTop = savedScroll;
-        } else {
-          scrollToSelected();
-        }
-      }
-    };
-    tr.addEventListener("click", rowHandler);
-    tr.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); }
-    });
-    const tdDetail = document.createElement("td");
-    tdDetail.className = "detail-col";
-    const detailBtn = document.createElement("button");
-    detailBtn.className = "detail-btn";
-    detailBtn.setAttribute("aria-label", "Open entry details");
-    detailBtn.setAttribute("tabindex", "-1");
-    detailBtn.textContent = "▸";
-    detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
-    tdDetail.appendChild(detailBtn);
-    tr.appendChild(tdDetail);
-    tbody.appendChild(tr);
+  const q = searchQuery.trim().toLowerCase();
+  const frag = document.createDocumentFragment();
+  let anySelected = false;
+  sorted.slice(winStart, winStart + _winSize).forEach(row => {
+    const tr = buildRowTr(row, q);
+    if (tr.classList.contains("selected")) anySelected = true;
+    frag.appendChild(tr);
   });
+  tbody.appendChild(frag);
+  // Roving-tabindex fallback: with no selected row in the window, the first
+  // row is the table's single Tab stop.
+  if (!anySelected && tbody.firstElementChild) tbody.firstElementChild.setAttribute("tabindex", "0");
 
-  // End-of-results sentinel
-  if (sorted.length > 0) {
-    const sentinelTr = document.createElement("tr");
-    sentinelTr.className = "table-end-sentinel";
-    const sentinelTd = document.createElement("td");
-    sentinelTd.colSpan = displayFields.length + 1;
-    const cap = sorted.length > 2000
-      ? `Showing first 2,000 of ${sorted.length.toLocaleString()} entries`
-      : `Showing all ${sorted.length.toLocaleString()} entries`;
-    sentinelTd.textContent = cap;
-    sentinelTr.appendChild(sentinelTd);
-    tbody.appendChild(sentinelTr);
-  }
+  renderSentinel(tbody, sorted, winStart);
 
   const noResults = document.getElementById("no-results");
   if (sorted.length === 0) {
     noResults.style.display = "block";
     if (ALL_ENTRIES.length === 0) {
       noResults.innerHTML = '<p style="font-size: 1rem;color:#595959;margin:0">Loading entries…</p>';
+    } else if (!gbDataLoaded) {
+      noResults.innerHTML = '<p style="font-size: 1rem;color:#595959;margin:0">No matches yet — entries are still loading</p>';
     } else {
       const activeDesc = [];
       if (searchQuery.trim()) activeDesc.push(`searching for “${searchQuery.trim()}”`);
@@ -1144,7 +1262,15 @@ function renderTableHead() {
       inp.type = "text"; inp.className = "col-filter-input"; inp.placeholder = "filter…";
       inp.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
       inp.value = colFilters[f.name] || "";
-      inp.addEventListener("input", () => { colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); syncFilterUI(); });
+      // Same debounce as the main search — a full-dataset re-render per
+      // keystroke makes typing feel sticky.
+      let colTimer;
+      inp.addEventListener("input", () => {
+        clearTimeout(colTimer);
+        colTimer = setTimeout(() => {
+          colFilters[f.name] = inp.value; renderTableBody(); renderFacetSidebar(); syncFilterUI();
+        }, 180);
+      });
       fth.appendChild(inp);
     }
     filterRow.appendChild(fth);
@@ -1333,6 +1459,8 @@ function showDetail(row) {
 }
 
 // ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
+// gbGeocode() is shared with all-volumes.html via gb-geo.js (localStorage-
+// backed cache).
 let _mapAbort = null;
 function renderDetailMap(row) {
   const mapEl = document.getElementById("detail-map");
@@ -1366,8 +1494,7 @@ function renderDetailMap(row) {
   }
 
   function tryCity() {
-    fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(cityQuery), { signal: controller.signal })
-      .then(r => r.json())
+    gbGeocode(cityQuery, controller.signal)
       .then(results => {
         if (!results.length) throw new Error("no results");
         const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
@@ -1381,8 +1508,7 @@ function renderDetailMap(row) {
       });
   }
 
-  fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(addrQuery), { signal: controller.signal })
-    .then(r => r.json())
+  gbGeocode(addrQuery, controller.signal)
     .then(results => {
       if (!results.length) { tryCity(); return; }
       const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
@@ -1541,7 +1667,7 @@ function clearAllFilters() {
   document.getElementById("search").value = "";
   renderAll();
   if (savedRow) {
-    selectedIdx = ALL_ENTRIES.indexOf(savedRow);
+    selectedIdx = rowIdx(savedRow);
     showDetail(savedRow);
     renderTableBody();
     scrollToSelected(100);
@@ -1562,12 +1688,26 @@ document.getElementById("no-results").addEventListener("click", e => {
   const filterBtn = document.getElementById("filter-btn");
   const backdrop  = document.getElementById("sidebar-backdrop");
   const app       = document.getElementById("app");
-  function openSidebar()  { app.classList.add("sidebar-open");    filterBtn.setAttribute("aria-expanded", "true");  }
-  function closeSidebar() { app.classList.remove("sidebar-open"); filterBtn.setAttribute("aria-expanded", "false"); }
-  filterBtn.addEventListener("click", () => app.classList.contains("sidebar-open") ? closeSidebar() : openSidebar());
-  backdrop.addEventListener("click", closeSidebar);
+  const sidebar   = document.getElementById("sidebar");
+  function openSidebar()  {
+    app.classList.add("sidebar-open");
+    filterBtn.setAttribute("aria-expanded", "true");
+    sidebar.setAttribute("tabindex", "-1");
+    sidebar.focus();
+  }
+  function closeSidebar(returnFocus) {
+    if (!app.classList.contains("sidebar-open")) return;
+    app.classList.remove("sidebar-open");
+    filterBtn.setAttribute("aria-expanded", "false");
+    if (returnFocus) filterBtn.focus();
+  }
+  filterBtn.addEventListener("click", () => app.classList.contains("sidebar-open") ? closeSidebar(false) : openSidebar());
+  backdrop.addEventListener("click", () => closeSidebar(false));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && app.classList.contains("sidebar-open")) closeSidebar(true);
+  });
   document.getElementById("facet-controls").addEventListener("change", () => {
-    if (window.innerWidth <= 640) closeSidebar();
+    if (window.innerWidth <= 640) closeSidebar(false);
   });
 })();
 
@@ -1579,6 +1719,18 @@ document.getElementById("search").addEventListener("input", e => {
     searchQuery = e.target.value;
     renderAll();
   }, 180);
+});
+
+// "/" focuses search from anywhere that isn't already a text control.
+document.addEventListener("keydown", e => {
+  if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey) return;
+  const t = e.target;
+  if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+  const s = document.getElementById("search");
+  if (!s) return;
+  e.preventDefault();
+  s.focus();
+  s.select();
 });
 
 // ── Sync filter UI: URL hash + clear-filters button visibility ───────────
@@ -1614,9 +1766,13 @@ function stateToHash() {
   for (const [field, valSet] of Object.entries(facetState)) {
     if (valSet.size) params.set("f_" + field, [...valSet].join("|"));
   }
+  // Pathname-anchored, never a bare "#…" fragment: the History API resolves
+  // relative URLs against the document base, so under a preview deploy's
+  // injected <base href> a bare fragment would rewrite the address bar to
+  // the site root (losing the preview path on refresh/share).
   const str = params.toString();
-  if (str) return "#" + str;
-  if (location.hash === '#about') return '#about';
+  if (str) return location.pathname + location.search + "#" + str;
+  if (location.hash === '#about') return location.pathname + location.search + '#about';
   return location.pathname + location.search;
 }
 
@@ -1675,6 +1831,7 @@ function renderAll() {
   // never see a stale record juxtaposed against a new result set.
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   selectedIdx = null;
+  _winSize = WINDOW_STEP;  // shrink an extended window back to one page
   renderFacetSidebar();
   renderTable();
   syncFilterUI();
@@ -1696,7 +1853,7 @@ function scrollToYear(year) {
   const sorted = getSorted(getFiltered());
   const targetRow = sorted.find(r => (r.volume_year || r.year || '') === year);
   if (!targetRow) return;
-  const targetIdx = ALL_ENTRIES.indexOf(targetRow);
+  const targetIdx = rowIdx(targetRow);
   _yearScrollAnchor = targetIdx;
   renderTableBody();
   _yearScrollAnchor = null;
@@ -1718,7 +1875,7 @@ document.getElementById("random-btn").addEventListener("click", () => {
   const pool = all.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
   if (!pool.length) return;
   const r = pool[Math.floor(Math.random() * pool.length)];
-  selectedIdx = ALL_ENTRIES.indexOf(r);
+  selectedIdx = rowIdx(r);
   showDetail(r);
   renderTableBody();
   scrollToSelected();
@@ -1750,7 +1907,7 @@ window.addEventListener("popstate", function () {
   if (cf) {
     const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
     if (match) {
-      selectedIdx = ALL_ENTRIES.indexOf(match);
+      selectedIdx = rowIdx(match);
       showDetail(match);
       renderTableBody();
       scrollToSelected();
@@ -1781,31 +1938,19 @@ const GB_YEAR_FIELD = (() => {
   return f ? f.name : null;
 })();
 
-// ── Name + city normalisation helper ────────────────────────────────────────
-function gbNormName(s) {
-  return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
-}
+// ── Cross-listing match index ────────────────────────────────────────────────
+// Normalization + resolver live in gb-matching.js (shared with the validation
+// harness at address-keying-test.html). Rows bucket by (name stem, normalized
+// city), then split into business-level groups by address signature. Built
+// once after the CSV loads; empty until then.
+let gbNameIndex = new Map();   // groupKey → [row objects]
+let gbRowToKey  = new Map();   // row object → groupKey
 
-// ── Name index: normalised (name|city) → [row objects] across all volumes ────
-const gbNameIndex = new Map();
-(function () {
-  const allRows = Object.keys(VOLUMES).length
-    ? Object.values(VOLUMES).flatMap(v => v.rows)
-    : ALL_INITIAL_ENTRIES;
-  const sample = allRows[0];
-  if (!sample) return;
-  const nf = ["name", "establishment_name", "firm_name", "business_name"]
-    .find(k => k in sample);
-  if (!nf) return;
-  allRows.forEach(row => {
-    const city = (row.city || "").toLowerCase().trim();
-    const key = gbNormName(row[nf]) + "|" + city;
-    if (key.length >= 3) {
-      if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
-      gbNameIndex.get(key).push(row);
-    }
-  });
-})();
+// All cross-listings for a row's resolved business group (including itself).
+function gbCrossListings(row) {
+  const key = gbRowToKey.get(row);
+  return (key !== undefined && gbNameIndex.get(key)) || [];
+}
 
 function gbJumpToYear(year) {
   if (!GB_YEAR_FIELD) return;
@@ -1815,14 +1960,8 @@ function gbJumpToYear(year) {
   if (selectedIdx !== null) {
     const cur = ALL_ENTRIES[selectedIdx];
     if (cur) {
-      const nf = ["name", "establishment_name", "firm_name", "business_name"]
-        .find(k => cur[k] != null && cur[k] !== "");
-      if (nf) {
-        const city = (cur.city || "").toLowerCase().trim();
-        const key = gbNormName(cur[nf]) + "|" + city;
-        const candidates = gbNameIndex.get(key) || [];
-        matchRow = candidates.find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
-      }
+      matchRow = gbCrossListings(cur)
+        .find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
     }
   }
 
@@ -1832,7 +1971,7 @@ function gbJumpToYear(year) {
   renderAll();  // closes drawer, applies year filter, re-renders table
 
   if (matchRow) {
-    selectedIdx = ALL_ENTRIES.indexOf(matchRow);
+    selectedIdx = rowIdx(matchRow);
     showDetail(matchRow);
     renderTableBody();  // re-render to show selection highlight
   }
@@ -1858,11 +1997,16 @@ showDetail = function (row) {
   _gbOrigSD(row);
   if (row) gcEvent('detail-open');
 
-  // Push the open entry to history so the back button can return to previous state
+  // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
+  // closes it); switching entries while it's already open replaces, so Back
+  // doesn't walk through every row the user ever clicked.
   if (row && row.canvas_fragment) {
     const u = new URL(location.href);
+    const wasOpen = u.searchParams.has('cf');
     u.searchParams.set('cf', row.canvas_fragment);
-    history.pushState(null, '', u.pathname + '?' + u.searchParams + (location.hash || ''));
+    const url = u.pathname + '?' + u.searchParams + (location.hash || '');
+    if (wasOpen) history.replaceState(null, '', url);
+    else history.pushState(null, '', url);
   }
 
   const alsoEl = document.getElementById("detail-also-in");
@@ -1874,13 +2018,14 @@ showDetail = function (row) {
   const nfVal = nf && row[nf];
   if (!nfVal || gbNameIndex.size === 0) { alsoEl.style.display = "none"; return; }
 
-  const city = (row.city || "").toLowerCase().trim();
-  const key = gbNormName(nfVal) + "|" + city;
-  const others = gbNameIndex.get(key) || [];
-  const currentYear = row[GB_YEAR_FIELD] || "";
+  // Cross-listings for this row's resolved business group — the resolver in
+  // gb-matching.js folds name variants ("Miami Carver" / "Miami Carver
+  // Hotel"), city variants ("NEW YORK CITY (HARLEM)"), and address-form
+  // variants ("La Salle" / "LaSalle") while splitting same-name businesses
+  // at different addresses (four "West End"s on one St. Louis block).
+  const others = gbCrossListings(row).filter(r => r !== row);
   const otherYears = [...new Set(
     others
-      .filter(r => r !== row)
       .map(r => r[GB_YEAR_FIELD] || r.year)
       .filter(Boolean)
   )].sort();
@@ -1905,9 +2050,15 @@ showDetail = function (row) {
     allLink.textContent = "See all likely match listings";
     allLink.addEventListener("click", e => {
       e.preventDefault();
-      searchQuery = nfVal;
-      document.getElementById("search").value = nfVal;
-      if (row.city) colFilters["city"] = row.city;
+      // Search on the stripped name (suffixes, descriptors, possessives) so
+      // all variants surface as substring matches of the shorter query.
+      const q = gbSearchQueryName(nfVal);
+      searchQuery = q;
+      document.getElementById("search").value = q;
+      // Normalized city as the column filter: the filter is a substring match,
+      // so "new york" catches "NEW YORK CITY" and "NEW YORK, N.Y. (HARLEM)",
+      // where the raw variant string would match only itself.
+      if (row.city) colFilters["city"] = gbNormCity(row.city);
       if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
       document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
       selectedIdx = null;
@@ -1934,7 +2085,7 @@ renderAll();
   if (!cf) return;
   const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
   if (!match) return;
-  selectedIdx = ALL_ENTRIES.indexOf(match);
+  selectedIdx = rowIdx(match);
   showDetail(match);
   renderTableBody();
   history.scrollRestoration = 'manual';
@@ -1950,7 +2101,9 @@ renderAll();
     opener = document.activeElement;
     document.getElementById('about-backdrop').classList.add('open');
     document.getElementById('about-modal').focus();
-    history.replaceState(null, '', '#about');
+    // Pathname-anchored — a bare "#about" resolves against <base href> in
+    // preview deploys and would rewrite the address bar to the site root.
+    history.replaceState(null, '', location.pathname + location.search + '#about');
   }
   function closeAbout() {
     document.getElementById('about-backdrop').classList.remove('open');
@@ -1984,12 +2137,16 @@ renderAll();
   });
 }());
 
-// ── Detail panel: focus trap + Escape ────────────────────────────────────────
+// ── Detail panel: Escape everywhere; focus trap only on mobile, where the
+// panel actually covers the whole screen. On desktop it sits beside the
+// table (which stays interactive), so trapping Tab would contradict the
+// non-modal role and strand keyboard users.
 document.getElementById('detail').addEventListener('keydown', e => {
   const detail = document.getElementById('detail');
   if (!detail.classList.contains('open')) return;
   if (e.key === 'Escape') { document.getElementById('detail-close').click(); return; }
   if (e.key === 'Tab') {
+    if (!window.matchMedia('(max-width: 640px)').matches) return;
     const focusable = Array.from(
       detail.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])')
     ).filter(el => !el.disabled && el.offsetParent !== null);
@@ -2009,100 +2166,185 @@ document.getElementById('detail').addEventListener('keydown', e => {
   if (btn) btn.addEventListener('click', () => document.getElementById('random-btn').click());
 }());
 
-// ── Lazy CSV loader ───────────────────────────────────────────────────────────
-(function () {
-  const GB_CSV_URL = 'green_book_entries_all.csv';
+// ── Streaming CSV loader ──────────────────────────────────────────────────────
+// The CSV is ~20 MB raw / ~2 MB gzipped over the wire. Streaming the parse lets
+// the table show a usable subset within a second or two instead of waiting for
+// the full download. We render once at a first-paint threshold (so the user
+// sees something fast) and once more when the stream finishes.
 
-  // RFC 4180-compliant parser — handles quoted fields, embedded commas/newlines
-  function gbParseCSV(text) {
-    const result = [];
-    let headers = null;
-    let pos = 0;
-    const len = text.length;
-    while (pos < len) {
-      const row = [];
-      while (true) {
-        let field = '';
-        if (pos < len && text[pos] === '"') {
-          pos++;
-          while (pos < len) {
-            if (text[pos] === '"') {
-              if (pos + 1 < len && text[pos + 1] === '"') { field += '"'; pos += 2; }
-              else { pos++; break; }
-            } else { field += text[pos++]; }
-          }
-        } else {
-          while (pos < len && text[pos] !== ',' && text[pos] !== '\r' && text[pos] !== '\n') {
-            field += text[pos++];
-          }
-        }
-        row.push(field);
-        if (pos < len && text[pos] === ',') { pos++; }
-        else { break; }
-      }
-      if (pos < len && text[pos] === '\r') pos++;
-      if (pos < len && text[pos] === '\n') pos++;
-      if (row.length === 0 || (row.length === 1 && row[0] === '')) continue;
-      if (!headers) { headers = row; continue; }
-      const obj = {};
-      headers.forEach((h, i) => { obj[h] = row[i] !== undefined ? row[i] : ''; });
-      result.push(obj);
-    }
-    return result;
+// Approximate row count, baked via `tail -n +2 green_book_entries_all.csv |
+// wc -l`. Used only to show a "Loading entries — N%" progress indicator while
+// the CSV streams in; the real count everywhere else comes from
+// ALL_ENTRIES.length. Regenerate by re-running the command above if the CSV
+// is ever regenerated with a different row count.
+const GB_ENTRIES_TOTAL_APPROX = 63590;
+
+// State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
+// quoting (escaped quotes, embedded commas and newlines) across arbitrary
+// chunk boundaries.
+function gbCreateStreamingCSVParser(onRow) {
+  let headers = null;
+  let field = '';
+  let row = [];
+  let inQuote = false;
+  let pendingQuote = false;  // saw `"` while in quote — next char decides escape vs end
+  let pendingCR = false;     // saw `\r` — swallow following `\n` if any
+  function flushField() { row.push(field); field = ''; }
+  function flushRow() {
+    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; return; }
+    if (!headers) { headers = row; row = []; return; }
+    const obj = {};
+    for (let i = 0; i < headers.length; i++) obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    onRow(obj);
+    row = [];
   }
+  return {
+    feed(text) {
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (pendingQuote) {
+          pendingQuote = false;
+          if (c === '"') { field += '"'; continue; }
+          inQuote = false;
+          // fall through to handle c outside quotes
+        }
+        if (inQuote) {
+          if (c === '"') pendingQuote = true;
+          else field += c;
+          continue;
+        }
+        if (pendingCR) {
+          pendingCR = false;
+          if (c === '\n') continue;
+        }
+        if (c === '"') inQuote = true;
+        else if (c === ',') flushField();
+        else if (c === '\r') { flushField(); flushRow(); pendingCR = true; }
+        else if (c === '\n') { flushField(); flushRow(); }
+        else field += c;
+      }
+    },
+    end() { if (field !== '' || row.length > 0) { flushField(); flushRow(); } }
+  };
+}
 
-  Promise.all([
-    fetch(GB_CSV_URL).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }),
-    fetch('canvas_map.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  ])
-    .then(([text, canvasData]) => {
-      CANVAS_MAP = canvasData;
-      ALL_ENTRIES = gbParseCSV(text);
-      // Rebuild name index now that data is available
-      gbNameIndex.clear();
-      const sample = ALL_ENTRIES[0];
-      if (sample) {
-        const nf = ['name', 'establishment_name', 'firm_name', 'business_name']
-          .find(k => k in sample);
-        if (nf) {
-          ALL_ENTRIES.forEach(row => {
-            const city = (row.city || '').toLowerCase().trim();
-            const key = gbNormName(row[nf]) + '|' + city;
-            if (key.length >= 3) {
-              if (!gbNameIndex.has(key)) gbNameIndex.set(key, []);
-              gbNameIndex.get(key).push(row);
-            }
-          });
-        }
-      }
-      renderAll();
-      // Re-apply URL state now that rows exist
-      applyHashState();
-      const cf = new URLSearchParams(location.search).get('cf');
-      if (cf) {
-        const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
-        if (match) {
-          selectedIdx = ALL_ENTRIES.indexOf(match);
-          showDetail(match);
-          renderTableBody();
-          const app = document.getElementById('app');
-          if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
-          scrollToSelected(100);
-        }
-      } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
-                 && !location.hash.includes('volume_year')) {
-        scrollToYear("1938");
-      }
-    })
-    .catch(err => {
-      const noRes = document.getElementById("no-results");
-      if (noRes) {
-        noRes.style.display = 'block';
-        noRes.innerHTML =
-          '<p style="color:#c00;margin:0">Could not load entries: ' + err.message + '.</p>' +
-          '<p style="font-size: 0.857rem;margin:6px 0 0">Open this file from a web server rather than file://.</p>';
-      }
+async function gbStreamCsv(url, onRow) {
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + url);
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder('utf-8');
+  const parser = gbCreateStreamingCSVParser(onRow);
+  // Sub-chunk size: yielding between sub-chunks lets the browser paint the
+  // first-paint render (and successive incremental updates) instead of being
+  // blocked by a single multi-MB synchronous parse on fast connections.
+  const SUBCHUNK = 128 * 1024;
+  const yieldToBrowser = () => new Promise(r => setTimeout(r, 0));
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) { parser.feed(decoder.decode()); parser.end(); return; }
+    const text = decoder.decode(value, { stream: true });
+    for (let off = 0; off < text.length; off += SUBCHUNK) {
+      parser.feed(text.substring(off, Math.min(off + SUBCHUNK, text.length)));
+      await yieldToBrowser();
+    }
+  }
+}
+
+(async function () {
+  const GB_CSV_URL = 'green_book_entries_all.csv';
+  const FIRST_PAINT_AT = 2000;
+  let firstPainted = false;
+  // Persistent stream-status text, independent of #count-label (which a user
+  // interaction can overwrite with a real "X of Y" count mid-stream). Capped
+  // at 99% until the stream actually finishes.
+  function gbLoadStatusText() {
+    const pct = Math.min(99, Math.floor(ALL_ENTRIES.length / GB_ENTRIES_TOTAL_APPROX * 100));
+    return 'Loading entries — ' + pct + '%';
+  }
+  function maybeFirstPaint() {
+    if (firstPainted || ALL_ENTRIES.length < FIRST_PAINT_AT) return;
+    firstPainted = true;
+    renderAll();
+    // renderAll set count-label to "X of N" where N is the partial total. Make
+    // it clear more is still streaming — the final renderAll() corrects it.
+    const cl = document.getElementById('count-label');
+    if (cl) cl.textContent = 'Showing first ' + FIRST_PAINT_AT.toLocaleString() + ' entries — loading more…';
+  }
+  // Live progress while streaming. Only overwrites the count label while it
+  // still shows our own loading text — the moment a user interaction re-renders
+  // it to a real "X of Y" count, we stop touching it. #load-status is cheaper
+  // to keep current: it always reflects the latest tick, gated to every 10k
+  // rows so the onRow path stays cheap.
+  function gbProgressTick() {
+    if (ALL_ENTRIES.length % 10000 !== 0) return;
+    const ls = document.getElementById('load-status');
+    if (ls) ls.textContent = gbLoadStatusText();
+    if (!firstPainted) return;
+    const cl = document.getElementById('count-label');
+    if (cl && /loading more…$/.test(cl.textContent)) {
+      cl.textContent = 'Loaded ' + ALL_ENTRIES.length.toLocaleString() + ' entries — loading more…';
+    }
+  }
+  const loadStatusEl = document.getElementById('load-status');
+  if (loadStatusEl) loadStatusEl.textContent = gbLoadStatusText();  // initial text, before streaming starts
+  try {
+    CANVAS_MAP = await fetch('canvas_map.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    await gbStreamCsv(GB_CSV_URL, row => {
+      // Stamp each row with its ALL_ENTRIES index once, up front, so render
+      // code can look it up via rowIdx() instead of calling indexOf() per row.
+      row._i = ALL_ENTRIES.length;
+      ALL_ENTRIES.push(row);
+      maybeFirstPaint();
+      gbProgressTick();
     });
+    // Stream done. Capture any detail panel the user opened mid-stream before
+    // renderAll() below closes it (renderAll() always resets selectedIdx).
+    const openRow = (selectedIdx !== null && document.getElementById('detail').classList.contains('open'))
+      ? ALL_ENTRIES[selectedIdx] : null;
+    // Re-apply URL state now that all rows exist, then paint the full table
+    // right away — gbBuildMatchIndex() below is heavy (~800ms on desktop,
+    // longer on mobile) and would otherwise freeze the UI on stale,
+    // still-partial content for its whole duration.
+    applyHashState();
+    renderAll();
+    if (loadStatusEl) loadStatusEl.textContent = 'Indexing cross-listings…';
+    await new Promise(r => setTimeout(r, 0));  // yield so the browser paints before the heavy index build
+    ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
+    gbDataLoaded = true;
+    gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
+    gbMaybeBuildHero();  // build the featured trio now that the full dataset is present
+    // These need the cross-listing index (for "Also listed in" chips), so they
+    // run after gbBuildMatchIndex() above.
+    const cf = new URLSearchParams(location.search).get('cf');
+    if (cf) {
+      const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
+      if (match) {
+        selectedIdx = rowIdx(match);
+        showDetail(match);
+        renderTableBody();
+        const app = document.getElementById('app');
+        if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+        scrollToSelected(100);
+      }
+    } else if (openRow) {
+      selectedIdx = rowIdx(openRow);
+      showDetail(openRow);
+      renderTableBody();
+      scrollToSelected(100);
+    } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
+               && !location.hash.includes('volume_year')) {
+      scrollToYear("1938");
+    }
+    if (loadStatusEl) { loadStatusEl.textContent = ''; loadStatusEl.style.display = 'none'; }
+  } catch (err) {
+    const noRes = document.getElementById("no-results");
+    if (noRes) {
+      noRes.style.display = 'block';
+      noRes.innerHTML =
+        '<p style="color:#c00;margin:0">Could not load entries: ' + err.message + '.</p>' +
+        '<p style="font-size: 0.857rem;margin:6px 0 0">Open this file from a web server rather than file://.</p>';
+    }
+  }
 }());
 
 
@@ -2117,7 +2359,11 @@ document.getElementById('caveat-about-btn').addEventListener('click', () => {
   document.getElementById('about-btn').click();
 });
 
-function gbUpdateHero() {
+// Hero + About stat counters, separated from featured-card generation so the
+// loader's final pass can refresh the numbers without re-rolling the cards.
+// (The hero observer fires as soon as *any* rows have streamed in, so counts
+// written at that moment reflect a partial dataset.)
+function gbUpdateStats() {
   if (!ALL_ENTRIES.length) return;
   const states = new Set(ALL_ENTRIES.map(r => r.state).filter(Boolean));
   const volumes = new Set(ALL_ENTRIES.map(r => r.volume_id).filter(Boolean));
@@ -2129,8 +2375,13 @@ function gbUpdateHero() {
   // value (see the comment above the hero markup). FIELD_META's category
   // top_values is truncated to the top 25, so counting its length would
   // clobber the real >=100-entries count with an unrelated smaller number.
-  // document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
+  // document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES · ' + volumes.size + ' VOLUMES';
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
+}
+
+function gbUpdateHero() {
+  if (!ALL_ENTRIES.length) return;
+  gbUpdateStats();
 
   const withImg = ALL_ENTRIES.filter(r => {
     if (!r.address || !r.canvas_fragment || !r.canvas_fragment.includes('#xywh=')) return false;
@@ -2158,26 +2409,32 @@ function gbUpdateHero() {
     const cat = r.category ? gbCategoryGroup(r.category) : '';
     const city = (r.city || '').toUpperCase();
     const state = (r.state || '').toUpperCase();
-    const card = document.createElement('div');
+    // A real link: keyboard-focusable, right/middle-clickable (the href is the
+    // entry's ?cf= deep link); a plain left click is intercepted to open the
+    // detail panel in place instead of reloading.
+    const card = document.createElement('a');
     card.className = 'gb-hero-card';
+    card.href = location.pathname + '?cf=' + encodeURIComponent(r.canvas_fragment || '');
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gb-hero-card-thumb';
     const ts = thumbUrl(r, 'left');
     if (ts) {
       const img = document.createElement('img');
-      img.src = ts; img.alt = r[nf] || '';
+      img.src = ts; img.alt = '';
       img.onerror = () => { img.style.display = 'none'; };
       thumbDiv.appendChild(img);
     }
     const meta = document.createElement('div');
     meta.className = 'gb-hero-card-meta';
     meta.innerHTML = '<div class="gb-hero-card-name">' + (r[nf] || '') + '</div>' +
-      '<div class="gb-hero-card-line">' + year + (city ? ' \u00B7 ' + city + (state ? ', ' + state : '') : '') + '</div>' +
+      '<div class="gb-hero-card-line">' + year + (city ? ' · ' + city + (state ? ', ' + state : '') : '') + '</div>' +
       '<div class="gb-hero-card-cat">' + cat + '</div>';
     card.appendChild(thumbDiv);
     card.appendChild(meta);
-    card.addEventListener('click', () => {
-      selectedIdx = ALL_ENTRIES.indexOf(r);
+    card.addEventListener('click', e => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      selectedIdx = rowIdx(r);
       showDetail(r);
       renderTableBody();
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
@@ -2186,29 +2443,38 @@ function gbUpdateHero() {
     stack.appendChild(card);
   });
 }
-let _heroUpdated = false;
+let _heroUpdated = false, _heroVisible = false;
 // Only build hero thumbnails (IIIF requests) when the hero section is actually
 // visible. If the user refreshes while scrolled past the hero, skip entirely.
 const _heroSection = document.getElementById('gb-hero');
+// Build the featured trio only once the hero is visible AND the full dataset
+// has streamed in. The CSV is sorted by year, so sampling mid-stream would draw
+// only from the earliest volumes (1937/1938) — gbDataLoaded guarantees a
+// full-dataset pool. gbMaybeBuildHero is called from every entry point below and
+// from the loader's post-stream block; whichever satisfies both conditions last
+// wins.
+function gbMaybeBuildHero() {
+  if (_heroUpdated || !_heroVisible || !gbDataLoaded || !ALL_ENTRIES.length) return;
+  _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
+}
 const _heroObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
-  }
+  _heroVisible = true; gbMaybeBuildHero();
 }, { threshold: 0 });
 _heroObserver.observe(_heroSection);
 // Fallback interval in case data arrives after the hero is already visible
 const _checkHero = setInterval(() => {
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    const rect = _heroSection.getBoundingClientRect();
-    if (rect.bottom > 0 && rect.top < window.innerHeight) {
-      _heroUpdated = true; clearInterval(_checkHero); _heroObserver.disconnect(); gbUpdateHero();
-    }
-  }
+  const rect = _heroSection.getBoundingClientRect();
+  if (rect.bottom > 0 && rect.top < window.innerHeight) { _heroVisible = true; gbMaybeBuildHero(); }
   if (_heroUpdated) clearInterval(_checkHero);
 }, 200);
+// Reshuffle on demand — gbUpdateHero rebuilds the stack from a fresh random draw.
+document.getElementById('hero-shuffle').addEventListener('click', () => {
+  if (gbDataLoaded) gbUpdateHero();
+});
 
 // // ── Cross-edition timeline ────────────────────────────────────────────────────
+// const _ALL_EDITION_YEARS = [1937,1938,1939,1940,1941,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1959,1960,1961,1962,1963,1966];
 // const _ALL_EDITION_YEARS = [1937,1938,1939,1940,1941,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1959,1960,1961,1962,1963,1966];
 
 // function _buildTLSegs(appearances) {
