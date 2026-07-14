@@ -14,6 +14,7 @@ This repository powers a public website for browsing and viewing the digitized e
 | `explorer.html` | Interactive directory browser for *The Negro Motorist Green Book* — search and filter ~63,000 listings across all 23 editions |
 | `all-volumes.html` | The same browser extended to all seven publications — ~105,700 listings across 45 volumes (1930–1966), with cross-publication charts and trends |
 | `travel_guides_explorer.html` | Browser scoped to just the six non–Green Book travel guides |
+| `old-explorer.html` | Archived earlier version of the explorer — kept as a historical reference, not linked from the live site |
 | `green_book_entries_all.csv` | Structured dataset of the Green Book entries, extracted via OCR and AI from the digitized scans |
 | `travel_guides_all.csv` | Structured dataset of the other six publications' entries |
 | `gb-matching.js` | Shared address-signature resolver used to match the same business across editions and publications |
