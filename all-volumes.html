@@ -179,9 +179,130 @@ a { color: var(--gb-accent); }
   background: none; border: none; border-bottom: 1px solid var(--gb-rule-faint);
   font-family: var(--gb-font-mono); margin-top: 4px; font-size: 0.714rem;
   letter-spacing: 0.14em; color: var(--gb-ink-soft); text-decoration: none;
-  text-transform: uppercase; width: max-content; padding: 0 0 2px 0; cursor: pointer;
+  text-transform: uppercase; width: max-content; max-width: 100%; white-space: normal;
+  line-height: 1.7; text-align: left; padding: 0 0 2px 0; cursor: pointer;
 }
 .gb-hero-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
+
+/* ── Trends: "the guides at a glance" (a didactic modal, like About) ── */
+#trends-backdrop { position: fixed; inset: 0; background: rgba(22, 19, 16, 0.42); z-index: 400; place-items: center; padding: 40px; backdrop-filter: blur(2px); display: none; }
+#trends-backdrop.open { display: grid; }
+#trends-modal { background: var(--gb-paper); width: 100%; max-width: 1280px; max-height: calc(100vh - 80px); display: flex; flex-direction: column; border: 1px solid var(--gb-rule); box-shadow: 0 30px 80px -20px rgba(0,0,0,0.4); overflow: hidden; position: relative; }
+#trends-modal::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gb-accent); }
+.trends-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 22px 32px 0; flex-shrink: 0; }
+.trends-modal-body { padding: 14px 40px 48px; overflow-y: auto; }
+.trends-sub { margin: 0 0 18px; font-size: 0.857rem; color: var(--gb-ink-faint); font-family: var(--gb-font-body); }
+button.about-modal-link { background: none; border: none; padding: 0; cursor: pointer; font: inherit; }
+.trends-loading { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); margin: 0; }
+/* Panel-level caveat, echoing the hero's accuracy note. */
+.trends-caveat { display: grid; grid-template-columns: 3px 1fr; gap: 18px; margin: 0 0 30px; max-width: 880px; }
+.trends-caveat-rule { background: var(--gb-accent); }
+.trends-caveat-body { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.trends-caveat-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em; color: var(--gb-accent); font-weight: 600; text-transform: uppercase; }
+.trends-caveat-text { font-family: var(--gb-font-display); font-size: 1rem; line-height: 1.55; color: var(--gb-ink); margin: 0; max-width: 72ch; }
+.trends-caveat-text em { font-style: italic; color: var(--gb-ink-soft); }
+.trends-caveat-link {
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.14em;
+  color: var(--gb-ink-soft); text-decoration: none; text-transform: uppercase;
+  border-bottom: 1px solid var(--gb-rule-faint); width: max-content; max-width: 100%;
+  white-space: normal; line-height: 1.7; padding-bottom: 2px; margin-top: 2px;
+}
+.trends-caveat-link:hover { color: var(--gb-accent); border-bottom-color: var(--gb-accent); }
+/* One-line interpretive caveat under a chart's caption. */
+.trend-caveat { font-family: var(--gb-font-body); font-size: 0.786rem; font-style: italic; color: var(--gb-ink-faint); margin: -8px 0 10px; max-width: 96ch; }
+.trend-fig { margin: 0 0 36px; }
+.trend-caption { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.trend-title { font-family: var(--gb-font-display); font-size: 1.143rem; font-weight: 500; color: var(--gb-ink); }
+.trend-note { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.04em; color: var(--gb-ink-faint); }
+.trend-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 10px; font-size: 0.786rem; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
+.trend-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.trend-chart svg { display: block; }
+.trend-chart .trend-tick { font-family: var(--gb-font-mono); font-size: 10px; fill: var(--gb-ink-faint); }
+.trend-chart .trend-grid { stroke: var(--gb-rule-faint); stroke-width: 1; }
+.trend-chart .trend-annot { font-family: var(--gb-font-body); font-size: 10px; font-style: italic; fill: var(--gb-ink-faint); }
+.trend-chart .trend-annot-rule { stroke: var(--gb-rule-faint); stroke-width: 1; }
+.trend-chart .trend-annot-dot { fill: var(--gb-highlight); }
+.trend-chart .trend-annot-label { font-family: var(--gb-font-mono); font-size: 9.5px; fill: var(--gb-ink-soft); }
+.trend-chart rect[role="img"]:focus-visible { outline: none; stroke: var(--gb-accent); stroke-width: 1.5; }
+/* ── State × year heatmap ── */
+.trend-heat-scroll { overflow-x: auto; }
+.trend-heat-grid { display: grid; column-gap: 2px; row-gap: 2px; min-width: 0; align-items: stretch; }
+.heat-year { font-family: var(--gb-font-mono); font-size: 0.643rem; color: var(--gb-ink-faint); text-align: center; padding-bottom: 2px; }
+.heat-state {
+  background: none; border: none; cursor: pointer; text-align: right;
+  padding: 0 8px 0 0; font-family: var(--gb-font-body); font-size: 0.786rem;
+  color: var(--gb-ink-soft); white-space: nowrap; line-height: 1;
+}
+.heat-state:hover, .heat-state:focus-visible { color: var(--gb-accent); outline: none; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
+.heat-cell { height: 15px; border: 0; padding: 0; border-radius: 1px; box-sizing: border-box; }
+button.heat-cell { cursor: pointer; }
+button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid var(--gb-ink); outline-offset: 0; }
+.heat-cell-zero { background: transparent; }
+.trend-heat-legend { display: flex; align-items: center; gap: 5px; margin-top: 10px; font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); flex-wrap: wrap; }
+.heat-swatch { width: 16px; height: 10px; border-radius: 1px; flex-shrink: 0; }
+/* ── Category small multiples ── */
+.trend-multi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px 22px; }
+.trend-multi {
+  background: none; border: 1px solid transparent; cursor: pointer;
+  padding: 6px 6px 4px; text-align: left; display: block; min-width: 0;
+}
+.trend-multi:hover { background: var(--gb-row-hover); border-color: var(--gb-rule-faint); }
+.trend-multi:focus-visible { outline: 2px solid var(--gb-accent); outline-offset: 0; }
+.trend-multi-name {
+  font-family: var(--gb-font-body); font-size: 0.786rem; font-weight: 600;
+  color: var(--gb-ink); margin-bottom: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.trend-multi svg { display: block; width: 100%; }
+.trend-col-hit { fill: transparent; cursor: pointer; }
+.trend-col-hit:hover, .trend-col-hit:focus-visible { fill: rgba(22, 19, 16, 0.05); outline: none; }
+.trend-col-hit:focus-visible { stroke: var(--gb-accent); stroke-width: 1.5; }
+.trends-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; }
+.trend-bars { display: flex; flex-direction: column; gap: 2px; }
+.trend-row {
+  display: grid; grid-template-columns: 168px 1fr 60px; align-items: center; gap: 10px;
+  background: none; border: none; padding: 4px 2px; cursor: pointer; text-align: left;
+  font-family: var(--gb-font-body); width: 100%;
+}
+.trend-row:hover, .trend-row:focus-visible { background: var(--gb-row-hover); outline: none; }
+.trend-row:focus-visible { box-shadow: inset 0 0 0 1.5px var(--gb-accent); }
+.trend-row-static { cursor: default; }
+.trend-row-static:hover { background: none; }
+.trend-row-label { font-size: 0.786rem; color: var(--gb-ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trend-row:hover .trend-row-label { color: var(--gb-ink); }
+.trend-row-track { height: 10px; position: relative; }
+.trend-row-bar { height: 10px; background: var(--gb-accent); border-radius: 0 4px 4px 0; min-width: 2px; }
+.trend-row-val { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); font-variant-numeric: tabular-nums; text-align: right; }
+.trend-table { margin-top: 4px; }
+.trend-table summary { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer; }
+.trend-table summary:hover { color: var(--gb-accent); }
+.trend-table-scroll { overflow-x: auto; margin-top: 8px; }
+.trend-table table { font-size: 0.786rem; border-collapse: collapse; }
+.trend-table th, .trend-table td { padding: 3px 10px; text-align: right; font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-soft); white-space: nowrap; border-bottom: 1px solid var(--gb-rule-faint); }
+.trend-table th { color: var(--gb-ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+.trend-table th:first-child, .trend-table td:first-child { text-align: left; }
+/* Neutralize the results-table's global row styling, which otherwise leaks
+   into these table twins (serif display font on every second column, mono
+   width/padding on the first, pointer cursor and hover tint on rows). */
+.trend-table tbody tr { cursor: default; }
+.trend-table tbody tr:hover { background: none; }
+.trend-table thead th { cursor: default; }
+.trend-table thead th:hover { color: var(--gb-ink-faint); }
+.trend-table tbody td:first-child, .trend-table tbody td:nth-child(2) {
+  font-family: var(--gb-font-mono); font-size: 0.714rem; font-weight: 400;
+  color: var(--gb-ink-soft); width: auto; max-width: none;
+  padding: 3px 10px; letter-spacing: normal;
+}
+@media (max-width: 900px) {
+  #trends-backdrop { padding: 12px; }
+  #trends-modal { max-height: calc(100vh - 24px); }
+  .trends-modal-head { padding: 16px 16px 0; }
+  .trends-modal-body { padding: 12px 16px 32px; }
+  .trends-grid { grid-template-columns: 1fr; }
+  .trend-row { grid-template-columns: 120px 1fr 56px; }
+  .trend-heat-grid { column-gap: 1px; }
+  .heat-state { font-size: 0.714rem; padding-right: 5px; }
+}
 
 /* ── Explorer layout ── */
 #app { display: flex; position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--gb-paper); }
@@ -213,20 +334,13 @@ a { color: var(--gb-accent); }
   padding: 8px 10px; text-align: left; width: 100%;
 }
 #gb-explore-btn:hover { background: var(--gb-accent-soft); border-color: var(--gb-accent-deep); color: var(--gb-accent-deep); }
-#random-year-btn {
-  background: none; border: 1px solid var(--gb-rule-faint);
-  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gb-ink-soft); cursor: pointer;
-  padding: 8px 10px; text-align: left; width: 100%;
-}
-#random-year-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
-#about-btn {
+#about-btn, #trends-btn {
   background: none; border: none;
   font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer;
   padding: 4px 0; text-align: left; width: 100%;
 }
-#about-btn:hover { color: var(--gb-ink-soft); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+#about-btn:hover, #trends-btn:hover { color: var(--gb-ink-soft); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
 #sidebar-scroll { overflow-y: auto; flex: 1; padding: 16px 20px 24px; }
 .sidebar-filter-hd {
   font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.16em;
@@ -311,9 +425,39 @@ a { color: var(--gb-accent); }
 #random-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
 #filter-btn { display: none; }
 
+/* ── View-mode toggle (Listings / Establishments) ── */
+#view-toggle { display: inline-flex; border: 1px solid var(--gb-rule-faint); }
+.view-btn {
+  background: var(--gb-paper); border: none; cursor: pointer;
+  font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gb-ink-soft); padding: 5px 12px;
+}
+.view-btn + .view-btn { border-left: 1px solid var(--gb-rule-faint); }
+.view-btn:hover:not(:disabled):not(.view-btn-active) { color: var(--gb-ink); }
+.view-btn:disabled { color: var(--gb-ink-faint); cursor: not-allowed; opacity: 0.6; }
+.view-btn-active { background: var(--gb-accent); color: var(--gb-paper); }
+#est-mode-note { margin: 0; font-size: 0.786rem; color: var(--gb-ink-faint); font-style: italic; }
+
+/* ── Establishments table ── */
+.est-num { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-soft); font-variant-numeric: tabular-nums; text-align: right; }
+th.est-num-head { text-align: right; }
+.est-spark {
+  width: 130px; height: 12px; background-color: var(--gb-paper-2);
+  border: 1px solid var(--gb-rule-faint); box-sizing: border-box;
+}
+td.est-spark-cell { overflow: visible; }
+/* Establishment columns get explicit budgets so the coverage sparkline stays
+   on-screen at common desktop widths instead of overflowing to the right. */
+table.est-mode td { padding: 11px 10px; }
+table.est-mode tbody td:first-child { width: 100px; }
+table.est-mode td:nth-child(2) { max-width: 230px; }
+table.est-mode td:nth-child(3) { max-width: 185px; }
+table.est-mode td:nth-child(4) { max-width: 170px; }
+table.est-mode td:nth-child(5) { max-width: 130px; }
+
 /* ── Table ── */
 #content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-#table-wrap { flex: 1; overflow-y: auto; }
+#table-wrap { flex: 1; overflow-y: auto; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 0.929rem; }
 thead { position: sticky; top: 0; background: var(--gb-paper); z-index: 1; }
 thead th {
@@ -349,6 +493,16 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 .source-cell { text-align: center; }
 .src-btn { background: var(--gb-paper-2); border: 1px solid var(--gb-rule-faint); padding: 3px 8px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-soft); }
 .src-btn:hover { background: var(--gb-paper); color: var(--gb-accent); border-color: var(--gb-accent); }
+/* ── Mobile result cards (shared by listings + establishments) ── */
+.mcard { display: flex; flex-direction: column; gap: 3px; }
+.mcard-top { display: flex; align-items: center; gap: 7px; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; color: var(--gb-ink-faint); }
+.mcard-year { color: var(--gb-ink-soft); }
+.mcard-top .pub-dot { margin-right: 0; }
+.mcard-name { font-family: var(--gb-font-display); font-size: 1.143rem; font-weight: 500; color: var(--gb-ink); line-height: 1.25; }
+.mcard-line { font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.35; }
+.mcard-cat { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gb-accent); margin-top: 1px; }
+.mcard .est-spark { width: 100%; margin-top: 5px; }
+
 .detail-col { text-align: center; width: 28px; padding: 4px; }
 .detail-col-head { width: 28px; padding: 4px; text-align: center; }
 .detail-btn { background: none; border: none; cursor: pointer; font-size: 0.929rem; color: var(--gb-ink-faint); padding: 2px 4px; }
@@ -366,6 +520,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
 #detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
 #detail-title { font-family: var(--gb-font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.005em; line-height: 1.1; margin: 0 0 20px; color: var(--gb-ink); }
+#detail-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: -12px 0 16px; }
+#detail-badges:empty { display: none; }
+.detail-badge { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); background: var(--gb-paper-2); }
+.detail-badge-rec { color: #5c3d00; background: var(--gb-highlight-soft); border-color: rgba(200, 144, 40, 0.6); }
+.rec-star { color: var(--gb-highlight); font-size: 0.786rem; }
 .detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
 .df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
 .df-val { color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
@@ -476,6 +635,13 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   #filter-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; background: none; border: 1px solid var(--gb-rule-faint); cursor: pointer; font-size: 0.929rem; color: var(--gb-ink-soft); white-space: nowrap; flex-shrink: 0; }
   #table-wrap { overflow-x: auto; }
   #main, #content, #table-wrap { min-width: 0; }
+  /* Card layout: rows render one full-width cell (built in buildRowTr /
+     buildEstabTr); the column header row has nothing to head. Sorting and
+     column filters fold into the sidebar + search on phones. */
+  #results-table thead { display: none; }
+  td.mcard-cell, table.est-mode td.mcard-cell { max-width: none; white-space: normal; overflow: visible; padding: 12px 16px; width: auto; }
+  tbody td.mcard-cell:first-child, table.est-mode tbody td.mcard-cell:first-child { width: auto; padding-left: 16px; font-family: var(--gb-font-body); font-size: 1rem; color: inherit; }
+  tbody tr.selected td.mcard-cell { box-shadow: inset 3px 0 0 var(--gb-accent); color: inherit; }
   #main.detail-open #table-wrap { padding-right: 0; }
   #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
   #mobile-header { display: block; padding: 14px 16px 12px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
@@ -560,6 +726,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <!-- 41 = folded gbCategoryGroup() labels with >=100 entries across the merged green_book_entries_all.csv + travel_guides_all.csv dataset, excluding the "Blank or no specific category" bucket. Regenerate by folding both CSVs' category columns through gb-categories.js's gbCategoryGroup() and counting labels. -->
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">41</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
+  <button class="gb-hero-caveat-link" id="hero-trends-btn" style="margin-top:20px">SEE THE FULL PICTURE &mdash; CHARTS OF THE WHOLE DATASET&rarr;</button>
 </section>
 
 <div id="app">
@@ -575,7 +742,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
     <div id="sidebar-cta">
       <button id="about-btn">About this explorer</button>
-      <button id="random-year-btn">Jump to a random year</button>
+      <button id="trends-btn">Charts &amp; trends</button>
       <button id="gb-explore-btn">Open a random entry</button>
     </div>
   </div>
@@ -591,8 +758,9 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <p class="mobile-hero-title">Green Books Travel Guide Explorer</p>
     <p class="mobile-hero-desc">Explore the directory of safe businesses and services for Black travelers, 1930&ndash;1966</p>
     <div class="mobile-hero-actions">
-      <button id="mobile-about-btn">About this explorer</button>
-      <button id="mobile-random-btn">Open a random entry</button>
+      <button id="mobile-about-btn">About</button>
+      <button id="mobile-trends-btn">Charts</button>
+      <button id="mobile-random-btn">Random entry</button>
     </div>
     <select id="mobile-volume-select" aria-label="Select volume" style="display:none"></select>
   </div>
@@ -604,10 +772,15 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <span id="export-feedback" aria-live="polite"></span>
     </div>
     <div class="toolbar-meta-row">
+      <div id="view-toggle" role="group" aria-label="View mode">
+        <button id="view-listings-btn" class="view-btn view-btn-active" aria-pressed="true">Listings</button>
+        <button id="view-estabs-btn" class="view-btn" aria-pressed="false" disabled title="Available once all entries finish loading">Establishments</button>
+      </div>
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
       <span id="load-status"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
+    <p id="est-mode-note" style="display:none">One row per business — listings matched across volumes and publications by name and address; entries that never carry an address (section headers, boilerplate) are hidden. Click a row to open its most recent listing.</p>
   </div>
   <button id="random-btn" style="display:none"></button>
   <div id="content">
@@ -630,6 +803,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div id="detail-inner">
         <div id="detail-page-context"></div>
         <h2 id="detail-title"></h2>
+        <div id="detail-badges"></div>
         <div class="detail-fields" id="detail-fields"></div>
         <div id="detail-also-in" style="display:none"></div>
         <div id="detail-map" style="display:none"></div>
@@ -640,6 +814,114 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 </main>
 </div>
 
+
+<div id="trends-backdrop">
+  <div id="trends-modal" role="dialog" aria-modal="true" aria-labelledby="trends-modal-title" tabindex="-1">
+    <div class="trends-modal-head">
+      <div class="about-modal-eyebrow" id="trends-modal-title">THE GUIDES AT A GLANCE</div>
+      <button class="close-about close-trends" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="trends-modal-body">
+      <p class="trends-sub">Charts cover the full dataset — counting extracted listings, or resolved businesses where noted. Click a year, category, state, or cell to see its listings and leave the charts.</p>
+      <aside class="trends-caveat" role="note" aria-label="What these charts can and cannot measure">
+        <div class="trends-caveat-rule" aria-hidden="true"></div>
+        <div class="trends-caveat-body">
+          <div class="trends-caveat-label">WHAT THESE CHARTS CAN &mdash; AND CAN&rsquo;T &mdash; MEASURE</div>
+          <p class="trends-caveat-text">These charts count machine-extracted listings, so OCR and entity-recognition errors in years, states, and categories flow through them uncorrected. They can also only measure what has been digitized and processed: the 45 volumes in this dataset. Other Black travel guides &mdash; including titles held by the Schomburg Center that have not been digitized &mdash; are not represented, and some years are covered by a single publication. Read an empty year or a thin state as <em>absent from the digitized corpus</em>, not absent from history.</p>
+          <a class="trends-caveat-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">&ldquo;MORE AFRICAN AMERICAN TRAVEL GUIDES!&rdquo; &mdash; NYPL RESEARCH GUIDE&rarr;</a>
+        </div>
+      </aside>
+      <p class="trends-loading" id="trends-loading">Charts appear once all entries finish loading&hellip;</p>
+      <div id="trends-body" style="display:none">
+        <figure class="trend-fig">
+          <figcaption class="trend-caption">
+            <span class="trend-title">Listings per year</span>
+            <span class="trend-note">stacked by publication &middot; the 1942&ndash;46 gap is the wartime publishing pause</span>
+          </figcaption>
+          <p class="trend-caveat">Rises and dips partly track which guides survive in the digitized corpus &mdash; some years are covered by a single publication, others by several.</p>
+          <div class="trend-legend" id="trend-years-legend"></div>
+          <div class="trend-chart" id="trend-years"></div>
+          <details class="trend-table">
+            <summary>View as table</summary>
+            <div class="trend-table-scroll" id="trend-years-table"></div>
+          </details>
+        </figure>
+        <figure class="trend-fig">
+          <figcaption class="trend-caption">
+            <span class="trend-title">First-time vs. returning listings</span>
+            <span class="trend-note">a listing is first-time when the cross-guide resolver has never seen that business in an earlier year &middot; address-less boilerplate excluded</span>
+          </figcaption>
+          <p class="trend-caveat">&ldquo;First-time&rdquo; means first appearance in the digitized corpus, not first year in business &mdash; and OCR name variants the resolver can&rsquo;t match can count one business as several.</p>
+          <div class="trend-legend" id="trend-churn-legend"></div>
+          <div class="trend-chart" id="trend-churn"></div>
+          <details class="trend-table">
+            <summary>View as table</summary>
+            <div class="trend-table-scroll" id="trend-churn-table"></div>
+          </details>
+        </figure>
+        <figure class="trend-fig">
+          <figcaption class="trend-caption">
+            <span class="trend-title">Listings by state and year</span>
+            <span class="trend-note">top 20 states &middot; darker green = more listings &middot; &#x22EF; = years with no guides, collapsed &middot; click a cell to filter</span>
+          </figcaption>
+          <p class="trend-caveat">Depends on machine-extracted state fields and on which guides are digitized for each year &mdash; a thin row can reflect the corpus rather than the era.</p>
+          <div class="trend-heat-scroll"><div id="trend-heat"></div></div>
+          <div class="trend-heat-legend" id="trend-heat-legend" aria-hidden="true"></div>
+          <details class="trend-table">
+            <summary>View as table</summary>
+            <div class="trend-table-scroll" id="trend-heat-table"></div>
+          </details>
+        </figure>
+        <figure class="trend-fig">
+          <figcaption class="trend-caption">
+            <span class="trend-title">The changing mix</span>
+            <span class="trend-note">top 8 categories &middot; each panel is that category&rsquo;s share of the year&rsquo;s listings &middot; shared scale &middot; click a panel to filter</span>
+          </figcaption>
+          <p class="trend-caveat">Categories are the guides&rsquo; own printed section headings &mdash; shifts reflect each publication&rsquo;s editorial choices as much as the market itself.</p>
+          <div class="trend-multi-grid" id="trend-multi"></div>
+          <details class="trend-table">
+            <summary>View as table</summary>
+            <div class="trend-table-scroll" id="trend-multi-table"></div>
+          </details>
+        </figure>
+        <div class="trends-grid">
+          <figure class="trend-fig">
+            <figcaption class="trend-caption">
+              <span class="trend-title">Most-listed categories</span>
+              <span class="trend-note">top 10 section headings, folded across spelling variants</span>
+            </figcaption>
+            <div class="trend-bars" id="trend-cats"></div>
+          </figure>
+          <figure class="trend-fig">
+            <figcaption class="trend-caption">
+              <span class="trend-title">Most-listed states</span>
+              <span class="trend-note">top 12 by listings across all guides</span>
+            </figcaption>
+            <div class="trend-bars" id="trend-states"></div>
+          </figure>
+        </div>
+        <div class="trends-grid">
+          <figure class="trend-fig">
+            <figcaption class="trend-caption">
+              <span class="trend-title">How long businesses stayed listed</span>
+              <span class="trend-note">distinct years listed per resolved business (see the Establishments view) &middot; address-less boilerplate excluded</span>
+            </figcaption>
+            <p class="trend-caveat">A floor, not a lifespan: unmatched name variants can split one business&rsquo;s run, and a listing ending doesn&rsquo;t mean the business closed.</p>
+            <div class="trend-bars" id="trend-lifespan"></div>
+          </figure>
+          <figure class="trend-fig">
+            <figcaption class="trend-caption">
+              <span class="trend-title">Cross-guide overlap</span>
+              <span class="trend-note">which guides each resolved business appeared in &middot; address-less boilerplate excluded</span>
+            </figcaption>
+            <p class="trend-caveat">Sensitive to cross-guide matching &mdash; OCR noise can understate overlap, and loose matches can overstate it.</p>
+            <div class="trend-bars" id="trend-overlap"></div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="about-backdrop">
   <div id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-title" tabindex="-1">
@@ -668,6 +950,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
           <p class="about-modal-emphasis">There are OCR, entity-extraction, and entry alignment errors in this data viewer, always use the original source pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
+          <p>The dataset also reaches only as far as digitization has: it covers the 45 digitized volumes across these seven publications. Other Black travel guides &mdash; such as the <em>Afro-American&rsquo;s Travel Guide</em> (1939) and <em>The Black American Travel Guide</em> (1971), held in the Schomburg Center&rsquo;s Jean Blackwell Hutson Research and Reference Division but not digitized here &mdash; are not represented, so charts and counts describe the digitized corpus, not the full historical record. <a class="about-modal-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">See NYPL&rsquo;s research guide, &ldquo;More African American Travel Guides!&rdquo; &rarr;</a> You can explore the shape of the digitized corpus in <button type="button" id="about-trends-link" class="about-modal-link">charts &amp; trends</button>.</p>
           <h3 class="about-modal-h3">How to use this site</h3>
           <ol class="about-modal-list">
             <li>Filter by <strong>year</strong>, <strong>name</strong>, <strong>address</strong>, <strong>state</strong>, <strong>city</strong>, or <strong>category</strong> at the top of the explorer.</li>
@@ -711,6 +994,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 <script src="gb-geo.js"></script>
 <script>
 var _gbAboutOnLoad = location.hash === '#about';
+var _gbTrendsOnLoad = location.hash === '#trends';
 const ALL_INITIAL_ENTRIES = [];
 const VOLUMES     = {};
 // Field schema for the merged Green Book + travel-guide dataset. top_values
@@ -843,6 +1127,35 @@ const VALUE_LABELS = {
   "false": "No",
 };
 
+// Rich fields present in the CSVs but not shown as table columns. They render
+// in the detail panel, join the search haystack, and ride along in CSV export.
+const DETAIL_FIELDS = ["phone", "proprietor", "personnel", "rates", "amenities_services", "sub_region"];
+Object.assign(FIELD_LABELS, {
+  "phone": "Phone",
+  "proprietor": "Proprietor",
+  "personnel": "Personnel",
+  "rates": "Rates",
+  "amenities_services": "Amenities",
+  "sub_region": "Area",
+});
+
+// Boolean flags arrive as True/TRUE/true (and False variants) across the two CSVs.
+function gbIsTrue(v) { return /^true$/i.test((v || "").trim()); }
+
+// Green Book rates come through as stringified dicts ("{'single': '$6.50',
+// 'double': '$10.50'}"); travel-guide rates are plain strings ("$3 up").
+function gbFormatRates(v) {
+  if (!v || v[0] !== "{") return v;
+  const parts = [];
+  const re = /'(\w+)':\s*(?:'([^']*)'|None)/g;
+  let m;
+  while ((m = re.exec(v)) !== null) {
+    if (!m[2]) continue;
+    parts.push(m[1].charAt(0).toUpperCase() + m[1].slice(1) + " " + m[2]);
+  }
+  return parts.length ? parts.join(" · ") : v;
+}
+
 // ── State ──────────────────────────────────────────────────────────────────
 let currentDocMeta = {};
 const facetState = {};   // {fieldName: Set<value>}
@@ -867,6 +1180,15 @@ function gcEvent(name) {
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
 }
 let colFilters = {};  // fieldName → filter string
+// ── Establishments view state ──
+// "listings" shows one row per extracted entry (the classic table);
+// "establishments" aggregates the same filtered rows into one row per
+// resolved business group (via gb-matching.js) with lifespan stats.
+let viewMode = "listings";
+let estabSortCol = "nYears";   // establishment-table sort, separate from listing sort
+let estabSortDir = -1;
+const ESTAB_WINDOW_STEP = 1000;
+let _estabWinSize = ESTAB_WINDOW_STEP;
 const showAllFacets = new Set();  // field names with expanded value list
 try { const _s = sessionStorage.getItem('showAllFacets'); if (_s) JSON.parse(_s).forEach(n => showAllFacets.add(n)); } catch(e) {}
 
@@ -975,7 +1297,9 @@ function getFiltered() {
         // Skip blank categories so "Blank or no specific category" doesn't
         // become searchable text matching thousands of unrelated rows.
         const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
-        row._hay = (displayFields.map(f => (row[f.name] || "")).join(" ") + " " + foldedCat)
+        row._hay = (displayFields.map(f => (row[f.name] || ""))
+          .concat(DETAIL_FIELDS.map(n => row[n] || ""))
+          .join(" ") + " " + foldedCat)
           .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       }
       if (!row._hay.includes(q)) return false;
@@ -997,6 +1321,9 @@ function getFiltered() {
       // N. Y. (Harlem)") — also accept a match with both sides normalized.
       // Additive only: raw matches still pass above.
       if (col === "city" && gbNormCity(row[col]).includes(gbNormCity(val))) continue;
+      // Category dropdown values are folded labels — also accept a match in
+      // folded space so "DRUG STORES" catches rows filed as "PHARMACY".
+      if (col === "category" && gbCategoryGroup(row[col]).toLowerCase().includes(val.toLowerCase())) continue;
       return false;
     }
     return true;
@@ -1041,6 +1368,65 @@ function canvasId(cf) {
 
 // ── Render: table body only (preserves thead / focus) ──────────────────────
 
+// Under the mobile breakpoint the table renders as a card list: same
+// <tr> skeleton (so selection, roving tabindex, windowing, and scroll
+// anchoring are untouched) but one full-width cell of card content instead
+// of nine truncated columns that force horizontal scrolling.
+function gbMobileCards() {
+  return window.matchMedia("(max-width: 640px)").matches;
+}
+
+// One-cell card body for a listing row.
+function gbBuildListingCardTd(row, q) {
+  const td = document.createElement("td");
+  td.className = "mcard-cell";
+  td.colSpan = displayFields.length + 2;
+  const card = document.createElement("div");
+  card.className = "mcard";
+  const top = document.createElement("div");
+  top.className = "mcard-top";
+  const year = document.createElement("span");
+  year.className = "mcard-year";
+  year.textContent = row.volume_year || row.year || "";
+  top.appendChild(year);
+  if (row.publication) {
+    const dot = document.createElement("span");
+    dot.className = "pub-dot";
+    dot.style.background = PUBLICATION_COLORS[row.publication] || "var(--gb-ink-faint)";
+    top.appendChild(dot);
+    top.appendChild(document.createTextNode(PUBLICATION_SHORT_NAMES[row.publication] || row.publication));
+  }
+  card.appendChild(top);
+  const name = document.createElement("div");
+  name.className = "mcard-name";
+  name.appendChild(highlightMatch(row.name || "(unnamed)", q));
+  if (gbIsTrue(row.is_recommended)) {
+    const star = document.createElement("span");
+    star.className = "rec-star";
+    star.textContent = " ★";
+    star.setAttribute("aria-label", "Recommended in the original guide");
+    name.appendChild(star);
+  }
+  card.appendChild(name);
+  const placeTxt = [row.address, [row.city, row.state].filter(Boolean).join(", ")]
+    .filter(Boolean).join(" · ");
+  if (placeTxt) {
+    const place = document.createElement("div");
+    place.className = "mcard-line";
+    place.appendChild(highlightMatch(placeTxt, q));
+    card.appendChild(place);
+  }
+  const cat = gbCategoryGroup(row.category);
+  if (row.category && cat !== "Blank or no specific category") {
+    const c = document.createElement("div");
+    c.className = "mcard-cat";
+    c.textContent = cat;
+    card.appendChild(c);
+  }
+  td.appendChild(card);
+  return td;
+}
+
 // Build one result row. Factored out of renderTableBody so extendWindow()
 // can append rows without rebuilding the whole window.
 function buildRowTr(row, q) {
@@ -1055,31 +1441,6 @@ function buildRowTr(row, q) {
   // first row as a fallback set by the caller); ArrowUp/Down move between rows.
   tr.setAttribute("tabindex", isSelected ? "0" : "-1");
   tr.dataset.idx = idx;
-  const pubColor = PUBLICATION_COLORS[row.publication];
-  displayFields.forEach(f => {
-    const td = document.createElement("td");
-    if (f.name === "publication" && pubColor) {
-      td.style.borderLeft = `5px solid ${pubColor}`;
-    }
-    const cellText = row[f.name] || "";
-    td.title = cellText;
-    td.appendChild(highlightMatch(cellText, q));
-    tr.appendChild(td);
-  });
-  const tdSrc = document.createElement("td");
-  tdSrc.className = "source-cell";
-  if (row.canvas_fragment) {
-    const btn = document.createElement("button");
-    btn.className = "src-btn";
-    btn.textContent = "View page ↗";
-    btn.title = "Open original digitized page image";
-    btn.addEventListener("click", e => {
-      e.stopPropagation();
-      openSource(row.canvas_fragment);
-    });
-    tdSrc.appendChild(btn);
-  }
-  tr.appendChild(tdSrc);
   const rowHandler = () => {
     const wrap = document.getElementById('table-wrap');
     const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
@@ -1098,6 +1459,53 @@ function buildRowTr(row, q) {
       }
     }
   };
+  if (gbMobileCards()) {
+    tr.appendChild(gbBuildListingCardTd(row, q));
+  } else {
+    const pubColor = PUBLICATION_COLORS[row.publication];
+    displayFields.forEach(f => {
+      const td = document.createElement("td");
+      if (f.name === "publication" && pubColor) {
+        td.style.borderLeft = `5px solid ${pubColor}`;
+      }
+      const cellText = row[f.name] || "";
+      td.title = cellText;
+      td.appendChild(highlightMatch(cellText, q));
+      if (f.name === "name" && gbIsTrue(row.is_recommended)) {
+        const star = document.createElement("span");
+        star.className = "rec-star";
+        star.textContent = " ★";
+        star.title = "Marked as recommended in the original guide";
+        star.setAttribute("aria-label", "Recommended in the original guide");
+        td.appendChild(star);
+      }
+      tr.appendChild(td);
+    });
+    const tdSrc = document.createElement("td");
+    tdSrc.className = "source-cell";
+    if (row.canvas_fragment) {
+      const btn = document.createElement("button");
+      btn.className = "src-btn";
+      btn.textContent = "View page ↗";
+      btn.title = "Open original digitized page image";
+      btn.addEventListener("click", e => {
+        e.stopPropagation();
+        openSource(row.canvas_fragment);
+      });
+      tdSrc.appendChild(btn);
+    }
+    tr.appendChild(tdSrc);
+    const tdDetail = document.createElement("td");
+    tdDetail.className = "detail-col";
+    const detailBtn = document.createElement("button");
+    detailBtn.className = "detail-btn";
+    detailBtn.setAttribute("aria-label", "Open entry details");
+    detailBtn.setAttribute("tabindex", "-1");
+    detailBtn.textContent = "▸";
+    detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
+    tdDetail.appendChild(detailBtn);
+    tr.appendChild(tdDetail);
+  }
   tr.addEventListener("click", rowHandler);
   tr.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); return; }
@@ -1111,16 +1519,6 @@ function buildRowTr(row, q) {
       }
     }
   });
-  const tdDetail = document.createElement("td");
-  tdDetail.className = "detail-col";
-  const detailBtn = document.createElement("button");
-  detailBtn.className = "detail-btn";
-  detailBtn.setAttribute("aria-label", "Open entry details");
-  detailBtn.setAttribute("tabindex", "-1");
-  detailBtn.textContent = "▸";
-  detailBtn.addEventListener("click", e => { e.stopPropagation(); rowHandler(); });
-  tdDetail.appendChild(detailBtn);
-  tr.appendChild(tdDetail);
   return tr;
 }
 
@@ -1175,6 +1573,7 @@ function extendWindow() {
 }
 
 function renderTableBody() {
+  if (viewMode === "establishments") { renderEstabBody(); return; }
   const filtered = getFiltered();
   const sorted   = getSorted(filtered);
 
@@ -1240,6 +1639,7 @@ function renderTableBody() {
 
 // ── Render: table head (sort row + filter row) ──────────────────────────────
 function renderTableHead() {
+  if (viewMode === "establishments") { renderEstabHead(); return; }
   const head = document.getElementById("table-head");
   head.innerHTML = "";
 
@@ -1289,8 +1689,12 @@ function renderTableHead() {
       const opt0 = document.createElement("option");
       opt0.value = ""; opt0.textContent = "(all)";
       sel.appendChild(opt0);
-      // Only show values present in the current filtered result set
-      const presentVals = new Set(getFiltered().map(r => r[f.name] || "").filter(Boolean));
+      // Only show values present in the current filtered result set. Folded
+      // facets (category) compare in folded space: top_values holds canonical
+      // gbCategoryGroup() labels, which raw values rarely equal verbatim.
+      const presentVals = new Set(getFiltered()
+        .map(r => f.folded ? gbCategoryGroup(r[f.name]) : (r[f.name] || ""))
+        .filter(Boolean));
       if (colFilters[f.name] && !presentVals.has(colFilters[f.name])) colFilters[f.name] = "";
       const visibleVals = f.top_values.filter(([val]) => presentVals.has(val));
       visibleVals.forEach(([val]) => {
@@ -1346,6 +1750,15 @@ function renderTable() {
   renderTableHead();
   renderTableBody();
 }
+
+// Re-render rows when the viewport crosses the card breakpoint, so a
+// rotation or window resize swaps between the card and column layouts.
+(function () {
+  const mq = window.matchMedia("(max-width: 640px)");
+  const onChange = () => renderTable();
+  if (mq.addEventListener) mq.addEventListener("change", onChange);
+  else if (mq.addListener) mq.addListener(onChange);
+})();
 
 // ── Resolve canvas_fragment → human-browseable viewer URL ──────────────────
 function viewerUrl(canvas_fragment) {
@@ -1484,19 +1897,46 @@ function showDetail(row) {
     thumbLink.removeAttribute("aria-label");
   }
 
+  // Badges: flags the guides themselves printed, worth surfacing prominently.
+  const badges = document.getElementById("detail-badges");
+  badges.innerHTML = "";
+  if (gbIsTrue(row.is_recommended)) {
+    const b = document.createElement("span");
+    b.className = "detail-badge detail-badge-rec";
+    b.textContent = "★ Recommended";
+    b.title = "Marked as recommended in the original guide";
+    badges.appendChild(b);
+  }
+  if (gbIsTrue(row.is_advertisement)) {
+    const b = document.createElement("span");
+    b.className = "detail-badge";
+    b.textContent = "Advertisement";
+    b.title = "Extracted from a display advertisement rather than a directory line";
+    badges.appendChild(b);
+  }
+
   const fields = document.getElementById("detail-fields");
   fields.innerHTML = "";
-  displayFields.forEach(f => {
-    const val = row[f.name] || "";
-    if (!val) return;
+  const addField = (label, val) => {
     const k = document.createElement("div");
     k.className = "df-key";
-    k.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+    k.textContent = label;
     const v = document.createElement("div");
     v.className = "df-val";
     v.textContent = VALUE_LABELS[val] || val;
     fields.appendChild(k);
     fields.appendChild(v);
+  };
+  displayFields.forEach(f => {
+    const val = row[f.name] || "";
+    if (!val) return;
+    addField(FIELD_LABELS[f.name] || f.name.replace(/_/g, " "), val);
+  });
+  DETAIL_FIELDS.forEach(fname => {
+    let val = row[fname] || "";
+    if (!val) return;
+    if (fname === "rates") val = gbFormatRates(val);
+    addField(FIELD_LABELS[fname] || fname.replace(/_/g, " "), val);
   });
 
   const pageCtx = document.getElementById("detail-page-context");
@@ -1703,21 +2143,39 @@ document.getElementById("export-btn").addEventListener("click", () => {
   const btn = document.getElementById("export-btn");
   btn.disabled = true;
   btn.textContent = "Exporting…";
-  const filtered = getSorted(getFiltered());
-  const cols = FIELD_META.map(f => f.name);
-  const lines = [cols.map(c => JSON.stringify(c || "")).join(",")];
-  filtered.forEach(row => {
-    lines.push(cols.map(c => JSON.stringify(row[c] || "")).join(","));
-  });
+  let lines, count, unit, suffix;
+  if (viewMode === "establishments") {
+    // Aggregated export: one row per resolved business group.
+    const groups = getSortedEstabs(getEstablishments());
+    const cols = ["name", "address", "city", "state", "category", "first_year", "last_year",
+                  "years_listed", "listings", "publications_count", "publications", "years"];
+    lines = [cols.map(c => JSON.stringify(c)).join(",")];
+    groups.forEach(g => {
+      lines.push([
+        g.name, g.address, g.city, g.state, g.category,
+        g.firstYear || "", g.lastYear || "", g.nYears, g.nListings, g.nPubs,
+        [...g.pubs].join("; "), [...g.yearPub.keys()].sort().join("; ")
+      ].map(v => JSON.stringify(String(v == null ? "" : v))).join(","));
+    });
+    count = groups.length; unit = "establishments"; suffix = "_establishments.csv";
+  } else {
+    const filtered = getSorted(getFiltered());
+    const cols = FIELD_META.map(f => f.name).concat(DETAIL_FIELDS, ["is_recommended", "is_advertisement"]);
+    lines = [cols.map(c => JSON.stringify(c || "")).join(",")];
+    filtered.forEach(row => {
+      lines.push(cols.map(c => JSON.stringify(row[c] || "")).join(","));
+    });
+    count = filtered.length; unit = "entries"; suffix = "_filtered.csv";
+  }
   const blob = new Blob([lines.join("\n")], { type: "text/csv" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = (DOC_TITLE || "entries").replace(/\s+/g, "_") + "_filtered.csv";
+  a.download = (DOC_TITLE || "entries").replace(/\s+/g, "_") + suffix;
   a.click();
   setTimeout(() => {
     btn.disabled = false; btn.textContent = "Export CSV";
     const fb = document.getElementById("export-feedback");
-    if (fb) { fb.textContent = `Exported ${filtered.length.toLocaleString()} entries as CSV.`; setTimeout(() => { fb.textContent = ""; }, 4000); }
+    if (fb) { fb.textContent = `Exported ${count.toLocaleString()} ${unit} as CSV.`; setTimeout(() => { fb.textContent = ""; }, 4000); }
   }, 600);
 });
 
@@ -1824,6 +2282,7 @@ function stateToHash() {
       if (idx > 0) params.set("vol", idx);
     }
   }
+  if (viewMode === "establishments") params.set("view", "est");
   if (searchQuery) params.set("q", searchQuery);
   if (sortCol) params.set("sort", sortCol + ":" + (sortDir > 0 ? "asc" : "desc"));
   for (const [col, val] of Object.entries(colFilters)) {
@@ -1839,6 +2298,7 @@ function stateToHash() {
   const str = params.toString();
   if (str) return location.pathname + location.search + "#" + str;
   if (location.hash === '#about') return location.pathname + location.search + '#about';
+  if (location.hash === '#trends') return location.pathname + location.search + '#trends';
   return location.pathname + location.search;
 }
 
@@ -1860,6 +2320,13 @@ function applyHashState() {
       if (msel) msel.value = label;
     }
   }
+
+  // View mode (establishments needs the loaded dataset; before it's built
+  // the establishment body renders a loading note, and the post-load
+  // renderAll fills it in). "view=trends" is a legacy alias from when the
+  // charts were a third view — it now opens the Trends modal.
+  if (params.get("view") === "est") viewMode = "establishments";
+  else if (params.get("view") === "trends") _gbTrendsOnLoad = true;
 
   // Search query
   const q = params.get("q");
@@ -1898,6 +2365,8 @@ function renderAll() {
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   selectedIdx = null;
   _winSize = WINDOW_STEP;  // shrink an extended window back to one page
+  _estabWinSize = ESTAB_WINDOW_STEP;
+  syncViewToggleUI();
   renderFacetSidebar();
   renderTable();
   syncFilterUI();
@@ -1916,6 +2385,7 @@ function scrollToSelected(delayMs = 0) {
 }
 
 function scrollToYear(year) {
+  if (viewMode !== "listings") return;  // the establishments table has no year rows
   const sorted = getSorted(getFiltered());
   const targetRow = sorted.find(r => (r.volume_year || r.year || '') === year);
   if (!targetRow) return;
@@ -1947,12 +2417,390 @@ document.getElementById("random-btn").addEventListener("click", () => {
   scrollToSelected();
 });
 
-document.getElementById("random-year-btn").addEventListener("click", () => {
-  const yearField = FIELD_META.find(f => f.name === GB_YEAR_FIELD);
-  if (!yearField || !yearField.top_values.length) return;
-  const years = yearField.top_values.map(([y]) => y);
-  gbJumpToYear(years[Math.floor(Math.random() * years.length)]);
-});
+// ── Establishments view ──────────────────────────────────────────────────────
+// One row per resolved business group instead of one row per extracted
+// listing. The pipeline is: getFiltered() (search/facets/column filters all
+// still apply, to listings) → collapse to the distinct business groups those
+// listings belong to → per-group lifespan stats computed from the FULL group
+// (so a year filter finds businesses active that year but still shows each
+// one's whole 1930–1966 story).
+
+// Stable per-row group key. Rows the resolver skipped (name stem < 3 chars)
+// become singleton establishments under a synthetic key; "\u0000" cannot
+// collide with real keys, which always contain "|".
+function gbEstabKeyOf(row) {
+  const k = gbRowToKey.get(row);
+  return k !== undefined ? k : "\u0000" + rowIdx(row);
+}
+
+function gbComputeEstabStats(key, rows) {
+  const nameCount = new Map();
+  const yearPub = new Map();   // year string → publication of the (first) listing that year
+  const pubs = new Set();
+  const catCount = new Map();
+  let rep = rows[0], repY = -1;
+  rows.forEach(r => {
+    const y = Number(r[GB_YEAR_FIELD] || r.year) || 0;
+    if (y >= repY) { repY = y; rep = r; }  // representative = most recent listing
+    if (r.name) nameCount.set(r.name, (nameCount.get(r.name) || 0) + 1);
+    const ys = String(r[GB_YEAR_FIELD] || r.year || "");
+    if (ys && !yearPub.has(ys)) yearPub.set(ys, r.publication || "");
+    if (r.publication) pubs.add(r.publication);
+    // Same fold the facet uses (gb-categories.js); the blank bucket carries
+    // no signal for a business's primary category, so it doesn't compete.
+    const cat = gbCategoryGroup(r.category);
+    if (cat !== "Blank or no specific category") catCount.set(cat, (catCount.get(cat) || 0) + 1);
+  });
+  // Display name: the most common printed form; ties go to the longer one.
+  let name = "", best = 0;
+  nameCount.forEach((c, n) => { if (c > best || (c === best && n.length > name.length)) { best = c; name = n; } });
+  let category = "", cbest = 0;
+  catCount.forEach((c, n) => { if (c > cbest) { cbest = c; category = n; } });
+  const yrs = [...yearPub.keys()].map(Number).filter(n => !isNaN(n)).sort((a, b) => a - b);
+  // A group where no listing ever carries a street address is directory
+  // boilerplate, not a business — repeated section headers ("HAND SIGNALS",
+  // "SCHOOL BUSES"), reference-page text, ads for the guide itself. Real
+  // businesses have an address in at least one year.
+  const hasAddress = rows.some(r => {
+    const a = (r.address || "").trim();
+    return a && !ADDR_PLACEHOLDER.test(a);
+  });
+  return {
+    key, rep, name: name || "(unnamed)",
+    address: rep.address || "", city: rep.city || "", state: rep.state || "",
+    category, hasAddress,
+    firstYear: yrs[0] || 0, lastYear: yrs[yrs.length - 1] || 0,
+    nYears: yrs.length, nListings: rows.length, nPubs: pubs.size,
+    pubs, yearPub,
+  };
+}
+
+// Memoized like getFiltered(): the key captures every filter input.
+let _ecKey = null, _ecGroups = null;
+function getEstablishments() {
+  const key = _filterKey();
+  if (key === _ecKey && _ecGroups) return _ecGroups;
+  const groups = [];
+  const seen = new Set();
+  getFiltered().forEach(row => {
+    const k = gbEstabKeyOf(row);
+    if (seen.has(k)) return;
+    seen.add(k);
+    const g = gbComputeEstabStats(k, gbNameIndex.get(k) || [row]);
+    if (g.hasAddress) groups.push(g);
+  });
+  _ecKey = key;
+  _ecGroups = groups;
+  return groups;
+}
+
+function getSortedEstabs(groups) {
+  const col = estabSortCol, dir = estabSortDir;
+  const strCols = new Set(["name", "address", "city", "state", "category"]);
+  const val = strCols.has(col) ? (g => (g[col] || "").toLowerCase()) : (g => g[col] || 0);
+  return [...groups].sort((a, b) => {
+    const av = val(a), bv = val(b);
+    if (av < bv) return -dir;
+    if (av > bv) return dir;
+    return b.nListings - a.nListings || (a.name || "").localeCompare(b.name || "");
+  });
+}
+
+function estabRangeText(g) {
+  if (!g.firstYear) return "";
+  return g.firstYear === g.lastYear ? String(g.firstYear) : g.firstYear + "–" + g.lastYear;
+}
+
+// Lifespan sparkline: a fixed 1930–1966 track; each listed year is a stripe
+// colored by the publication that listed it that year (matching the dots and
+// coverage grid). One element + one gradient, cheap enough for 1,000 rows.
+const SPARK_Y0 = 1930, SPARK_Y1 = 1966;
+function estabSparkline(g) {
+  const el = document.createElement("div");
+  el.className = "est-spark";
+  const span = SPARK_Y1 - SPARK_Y0 + 1;
+  const years = [...g.yearPub.entries()]
+    .map(([y, pub]) => [Number(y), pub])
+    .filter(([y]) => !isNaN(y) && y >= SPARK_Y0 && y <= SPARK_Y1)
+    .sort((a, b) => a[0] - b[0]);
+  if (years.length) {
+    const stops = [];
+    let cursor = 0;
+    years.forEach(([y, pub]) => {
+      const a = (y - SPARK_Y0) / span * 100;
+      const b = (y - SPARK_Y0 + 1) / span * 100;
+      if (a > cursor) stops.push(`transparent ${cursor.toFixed(2)}% ${a.toFixed(2)}%`);
+      stops.push(`${PUBLICATION_COLORS[pub] || "var(--gb-ink)"} ${a.toFixed(2)}% ${b.toFixed(2)}%`);
+      cursor = b;
+    });
+    if (cursor < 100) stops.push(`transparent ${cursor.toFixed(2)}% 100%`);
+    el.style.backgroundImage = `linear-gradient(90deg, ${stops.join(", ")})`;
+  }
+  const plural = g.nYears === 1 ? "" : "s";
+  el.setAttribute("role", "img");
+  el.setAttribute("aria-label", `Listed ${g.nYears} year${plural}, ${estabRangeText(g)}`);
+  el.title = `Listed ${estabRangeText(g)} · ${g.nYears} year${plural}`;
+  return el;
+}
+
+const ESTAB_NUM_COLS = new Set(["nYears", "nListings", "nPubs"]);
+
+// One-cell card body for an establishment row (mobile).
+function gbBuildEstabCardTd(g, q) {
+  const td = document.createElement("td");
+  td.className = "mcard-cell";
+  td.colSpan = ESTAB_COLUMNS.length;
+  const card = document.createElement("div");
+  card.className = "mcard";
+  const top = document.createElement("div");
+  top.className = "mcard-top";
+  const span = document.createElement("span");
+  span.className = "mcard-year";
+  span.textContent = estabRangeText(g);
+  top.appendChild(span);
+  top.appendChild(document.createTextNode(
+    g.nYears + (g.nYears === 1 ? " year" : " years") + " · " +
+    g.nListings + (g.nListings === 1 ? " listing" : " listings")));
+  card.appendChild(top);
+  const name = document.createElement("div");
+  name.className = "mcard-name";
+  name.appendChild(highlightMatch(g.name, q));
+  card.appendChild(name);
+  const placeTxt = [g.address, [g.city, g.state].filter(Boolean).join(", ")]
+    .filter(Boolean).join(" · ");
+  if (placeTxt) {
+    const place = document.createElement("div");
+    place.className = "mcard-line";
+    place.appendChild(highlightMatch(placeTxt, q));
+    card.appendChild(place);
+  }
+  if (g.category) {
+    const c = document.createElement("div");
+    c.className = "mcard-cat";
+    c.textContent = g.category;
+    card.appendChild(c);
+  }
+  card.appendChild(estabSparkline(g));
+  td.appendChild(card);
+  return td;
+}
+
+function buildEstabTr(g, q, selKey) {
+  const tr = document.createElement("tr");
+  const isSelected = selKey !== null && g.key === selKey;
+  if (isSelected) { tr.classList.add("selected"); tr.setAttribute("aria-current", "true"); }
+  tr.setAttribute("tabindex", isSelected ? "0" : "-1");
+  tr.dataset.key = g.key;
+  if (gbMobileCards()) {
+    tr.appendChild(gbBuildEstabCardTd(g, q));
+  } else {
+  const cells = [
+    ["span", estabRangeText(g)],
+    ["name", g.name],
+    ["address", g.address],
+    ["city", [g.city, g.state].filter(Boolean).join(", ")],
+    ["category", g.category],
+    ["nYears", g.nYears],
+    ["nListings", g.nListings],
+  ];
+  cells.forEach(([k, v]) => {
+    const td = document.createElement("td");
+    const txt = String(v == null ? "" : v);
+    if (ESTAB_NUM_COLS.has(k)) {
+      td.className = "est-num";
+      td.textContent = txt;
+    } else {
+      td.title = txt;
+      td.appendChild(highlightMatch(txt, q));
+    }
+    tr.appendChild(td);
+  });
+  const tdSpark = document.createElement("td");
+  tdSpark.className = "est-spark-cell";
+  tdSpark.appendChild(estabSparkline(g));
+  tr.appendChild(tdSpark);
+  }
+  const open = () => {
+    selectedIdx = rowIdx(g.rep);
+    showDetail(g.rep);
+    const wrap = document.getElementById("table-wrap");
+    const saved = wrap ? wrap.scrollTop : 0;
+    renderEstabBody();
+    if (wrap) wrap.scrollTop = saved;
+  };
+  tr.addEventListener("click", open);
+  tr.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); return; }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
+      if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
+        tr.setAttribute("tabindex", "-1");
+        next.setAttribute("tabindex", "0");
+        next.focus();
+      }
+    }
+  });
+  return tr;
+}
+
+const ESTAB_COLUMNS = [
+  ["firstYear", "Span", false],
+  ["name", "Name", false],
+  ["address", "Address", false],
+  ["city", "Location", false],
+  ["category", "Category", false],
+  ["nYears", "Years", true],
+  ["nListings", "Listings", true],
+  [null, "Coverage 1930–66", false],
+];
+function renderEstabHead() {
+  const head = document.getElementById("table-head");
+  head.innerHTML = "";
+  const tr = document.createElement("tr");
+  ESTAB_COLUMNS.forEach(([key, label, num]) => {
+    const th = document.createElement("th");
+    th.textContent = label;
+    if (num) th.classList.add("est-num-head");
+    if (!key) { th.style.cursor = "default"; tr.appendChild(th); return; }
+    th.setAttribute("tabindex", "0");
+    if (estabSortCol === key) {
+      th.classList.add(estabSortDir > 0 ? "sorted-asc" : "sorted-desc");
+      th.setAttribute("aria-sort", estabSortDir > 0 ? "ascending" : "descending");
+    } else {
+      th.setAttribute("aria-sort", "none");
+    }
+    const sortHandler = () => {
+      if (estabSortCol === key) estabSortDir = -estabSortDir;
+      else {
+        estabSortCol = key;
+        // Text columns start ascending; year/count columns start descending
+        // (the interesting end: longest-listed, most listings, earliest span).
+        estabSortDir = ["name", "address", "city", "state", "category"].includes(key) ? 1 : -1;
+      }
+      renderEstabHead();
+      renderEstabBody();
+    };
+    th.addEventListener("click", sortHandler);
+    th.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortHandler(); }
+    });
+    tr.appendChild(th);
+  });
+  head.appendChild(tr);
+}
+
+function renderEstabBody() {
+  const tbody = document.getElementById("table-body");
+  const noResults = document.getElementById("no-results");
+  const cl = document.getElementById("count-label");
+  if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
+  if (!gbDataLoaded) {
+    tbody.innerHTML = "";
+    noResults.style.display = "block";
+    noResults.innerHTML = '<p style="font-size: 1rem;color:#595959;margin:0">Establishments become available once all entries finish loading…</p>';
+    if (cl) cl.textContent = "";
+    return;
+  }
+  const groups = getSortedEstabs(getEstablishments());
+  const countText = `${groups.length.toLocaleString()} establishments · from ${getFiltered().length.toLocaleString()} matching listings`;
+  if (cl) cl.textContent = countText;
+  const tbl = document.getElementById("results-table");
+  if (tbl) tbl.setAttribute("aria-label", `Establishments — ${countText}`);
+  tbody.innerHTML = "";
+  const q = searchQuery.trim().toLowerCase();
+  const selKey = (selectedIdx !== null && ALL_ENTRIES[selectedIdx]) ? gbEstabKeyOf(ALL_ENTRIES[selectedIdx]) : null;
+  const frag = document.createDocumentFragment();
+  let anySelected = false;
+  groups.slice(0, _estabWinSize).forEach(g => {
+    const tr = buildEstabTr(g, q, selKey);
+    if (tr.classList.contains("selected")) anySelected = true;
+    frag.appendChild(tr);
+  });
+  tbody.appendChild(frag);
+  if (!anySelected && tbody.firstElementChild) tbody.firstElementChild.setAttribute("tabindex", "0");
+  renderEstabSentinel(tbody, groups);
+  if (groups.length === 0) {
+    noResults.style.display = "block";
+    noResults.innerHTML = 'No establishments match the current filters.' +
+      '<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">× Clear all filters</button>';
+  } else {
+    noResults.style.display = "none";
+  }
+}
+
+function renderEstabSentinel(tbody, groups) {
+  if (groups.length === 0) return;
+  const shown = Math.min(groups.length, _estabWinSize);
+  const remaining = groups.length - shown;
+  const trS = document.createElement("tr");
+  trS.className = "table-end-sentinel";
+  const td = document.createElement("td");
+  td.colSpan = ESTAB_COLUMNS.length;
+  if (remaining > 0) {
+    td.textContent = `Showing ${shown.toLocaleString()} of ${groups.length.toLocaleString()} establishments `;
+    const more = document.createElement("button");
+    more.type = "button";
+    more.textContent = `Show ${Math.min(ESTAB_WINDOW_STEP, remaining).toLocaleString()} more`;
+    more.addEventListener("click", extendEstabWindow);
+    td.appendChild(more);
+    _sentinelObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) extendEstabWindow();
+    }, { root: document.getElementById("table-wrap"), rootMargin: "200px" });
+    _sentinelObserver.observe(trS);
+  } else {
+    td.textContent = `Showing all ${groups.length.toLocaleString()} establishments`;
+  }
+  trS.appendChild(td);
+  tbody.appendChild(trS);
+}
+
+function extendEstabWindow() {
+  const groups = getSortedEstabs(getEstablishments());
+  const tbody = document.getElementById("table-body");
+  const oldEnd = _estabWinSize;
+  if (oldEnd >= groups.length) return;
+  _estabWinSize += ESTAB_WINDOW_STEP;
+  if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
+  const sentinel = tbody.querySelector("tr.table-end-sentinel");
+  if (sentinel) sentinel.remove();
+  const q = searchQuery.trim().toLowerCase();
+  const selKey = (selectedIdx !== null && ALL_ENTRIES[selectedIdx]) ? gbEstabKeyOf(ALL_ENTRIES[selectedIdx]) : null;
+  const frag = document.createDocumentFragment();
+  groups.slice(oldEnd, Math.min(groups.length, _estabWinSize))
+    .forEach(g => frag.appendChild(buildEstabTr(g, q, selKey)));
+  tbody.appendChild(frag);
+  renderEstabSentinel(tbody, groups);
+}
+
+// ── View-mode toggle wiring ──────────────────────────────────────────────────
+function syncViewToggleUI() {
+  const buttons = {
+    listings: document.getElementById("view-listings-btn"),
+    establishments: document.getElementById("view-estabs-btn"),
+  };
+  if (!buttons.listings) return;
+  Object.entries(buttons).forEach(([mode, btn]) => {
+    if (!btn) return;
+    btn.classList.toggle("view-btn-active", viewMode === mode);
+    btn.setAttribute("aria-pressed", String(viewMode === mode));
+  });
+  const est = viewMode === "establishments";
+  const tbl = document.getElementById("results-table");
+  if (tbl) tbl.classList.toggle("est-mode", est);
+  const note = document.getElementById("est-mode-note");
+  if (note) note.style.display = est ? "" : "none";
+}
+function setViewMode(mode) {
+  if (mode === viewMode) return;
+  if (mode !== "listings" && !gbDataLoaded) return;
+  viewMode = mode;
+  gcEvent("view-" + mode);
+  _pushNextHistory = true;
+  renderAll();
+}
+document.getElementById("view-listings-btn").addEventListener("click", () => setViewMode("listings"));
+document.getElementById("view-estabs-btn").addEventListener("click", () => setViewMode("establishments"));
 
 // ── Back/forward navigation via popstate ────────────────────────────────────
 window.addEventListener("popstate", function () {
@@ -1961,6 +2809,7 @@ window.addEventListener("popstate", function () {
   colFilters = {};
   sortCol = null;
   sortDir = 1;
+  viewMode = "listings";
   searchQuery = "";
   const searchEl = document.getElementById("search");
   if (searchEl) searchEl.value = "";
@@ -1968,6 +2817,7 @@ window.addEventListener("popstate", function () {
   // Re-apply filters from new URL hash
   applyHashState();
   renderAll();  // closes detail panel
+  if (_gbTrendsOnLoad && !gbTrendsModalOpen()) gbOpenTrendsModal();  // legacy #view=trends link via back/forward
   // Re-open detail if ?cf= is present in the new URL
   const cf = new URLSearchParams(location.search).get("cf");
   if (cf) {
@@ -2009,38 +2859,19 @@ const GB_YEAR_FIELD = (() => {
 // harness at address-keying-test.html). Rows bucket by (name stem, normalized
 // city), then split into business-level groups by address signature. Built
 // once in the streaming loader's final pass; empty until then.
-let gbNameIndex = new Map();   // groupKey → [row objects]
-let gbRowToKey  = new Map();   // row object → groupKey
+  
+// `var`, not `let`: the base renderAll() call above runs before this section
+// evaluates, and a #view=est hash routes it into renderEstabBody, which reads
+// gbDataLoaded — var hoists as undefined instead of throwing a TDZ error.
+var gbNameIndex = new Map();   // groupKey → [row objects]
+var gbRowToKey  = new Map();   // row object → groupKey
+var gbDataLoaded = false;      // true once both CSV streams have finished
+
 
 // All cross-listings for a row's resolved business group (including itself).
 function gbCrossListings(row) {
   const key = gbRowToKey.get(row);
   return (key !== undefined && gbNameIndex.get(key)) || [];
-}
-
-function gbJumpToYear(year) {
-  if (!GB_YEAR_FIELD) return;
-
-  // Find the same establishment in the target year before clearing state
-  let matchRow = null;
-  if (selectedIdx !== null) {
-    const cur = ALL_ENTRIES[selectedIdx];
-    if (cur) {
-      matchRow = gbCrossListings(cur)
-        .find(r => (r[GB_YEAR_FIELD] || r.year) === year) || null;
-    }
-  }
-
-  facetState[GB_YEAR_FIELD].clear();
-  facetState[GB_YEAR_FIELD].add(year);
-  _pushNextHistory = true;
-  renderAll();  // closes drawer, applies year filter, re-renders table
-
-  if (matchRow) {
-    selectedIdx = rowIdx(matchRow);
-    showDetail(matchRow);
-    renderTableBody();  // re-render to show selection highlight
-  }
 }
 
 // Jump to a specific listing row. The coverage grid knows the exact target
@@ -2467,17 +3298,31 @@ showDetail = function (row) {
   allLink.textContent = "Show all " + nList + " matching listings in the table →";
   allLink.addEventListener("click", e => {
     e.preventDefault();
-    // Search on the stripped name (suffixes, descriptors, possessives) so
-    // all variants surface as substring matches of the shorter query.
-    const q = gbSearchQueryName(nfVal);
-    searchQuery = q;
-    document.getElementById("search").value = q;
-    // Normalized city as the column filter: the filter is a substring match,
-    // so "new york" catches "NEW YORK CITY" and "NEW YORK, N.Y. (HARLEM)",
-    // where the raw variant string would match only itself.
-    if (row.city) colFilters["city"] = gbNormCity(row.city);
     if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
     if (facetState["publication"]) facetState["publication"].clear();
+    // Search on the stripped name (suffixes, descriptors, possessives) so
+    // all variants surface as substring matches of the shorter query — but
+    // VERIFY each candidate actually returns rows before committing to it.
+    // Stripping can break self-matching: "Ada's Cottage" strips to
+    // "Ada Cottage", which is not a substring of the row's own normalized
+    // haystack "adas cottage", and the link would land on an empty table.
+    // Fall back to the raw name, then to the raw name without the city
+    // filter; the raw name always matches the clicked row itself.
+    // (City filter: normalized substring match, so "new york" catches
+    // "NEW YORK CITY" and "NEW YORK, N.Y. (HARLEM)".)
+    const cityVal = row.city ? gbNormCity(row.city) : "";
+    const candidates = [
+      [gbSearchQueryName(nfVal), cityVal],
+      [nfVal, cityVal],
+      [nfVal, ""],
+    ].filter(([cand]) => cand);
+    for (const [cand, cityF] of candidates) {
+      searchQuery = cand;
+      if (cityF) colFilters["city"] = cityF;
+      else delete colFilters["city"];
+      if (getFiltered().length > 0) break;
+    }
+    document.getElementById("search").value = searchQuery;
     document.getElementById("detail").classList.remove("open");
     document.getElementById("main").classList.remove("detail-open");
     selectedIdx = null;
@@ -2743,7 +3588,13 @@ async function gbStreamCsv(url, onRow) {
     await new Promise(r => setTimeout(r, 0));  // yield so the browser paints before the heavy index build
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
+    const estBtn = document.getElementById('view-estabs-btn');
+    if (estBtn) {
+      estBtn.disabled = false;
+      estBtn.title = "One row per business, matched across volumes and publications";
+    }
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
+    if (gbTrendsModalOpen()) gbRenderTrends();  // modal opened before data was ready
     gbMaybeBuildHero();  // build the featured trio now that all volumes are present
     // These need the cross-listing index (for "Also listed in" chips), so they
     // run after gbBuildMatchIndex() above. The coverage grid can now be filled in.
@@ -2779,6 +3630,1000 @@ async function gbStreamCsv(url, onRow) {
   }
 })();
 
+
+// ── Trends: "the guides at a glance" ─────────────────────────────────────────
+// Three aggregate views rendered once both CSV streams finish: listings per
+// year stacked by publication (SVG columns), and two single-hue bar lists
+// (categories, states). Every mark filters the explorer on click; every value
+// is reachable without hover (bar lists label each value; the year chart has
+// a table-view twin).
+
+let _trendAgg = null;
+function gbTrendAggregates() {
+  if (_trendAgg) return _trendAgg;
+  const yearPub = new Map();   // year number → Map(publication → count)
+  const cats = new Map();      // folded category → count
+  const states = new Map();    // uppercased state → count
+  const stateYear = new Map(); // uppercased state → Map(year number → count)
+  const catYear = new Map();   // folded category → Map(year number → count)
+  ALL_ENTRIES.forEach(r => {
+    const y = Number(r.volume_year || r.year);
+    const inRange = y >= 1930 && y <= 1966;
+    if (inRange) {
+      let m = yearPub.get(y);
+      if (!m) yearPub.set(y, m = new Map());
+      const p = r.publication || "";
+      m.set(p, (m.get(p) || 0) + 1);
+    }
+    // Same fold the facet uses (gb-categories.js); the blank bucket is a
+    // catch-all, not a business type, so it stays out of the top-10 chart.
+    const c = gbCategoryGroup(r.category);
+    if (c !== "Blank or no specific category") {
+      cats.set(c, (cats.get(c) || 0) + 1);
+      if (inRange) {
+        let cm = catYear.get(c);
+        if (!cm) catYear.set(c, cm = new Map());
+        cm.set(y, (cm.get(y) || 0) + 1);
+      }
+    }
+    const s = (r.state || "").trim().toUpperCase();
+    if (s) {
+      states.set(s, (states.get(s) || 0) + 1);
+      if (inRange) {
+        let sm = stateYear.get(s);
+        if (!sm) stateYear.set(s, sm = new Map());
+        sm.set(y, (sm.get(y) || 0) + 1);
+      }
+    }
+  });
+  _trendAgg = { yearPub, cats, states, stateYear, catYear };
+  return _trendAgg;
+}
+
+// Resolver-derived aggregates: per-business (not per-listing) shapes computed
+// from the same cross-guide match index the Establishments view uses.
+let _gbResolverAgg = null;
+const GB_LIFE_BUCKETS = [
+  ["1 year", 1, 1], ["2 years", 2, 2], ["3–5 years", 3, 5],
+  ["6–10 years", 6, 10], ["11–15 years", 11, 15], ["16–23 years", 16, 23],
+];
+function gbResolverAggregates() {
+  if (_gbResolverAgg) return _gbResolverAgg;
+  const groupFirst = new Map();    // group key → earliest listed year
+  const groupYears = new Map();    // group key → Set(years listed)
+  const groupPubs = new Map();     // group key → Set(publications)
+  const groupHasAddr = new Set();  // group keys with >=1 real street address
+  ALL_ENTRIES.forEach(r => {
+    const y = Number(r.volume_year || r.year);
+    if (!(y >= 1930 && y <= 1966)) return;
+    const k = gbEstabKeyOf(r);
+    if (!groupFirst.has(k) || y < groupFirst.get(k)) groupFirst.set(k, y);
+    let ys = groupYears.get(k);
+    if (!ys) groupYears.set(k, ys = new Set());
+    ys.add(y);
+    if (r.publication) {
+      let ps = groupPubs.get(k);
+      if (!ps) groupPubs.set(k, ps = new Set());
+      ps.add(r.publication);
+    }
+    const a = (r.address || "").trim();
+    if (a && !ADDR_PLACEHOLDER.test(a)) groupHasAddr.add(k);
+  });
+  // Address-less groups are directory boilerplate (repeated section headers,
+  // reference-page text), not businesses — the same filter the
+  // Establishments view applies, so both surfaces agree.
+  // Churn: each listing is "first-time" if its year is its business's first.
+  const churn = new Map();  // year → { fresh, ret }
+  ALL_ENTRIES.forEach(r => {
+    const y = Number(r.volume_year || r.year);
+    if (!(y >= 1930 && y <= 1966)) return;
+    const k = gbEstabKeyOf(r);
+    if (!groupHasAddr.has(k)) return;
+    let c = churn.get(y);
+    if (!c) churn.set(y, c = { fresh: 0, ret: 0 });
+    if (y === groupFirst.get(k)) c.fresh++;
+    else c.ret++;
+  });
+  // Lifespan distribution: distinct years listed per business, bucketed.
+  const lifespans = GB_LIFE_BUCKETS.map(([label]) => [label, 0]);
+  let nBusinesses = 0;
+  groupYears.forEach((ys, k) => {
+    if (!groupHasAddr.has(k)) return;
+    nBusinesses++;
+    const i = GB_LIFE_BUCKETS.findIndex(([, lo, hi]) => ys.size >= lo && ys.size <= hi);
+    if (i >= 0) lifespans[i][1]++;
+  });
+  // Cross-guide overlap: which combination of publications listed each
+  // business. Top combinations only; the tail folds into "Other".
+  const pubOrder = gbTrendPubOrder();
+  const comboCount = new Map();
+  groupPubs.forEach((ps, k) => {
+    if (!groupHasAddr.has(k)) return;
+    const key = [...ps]
+      .sort((a, b) => pubOrder.indexOf(a) - pubOrder.indexOf(b))
+      .map(p => PUBLICATION_SHORT_NAMES[p] || p)
+      .join(" + ") + (ps.size === 1 ? " only" : "");
+    comboCount.set(key, (comboCount.get(key) || 0) + 1);
+  });
+  const comboPairs = [...comboCount.entries()].sort((a, b) => b[1] - a[1]);
+  const combos = comboPairs.slice(0, 7);
+  const rest = comboPairs.slice(7).reduce((s, [, n]) => s + n, 0);
+  if (rest) combos.push(["Other combinations", rest]);
+  _gbResolverAgg = { churn, lifespans, combos, nBusinesses };
+  return _gbResolverAgg;
+}
+
+// Historical milestones annotated on the year chart. `label` is the short
+// in-chart text; `text` is the full sentence carried by the tooltip and
+// aria-label. The 1942–46 wartime pause keeps its own in-plot note.
+const GB_MILESTONES = [
+  { y: 1936, label: "First Green Book",
+    text: "Victor H. Green publishes the first Negro Motorist Green Book; the earliest digitized edition here is 1937." },
+  { y: 1954, label: "Brown v. Board",
+    text: "Brown v. Board of Education strikes down school segregation." },
+  { y: 1956, label: "Interstate Act",
+    text: "The Federal-Aid Highway Act launches the interstate system — the motel era begins." },
+  { y: 1964, label: "Civil Rights Act",
+    text: "Civil Rights Act Title II outlaws discrimination in public accommodations." },
+  { y: 1966, label: "Final edition",
+    text: "The last Green Book is published, three decades after the first." },
+];
+
+// Publication stack order: chronological by first active year — the same
+// order as the coverage grid's rows, so color + position stay consistent.
+function gbTrendPubOrder() {
+  return [...PUBLICATION_ACTIVE_YEARS.keys()].sort((a, b) => {
+    const ya = Math.min(...PUBLICATION_ACTIVE_YEARS.get(a));
+    const yb = Math.min(...PUBLICATION_ACTIVE_YEARS.get(b));
+    return ya - yb || a.localeCompare(b);
+  });
+}
+
+const svgNS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs) {
+  const el = document.createElementNS(svgNS, tag);
+  for (const k in attrs) el.setAttribute(k, attrs[k]);
+  return el;
+}
+// Rounded top corners, square baseline — the spec for a column's data-end.
+function gbRoundedTopRect(x, y, w, h, r) {
+  r = Math.min(r, w / 2, h);
+  return `M${x},${y + h} L${x},${y + r} Q${x},${y} ${x + r},${y} L${x + w - r},${y} Q${x + w},${y} ${x + w},${y + r} L${x + w},${y + h} Z`;
+}
+
+// Clicking a chart mark lands the user in the Listings view showing exactly
+// the rows the bar counted. The charts aggregate the FULL dataset, so any
+// filters left over from earlier browsing (a search query, a year facet, a
+// column filter) must be cleared first — otherwise the click delivers an
+// unasked-for intersection, which can be empty ("blank" results after
+// clicking a bar that plainly says 2,180).
+function gbTrendResetFilters() {
+  gbCloseTrendsModal(true);  // hand off from the didactic layer to the working one
+  searchQuery = "";
+  const s = document.getElementById("search");
+  if (s) s.value = "";
+  colFilters = {};
+  Object.values(facetState).forEach(set => set.clear());
+  viewMode = "listings";
+  _pushNextHistory = true;
+}
+function gbTrendFilterYear(y) {
+  if (!GB_YEAR_FIELD || !facetState[GB_YEAR_FIELD]) return;
+  gcEvent("trend-year");
+  gbTrendResetFilters();
+  facetState[GB_YEAR_FIELD].add(y);
+  renderAll();
+}
+function gbTrendFilterCategory(cat) {
+  if (!facetState.category) return;
+  gcEvent("trend-category");
+  gbTrendResetFilters();
+  facetState.category.add(cat);
+  renderAll();
+}
+function gbTrendFilterState(s) {
+  gcEvent("trend-state");
+  gbTrendResetFilters();
+  colFilters.state = s;
+  renderAll();
+}
+function gbTrendFilterStateYear(s, y) {
+  gcEvent("trend-heat");
+  gbTrendResetFilters();
+  colFilters.state = s;
+  if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].add(String(y));
+  renderAll();
+}
+
+function gbDrawYearChart() {
+  const host = document.getElementById("trend-years");
+  if (!host) return;
+  host.innerHTML = "";
+  const { yearPub } = gbTrendAggregates();
+  const pubOrder = gbTrendPubOrder();
+  const years = [];
+  for (let y = 1930; y <= 1966; y++) years.push(y);
+  const totals = years.map(y => {
+    let t = 0;
+    const m = yearPub.get(y);
+    if (m) m.forEach(v => { t += v; });
+    return t;
+  });
+  const maxT = Math.max(...totals, 1);
+  const step = [250, 500, 1000, 2000, 2500, 5000, 10000].find(s => maxT / s <= 5) || 10000;
+  const niceMax = step * Math.ceil(maxT / step);
+  const W = Math.max(240, host.clientWidth || 900);
+  // mT reserves an annotation band above the plot for milestone markers.
+  const H = 274, mL = 48, mR = 6, mT = 34, mB = 26;
+  const innerW = W - mL - mR, innerH = H - mT - mB;
+  const slot = innerW / years.length;
+  const barW = Math.min(24, slot * 0.7);
+  const yPix = v => mT + innerH - (v / niceMax) * innerH;
+  const svg = svgEl("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
+
+  // Recessive horizontal grid + y ticks (comma'd clean numbers).
+  for (let v = step; v <= niceMax; v += step) {
+    svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(v), y2: yPix(v), class: "trend-grid" }));
+    const t = svgEl("text", { x: mL - 6, y: yPix(v) + 3, "text-anchor": "end", class: "trend-tick" });
+    t.textContent = v.toLocaleString();
+    svg.appendChild(t);
+  }
+  svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(0), y2: yPix(0), class: "trend-grid" }));
+
+  // Milestone rules, drawn before the columns so bars cover them — the rule
+  // reads as a drop line from the marker to wherever the data starts.
+  const msByYear = new Map(GB_MILESTONES.map(e => [e.y, e]));
+  GB_MILESTONES.forEach(ev => {
+    const idx = years.indexOf(ev.y);
+    if (idx < 0) return;
+    const x = mL + idx * slot + slot / 2;
+    svg.appendChild(svgEl("line", { x1: x, x2: x, y1: 30, y2: yPix(0), class: "trend-annot-rule" }));
+  });
+
+  years.forEach((yr, i) => {
+    const m = yearPub.get(yr);
+    const x0 = mL + i * slot;
+    const bx = x0 + (slot - barW) / 2;
+    if (m) {
+      let cum = 0;
+      const segs = pubOrder.map(p => [p, m.get(p) || 0]).filter(([, n]) => n > 0);
+      segs.forEach(([p, n], si) => {
+        const yT = yPix(cum + n), yB = yPix(cum);
+        const h = yB - yT;
+        // 2px surface gap between stacked segments (carved from the segment's
+        // bottom, so the baseline segment stays square on the axis).
+        const drawH = (si > 0 && h > 4) ? h - 2 : h;
+        const fill = PUBLICATION_COLORS[p] || "var(--gb-ink)";
+        if (si === segs.length - 1 && drawH >= 3) {
+          svg.appendChild(svgEl("path", { d: gbRoundedTopRect(bx, yT, barW, drawH, 4), fill }));
+        } else {
+          svg.appendChild(svgEl("rect", { x: bx, y: yT, width: barW, height: Math.max(drawH, 0.5), fill }));
+        }
+        cum += n;
+      });
+    }
+    // Full-column hit target: hover tooltip, keyboard focus, click-to-filter.
+    const total = totals[i];
+    const hit = svgEl("rect", { x: x0, y: mT, width: slot, height: innerH, class: "trend-col-hit", tabindex: 0, role: "button" });
+    hit.setAttribute("aria-label", total
+      ? `${yr}: ${total.toLocaleString()} listings. Filter the explorer to ${yr}.`
+      : `${yr}: no guides in the dataset`);
+    const tipLines = [[String(yr), "tip-val"],
+      [total ? total.toLocaleString() + " listings — click to filter" : "No guides in the dataset", "tip-sub"]];
+    if (m) pubOrder.forEach(p => {
+      const n = m.get(p);
+      if (n) tipLines.push([(PUBLICATION_SHORT_NAMES[p] || p) + "  " + n.toLocaleString(), "tip-sub"]);
+    });
+    const ev = msByYear.get(yr);
+    if (ev) tipLines.push(["◆ " + ev.text, "tip-sub"]);
+    gbAttachTip(hit, tipLines);
+    if (total) {
+      const go = () => { gbHideTip(); gbTrendFilterYear(String(yr)); };
+      hit.addEventListener("click", go);
+      hit.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    } else {
+      hit.style.cursor = "default";
+    }
+    svg.appendChild(hit);
+  });
+
+  // X ticks every 5 years.
+  years.forEach((yr, i) => {
+    if (yr % 5 !== 0) return;
+    const t = svgEl("text", { x: mL + i * slot + slot / 2, y: H - 8, "text-anchor": "middle", class: "trend-tick" });
+    t.textContent = yr;
+    svg.appendChild(t);
+  });
+
+  // Name the wartime pause in place when it is empty in the data and there's room.
+  const i42 = years.indexOf(1942);
+  const warTotal = totals.slice(i42, i42 + 5).reduce((a, b) => a + b, 0);
+  if (warTotal === 0 && slot * 5 > 96) {
+    const t = svgEl("text", { x: mL + (i42 + 2.5) * slot, y: yPix(0) - 10, "text-anchor": "middle", class: "trend-annot" });
+    t.textContent = "wartime pause — no guides";
+    svg.appendChild(t);
+  }
+
+  // Milestone markers in the annotation band. Diamonds sit on one line at the
+  // top of the plot; short labels take one of two text rows above, chosen by
+  // collision (adjacent events like 1954/1956 alternate rows). Full sentences
+  // live in the tooltip/aria-label, and also in that year's column tooltip,
+  // so narrow screens that drop the labels lose nothing.
+  const showAnnotLabels = W >= 700;
+  const dotY = 27;
+  const rowEnd = [-Infinity, -Infinity];  // rightmost label edge per text row
+  GB_MILESTONES.forEach(ev => {
+    const idx = years.indexOf(ev.y);
+    if (idx < 0) return;
+    const x = mL + idx * slot + slot / 2;
+    const sz = 3.4;
+    svg.appendChild(svgEl("path", {
+      d: `M${x},${dotY - sz} L${x + sz},${dotY} L${x},${dotY + sz} L${x - sz},${dotY} Z`,
+      class: "trend-annot-dot",
+    }));
+    if (showAnnotLabels) {
+      const labW = ev.label.length * 5.8 + 4;
+      const anchorEnd = x + 6 + labW > W - mR;
+      const startX = anchorEnd ? x - 6 - labW : x + 6;
+      let row = startX >= rowEnd[0] ? 0 : (startX >= rowEnd[1] ? 1 : -1);
+      if (row >= 0) {
+        rowEnd[row] = startX + labW + 8;
+        const t = svgEl("text", {
+          x: anchorEnd ? x - 6 : x + 6,
+          y: row === 0 ? 12 : 22,
+          "text-anchor": anchorEnd ? "end" : "start",
+          class: "trend-annot-label",
+        });
+        t.textContent = ev.label;
+        t.setAttribute("aria-hidden", "true");
+        svg.appendChild(t);
+      }
+    }
+    const hitA = svgEl("rect", { x: x - 9, y: dotY - 9, width: 18, height: 18, fill: "transparent", tabindex: 0, role: "img" });
+    hitA.setAttribute("aria-label", ev.y + ": " + ev.text);
+    gbAttachTip(hitA, [[ev.y + " — " + ev.label, "tip-val"], [ev.text, "tip-sub"]]);
+    svg.appendChild(hitA);
+  });
+  host.appendChild(svg);
+
+  // Legend (7 series — identity must not be color-matching against memory).
+  const leg = document.getElementById("trend-years-legend");
+  if (leg) {
+    leg.innerHTML = "";
+    pubOrder.forEach(p => {
+      const item = document.createElement("span");
+      item.className = "trend-legend-item";
+      const dot = document.createElement("span");
+      dot.className = "pub-dot";
+      dot.style.background = PUBLICATION_COLORS[p] || "var(--gb-ink)";
+      item.appendChild(dot);
+      item.appendChild(document.createTextNode(PUBLICATION_SHORT_NAMES[p] || p));
+      leg.appendChild(item);
+    });
+  }
+}
+
+// Table-view twin for the year chart: every plotted value, no hover needed.
+function gbBuildYearTable() {
+  const host = document.getElementById("trend-years-table");
+  if (!host) return;
+  host.innerHTML = "";
+  const { yearPub } = gbTrendAggregates();
+  const pubOrder = gbTrendPubOrder();
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const hr = document.createElement("tr");
+  ["Year", ...pubOrder.map(p => PUBLICATION_SHORT_NAMES[p] || p), "Total"].forEach(h => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  [...yearPub.keys()].sort((a, b) => a - b).forEach(y => {
+    const m = yearPub.get(y);
+    const tr = document.createElement("tr");
+    let total = 0;
+    const tds = [String(y)];
+    pubOrder.forEach(p => {
+      const n = m.get(p) || 0;
+      total += n;
+      tds.push(n ? n.toLocaleString() : "–");
+    });
+    tds.push(total.toLocaleString());
+    tds.forEach(v => {
+      const td = document.createElement("td");
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  host.appendChild(table);
+}
+
+// ── State × year heatmap ─────────────────────────────────────────────────────
+// Geography over time without geocoding: top-20 states as rows, 1930–1966 as
+// columns, a single-hue sequential ramp (light → dark) on listings count.
+// Counts are bucketed on a square-root scale so the long tail of small-state
+// years stays visible next to New York's peaks; exact values are in the cell
+// tooltips, aria-labels, and the table twin.
+const HEAT_RAMP = ["#dfe6d2", "#bed3a4", "#9aba78", "#71a050", "#4a832f", "#245e19"];
+const HEAT_TOP_STATES = 20;
+function gbHeatData() {
+  const { stateYear, yearPub } = gbTrendAggregates();
+  const states = [...stateYear.entries()]
+    .map(([s, m]) => { let t = 0; m.forEach(v => { t += v; }); return [s, t]; })
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, HEAT_TOP_STATES);
+  const years = [];
+  for (let y = 1930; y <= 1966; y++) years.push(y);
+  let maxC = 1;
+  states.forEach(([s]) => {
+    stateYear.get(s).forEach(c => { if (c > maxC) maxC = c; });
+  });
+  // Column model: runs of >=2 consecutive years with no guides at all
+  // (1932–36, the wartime pause, 1964–65) collapse into one narrow break
+  // column, same as the coverage grid — 37 columns become 25 + 3 breaks,
+  // which fits a phone without horizontal scrolling.
+  const columns = [];
+  let deadStart = null;
+  const flushDead = end => {
+    if (end - deadStart + 1 >= 2) columns.push({ type: "break", from: deadStart, to: end });
+    else for (let d = deadStart; d <= end; d++) columns.push({ type: "year", y: d });
+    deadStart = null;
+  };
+  years.forEach(y => {
+    if (!yearPub.has(y)) { if (deadStart === null) deadStart = y; return; }
+    if (deadStart !== null) flushDead(y - 1);
+    columns.push({ type: "year", y });
+  });
+  if (deadStart !== null) flushDead(years[years.length - 1]);
+  return { stateYear, states, years, columns, maxC };
+}
+function gbHeatBucket(c, maxC) {
+  if (!c) return -1;
+  return Math.min(HEAT_RAMP.length - 1, Math.floor(Math.sqrt(c / maxC) * HEAT_RAMP.length));
+}
+function gbDrawStateHeatmap() {
+  const host = document.getElementById("trend-heat");
+  if (!host) return;
+  host.innerHTML = "";
+  const { stateYear, states, columns, maxC } = gbHeatData();
+  const grid = document.createElement("div");
+  grid.className = "trend-heat-grid";
+  grid.setAttribute("role", "group");
+  grid.setAttribute("aria-label", "Listings by state and year, top " + states.length +
+    " states, 1930 to 1966. Darker cells mean more listings; each cell filters the explorer. " +
+    "Spans of years with no guides are collapsed.");
+  grid.style.gridTemplateColumns = "max-content " +
+    columns.map(c => c.type === "break" ? "6px" : "minmax(5px, 1fr)").join(" ");
+  const corner = document.createElement("div");
+  grid.appendChild(corner);
+  columns.forEach(c => {
+    const h = document.createElement("div");
+    if (c.type === "break") {
+      h.className = "heat-year";
+      h.textContent = "⋯";
+      h.title = "No guides " + c.from + "–" + c.to;
+    } else {
+      h.className = "heat-year";
+      h.textContent = c.y % 5 === 0 ? c.y : "";
+    }
+    h.setAttribute("aria-hidden", "true");
+    grid.appendChild(h);
+  });
+  states.forEach(([s, tot]) => {
+    const lab = document.createElement("button");
+    lab.type = "button";
+    lab.className = "heat-state";
+    lab.textContent = s;
+    lab.title = tot.toLocaleString() + " listings — click to filter to " + s;
+    lab.setAttribute("aria-label", s + ": " + tot.toLocaleString() + " listings total. Filter the explorer to this state.");
+    lab.addEventListener("click", () => { gbHideTip(); gbTrendFilterState(s); });
+    grid.appendChild(lab);
+    const ym = stateYear.get(s);
+    columns.forEach(col => {
+      if (col.type === "break") {
+        const brk = document.createElement("div");
+        brk.className = "coverage-break";
+        brk.setAttribute("aria-hidden", "true");
+        grid.appendChild(brk);
+        return;
+      }
+      const y = col.y;
+      const c = ym.get(y) || 0;
+      let cell;
+      if (c) {
+        cell = document.createElement("button");
+        cell.type = "button";
+        cell.className = "heat-cell";
+        cell.style.background = HEAT_RAMP[gbHeatBucket(c, maxC)];
+        cell.setAttribute("aria-label", s + ", " + y + ": " + c.toLocaleString() +
+          " listings. Filter the explorer to this state and year.");
+        cell.addEventListener("click", () => { gbHideTip(); gbTrendFilterStateYear(s, y); });
+        gbAttachTip(cell, [[s + " · " + y, "tip-val"], [c.toLocaleString() + " listings — click to filter", "tip-sub"]]);
+      } else {
+        cell = document.createElement("div");
+        cell.className = "heat-cell heat-cell-zero";
+        cell.setAttribute("aria-hidden", "true");
+      }
+      grid.appendChild(cell);
+    });
+  });
+  host.appendChild(grid);
+
+  const leg = document.getElementById("trend-heat-legend");
+  if (leg) {
+    leg.innerHTML = "";
+    const label = document.createElement("span");
+    label.textContent = "1";
+    leg.appendChild(label);
+    HEAT_RAMP.forEach(color => {
+      const sw = document.createElement("span");
+      sw.className = "heat-swatch";
+      sw.style.background = color;
+      leg.appendChild(sw);
+    });
+    const maxLab = document.createElement("span");
+    maxLab.textContent = maxC.toLocaleString() + " listings (square-root scale) · blank = none";
+    leg.appendChild(maxLab);
+  }
+}
+// Table-view twin for the heatmap: every state × year value, no hover needed.
+function gbBuildHeatTable() {
+  const host = document.getElementById("trend-heat-table");
+  if (!host) return;
+  host.innerHTML = "";
+  const { stateYear, states, years } = gbHeatData();
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const hr = document.createElement("tr");
+  ["State", ...years, "Total"].forEach(h => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  states.forEach(([s, tot]) => {
+    const tr = document.createElement("tr");
+    const ym = stateYear.get(s);
+    const tds = [s, ...years.map(y => { const c = ym.get(y) || 0; return c ? c.toLocaleString() : "–"; }), tot.toLocaleString()];
+    tds.forEach(v => {
+      const td = document.createElement("td");
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  host.appendChild(table);
+}
+
+// ── First-time vs. returning listings ────────────────────────────────────────
+// Two-step single-hue stack: returning listings (dark) anchored to the
+// baseline, first-time listings (light) on top. "First-time" means the
+// resolver has never seen that business in an earlier year.
+const CHURN_COLORS = { ret: "#245e19", fresh: "#9aba78" };
+function gbDrawChurnChart() {
+  const host = document.getElementById("trend-churn");
+  if (!host) return;
+  host.innerHTML = "";
+  const { churn } = gbResolverAggregates();
+  const years = [];
+  for (let y = 1930; y <= 1966; y++) years.push(y);
+  const totals = years.map(y => { const c = churn.get(y); return c ? c.fresh + c.ret : 0; });
+  const maxT = Math.max(...totals, 1);
+  const step = [250, 500, 1000, 2000, 2500, 5000, 10000].find(s => maxT / s <= 5) || 10000;
+  const niceMax = step * Math.ceil(maxT / step);
+  const W = Math.max(240, host.clientWidth || 900);
+  const H = 216, mL = 48, mR = 6, mT = 12, mB = 26;
+  const innerW = W - mL - mR, innerH = H - mT - mB;
+  const slot = innerW / years.length;
+  const barW = Math.min(24, slot * 0.7);
+  const yPix = v => mT + innerH - (v / niceMax) * innerH;
+  const svg = svgEl("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
+  for (let v = step; v <= niceMax; v += step) {
+    svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(v), y2: yPix(v), class: "trend-grid" }));
+    const t = svgEl("text", { x: mL - 6, y: yPix(v) + 3, "text-anchor": "end", class: "trend-tick" });
+    t.textContent = v.toLocaleString();
+    svg.appendChild(t);
+  }
+  svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(0), y2: yPix(0), class: "trend-grid" }));
+  years.forEach((yr, i) => {
+    const c = churn.get(yr);
+    const x0 = mL + i * slot;
+    const bx = x0 + (slot - barW) / 2;
+    if (c) {
+      const segs = [["ret", c.ret], ["fresh", c.fresh]].filter(([, n]) => n > 0);
+      let cum = 0;
+      segs.forEach(([k, n], si) => {
+        const yT = yPix(cum + n), yB = yPix(cum);
+        const h = yB - yT;
+        const drawH = (si > 0 && h > 4) ? h - 2 : h;
+        if (si === segs.length - 1 && drawH >= 3) {
+          svg.appendChild(svgEl("path", { d: gbRoundedTopRect(bx, yT, barW, drawH, 4), fill: CHURN_COLORS[k] }));
+        } else {
+          svg.appendChild(svgEl("rect", { x: bx, y: yT, width: barW, height: Math.max(drawH, 0.5), fill: CHURN_COLORS[k] }));
+        }
+        cum += n;
+      });
+    }
+    const total = totals[i];
+    const hit = svgEl("rect", { x: x0, y: mT, width: slot, height: innerH, class: "trend-col-hit", tabindex: 0, role: "button" });
+    hit.setAttribute("aria-label", total
+      ? `${yr}: ${total.toLocaleString()} listings — ${c.fresh.toLocaleString()} first-time, ${c.ret.toLocaleString()} returning. Filter the explorer to ${yr}.`
+      : `${yr}: no guides in the dataset`);
+    const tipLines = [[String(yr), "tip-val"]];
+    if (total) {
+      tipLines.push([total.toLocaleString() + " listings — click to filter", "tip-sub"]);
+      tipLines.push(["First-time  " + c.fresh.toLocaleString() + " (" + Math.round(c.fresh / total * 100) + "%)", "tip-sub"]);
+      tipLines.push(["Returning  " + c.ret.toLocaleString(), "tip-sub"]);
+    } else {
+      tipLines.push(["No guides in the dataset", "tip-sub"]);
+    }
+    gbAttachTip(hit, tipLines);
+    if (total) {
+      const go = () => { gbHideTip(); gbTrendFilterYear(String(yr)); };
+      hit.addEventListener("click", go);
+      hit.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    } else {
+      hit.style.cursor = "default";
+    }
+    svg.appendChild(hit);
+  });
+  years.forEach((yr, i) => {
+    if (yr % 5 !== 0) return;
+    const t = svgEl("text", { x: mL + i * slot + slot / 2, y: H - 8, "text-anchor": "middle", class: "trend-tick" });
+    t.textContent = yr;
+    svg.appendChild(t);
+  });
+  host.appendChild(svg);
+  const leg = document.getElementById("trend-churn-legend");
+  if (leg) {
+    leg.innerHTML = "";
+    [["Returning listings", CHURN_COLORS.ret], ["First-time listings", CHURN_COLORS.fresh]].forEach(([txt, color]) => {
+      const item = document.createElement("span");
+      item.className = "trend-legend-item";
+      const dot = document.createElement("span");
+      dot.className = "pub-dot";
+      dot.style.background = color;
+      item.appendChild(dot);
+      item.appendChild(document.createTextNode(txt));
+      leg.appendChild(item);
+    });
+  }
+}
+function gbBuildChurnTable() {
+  const host = document.getElementById("trend-churn-table");
+  if (!host) return;
+  host.innerHTML = "";
+  const { churn } = gbResolverAggregates();
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const hr = document.createElement("tr");
+  ["Year", "First-time", "Returning", "Total", "First-time %"].forEach(h => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  [...churn.keys()].sort((a, b) => a - b).forEach(y => {
+    const c = churn.get(y);
+    const total = c.fresh + c.ret;
+    const tr = document.createElement("tr");
+    [String(y), c.fresh.toLocaleString(), c.ret.toLocaleString(), total.toLocaleString(),
+     Math.round(c.fresh / total * 100) + "%"].forEach(v => {
+      const td = document.createElement("td");
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  host.appendChild(table);
+}
+
+// ── Category small multiples ─────────────────────────────────────────────────
+// One mini area chart per top category, plotting that category's SHARE of the
+// year's listings (share, not count, so the dataset's own growth doesn't
+// masquerade as category growth). All panels share one y-scale; the line
+// breaks across years with no guides rather than interpolating the war.
+const MULTI_TOP_N = 8;
+function gbMultiData() {
+  const { cats, catYear, yearPub } = gbTrendAggregates();
+  const yearTotals = new Map();
+  yearPub.forEach((m, y) => { let t = 0; m.forEach(v => { t += v; }); yearTotals.set(y, t); });
+  const top = [...cats.entries()].sort((a, b) => b[1] - a[1]).slice(0, MULTI_TOP_N).map(([c]) => c);
+  const years = [];
+  for (let y = 1930; y <= 1966; y++) years.push(y);
+  const share = new Map();  // cat → Map(year → share 0..1)
+  let maxShare = 0;
+  top.forEach(c => {
+    const cm = catYear.get(c) || new Map();
+    const sm = new Map();
+    years.forEach(y => {
+      const tot = yearTotals.get(y);
+      if (!tot) return;
+      const s = (cm.get(y) || 0) / tot;
+      sm.set(y, s);
+      if (s > maxShare) maxShare = s;
+    });
+    share.set(c, sm);
+  });
+  return { top, years, share, catYear, yMax: Math.max(0.05, Math.ceil(maxShare * 20) / 20) };
+}
+function gbDrawCategoryMultiples() {
+  const host = document.getElementById("trend-multi");
+  if (!host) return;
+  host.innerHTML = "";
+  const { top, years, share, catYear, yMax } = gbMultiData();
+  const cells = top.map(cat => {
+    const cell = document.createElement("button");
+    cell.type = "button";
+    cell.className = "trend-multi";
+    const name = document.createElement("div");
+    name.className = "trend-multi-name";
+    name.textContent = cat;
+    name.title = cat;
+    cell.appendChild(name);
+    host.appendChild(cell);
+    return cell;
+  });
+  // Cells are in the DOM now, so clientWidth is measurable.
+  cells.forEach((cell, ci) => {
+    const cat = top[ci];
+    const sm = share.get(cat);
+    const W = Math.max(180, cell.clientWidth - 2);
+    const H = 96, mL = ci === 0 ? 34 : 34, mR = 6, mT = 8, mB = 16;
+    const innerW = W - mL - mR, innerH = H - mT - mB;
+    const xPix = y => mL + (y - 1930) / 36 * innerW;
+    const yPix = s => mT + innerH - (s / yMax) * innerH;
+    const svg = svgEl("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
+    // Two hairlines: mid and top of the shared scale; labels on the first
+    // panel only (the scale is shared, so one set of labels carries all).
+    [yMax / 2, yMax].forEach(v => {
+      svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(v), y2: yPix(v), class: "trend-grid" }));
+      if (ci === 0) {
+        const t = svgEl("text", { x: mL - 4, y: yPix(v) + 3, "text-anchor": "end", class: "trend-tick" });
+        t.textContent = Math.round(v * 100) + "%";
+        svg.appendChild(t);
+      }
+    });
+    svg.appendChild(svgEl("line", { x1: mL, x2: W - mR, y1: yPix(0), y2: yPix(0), class: "trend-grid" }));
+    [1930, 1966].forEach(y => {
+      const t = svgEl("text", { x: xPix(y), y: H - 4, "text-anchor": y === 1930 ? "start" : "end", class: "trend-tick" });
+      t.textContent = y;
+      svg.appendChild(t);
+    });
+    // Contiguous runs of years with data → one line + area wash per run.
+    const runs = [];
+    let run = null;
+    years.forEach(y => {
+      if (!sm.has(y)) { run = null; return; }
+      if (!run) runs.push(run = []);
+      run.push(y);
+    });
+    runs.forEach(r => {
+      const pts = r.map(y => xPix(y).toFixed(1) + "," + yPix(sm.get(y)).toFixed(1));
+      if (r.length === 1) {
+        svg.appendChild(svgEl("circle", { cx: xPix(r[0]), cy: yPix(sm.get(r[0])), r: 2, fill: "var(--gb-accent)" }));
+        return;
+      }
+      svg.appendChild(svgEl("path", {
+        d: "M" + pts.join(" L") + ` L${xPix(r[r.length - 1]).toFixed(1)},${yPix(0).toFixed(1)} L${xPix(r[0]).toFixed(1)},${yPix(0).toFixed(1)} Z`,
+        fill: "var(--gb-accent)", opacity: "0.1",
+      }));
+      svg.appendChild(svgEl("path", {
+        d: "M" + pts.join(" L"),
+        fill: "none", stroke: "var(--gb-accent)", "stroke-width": 2,
+        "stroke-linejoin": "round", "stroke-linecap": "round",
+      }));
+    });
+    cell.appendChild(svg);
+    // Peak, for the aria summary and focus tooltip.
+    let peakY = null, peakS = 0;
+    sm.forEach((s, y) => { if (s > peakS) { peakS = s; peakY = y; } });
+    const peakTxt = peakY ? "peak " + Math.round(peakS * 100) + "% in " + peakY : "no listings";
+    cell.setAttribute("aria-label", cat + ": share of each year's listings, " + peakTxt + ". Filter the explorer to this category.");
+    // Hover: nearest year under the pointer (the whole panel is the target).
+    const cm = catYear.get(cat) || new Map();
+    svg.addEventListener("pointermove", e => {
+      const rect = svg.getBoundingClientRect();
+      const y = 1930 + Math.max(0, Math.min(36, Math.round((e.clientX - rect.left - mL) / innerW * 36)));
+      if (!sm.has(y)) { gbHideTip(); return; }
+      gbShowTip([
+        [cat + " · " + y, "tip-val"],
+        [Math.round(sm.get(y) * 100) + "% of the year's listings (" + (cm.get(y) || 0).toLocaleString() + ")", "tip-sub"],
+        ["Click to filter to this category", "tip-sub"],
+      ], e.clientX, e.clientY);
+    });
+    svg.addEventListener("pointerleave", gbHideTip);
+    cell.addEventListener("focus", () => {
+      const b = cell.getBoundingClientRect();
+      gbShowTip([[cat, "tip-val"], [peakTxt, "tip-sub"], ["Enter filters to this category", "tip-sub"]], b.left + b.width / 2, b.bottom);
+    });
+    cell.addEventListener("blur", gbHideTip);
+    cell.addEventListener("click", () => { gbHideTip(); gbTrendFilterCategory(cat); });
+  });
+}
+// Table-view twin: share (and count) per category and year.
+function gbBuildMultiTable() {
+  const host = document.getElementById("trend-multi-table");
+  if (!host) return;
+  host.innerHTML = "";
+  const { top, years, share } = gbMultiData();
+  const dataYears = years.filter(y => top.some(c => share.get(c).has(y)));
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const hr = document.createElement("tr");
+  ["Category", ...dataYears].forEach(h => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+  table.appendChild(thead);
+  const tbody = document.createElement("tbody");
+  top.forEach(c => {
+    const tr = document.createElement("tr");
+    const sm = share.get(c);
+    [c, ...dataYears.map(y => sm.has(y) ? Math.round(sm.get(y) * 100) + "%" : "–")].forEach(v => {
+      const td = document.createElement("td");
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  host.appendChild(table);
+}
+
+// Single-hue horizontal bar list (nominal categories → one color, value at
+// the bar tip). With an onClick the rows are buttons that filter; without
+// one they are static display rows (every value is directly labeled).
+function gbDrawBarList(hostId, entries, opts) {
+  const host = document.getElementById(hostId);
+  if (!host) return;
+  host.innerHTML = "";
+  const max = Math.max(1, ...entries.map(([, n]) => n));
+  entries.forEach(([label, n]) => {
+    const row = document.createElement(opts.onClick ? "button" : "div");
+    row.className = "trend-row" + (opts.onClick ? "" : " trend-row-static");
+    if (opts.onClick) {
+      row.type = "button";
+      row.setAttribute("aria-label", `${label}: ${n.toLocaleString()} listings. ${opts.actionLabel}`);
+      row.addEventListener("click", () => opts.onClick(label));
+    }
+    const lab = document.createElement("span");
+    lab.className = "trend-row-label";
+    lab.textContent = label;
+    lab.title = label;
+    const track = document.createElement("span");
+    track.className = "trend-row-track";
+    const bar = document.createElement("span");
+    bar.className = "trend-row-bar";
+    bar.style.display = "block";
+    bar.style.width = (n / max * 100).toFixed(2) + "%";
+    track.appendChild(bar);
+    const val = document.createElement("span");
+    val.className = "trend-row-val";
+    val.textContent = n.toLocaleString();
+    row.appendChild(lab);
+    row.appendChild(track);
+    row.appendChild(val);
+    host.appendChild(row);
+  });
+}
+
+// (Re)draw all three charts. Called on every entry into the Trends view —
+// aggregates are memoized and the DOM rebuild is cheap, and redrawing on
+// entry means the year chart always matches the current panel width even if
+// the window was resized while another view was active.
+function gbRenderTrends() {
+  if (!gbDataLoaded || !gbTrendsModalOpen()) return;
+  const body = document.getElementById("trends-body");
+  if (!body) return;
+  const loading = document.getElementById("trends-loading");
+  if (loading) loading.style.display = "none";
+  body.style.display = "";  // the panel must be open before clientWidth is measured
+  const agg = gbTrendAggregates();
+  const resolver = gbResolverAggregates();
+  gbDrawYearChart();
+  gbBuildYearTable();
+  gbDrawChurnChart();
+  gbBuildChurnTable();
+  gbDrawStateHeatmap();
+  gbBuildHeatTable();
+  gbDrawCategoryMultiples();
+  gbBuildMultiTable();
+  gbDrawBarList("trend-cats",
+    [...agg.cats.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10),
+    { onClick: gbTrendFilterCategory, actionLabel: "Show these listings." });
+  gbDrawBarList("trend-states",
+    [...agg.states.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12),
+    { onClick: gbTrendFilterState, actionLabel: "Show these listings." });
+  gbDrawBarList("trend-lifespan", resolver.lifespans, {});
+  gbDrawBarList("trend-overlap", resolver.combos, {});
+}
+// SVG charts bake their pixel width at draw time; redraw them on resize.
+function gbRedrawTrendSvgs() {
+  gbDrawYearChart();
+  gbDrawChurnChart();
+  gbDrawCategoryMultiples();
+}
+window.addEventListener("resize", () => {
+  if (!gbDataLoaded || !gbTrendsModalOpen()) return;
+  clearTimeout(gbRenderTrends._rt);
+  gbRenderTrends._rt = setTimeout(gbRedrawTrendSvgs, 200);
+});
+
+// ── Trends modal chrome ──────────────────────────────────────────────────────
+// The charts are didactic, like the About modal — a layer you visit and
+// leave — so they share its interaction contract: #trends hash, backdrop and
+// Escape to close, focus trap, focus restored to the opener.
+function gbTrendsModalOpen() {
+  const b = document.getElementById("trends-backdrop");
+  return !!b && b.classList.contains("open");
+}
+let _gbTrendsOpener = null;
+function gbOpenTrendsModal() {
+  if (gbTrendsModalOpen()) return;
+  _gbTrendsOpener = document.activeElement;
+  document.getElementById("trends-backdrop").classList.add("open");
+  document.getElementById("trends-modal").focus();
+  gcEvent("trends-open");
+  // Pathname-anchored, mirroring the About modal's #about handling.
+  try { history.replaceState(null, "", location.pathname + location.search + "#trends"); } catch (e) {}
+  gbRenderTrends();  // charts need a visible container to measure width
+}
+function gbCloseTrendsModal(skipFocus) {
+  const b = document.getElementById("trends-backdrop");
+  if (!b || !b.classList.contains("open")) return;
+  b.classList.remove("open");
+  // Restore the filter-state hash the modal's #trends replaced.
+  try { history.replaceState(null, "", stateToHash()); } catch (e) {}
+  if (!skipFocus && _gbTrendsOpener && _gbTrendsOpener.focus) _gbTrendsOpener.focus();
+  _gbTrendsOpener = null;
+}
+(function () {
+  ["trends-btn", "hero-trends-btn", "mobile-trends-btn"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("click", gbOpenTrendsModal);
+  });
+  const aboutLink = document.getElementById("about-trends-link");
+  if (aboutLink) aboutLink.addEventListener("click", () => {
+    const closeAboutBtn = document.querySelector("#about-modal .close-about");
+    if (closeAboutBtn) closeAboutBtn.click();
+    gbOpenTrendsModal();
+  });
+  document.addEventListener("click", e => {
+    const backdrop = document.getElementById("trends-backdrop");
+    if (!backdrop || !backdrop.classList.contains("open")) return;
+    if (e.target === backdrop || e.target.closest(".close-trends")) gbCloseTrendsModal();
+  });
+  document.addEventListener("keydown", e => {
+    const backdrop = document.getElementById("trends-backdrop");
+    if (!backdrop || !backdrop.classList.contains("open")) return;
+    if (e.key === "Escape") { gbCloseTrendsModal(); return; }
+    if (e.key === "Tab") {
+      const modal = document.getElementById("trends-modal");
+      const focusable = Array.from(
+        modal.querySelectorAll('a[href], button, summary, [tabindex]:not([tabindex="-1"])')
+      ).filter(el => !el.disabled && el.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  if (_gbTrendsOnLoad) gbOpenTrendsModal();
+})();
 
 // ── Hero + Timeline additions ─────────────────────────────────────────────────
 

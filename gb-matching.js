@@ -25,7 +25,7 @@ const NAME_TAIL_NOISE = [
   /\s+cafes?$/i, /\s+caf[ée]$/i, /\s+cafeterias?$/i, /\s+inns?$/i,
   /\s+lodges?$/i, /\s+lodgings?$/i, /\s+taverns?$/i, /\s+grills?$/i,
   /\s+clubs?$/i, /\s+rooms?$/i, /\s+apartments?$/i, /\s+apt\.?$/i,
-  /\s+pharmacy$/i, /\s+&$/, /\s+and$/i,
+  /\s+pharmacy$/i, /\s+dining$/i, /\s+&$/, /\s+and$/i,
 ];
 function gbStripNameTail(name) {
   let s = (name || "").trim();
@@ -44,15 +44,24 @@ function gbStripNameTail(name) {
 // Name stem (PROPOSED side only). On top of the production tail-strip:
 //   - parenthetical descriptors: "Dew Drop Inn (Nite Club)" → "Dew Drop Inn"
 //   - quoted taglines: 'ROSE META "House of Beauty"' → "ROSE META"
-//   - possessive 's: "Rosebud's" → "Rosebud" (apostrophe-explicit only —
-//     never strips a bare trailing s, so "Charles" is safe)
+//   - possessive 's folds INTO a bare s ("Slaughter's" → "Slaughters"), not
+//     away: the guides print the same business both ways ("Slaughters" /
+//     "SLAUGHTER'S"), so deleting the s split them into different buckets.
+//     Case-insensitive — the old /'s\b/ missed uppercase "SLAUGHTER'S".
+//   - final-token plural fold ("slaughters" → "slaughter", token >= 5 chars,
+//     never after "ss") so bare-s and s-less printings share one bucket.
+//     Safe because bucketing only nominates candidates — the address
+//     signature phases still decide the actual business-level merges
+//     (full-dataset check: the fold changed 153 groups; a random sample was
+//     uniformly the same business at the same address, and the West End /
+//     St. Louis hard case keeps its splits).
 // ────────────────────────────────────────────────────────────────────────────
 function gbNewNameStem(name) {
   let s = (name || "").replace(/\([^)]*\)/g, " ");
   const unquoted = s.replace(/"[^"]*"/g, " ").replace(/\s+/g, " ").trim();
   if (unquoted.length >= 3) s = unquoted;
-  s = s.replace(/['’]s\b/g, "");
-  return gbNormName(gbStripNameTail(s));
+  s = s.replace(/['’]s\b/gi, "s");
+  return gbNormName(gbStripNameTail(s)).replace(/([a-z]{3,}[^s\s])s$/, "$1");
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -388,6 +397,9 @@ function gbSearchQueryName(name) {
   let s = (name || "").replace(/\([^)]*\)/g, " ");
   const unquoted = s.replace(/"[^"]*"/g, " ").replace(/\s+/g, " ").trim();
   if (unquoted.length >= 3) s = unquoted;
-  s = s.replace(/['\u2019]s\b/g, "");
+  // Fold the possessive into a bare s rather than deleting it: search
+  // normalization strips the apostrophe from haystacks ("Ada's" \u2192 "adas"),
+  // so "Adas" matches both printed forms while "Ada" matches neither.
+  s = s.replace(/['\u2019]s\b/gi, "s");
   return gbStripNameTail(s.replace(/\s+/g, " ").trim());
 }
