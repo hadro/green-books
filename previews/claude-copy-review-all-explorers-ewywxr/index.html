@@ -110,7 +110,7 @@
 
 <header>
   <h1 id="viewer-heading">Green Books &amp; Travel Guides — <em>Page Viewer</em></h1>
-  <a id="back-link" href="explorer.html">← Back to explorer</a>
+  <a id="back-link" href="all-volumes.html">← Back to all volumes</a>
 </header>
 
 <div id="viewer-wrap">
@@ -122,7 +122,7 @@
     <a href="explorer.html" class="gb-secondary-link">Or browse just the Green Book →</a>
   </div>
   <div id="loading"><p></p></div>
-  <div id="error"><p id="error-msg"></p><a id="error-back-link" href="explorer.html">← Back to explorer</a></div>
+  <div id="error"><p id="error-msg"></p><a id="error-back-link" href="all-volumes.html">← Back to all volumes</a></div>
 </div>
 
 <script>
@@ -172,10 +172,13 @@ function showError(msg) {
 }
 
 // Whitelist for the `from` param — never interpolate its raw value into a URL.
+// Green Book explorer deep-links tag themselves `from=explorer` so they round-
+// trip back there; everything else (the all-volumes explorer, the bare landing
+// page, unknown sources) returns to all-volumes, the site's primary entry point.
 function resolveBackTarget(params) {
-  return params.get("from") === "all-volumes"
-    ? { page: "all-volumes.html", text: "← Back to all volumes" }
-    : { page: "explorer.html", text: "← Back to explorer" };
+  return params.get("from") === "explorer"
+    ? { page: "explorer.html", text: "← Back to the Green Book explorer" }
+    : { page: "all-volumes.html", text: "← Back to all volumes" };
 }
 
 function serviceId(service) {
