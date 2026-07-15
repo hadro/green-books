@@ -2288,7 +2288,14 @@ async function gbStreamCsv(url, onRow) {
   const loadStatusEl = document.getElementById('load-status');
   if (loadStatusEl) loadStatusEl.textContent = gbLoadStatusText();  // initial text, before streaming starts
   try {
-    CANVAS_MAP = await fetch('canvas_map.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    // Category folding (gbCategoryGroup) runs during first paint, which can
+    // fire mid-stream; ensure the category map (fetched by gb-categories.js) is
+    // loaded before any row streams in.
+    const [canvas] = await Promise.all([
+      fetch('canvas_map.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }),
+      window.gbCategoriesReady
+    ]);
+    CANVAS_MAP = canvas;
     await gbStreamCsv(GB_CSV_URL, row => {
       // Stamp each row with its ALL_ENTRIES index once, up front, so render
       // code can look it up via rowIdx() instead of calling indexOf() per row.
