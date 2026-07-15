@@ -786,7 +786,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <div class="gb-hero-caveat-rule" aria-hidden="true"></div>
         <div class="gb-hero-caveat-body">
           <div class="gb-hero-caveat-label">A NOTE ON ACCURACY</div>
-          <p class="gb-hero-caveat-text">This dataset carries OCR, entity-extraction, and entry-alignment errors, so always treat the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, <em>not a replacement for them</em>. Data has not been reviewed for 100% accuracy.</p>
+          <p class="gb-hero-caveat-text">This dataset carries occasional OCR, entity-extraction, and entry-alignment errors, so always treat the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, <em>not a replacement for them</em>. Data has not been reviewed for 100% accuracy.</p>
           <button class="gb-hero-caveat-link" id="caveat-about-btn">READ MORE ABOUT THE DATA AND EXPLORER&rarr;</button>
         </div>
       </aside>
@@ -911,7 +911,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <p class="trends-caveat-lede">These charts count machine-extracted listings from the digitized corpus &mdash; read an empty year or a thin state as <em>absent from the digitized record, not from history.</em></p>
           <details class="trends-methodology">
             <summary>Read methodology</summary>
-            <p class="trends-caveat-text">These charts count machine-extracted listings, so OCR and entity-recognition errors in years, states, and categories flow through them uncorrected. They can also only measure what has been digitized and processed: the 45 volumes in this dataset. Other Black travel guides &mdash; including titles held by the Schomburg Center that have not been digitized &mdash; are not represented, and some years are covered by a single publication. Read an empty year or a thin state as <em>absent from the digitized corpus</em>, not absent from history.</p>
+            <p class="trends-caveat-text">These charts count machine-extracted listings, so occasional OCR and entity-recognition errors in years, states, and categories flow through them uncorrected. They can also only measure what has been digitized and processed: the 45 volumes in this dataset. Other Black travel guides &mdash; including titles held by the Schomburg Center that have not been digitized &mdash; are not represented, and some years are covered by a single publication. Read an empty year or a thin state as <em>absent from the digitized corpus</em>, not absent from history.</p>
             <a class="trends-caveat-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">&ldquo;MORE AFRICAN AMERICAN TRAVEL GUIDES!&rdquo; &mdash; NYPL RESEARCH GUIDE&rarr;</a>
           </details>
         </div>
@@ -1019,9 +1019,9 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div class="about-modal-grid">
         <div class="about-modal-prose">
           <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966, alongside six other travel guides published for Black Americans between 1930 and 1962 &mdash; guides that helped Black travelers find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
-          <h3 class="about-modal-h3">The source</h3>
+          <h3 class="about-modal-h3">The Green Books</h3>
           <p>The Green Book was published annually by Victor H. Green &amp; Co. from 1936 to 1966 as a guide for Black Americans navigating the Jim Crow era; the earliest edition digitized here is 1937. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
-          <h3 class="about-modal-h3">The publications</h3>
+          <h3 class="about-modal-h3">The other travel guide publications</h3>
           <p>This explorer searches across seven publications at once. Colors mark each publication throughout the site &mdash; on table rows, sidebar filters, and the coverage grid in each entry&rsquo;s detail panel:</p>
           <ul class="about-modal-pubs">
             <li><span class="pub-dot" style="background:#4a7d1c"></span><em>The Negro Motorist Green Book</em>&ensp;1937&ndash;1966</li>
@@ -1034,7 +1034,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           </ul>
           <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
-          <p class="about-modal-emphasis">This dataset carries OCR, entity-extraction, and entry-alignment errors, so always treat the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
+          <p class="about-modal-emphasis">This dataset carries occasional OCR, entity-extraction, and entry-alignment errors, so always treat the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
           <p>The dataset also reaches only as far as digitization has: it covers the 45 digitized volumes across these seven publications. Other Black travel guides &mdash; such as the <em>Afro-American&rsquo;s Travel Guide</em> (1939) and <em>The Black American Travel Guide</em> (1971), held in the Schomburg Center&rsquo;s Jean Blackwell Hutson Research and Reference Division but not digitized here &mdash; are not represented, so charts and counts describe the digitized corpus, not the full historical record. <a class="about-modal-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">See NYPL&rsquo;s research guide, &ldquo;More African American Travel Guides!&rdquo; &rarr;</a> You can explore the shape of the digitized corpus in <button type="button" id="about-trends-link" class="about-modal-link">charts &amp; trends</button>.</p>
           <h3 class="about-modal-h3">How to use this site</h3>
           <ol class="about-modal-list">
@@ -1044,6 +1044,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <li><strong>Click any row</strong> to open the full entry alongside a thumbnail of the source scan.</li>
             <li>Use <strong>Export CSV</strong> to download the currently filtered selection for your own work.</li>
           </ol>
+          <h3 class="about-modal-h3">Acknowledgments</h3>
+          <p>With gratitude to <strong>Maira Liriano</strong>, Associate Chief Librarian at the Schomburg Center for Research in Black Culture, The New York Public Library, for her advice and guidance on this project.</p>
         </div>
         <aside class="about-modal-side">
           <div class="about-modal-side-block">
@@ -1060,6 +1062,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <div class="about-modal-side-label">PIPELINE</div>
             <div class="about-modal-side-stat-text">Directory Pipeline</div>
             <div class="about-modal-side-sub">Created by Josh Hadro, using an open-source tool for extracting structured data from digitized historical directories. <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
+          </div>
+          <div class="about-modal-side-block">
+            <div class="about-modal-side-label">OPEN DATA</div>
+            <div class="about-modal-side-stat-text">Hugging Face</div>
+            <div class="about-modal-side-sub">The full structured dataset is published as public-domain (CC0) data, free to download and reuse. <a class="about-modal-link" href="https://huggingface.co/datasets/hadro/green-books-travel-guides" target="_blank" rel="noopener">View the dataset &rarr;</a></div>
           </div>
           <div class="about-modal-credit">Source material held by the Schomburg Center for Research in Black Culture, The New York Public Library.</div>
           <div class="about-modal-credit" style="margin-top:10px;">
