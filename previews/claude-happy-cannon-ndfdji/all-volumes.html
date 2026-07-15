@@ -68,6 +68,10 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
   padding: 6px 12px; z-index: 1000; text-decoration: none; font-size: 0.929rem;
 }
 .skip-link:focus { top: 0; }
+/* Mobile-only controls (revealed inside the max-width:640px block). Hidden by
+   default so desktop keeps its clickable <th> sort and never shows the bar. */
+#sticky-search-bar { display: none; }
+#mobile-sort-wrap { display: none; }
 
 /* ── Hero ── */
 .gb-hero {
@@ -727,6 +731,28 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   #detail-close { width: 44px; height: 44px; }
   #export-btn, #random-btn { padding: 9px 14px; }
   .facet-item { min-height: 36px; }
+  /* Sticky "Search the guides" bar — shown via .sticky-visible by the observer.
+     z-index sits below the .skip-link (1000) so keyboard focus still surfaces
+     it, and below the sidebar/detail overlays. The global prefers-reduced-motion
+     rule (above) already strips the transition, so it snaps rather than slides. */
+  #sticky-search-bar {
+    display: block; position: fixed; top: 0; left: 0; right: 0; z-index: 150;
+    background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint);
+    transform: translateY(-100%); transition: transform 0.2s ease;
+  }
+  #sticky-search-bar.sticky-visible { transform: translateY(0); }
+  #sticky-search-btn {
+    display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+    background: var(--gb-paper); border: none; cursor: pointer; padding: 10px 16px;
+    font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--gb-ink-soft);
+  }
+  #sticky-search-btn .sticky-search-icon { font-size: 1.15rem; line-height: 1; color: var(--gb-ink-faint); }
+  /* Mobile Sort control — the desktop <thead> (with its clickable sort) is
+     display:none here, so this reuses the same sort state via a compact select. */
+  #mobile-sort-wrap { display: inline-flex; align-items: center; gap: 6px; }
+  .mobile-sort-label { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); }
+  #mobile-sort { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-soft); background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); border-radius: 0; padding: 4px 8px; cursor: pointer; }
   /* Mobile compact mode for the coverage grid is opt-in via the
      data-compact attribute, set by the renderer when (max-width: 640px). */
 }
@@ -734,6 +760,12 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 </head>
 <body>
 <a href="#search" class="skip-link">Skip to search</a>
+
+<!-- Mobile-only sticky affordance: appears once the hero scrolls out of view
+     (IntersectionObserver mirrors the hero observer) and routes to #search. -->
+<div id="sticky-search-bar" aria-hidden="true">
+  <button id="sticky-search-btn" type="button"><span class="sticky-search-icon" aria-hidden="true">&#x2315;</span>Search the guides&rarr;</button>
+</div>
 
 <section class="gb-hero" id="gb-hero" aria-label="Green Book Directory Explorer">
   <div class="gb-hero-grid">
@@ -824,6 +856,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <button id="view-listings-btn" class="view-btn view-btn-active" aria-pressed="true">Listings</button>
         <button id="view-estabs-btn" class="view-btn" aria-pressed="false" disabled title="Available once all entries finish loading">Establishments</button>
       </div>
+      <label id="mobile-sort-wrap"><span class="mobile-sort-label">Sort</span><select id="mobile-sort" aria-label="Sort entries"></select></label>
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
       <span id="load-status"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
@@ -1807,7 +1840,71 @@ function renderTableHead() {
 function renderTable() {
   renderTableHead();
   renderTableBody();
+  gbSyncMobileSort();
 }
+
+// ── Mobile Sort control ─────────────────────────────────────────────────────
+// A single <select> encoding field + direction. It reuses the existing sort
+// state (sortCol/sortDir for listings, estabSortCol/estabSortDir for
+// establishments) and the same render path the desktop <th> handlers use — no
+// forked sort logic. Options are rebuilt when the active view changes (the two
+// views expose different sortable columns) and the value tracks the sort state,
+// so URL restore and view switches keep the control accurate.
+function gbSyncMobileSort() {
+  const sel = document.getElementById("mobile-sort");
+  if (!sel) return;
+  const est = viewMode === "establishments";
+  const opts = [];
+  if (est) {
+    // Only ESTAB_COLUMNS with a key are sortable (the coverage sparkline isn't).
+    ESTAB_COLUMNS.forEach(([key, label]) => {
+      if (!key) return;
+      opts.push([key + ":asc", label + " ↑"]);
+      opts.push([key + ":desc", label + " ↓"]);
+    });
+  } else {
+    opts.push(["", "Original order"]);
+    displayFields.forEach(f => {
+      const label = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+      opts.push([f.name + ":asc", label + " ↑"]);
+      opts.push([f.name + ":desc", label + " ↓"]);
+    });
+  }
+  // Rebuild the option DOM only when the set actually changes (view switch /
+  // volume load), so routine re-renders don't thrash an open control.
+  const sig = est + "|" + opts.map(o => o[0]).join(",");
+  if (sel.dataset.sig !== sig) {
+    sel.innerHTML = "";
+    opts.forEach(([val, text]) => {
+      const o = document.createElement("option");
+      o.value = val; o.textContent = text;
+      sel.appendChild(o);
+    });
+    sel.dataset.sig = sig;
+  }
+  sel.value = est
+    ? estabSortCol + ":" + (estabSortDir > 0 ? "asc" : "desc")
+    : (sortCol ? sortCol + ":" + (sortDir > 0 ? "asc" : "desc") : "");
+}
+document.getElementById("mobile-sort").addEventListener("change", function () {
+  const v = this.value;
+  if (viewMode === "establishments") {
+    const [key, dir] = v.split(":");
+    estabSortCol = key;
+    estabSortDir = dir === "desc" ? -1 : 1;
+  } else if (!v) {
+    sortCol = null; sortDir = 1;
+  } else {
+    const [key, dir] = v.split(":");
+    sortCol = key; sortDir = dir === "desc" ? -1 : 1;
+  }
+  // Same mutation + render the desktop <th> handlers use; renderTableHead/Body
+  // dispatch by viewMode. Call them directly (not renderTable) so gbSyncMobileSort
+  // doesn't re-run against the control mid-change.
+  renderTableHead();
+  renderTableBody();
+  syncFilterUI();  // persists listing sort to the URL (stateToHash reads sortCol/sortDir)
+});
 
 // Re-render rows when the viewport crosses the card breakpoint, so a
 // rotation or window resize swaps between the card and column layouts.
@@ -4870,6 +4967,32 @@ const _heroObserver = new IntersectionObserver(entries => {
   _heroVisible = true; gbMaybeBuildHero();
 }, { threshold: 0 });
 _heroObserver.observe(_heroSection);
+
+// Mobile-only sticky search bar. Mirrors the hero IntersectionObserver pattern
+// above (a separate observer on the same #gb-hero target, toggling on the
+// isIntersecting flip): when the hero is NOT intersecting on a phone, reveal the
+// fixed bar; hide it when the hero re-enters or on desktop. It routes to the
+// existing #search — no second input, no forked search state.
+const _stickyBar = document.getElementById('sticky-search-bar');
+// rootMargin trims the root's top by 100px: because #app is position:sticky /
+// height:100vh, the document's max scroll leaves the hero's bottom at ~0, so a
+// plain threshold:0 never registers as "fully out". Treating the hero as gone
+// once its bottom passes the top 100px makes the flip reliable and fires it just
+// as the toolbar reaches the top.
+const _stickySearchObserver = new IntersectionObserver(entries => {
+  if (!_stickyBar) return;
+  const visible = gbMobileCards() && !entries[0].isIntersecting;
+  _stickyBar.classList.toggle('sticky-visible', visible);
+  _stickyBar.setAttribute('aria-hidden', visible ? 'false' : 'true');
+}, { threshold: 0, rootMargin: '-100px 0px 0px 0px' });
+_stickySearchObserver.observe(_heroSection);
+document.getElementById('sticky-search-btn').addEventListener('click', () => {
+  const app = document.getElementById('app');
+  if (app) app.scrollIntoView({ behavior: 'smooth' });
+  const search = document.getElementById('search');
+  if (search) search.focus({ preventScroll: true });
+});
+
 // Fallback interval in case data arrives after the hero is already visible
 const _checkHero = setInterval(() => {
   const rect = _heroSection.getBoundingClientRect();
