@@ -4986,13 +4986,31 @@ const _stickyBar = document.getElementById('sticky-search-bar');
 // plain threshold:0 never registers as "fully out". Treating the hero as gone
 // once its bottom passes the top 100px makes the flip reliable and fires it just
 // as the toolbar reaches the top.
-const _stickySearchObserver = new IntersectionObserver(entries => {
+// The sticky bar's z-index (150) is a body-level layer, but #detail (z-index
+// 300) and the #sidebar drawer (200) are trapped inside #app's stacking
+// context (#app is position:sticky, which always makes one), so the bar paints
+// over their top edge — including #detail's close ×. Gate the bar off whenever
+// one of those mobile overlays is open; it's only a results-list nav aid.
+let _heroOut = false;
+function gbUpdateStickyBar() {
   if (!_stickyBar) return;
-  const visible = gbMobileCards() && !entries[0].isIntersecting;
+  const overlayOpen =
+    document.getElementById('detail').classList.contains('open') ||
+    document.getElementById('app').classList.contains('sidebar-open');
+  const visible = gbMobileCards() && _heroOut && !overlayOpen;
   _stickyBar.classList.toggle('sticky-visible', visible);
   _stickyBar.setAttribute('aria-hidden', visible ? 'false' : 'true');
+}
+const _stickySearchObserver = new IntersectionObserver(entries => {
+  _heroOut = !entries[0].isIntersecting;
+  gbUpdateStickyBar();
 }, { threshold: 0, rootMargin: '-100px 0px 0px 0px' });
 _stickySearchObserver.observe(_heroSection);
+// #detail.open and #app.sidebar-open flip from several call sites; one
+// MutationObserver on their class attribute re-gates the bar for all of them.
+const _overlayObserver = new MutationObserver(gbUpdateStickyBar);
+_overlayObserver.observe(document.getElementById('detail'), { attributes: true, attributeFilter: ['class'] });
+_overlayObserver.observe(document.getElementById('app'),   { attributes: true, attributeFilter: ['class'] });
 document.getElementById('sticky-search-btn').addEventListener('click', () => {
   const app = document.getElementById('app');
   if (app) app.scrollIntoView({ behavior: 'smooth' });
