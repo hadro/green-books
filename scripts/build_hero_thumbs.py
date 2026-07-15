@@ -21,6 +21,14 @@ Usage (from the green-books repo root):
 
 Refresh the set later by re-running with a different --seed and committing.
 Requires Pillow (the directory-pipeline venv has it).
+
+Curation: to remove a bad thumb (misaligned xywh box in the source data),
+
+  python3 scripts/build_hero_thumbs.py --prune <id> [<id> ...]
+
+which deletes it from hero-thumbs/ + manifest.json AND records it in
+scripts/hero_thumbs_exclude.txt so future rebuilds (any --seed) never
+re-select that entry. No --images-dir needed for pruning.
 """
 
 import argparse
@@ -38,6 +46,7 @@ GB_CSV = "green_book_entries_all.csv"
 TG_CSV = "travel_guides_all.csv"
 GB_MAP = "canvas_map.json"
 TG_MAP = "travel_guides_canvas_map.json"
+EXCLUDE_FILE = os.path.join("scripts", "hero_thumbs_exclude.txt")
 
 PAGE_IMG_RE = re.compile(r"^\d{4}_(\d+)\.jpg$")
 IMAGE_ID_RE = re.compile(r"/iiif/3/(\d+)")
@@ -45,6 +54,52 @@ IMAGE_ID_RE = re.compile(r"/iiif/3/(\d+)")
 
 def canvas_id(cf):
     return cf.split("#")[0]
+
+
+def thumb_id(cf):
+    return hashlib.sha1(cf.encode()).hexdigest()[:12]
+
+
+def load_excluded(repo_root):
+    """Thumb ids (or full canvas_fragments) listed one per line in
+    scripts/hero_thumbs_exclude.txt; # starts a comment."""
+    path = os.path.join(repo_root, EXCLUDE_FILE)
+    excluded = set()
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                token = line.split("#")[0].strip()
+                if token:
+                    excluded.add(token)
+    return excluded
+
+
+def prune(repo_root, out_dir, ids):
+    """Remove thumbs from hero-thumbs/ + manifest.json and record them in the
+    exclude file so no future rebuild re-selects those entries."""
+    manifest_path = os.path.join(out_dir, "manifest.json")
+    with open(manifest_path, encoding="utf-8") as f:
+        manifest = json.load(f)
+    by_id = {t["id"]: t for t in manifest["thumbs"]}
+    unknown = [i for i in ids if i not in by_id]
+    if unknown:
+        sys.exit(f"not in manifest: {', '.join(unknown)}")
+    exclude_path = os.path.join(repo_root, EXCLUDE_FILE)
+    already = load_excluded(repo_root)
+    with open(exclude_path, "a", encoding="utf-8") as f:
+        for i in ids:
+            t = by_id[i]
+            jpg = os.path.join(out_dir, t["file"])
+            if os.path.exists(jpg):
+                os.remove(jpg)
+            if i not in already:
+                f.write(f"{i}  # {t['name']} | {t['city']} {t['state']} {t['volume_year']}\n")
+            print(f"pruned {i}: {t['name']} | {t['city']} {t['state']} {t['volume_year']}")
+    manifest["thumbs"] = [t for t in manifest["thumbs"] if t["id"] not in ids]
+    manifest["count"] = len(manifest["thumbs"])
+    with open(manifest_path, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=1)
+    print(f"manifest now has {manifest['count']} thumbs; ids recorded in {EXCLUDE_FILE}")
 
 
 def parse_xywh(cf):
@@ -105,14 +160,17 @@ def load_candidates(repo_root, canvas_map):
     return candidates
 
 
-def select(candidates, count, seed):
+def select(candidates, count, seed, excluded=()):
     """Stratified draw: round-robin one entry per volume until count is met,
     deduped pool-wide by name|city so relisted businesses can't crowd out
     variety. Volumes with few eligible rows simply exhaust; the round-robin
-    redistributes their share automatically."""
+    redistributes their share automatically. Entries in the exclude file
+    (curated-out bad crops) are never selected."""
     rng = random.Random(seed)
     by_volume = {}
     for c in candidates:
+        if thumb_id(c["cf"]) in excluded or c["cf"] in excluded:
+            continue
         by_volume.setdefault(c["row"]["volume_id"], []).append(c)
     for pool in by_volume.values():
         rng.shuffle(pool)
@@ -203,8 +261,10 @@ def download_thumb(c, out_path, rate):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--images-dir", required=True,
+    ap.add_argument("--images-dir",
                     help="directory-pipeline output tree containing NNNN_<imageID>.jpg page scans")
+    ap.add_argument("--prune", nargs="+", metavar="ID",
+                    help="remove these thumb ids from the built set and add them to the exclude file")
     ap.add_argument("--count", type=int, default=300)
     ap.add_argument("--out-dir", default="hero-thumbs")
     ap.add_argument("--max-bytes", type=int, default=40960)
@@ -218,13 +278,20 @@ def main():
     args = ap.parse_args()
 
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    out_dir_resolved = args.out_dir if os.path.isabs(args.out_dir) else os.path.join(repo_root, args.out_dir)
+    if args.prune:
+        prune(repo_root, out_dir_resolved, args.prune)
+        return
+    if not args.images_dir:
+        ap.error("--images-dir is required (except with --prune)")
+
     with open(os.path.join(repo_root, GB_MAP), encoding="utf-8") as f:
         canvas_map = json.load(f)
     with open(os.path.join(repo_root, TG_MAP), encoding="utf-8") as f:
         canvas_map.update(json.load(f))
 
     candidates = load_candidates(repo_root, canvas_map)
-    picked = select(candidates, args.count, args.seed)
+    picked = select(candidates, args.count, args.seed, load_excluded(repo_root))
     images = index_page_images(args.images_dir)
 
     with_local = missing = 0
@@ -257,14 +324,14 @@ def main():
     if args.dry_run:
         return
 
-    out_dir = args.out_dir if os.path.isabs(args.out_dir) else os.path.join(repo_root, args.out_dir)
+    out_dir = out_dir_resolved
     staging = out_dir + ".staging"
     shutil.rmtree(staging, ignore_errors=True)
     os.makedirs(staging)
     thumbs, skipped = [], 0
     for i, c in enumerate(picked, 1):
-        thumb_id = hashlib.sha1(c["cf"].encode()).hexdigest()[:12]
-        out_path = os.path.join(staging, thumb_id + ".jpg")
+        tid = thumb_id(c["cf"])
+        out_path = os.path.join(staging, tid + ".jpg")
         ok = False
         if c["local"]:
             build_thumb(c, c["local"], out_path, args.max_bytes)
@@ -277,8 +344,8 @@ def main():
         r = c["row"]
         year = r.get("volume_year") or ""
         thumbs.append({
-            "id": thumb_id,
-            "file": thumb_id + ".jpg",
+            "id": tid,
+            "file": tid + ".jpg",
             "canvas_fragment": c["cf"],
             "name": r["name"],
             "city": r.get("city") or "",
