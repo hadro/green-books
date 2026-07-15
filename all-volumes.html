@@ -4892,10 +4892,16 @@ function gbUpdateStats() {
 }
 
 function gbUpdateHero() {
-  if (!ALL_ENTRIES.length) return;
+  // Pre-crunched local thumbs (hero-thumbs/manifest.json, built by
+  // scripts/build_hero_thumbs.py) are the normal pool: zero iiif.nypl.org
+  // requests for the hero and for every Shuffle, and the hero can paint
+  // before the CSVs finish streaming. The ALL_ENTRIES filter below survives
+  // only as the fallback when the manifest is missing or failed to load.
+  const useManifest = !!(HERO_THUMBS && HERO_THUMBS.length);
+  if (!useManifest && !ALL_ENTRIES.length) return;
   gbUpdateStats();
 
-  const withImg = ALL_ENTRIES.filter(r => {
+  const pool = useManifest ? HERO_THUMBS : ALL_ENTRIES.filter(r => {
     if (!r.address || !r.canvas_fragment || !r.canvas_fragment.includes('#xywh=')) return false;
     try {
       const xywh = r.canvas_fragment.split('#xywh=')[1].split(',').map(Number);
@@ -4904,10 +4910,10 @@ function gbUpdateHero() {
     } catch (_) {}
     return true;
   });
-  if (!withImg.length) return;
+  if (!pool.length) return;
   const featured = [], seen = new Set();
   for (let t = 0; t < 800 && featured.length < 3; t++) {
-    const r = withImg[Math.floor(Math.random() * withImg.length)];
+    const r = pool[Math.floor(Math.random() * pool.length)];
     const nf = ['name','establishment_name','firm_name','business_name'].find(k => r[k]);
     if (!nf) continue;
     const key = r[nf] + '|' + (r.city || '');
@@ -4929,7 +4935,7 @@ function gbUpdateHero() {
     card.href = location.pathname + '?cf=' + encodeURIComponent(r.canvas_fragment || '');
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gb-hero-card-thumb';
-    const ts = thumbUrl(r, 'left');
+    const ts = useManifest ? 'hero-thumbs/' + r.file : thumbUrl(r, 'left');
     if (ts) {
       const img = document.createElement('img');
       img.src = ts; img.alt = '';
@@ -4945,9 +4951,14 @@ function gbUpdateHero() {
     card.appendChild(meta);
     card.addEventListener('click', e => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      // Manifest thumbs are slim records; the detail panel needs the real CSV
+      // row. If it hasn't streamed in yet, fall through to the ?cf= href —
+      // the deep-link path resolves the entry after reload.
+      const row = useManifest ? ALL_ENTRIES.find(x => x.canvas_fragment === r.canvas_fragment) : r;
+      if (!row) return;
       e.preventDefault();
-      selectedIdx = rowIdx(r);
-      showDetail(r);
+      selectedIdx = rowIdx(row);
+      showDetail(row);
       renderTableBody();
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
       scrollToSelected(500);
@@ -4956,21 +4967,37 @@ function gbUpdateHero() {
   });
 }
 let _heroUpdated = false, _heroVisible = false;
-// Only build hero thumbnails (IIIF requests) when the hero section is actually
-// visible. If the user refreshes while scrolled past the hero, skip entirely.
+// Only build hero thumbnails when the hero section is actually visible. If
+// the user refreshes while scrolled past the hero, skip entirely.
 const _heroSection = document.getElementById('gb-hero');
-// Build the featured trio only once the hero is visible AND the full dataset
-// has streamed in. The CSV is sorted by year, so sampling mid-stream would draw
-// only from the earliest volumes (1937/1938) — gbDataLoaded guarantees an
-// all-volumes pool. gbMaybeBuildHero is called from every entry point below and
-// from the post-stream block; whichever satisfies both conditions last wins.
+// Pre-crunched thumbnail pool (hero-thumbs/manifest.json). Fetched once, on
+// hero visibility. While the fetch is in flight gbMaybeBuildHero holds off so
+// the live-IIIF fallback can't fire 3 NYPL requests that the local pool was
+// about to make unnecessary; the fetch always settles and re-calls it.
+let HERO_THUMBS = null, _heroThumbsState = 'idle';
+function gbFetchHeroThumbs() {
+  if (_heroThumbsState !== 'idle') return;
+  _heroThumbsState = 'pending';
+  fetch('hero-thumbs/manifest.json')
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(m => { HERO_THUMBS = (m.thumbs || []).filter(t => t && t.file && t.canvas_fragment); })
+    .catch(() => { HERO_THUMBS = null; })
+    .then(() => { _heroThumbsState = 'done'; gbMaybeBuildHero(); });
+}
+// Build the featured trio once the hero is visible AND a pool is ready — the
+// local manifest (no CSV dependency: it can paint mid-stream) or, only if the
+// manifest failed, the full dataset. The CSV is sorted by year, so the live
+// fallback still waits for gbDataLoaded to avoid drawing only 1937/1938.
+// gbMaybeBuildHero is called from every entry point below and from the
+// post-stream block; whichever satisfies the conditions last wins.
 function gbMaybeBuildHero() {
-  if (_heroUpdated || !_heroVisible || !gbDataLoaded || !ALL_ENTRIES.length) return;
+  if (_heroUpdated || !_heroVisible || _heroThumbsState === 'pending') return;
+  if (!(HERO_THUMBS && HERO_THUMBS.length) && !(gbDataLoaded && ALL_ENTRIES.length)) return;
   _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
 }
 const _heroObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
-  _heroVisible = true; gbMaybeBuildHero();
+  _heroVisible = true; gbFetchHeroThumbs(); gbMaybeBuildHero();
 }, { threshold: 0 });
 _heroObserver.observe(_heroSection);
 
@@ -5020,12 +5047,13 @@ document.getElementById('sticky-search-btn').addEventListener('click', () => {
 // Fallback interval in case data arrives after the hero is already visible
 const _checkHero = setInterval(() => {
   const rect = _heroSection.getBoundingClientRect();
-  if (rect.bottom > 0 && rect.top < window.innerHeight) { _heroVisible = true; gbMaybeBuildHero(); }
+  if (rect.bottom > 0 && rect.top < window.innerHeight) { _heroVisible = true; gbFetchHeroThumbs(); gbMaybeBuildHero(); }
   if (_heroUpdated) clearInterval(_checkHero);
 }, 200);
-// Reshuffle on demand — gbUpdateHero rebuilds the stack from a fresh random draw.
+// Reshuffle on demand — gbUpdateHero rebuilds the stack from a fresh random
+// draw. Against the local manifest pool this is free (no network at all).
 document.getElementById('hero-shuffle').addEventListener('click', () => {
-  if (gbDataLoaded) gbUpdateHero();
+  if ((HERO_THUMBS && HERO_THUMBS.length) || gbDataLoaded) gbUpdateHero();
 });
 
 
