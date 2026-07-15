@@ -3790,13 +3790,9 @@ async function gbStreamCsv(url, onRow) {
   if (loadStatusEl) loadStatusEl.textContent = gbLoadStatusText();  // initial text, before streaming starts
   const getJson = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
   try {
-    // Category folding (gbBuildFacets → gbCategoryGroup) runs at first paint,
-    // which can fire mid-stream; ensure the category map (fetched by
-    // gb-categories.js) is loaded before any row streams in.
     const [gbCanvas, tgCanvas] = await Promise.all([
       fetch('canvas_map.json').then(getJson),
-      fetch('travel_guides_canvas_map.json').then(getJson),
-      window.gbCategoriesReady
+      fetch('travel_guides_canvas_map.json').then(getJson)
     ]);
     CANVAS_MAP = Object.assign({}, gbCanvas, tgCanvas);
     await Promise.all([
