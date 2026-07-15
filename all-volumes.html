@@ -466,6 +466,13 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 .view-btn:disabled { color: var(--gb-ink-faint); cursor: not-allowed; opacity: 0.6; }
 .view-btn-active { background: var(--gb-accent); color: var(--gb-paper); }
 #est-mode-note { margin: 0; font-size: 0.786rem; color: var(--gb-ink-faint); font-style: italic; }
+/* ── Active-filter chip row (summary of applied filters; each × removes one) ── */
+#active-filters { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.active-filter-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); padding: 2px 5px 2px 8px; border-radius: 0; max-width: 100%; }
+.active-filter-chip .afc-label { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); white-space: nowrap; }
+.active-filter-chip .afc-val { font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink); letter-spacing: 0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+.active-filter-chip .afc-remove { background: none; border: none; cursor: pointer; font-size: 0.929rem; line-height: 1; color: var(--gb-ink-faint); padding: 0 2px; }
+.active-filter-chip .afc-remove:hover { color: var(--gb-accent); }
 
 /* ── Establishments table ── */
 .est-num { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-soft); font-variant-numeric: tabular-nums; text-align: right; }
@@ -507,7 +514,14 @@ tbody tr:hover { background: var(--gb-row-hover); }
 tbody tr.selected { background: var(--gb-row-active) !important; }
 td { padding: 11px 12px; color: var(--gb-ink-soft); vertical-align: top; font-size: 0.929rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 tbody td:first-child { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); padding-left: 24px; width: 64px; }
-tbody td:nth-child(2) { font-family: var(--gb-font-body); font-size: 0.929rem; font-weight: 400; color: var(--gb-ink); }
+tbody td:nth-child(2) { font-family: var(--gb-font-body); font-size: 0.929rem; font-weight: 400; color: var(--gb-ink); position: relative; }
+/* Discoverability cue: a faint trailing arrow signals the row opens a record.
+   Absolutely positioned so it overlays the name cell without shifting columns. */
+tbody tr:hover td:nth-child(2)::after,
+tbody tr:focus-within td:nth-child(2)::after {
+  content: "→"; position: absolute; top: 50%; right: 8px; transform: translateY(-50%);
+  font-family: var(--gb-font-mono); font-size: 0.9rem; color: var(--gb-ink-faint); pointer-events: none;
+}
 /* Establishments view: column 2 is the business name, the row's anchor — keep it
    semibold (Franklin, not Oswald, so it doesn't overpower the row). */
 table.est-mode tbody td:nth-child(2) { font-weight: 600; }
@@ -534,6 +548,7 @@ mark { background: var(--gb-highlight-soft); color: var(--gb-ink); padding: 0 2p
 .mcard-line { font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.35; }
 .mcard-cat { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-accent); margin-top: 1px; }
 .mcard .est-spark { width: 100%; margin-top: 5px; }
+.mcard-cue { font-family: var(--gb-font-mono); font-size: 0.643rem; letter-spacing: 0.05em; color: var(--gb-ink-faint); margin-top: 4px; }
 
 .detail-col { text-align: center; width: 28px; padding: 4px; }
 .detail-col-head { width: 28px; padding: 4px; text-align: center; }
@@ -812,6 +827,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <span id="load-status"></span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
+    <div id="active-filters" class="active-filters" aria-label="Active filters" style="display:none"></div>
     <p id="est-mode-note" style="display:none">One row per business — listings matched across volumes and publications by name and address; entries that never carry an address (section headers, boilerplate) are hidden. Click a row to open its most recent listing.</p>
   </div>
   <button id="random-btn" style="display:none"></button>
@@ -1459,6 +1475,10 @@ function gbBuildListingCardTd(row, q) {
     c.textContent = cat;
     card.appendChild(c);
   }
+  const cue = document.createElement("div");
+  cue.className = "mcard-cue";
+  cue.textContent = "View record →";
+  card.appendChild(cue);
   td.appendChild(card);
   return td;
 }
@@ -1718,6 +1738,7 @@ function renderTableHead() {
   filterRow.className = "filter-row";
   displayFields.forEach(f => {
     const fth = document.createElement("th");
+    fth.dataset.col = f.name;
     if (f.type === "facet" && f.top_values.length > 0) {
       const sel = document.createElement("select");
       sel.className = "col-filter-input";
@@ -2303,6 +2324,78 @@ function syncFilterUI() {
     Object.values(colFilters).some(v => v) ||
     Object.values(facetState).some(s => s.size > 0);
   document.getElementById("clear-filters-btn").style.display = anyActive ? "inline-block" : "none";
+  gbRenderActiveFilters(anyActive);
+}
+
+// Human-readable field label, matching how renderTableHead / the sidebar derive it.
+function gbFieldLabel(field) { return FIELD_LABELS[field] || field.replace(/_/g, " "); }
+
+// The refresh trio the col-filter handlers use after a filter change (replaceState,
+// no history push). Chip removals mutate one slice of state, then run this.
+function gbRefreshAfterFilter() { renderTableBody(); renderFacetSidebar(); syncFilterUI(); }
+
+// Build/refresh the active-filter chip row from current state. Called only from
+// syncFilterUI() — the single update path that also runs on load/URL restore.
+function gbRenderActiveFilters(anyActive) {
+  const wrap = document.getElementById("active-filters");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  if (!anyActive) { wrap.style.display = "none"; return; }
+
+  const addChip = (labelText, valueText, onRemove) => {
+    const chip = document.createElement("span");
+    chip.className = "active-filter-chip";
+    const lbl = document.createElement("span");
+    lbl.className = "afc-label";
+    lbl.textContent = labelText + ":";
+    const val = document.createElement("span");
+    val.className = "afc-val";
+    val.textContent = valueText;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "afc-remove";
+    btn.textContent = "×";
+    btn.setAttribute("aria-label", `Remove filter ${labelText}: ${valueText}`);
+    btn.addEventListener("click", onRemove);
+    chip.appendChild(lbl); chip.appendChild(val); chip.appendChild(btn);
+    wrap.appendChild(chip);
+  };
+
+  // Search term
+  if (searchQuery) {
+    addChip("Search", searchQuery, () => {
+      searchQuery = "";
+      const s = document.getElementById("search");
+      if (s) s.value = "";
+      gbRefreshAfterFilter();
+    });
+  }
+
+  // Per-column filters ({field: value})
+  Object.keys(colFilters).forEach(field => {
+    const v = colFilters[field];
+    if (!v) return;
+    addChip(gbFieldLabel(field), v, () => {
+      delete colFilters[field];
+      // Clear the matching column-filter control in the (possibly hidden) head so
+      // it doesn't show a stale value — the trio does not rebuild the head.
+      const ctl = document.querySelector(`#table-head .filter-row th[data-col="${CSS.escape(field)}"] .col-filter-input`);
+      if (ctl) ctl.value = "";
+      gbRefreshAfterFilter();
+    });
+  });
+
+  // Faceted filters ({field: Set<value>}); render the stored value as the sidebar does.
+  Object.keys(facetState).forEach(field => {
+    facetState[field].forEach(value => {
+      addChip(gbFieldLabel(field), VALUE_LABELS[value] || value || "(empty)", () => {
+        facetState[field].delete(value);
+        gbRefreshAfterFilter();
+      });
+    });
+  });
+
+  wrap.style.display = "flex";
 }
 
 document.getElementById("clear-filters-btn").addEventListener("click", clearAllFilters);
@@ -2617,6 +2710,10 @@ function gbBuildEstabCardTd(g, q) {
     card.appendChild(c);
   }
   card.appendChild(estabSparkline(g));
+  const cue = document.createElement("div");
+  cue.className = "mcard-cue";
+  cue.textContent = "View record →";
+  card.appendChild(cue);
   td.appendChild(card);
   return td;
 }
