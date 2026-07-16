@@ -1994,6 +1994,12 @@ function thumbUrl(row, hAnchor) {
     // No canvas fragment — fall back to the local page image (full page, no crop)
     return row.image ? row.image : "";
   }
+  // Entries in the pre-crunched hero pool are served from the repo instead of
+  // live IIIF — the detail panel's most common open is a hero card click, and
+  // that's exactly the crop we already host. (Pool crops are left-anchored;
+  // the panel's object-fit:contain makes the framing difference negligible.)
+  const local = HERO_THUMB_BY_CF && HERO_THUMB_BY_CF.get(cf);
+  if (local) return 'hero-thumbs/' + local;
   const cid = canvasId(cf);
   const svc = CANVAS_MAP[cid];
   if (!svc) return "";
@@ -4974,14 +4980,19 @@ const _heroSection = document.getElementById('gb-hero');
 // hero visibility. While the fetch is in flight gbMaybeBuildHero holds off so
 // the live-IIIF fallback can't fire 3 NYPL requests that the local pool was
 // about to make unnecessary; the fetch always settles and re-calls it.
-let HERO_THUMBS = null, _heroThumbsState = 'idle';
+let HERO_THUMBS = null, HERO_THUMB_BY_CF = null, _heroThumbsState = 'idle';
 function gbFetchHeroThumbs() {
   if (_heroThumbsState !== 'idle') return;
   _heroThumbsState = 'pending';
   fetch('hero-thumbs/manifest.json')
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(m => { HERO_THUMBS = (m.thumbs || []).filter(t => t && t.file && t.canvas_fragment); })
-    .catch(() => { HERO_THUMBS = null; })
+    .then(m => {
+      HERO_THUMBS = (m.thumbs || []).filter(t => t && t.file && t.canvas_fragment);
+      // canvas_fragment -> local file, so thumbUrl() (detail panel) serves
+      // pool entries from the repo instead of live IIIF.
+      HERO_THUMB_BY_CF = new Map(HERO_THUMBS.map(t => [t.canvas_fragment, t.file]));
+    })
+    .catch(() => { HERO_THUMBS = null; HERO_THUMB_BY_CF = null; })
     .then(() => { _heroThumbsState = 'done'; gbMaybeBuildHero(); });
 }
 // Build the featured trio once the hero is visible AND a pool is ready — the
