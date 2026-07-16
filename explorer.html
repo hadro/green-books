@@ -604,7 +604,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 <div id="app">
 <aside id="sidebar" role="complementary" aria-label="Filters">
   <div id="sidebar-header">
-    <p class="sidebar-brand"><a href="#" onclick="location.href=location.pathname;return false;">Green Books Travel Guide Explorer</a></p>
+    <p class="sidebar-brand"><a href="#" onclick="gbBrandHome();return false;">Green Books Travel Guide Explorer</a></p>
     <p class="gb-sidebar-desc">Explore the directory of safe businesses and services for Black travelers, 1937&ndash;1966</p>
     <span id="doc-title" style="display:none"></span>
     <span id="doc-sub" style="display:none"></span>
@@ -1543,7 +1543,10 @@ document.getElementById("detail-close").addEventListener("click", () => {
   if (wrap) wrap.scrollTop = savedScroll;
   if (prevIdx !== null) {
     const prevRow = document.querySelector('#table-body tr[data-idx="' + prevIdx + '"]');
-    if (prevRow) prevRow.focus();
+    // preventScroll: focus() otherwise scrolls the row into view, yanking the
+    // page back down to the table when the user deliberately scrolled away
+    // (e.g. up to the hero) before closing the panel.
+    if (prevRow) prevRow.focus({ preventScroll: true });
   }
 });
 
@@ -1685,6 +1688,22 @@ document.getElementById("clear-all-btn").addEventListener("click", clearAllFilte
 document.getElementById("no-results").addEventListener("click", e => {
   if (e.target && e.target.id === "clear-all-btn") clearAllFilters();
 });
+
+// ── Brand link: reset to the default view in place ─────────────────────────
+// Clearing filters/search/detail and scrolling back to the hero — instead of
+// the old location.href reload, which re-downloaded and re-parsed the CSV.
+function gbBrandHome() {
+  const app = document.getElementById('app');
+  if (app.classList.contains('sidebar-open')) {
+    app.classList.remove('sidebar-open');
+    const fb = document.getElementById('filter-btn');
+    if (fb) fb.setAttribute('aria-expanded', 'false');
+  }
+  selectedIdx = null;  // don't let clearAllFilters re-open the detail panel
+  clearAllFilters();
+  history.replaceState(null, '', location.pathname);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // ── Charts toggle ──────────────────────────────────────────────────────────
 
