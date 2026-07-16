@@ -1209,6 +1209,12 @@ function thumbUrl(row) {
     // No canvas fragment — fall back to the local page image (full page, no crop)
     return row.image ? row.image : "";
   }
+  // Entries in the pre-crunched hero pool are served from the repo instead of
+  // live IIIF — the detail panel's most common open is a hero card click, and
+  // that's exactly the crop we already host. (Pool crops are left-anchored
+  // rather than centered; callers compensate with object-position.)
+  const local = HERO_THUMB_BY_CF && HERO_THUMB_BY_CF.get(cf);
+  if (local) return 'hero-thumbs/' + local;
   const cid = cf.includes("#") ? cf.split("#")[0] : cf;
   const svc = CANVAS_MAP[cid];
   if (!svc) return "";
@@ -2134,7 +2140,12 @@ function gbUpdateHero() {
   document.getElementById('hero-eyebrow-stats').textContent = n.toLocaleString() + ' ENTRIES \u00B7 ' + volumes.size + ' VOLUMES';
   document.getElementById('about-stat-entries').textContent = n.toLocaleString();
 
-  const withImg = ALL_ENTRIES.filter(r => {
+  // Pre-crunched local thumbs (hero-thumbs/manifest.json, travel_guide
+  // entries only) are the normal pool: zero iiif.nypl.org requests. The
+  // ALL_ENTRIES filter below survives only as the fallback when the manifest
+  // is missing or failed to load.
+  const useManifest = !!(HERO_THUMBS && HERO_THUMBS.length);
+  const pool = useManifest ? HERO_THUMBS : ALL_ENTRIES.filter(r => {
     if (!r.address || !r.canvas_fragment || !r.canvas_fragment.includes('#xywh=')) return false;
     try {
       const xywh = r.canvas_fragment.split('#xywh=')[1].split(',').map(Number);
@@ -2143,10 +2154,10 @@ function gbUpdateHero() {
     } catch (_) {}
     return true;
   });
-  if (!withImg.length) return;
+  if (!pool.length) return;
   const featured = [], seen = new Set();
   for (let t = 0; t < 800 && featured.length < 3; t++) {
-    const r = withImg[Math.floor(Math.random() * withImg.length)];
+    const r = pool[Math.floor(Math.random() * pool.length)];
     const nf = ['name','establishment_name','firm_name','business_name'].find(k => r[k]);
     if (!nf) continue;
     const key = r[nf] + '|' + (r.city || '');
@@ -2168,10 +2179,14 @@ function gbUpdateHero() {
     card.href = location.pathname + '?cf=' + encodeURIComponent(r.canvas_fragment || '');
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gb-hero-card-thumb';
-    const ts = thumbUrl(r);
+    const ts = useManifest ? 'hero-thumbs/' + r.file : thumbUrl(r);
     if (ts) {
       const img = document.createElement('img');
       img.src = ts; img.alt = '';
+      // Pool crops are left-anchored (built for the other explorers' cards);
+      // this page's live crops are centered, so its CSS centers the image.
+      // Anchor left for pool crops so the entry text isn't clipped.
+      if (ts.startsWith('hero-thumbs/')) img.style.objectPosition = 'left';
       img.onerror = () => { img.style.display = 'none'; };
       thumbDiv.appendChild(img);
     }
@@ -2184,10 +2199,15 @@ function gbUpdateHero() {
     card.appendChild(meta);
     card.addEventListener('click', e => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      // Manifest thumbs are slim records; the detail panel needs the real CSV
+      // row. If it hasn't loaded yet, fall through to the ?cf= href — the
+      // deep-link path resolves the entry after reload.
+      const row = useManifest ? ALL_ENTRIES.find(x => x.canvas_fragment === r.canvas_fragment) : r;
+      if (!row) return;
       e.preventDefault();
-      selectedIdx = ALL_ENTRIES.indexOf(r);
+      selectedIdx = ALL_ENTRIES.indexOf(row);
       _detailOpener = null;
-      showDetail(r);
+      showDetail(row);
       renderTableBody();
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
       scrollToSelected(500);
@@ -2199,19 +2219,43 @@ let _heroUpdated = false;
 // Only build hero thumbnails (IIIF requests) when the hero section is actually
 // visible. If the user refreshes while scrolled past the hero, skip entirely.
 const _heroSection = document.getElementById('gb-hero');
+// Pre-crunched thumbnail pool (hero-thumbs/manifest.json). Fetched once, on
+// hero visibility. While the fetch is in flight the build holds off so the
+// live-IIIF fallback can't fire 3 NYPL requests that the local pool was about
+// to make unnecessary; the fetch always settles and re-calls the build.
+let HERO_THUMBS = null, HERO_THUMB_BY_CF = null, _heroThumbsState = 'idle', _heroVisible = false;
+function gbFetchHeroThumbs() {
+  if (_heroThumbsState !== 'idle') return;
+  _heroThumbsState = 'pending';
+  fetch('hero-thumbs/manifest.json')
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(m => {
+      // Travel-guide thumbs only — the shared pool also holds Green Books
+      // entries that aren't in this explorer's dataset.
+      HERO_THUMBS = (m.thumbs || []).filter(t =>
+        t && t.file && t.canvas_fragment && t.publication === 'travel_guide');
+      // canvas_fragment -> local file, so thumbUrl() (detail panel) serves
+      // pool entries from the repo instead of live IIIF.
+      HERO_THUMB_BY_CF = new Map(HERO_THUMBS.map(t => [t.canvas_fragment, t.file]));
+    })
+    .catch(() => { HERO_THUMBS = null; HERO_THUMB_BY_CF = null; })
+    .then(() => { _heroThumbsState = 'done'; gbMaybeBuildHero(); });
+}
+function gbMaybeBuildHero() {
+  if (_heroUpdated || !_heroVisible || _heroThumbsState === 'pending' || !ALL_ENTRIES.length) return;
+  _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
+}
 const _heroObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
-    _heroUpdated = true; _heroObserver.disconnect(); gbUpdateHero();
-  }
+  _heroVisible = true; gbFetchHeroThumbs(); gbMaybeBuildHero();
 }, { threshold: 0 });
 _heroObserver.observe(_heroSection);
 // Fallback interval in case data arrives after the hero is already visible
 const _checkHero = setInterval(() => {
-  if (ALL_ENTRIES.length > 0 && !_heroUpdated) {
+  if (!_heroUpdated) {
     const rect = _heroSection.getBoundingClientRect();
     if (rect.bottom > 0 && rect.top < window.innerHeight) {
-      _heroUpdated = true; clearInterval(_checkHero); _heroObserver.disconnect(); gbUpdateHero();
+      _heroVisible = true; gbFetchHeroThumbs(); gbMaybeBuildHero();
     }
   }
   if (_heroUpdated) clearInterval(_checkHero);
