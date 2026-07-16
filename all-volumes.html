@@ -1591,6 +1591,7 @@ function buildRowTr(row, q) {
     if (row.canvas_fragment) {
       const btn = document.createElement("button");
       btn.className = "src-btn";
+      btn.setAttribute("tabindex", "-1");  // roving: the row is the single Tab stop
       btn.textContent = "View page ↗";
       btn.title = "Open original digitized page image";
       btn.addEventListener("click", e => {
@@ -5090,6 +5091,19 @@ const _overlayObserver = new MutationObserver(gbUpdateStickyBar);
 _overlayObserver.observe(document.getElementById('detail'), { attributes: true, attributeFilter: ['class'] });
 _overlayObserver.observe(document.getElementById('app'),   { attributes: true, attributeFilter: ['class'] });
 document.getElementById('sticky-search-btn').addEventListener('click', () => {
+  const app = document.getElementById('app');
+  if (app) app.scrollIntoView({ behavior: 'smooth' });
+  const search = document.getElementById('search');
+  if (search) search.focus({ preventScroll: true });
+});
+
+// Skip link: drive focus in JS instead of relying on the "#search" fragment.
+// A bare hash resolves against an injected <base href> on preview deploys and
+// would navigate to the site root (index.html) — the same trap hrefForState()
+// avoids for the JS-generated links.
+const _skipLink = document.querySelector('.skip-link');
+if (_skipLink) _skipLink.addEventListener('click', e => {
+  e.preventDefault();
   const app = document.getElementById('app');
   if (app) app.scrollIntoView({ behavior: 'smooth' });
   const search = document.getElementById('search');
