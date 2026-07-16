@@ -48,6 +48,17 @@ GB_MAP = "canvas_map.json"
 TG_MAP = "travel_guides_canvas_map.json"
 EXCLUDE_FILE = os.path.join("scripts", "hero_thumbs_exclude.txt")
 
+# Canonical category groups (per gb-categories.json folding) eligible for the
+# hero. Keeps the featured cards on the iconic traveler-facing listings;
+# section headers, organizations, missions, blank categories etc. stay out.
+# Override with --groups or disable with --all-categories.
+HERO_CATEGORY_GROUPS = [
+    "HOTELS", "TOURIST HOMES", "RESTAURANTS", "TAVERNS", "BEAUTY PARLORS",
+    "BARBER SHOPS", "SERVICE STATIONS", "NIGHT CLUBS", "TAILOR SHOPS",
+    "DRUG STORES", "WINE & LIQUOR STORES", "ROOMS", "GARAGES",
+    "VACATION RESORTS", "TAXI CABS", "ROAD HOUSES", "SUMMER RESORTS",
+]
+
 PAGE_IMG_RE = re.compile(r"^\d{4}_(\d+)\.jpg$")
 IMAGE_ID_RE = re.compile(r"/iiif/3/(\d+)")
 
@@ -172,8 +183,21 @@ def select(candidates, count, seed, excluded=()):
         if thumb_id(c["cf"]) in excluded or c["cf"] in excluded:
             continue
         by_volume.setdefault(c["row"]["volume_id"], []).append(c)
-    for pool in by_volume.values():
+    # Within each volume, interleave category groups so the draw isn't
+    # dominated by whatever category the volume has most of (usually HOTELS).
+    for vid, pool in by_volume.items():
         rng.shuffle(pool)
+        buckets = {}
+        for c in pool:
+            buckets.setdefault(c.get("group"), []).append(c)
+        bucket_lists = list(buckets.values())
+        rng.shuffle(bucket_lists)
+        order = []
+        while any(bucket_lists):
+            for b in bucket_lists:
+                if b:
+                    order.append(b.pop())
+        by_volume[vid] = order[::-1]  # select pops from the end
     volumes = sorted(by_volume)
     rng.shuffle(volumes)
     seen, picked = set(), []
@@ -265,6 +289,10 @@ def main():
                     help="directory-pipeline output tree containing NNNN_<imageID>.jpg page scans")
     ap.add_argument("--prune", nargs="+", metavar="ID",
                     help="remove these thumb ids from the built set and add them to the exclude file")
+    ap.add_argument("--groups", default=",".join(HERO_CATEGORY_GROUPS),
+                    help="comma-separated canonical category groups eligible for the hero")
+    ap.add_argument("--all-categories", action="store_true",
+                    help="disable the category-group filter entirely")
     ap.add_argument("--count", type=int, default=300)
     ap.add_argument("--out-dir", default="hero-thumbs")
     ap.add_argument("--max-bytes", type=int, default=40960)
@@ -291,6 +319,13 @@ def main():
         canvas_map.update(json.load(f))
 
     candidates = load_candidates(repo_root, canvas_map)
+    sys.path.insert(0, repo_root)  # gb_categories.py lives at the repo root
+    from gb_categories import gb_category_group
+    for c in candidates:
+        c["group"] = gb_category_group(c["row"].get("category"))
+    if not args.all_categories:
+        groups = {g.strip() for g in args.groups.split(",") if g.strip()}
+        candidates = [c for c in candidates if c["group"] in groups]
     picked = select(candidates, args.count, args.seed, load_excluded(repo_root))
     images = index_page_images(args.images_dir)
 
