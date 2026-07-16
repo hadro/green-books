@@ -578,7 +578,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .rec-star { color: var(--gb-highlight); font-size: 0.786rem; }
 .detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
 .df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
-.df-val { color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
+.df-val { margin: 0; color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
 #detail-page-context { text-align: right; margin-bottom: 8px; min-height: 0; }
 #detail-page-context:empty { display: none; }
 #detail-page-context a { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
@@ -885,7 +885,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <div id="detail-page-context"></div>
         <h2 id="detail-title"></h2>
         <div id="detail-badges"></div>
-        <div class="detail-fields" id="detail-fields"></div>
+        <dl class="detail-fields" id="detail-fields"></dl>
         <div id="detail-also-in" style="display:none"></div>
         <div id="detail-map" style="display:none"></div>
         <div class="detail-source" id="detail-source"></div>
@@ -1210,6 +1210,10 @@ const FIELD_LABELS = {
   "volume_year": "Year",
   "publication": "Publication",
   "category": "Category",
+  "name": "Name",
+  "address": "Address",
+  "city": "City",
+  "state": "State",
   "canvas_fragment": "Source",
 };
 const VALUE_LABELS = {
@@ -2098,10 +2102,10 @@ function showDetail(row) {
   const fields = document.getElementById("detail-fields");
   fields.innerHTML = "";
   const addField = (label, val) => {
-    const k = document.createElement("div");
+    const k = document.createElement("dt");
     k.className = "df-key";
     k.textContent = label;
-    const v = document.createElement("div");
+    const v = document.createElement("dd");
     v.className = "df-val";
     v.textContent = VALUE_LABELS[val] || val;
     fields.appendChild(k);
