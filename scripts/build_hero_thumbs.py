@@ -171,12 +171,13 @@ def load_candidates(repo_root, canvas_map):
     return candidates
 
 
-def select(candidates, count, seed, excluded=()):
+def select(candidates, count, seed, excluded=(), seen=()):
     """Stratified draw: round-robin one entry per volume until count is met,
     deduped pool-wide by name|city so relisted businesses can't crowd out
     variety. Volumes with few eligible rows simply exhaust; the round-robin
     redistributes their share automatically. Entries in the exclude file
-    (curated-out bad crops) are never selected."""
+    (curated-out bad crops) are never selected; `seen` pre-seeds the dedup
+    keys with entries already in the pool (--top-up)."""
     rng = random.Random(seed)
     by_volume = {}
     for c in candidates:
@@ -200,7 +201,7 @@ def select(candidates, count, seed, excluded=()):
         by_volume[vid] = order[::-1]  # select pops from the end
     volumes = sorted(by_volume)
     rng.shuffle(volumes)
-    seen, picked = set(), []
+    seen, picked = set(seen), []
     while len(picked) < count:
         progressed = False
         for vid in volumes:
@@ -303,6 +304,9 @@ def main():
                     help="download crops from NYPL IIIF for entries with no local page scan")
     ap.add_argument("--dry-run", action="store_true",
                     help="select and report only; write nothing")
+    ap.add_argument("--top-up", action="store_true",
+                    help="keep every thumb already in the manifest; only add new ones to reach "
+                         "--count (use after --prune so reviewed thumbs don't churn)")
     args = ap.parse_args()
 
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -326,7 +330,15 @@ def main():
     if not args.all_categories:
         groups = {g.strip() for g in args.groups.split(",") if g.strip()}
         candidates = [c for c in candidates if c["group"] in groups]
-    picked = select(candidates, args.count, args.seed, load_excluded(repo_root))
+    excluded = load_excluded(repo_root)
+    existing, seen_keys = [], set()
+    manifest_path = os.path.join(out_dir_resolved, "manifest.json")
+    if args.top_up and os.path.exists(manifest_path):
+        with open(manifest_path, encoding="utf-8") as f:
+            existing = json.load(f)["thumbs"]
+        excluded = excluded | {t["id"] for t in existing}
+        seen_keys = {t["name"] + "|" + (t["city"] or "") for t in existing}
+    picked = select(candidates, args.count - len(existing), args.seed, excluded, seen_keys)
     images = index_page_images(args.images_dir)
 
     with_local = missing = 0
@@ -360,9 +372,13 @@ def main():
         return
 
     out_dir = out_dir_resolved
-    staging = out_dir + ".staging"
-    shutil.rmtree(staging, ignore_errors=True)
-    os.makedirs(staging)
+    if args.top_up:
+        staging = out_dir  # add new thumbs in place; existing ones stay untouched
+        os.makedirs(staging, exist_ok=True)
+    else:
+        staging = out_dir + ".staging"
+        shutil.rmtree(staging, ignore_errors=True)
+        os.makedirs(staging)
     thumbs, skipped = [], 0
     for i, c in enumerate(picked, 1):
         tid = thumb_id(c["cf"])
@@ -392,21 +408,23 @@ def main():
         if i % 50 == 0:
             print(f"  {i}/{len(picked)}...")
 
+    all_thumbs = existing + thumbs
     manifest = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "generator_version": 1,
         "seed": args.seed,
-        "count": len(thumbs),
-        "thumbs": thumbs,
+        "count": len(all_thumbs),
+        "thumbs": all_thumbs,
     }
     with open(os.path.join(staging, "manifest.json"), "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=1)
 
-    shutil.rmtree(out_dir, ignore_errors=True)
-    shutil.move(staging, out_dir)
-    total = sum(os.path.getsize(os.path.join(out_dir, t["file"])) for t in thumbs)
-    print(f"wrote {len(thumbs)} thumbs ({total / 1e6:.1f} MB) + manifest.json to {out_dir}"
-          + (f"; skipped {skipped}" if skipped else ""))
+    if not args.top_up:
+        shutil.rmtree(out_dir, ignore_errors=True)
+        shutil.move(staging, out_dir)
+    total = sum(os.path.getsize(os.path.join(out_dir, t["file"])) for t in all_thumbs)
+    print(f"wrote {len(thumbs)} new thumbs (pool now {len(all_thumbs)}, {total / 1e6:.1f} MB) "
+          f"+ manifest.json in {out_dir}" + (f"; skipped {skipped}" if skipped else ""))
 
 
 if __name__ == "__main__":
