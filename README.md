@@ -67,6 +67,8 @@ The structured entries dataset was produced by the [directory-pipeline](https://
 
 The data reaches only as far as digitization has: other Black travel guides that have not been digitized (see NYPL's guide, ["More African American Travel Guides!"](https://libguides.nypl.org/greenbook/more)) are not represented, so counts describe the digitized corpus, not the full historical record.
 
+The full structured dataset — all seven publications combined — is also published as a downloadable, CC0-licensed dataset on Hugging Face: [hadro/green-books-travel-guides](https://huggingface.co/datasets/hadro/green-books-travel-guides).
+
 ---
 
 ## Running the viewer tests
