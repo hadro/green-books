@@ -386,6 +386,10 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .about-modal-list { margin: 0 0 18px; padding-left: 24px; counter-reset: gbsteps; list-style: none; }
 .about-modal-list li { position: relative; padding: 6px 0 6px 8px; counter-increment: gbsteps; font-family: var(--gb-font-display); font-size: 16px; color: var(--gb-ink-soft); line-height: 1.65; }
 .about-modal-list li::before { content: counter(gbsteps, decimal-leading-zero); position: absolute; left: -28px; top: 8px; font-family: var(--gb-font-mono); font-size: 11px; color: var(--gb-accent); }
+.about-modal-pubs { list-style: none; margin: 0 0 18px; padding: 0; }
+.about-modal-pubs li { display: flex; align-items: baseline; gap: 9px; padding: 4px 0; font-family: var(--gb-font-display); font-size: 15px; color: var(--gb-ink-soft); line-height: 1.5; }
+.about-modal-pubs li em { color: var(--gb-ink); }
+.about-modal-pubs .pub-dot { flex-shrink: 0; align-self: center; margin-right: 0; }
 .about-modal-link { color: var(--gb-accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .about-modal-link:hover { text-decoration-style: dashed; }
 .about-modal-side { border-left: 1px solid var(--gb-rule-faint); padding-left: 32px; display: flex; flex-direction: column; gap: 28px; }
@@ -669,10 +673,19 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <h2 id="about-title" class="about-modal-title">An exploration tool for data from <em>six African American travel guides</em>, extracted from page scans, 1930&nbsp;&ndash;&nbsp;1962.</h2>
       <div class="about-modal-grid">
         <div class="about-modal-prose">
-          <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966 &mdash; annual travel guides that helped Black Americans find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
-          <h3 class="about-modal-h3">The source</h3>
-          <p>The Green Book was published annually by Victor H. Green &amp; Co. from 1936 to 1966 as a guide for Black Americans navigating the Jim Crow era. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
-          <p>Page scans are held by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
+          <p class="about-modal-lede">This tool lets you browse structured data extracted from six travel guides published for Black Americans between 1930 and 1962 &mdash; guides that helped Black travelers find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
+          <h3 class="about-modal-h3">The publications</h3>
+          <p>These six guides are the lesser-known counterparts to <em>The Negro Motorist Green Book</em>, published annually by Victor H. Green &amp; Co. from 1936 to 1966 and browsable in its own explorer. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
+          <p>This explorer searches across six publications at once. Colors mark each publication throughout the site. Each title links to the source scans in NYPL Digital Collections:</p>
+          <ul class="about-modal-pubs">
+            <li><span class="pub-dot" style="background:#2a7a3c"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/items/4f7822b0-c00d-0136-5411-11376e3c248e" target="_blank" rel="noopener" aria-label="Hackley &amp; Harrison&rsquo;s Hotel and Apartment Guide on NYPL Digital Collections">Hackley &amp; Harrison&rsquo;s Hotel and Apartment Guide</a></em>&ensp;1930</li>
+            <li><span class="pub-dot" style="background:#7040a0"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/items/e088efa0-c014-0136-98ef-7b90cc6cd4ed" target="_blank" rel="noopener" aria-label="The Travelers Guide on NYPL Digital Collections">The Travelers Guide</a></em>&ensp;1931</li>
+            <li><span class="pub-dot" style="background:#c96820"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/items/e20bf5b0-c01a-0136-7fe0-000bde94fce8" target="_blank" rel="noopener" aria-label="Smith&rsquo;s Tourist Guide on NYPL Digital Collections">Smith&rsquo;s Tourist Guide</a></em>&ensp;1940</li>
+            <li><span class="pub-dot" style="background:#c0341d"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/travelguide" target="_blank" rel="noopener" aria-label="Travelguide on NYPL Digital Collections">Travelguide</a></em>&ensp;1947&ndash;1962</li>
+            <li><span class="pub-dot" style="background:#1a5fa8"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/go-guide-to-pleasant-motoring" target="_blank" rel="noopener" aria-label="Go, Guide to Pleasant Motoring on NYPL Digital Collections">Go, Guide to Pleasant Motoring</a></em>&ensp;1952&ndash;1959</li>
+            <li><span class="pub-dot" style="background:#0d7a74"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/items/b33397d0-c009-0136-7aeb-5d14e5199b19" target="_blank" rel="noopener" aria-label="NHA Directory and Guide to Travelers on NYPL Digital Collections">NHA Directory and Guide to Travelers</a></em>&ensp;1959</li>
+          </ul>
+          <p>Page scans are held by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
           <p class="about-modal-emphasis">This dataset carries OCR and entity-extraction errors, so always treat the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
           <h3 class="about-modal-h3">How to use this site</h3>
@@ -691,8 +704,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           </div>
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">VOLUMES</div>
-            <div class="about-modal-side-stat">23</div>
-            <div class="about-modal-side-sub">covering 1937 &mdash; 1966</div>
+            <div class="about-modal-side-stat">22</div>
+            <div class="about-modal-side-sub">across 6 publications, covering 1930 &mdash; 1962</div>
           </div>
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">PIPELINE</div>
