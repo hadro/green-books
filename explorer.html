@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Green Books Travel Guide Explorer</title>
 <meta property="og:title"        content="Green Books Travel Guide Explorer">
-<meta property="og:description"  content="Explore and view entries of the businesses and services listed in the Green Books from 1933-1966.">
+<meta property="og:description"  content="Explore and view entries of the businesses and services listed in the Green Books from 1937-1966.">
 <meta property="og:type"         content="website">
 <meta property="og:url"          content="https://hadro.github.io/green-books/explorer">
 <meta property="og:image"        content="https://hadro.github.io/green-books/social-preview.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Green Books Travel Guide Explorer">
-<meta name="twitter:description" content="Explore and view entries of the businesses and services listed in the Green Books from 1933-1966.">
+<meta name="twitter:description" content="Explore and view entries of the businesses and services listed in the Green Books from 1937-1966.">
 <meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231d4d2e'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23faf8f3'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231d4d2e'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%23767069'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%23767069'/%3E%3C/svg%3E">
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
@@ -567,14 +567,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <span>Green Books Travel Guide Explorer</span>
         <!-- <span>EST. 1936</span> -->
         <!-- <span class="gb-hero-eyebrow-dot">&#x25CF;</span> -->
-        <!-- <span id="hero-eyebrow-stats">63,185 ENTRIES &middot; 23 VOLUMES</span> -->
+        <!-- <span id="hero-eyebrow-stats">67,052 ENTRIES &middot; 24 VOLUMES</span> -->
       </div>
       <h1 class="gb-hero-title">A directory of places that welcomed Black travelers, <em>1937&nbsp;&ndash;&nbsp;1966.</em></h1>
       <p class="gb-hero-lede">The Negro Motorist Green Book listed hotels, restaurants, beauty parlors, and roadhouses safe to visit during the Jim Crow era of segregation. This explorer makes those records searchable across all published editions.</p>
       <div class="gb-hero-cta">
         <button class="gb-btn-primary" onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start exploring &rarr;</button>
         <button class="gb-btn-ghost" id="random-btn-hero">Open a random entry</button>
-        <p class="gb-hero-credit">Source material held by the New York Public Library, Schomburg Center for Research in Black Culture.<br>Data extracted using an LLM-enhanced <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">Directory Pipeline</a> for OCR and named-entity recognition.</p>
+        <p class="gb-hero-credit">Source material held by the New York Public Library, Schomburg Center for Research in Black Culture, and the Library of Congress.<br>Data extracted using an LLM-enhanced <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">Directory Pipeline</a> for OCR and named-entity recognition.</p>
       </div>
       <aside class="gb-hero-caveat" role="note" aria-label="A note on accuracy">
         <div class="gb-hero-caveat-rule" aria-hidden="true"></div>
@@ -593,11 +593,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
   </div>
   <div class="gb-hero-stats">
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">63,185</div><div class="gb-hero-stat-label">individual listings</div></div>
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">23</div><div class="gb-hero-stat-label">published volumes</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">67,052</div><div class="gb-hero-stat-label">individual listings</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">24</div><div class="gb-hero-stat-label">published volumes</div></div>
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
-    <!-- 24 = folded gbCategoryGroup() labels with >=100 entries in green_book_entries_all.csv, excluding the "Blank or no specific category" bucket. Regenerate by folding the CSV's category column through gb-categories.js's gbCategoryGroup() and counting labels. -->
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">24</div><div class="gb-hero-stat-label">business categories</div></div>
+    <!-- 26 = folded gbCategoryGroup() labels with >=100 entries in green_book_entries_all.csv, excluding the "Blank or no specific category" bucket. Regenerate by folding the CSV's category column through gb-categories.js's gbCategoryGroup() and counting labels. -->
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">26</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
 </section>
 
@@ -703,8 +703,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <div class="about-modal-prose">
           <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966 &mdash; annual travel guides that helped Black Americans find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
           <h3 class="about-modal-h3">The source</h3>
-          <p>The Green Book was published annually by Victor H. Green &amp; Co. from 1936 to 1966 as a guide for Black Americans navigating the Jim Crow era; the earliest edition digitized here is 1937. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
-          <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
+          <p>The Green Book was published annually by Victor H. Green &amp; Co. from 1936 to 1966 as a guide for Black Americans navigating the Jim Crow era; the earliest edition digitized here is 1937. Publication paused during World War II and resumed with the 1946 edition, which is digitized by the Library of Congress and included here alongside the New York Public Library volumes. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
+          <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a> and, for the 1946 edition, the <a class="about-modal-link" href="https://www.loc.gov/item/2016298176/" target="_blank" rel="noopener">Library of Congress</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
           <p class="about-modal-emphasis">This dataset carries OCR, entity-extraction, and entry-alignment errors, so always treat the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
           <h3 class="about-modal-h3">How to use this site</h3>
@@ -719,12 +719,12 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <aside class="about-modal-side">
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">DATASET</div>
-            <div class="about-modal-side-stat" id="about-stat-entries">63,185</div>
+            <div class="about-modal-side-stat" id="about-stat-entries">67,052</div>
             <div class="about-modal-side-sub">individual listings, extracted</div>
           </div>
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">VOLUMES</div>
-            <div class="about-modal-side-stat">23</div>
+            <div class="about-modal-side-stat">24</div>
             <div class="about-modal-side-sub">covering 1937 &mdash; 1966</div>
           </div>
           <div class="about-modal-side-block">
@@ -732,7 +732,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <div class="about-modal-side-stat-text">Directory Pipeline</div>
             <div class="about-modal-side-sub">Created by Josh Hadro, using an open-source tool for extracting structured data from digitized historical directories. <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
           </div>
-          <div class="about-modal-credit">Source material held by the Schomburg Center for Research in Black Culture, The New York Public Library.</div>
+          <div class="about-modal-credit">Source material held by the Schomburg Center for Research in Black Culture, The New York Public Library, and the Library of Congress.</div>
           <div class="about-modal-credit" style="margin-top:10px;">
             <a class="about-modal-link" href="https://github.com/hadro/green-books" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-style:normal;">
               <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -762,7 +762,7 @@ const VOLUMES     = {};
 // python3's csv module, to handle embedded commas/quotes correctly) and
 // folding each value through gb-categories.js's gbCategoryGroup() — run the
 // file itself (e.g. in a Node vm sandbox) rather than reimplementing the map.
-const FIELD_META  = [{"name": "volume_year", "fill_rate": 1.0, "cardinality": 22, "type": "facet", "top_values": [["1937", 86], ["1938", 1011], ["1939", 1999], ["1940", 2063], ["1941", 2012], ["1947", 3813], ["1948", 3909], ["1949", 4145], ["1950", 4316], ["1951", 4249], ["1952", 4221], ["1953", 3995], ["1954", 4106], ["1955", 4036], ["1956", 1963], ["1957", 2105], ["1959", 2148], ["1960", 2233], ["1961", 2436], ["1962", 2211], ["1963", 2953], ["1966", 3175]]}, {"name": "name", "fill_rate": 0.9997, "cardinality": 12645, "type": "search", "top_values": []}, {"name": "address", "fill_rate": 0.9165, "cardinality": 14085, "type": "search", "top_values": []}, {"name": "city", "fill_rate": 0.9974, "cardinality": 2550, "type": "search", "top_values": []}, {"name": "state", "fill_rate": 0.9994, "cardinality": 223, "type": "search", "top_values": []}, {"name": "category", "fill_rate": 0.9663, "cardinality": 194, "type": "facet", "folded": true, "top_values": [["HOTELS", 14527], ["TOURIST HOMES", 11386], ["RESTAURANTS", 7797], ["TAVERNS", 5328], ["Blank or no specific category", 4483], ["BEAUTY PARLORS", 4402], ["SERVICE STATIONS", 2174], ["BARBER SHOPS", 2130], ["NIGHT CLUBS", 1756], ["TAILOR SHOPS", 1214], ["DRUG STORES", 1198], ["WINE & LIQUOR STORES", 1144], ["VACATION RESORTS", 1128], ["GARAGES", 921], ["TAXI CABS", 516], ["SUMMER RESORTS", 418], ["ROAD HOUSES", 266], ["VACATION SECTION", 263], ["BEAUTY CULTURE SCHOOLS", 233], ["MOTEL", 212], ["POINTS OF INTEREST", 164], ["AUTOMOTIVE", 123], ["PUBLICATIONS", 115], ["THEATERS", 108], ["SCHOOLS", 108]]}, {"name": "notes", "fill_rate": 0.0289, "cardinality": 1550, "type": "search", "top_values": []}, {"name": "canvas_fragment", "fill_rate": 1.0, "cardinality": 60600, "type": "id", "top_values": []}, {"name": "image", "fill_rate": 1.0, "cardinality": 1572, "type": "id", "top_values": []}];
+const FIELD_META  = [{"name": "volume_year", "fill_rate": 1.0, "cardinality": 23, "type": "facet", "top_values": [["1937", 87], ["1938", 1016], ["1939", 2010], ["1940", 2064], ["1941", 2041], ["1946", 3462], ["1947", 3808], ["1948", 3920], ["1949", 4135], ["1950", 4345], ["1951", 4240], ["1952", 4222], ["1953", 4034], ["1954", 4103], ["1955", 4045], ["1956", 1958], ["1957", 2128], ["1959", 2129], ["1960", 2247], ["1961", 2395], ["1962", 2240], ["1963", 3136], ["1966", 3287]]}, {"name": "name", "fill_rate": 1.0, "cardinality": 12360, "type": "search", "top_values": []}, {"name": "address", "fill_rate": 0.9194, "cardinality": 14205, "type": "search", "top_values": []}, {"name": "city", "fill_rate": 0.9974, "cardinality": 2647, "type": "search", "top_values": []}, {"name": "state", "fill_rate": 1.0, "cardinality": 203, "type": "search", "top_values": []}, {"name": "category", "fill_rate": 0.968, "cardinality": 274, "type": "facet", "folded": true, "top_values": [["HOTELS", 15063], ["TOURIST HOMES", 12102], ["RESTAURANTS", 8232], ["TAVERNS", 5755], ["BEAUTY PARLORS", 4734], ["Blank or no specific category", 4484], ["SERVICE STATIONS", 2305], ["BARBER SHOPS", 2276], ["NIGHT CLUBS", 1895], ["TAILOR SHOPS", 1272], ["DRUG STORES", 1253], ["WINE & LIQUOR STORES", 1210], ["VACATION RESORTS", 1128], ["GARAGES", 989], ["TAXI CABS", 548], ["SUMMER RESORTS", 418], ["ROAD HOUSES", 289], ["VACATION SECTION", 263], ["BEAUTY CULTURE SCHOOLS", 256], ["MOTEL", 212], ["SCHOOLS", 210], ["POINTS OF INTEREST", 185], ["AUTOMOTIVE", 133], ["PUBLICATIONS", 115], ["NEWSPAPERS", 111]]}, {"name": "notes", "fill_rate": 0.0291, "cardinality": 1598, "type": "search", "top_values": []}, {"name": "canvas_fragment", "fill_rate": 1.0, "cardinality": 66531, "type": "id", "top_values": []}, {"name": "image", "fill_rate": 1.0, "cardinality": 1649, "type": "id", "top_values": []}];
 let CANVAS_MAP = {};
 const DOC_TITLE   = "The Green Book";
 const VIEWER_URL  = "";
@@ -1451,7 +1451,8 @@ function showDetail(row) {
     pageCtx.innerHTML = `<a href="index.html?${viewerParams}" target="_blank">View in page context ↗</a>`;
     const links = [];
     const srcUrl = viewerUrl(row.canvas_fragment);
-    if (srcUrl) links.push(`<a href="${srcUrl}" target="_blank">Open original NYPL source page ↗</a>`);
+    const srcInst = row.canvas_fragment.includes("tile.loc.gov") ? "Library of Congress" : "NYPL";
+    if (srcUrl) links.push(`<a href="${srcUrl}" target="_blank">Open original ${srcInst} source page ↗</a>`);
     const csUrl = contentStateUrl(row.canvas_fragment);
     if (csUrl) links.push(`<a href="${csUrl}" target="_blank">View in source document ↗</a>`);
     src.innerHTML = links.length ? `<div class="also-in-label">Source</div>` + links.join("") : "";
@@ -2201,7 +2202,7 @@ document.getElementById('detail').addEventListener('keydown', e => {
 // the CSV streams in; the real count everywhere else comes from
 // ALL_ENTRIES.length. Regenerate by re-running the command above if the CSV
 // is ever regenerated with a different row count.
-const GB_ENTRIES_TOTAL_APPROX = 63590;
+const GB_ENTRIES_TOTAL_APPROX = 67052;
 
 // State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
 // quoting (escaped quotes, embedded commas and newlines) across arbitrary
