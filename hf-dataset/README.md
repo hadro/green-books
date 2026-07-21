@@ -82,7 +82,7 @@ Every listing links back to the exact page region of the scanned source via IIIF
 
 | Publication | Listings | Notes |
 |---|---:|---|
-| The Green Book | 67,052 | All 23 editions, 1937–1966 (titled *The Negro Motorist Green Book*, later *The Negro Travelers' Green Book* and *The Travelers' Green Book*), normalized to one series label |
+| The Green Book | 67,052 | All 24 editions, 1937–1966 (titled *The Negro Motorist Green Book*, later *The Negro Travelers' Green Book* and *The Travelers' Green Book*), normalized to one series label |
 | Travelguide | 28,581 | "Vacation & Recreation Without Humiliation", 1947–1957 |
 | Go, Guide to Pleasant Motoring | 9,206 | |
 | Hackley & Harrison's Hotel and Apartment Guide | 1,209 | Board, rooms, garage accommodations across ~300 US & Canadian cities |
