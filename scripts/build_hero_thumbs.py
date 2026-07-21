@@ -344,7 +344,11 @@ def main():
     with_local = missing = 0
     per_volume, per_category = {}, {}
     for c in picked:
-        image_id = IMAGE_ID_RE.search(c["cf"]).group(1)
+        match = IMAGE_ID_RE.search(c["cf"])
+        if not match:
+            # LOC volumes (tile.loc.gov) have no NYPL image id — skip until hero support is added
+            continue
+        image_id = match.group(1)
         c["image_id"] = image_id
         c["local"] = images.get(image_id)
         with_local += bool(c["local"])

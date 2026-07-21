@@ -523,7 +523,10 @@ const name  = _params.get("name") || "";
 if (!cf) {
   document.getElementById("landing").classList.add("visible");
 } else {
-  const m = cf.match(/\/iiif\/\d+\/(\d+)\//);
+  // NYPL fragments look like …/iiif/3/<numericId>/…; LOC (tile.loc.gov)
+  // fragments carry a colon-delimited service token instead.
+  const m = cf.match(/\/iiif\/\d+\/(\d+)\//) ||
+            cf.match(/\/image-services\/iiif\/(service:[^/#?]+)/);
   if (!m) {
     showError("Unrecognised canvas fragment URL: " + cf);
   } else {

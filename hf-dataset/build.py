@@ -2,7 +2,7 @@
 """Build the unified Hugging Face dataset from the two source CSVs.
 
 Merges green_book_entries_all.csv + travel_guides_all.csv into a single
-public-domain-oriented listings dataset with a shared 18-column schema.
+public-domain-oriented listings dataset with a shared 20-column schema.
 Also emits per-volume rights provenance and dataset statistics for the card.
 """
 import csv, json, os, sys
@@ -29,10 +29,13 @@ SCHEMA = [
     "canvas_fragment", "image",
 ]
 
-GB_PUBLICATION = "The Green Book"  # canonical series label for all 23 GB volumes
+GB_PUBLICATION = "The Green Book"  # canonical series label for all GB volumes
 
-# Per-volume NYPL rights (from get_rights_info). All PDREN except the one orphan work.
+# Per-volume rights provenance. NYPL volumes carry NYPL's copyright-status codes
+# (PDREN for all but the one orphan work, verified via get_rights_info); the LOC
+# volume carries the Library of Congress's assessment (no known restrictions).
 ORPHAN_UUID = "4693c100-bde9-0136-1db2-00dd1dfcff8d"  # Travelguide 1957 -> ICORPHAN
+LOC_1946_ID = "2016298176"  # The Negro Motorist Green Book 1946, Library of Congress
 
 SOURCES = [
     ("green_book_entries_all.csv", "green_book"),
@@ -100,21 +103,29 @@ with open(out_csv, "w", newline="") as f:
     w.writeheader()
     w.writerows(rows_out)
 
-# Write per-volume rights provenance
+# Write per-volume rights provenance. copyright_status holds the source
+# institution's own code/phrase, so its vocabulary varies by institution.
 rights_rows = []
 for vid, m in vol_meta.items():
-    is_orphan = (vid == ORPHAN_UUID)
+    if vid == ORPHAN_UUID:
+        inst, status, uri, pd = ("NYPL", "ICORPHAN",
+                                 "http://rightsstatements.org/vocab/InC-RUU/1.0/", "false")
+    elif vid == LOC_1946_ID:
+        inst, status, uri, pd = ("LOC", "no known restrictions on publication",
+                                 "http://rightsstatements.org/vocab/NoC-US/1.0/", "true")
+    else:
+        inst, status, uri, pd = ("NYPL", "PDREN",
+                                 "http://rightsstatements.org/vocab/NoC-US/1.0/", "true")
     rights_rows.append({
         "volume_id": vid,
         "publication": m["publication"],
         "volume_title": m["volume_title"],
         "source_corpus": m["source"],
         "rows": m["rows"],
-        "nypl_copyright_status": "ICORPHAN" if is_orphan else "PDREN",
-        "rights_statement_uri": ("http://rightsstatements.org/vocab/InC-RUU/1.0/"
-                                 if is_orphan else
-                                 "http://rightsstatements.org/vocab/NoC-US/1.0/"),
-        "public_domain": "false" if is_orphan else "true",
+        "source_institution": inst,
+        "copyright_status": status,
+        "rights_statement_uri": uri,
+        "public_domain": pd,
     })
 with open(os.path.join(OUT_DIR, "volume_rights.csv"), "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rights_rows[0].keys()))
