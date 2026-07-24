@@ -2036,19 +2036,80 @@ function contentStateUrl(canvas_fragment) {
   return VIEWER_URL.replace(/\/$/, "") + "?iiif-content=" + encoded;
 }
 
-// ── Detail panel ───────────────────────────────────────────────────────────
+// ── Thumbnails ─────────────────────────────────────────────────────────────
+// Every entry's snippet is pre-cropped and served from a Hugging Face CDN,
+// keyed by sha1(canvas_fragment)[:12] and sharded by the first two hex chars —
+// so the URL is computed here (no per-entry manifest needed). Live IIIF
+// (liveIiifUrl) is only a runtime fallback for an entry the CDN is missing.
+const HF_THUMB_BASE = "https://huggingface.co/datasets/hadro/green-books-thumbnails/resolve/main";
+
+// Synchronous SHA-1 over a string's UTF-8 bytes — matches Python
+// hashlib.sha1(cf.encode()).hexdigest() used by scripts/build_all_thumbs.py.
+function sha1hex(str) {
+  const bytes = unescape(encodeURIComponent(str)), n = bytes.length, words = [];
+  for (let i = 0; i < n; i++) words[i >> 2] |= bytes.charCodeAt(i) << (24 - (i % 4) * 8);
+  words[n >> 2] |= 0x80 << (24 - (n % 4) * 8);
+  words[((n + 8 >> 6) << 4) + 15] = n * 8;
+  let h0 = 0x67452301, h1 = 0xEFCDAB89, h2 = 0x98BADCFE, h3 = 0x10325476, h4 = 0xC3D2E1F0;
+  const w = new Array(80), rol = (x, c) => (x << c) | (x >>> (32 - c));
+  for (let i = 0; i < words.length; i += 16) {
+    for (let j = 0; j < 16; j++) w[j] = words[i + j] | 0;
+    for (let j = 16; j < 80; j++) w[j] = rol(w[j-3] ^ w[j-8] ^ w[j-14] ^ w[j-16], 1);
+    let a = h0, b = h1, c = h2, d = h3, e = h4;
+    for (let j = 0; j < 80; j++) {
+      let f, k;
+      if (j < 20)      { f = (b & c) | (~b & d);          k = 0x5A827999; }
+      else if (j < 40) { f = b ^ c ^ d;                   k = 0x6ED9EBA1; }
+      else if (j < 60) { f = (b & c) | (b & d) | (c & d); k = 0x8F1BBCDC; }
+      else             { f = b ^ c ^ d;                   k = 0xCA62C1D6; }
+      const t = (rol(a, 5) + f + e + k + w[j]) | 0;
+      e = d; d = c; c = rol(b, 30); b = a; a = t;
+    }
+    h0 = (h0 + a) | 0; h1 = (h1 + b) | 0; h2 = (h2 + c) | 0; h3 = (h3 + d) | 0; h4 = (h4 + e) | 0;
+  }
+  const hex = x => ('00000000' + (x >>> 0).toString(16)).slice(-8);
+  return hex(h0) + hex(h1) + hex(h2) + hex(h3) + hex(h4);
+}
+
+// Hosted CDN URL for an entry's cropped snippet (only entries with an xywh
+// region are cropped; others fall through to the live IIIF path).
+function thumbKey(cf) {
+  if (!cf || cf.indexOf("#xywh=") === -1) return "";
+  const tid = sha1hex(cf).slice(0, 12);
+  return HF_THUMB_BASE + "/" + tid.slice(0, 2) + "/" + tid + ".webp";
+}
+
+// Preferred thumbnail URL: the hosted crop when available, else live IIIF.
 function thumbUrl(row, hAnchor) {
+  return thumbKey(row.canvas_fragment || "") || liveIiifUrl(row, hAnchor);
+}
+
+// Point an <img> at the hosted crop, falling back to a live IIIF crop on a CDN
+// miss, then hiding the image if that fails too.
+function attachThumb(img, row, hAnchor) {
+  const primary = thumbUrl(row, hAnchor);
+  if (!primary) { img.style.display = "none"; return false; }
+  const live = liveIiifUrl(row, hAnchor);
+  img.onerror = () => {
+    if (live && img.getAttribute("src") !== live) {
+      img.src = live;                 // CDN miss → live IIIF crop
+    } else {
+      img.onerror = null;
+      img.style.display = "none";     // give up
+    }
+  };
+  img.src = primary;
+  return true;
+}
+
+// ── Detail panel ───────────────────────────────────────────────────────────
+// Live IIIF crop — runtime fallback only (thumbKey/the CDN is primary).
+function liveIiifUrl(row, hAnchor) {
   const cf = row.canvas_fragment || "";
   if (!cf) {
     // No canvas fragment — fall back to the local page image (full page, no crop)
     return row.image ? row.image : "";
   }
-  // Entries in the pre-crunched hero pool are served from the repo instead of
-  // live IIIF — the detail panel's most common open is a hero card click, and
-  // that's exactly the crop we already host. (Pool crops are left-anchored;
-  // the panel's object-fit:contain makes the framing difference negligible.)
-  const local = HERO_THUMB_BY_CF && HERO_THUMB_BY_CF.get(cf);
-  if (local) return 'hero-thumbs/' + local;
   const cid = canvasId(cf);
   const svc = CANVAS_MAP[cid];
   if (!svc) return "";
@@ -2099,10 +2160,9 @@ function showDetail(row) {
   const thumbLink = document.getElementById("detail-thumb-link");
   const url = thumbUrl(row);
   if (url) {
-    img.src = url;
     img.alt = `Scan showing ${entryName}`;
     img.style.display = "block";
-    img.onerror = () => { img.style.display = "none"; };
+    attachThumb(img, row);
     thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}&from=all-volumes`;
     thumbLink.title = "View this entry highlighted in the original scan";
     thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
@@ -5178,11 +5238,11 @@ function gbUpdateHero() {
     card.href = location.pathname + '?cf=' + encodeURIComponent(r.canvas_fragment || '');
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gb-hero-card-thumb';
-    const ts = usingManifest ? 'hero-thumbs/' + r.file : thumbUrl(r, 'left');
+    const ts = thumbUrl(r, 'left');
     if (ts) {
       const img = document.createElement('img');
-      img.src = ts; img.alt = '';
-      img.onerror = () => { img.style.display = 'none'; };
+      img.alt = '';
+      attachThumb(img, r, 'left');
       thumbDiv.appendChild(img);
     }
     const meta = document.createElement('div');
