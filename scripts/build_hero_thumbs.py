@@ -234,10 +234,13 @@ def index_page_images(images_dir):
     return idx
 
 
-def build_thumb(c, image_path, out_path, max_bytes):
+def build_thumb(c, image_path, out_path, max_bytes, fmt="jpeg", quality=75):
     """Crop the entry's box from the local page scan (scaled from canvas
-    coordinates to the local master's resolution) and save a 400px-wide JPEG
-    stepped down in quality until it fits max_bytes."""
+    coordinates to the local master's resolution) and save a 400px-wide thumb.
+
+    fmt="jpeg" (hero default): step quality 85→45 until the file fits max_bytes.
+    fmt="webp" (full-corpus build): single-pass WebP at `quality` (max_bytes is
+    ignored — WebP at q75/400px lands well under it)."""
     from PIL import Image
     cw, ch = c["svc"][1], c["svc"][2]
     rx, ry, rw, rh = crop_box(c["xywh"], cw, ch)
@@ -250,8 +253,11 @@ def build_thumb(c, image_path, out_path, max_bytes):
         if crop.width > tw:
             crop = crop.resize((tw, max(1, round(crop.height * tw / crop.width))),
                                Image.LANCZOS)
-        for quality in (85, 75, 65, 55, 45):
-            crop.save(out_path, "JPEG", quality=quality, optimize=True)
+        if fmt == "webp":
+            crop.save(out_path, "WEBP", quality=quality, method=6)
+            return
+        for q in (85, 75, 65, 55, 45):
+            crop.save(out_path, "JPEG", quality=q, optimize=True)
             if os.path.getsize(out_path) <= max_bytes:
                 break
 

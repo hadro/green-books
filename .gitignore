@@ -1,3 +1,7 @@
 .DS_Store
 CLAUDE.mdhero-thumbs-review.html
 __pycache__/
+
+# Full-corpus thumbnail build tree (~450 MB, ~109k WebP files). Hosted on the
+# hadro/green-books-thumbnails HF dataset, never committed. See scripts/build_all_thumbs.py.
+thumbs/
