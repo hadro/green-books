@@ -80,6 +80,45 @@ The first non-NYPL volume in the collection. Key details:
 - **Local manifest**: committed at `manifests/2016298176/manifest.json`
 - **Integration**: added via `scripts/append_loc_1946.py`; full plan at `docs/loc-1946-integration-plan.md`
 
+## Thumbnail CDN (all entries → Hugging Face)
+
+Every entry's cropped snippet thumbnail (all 109,163 across both CSVs, incl. the
+LOC 1946 volume) is pre-cropped and served from the **`hadro/green-books-thumbnails`**
+HF dataset repo, so the explorers make effectively zero live NYPL/LOC image requests.
+
+- **Filename is content-addressed**: `sha1(canvas_fragment)[:12]`, sharded by the
+  first two hex chars → repo path `<tid[:2]>/<tid>.webp`. Front-end URL base is
+  `https://huggingface.co/datasets/hadro/green-books-thumbnails/resolve/main`.
+- **No per-entry manifest**: the explorers compute the URL in-browser via a
+  synchronous `sha1hex()` (`thumbKey(cf)` in each of `all-volumes.html`,
+  `explorer.html`, `nyc.html`, `travel_guides_explorer.html`). Must stay
+  byte-identical to Python `hashlib.sha1`. `thumbUrl()` returns the CDN URL;
+  `liveIiifUrl()` + `attachThumb()`'s `onerror` fall back to a live IIIF crop for
+  any CDN miss.
+- **Build** (crops from LOCAL page scans, no NYPL/LOC fetches; WebP q75, 400px,
+  ~4.2 KB avg, ~450 MB total; resumable, ~18 min on 7 cores):
+  ```bash
+  /Users/joshhadro/github/directory-pipeline/.venv/bin/python scripts/build_all_thumbs.py \
+    --images-dir /Users/joshhadro/github/directory-pipeline/output/green_books_and_related \
+    --images-dir /Users/joshhadro/github/directory-pipeline/output/the_negro_motorist_green_book_2016298176/2016298176 \
+    --format webp --jobs 7
+  ```
+  Local scans are joined by the CSV `image` column (an exact filename for both
+  NYPL and LOC) — this is what pulls the LOC volume in. `scripts/build_hero_thumbs.py`
+  (the curated ~300-thumb featured pool) is unchanged and still shares its crop
+  primitives (`crop_box`, `thumb_id`, etc.) with the full builder.
+- **Publish**: `python scripts/publish_thumbs.py` (needs HF write auth). The `thumbs/`
+  tree is gitignored — HF is the sole host, never GitHub Pages. **Do NOT use
+  `upload_large_folder`/Xet** — its Xet backend hangs on the 100k-file folder, and
+  per-file LFS uploads blow HF's 3000-req/5-min API quota. The script instead commits a
+  `.gitattributes` that keeps `*.webp` out of LFS (so each 4 KB file is inlined into the
+  commit, ~2 API calls per commit) and uploads one commit per 2-hex shard (256 commits).
+  `--reset` gives a clean slate; `--resume` skips shards already present. The dataset
+  card is tracked at `hf-dataset-thumbs/README.md` and uploaded as the repo README.
+- The `hero-thumbs/` committed pool + `manifest.json` still exist, but only to
+  *select* which entries are featured on the hero — the images themselves now
+  come from the CDN.
+
 ## Companion repo: directory-pipeline
 
 Raw pipeline code at `/Users/joshhadro/github/directory-pipeline`. It produces the CSVs and manifests that feed this repo. After a pipeline run, copy `green_book_entries_all.csv` and `image_to_volume.json` here and commit.
