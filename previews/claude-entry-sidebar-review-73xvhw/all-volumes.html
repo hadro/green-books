@@ -2507,6 +2507,20 @@ function showDetail(row) {
 // so the mobile overlay contradicted its own behaviour — and the background
 // stayed in the accessibility tree, letting a screen-reader cursor swipe into
 // the table behind it (a Tab trap does nothing about that).
+//
+// `inert` applies to an element's entire subtree, and #detail lives INSIDE
+// #main — so marking #main inert froze the open panel along with the
+// background. On a phone that meant nothing in the entry could be tapped:
+// not Close, not the source links, not copy-link. Focus couldn't enter either
+// (the focus() call below silently no-ops into an inert subtree), so Escape
+// was the only way out and a phone has no Escape key — a reload was the only
+// escape. Collect the background as the panel's *siblings* instead, descending
+// past any ancestor of the panel so one can never be marked.
+function gbCollectInertTargets(el, panel, out) {
+  if (el === panel) return;
+  if (!el.contains(panel)) { out.push(el); return; }
+  for (const child of el.children) gbCollectInertTargets(child, panel, out);
+}
 function gbSyncDetailModality() {
   const panel = document.getElementById("detail");
   const open = panel.classList.contains("open");
@@ -2518,10 +2532,12 @@ function gbSyncDetailModality() {
     panel.setAttribute("role", "complementary");
     panel.removeAttribute("aria-modal");
   }
+  const targets = [];
   ["main", "sidebar"].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.inert = modal;
+    if (el) gbCollectInertTargets(el, panel, targets);
   });
+  targets.forEach(el => { el.inert = modal; });
 }
 // Re-sync on a resize across the breakpoint, so rotating a phone (or dragging a
 // desktop window narrow) with the panel open doesn't strand the wrong role.
