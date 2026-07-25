@@ -129,11 +129,19 @@ const ADDR_PLACEHOLDER = /^(n\/?a|not\s+specified|not\s+given|not\s+listed|none|
 // different address signatures, and can never be recognised as the same place.
 // Restoring the space fixes both spellings to 600.
 //
-// A digit immediately followed by n/n is the whole signal — "600 1/2" already
-// has the separator and is left alone, and a bare "1/2" with nothing before it
-// (or "12 1/2") never matches.
+// The fraction must be one a street number actually takes. Accepting any n/n
+// looked equivalent but misread five addresses where the slash is not a
+// fraction at all: "300/2 W. 116th" became "30 0/2" (house 30, not 300),
+// "124/2 N. Greenwood" became "12 4/2". Restricting to 1/2, 1/3, 2/3, 1/4 and
+// 3/4 keeps all 1,478 genuine folds and leaves those alone. It also steers
+// clear of the Havana-style addresses in the corpus, where a slash means
+// "between": "Calle 6, Avs. 2/4", "CS. 3/5, Ave. F. G.".
+//
+// A digit immediately followed by such a fraction is the whole signal —
+// "600 1/2" already has the separator and is left alone, and a bare "1/2" with
+// nothing before it never matches.
 function gbSplitHouseFraction(s) {
-  return (s || "").replace(/(\d)(\d\/\d)(?!\d)/g, "$1 $2");
+  return (s || "").replace(/(\d)(1\/2|1\/3|2\/3|1\/4|3\/4)(?!\d)/g, "$1 $2");
 }
 
 function gbParseAddress(addr, city, state) {
