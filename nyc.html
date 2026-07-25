@@ -2267,14 +2267,35 @@ function renderDetailMap(row) {
   const controller = new AbortController();
   _mapAbort = controller;
 
-  function showEmbed(lat, lon, d, disclaimer) {
+  function showEmbed(lat, lon, d, disclaimer, label) {
     const bbox = [lon - d, lat - d, lon + d, lat + d].join(",");
     const marker = d < 0.05 ? "&marker=" + lat + "," + lon : "";
     const embedUrl = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=mapnik" + marker;
     mapEl.innerHTML =
-      '<div class="also-in-label">Approximate location</div>' +
+      '<div class="also-in-label">' + (label || "Approximate location") + '</div>' +
       '<iframe class="map-frame" src="' + embedUrl + '" loading="lazy" title="Map showing approximate location of this listing"></iframe>' +
       '<p class="map-disclaimer">' + disclaimer + ' <a href="' + osmSearchUrl + '" target="_blank">Search on OpenStreetMap ↗</a></p>';
+  }
+
+  // Every row on this page already carries a resolved coordinate — the whole
+  // dataset is the geocoding run's output, and the cluster map plots straight
+  // from row.latitude/row.longitude. Only this panel ignored them and re-asked
+  // Nominatim for an answer the row already had, which was slower, could
+  // disagree with the marker on the map behind it, and could fail on addresses
+  // the pipeline had already resolved. Use the row.
+  const lat0 = parseFloat(row.latitude), lon0 = parseFloat(row.longitude);
+  if (isFinite(lat0) && isFinite(lon0)) {
+    const q = (row.geocode_quality || "").trim().toUpperCase();
+    const fuzzy = q === "GEOMETRIC_CENTER" || q === "APPROXIMATE" ||
+                  String(row.review_flag || "").trim().toLowerCase() === "true";
+    showEmbed(lat0, lon0, fuzzy ? 0.004 : 0.0022,
+      fuzzy
+        ? "Block-level match — the geocoder could not resolve this to a single building. " +
+          "Streets and addresses also change over time, so treat it as an approximation."
+        : "Geocoded from the printed address by NYC GeoSearch. Streets and addresses " +
+          "change over time, and the building here may not be the one listed.",
+      fuzzy ? "Approximate location" : "Location");
+    return;
   }
 
   function tryCity() {

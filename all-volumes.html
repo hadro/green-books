@@ -612,6 +612,16 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-notes.has-notes { display: block; }
 .detail-notes-cap { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gb-ink-faint); margin-top: 6px; }
 
+/* Citation, collapsed by default — useful to have, not what most readers came for. */
+#detail-cite { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+#detail-cite > summary { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer; list-style: none; }
+#detail-cite > summary::-webkit-details-marker { display: none; }
+#detail-cite > summary::before { content: "+ "; color: var(--gb-accent); }
+#detail-cite[open] > summary::before { content: "– "; }
+#detail-cite > summary:hover { color: var(--gb-accent); }
+#detail-cite-text { font-family: var(--gb-font-body); font-size: 0.857rem; line-height: 1.5; color: var(--gb-ink-soft); margin: 10px 0 0; word-break: break-word; }
+.detail-cite-actions { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+
 /* Provenance: which guide, which year, and — only when it adds something — which
    edition. Replaces three near-identical Publication/Edition/Year rows. The dot
    reuses .pub-dot + PUBLICATION_COLORS, matching the facet sidebar, the table
@@ -665,6 +675,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-also-in { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 #detail-map { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 .map-frame { width: 100%; height: 190px; border: 1px solid var(--gb-rule-faint); display: block; margin-top: 8px; filter: grayscale(60%); }
+.map-place { font-family: var(--gb-font-body); font-size: 0.929rem; color: var(--gb-ink); margin: -4px 0 6px; }
 .map-disclaimer { font-size: 0.786rem; font-family: var(--gb-font-mono); color: var(--gb-ink-faint); margin: 6px 0 0; }
 .map-disclaimer a { color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
 .map-disclaimer a:hover { border-bottom-style: dashed; }
@@ -982,6 +993,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <div id="detail-map" style="display:none"></div>
         <div id="detail-page-neighbors" style="display:none"></div>
         <div class="detail-source" id="detail-source"></div>
+        <details id="detail-cite">
+          <summary>Cite this entry</summary>
+          <p id="detail-cite-text"></p>
+          <div class="detail-cite-actions">
+            <button type="button" id="detail-copy-cite" class="detail-action-btn">Copy citation</button>
+            <span id="detail-cite-status" role="status" aria-live="polite"></span>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -2417,6 +2436,7 @@ function showDetail(row) {
   }
   gbRenderProvenance(row);
   renderPageNeighbors(row);
+  gbRenderCitation(row);
 
   // Name the region after the entry it is showing, rather than a static
   // "Entry details" that never changes.
@@ -2532,7 +2552,11 @@ function gbPageRows(cid) {
 let _pageWarm = false;
 function gbWarmPageRows() {
   if (_pageWarm) return;
-  const go = () => { _pageWarm = true; try { gbPageIndex(); } catch (e) { /* non-critical */ } };
+  const go = () => {
+    _pageWarm = true;
+    try { gbPageIndex(); } catch (e) { /* non-critical */ }
+    gbLoadNycGeo();  // ~107 KB gzipped; fetched off the critical path
+  };
   if (window.requestIdleCallback) requestIdleCallback(go, { timeout: 2000 });
   else setTimeout(go, 300);
 }
@@ -2639,6 +2663,39 @@ function gbCheckPendingOpen(row) {
   gbOpenHeroRow(row);
 }
 
+// ── NYC precomputed coordinates ────────────────────────────────────────────
+// The NYC geocoding run resolved 7,965 of 7,995 New York entries (99.6%) to real
+// coordinates, with neighborhood and borough labels, and nyc.html has shipped
+// that CSV for a while — but this page never used it, geocoding every NYC
+// address live against Nominatim instead. For the densest slice of the corpus
+// that is both slower and less accurate than the answer already sitting in the
+// repo.
+//
+// nyc_geo.json is the slim form of it (scripts/build_nyc_geo.py): ~107 KB
+// gzipped, keyed by sha1(canvas_fragment)[:12] — the same content-addressed id
+// the thumbnail CDN uses, so sha1hex() below already computes it. Coordinates
+// (NYC GeoSearch, public domain) and the point-in-polygon neighborhood labels
+// are CC0-compatible; the CC BY-SA boundary geometry is deliberately not here.
+let NYC_GEO = null;
+let _nycGeoPromise = null;
+function gbLoadNycGeo() {
+  if (_nycGeoPromise) return _nycGeoPromise;
+  _nycGeoPromise = fetch("nyc_geo.json")
+    .then(r => (r.ok ? r.json() : null))
+    .then(j => { NYC_GEO = j || {}; return NYC_GEO; })
+    .catch(() => { NYC_GEO = {}; return NYC_GEO; });  // absent file → live geocode
+  return _nycGeoPromise;
+}
+// Returns {lat, lon, neighborhood, borough, approx} or null.
+function gbNycGeo(row) {
+  if (!NYC_GEO) return null;
+  const cf = row && row.canvas_fragment;
+  if (!cf) return null;
+  const v = NYC_GEO[sha1hex(cf).slice(0, 12)];
+  if (!v) return null;
+  return { lat: v[0], lon: v[1], neighborhood: v[2], borough: v[3], approx: !!v[4] };
+}
+
 // ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
 // gbGeocode() is shared with explorer.html via gb-geo.js (localStorage-backed
 // cache).
@@ -2675,14 +2732,42 @@ function renderDetailMap(row) {
   const controller = new AbortController();
   _mapAbort = controller;
 
-  function showEmbed(lat, lon, d, disclaimer) {
+  function showEmbed(lat, lon, d, disclaimer, opts) {
+    const o = opts || {};
     const bbox = [lon - d, lat - d, lon + d, lat + d].join(",");
     const marker = d < 0.05 ? "&marker=" + lat + "," + lon : "";
     const embedUrl = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=mapnik" + marker;
+    const place = o.place
+      ? '<div class="map-place">' + escapeHtml(o.place) + '</div>' : "";
+    const extra = o.extraLink || "";
     mapEl.innerHTML =
-      '<div class="also-in-label">Approximate location</div>' +
+      '<div class="also-in-label">' + (o.label || "Approximate location") + '</div>' + place +
       '<iframe class="map-frame" src="' + embedUrl + '" loading="lazy" title="Map showing approximate location of this listing"></iframe>' +
-      '<p class="map-disclaimer">' + disclaimer + ' <a href="' + osmSearchUrl + '" target="_blank">Search on OpenStreetMap ↗</a></p>';
+      '<p class="map-disclaimer">' + disclaimer +
+      ' <a href="' + osmSearchUrl + '" target="_blank">Search on OpenStreetMap ↗</a>' + extra + '</p>';
+  }
+
+  // Precomputed NYC coordinate: no network lookup at all, and a better answer
+  // than Nominatim gives for a 1940s Harlem address. Falls through to the live
+  // geocode for everywhere else (and for the 30 NYC rows that never resolved).
+  function tryPrecomputed() {
+    const g = gbNycGeo(row);
+    if (!g) return false;
+    const where = [g.neighborhood, g.borough].filter(Boolean).join(", ");
+    const nycUrl = "nyc.html?cf=" + encodeURIComponent(row.canvas_fragment || "");
+    const extraLink = ' <a href="' + nycUrl + '">Open in the NYC explorer ↗</a>';
+    if (g.approx) {
+      showEmbed(g.lat, g.lon, 0.004,
+        "Block-level match — the geocoder could not resolve this to a single building. " +
+        "Streets and addresses also change over time, so treat it as an approximation.",
+        { label: "Approximate location", place: where, extraLink: extraLink });
+    } else {
+      showEmbed(g.lat, g.lon, 0.0022,
+        "Geocoded from the printed address by NYC GeoSearch. Streets and addresses " +
+        "change over time, and the building here may not be the one listed.",
+        { label: "Location", place: where, extraLink: extraLink });
+    }
+    return true;
   }
 
   function tryCity() {
@@ -2700,19 +2785,27 @@ function renderDetailMap(row) {
       });
   }
 
-  _mapTimer = setTimeout(() => {
-    _mapTimer = null;
-    gbGeocode(addrQuery, controller.signal)
-      .then(results => {
-        if (!results.length) { tryCity(); return; }
-        const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
-        showEmbed(lat, lon, 0.006, "Note: Streets and addresses change over time, and historical addresses often don't match contemporary locations -- use with caution.");
-      })
-      .catch(err => {
-        if (err.name === "AbortError") return;
-        tryCity();
-      });
-  }, GB_GEOCODE_DELAY_MS);
+  // The precomputed table answers instantly and without a request, but it may
+  // still be in flight on the first open — so wait for it before deciding, then
+  // fall back to the live lookup. The debounce also still applies: a user
+  // clicking past this entry cancels the timer before anything is fetched.
+  gbLoadNycGeo().then(() => {
+    if (controller.signal.aborted) return;
+    if (tryPrecomputed()) return;
+    _mapTimer = setTimeout(() => {
+      _mapTimer = null;
+      gbGeocode(addrQuery, controller.signal)
+        .then(results => {
+          if (!results.length) { tryCity(); return; }
+          const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
+          showEmbed(lat, lon, 0.006, "Note: Streets and addresses change over time, and historical addresses often don't match contemporary locations -- use with caution.");
+        })
+        .catch(err => {
+          if (err.name === "AbortError") return;
+          tryCity();
+        });
+    }, GB_GEOCODE_DELAY_MS);
+  });
 }
 
 document.getElementById("detail-close").addEventListener("click", () => {
@@ -2744,6 +2837,95 @@ document.getElementById("detail-close").addEventListener("click", () => {
   }
 });
 
+// ── Clipboard ──────────────────────────────────────────────────────────────
+// Shared by the copy-link and copy-citation buttons.
+const _gbStatusTimers = new WeakMap();
+function gbSayStatus(el, msg) {
+  if (!el) return;
+  el.textContent = msg;
+  const t = _gbStatusTimers.get(el);
+  if (t) clearTimeout(t);
+  _gbStatusTimers.set(el, setTimeout(() => { el.textContent = ""; }, 2500));
+}
+// execCommand fallback: navigator.clipboard is unavailable on insecure origins,
+// which includes the plain-HTTP local server used to preview this file.
+function _gbLegacyCopy(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+  document.body.removeChild(ta);
+  return ok;
+}
+function gbCopyText(text, statusEl, okMsg) {
+  const fail = "Press ⌘/Ctrl+C to copy";
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text)
+      .then(() => gbSayStatus(statusEl, okMsg))
+      .catch(() => gbSayStatus(statusEl, _gbLegacyCopy(text) ? okMsg : fail));
+    return;
+  }
+  gbSayStatus(statusEl, _gbLegacyCopy(text) ? okMsg : fail);
+}
+
+// ── Citation ───────────────────────────────────────────────────────────────
+// Everything a citation needs is already on the row — the edition title, the
+// year, the holding institution (implied by the IIIF host) and a stable
+// permalink — but a reader had to assemble it by hand.
+//
+// It states only what the data supports. Publisher and place of publication are
+// not in the corpus, so they are not in the citation: an invented "New York:
+// Victor H. Green & Co." would be plausible, uncheckable, and wrong for the six
+// other publications. The permalink is built from origin + pathname rather than
+// location.href so a citation never carries the citer's private filter state.
+const GB_CITE_SITE = "Green Book and Travel Guides Explorer";
+function gbEntryPermalink(row) {
+  if (!row || !row.canvas_fragment) return location.origin + location.pathname;
+  return location.origin + location.pathname + "?cf=" + encodeURIComponent(row.canvas_fragment);
+}
+function gbBuildCitation(row) {
+  const name = (row.name || "").trim() || "Untitled listing";
+  const year = String(row[GB_YEAR_FIELD] || row.year || "").trim();
+  const edition = (row.volume_title || "").trim() || (row.publication || "").trim();
+  const inst = (row.canvas_fragment || "").includes("tile.loc.gov")
+    ? "the Library of Congress" : "The New York Public Library";
+  const accessed = new Date().toLocaleDateString("en-US",
+    { year: "numeric", month: "long", day: "numeric" });
+  // Most edition titles already carry the year ("The Negro Motorist Green Book:
+  // 1937"), so appending it again reads as a typo. Only add it when the title
+  // doesn't already say it — "Go, guide to pleasant motoring, Vol. 3" does need it.
+  const parts = ['"' + name + '."'];
+  if (edition) parts.push(edition + (year && edition.indexOf(year) === -1 ? ", " + year : "") + ".");
+  else if (year) parts.push(year + ".");
+  parts.push("Digitized by " + inst + ".");
+  parts.push(GB_CITE_SITE + ", " + gbEntryPermalink(row) + ".");
+  parts.push("Accessed " + accessed + ".");
+  return parts.join(" ");
+}
+function gbRenderCitation(row) {
+  const box = document.getElementById("detail-cite");
+  const txt = document.getElementById("detail-cite-text");
+  if (!box || !txt) return;
+  if (!row) { box.style.display = "none"; return; }
+  box.style.display = "";
+  box.open = false;  // collapsed by default: useful, but not what most readers came for
+  txt.textContent = gbBuildCitation(row);
+}
+(function () {
+  const btn = document.getElementById("detail-copy-cite");
+  const status = document.getElementById("detail-cite-status");
+  if (!btn || !status) return;
+  btn.addEventListener("click", () => {
+    gcEvent("detail-copy-cite");
+    gbCopyText(document.getElementById("detail-cite-text").textContent, status, "Citation copied");
+  });
+}());
+
 // ── Copy link ──────────────────────────────────────────────────────────────
 // The ?cf= permalink already round-tripped (showDetail syncs it, the loader and
 // popstate restore it) but had no UI, so sharing an entry meant knowing to copy
@@ -2752,37 +2934,9 @@ document.getElementById("detail-close").addEventListener("click", () => {
   const btn = document.getElementById("detail-copy-link");
   const status = document.getElementById("detail-copy-status");
   if (!btn || !status) return;
-  let statusTimer = null;
-  function say(msg) {
-    status.textContent = msg;
-    if (statusTimer) clearTimeout(statusTimer);
-    statusTimer = setTimeout(() => { status.textContent = ""; }, 2500);
-  }
-  // execCommand fallback: navigator.clipboard is unavailable on insecure
-  // origins, which includes the plain-HTTP local server used to preview this file.
-  function legacyCopy(text) {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.setAttribute("readonly", "");
-    ta.style.position = "fixed";
-    ta.style.opacity = "0";
-    document.body.appendChild(ta);
-    ta.select();
-    let ok = false;
-    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
-    document.body.removeChild(ta);
-    return ok;
-  }
   btn.addEventListener("click", () => {
-    const url = location.href;
     gcEvent("detail-copy-link");
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(url)
-        .then(() => say("Link copied"))
-        .catch(() => say(legacyCopy(url) ? "Link copied" : "Press ⌘/Ctrl+C to copy"));
-      return;
-    }
-    say(legacyCopy(url) ? "Link copied" : "Press ⌘/Ctrl+C to copy");
+    gbCopyText(location.href, status, "Link copied");
   });
 }());
 
