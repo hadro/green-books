@@ -613,7 +613,18 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 /* Panel actions. The ?cf= permalink already existed but had no UI — users had to
    know to copy the address bar. */
-#detail-actions { display: flex; align-items: center; gap: 10px; margin: -8px 0 18px; }
+#detail-actions { display: flex; align-items: center; gap: 10px; margin: -8px 0 18px; flex-wrap: wrap; }
+/* Step through the current results without going back to the table. */
+#detail-nav { display: inline-flex; align-items: center; gap: 6px; }
+#detail-nav[hidden] { display: none; }
+.detail-nav-btn { font-family: var(--gb-font-body); font-size: 1rem; line-height: 1; width: 26px; height: 26px; display: grid; place-items: center; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); cursor: pointer; padding: 0; }
+.detail-nav-btn:hover:not(:disabled) { border-color: var(--gb-accent); color: var(--gb-accent); }
+.detail-nav-btn:disabled { opacity: 0.38; cursor: default; }
+#detail-pos { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; color: var(--gb-ink-faint); font-variant-numeric: tabular-nums; }
+/* Announced, never shown: the visible position text alone doesn't say which
+   entry you landed on, and clicking the arrows keeps focus on the button. */
+.gb-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 640px) { .detail-nav-btn { width: 34px; height: 34px; } }
 .detail-action-btn { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); cursor: pointer; }
 .detail-action-btn:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
 #detail-copy-status { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-faint); }
@@ -997,8 +1008,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <div id="detail-estab-note"></div>
         <div id="detail-badges"></div>
         <div id="detail-actions">
+          <span id="detail-nav">
+            <button type="button" id="detail-prev" class="detail-nav-btn" aria-label="Previous entry">&lsaquo;</button>
+            <button type="button" id="detail-next" class="detail-nav-btn" aria-label="Next entry">&rsaquo;</button>
+            <span id="detail-pos"></span>
+          </span>
           <button type="button" id="detail-copy-link" class="detail-action-btn">Copy link</button>
           <span id="detail-copy-status" role="status" aria-live="polite"></span>
+          <span id="detail-nav-live" class="gb-sr-only" aria-live="polite"></span>
         </div>
         <blockquote id="detail-notes"></blockquote>
         <div id="detail-fields"></div>
@@ -2457,6 +2474,7 @@ function showDetail(row) {
   gbRenderProvenance(row);
   renderPageNeighbors(row);
   gbRenderCitation(row);
+  gbRenderDetailNav(row);
 
   // Name the region after the entry it is showing, rather than a static
   // "Entry details" that never changes.
@@ -2472,7 +2490,7 @@ function showDetail(row) {
   // name; the Close button and source links are the next tab stops.
   const detailTitle = document.getElementById("detail-title");
   detailTitle.setAttribute("tabindex", "-1");
-  detailTitle.focus();
+  if (!_gbSuppressDetailFocus) detailTitle.focus();
   renderDetailMap(row);
 }
 
@@ -2657,6 +2675,101 @@ function gbOpenListing(targetRow) {
   showDetail(targetRow);
   renderTableBody();
 }
+
+// ── Step through results from inside the panel ──────────────────────────────
+// Arrow keys move focus between table rows, but once the panel was open reading
+// ten entries meant ten round trips back to the table. These walk the *current*
+// result set — same rows, same order, same view mode as the table shows — so
+// stepping never contradicts what is on screen behind the panel.
+let _seqKey = null, _seq = null;
+function gbVisibleSequence() {
+  const key = _filterKey() + "|" + sortCol + "|" + sortDir + "|" + viewMode +
+              "|" + estabSortCol + "|" + estabSortDir;
+  if (key === _seqKey && _seq) return _seq;
+  _seq = viewMode === "establishments"
+    ? getSortedEstabs(getEstablishments())
+    : getSorted(getFiltered());
+  _seqKey = key;
+  return _seq;
+}
+// Where the open entry sits in that sequence, or null when it isn't in it at
+// all — a page neighbour or a shared ?cf= link can land on an entry the active
+// filters exclude, and stepping from outside the list would be a lie.
+function gbSeqPosition(row) {
+  if (!row) return null;
+  const seq = gbVisibleSequence();
+  let i;
+  if (viewMode === "establishments") {
+    const key = gbEstabKeyOf(row);
+    i = seq.findIndex(g => g.key === key);
+  } else {
+    i = seq.indexOf(row);
+  }
+  return i === -1 ? null : { index: i, total: seq.length, seq };
+}
+function gbRenderDetailNav(row) {
+  const nav = document.getElementById("detail-nav");
+  if (!nav) return;
+  const pos = gbSeqPosition(row);
+  if (!pos) { nav.hidden = true; return; }
+  nav.hidden = false;
+  document.getElementById("detail-prev").disabled = pos.index <= 0;
+  document.getElementById("detail-next").disabled = pos.index >= pos.total - 1;
+  document.getElementById("detail-pos").textContent =
+    (pos.index + 1).toLocaleString() + " of " + pos.total.toLocaleString();
+}
+// Suppresses showDetail's focus-the-heading behaviour for one call, so clicking
+// the arrows repeatedly doesn't yank focus off the button after every step.
+let _gbSuppressDetailFocus = false;
+function gbStepEntry(delta, refocusEl) {
+  const cur = (selectedIdx !== null) ? ALL_ENTRIES[selectedIdx] : null;
+  const pos = gbSeqPosition(cur);
+  if (!pos) return;
+  const next = pos.index + delta;
+  if (next < 0 || next >= pos.total) return;
+  const target = pos.seq[next];
+  const row = viewMode === "establishments" ? target.rep : target;
+  _gbSuppressDetailFocus = !!refocusEl;
+  selectedIdx = rowIdx(row);
+  if (viewMode === "establishments") showDetail(row, { estab: target });
+  else showDetail(row);
+  _gbSuppressDetailFocus = false;
+  if (viewMode === "establishments") renderEstabBody(); else renderTableBody();
+  scrollToSelected();
+  if (refocusEl) {
+    // Keep the arrow under the pointer usable; hand focus to its twin when this
+    // step exhausted the sequence, so the keyboard never lands on a dead button.
+    const el = refocusEl.disabled
+      ? document.getElementById(refocusEl.id === "detail-next" ? "detail-prev" : "detail-next")
+      : refocusEl;
+    if (el && !el.disabled) el.focus();
+    else { const t = document.getElementById("detail-title"); if (t) t.focus(); }
+    const live = document.getElementById("detail-nav-live");
+    const p2 = gbSeqPosition(row);
+    if (live) live.textContent = (row.name || "Entry") +
+      (p2 ? ", " + (p2.index + 1).toLocaleString() + " of " + p2.total.toLocaleString() : "");
+  }
+}
+(function () {
+  const prev = document.getElementById("detail-prev");
+  const next = document.getElementById("detail-next");
+  if (prev) prev.addEventListener("click", () => gbStepEntry(-1, prev));
+  if (next) next.addEventListener("click", () => gbStepEntry(1, next));
+  // Left/right rather than up/down: the panel scrolls vertically, and stealing
+  // ArrowUp/ArrowDown would fight both the panel and the table's row navigation.
+  document.addEventListener("keydown", e => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+    const panel = document.getElementById("detail");
+    if (!panel || !panel.classList.contains("open")) return;
+    const t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+    // Don't hijack horizontal scrolling of the coverage grid.
+    if (t && t.closest && t.closest(".coverage-scroll")) return;
+    e.preventDefault();
+    gbStepEntry(e.key === "ArrowLeft" ? -1 : 1, null);
+  });
+}());
 
 // ── Pending open (hero card / ?cf= deep link before the row has streamed) ────
 // Both CSVs take ~20s to stream, and the requested entry can be anywhere in
