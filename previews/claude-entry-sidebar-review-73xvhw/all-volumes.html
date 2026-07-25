@@ -157,6 +157,8 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
   text-decoration: none; overflow: hidden;
 }
 .gb-hero-card:hover { border-color: var(--gb-rule); background: var(--gb-row-hover); }
+/* Clicked before its CSV row streamed in — the panel opens as soon as it lands. */
+.gb-hero-card-pending { border-color: var(--gb-accent); opacity: 0.72; }
 .gb-hero-card:focus-visible { border-color: var(--gb-rule); background: var(--gb-row-hover); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
 .gb-hero-card-thumb {
   width: 100%; height: 110px; background: var(--gb-paper-2);
@@ -565,14 +567,16 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #main.detail-open #table-wrap { padding-right: var(--gb-detail-w); }
 #detail { position: fixed; top: 0; right: 0; width: var(--gb-detail-w); min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
 #detail.open { display: flex; }
-/* The hosted crop is a 400px-wide WebP. A fixed-height hero with width:100% either
-   upscaled it (blurry at the panel's 720px max width) or letterboxed it (~90px of
-   dead band at 420px). Sizing the image at its natural dimensions instead — capped,
-   never stretched — lets the hero take the crop's own aspect ratio. min-height keeps
-   room for the close button when an entry has no thumbnail at all. */
+/* The hosted crop is a 400px-wide WebP and the panel is 420–720px, so the snippet
+   is deliberately upscaled to fill the panel: legibility of the scan is worth more
+   here than pixel-exactness, and the alternative — a larger live IIIF crop — would
+   reintroduce the per-view NYPL/LOC requests the thumbnail CDN exists to avoid.
+   height:auto (rather than the old fixed 280px) keeps the hero at the crop's own
+   aspect ratio instead of letterboxing it; max-height caps unusually tall crops.
+   min-height leaves room for the close button when an entry has no thumbnail. */
 .detail-hero { position: relative; height: auto; min-height: 68px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 #detail-thumb-link { display: contents; }
-#detail-thumb { max-width: 100%; width: auto; height: auto; max-height: 280px; object-fit: contain; display: none; cursor: pointer; }
+#detail-thumb { width: 100%; height: auto; max-height: 340px; object-fit: contain; display: none; cursor: pointer; }
 #detail-close { position: absolute; top: 12px; right: 12px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); width: 28px; height: 28px; cursor: pointer; display: grid; place-items: center; color: var(--gb-ink-soft); font-size: 1.143rem; z-index: 1; }
 #detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
 #detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
@@ -608,6 +612,18 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-notes { display: none; margin: 0 0 20px; padding: 2px 0 2px 16px; border-left: 2px solid var(--gb-accent); font-family: var(--gb-font-body); font-size: 0.964rem; line-height: 1.55; color: var(--gb-ink); }
 #detail-notes.has-notes { display: block; }
 .detail-notes-cap { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gb-ink-faint); margin-top: 6px; }
+
+/* Provenance: which guide, which year, and — only when it adds something — which
+   edition. Replaces three near-identical Publication/Edition/Year rows. The dot
+   reuses .pub-dot + PUBLICATION_COLORS, matching the facet sidebar, the table
+   stripe and the coverage grid. */
+#detail-provenance { margin: 2px 0 20px; }
+#detail-provenance:empty { display: none; }
+.detail-prov-line { display: flex; align-items: baseline; gap: 8px; font-family: var(--gb-font-body); font-size: 0.929rem; color: var(--gb-ink); }
+.detail-prov-line .pub-dot { margin-right: 0; align-self: center; }
+.detail-prov-year { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; color: var(--gb-ink-soft); font-variant-numeric: tabular-nums; }
+.detail-prov-year::before { content: "·"; margin-right: 8px; color: var(--gb-ink-faint); }
+.detail-prov-edition { font-size: 0.857rem; line-height: 1.4; color: var(--gb-ink-soft); margin: 4px 0 0 13px; }
 
 /* "Elsewhere on this page" — the entry's printed neighbours, in page order. */
 #detail-page-neighbors { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
@@ -932,9 +948,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         </div>
         <blockquote id="detail-notes"></blockquote>
         <div id="detail-fields"></div>
-        <div id="detail-page-neighbors" style="display:none"></div>
+        <div id="detail-provenance"></div>
+        <!-- Coverage sits directly under the entry's own fields: for listings that
+             have it, the cross-publication run is a primary part of the record.
+             Page neighbours are a bonus and a jumping-off point, so they sit near
+             the bottom, just above the source links. -->
         <div id="detail-also-in" style="display:none"></div>
         <div id="detail-map" style="display:none"></div>
+        <div id="detail-page-neighbors" style="display:none"></div>
         <div class="detail-source" id="detail-source"></div>
       </div>
     </div>
@@ -1310,12 +1331,63 @@ const DETAIL_SPEC = [
     { name: "rates", format: "rates" },
     { name: "amenities_services" },
   ] },
-  { heading: "Source", fields: [
-    { name: "publication" },
-    { name: "volume_title" },
-    { name: "volume_year" },
-  ] },
+  // No "Source" group — publication, edition title and year are largely the same
+  // string three times over (see gbRenderProvenance).
 ];
+
+// Provenance line. As three separate rows this was flatly redundant: of the 46
+// distinct (publication, year, edition-title) combinations in the corpus, 16 are
+// pure duplicates — every early Green Book year reads "The Negro Motorist Green
+// Book" / "The Negro Motorist Green Book: 1937" / "1937".
+//
+// The edition title still earns its place on the other 30, though, so it is
+// suppressed rather than dropped: "1951 Railroad Edition", "The Green Book
+// Vacation Guide: 1949" (a second, distinct 1949 volume), "Go, guide to pleasant
+// motoring, Vol. 3", and the run's own title changes (Negro Motorist → Negro
+// Travelers'). It renders only when it says something publication + year does not.
+function gbEditionAddsInfo(title, publication, year) {
+  const norm = s => (s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const t = norm(title);
+  if (!t) return false;
+  const p = norm(publication), y = norm(year);
+  return t !== p + y && t !== p && t !== y;
+}
+function gbRenderProvenance(row) {
+  const el = document.getElementById("detail-provenance");
+  el.innerHTML = "";
+  const pub = (row.publication || "").trim();
+  const year = (row[GB_YEAR_FIELD] || row.year || "").trim();
+  const title = (row.volume_title || "").trim();
+  if (!pub && !year && !title) { el.style.display = "none"; return; }
+  el.style.display = "";
+
+  const line = document.createElement("div");
+  line.className = "detail-prov-line";
+  if (pub) {
+    const dot = document.createElement("span");
+    dot.className = "pub-dot";
+    dot.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink-faint)";
+    line.appendChild(dot);
+    const name = document.createElement("span");
+    name.className = "detail-prov-pub";
+    name.textContent = pub;
+    line.appendChild(name);
+  }
+  if (year) {
+    const y = document.createElement("span");
+    y.className = "detail-prov-year";
+    y.textContent = year;
+    line.appendChild(y);
+  }
+  el.appendChild(line);
+
+  if (gbEditionAddsInfo(title, pub, year)) {
+    const ed = document.createElement("div");
+    ed.className = "detail-prov-edition";
+    ed.textContent = title;
+    el.appendChild(ed);
+  }
+}
 
 // Boolean flags arrive as True/TRUE/true (and False variants) across the two CSVs.
 function gbIsTrue(v) { return /^true$/i.test((v || "").trim()); }
@@ -2318,6 +2390,7 @@ function showDetail(row) {
     pageCtx.innerHTML = "";
     src.innerHTML = "";
   }
+  gbRenderProvenance(row);
   renderPageNeighbors(row);
 
   // Name the region after the entry it is showing, rather than a static
@@ -2372,39 +2445,71 @@ if (window.matchMedia) {
 
 // ── "Elsewhere on this page" ───────────────────────────────────────────────
 // Every entry records the IIIF canvas it was cropped from, and a guide page
-// carries ~41 listings on average (1,574 of the 1,649 pages hold at least two).
-// The faceted table scatters those neighbours across the corpus; this puts the
-// page back together — the businesses that physically sat beside this one in
-// print, in the order they were printed.
+// carries ~31 listings on average across the merged corpus (3,295 of the 3,534
+// pages hold at least two; the densest holds 120). The faceted table scatters
+// those neighbours; this puts the page back together — the businesses that
+// physically sat beside this one in print, in the order they were printed.
 //
-// The index is built lazily and rebuilt whenever ALL_ENTRIES grows, because both
-// CSVs stream in and the panel can be opened mid-load.
+// Cost matters here: this runs on every panel open, over ~109k rows. The first
+// version grouped rows by canvas *and* eagerly sorted all 3,534 page lists on the
+// click — 657ms cold, of which ~190ms sorted pages nobody asked for. Two changes
+// fix it, and measurement drove both:
+//
+//   - Group once, sort per page lazily. Only one page is ever displayed, and a
+//     page holds ≤120 rows, so its sort is free.
+//   - Build the grouping while the browser is idle after load, not on the click.
+//     The first pass over 109k row objects costs ~300ms in JIT and first-touch
+//     however it is written, so it must not sit on a user action. (Collecting a
+//     single page on demand instead was tried and is worse: no global build, but
+//     ~30ms rescanning all rows for every new page opened.)
 let _pageIndex = null, _pageIndexLen = -1;
-function gbFragXY(row) {
-  const cf = row.canvas_fragment || "";
+const _pageSorted = new Set();  // canvas ids already put in printed order
+function gbFragXY(cf) {
   const i = cf.indexOf("#xywh=");
   if (i === -1) return [Infinity, Infinity];
-  const p = cf.slice(i + 6).split(",").map(Number);
-  return [isNaN(p[0]) ? Infinity : p[0], isNaN(p[1]) ? Infinity : p[1]];
+  const c1 = cf.indexOf(",", i + 6);
+  if (c1 === -1) return [Infinity, Infinity];
+  const c2 = cf.indexOf(",", c1 + 1);
+  const x = Number(cf.slice(i + 6, c1));
+  const y = Number(c2 === -1 ? NaN : cf.slice(c1 + 1, c2));
+  return [isNaN(x) ? Infinity : x, isNaN(y) ? Infinity : y];
 }
+// Both CSVs stream in, so an index built mid-load may be incomplete; the row
+// count is the cheap invalidation signal.
 function gbPageIndex() {
   if (_pageIndex && _pageIndexLen === ALL_ENTRIES.length) return _pageIndex;
   const m = new Map();
-  ALL_ENTRIES.forEach(r => {
-    const cid = canvasId(r.canvas_fragment || "");
-    if (!cid) return;
+  for (let i = 0; i < ALL_ENTRIES.length; i++) {
+    const cf = ALL_ENTRIES[i].canvas_fragment;
+    if (!cf) continue;
+    const cid = canvasId(cf);
     let list = m.get(cid);
     if (!list) { list = []; m.set(cid, list); }
-    list.push(r);
-  });
-  // Printed order: down the page, then across. Entries with no #xywh sort last.
-  m.forEach(list => list.sort((a, b) => {
-    const pa = gbFragXY(a), pb = gbFragXY(b);
-    return pa[1] - pb[1] || pa[0] - pb[0];
-  }));
+    list.push(ALL_ENTRIES[i]);
+  }
   _pageIndex = m;
   _pageIndexLen = ALL_ENTRIES.length;
+  _pageSorted.clear();
   return m;
+}
+// One page's rows, in printed order: down the page, then across. Entries with no
+// #xywh sort last. Decorate-sort-undecorate, so coordinates are parsed once per
+// row rather than twice per comparison.
+function gbPageRows(cid) {
+  const list = gbPageIndex().get(cid);
+  if (!list || _pageSorted.has(cid)) return list;
+  const dec = list.map(r => { const xy = gbFragXY(r.canvas_fragment || ""); return [xy[1], xy[0], r]; });
+  dec.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  for (let i = 0; i < dec.length; i++) list[i] = dec[i][2];
+  _pageSorted.add(cid);
+  return list;
+}
+let _pageWarm = false;
+function gbWarmPageRows() {
+  if (_pageWarm) return;
+  const go = () => { _pageWarm = true; try { gbPageIndex(); } catch (e) { /* non-critical */ } };
+  if (window.requestIdleCallback) requestIdleCallback(go, { timeout: 2000 });
+  else setTimeout(go, 300);
 }
 
 const PAGE_NEIGHBOR_SPAN = 3;  // entries shown either side of the current one
@@ -2414,7 +2519,7 @@ function renderPageNeighbors(row) {
   el.style.display = "none";
   const cid = canvasId(row.canvas_fragment || "");
   if (!cid) return;
-  const page = gbPageIndex().get(cid);
+  const page = gbPageRows(cid);
   if (!page || page.length < 2) return;
   const at = page.indexOf(row);
   if (at === -1) return;
@@ -2482,6 +2587,31 @@ function gbOpenListing(targetRow) {
   selectedIdx = rowIdx(targetRow);
   showDetail(targetRow);
   renderTableBody();
+}
+
+// ── Pending open (hero card / ?cf= deep link before the row has streamed) ────
+// Both CSVs take ~20s to stream, and the requested entry can be anywhere in
+// them. Waiting for gbDataLoaded before honouring a hero click or a shared link
+// left the panel shut for that whole time. Instead the stream callback watches
+// for one canvas_fragment and opens the panel the moment its row lands —
+// typically a second or two. showDetail() already copes with being called
+// mid-stream: the coverage grid shows its "matches will appear once all entries
+// finish loading…" placeholder until the match index exists.
+let gbPendingOpenCf = null;
+function gbOpenHeroRow(row) {
+  selectedIdx = rowIdx(row);
+  showDetail(row);
+  renderTableBody();
+  const app = document.getElementById('app');
+  if (app) app.scrollIntoView({ behavior: 'smooth' });
+  scrollToSelected(500);
+}
+function gbCheckPendingOpen(row) {
+  if (row.canvas_fragment !== gbPendingOpenCf) return;
+  gbPendingOpenCf = null;
+  document.querySelectorAll('.gb-hero-card-pending')
+    .forEach(el => el.classList.remove('gb-hero-card-pending'));
+  gbOpenHeroRow(row);
 }
 
 // ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
@@ -4033,7 +4163,9 @@ renderAll();
   const cf = new URLSearchParams(location.search).get('cf');
   if (!cf) return;
   const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
-  if (!match) return;
+  // Not streamed in yet — hand it to the pending-open watcher so the panel opens
+  // as soon as this row arrives, rather than waiting for the whole dataset.
+  if (!match) { gbPendingOpenCf = cf; return; }
   selectedIdx = rowIdx(match);
   showDetail(match);
   renderTableBody();
@@ -4251,12 +4383,15 @@ async function gbStreamCsv(url, onRow) {
         row.publication = GREEN_BOOK_PUBLICATION;
         row._i = ALL_ENTRIES.length;
         ALL_ENTRIES.push(row);
+        // Guard short-circuits to one null check per row unless something is waiting.
+        if (gbPendingOpenCf) gbCheckPendingOpen(row);
         maybeFirstPaint();
         gbProgressTick();
       }),
       gbStreamCsv(TG_CSV_URL, row => {
         row._i = ALL_ENTRIES.length;
         ALL_ENTRIES.push(row);
+        if (gbPendingOpenCf) gbCheckPendingOpen(row);
         maybeFirstPaint();
         gbProgressTick();
       })
@@ -4277,6 +4412,7 @@ async function gbStreamCsv(url, onRow) {
     await new Promise(r => setTimeout(r, 0));  // yield so the browser paints before the heavy index build
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
+    gbWarmPageRows();  // pay the page-scan's one-off JIT cost on idle, not on the first click
     const estBtn = document.getElementById('view-estabs-btn');
     if (estBtn) {
       estBtn.disabled = false;
@@ -5403,17 +5539,19 @@ function gbUpdateHero() {
     card.appendChild(meta);
     card.addEventListener('click', e => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-      // Manifest thumbs are slim records; the detail panel needs the real CSV
-      // row. If it hasn't streamed in yet, fall through to the ?cf= href —
-      // the deep-link path resolves the entry after reload.
-      const row = useManifest ? ALL_ENTRIES.find(x => x.canvas_fragment === r.canvas_fragment) : r;
-      if (!row) return;
+      // Always handle a plain left click ourselves. This used to fall through to
+      // the ?cf= href whenever the row had not streamed yet — which meant a full
+      // page reload (re-randomising the hero, rewriting the URL) followed by a
+      // wait for the *entire* dataset before the panel opened, ~20s in. Modifier
+      // and middle clicks still navigate the real link.
       e.preventDefault();
-      selectedIdx = rowIdx(row);
-      showDetail(row);
-      renderTableBody();
+      // Manifest thumbs are slim records; the detail panel needs the real CSV row.
+      const row = useManifest ? ALL_ENTRIES.find(x => x.canvas_fragment === r.canvas_fragment) : r;
+      if (row) { gbOpenHeroRow(row); return; }
+      // Not streamed yet — queue it and open the moment it arrives.
+      gbPendingOpenCf = r.canvas_fragment || null;
+      card.classList.add('gb-hero-card-pending');
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
-      scrollToSelected(500);
     });
     stack.appendChild(card);
   });
