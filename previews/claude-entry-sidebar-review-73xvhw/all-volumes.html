@@ -19,7 +19,14 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231e5231'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23f6f1e5'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231e5231'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%2375705f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<!-- Loaded non-render-blocking: a plain stylesheet <link> also blocks the parser
+     from running the inline script below it, so DOMContentLoaded waits on
+     fonts.googleapis.com. Measured at 12.6s when that host is slow or blocked
+     (corporate proxies, blockers, regions where Google is unreachable). The
+     media="print" swap lets the page render immediately in the fallback stacks
+     declared on --gb-font-*; display=swap then swaps the webfonts in. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"></noscript>
 <style>
 :root {
   --gb-paper:        #f6f1e5;   /* aged newsprint */
@@ -440,6 +447,11 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 .toolbar-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 #count-label { font-size: 0.857rem; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
 #load-status { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); }
+#load-progress { display: inline-flex; align-items: center; gap: 8px; }
+#load-progress[hidden] { display: none; }
+#load-bar { width: 84px; height: 3px; background: var(--gb-rule-faint); overflow: hidden; flex-shrink: 0; }
+#load-bar-fill { display: block; height: 100%; width: 0%; background: var(--gb-accent); transition: width 0.18s linear; }
+@media (prefers-reduced-motion: reduce) { #load-bar-fill { transition: none; } }
 #clear-filters-btn {
   display: none; background: var(--gb-highlight-soft);
   border: 1px solid rgba(184, 134, 11, 0.6);
@@ -948,7 +960,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       </div>
       <label id="mobile-sort-wrap"><span class="mobile-sort-label">Sort</span><select id="mobile-sort" aria-label="Sort entries"></select></label>
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
-      <span id="load-status"></span>
+      <!-- Deliberately not an overlay: the table is searchable and filterable
+           from ~300ms, long before the stream finishes, so a modal curtain would
+           hide content that already works. This reports progress beside it. -->
+      <span id="load-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+            aria-valuenow="0" aria-label="Loading entries">
+        <span id="load-status"></span>
+        <span id="load-bar"><span id="load-bar-fill"></span></span>
+      </span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
     <div id="active-filters" class="active-filters" aria-label="Active filters" style="display:none"></div>
@@ -4684,35 +4703,90 @@ const MERGED_ENTRIES_TOTAL_APPROX = 109163;
 // State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
 // quoting (escaped quotes, embedded commas and newlines) across arbitrary
 // chunk boundaries.
-function gbCreateStreamingCSVParser(onRow) {
+//
+// Two things make it fast enough for 33 MB / 109k rows, both measured:
+//
+//   - Ordinary characters are copied in runs. The original appended one
+//     character at a time (`field += c`) for all ~33 million of them; the state
+//     machine below is byte-for-byte identical, but a fast path first scans
+//     ahead for the next character that actually means something (, " CR LF, or
+//     just " inside a quoted field) and appends that whole slice in one go.
+//   - Columns nobody reads are never materialised. `keepColumns` is an optional
+//     Set of header names; fields outside it are neither accumulated into a
+//     string nor written onto the row object. The Green Book CSV carries 32
+//     columns of which the explorers read 19 — the flag_*/drift_* QA columns and
+//     `Fixed or checked` have zero references in any explorer — so this drops
+//     ~1.4 million string allocations and property writes per load. The CSVs
+//     themselves are untouched: this is a read-side filter, not a data change.
+function gbCreateStreamingCSVParser(onRow, keepColumns) {
   let headers = null;
+  let keepMask = null;       // per-column boolean, or null while reading headers
+  let keepThis = true;       // does the field currently being read survive?
+  let fieldIdx = 0;
   let field = '';
   let row = [];
   let inQuote = false;
   let pendingQuote = false;  // saw `"` while in quote — next char decides escape vs end
   let pendingCR = false;     // saw `\r` — swallow following `\n` if any
-  function flushField() { row.push(field); field = ''; }
+  function flushField() {
+    row.push(keepThis ? field : '');
+    field = '';
+    fieldIdx++;
+    keepThis = keepMask ? keepMask[fieldIdx] !== false : true;
+  }
   function flushRow() {
-    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; return; }
-    if (!headers) { headers = row; row = []; return; }
+    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; fieldIdx = 0; keepThis = keepMask ? keepMask[0] !== false : true; return; }
+    if (!headers) {
+      headers = row;
+      if (keepColumns) keepMask = headers.map(h => keepColumns.has(h));
+      row = []; fieldIdx = 0;
+      keepThis = keepMask ? keepMask[0] !== false : true;
+      return;
+    }
     const obj = {};
-    for (let i = 0; i < headers.length; i++) obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    for (let i = 0; i < headers.length; i++) {
+      if (keepMask && !keepMask[i]) continue;
+      obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    }
     onRow(obj);
-    row = [];
+    row = []; fieldIdx = 0;
+    keepThis = keepMask ? keepMask[0] !== false : true;
   }
   return {
     feed(text) {
-      for (let i = 0; i < text.length; i++) {
-        const c = text[i];
+      const n = text.length;
+      let i = 0;
+      while (i < n) {
+        // Fast path: consume a run of characters that the state machine would
+        // have appended verbatim. Falls through to the per-character logic the
+        // moment anything structural shows up.
+        if (!pendingQuote && !pendingCR) {
+          let j = i;
+          if (inQuote) {
+            while (j < n && text.charCodeAt(j) !== 34) j++;               // until "
+          } else {
+            while (j < n) {
+              const cc = text.charCodeAt(j);
+              if (cc === 34 || cc === 44 || cc === 13 || cc === 10) break; // " , CR LF
+              j++;
+            }
+          }
+          if (j > i) {
+            if (keepThis) field += text.slice(i, j);
+            i = j;
+            continue;
+          }
+        }
+        const c = text[i++];
         if (pendingQuote) {
           pendingQuote = false;
-          if (c === '"') { field += '"'; continue; }
+          if (c === '"') { if (keepThis) field += '"'; continue; }
           inQuote = false;
           // fall through to handle c outside quotes
         }
         if (inQuote) {
           if (c === '"') pendingQuote = true;
-          else field += c;
+          else if (keepThis) field += c;
           continue;
         }
         if (pendingCR) {
@@ -4723,31 +4797,52 @@ function gbCreateStreamingCSVParser(onRow) {
         else if (c === ',') flushField();
         else if (c === '\r') { flushField(); flushRow(); pendingCR = true; }
         else if (c === '\n') { flushField(); flushRow(); }
-        else field += c;
+        else if (keepThis) field += c;
       }
     },
     end() { if (field !== '' || row.length > 0) { flushField(); flushRow(); } }
   };
 }
 
+// Columns the explorers actually read. Everything else in the CSVs is pipeline
+// QA provenance (flag_*, drift_*, "Fixed or checked") or unused metadata; a grep
+// across all-volumes / nyc / explorer / travel_guides finds zero references.
+// `image` and `volume_id` look droppable but are not — liveIiifUrl() falls back
+// to `image`, and the hero stats count distinct `volume_id`.
+const GB_KEEP_COLUMNS = new Set([
+  "volume_id", "volume_title", "volume_year", "publication",
+  "name", "address", "state", "city", "sub_region", "category", "notes",
+  "phone", "proprietor", "amenities_services", "rates", "personnel",
+  "is_advertisement", "is_recommended", "canvas_fragment", "image",
+  // nyc.html's CSV carries its geocode columns in the same stream.
+  "neighborhood", "borough", "latitude", "longitude", "geocode_quality", "review_flag",
+]);
+
 async function gbStreamCsv(url, onRow) {
   const resp = await fetch(url);
   if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + url);
   const reader = resp.body.getReader();
   const decoder = new TextDecoder('utf-8');
-  const parser = gbCreateStreamingCSVParser(onRow);
-  // Sub-chunk size: yielding between sub-chunks lets the browser paint the
-  // first-paint render (and successive incremental updates) instead of being
-  // blocked by a single multi-MB synchronous parse on fast connections.
-  const SUBCHUNK = 128 * 1024;
+  const parser = gbCreateStreamingCSVParser(onRow, GB_KEEP_COLUMNS);
+  // Yield often enough that the browser can paint, but no more. The old code
+  // yielded every 128 KB — ~258 times across the two CSVs — and setTimeout is
+  // clamped to ~4ms, so roughly a second of the load was spent waiting on
+  // timers rather than parsing. Yielding on elapsed time instead keeps frames
+  // available without paying for hundreds of round trips through the event loop.
+  const SUBCHUNK = 256 * 1024;
+  const YIELD_EVERY_MS = 12;
   const yieldToBrowser = () => new Promise(r => setTimeout(r, 0));
+  let lastYield = performance.now();
   while (true) {
     const { done, value } = await reader.read();
     if (done) { parser.feed(decoder.decode()); parser.end(); return; }
     const text = decoder.decode(value, { stream: true });
     for (let off = 0; off < text.length; off += SUBCHUNK) {
       parser.feed(text.substring(off, Math.min(off + SUBCHUNK, text.length)));
-      await yieldToBrowser();
+      if (performance.now() - lastYield >= YIELD_EVERY_MS) {
+        await yieldToBrowser();
+        lastYield = performance.now();
+      }
     }
   }
 }
@@ -4779,18 +4874,35 @@ async function gbStreamCsv(url, onRow) {
   // it to a real "X of Y" count, we stop touching it. #load-status is cheaper
   // to keep current: it always reflects the latest tick, gated to every 10k
   // rows (summed across both streams) so the onRow path stays cheap.
-  function gbProgressTick() {
-    if (ALL_ENTRIES.length % 10000 !== 0) return;
+  // Time-gated rather than every-10,000-rows: at 109k rows that fired about ten
+  // times for the whole load, so the bar lurched. A ~120ms cadence is smooth to
+  // watch and still costs one Date.now() per row.
+  let _lastTick = 0;
+  function gbSetProgress(pct, label) {
+    const wrap = document.getElementById('load-progress');
     const ls = document.getElementById('load-status');
-    if (ls) ls.textContent = gbLoadStatusText();
+    const fill = document.getElementById('load-bar-fill');
+    if (ls) ls.textContent = label;
+    if (fill) fill.style.width = pct + '%';
+    if (wrap) wrap.setAttribute('aria-valuenow', String(Math.round(pct)));
+  }
+  function gbHideProgress() {
+    const wrap = document.getElementById('load-progress');
+    if (wrap) wrap.hidden = true;
+  }
+  function gbProgressTick(force) {
+    const now = Date.now();
+    if (!force && now - _lastTick < 120) return;
+    _lastTick = now;
+    const pct = Math.min(99, ALL_ENTRIES.length / MERGED_ENTRIES_TOTAL_APPROX * 100);
+    gbSetProgress(pct, gbLoadStatusText());
     if (!firstPainted) return;
     const cl = document.getElementById('count-label');
     if (cl && /loading more…$/.test(cl.textContent)) {
       cl.textContent = 'Loaded ' + ALL_ENTRIES.length.toLocaleString() + ' entries — loading more…';
     }
   }
-  const loadStatusEl = document.getElementById('load-status');
-  if (loadStatusEl) loadStatusEl.textContent = gbLoadStatusText();  // initial text, before streaming starts
+  gbSetProgress(0, gbLoadStatusText());  // initial state, before streaming starts
   const getJson = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
   try {
     const [gbCanvas, tgCanvas] = await Promise.all([
@@ -4828,7 +4940,9 @@ async function gbStreamCsv(url, onRow) {
     PUBLICATION_ACTIVE_YEARS = gbComputePublicationActiveYears(ALL_ENTRIES);
     applyHashState();
     renderAll();
-    if (loadStatusEl) loadStatusEl.textContent = 'Indexing cross-listings…';
+    // The bar stays visible through the index build — it is ~1s of the load and
+    // gating Establishments, so going quiet here would look like a stall.
+    gbSetProgress(99, 'Indexing cross-listings…');
     await new Promise(r => setTimeout(r, 0));  // yield so the browser paints before the heavy index build
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
@@ -4863,8 +4977,11 @@ async function gbStreamCsv(url, onRow) {
                && !location.hash.includes('volume_year')) {
       scrollToYear("1938");
     }
-    if (loadStatusEl) { loadStatusEl.textContent = ''; loadStatusEl.style.display = 'none'; }
+    gbSetProgress(100, '');
+    gbHideProgress();
   } catch (err) {
+    // Never leave a half-filled bar implying the load is still coming.
+    gbHideProgress();
     const noRes = document.getElementById("no-results");
     if (noRes) {
       noRes.style.display = 'block';

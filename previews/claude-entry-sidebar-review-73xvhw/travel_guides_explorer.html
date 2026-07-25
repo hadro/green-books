@@ -20,7 +20,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/dist/plot.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Loaded non-render-blocking: a plain stylesheet <link> also blocks the parser
+     from running the inline script below it, so DOMContentLoaded waits on
+     fonts.googleapis.com. Measured at 12.6s when that host is slow or blocked
+     (corporate proxies, blockers, regions where Google is unreachable). The
+     media="print" swap lets the page render immediately in the fallback stacks
+     declared on --gb-font-*; display=swap then swaps the webfonts in. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600&display=swap"></noscript>
 <style>
 :root {
   --gb-paper:        #faf8f3;
