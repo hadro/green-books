@@ -624,6 +624,29 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .detail-prov-year::before { content: "·"; margin-right: 8px; color: var(--gb-ink-faint); }
 .detail-prov-edition { font-size: 0.857rem; line-height: 1.4; color: var(--gb-ink-soft); margin: 4px 0 0 13px; }
 
+/* Establishment record: which listing of the business you are looking at, and
+   what the guides changed between listings. */
+#detail-estab-note { display: none; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); margin: -14px 0 16px; line-height: 1.6; }
+.estab-note-alt { text-transform: none; letter-spacing: 0.02em; font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink-soft); }
+#detail-estab { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+.estab-summary { font-family: var(--gb-font-body); font-size: 0.857rem; color: var(--gb-ink-soft); margin: -2px 0 10px; }
+.estab-timeline { list-style: none; margin: 0; padding: 0; }
+.estab-timeline .estab-tl-extra { display: none; }
+.estab-timeline.estab-timeline-all .estab-tl-extra { display: list-item; }
+.estab-tl-item { display: flex; align-items: baseline; gap: 8px; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid transparent; padding: 5px 0 5px 10px; cursor: pointer; font-family: var(--gb-font-body); font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.35; }
+.estab-tl-item:hover { color: var(--gb-accent); border-left-color: var(--gb-accent); }
+.estab-tl-current { color: var(--gb-ink); border-left-color: var(--gb-ink); cursor: default; }
+.estab-tl-current .estab-tl-name { font-weight: 600; }
+.estab-tl-year { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+.estab-tl-current .estab-tl-year { color: var(--gb-ink-soft); }
+.estab-tl-item .pub-dot { margin-right: 0; flex-shrink: 0; align-self: center; }
+.estab-tl-body { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.estab-tl-name { word-break: break-word; }
+.estab-tl-sub { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.03em; color: var(--gb-ink-faint); text-transform: uppercase; }
+.estab-tl-prop { font-size: 0.786rem; color: var(--gb-ink-soft); font-style: italic; }
+.estab-tl-more { display: block; margin-top: 8px; background: none; border: 0; padding: 0 0 1px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; color: var(--gb-accent); border-bottom: 1px solid var(--gb-accent); }
+.estab-tl-more:hover { border-bottom-style: dashed; }
+
 /* "Elsewhere on this page" — the entry's printed neighbours, in page order. */
 #detail-page-neighbors { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 .page-neighbor-list { list-style: none; margin: 0; padding: 0; }
@@ -940,6 +963,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div id="detail-inner">
         <div id="detail-page-context"></div>
         <h2 id="detail-title"></h2>
+        <div id="detail-estab-note"></div>
         <div id="detail-badges"></div>
         <div id="detail-actions">
           <button type="button" id="detail-copy-link" class="detail-action-btn">Copy link</button>
@@ -953,6 +977,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
              Page neighbours are a bonus and a jumping-off point, so they sit near
              the bottom, just above the source links. -->
         <div id="detail-also-in" style="display:none"></div>
+        <!-- Coverage answers "when was it listed"; this answers "what changed". -->
+        <div id="detail-estab" style="display:none"></div>
         <div id="detail-map" style="display:none"></div>
         <div id="detail-page-neighbors" style="display:none"></div>
         <div class="detail-source" id="detail-source"></div>
@@ -3439,7 +3465,8 @@ function buildEstabTr(g, q, selKey) {
   }
   const open = () => {
     selectedIdx = rowIdx(g.rep);
-    showDetail(g.rep);
+    // Pass the group so the panel can say which of its listings this is.
+    showDetail(g.rep, { estab: g });
     const wrap = document.getElementById("table-wrap");
     const saved = wrap ? wrap.scrollTop : 0;
     renderEstabBody();
@@ -3692,6 +3719,235 @@ function gbCrossListings(row) {
   return (key !== undefined && gbNameIndex.get(key)) || [];
 }
 
+// ── Establishment record: how the guides printed one business over time ─────
+// The resolver deliberately folds name variants ("Miami Carver" / "Miami Carver
+// Hotel"), address forms ("La Salle" / "LaSalle") and city forms so that one
+// business is one group. That fold is what makes the group correct — but it also
+// hides the most interesting thing in a longitudinal directory: the guides
+// recorded this business under different names, at different addresses, under
+// different owners, filed under different headings, across three decades.
+//
+// gbEstabTimeline unfolds it again: one entry per listing in year order, showing
+// how each guide printed the business.
+//
+// It deliberately reports variance and does NOT claim renames or moves. That
+// restraint is measured, not cautious by default — across all 18,048
+// multi-listing groups:
+//
+//   - Names never differ by stem: 0 of 18,048. The resolver buckets on
+//     gbNewNameStem, so listings only reach the same group when their stems
+//     match. Remaining variation is tail noise, parentheticals, quotes or
+//     possessives — "ROCKEFELLER CENTER" vs "ROCKEFELLER CENTER (and Radio
+//     City)". Comparing raw strings labelled 16.1% of groups "renamed"; that
+//     was measuring transcription, not history.
+//   - House numbers never differ either: 0 of 18,048, because the resolver's
+//     address-signature phase splits on incompatible numbers. A business that
+//     genuinely moved to a new number is therefore two groups, not one. Raw
+//     string comparison flagged 29.7% as moves and parsed-place comparison
+//     6.5%, but those are transcription variants too ("4330 Broadway" vs
+//     "4330 B'way."). Claiming a move here would contradict the grouping that
+//     put these listings together in the first place.
+//   - Category drift is real, but the coverage section already reports it
+//     better ("Filed under N section headings across guides").
+//
+// Proprietors looked like the one substantive change left, but of the 250 groups
+// where the name differs after stripping titles, a hand sample was mostly the
+// same person written differently — "Alberta Sawyer, Mgr." / "Mrs. Alberta
+// Sawyer", "Atty. Thad D. Williams" / "Thad D. Williams" — or OCR ("I. W.
+// Mitchell" / "J. W. Mitchell"). Too noisy to assert a change of ownership.
+//
+// So this section makes no claims at all: it shows what each guide printed and
+// lets the reader judge. The proprietor is surfaced when it differs from the
+// previous listing, which is a statement about the sources rather than about
+// the business.
+function _gbTlNorm(s) { return (s || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+const _GB_HONORIFIC = /^(mr|mrs|miss|ms|dr|rev|atty|prof|capt|sgt|hon)$/;
+const _GB_ROLE = /^(prop|propr|proprietor|prophetess|mgr|manager|owner|pres|president|sec|secy|secretary|treas|treasurer|editor|chairman|chairwoman|dir|director|exec|proprietors)$/;
+// Compare the person, not the courtesy title or the job description.
+function _gbPersonKey(s) {
+  let t = String(s || "").toLowerCase().split(",")[0]
+    .replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(Boolean);
+  while (t.length > 1 && _GB_HONORIFIC.test(t[0])) t.shift();
+  while (t.length > 1 && _GB_ROLE.test(t[t.length - 1])) t.pop();
+  return t.join("");
+}
+function gbEstabTimeline(rows) {
+  const sorted = [...rows].sort((a, b) => {
+    const ya = Number(a[GB_YEAR_FIELD] || a.year) || 0;
+    const yb = Number(b[GB_YEAR_FIELD] || b.year) || 0;
+    return ya - yb || (a.publication || "").localeCompare(b.publication || "");
+  });
+  const out = [];
+  let prev = null;
+  sorted.forEach(r => {
+    const addr = (r.address || "").trim();
+    const cur = {
+      row: r,
+      year: String(r[GB_YEAR_FIELD] || r.year || ""),
+      pub: r.publication || "",
+      name: (r.name || "").trim(),
+      // Placeholder addresses ("do", "same") carry no signal and would otherwise
+      // register as a move in both directions.
+      address: addr && !ADDR_PLACEHOLDER.test(addr) ? addr : "",
+      proprietor: (r.proprietor || "").trim(),
+      category: (r.category || "").trim(),
+      showProprietor: false,
+    };
+    // Surface the proprietor on the first listing that names one, and whenever a
+    // later listing names a different person.
+    if (cur.proprietor &&
+        (!prev || !prev.proprietor || _gbPersonKey(cur.proprietor) !== _gbPersonKey(prev.proprietor))) {
+      cur.showProprietor = true;
+    }
+    // Carry the last known value forward so a listing that simply omits the
+    // address isn't reported as a move when the next one repeats the original.
+    cur.address = cur.address || (prev ? prev.address : "");
+    cur.proprietor = cur.proprietor || (prev ? prev.proprietor : "");
+    out.push(cur);
+    prev = cur;
+  });
+  return out;
+}
+
+// The framing line under the title. The Establishments view lists one row per
+// resolved business but opens a single listing's panel, which previously gave no
+// hint that you were looking at 1 of 9 — you clicked a business that ran
+// 1938–1955 and got the 1955 record with no way to tell.
+function gbRenderEstabNote(row, listings, estab) {
+  const el = document.getElementById("detail-estab-note");
+  if (!el) return;
+  el.innerHTML = "";
+  el.style.display = "none";
+  if (!row || !listings || listings.length < 2) return;
+
+  const years = listings.map(r => Number(r[GB_YEAR_FIELD] || r.year)).filter(n => !isNaN(n));
+  const lo = Math.min(...years), hi = Math.max(...years);
+  const range = years.length ? (lo === hi ? String(lo) : lo + "–" + hi) : "";
+  const year = String(row[GB_YEAR_FIELD] || row.year || "");
+
+  // No ordinal: the Establishments view always opens the most recent listing, so
+  // a position would read "32 of 32" every time. The timeline below marks where
+  // this listing sits, which shows position better than a number would.
+  const parts = [];
+  parts.push(year ? "Showing its " + year + " listing" : "Showing one listing");
+  parts.push("one of " + listings.length);
+  if (range) parts.push(range);
+  el.textContent = parts.join(" · ");
+
+  // When the group's display name differs from what this year printed, say so —
+  // otherwise the title contradicts the row the user clicked in the table.
+  if (estab && estab.name && _gbTlNorm(estab.name) !== _gbTlNorm(row.name || "")) {
+    const alt = document.createElement("span");
+    alt.className = "estab-note-alt";
+    alt.textContent = "Listed elsewhere as " + estab.name;
+    el.appendChild(document.createElement("br"));
+    el.appendChild(alt);
+  }
+  el.style.display = "";
+}
+
+const ESTAB_TL_VISIBLE = 10;  // listings shown before the "show all" expander
+function renderEstabRecord(row, listings) {
+  const el = document.getElementById("detail-estab");
+  el.innerHTML = "";
+  el.style.display = "none";
+  if (!listings || listings.length < 2) return;
+  const tl = gbEstabTimeline(listings);
+  el.style.display = "";
+
+  const hd = document.createElement("div");
+  hd.className = "also-in-label";
+  hd.textContent = "Across its listings";
+  el.appendChild(hd);
+
+  // "Printed forms", not "names"/"addresses": these are how the guides
+  // transcribed one business at one location, not renames or moves (see
+  // gbEstabTimeline). Stating the variance is the honest, and more interesting,
+  // claim — it is a fact about the sources.
+  const names = new Set(tl.map(t => _gbTlNorm(t.name)).filter(Boolean));
+  const addrs = new Set(tl.map(t => _gbTlNorm(t.address)).filter(Boolean));
+  const bits = [];
+  if (names.size > 1) bits.push(names.size + " printed forms of the name");
+  if (addrs.size > 1) bits.push(addrs.size + " of the address");
+  if (bits.length) {
+    const sum = document.createElement("div");
+    sum.className = "estab-summary";
+    sum.textContent = bits.join(" · ");
+    el.appendChild(sum);
+  }
+
+  const list = document.createElement("ol");
+  list.className = "estab-timeline";
+  let shownAddr = "";
+  tl.forEach((t, i) => {
+    const li = document.createElement("li");
+    if (i >= ESTAB_TL_VISIBLE) li.className = "estab-tl-extra";
+    const isCurrent = t.row === row;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "estab-tl-item" + (isCurrent ? " estab-tl-current" : "");
+
+    const yr = document.createElement("span");
+    yr.className = "estab-tl-year";
+    yr.textContent = t.year;
+    btn.appendChild(yr);
+
+    const dot = document.createElement("span");
+    dot.className = "pub-dot";
+    dot.style.background = PUBLICATION_COLORS[t.pub] || "var(--gb-ink-faint)";
+    btn.appendChild(dot);
+
+    const body = document.createElement("span");
+    body.className = "estab-tl-body";
+    const nm = document.createElement("span");
+    nm.className = "estab-tl-name";
+    nm.textContent = t.name || "(unnamed)";
+    body.appendChild(nm);
+    // Address on the first listing only. The variants are counted in the summary
+    // above; printing five transcriptions of one location down the list reads as
+    // five moves, which is precisely what the data does not say.
+    if (t.address && !shownAddr) {
+      const ad = document.createElement("span");
+      ad.className = "estab-tl-sub";
+      ad.textContent = t.address;
+      body.appendChild(ad);
+      shownAddr = t.address;
+    }
+    if (t.showProprietor) {
+      const pr = document.createElement("span");
+      pr.className = "estab-tl-prop";
+      pr.textContent = t.proprietor;
+      body.appendChild(pr);
+    }
+    btn.appendChild(body);
+
+    const label = [t.year, PUBLICATION_SHORT_NAMES[t.pub] || t.pub, t.name].filter(Boolean).join(", ");
+    if (isCurrent) {
+      btn.setAttribute("aria-current", "true");
+      btn.setAttribute("aria-label", label + ": this listing");
+      btn.addEventListener("click", e => e.preventDefault());
+    } else {
+      btn.setAttribute("aria-label", "Open " + label);
+      btn.addEventListener("click", () => gbOpenListing(t.row));
+    }
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+  el.appendChild(list);
+
+  if (tl.length > ESTAB_TL_VISIBLE) {
+    const more = document.createElement("button");
+    more.type = "button";
+    more.className = "estab-tl-more";
+    more.textContent = "Show all " + tl.length + " listings";
+    more.addEventListener("click", () => {
+      list.classList.add("estab-timeline-all");
+      more.remove();
+    });
+    el.appendChild(more);
+  }
+}
+
 // Jump to a specific listing row. The coverage grid knows the exact target
 // row for each filled cell, so we can land on the (publication, year) the
 // user clicked rather than guessing by year alone.
@@ -3772,10 +4028,20 @@ renderFacetSidebar = function () {
 };
 
 // showDetail: sync ?cf= URL param + append "Also in" section
+// `opts.estab` is the establishment group when the panel was opened from the
+// Establishments view — it names which of the group's listings is on screen.
 const _gbOrigSD = showDetail;
-showDetail = function (row) {
+showDetail = function (row, opts) {
   _gbOrigSD(row);
   if (row) gcEvent('detail-open');
+
+  // The establishment record: every listing the resolver folded into this
+  // business, and what changed between them. Rendered before the coverage grid's
+  // early returns below, so a group still gets its record even when the grid
+  // bails (mid-stream, or no cross-listings to plot).
+  const estabListings = row ? gbCrossListings(row) : [];
+  renderEstabRecord(row, estabListings);
+  gbRenderEstabNote(row, estabListings, opts && opts.estab);
 
   // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
   // closes it); switching entries while it's already open replaces, so Back
