@@ -4110,8 +4110,58 @@ const GB_KEEP_COLUMNS = new Set([
   "neighborhood", "borough", "latitude", "longitude", "geocode_quality", "review_flag",
 ]);
 
+// ── Response cache ─────────────────────────────────────────────────────────
+// The two CSVs are 3.65 MB gzipped and never change between deploys, so paying
+// for them on every visit is the largest avoidable cost a returning reader has.
+// The Cache API keeps the raw responses; the parser is untouched and still
+// streams, it just streams from disk.
+//
+// Freshness is not traded away for it. A cache hit still makes one conditional
+// request (If-None-Match / If-Modified-Since) and only serves the stored copy on
+// a 304, so a redeployed CSV is picked up on the very next load rather than the
+// one after. That costs a round trip instead of megabytes. If the network is
+// unreachable the stored copy is served anyway, which also makes the explorer
+// work offline after a single visit.
+const GB_CACHE_NAME = 'gb-data-v1';
+async function gbCachedFetch(url) {
+  let cache = null;
+  try { if (window.caches) cache = await caches.open(GB_CACHE_NAME); } catch (e) { cache = null; }
+  if (!cache) return fetch(url);            // insecure origin, private mode, old browser
+  const put = async resp => { try { await cache.put(url, resp.clone()); } catch (e) { /* quota */ } };
+
+  let cached = null;
+  try { cached = await cache.match(url); } catch (e) { cached = null; }
+  if (!cached) {
+    const resp = await fetch(url);
+    if (resp.ok) await put(resp);
+    return resp;
+  }
+  const etag = cached.headers.get('ETag');
+  const lastMod = cached.headers.get('Last-Modified');
+  if (!etag && !lastMod) return cached;     // nothing to revalidate with
+  const headers = etag ? { 'If-None-Match': etag } : { 'If-Modified-Since': lastMod };
+  try {
+    const fresh = await fetch(url, { headers });
+    if (fresh.status === 304) return cached;
+    if (fresh.ok) { await put(fresh); return fresh; }
+    return cached;                          // 5xx — the stored copy is better than nothing
+  } catch (e) {
+    return cached;                          // offline
+  }
+}
+// Drop caches from earlier versions of this scheme; cheap, and only on idle.
+function gbPruneOldCaches() {
+  if (!window.caches || !caches.keys) return;
+  const go = () => caches.keys()
+    .then(names => Promise.all(names.filter(n => /^gb-data-/.test(n) && n !== GB_CACHE_NAME)
+      .map(n => caches.delete(n))))
+    .catch(() => {});
+  if (window.requestIdleCallback) requestIdleCallback(go, { timeout: 5000 });
+  else setTimeout(go, 2000);
+}
+
 async function gbStreamCsv(url, onRow) {
-  const resp = await fetch(url);
+  const resp = await gbCachedFetch(url);
   if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + url);
   const reader = resp.body.getReader();
   const decoder = new TextDecoder('utf-8');
@@ -4179,8 +4229,8 @@ async function gbStreamCsv(url, onRow) {
   const getJson = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
   try {
     const [gbCanvas, tgCanvas] = await Promise.all([
-      fetch('canvas_map.json').then(getJson),
-      fetch('travel_guides_canvas_map.json').then(getJson)
+      gbCachedFetch('canvas_map.json').then(getJson),
+      gbCachedFetch('travel_guides_canvas_map.json').then(getJson)
     ]);
     CANVAS_MAP = Object.assign({}, gbCanvas, tgCanvas);
     // Single pre-merged, pre-geocoded NYC subset — publication, neighborhood,
@@ -4207,6 +4257,7 @@ async function gbStreamCsv(url, onRow) {
     await new Promise(r => setTimeout(r, 0));  // yield so the browser paints before the heavy index build
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
+    gbPruneOldCaches();
     const estBtn = document.getElementById('view-estabs-btn');
     if (estBtn) {
       estBtn.disabled = false;
