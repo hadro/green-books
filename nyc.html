@@ -1420,7 +1420,12 @@ function _filterKey() {
 function getFiltered() {
   const key = _filterKey();
   if (key === _fcKey && _fcRows) return _fcRows;
-  const q = searchQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+  // Fold "6001/2" to "600 1/2" on both sides before punctuation is stripped, so
+  // the two printed spellings of a half-address collapse to the same haystack
+  // text ("600 12") and either query finds both. Without it the strip turns them
+  // into "60012" and "600 12", which can never match each other.
+  const q = gbSplitHouseFraction(searchQuery).trim().toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
   const result = ALL_ENTRIES.filter(row => {
     // Search filter — the normalized haystack is cached on the row (data is
     // immutable after load), so repeat searches don't re-normalize 100k rows.
@@ -1434,7 +1439,8 @@ function getFiltered() {
         const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
         row._hay = (displayFields.map(f => (row[f.name] || ""))
           .concat(DETAIL_FIELDS.map(n => row[n] || ""))
-          .join(" ") + " " + foldedCat)
+          .join(" ") + " " + foldedCat);
+        row._hay = gbSplitHouseFraction(row._hay)
           .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       }
       if (!row._hay.includes(q)) return false;

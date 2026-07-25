@@ -302,6 +302,22 @@ function xywhAspect(fragment) {
 // index.html had to skip the auto-dismiss on small viewports). Closing
 // unconditionally also means the zoom below always runs against the final,
 // full-size OSD container, so it lands identically at every width.
+// Collapse the info panel for entries that have a page but no region. There is
+// nothing to zoom to and no annotation worth reading (Clover shows "None"), so
+// leaving the panel open spends ~40% of the width on chrome when the whole point
+// of the link is to see the page. Clicking the same toggle the zoom driver uses
+// to OPEN a collapsed panel, bounded so it can never hang.
+function collapseInfoPanel(el) {
+  const POLL_MS = 250, MAX_MS = 10000;
+  let elapsed = 0;
+  (function poll() {
+    const toggle = el.querySelector('button[data-aside-active][aria-expanded="true"]');
+    if (toggle) { toggle.click(); return; }
+    elapsed += POLL_MS;
+    if (elapsed < MAX_MS) setTimeout(poll, POLL_MS);
+  }());
+}
+
 function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
   const POLL_MS = 250;
   const MAX_MS = 45000;
@@ -443,7 +459,7 @@ function launchClover(manifestId, cfUrl) {
   // unknown element until Clover upgrades it.
   const cloverReady = customElements.whenDefined("clover-viewer");
 
-  function attach(blobId, stateId, expectedAspect) {
+  function attach(blobId, stateId, expectedAspect, collapsePanel) {
     const el = document.createElement("clover-viewer");
     el.setAttribute("id", blobId);
     // Must always be present: Clover does an unguarded JSON.parse() of this
@@ -463,6 +479,7 @@ function launchClover(manifestId, cfUrl) {
     // manifest URL — there's nothing to zoom to, so leave Clover's default
     // (open) info panel alone.
     if (stateId) ensureZoomThenClosePanel(el, stateId, expectedAspect);
+    else if (collapsePanel) collapseInfoPanel(el);
   }
 
   if (!cfUrl) {
@@ -481,7 +498,16 @@ function launchClover(manifestId, cfUrl) {
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
       const state = buildCloverState(manifestId, canvasId, fragment);
-      attach(contentStateToBlobId(state), state.id, xywhAspect(fragment));
+      // 774 of 109,163 entries (0.7%) carry a canvas_fragment with no #xywh —
+      // the pipeline located the page but not the region on it. Without a
+      // FragmentSelector Clover draws no overlay annotation, so the zoom driver
+      // polls for an element that will never exist and holds gb-zoom-pending
+      // for its full 45s timeout, leaving the info panel invisible while it
+      // still occupies layout: a wide dead band beside a page that never zooms.
+      // Pass no stateId so the driver is skipped — the content state still
+      // opens the correct page, it simply opens it unzoomed, which is all the
+      // data supports.
+      attach(contentStateToBlobId(state), fragment ? state.id : null, xywhAspect(fragment), !fragment);
     })
     .catch(() => {
       cloverReady.then(() => attach(manifestId));

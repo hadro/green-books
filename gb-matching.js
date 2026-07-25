@@ -122,8 +122,22 @@ const SPELLED_ORDINALS = {
 // signal group that strands genuinely-blank rows as singletons.
 const ADDR_PLACEHOLDER = /^(n\/?a|not\s+specified|not\s+given|not\s+listed|none|unknown|unspecified|see\s+.*)$/i;
 
+// The guides print half-addresses as a fraction (600½ E. Washington St.) and
+// the transcription renders it either way: 1,432 addresses use "6001/2" and 466
+// use "600 1/2". Unspaced, the house-number regex below reads 6001 rather than
+// 600, so the two spellings of one address get different numbers, land in
+// different address signatures, and can never be recognised as the same place.
+// Restoring the space fixes both spellings to 600.
+//
+// A digit immediately followed by n/n is the whole signal — "600 1/2" already
+// has the separator and is left alone, and a bare "1/2" with nothing before it
+// (or "12 1/2") never matches.
+function gbSplitHouseFraction(s) {
+  return (s || "").replace(/(\d)(\d\/\d)(?!\d)/g, "$1 $2");
+}
+
 function gbParseAddress(addr, city, state) {
-  const raw = (addr || "").trim();
+  const raw = gbSplitHouseFraction((addr || "").trim());
   if (!raw || ADDR_PLACEHOLDER.test(raw)) return { number: null, streets: new Set(), raw: "" };
   // House number = leading digits NOT followed by an ordinal suffix —
   // "7th Ave. & 125th St." starts with a street name, not a house number.
@@ -131,7 +145,12 @@ function gbParseAddress(addr, city, state) {
   // ordinal ("125th" must not yield house number 12).
   const numMatch = raw.match(/^\s*(\d+)(?!\d|\s*(?:st|nd|rd|th)\b)/i);
   const number = numMatch ? parseInt(numMatch[1], 10) : null;
-  const noNum = number !== null ? raw.replace(/^\s*\d+\s*/, "") : raw;
+  // Drop a leading fraction with the house number: "600 1/2 E. Washington St."
+  // is 600 on E. Washington, and keeping "1/2" would mint "1" and "2" street
+  // tokens (STREET_SPLIT breaks on "/") that carry no locational meaning.
+  const noNum = number !== null
+    ? raw.replace(/^\s*\d+\s*/, "").replace(/^\d\/\d\s*/, "")
+    : raw;
   const parts = noNum.split(STREET_SPLIT);
   // Address fields sometimes carry trailing city/state text ("…, New York 27,
   // N. Y." / "Miami, Florida") — tokens from the row's own city or state
