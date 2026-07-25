@@ -20,11 +20,14 @@ const GB_GEO_EVICT_COUNT = 50;
 
 // Nominatim's usage policy asks that automated clients identify themselves so
 // they can be contacted before being blocked. Browsers send a Referer from
-// hadro.github.io, which partly covers this, but an explicit contact address is
-// what the policy actually requests. Left empty deliberately — set it to a real
-// address you monitor and it is appended as &email=; while blank, nothing extra
-// is sent. Callers of this file also debounce and cache, so volume is low.
-const GB_GEO_CONTACT = "";
+// hadro.github.io, which partly covers it, but an explicit contact address is
+// what the policy actually asks for; it is appended as &email= on every lookup.
+//
+// This is a relay alias, not a personal inbox — the value is public in this repo
+// and visible in Nominatim's request logs, so it should stay one. Set it to ""
+// to send nothing. Request volume is already low: callers debounce, results are
+// cached in localStorage, and NYC entries use precomputed coordinates instead.
+const GB_GEO_CONTACT = "quinoa-surname-3h@icloud.com";
 
 const _geoCache = new Map();
 let _geoCacheLoaded = false;
