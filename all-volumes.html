@@ -680,7 +680,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .estab-tl-more { display: block; margin-top: 8px; background: none; border: 0; padding: 0 0 1px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; color: var(--gb-accent); border-bottom: 1px solid var(--gb-accent); }
 .estab-tl-more:hover { border-bottom-style: dashed; }
 
-/* "Elsewhere on this page" — the entry's printed neighbours, in page order. */
+/* "Elsewhere on the same page" — the entry's printed neighbours, in page order. */
 #detail-page-neighbors { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 .page-neighbor-list { list-style: none; margin: 0; padding: 0; }
 .page-neighbor { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid transparent; padding: 5px 0 5px 10px; cursor: pointer; font-family: var(--gb-font-body); font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.35; }
@@ -2547,7 +2547,7 @@ if (window.matchMedia) {
   else if (_gbDetailMq.addListener) _gbDetailMq.addListener(_onMq);
 }
 
-// ── "Elsewhere on this page" ───────────────────────────────────────────────
+// ── "Elsewhere on the same page" ───────────────────────────────────────────
 // Every entry records the IIIF canvas it was cropped from, and a guide page
 // carries ~31 listings on average across the merged corpus (3,295 of the 3,534
 // pages hold at least two; the densest holds 120). The faceted table scatters
@@ -2637,7 +2637,7 @@ function renderPageNeighbors(row) {
 
   const hd = document.createElement("div");
   hd.className = "also-in-label";
-  hd.textContent = "Elsewhere on this page";
+  hd.textContent = "Elsewhere on the same page";
   el.appendChild(hd);
 
   const list = document.createElement("ul");
@@ -4168,19 +4168,22 @@ function renderEstabRecord(row, listings) {
   hd.textContent = "Across its listings";
   el.appendChild(hd);
 
-  // "Printed forms", not "names"/"addresses": these are how the guides
-  // transcribed one business at one location, not renames or moves (see
+  // Say what varies and that PRINTING is what varies: these are how the guides
+  // set one business at one location in type, not renames or moves (see
   // gbEstabTimeline). Stating the variance is the honest, and more interesting,
-  // claim — it is a fact about the sources.
+  // claim — it is a fact about the sources. Each clause carries its own noun
+  // and verb so it still reads when only one of the two varies; the earlier
+  // "3 of the address" borrowed both from the name clause and said nothing on
+  // its own.
   const names = new Set(tl.map(t => _gbTlNorm(t.name)).filter(Boolean));
   const addrs = new Set(tl.map(t => _gbTlNorm(t.address)).filter(Boolean));
   const bits = [];
-  if (names.size > 1) bits.push(names.size + " printed forms of the name");
-  if (addrs.size > 1) bits.push(addrs.size + " of the address");
+  if (names.size > 1) bits.push("the name " + names.size + " ways");
+  if (addrs.size > 1) bits.push("the address " + addrs.size + " ways");
   if (bits.length) {
     const sum = document.createElement("div");
     sum.className = "estab-summary";
-    sum.textContent = bits.join(" · ");
+    sum.textContent = "The guides print " + bits.join(" and ") + ".";
     el.appendChild(sum);
   }
 
