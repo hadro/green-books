@@ -564,9 +564,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #main.detail-open #table-wrap { padding-right: var(--gb-detail-w); }
 #detail { position: fixed; top: 0; right: 0; width: var(--gb-detail-w); min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
 #detail.open { display: flex; }
-.detail-hero { position: relative; height: 280px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+/* The hosted crop is a 400px-wide WebP. A fixed-height hero with width:100% either
+   upscaled it (blurry at the panel's 720px max width) or letterboxed it (~90px of
+   dead band at 420px). Sizing the image at its natural dimensions instead — capped,
+   never stretched — lets the hero take the crop's own aspect ratio. min-height keeps
+   room for the close button when an entry has no thumbnail at all. */
+.detail-hero { position: relative; height: auto; min-height: 68px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 #detail-thumb-link { display: contents; }
-#detail-thumb { width: 100%; height: 100%; object-fit: contain; display: none; cursor: pointer; }
+#detail-thumb { max-width: 100%; width: auto; height: auto; max-height: 280px; object-fit: contain; display: none; cursor: pointer; }
 #detail-close { position: absolute; top: 12px; right: 12px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); width: 28px; height: 28px; cursor: pointer; display: grid; place-items: center; color: var(--gb-ink-soft); font-size: 1.143rem; z-index: 1; }
 #detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
 #detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
@@ -576,9 +581,41 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .detail-badge { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); background: var(--gb-paper-2); }
 .detail-badge-rec { color: #5c3d00; background: var(--gb-highlight-soft); border-color: rgba(184, 134, 11, 0.6); }
 .rec-star { color: var(--gb-highlight); font-size: 0.786rem; }
-.detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
+/* Fields render as ordered, headed groups (see DETAIL_SPEC) rather than one flat
+   run of key/value rows in table-column order. Only the container carries a rule —
+   every section below it already has its own border-top, so a border-bottom here
+   would double up. */
+#detail-fields { margin: 0 0 20px; padding: 16px 0 0; border-top: 1px solid var(--gb-rule-faint); }
+#detail-fields:empty { display: none; }
+.detail-group { margin: 0 0 16px; }
+.detail-group:last-child { margin-bottom: 0; }
+.detail-group-hd { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 8px; font-weight: 500; }
+.detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0; font-size: 0.929rem; }
 .df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
 .df-val { margin: 0; color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
+
+/* Panel actions. The ?cf= permalink already existed but had no UI — users had to
+   know to copy the address bar. */
+#detail-actions { display: flex; align-items: center; gap: 10px; margin: -8px 0 18px; }
+.detail-action-btn { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); cursor: pointer; }
+.detail-action-btn:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
+#detail-copy-status { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-faint); }
+
+/* `notes` is the guide's own printed prose and the richest field in the corpus
+   (12.4% of merged rows; 27.6% on the travel-guides side). It used to render as a
+   cramped <dd> in the 80px-label grid — it reads as a quotation instead. */
+#detail-notes { display: none; margin: 0 0 20px; padding: 2px 0 2px 16px; border-left: 2px solid var(--gb-accent); font-family: var(--gb-font-body); font-size: 0.964rem; line-height: 1.55; color: var(--gb-ink); }
+#detail-notes.has-notes { display: block; }
+.detail-notes-cap { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gb-ink-faint); margin-top: 6px; }
+
+/* "Elsewhere on this page" — the entry's printed neighbours, in page order. */
+#detail-page-neighbors { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+.page-neighbor-list { list-style: none; margin: 0; padding: 0; }
+.page-neighbor { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid transparent; padding: 5px 0 5px 10px; cursor: pointer; font-family: var(--gb-font-body); font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.35; }
+.page-neighbor:hover { color: var(--gb-accent); border-left-color: var(--gb-accent); }
+.page-neighbor-current { color: var(--gb-ink); font-weight: 600; border-left-color: var(--gb-ink); cursor: default; }
+.page-neighbor-cat { display: block; font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gb-ink-faint); }
+.page-neighbor-more { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-faint); margin-top: 8px; }
 #detail-page-context { text-align: right; margin-bottom: 8px; min-height: 0; }
 #detail-page-context:empty { display: none; }
 #detail-page-context a { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
@@ -586,7 +623,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .detail-source { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); display: flex; flex-direction: column; gap: 8px; }
 .detail-source a { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
 .detail-source a:hover { border-bottom-style: dashed; }
-#detail-also-in { margin-top: 16px; padding-top: 16px; }
+#detail-also-in { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 #detail-map { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 .map-frame { width: 100%; height: 190px; border: 1px solid var(--gb-rule-faint); display: block; margin-top: 8px; filter: grayscale(60%); }
 .map-disclaimer { font-size: 0.786rem; font-family: var(--gb-font-mono); color: var(--gb-ink-faint); margin: 6px 0 0; }
@@ -694,6 +731,9 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   tbody tr.selected td.mcard-cell { box-shadow: inset 3px 0 0 var(--gb-accent); color: inherit; }
   #main.detail-open #table-wrap { padding-right: 0; }
   #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
+  /* #detail itself scrolls here, so release the inner scroller — two stacked
+     overflow:auto containers made the panel scroll against itself. */
+  #detail-inner { overflow-y: visible; flex: 0 0 auto; }
   #mobile-header { display: block; padding: 14px 16px 12px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
   .mobile-hero-title { margin: 0 0 4px; font-family: var(--gb-font-display); font-size: 1.214rem; font-weight: 500; color: var(--gb-ink); line-height: 1.2; }
   .mobile-hero-desc { margin: 0 0 10px; font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.4; }
@@ -885,7 +925,13 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <div id="detail-page-context"></div>
         <h2 id="detail-title"></h2>
         <div id="detail-badges"></div>
-        <dl class="detail-fields" id="detail-fields"></dl>
+        <div id="detail-actions">
+          <button type="button" id="detail-copy-link" class="detail-action-btn">Copy link</button>
+          <span id="detail-copy-status" role="status" aria-live="polite"></span>
+        </div>
+        <blockquote id="detail-notes"></blockquote>
+        <div id="detail-fields"></div>
+        <div id="detail-page-neighbors" style="display:none"></div>
         <div id="detail-also-in" style="display:none"></div>
         <div id="detail-map" style="display:none"></div>
         <div class="detail-source" id="detail-source"></div>
@@ -1233,7 +1279,42 @@ Object.assign(FIELD_LABELS, {
   "rates": "Rates",
   "amenities_services": "Amenities",
   "sub_region": "Area",
+  "volume_title": "Edition",
+  "notes": "Notes",
 });
+
+// Panel-only field layout. The detail panel used to render `displayFields` (whose
+// real job is driving *table columns*) followed by DETAIL_FIELDS, producing one
+// flat run of up to 14 same-weight rows in column order — with `name` duplicated
+// from the <h2> above it, and address/city/state split across three lines for what
+// is one postal fact.
+//
+// This spec is purely additive: DETAIL_FIELDS is left exactly as it was, because it
+// also feeds the search haystack (getFiltered) and the CSV export column list.
+//
+// `combine` merges several columns into one displayed row. `name` is deliberately
+// absent — it is the panel's heading. `notes` is absent too: it renders as a
+// quotation block above the groups rather than as a cramped key/value row.
+const DETAIL_SPEC = [
+  { heading: "Where", fields: [
+    { name: "address" },
+    { name: "city", label: "Location", combine: ["city", "state"], sep: ", " },
+    { name: "sub_region" },
+  ] },
+  { heading: "As printed", fields: [
+    { name: "category" },
+    { name: "phone" },
+    { name: "proprietor" },
+    { name: "personnel" },
+    { name: "rates", format: "rates" },
+    { name: "amenities_services" },
+  ] },
+  { heading: "Source", fields: [
+    { name: "publication" },
+    { name: "volume_title" },
+    { name: "volume_year" },
+  ] },
+];
 
 // Boolean flags arrive as True/TRUE/true (and False variants) across the two CSVs.
 function gbIsTrue(v) { return /^true$/i.test((v || "").trim()); }
@@ -2159,28 +2240,63 @@ function showDetail(row) {
     badges.appendChild(b);
   }
 
+  // Notes: the guide's own printed prose. Set as a quotation above the field
+  // groups — it is the richest thing on most listings that carry it.
+  const notesEl = document.getElementById("detail-notes");
+  notesEl.innerHTML = "";
+  const notesVal = (row.notes || "").trim();
+  if (notesVal) {
+    const p = document.createElement("p");
+    p.style.margin = "0";
+    p.textContent = notesVal;
+    notesEl.appendChild(p);
+    const cap = document.createElement("div");
+    cap.className = "detail-notes-cap";
+    cap.textContent = "As printed in the guide";
+    notesEl.appendChild(cap);
+    notesEl.classList.add("has-notes");
+  } else {
+    notesEl.classList.remove("has-notes");
+  }
+
+  // Fields, as ordered and headed groups (DETAIL_SPEC). Empty values are skipped,
+  // and a group whose every field is empty is omitted entirely — most listings
+  // carry only a handful of the fourteen possible columns.
   const fields = document.getElementById("detail-fields");
   fields.innerHTML = "";
-  const addField = (label, val) => {
-    const k = document.createElement("dt");
-    k.className = "df-key";
-    k.textContent = label;
-    const v = document.createElement("dd");
-    v.className = "df-val";
-    v.textContent = VALUE_LABELS[val] || val;
-    fields.appendChild(k);
-    fields.appendChild(v);
-  };
-  displayFields.forEach(f => {
-    const val = row[f.name] || "";
-    if (!val) return;
-    addField(FIELD_LABELS[f.name] || f.name.replace(/_/g, " "), val);
-  });
-  DETAIL_FIELDS.forEach(fname => {
-    let val = row[fname] || "";
-    if (!val) return;
-    if (fname === "rates") val = gbFormatRates(val);
-    addField(FIELD_LABELS[fname] || fname.replace(/_/g, " "), val);
+  DETAIL_SPEC.forEach(group => {
+    const dl = document.createElement("dl");
+    dl.className = "detail-fields";
+    group.fields.forEach(spec => {
+      let val;
+      if (spec.combine) {
+        val = spec.combine.map(n => (row[n] || "").trim()).filter(Boolean).join(spec.sep || " ");
+      } else {
+        val = (row[spec.name] || "").trim();
+      }
+      if (!val) return;
+      if (spec.format === "rates") val = gbFormatRates(val);
+      const k = document.createElement("dt");
+      k.className = "df-key";
+      k.textContent = spec.label || FIELD_LABELS[spec.name] || spec.name.replace(/_/g, " ");
+      const v = document.createElement("dd");
+      v.className = "df-val";
+      // Own-property check: the lookup is keyed on CSV data, so a cell reading
+      // "constructor" or "toString" would otherwise render a function body.
+      v.textContent = Object.prototype.hasOwnProperty.call(VALUE_LABELS, val)
+        ? VALUE_LABELS[val] : val;
+      dl.appendChild(k);
+      dl.appendChild(v);
+    });
+    if (!dl.children.length) return;
+    const wrap = document.createElement("div");
+    wrap.className = "detail-group";
+    const hd = document.createElement("div");
+    hd.className = "detail-group-hd";
+    hd.textContent = group.heading;
+    wrap.appendChild(hd);
+    wrap.appendChild(dl);
+    fields.appendChild(wrap);
   });
 
   const pageCtx = document.getElementById("detail-page-context");
@@ -2201,6 +2317,17 @@ function showDetail(row) {
     pageCtx.innerHTML = "";
     src.innerHTML = "";
   }
+  renderPageNeighbors(row);
+
+  // Name the region after the entry it is showing, rather than a static
+  // "Entry details" that never changes.
+  panel.setAttribute("aria-label", entryName === "entry" ? "Entry details" : entryName);
+  gbSyncDetailModality();
+
+  // Reset the copy-link confirmation left over from the previous entry.
+  const copyStatus = document.getElementById("detail-copy-status");
+  if (copyStatus) copyStatus.textContent = "";
+
   // Move focus into the panel so assistive tech announces the entry that just
   // opened. Focusing the heading (rather than the Close button) reads the entry
   // name; the Close button and source links are the next tab stops.
@@ -2210,15 +2337,172 @@ function showDetail(row) {
   renderDetailMap(row);
 }
 
+// ── Detail panel modality ──────────────────────────────────────────────────
+// Below 640px the panel is a full-viewport overlay with a Tab focus trap, which
+// makes it a dialog; above it, it sits beside a still-interactive table, which
+// makes it complementary. The markup declared "complementary" unconditionally,
+// so the mobile overlay contradicted its own behaviour — and the background
+// stayed in the accessibility tree, letting a screen-reader cursor swipe into
+// the table behind it (a Tab trap does nothing about that).
+function gbSyncDetailModality() {
+  const panel = document.getElementById("detail");
+  const open = panel.classList.contains("open");
+  const modal = open && window.matchMedia("(max-width: 640px)").matches;
+  if (modal) {
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-modal", "true");
+  } else {
+    panel.setAttribute("role", "complementary");
+    panel.removeAttribute("aria-modal");
+  }
+  ["main", "sidebar"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.inert = modal;
+  });
+}
+// Re-sync on a resize across the breakpoint, so rotating a phone (or dragging a
+// desktop window narrow) with the panel open doesn't strand the wrong role.
+if (window.matchMedia) {
+  const _gbDetailMq = window.matchMedia("(max-width: 640px)");
+  const _onMq = () => gbSyncDetailModality();
+  if (_gbDetailMq.addEventListener) _gbDetailMq.addEventListener("change", _onMq);
+  else if (_gbDetailMq.addListener) _gbDetailMq.addListener(_onMq);
+}
+
+// ── "Elsewhere on this page" ───────────────────────────────────────────────
+// Every entry records the IIIF canvas it was cropped from, and a guide page
+// carries ~41 listings on average (1,574 of the 1,649 pages hold at least two).
+// The faceted table scatters those neighbours across the corpus; this puts the
+// page back together — the businesses that physically sat beside this one in
+// print, in the order they were printed.
+//
+// The index is built lazily and rebuilt whenever ALL_ENTRIES grows, because both
+// CSVs stream in and the panel can be opened mid-load.
+let _pageIndex = null, _pageIndexLen = -1;
+function gbFragXY(row) {
+  const cf = row.canvas_fragment || "";
+  const i = cf.indexOf("#xywh=");
+  if (i === -1) return [Infinity, Infinity];
+  const p = cf.slice(i + 6).split(",").map(Number);
+  return [isNaN(p[0]) ? Infinity : p[0], isNaN(p[1]) ? Infinity : p[1]];
+}
+function gbPageIndex() {
+  if (_pageIndex && _pageIndexLen === ALL_ENTRIES.length) return _pageIndex;
+  const m = new Map();
+  ALL_ENTRIES.forEach(r => {
+    const cid = canvasId(r.canvas_fragment || "");
+    if (!cid) return;
+    let list = m.get(cid);
+    if (!list) { list = []; m.set(cid, list); }
+    list.push(r);
+  });
+  // Printed order: down the page, then across. Entries with no #xywh sort last.
+  m.forEach(list => list.sort((a, b) => {
+    const pa = gbFragXY(a), pb = gbFragXY(b);
+    return pa[1] - pb[1] || pa[0] - pb[0];
+  }));
+  _pageIndex = m;
+  _pageIndexLen = ALL_ENTRIES.length;
+  return m;
+}
+
+const PAGE_NEIGHBOR_SPAN = 3;  // entries shown either side of the current one
+function renderPageNeighbors(row) {
+  const el = document.getElementById("detail-page-neighbors");
+  el.innerHTML = "";
+  el.style.display = "none";
+  const cid = canvasId(row.canvas_fragment || "");
+  if (!cid) return;
+  const page = gbPageIndex().get(cid);
+  if (!page || page.length < 2) return;
+  const at = page.indexOf(row);
+  if (at === -1) return;
+
+  const from = Math.max(0, at - PAGE_NEIGHBOR_SPAN);
+  const to = Math.min(page.length, at + PAGE_NEIGHBOR_SPAN + 1);
+
+  const hd = document.createElement("div");
+  hd.className = "also-in-label";
+  hd.textContent = "Elsewhere on this page";
+  el.appendChild(hd);
+
+  const list = document.createElement("ul");
+  list.className = "page-neighbor-list";
+  for (let i = from; i < to; i++) {
+    const r = page[i];
+    const isCurrent = r === row;
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "page-neighbor" + (isCurrent ? " page-neighbor-current" : "");
+    const nm = document.createElement("span");
+    nm.textContent = r.name || "(unnamed)";
+    btn.appendChild(nm);
+    const cat = (r.category || "").trim();
+    if (cat) {
+      const c = document.createElement("span");
+      c.className = "page-neighbor-cat";
+      c.textContent = cat;
+      btn.appendChild(c);
+    }
+    if (isCurrent) {
+      // "You are here": stays focusable (not disabled) so keyboard users can
+      // find it, matching how the coverage grid marks its current cell.
+      btn.setAttribute("aria-current", "true");
+      btn.setAttribute("aria-label", (r.name || "This entry") + ": this entry");
+      btn.addEventListener("click", e => e.preventDefault());
+    } else {
+      btn.setAttribute("aria-label", "Open " + (r.name || "entry") + ", printed on the same page");
+      btn.addEventListener("click", () => gbOpenListing(r));
+    }
+    li.appendChild(btn);
+    list.appendChild(li);
+  }
+  el.appendChild(list);
+
+  if (page.length > (to - from)) {
+    const more = document.createElement("div");
+    more.className = "page-neighbor-more";
+    more.textContent = page.length.toLocaleString() + " listings on this page in total";
+    el.appendChild(more);
+  }
+  el.style.display = "";
+}
+
+// Open another listing in the panel without touching filter state. Deliberately
+// distinct from gbJumpToListing(), which re-filters the table to the target's
+// year — correct when jumping across editions from the coverage grid, wrong
+// here, where the neighbour already shares this entry's volume and re-filtering
+// would silently apply a filter the user never asked for. If the neighbour
+// falls outside the active filters the panel still shows it; only the table's
+// row highlight is absent.
+function gbOpenListing(targetRow) {
+  if (!targetRow) return;
+  selectedIdx = rowIdx(targetRow);
+  showDetail(targetRow);
+  renderTableBody();
+}
+
 // ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
 // gbGeocode() is shared with explorer.html via gb-geo.js (localStorage-backed
 // cache).
 let _mapAbort = null;
+let _mapTimer = null;
+// Nominatim asks for no more than 1 request/second. Rendering the map straight
+// from showDetail meant every panel open cost up to two lookups (address, then
+// the city fallback), so clicking through twenty entries could fire forty —
+// against a free community service. The lookup now waits for the user to settle
+// on an entry; clicking past one costs nothing.
+const GB_GEOCODE_DELAY_MS = 400;
+function gbCancelDetailMap() {
+  if (_mapTimer) { clearTimeout(_mapTimer); _mapTimer = null; }
+  if (_mapAbort) { _mapAbort.abort(); _mapAbort = null; }
+}
 function renderDetailMap(row) {
   const mapEl = document.getElementById("detail-map");
   mapEl.style.display = "none";
   mapEl.innerHTML = "";
-  if (_mapAbort) { _mapAbort.abort(); _mapAbort = null; }
+  gbCancelDetailMap();
 
   const addr = (row.address || "").trim();
   const city = (row.city || "").trim();
@@ -2260,20 +2544,27 @@ function renderDetailMap(row) {
       });
   }
 
-  gbGeocode(addrQuery, controller.signal)
-    .then(results => {
-      if (!results.length) { tryCity(); return; }
-      const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
-      showEmbed(lat, lon, 0.006, "Note: Streets and addresses change over time, and historical addresses often don't match contemporary locations -- use with caution.");
-    })
-    .catch(err => {
-      if (err.name === "AbortError") return;
-      tryCity();
-    });
+  _mapTimer = setTimeout(() => {
+    _mapTimer = null;
+    gbGeocode(addrQuery, controller.signal)
+      .then(results => {
+        if (!results.length) { tryCity(); return; }
+        const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
+        showEmbed(lat, lon, 0.006, "Note: Streets and addresses change over time, and historical addresses often don't match contemporary locations -- use with caution.");
+      })
+      .catch(err => {
+        if (err.name === "AbortError") return;
+        tryCity();
+      });
+  }, GB_GEOCODE_DELAY_MS);
 }
 
 document.getElementById("detail-close").addEventListener("click", () => {
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+  // Drop the pending geocode and release the mobile modal state (role, inert)
+  // before focus moves back to the table.
+  gbCancelDetailMap();
+  gbSyncDetailModality();
   const u = new URL(location.href);
   u.searchParams.delete('cf');
   const qs = u.searchParams.toString();
@@ -2296,6 +2587,48 @@ document.getElementById("detail-close").addEventListener("click", () => {
     if (prevRow) prevRow.focus({ preventScroll: true });
   }
 });
+
+// ── Copy link ──────────────────────────────────────────────────────────────
+// The ?cf= permalink already round-tripped (showDetail syncs it, the loader and
+// popstate restore it) but had no UI, so sharing an entry meant knowing to copy
+// the address bar.
+(function () {
+  const btn = document.getElementById("detail-copy-link");
+  const status = document.getElementById("detail-copy-status");
+  if (!btn || !status) return;
+  let statusTimer = null;
+  function say(msg) {
+    status.textContent = msg;
+    if (statusTimer) clearTimeout(statusTimer);
+    statusTimer = setTimeout(() => { status.textContent = ""; }, 2500);
+  }
+  // execCommand fallback: navigator.clipboard is unavailable on insecure
+  // origins, which includes the plain-HTTP local server used to preview this file.
+  function legacyCopy(text) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  btn.addEventListener("click", () => {
+    const url = location.href;
+    gcEvent("detail-copy-link");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url)
+        .then(() => say("Link copied"))
+        .catch(() => say(legacyCopy(url) ? "Link copied" : "Press ⌘/Ctrl+C to copy"));
+      return;
+    }
+    say(legacyCopy(url) ? "Link copied" : "Press ⌘/Ctrl+C to copy");
+  });
+}());
 
 // ── Render: facet sidebar ──────────────────────────────────────────────────
 function renderFacetSidebar() {
@@ -2704,6 +3037,11 @@ function renderAll() {
   // Auto-close the detail panel whenever filters/search change so users
   // never see a stale record juxtaposed against a new result set.
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+  // Central close path — drop any pending geocode and release the mobile modal
+  // state here too, so `inert` can never outlive the panel that set it. Callers
+  // that reopen the panel (gbJumpToListing) re-apply it via showDetail().
+  gbCancelDetailMap();
+  gbSyncDetailModality();
   selectedIdx = null;
   _winSize = WINDOW_STEP;  // shrink an extended window back to one page
   _estabWinSize = ESTAB_WINDOW_STEP;

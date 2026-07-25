@@ -18,6 +18,14 @@ const GB_GEO_STORAGE_KEY = "gbGeoCache";
 const GB_GEO_MAX_ENTRIES = 300;
 const GB_GEO_EVICT_COUNT = 50;
 
+// Nominatim's usage policy asks that automated clients identify themselves so
+// they can be contacted before being blocked. Browsers send a Referer from
+// hadro.github.io, which partly covers this, but an explicit contact address is
+// what the policy actually requests. Left empty deliberately — set it to a real
+// address you monitor and it is appended as &email=; while blank, nothing extra
+// is sent. Callers of this file also debounce and cache, so volume is low.
+const GB_GEO_CONTACT = "";
+
 const _geoCache = new Map();
 let _geoCacheLoaded = false;
 
@@ -61,7 +69,8 @@ function gbGeocode(query, signal) {
   _gbGeoLoad();
   const cached = _geoCache.get(query);
   if (cached) return Promise.resolve(cached.p);
-  return fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query), { signal })
+  const contact = GB_GEO_CONTACT ? "&email=" + encodeURIComponent(GB_GEO_CONTACT) : "";
+  return fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(query) + contact, { signal })
     .then(r => r.json())
     .then(results => {
       const trimmed = (results || []).map(r => ({ lat: r.lat, lon: r.lon }));
