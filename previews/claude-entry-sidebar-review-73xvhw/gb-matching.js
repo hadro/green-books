@@ -129,13 +129,24 @@ const ADDR_PLACEHOLDER = /^(n\/?a|not\s+specified|not\s+given|not\s+listed|none|
 // different address signatures, and can never be recognised as the same place.
 // Restoring the space fixes both spellings to 600.
 //
-// The fraction must be one a street number actually takes. Accepting any n/n
-// looked equivalent but misread five addresses where the slash is not a
-// fraction at all: "300/2 W. 116th" became "30 0/2" (house 30, not 300),
-// "124/2 N. Greenwood" became "12 4/2". Restricting to 1/2, 1/3, 2/3, 1/4 and
-// 3/4 keeps all 1,478 genuine folds and leaves those alone. It also steers
-// clear of the Havana-style addresses in the corpus, where a slash means
-// "between": "Calle 6, Avs. 2/4", "CS. 3/5, Ave. F. G.".
+// The fraction must be one a street number actually takes, because a slash
+// between digits does not always mean a fraction in these guides:
+//
+//   - Range shorthand, where the second number is abbreviated to the digits
+//     that change: "300/2 W. 116th" is 300 AND 302, "420/2 Capitol Ave." is
+//     420 and 422. The corpus writes the same convention with a dash 769 times
+//     — "306-8 WEST 143rd STREET" (306-308), "361-3 Broadway", "1818 - 24 S.
+//     Central Ave." — so the slash form is a variant spelling of that, not an
+//     error. Folding these would read "300/2" as house 30, and they are left
+//     alone so the house number stays 300, the first of the range.
+//   - "Between" in Havana-style addresses: "Calle 6, Avs. 2/4", "CS. 3/5,
+//     Ave. F. G.", "CS. 6/8, Avs. 4/6".
+//
+// The discriminator is the digit before the slash: a half-address can only be
+// x/2, x/3 or x/4 with a numerator that makes a real fraction, so "1/2" folds
+// and "0/2", "4/2", "2/4", "3/5" do not. Restricting to 1/2, 1/3, 2/3, 1/4 and
+// 3/4 keeps all 1,478 genuine folds and leaves the ranges and the Havana
+// addresses untouched.
 //
 // A digit immediately followed by such a fraction is the whole signal —
 // "600 1/2" already has the separator and is left alone, and a bare "1/2" with
