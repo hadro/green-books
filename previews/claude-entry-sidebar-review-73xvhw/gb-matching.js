@@ -155,6 +155,42 @@ function gbSplitHouseFraction(s) {
   return (s || "").replace(/(\d)(1\/2|1\/3|2\/3|1\/4|3\/4)(?!\d)/g, "$1 $2");
 }
 
+// The guides also print a business's *frontage* rather than a single door:
+// "1222-28 Arctic Ave.", "2520-22-24 Wall Ave.", "1816 - 1826 So. Central Ave.",
+// and — as the slash note above describes — "300/2 W. 116th". The second number
+// is usually abbreviated to the digits that change, so "306-8" is 306–308 and
+// "1206-08" is 1206–1208. Expanding a range into the numbers it covers lets a
+// listing printed as the range meet the same business printed at one door
+// inside it, which is otherwise unreachable: the house numbers simply differ.
+//
+// Returns null (meaning "one plain number, use sig.number") unless the address
+// really opens with a range. Guards, each earned from a false merge:
+//   - Read the FOLDED address, so "86-901/2" is the range 86–90 with a half,
+//     not 86–901.
+//   - A dashed number carrying an ordinal suffix is the STREET, not the far end
+//     of a range: "1502 - 13TH ST., N. W." and "2091-8th Ave." are single house
+//     numbers on 13th and 8th.
+//   - Cap the span at 40. A block of frontage is a few doors; a wider spread is
+//     a mangled number, and expanding it would swallow the whole street.
+// Callers only consult this for rows that already parsed a house number.
+const GB_MAX_RANGE_SPAN = 40;
+function gbHouseRange(folded) {
+  const m = folded.match(/^\s*(\d+)((?:\s*[-\/]\s*\d+(?!\d|\s*(?:st|nd|rd|th)\b))+)/i);
+  if (!m) return null;
+  const base = m[1];
+  const nums = [parseInt(base, 10)];
+  for (const p of m[2].match(/\d+/g) || []) {
+    nums.push(p.length >= base.length
+      ? parseInt(p, 10)
+      : parseInt(base.slice(0, base.length - p.length) + p, 10));  // "306-8" → 308
+  }
+  const lo = Math.min(...nums), hi = Math.max(...nums);
+  if (hi <= lo || hi - lo > GB_MAX_RANGE_SPAN) return null;
+  const out = new Set();
+  for (let v = lo; v <= hi; v++) out.add(v);
+  return out;
+}
+
 function gbParseAddress(addr, city, state) {
   const raw = gbSplitHouseFraction((addr || "").trim());
   if (!raw || ADDR_PLACEHOLDER.test(raw)) return { number: null, streets: new Set(), raw: "" };
@@ -293,16 +329,27 @@ function gbResolveGroups(rows) {
   const numberedIdx = [], nullIdx = [];
   rows.forEach((_, i) => (sigs[i].number !== null ? numberedIdx : nullIdx).push(i));
 
-  // 1. Merge numbered rows pairwise: equal number AND (fuzzy street-token
-  //    match OR at least one street set is empty — empty means we couldn't
-  //    parse a street, not that the streets are different). The street test is
-  //    the *loose* one here because the exact house number already anchors the
+  // House numbers are compared as sets so a frontage range can meet a single
+  // door inside it. ranges[i] stays null for the ~98% of addresses that are one
+  // plain number, keeping the common comparison an integer test.
+  const ranges = sigs.map(s => (s.number === null ? null : gbHouseRange(s.raw)));
+  function numbersMeet(i, j) {
+    const ri = ranges[i], rj = ranges[j];
+    if (!ri && !rj) return sigs[i].number === sigs[j].number;
+    if (ri && rj) { for (const v of ri) if (rj.has(v)) return true; return false; }
+    return ri ? ri.has(sigs[j].number) : rj.has(sigs[i].number);
+  }
+
+  // 1. Merge numbered rows pairwise: meeting house numbers AND (fuzzy
+  //    street-token match OR at least one street set is empty — empty means we
+  //    couldn't parse a street, not that the streets are different). The street
+  //    test is the *loose* one here because the house number already anchors the
   //    pair, so 2-edit OCR drift on the street ("willis"/"wlis") shouldn't
   //    strand the same address as separate businesses.
   for (let a = 0; a < numberedIdx.length; a++) {
     for (let b = a + 1; b < numberedIdx.length; b++) {
       const i = numberedIdx[a], j = numberedIdx[b];
-      if (sigs[i].number !== sigs[j].number) continue;
+      if (!numbersMeet(i, j)) continue;
       const ei = sigs[i].streets.size === 0, ej = sigs[j].streets.size === 0;
       if (ei || ej || streetsShareTokenLoose(sigs[i].streets, sigs[j].streets)) union(i, j);
     }
