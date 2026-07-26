@@ -3498,16 +3498,21 @@ function applyHashState() {
 }
 
 // ── Render all ─────────────────────────────────────────────────────────────
-function renderAll() {
+// `opts.keepDetail` suppresses the auto-close for the one caller that is about
+// to restore the same panel anyway — the bootstrap pass after the CSVs finish.
+// Closing and reopening there made a deep-linked entry blink out of existence.
+function renderAll(opts) {
   // Auto-close the detail panel whenever filters/search change so users
   // never see a stale record juxtaposed against a new result set.
-  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
-  // Central close path — drop any pending geocode and release the mobile modal
-  // state here too, so `inert` can never outlive the panel that set it. Callers
-  // that reopen the panel (gbJumpToListing) re-apply it via showDetail().
-  gbCancelDetailMap();
-  gbSyncDetailModality();
-  selectedIdx = null;
+  if (!(opts && opts.keepDetail)) {
+    document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+    // Central close path — drop any pending geocode and release the mobile modal
+    // state here too, so `inert` can never outlive the panel that set it. Callers
+    // that reopen the panel (gbJumpToListing) re-apply it via showDetail().
+    gbCancelDetailMap();
+    gbSyncDetailModality();
+    selectedIdx = null;
+  }
   _winSize = WINDOW_STEP;  // shrink an extended window back to one page
   _estabWinSize = ESTAB_WINDOW_STEP;
   syncViewToggleUI();
@@ -4352,8 +4357,9 @@ showDetail = function (row, opts) {
   // early returns below, so a group still gets its record even when the grid
   // bails (mid-stream, or no cross-listings to plot).
   const estabListings = row ? gbCrossListings(row) : [];
+  _gbLastDetailEstab = (opts && opts.estab) || null;
   renderEstabRecord(row, estabListings);
-  gbRenderEstabNote(row, estabListings, opts && opts.estab);
+  gbRenderEstabNote(row, estabListings, _gbLastDetailEstab);
 
   // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
   // closes it); switching entries while it's already open replaces, so Back
@@ -4367,6 +4373,17 @@ showDetail = function (row, opts) {
     else history.pushState(null, '', url);
   }
 
+  // The coverage grid needs the cross-listing index, which is only built once
+  // the CSVs finish streaming. It lives in its own function so a panel opened
+  // before the index exists can have this section filled in later, in place,
+  // without reopening the panel — see gbRefreshDetailIndexSections().
+  gbRenderCoverage(row);
+};
+
+// Split verbatim out of the showDetail wrapper above, of which it was the tail —
+// so its early `return`s still mean "this section is done" and nothing was
+// pending behind them. Reads `row` and globals only.
+function gbRenderCoverage(row) {
   const alsoEl = document.getElementById("detail-also-in");
   if (!alsoEl) return;
 
@@ -4726,7 +4743,22 @@ showDetail = function (row, opts) {
     renderAll();
   });
   alsoEl.appendChild(allLink);
-};
+}
+
+// Re-render only the panel sections that depend on the cross-listing index.
+// Used when the index finishes building while a deep-linked panel is already
+// open: calling showDetail() again would also work, but it would re-run the
+// map geocode, re-take focus and touch history — visible churn for sections
+// that are already correct. The establishment group is remembered from the
+// opening call so a panel opened from the Establishments view keeps naming it.
+var _gbLastDetailEstab = null;
+function gbRefreshDetailIndexSections(row) {
+  if (!row || !document.getElementById("detail").classList.contains("open")) return;
+  const listings = gbCrossListings(row);
+  renderEstabRecord(row, listings);
+  gbRenderEstabNote(row, listings, _gbLastDetailEstab);
+  gbRenderCoverage(row);
+}
 
 // ── Re-render everything now that monkey-patches are in place ────────────────
 // The base renderAll() at the bottom of the main script runs *before* this
@@ -5127,7 +5159,31 @@ async function gbStreamCsv(url, onRow) {
     gbBuildFacets(ALL_ENTRIES);
     PUBLICATION_ACTIVE_YEARS = gbComputePublicationActiveYears(ALL_ENTRIES);
     applyHashState();
-    renderAll();
+    renderAll({ keepDetail: true });
+    // Put the panel back immediately, not after the index build below. Both a
+    // ?cf= deep link and a mid-stream click open the panel while the CSVs are
+    // still arriving; renderAll() above then closes it, and reopening only once
+    // gbBuildMatchIndex() returned left the panel visibly gone for seconds
+    // (measured: open at 2.4s, closed at 4.1s, back at 6.6s). The panel's two
+    // index-dependent sections show their "still loading" state for that
+    // stretch and are filled in below, in place.
+    const deepLinkCf = new URLSearchParams(location.search).get('cf');
+    const restoreRow = (deepLinkCf && ALL_ENTRIES.find(r => r.canvas_fragment === deepLinkCf)) || openRow;
+    if (restoreRow) {
+      selectedIdx = rowIdx(restoreRow);
+      // Already on screen from the mid-stream open? Then leave it entirely
+      // alone. Re-running showDetail() would restart the map geocode and
+      // re-take focus for a panel whose content is already right — only the
+      // index-dependent sections below are stale.
+      if (restoreRow !== openRow) showDetail(restoreRow);
+      renderTableBody();
+      // A shared link lands on the entry, not on the masthead.
+      if (deepLinkCf) {
+        const app = document.getElementById('app');
+        if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+      }
+      scrollToSelected(100);
+    }
     // The bar stays visible through the index build — it is ~1s of the load and
     // gating Establishments, so going quiet here would look like a stall.
     gbSetProgress(99, 'Indexing cross-listings…');
@@ -5144,24 +5200,11 @@ async function gbStreamCsv(url, onRow) {
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
     if (gbTrendsModalOpen()) gbRenderTrends();  // modal opened before data was ready
     gbMaybeBuildHero();  // build the featured trio now that all volumes are present
-    // These need the cross-listing index (for "Also listed in" chips), so they
-    // run after gbBuildMatchIndex() above. The coverage grid can now be filled in.
-    const cf = new URLSearchParams(location.search).get('cf');
-    if (cf) {
-      const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
-      if (match) {
-        selectedIdx = rowIdx(match);
-        showDetail(match);
-        renderTableBody();
-        const app = document.getElementById('app');
-        if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
-        scrollToSelected(100);
-      }
-    } else if (openRow) {
-      selectedIdx = rowIdx(openRow);
-      showDetail(openRow);
-      renderTableBody();
-      scrollToSelected(100);
+    // The panel restored above has been showing the "matches will appear once
+    // all entries finish loading…" placeholder; the index exists now, so fill
+    // those sections in where they stand rather than reopening the panel.
+    if (restoreRow) {
+      gbRefreshDetailIndexSections(restoreRow);
     } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
                && !location.hash.includes('volume_year')) {
       scrollToYear("1938");
