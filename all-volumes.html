@@ -4274,11 +4274,47 @@ function gbJumpToListing(targetRow) {
     facetState[GB_YEAR_FIELD].clear();
     facetState[GB_YEAR_FIELD].add(year);
   }
+  // Hold the coverage grid still under the finger. The panel keeps its scroll
+  // offset across a jump, but the sections above the grid differ in height from
+  // entry to entry, so the grid slid around — and landing on a shorter entry
+  // clamped the old offset to the very bottom, leaving the panel apparently
+  // stuck with nothing below it. Anchor on the grid's viewport position so
+  // tapping cell after cell keeps working.
+  const covBefore = document.getElementById("detail-also-in");
+  const anchorY = covBefore && covBefore.offsetParent !== null
+    ? covBefore.getBoundingClientRect().top : null;
+
   _pushNextHistory = true;
-  renderAll();
+  // Keep the panel open across the re-filter. renderAll()'s auto-close strips
+  // .open, and #detail is `display: none` without it — so the panel was being
+  // torn down and rebuilt on every jump, even though the very next statement
+  // reopens it on a different row. On mobile #detail is also the scroll
+  // container (position: fixed; overflow-y: auto), so that teardown destroys
+  // and recreates the thing the user's finger is scrolling, mid-tap. It also
+  // churned the modal state, dropping and re-applying `inert` across the
+  // background for no reason. Nothing here needs the panel closed.
+  renderAll({ keepDetail: true });
   selectedIdx = rowIdx(targetRow);
   showDetail(targetRow);
   renderTableBody();
+
+  if (anchorY !== null) {
+    const cov = document.getElementById("detail-also-in");
+    const sc = gbDetailScroller();
+    if (cov && sc && cov.offsetParent !== null) {
+      const delta = cov.getBoundingClientRect().top - anchorY;
+      if (delta) sc.scrollTop += delta;
+    }
+  }
+}
+
+// Which element actually scrolls the panel: #detail itself below 640px (where
+// it is a full-viewport overlay), #detail-inner above it. Picked by measurement
+// rather than by media query, so it stays right if either rule changes.
+function gbDetailScroller() {
+  const inner = document.getElementById("detail-inner");
+  if (inner && inner.scrollHeight > inner.clientHeight + 2) return inner;
+  return document.getElementById("detail");
 }
 
 // ── Coverage-cell tooltip ────────────────────────────────────────────────────
