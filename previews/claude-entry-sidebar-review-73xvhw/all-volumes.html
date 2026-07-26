@@ -591,7 +591,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-thumb { width: 100%; height: auto; max-height: 340px; object-fit: contain; display: none; cursor: pointer; }
 #detail-close { position: absolute; top: 12px; right: 12px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); width: 28px; height: 28px; cursor: pointer; display: grid; place-items: center; color: var(--gb-ink-soft); font-size: 1.143rem; z-index: 1; }
 #detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
-#detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
+/* overscroll-behavior: a scroll gesture that reaches this container's end
+   must NOT chain to the page behind it. The panel is a fixed overlay, so a
+   chained scroll moves a document the user cannot see: the scroll indicator
+   appears and nothing in the panel changes, which reads as a frozen panel. */
+#detail-inner { padding: 24px 24px 32px; overflow-y: auto; overscroll-behavior: contain; flex: 1; }
 #detail-title { font-family: var(--gb-font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.005em; line-height: 1.1; margin: 0 0 20px; color: var(--gb-ink); }
 #detail-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: -12px 0 16px; }
 #detail-badges:empty { display: none; }
@@ -789,7 +793,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
-  #sidebar { position: fixed; top: 0; left: 0; width: 85vw; max-width: 300px; height: 100dvh; z-index: 200; min-width: 0; transform: translateX(-100%); transition: transform 0.22s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.18); }
+  #sidebar { position: fixed; top: 0; left: 0; width: 85vw; max-width: 300px; height: 100dvh; z-index: 200; min-width: 0; overscroll-behavior: contain; transform: translateX(-100%); transition: transform 0.22s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.18); }
   #app.sidebar-open #sidebar { transform: translateX(0); }
   #sidebar-backdrop { display: none !important; position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 199; }
   #app.sidebar-open #sidebar-backdrop { display: block !important; }
@@ -804,7 +808,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   tbody td.mcard-cell:first-child, table.est-mode tbody td.mcard-cell:first-child { width: auto; padding-left: 16px; font-family: var(--gb-font-body); font-size: 1rem; color: inherit; }
   tbody tr.selected td.mcard-cell { box-shadow: inset 3px 0 0 var(--gb-accent); color: inherit; }
   #main.detail-open #table-wrap { padding-right: 0; }
-  #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
+  #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; overscroll-behavior: contain; border-left: none; }
   /* #detail itself scrolls here, so release the inner scroller — two stacked
      overflow:auto containers made the panel scroll against itself. */
   #detail-inner { overflow-y: visible; flex: 0 0 auto; }
