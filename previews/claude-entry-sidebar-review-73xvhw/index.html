@@ -84,6 +84,12 @@
       flex-direction: column; gap: 16px; padding: 32px; text-align: center;
     }
     #landing.visible, #error.visible, #loading.visible { display: flex; }
+    /* The loading state must be able to COVER the viewer, not just precede it:
+       clover-viewer is appended last, so without a stacking context of its own
+       #loading paints underneath, and being transparent it would show nothing
+       anyway. Opaque + above the viewer, it masks the info-panel open/close
+       dance the zoom driver performs on mount (see ensureZoomThenClosePanel). */
+    #loading { background: var(--gb-paper); z-index: 2; }
     #landing p, #loading p {
       font-family: var(--gb-font-body); font-size: 15px;
       color: var(--gb-ink-soft); max-width: 480px; line-height: 1.6;
@@ -319,7 +325,21 @@ function collapseInfoPanel(el) {
   }());
 }
 
-function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
+// How long the loading cover may stay up before it is dropped regardless of
+// what the driver is doing. Comfortably inside the driver's own MAX_MS.
+const REVEAL_SAFETY_MS = 15000;
+
+// `reveal` drops the loading cover that attach() holds over this whole
+// sequence. Called once the info panel has been dismissed — i.e. once the
+// viewer is back at full size and about to receive its one zoom — and on
+// every give-up path. Before this, the reader watched the raw sequence:
+// Clover's own content-state zoom, then the info panel opening (full-width on
+// a phone, so the page scan vanished — "it appeared to reload"), then the
+// panel closing and OSD re-fitting to home, then the driver's zoom. Two zooms
+// with a blank flash between them. The dance still happens; it is just no
+// longer performed in front of the reader.
+function ensureZoomThenClosePanel(el, stateId, expectedAspect, reveal) {
+  reveal = reveal || function () {};
   const POLL_MS = 250;
   const MAX_MS = 45000;
   const ASPECT_TOLERANCE = 0.2; // relative
@@ -389,6 +409,9 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
       const btn = el.querySelector('[data-value="manifest-back"]');
       if (btn) btn.click();
       el.classList.remove("gb-zoom-pending");
+      // Panel dismissed: the viewer is back at full size. Show it now, so the
+      // reader sees the page and then a single zoom, not the churn above.
+      reveal();
     } else {
       const rect = overlay.getBoundingClientRect();
       const viewer = el.getBoundingClientRect();
@@ -406,8 +429,9 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
         // until the overlay grows past its at-dispatch size (or spans a real
         // share of the viewer, for large fragments).
         if (elapsed - dispatchedAt >= VERIFY_MS) {
-          if (zoomed) return; // done
+          if (zoomed) { reveal(); return; } // done
           if (dispatches >= MAX_DISPATCHES) {
+            reveal();
             return; // give up; class already cleared at panel close
           }
           dispatches++;
@@ -441,6 +465,7 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
     elapsed += POLL_MS;
     if (elapsed >= MAX_MS) {
       el.classList.remove("gb-zoom-pending"); // never leave the panel invisible
+      reveal();                                 // nor the viewer covered
       return; // give up rather than zoom to a bogus rect
     }
     setTimeout(poll, POLL_MS);
@@ -470,7 +495,16 @@ function launchClover(manifestId, cfUrl) {
       canvasHeight: "auto", showDownload: false, showIIIFBadge: false,
     }));
     wrap.appendChild(el);
-    document.getElementById("loading").classList.remove("visible");
+    // Reveal = drop the loading cover. For a fragment load the driver below
+    // owns the moment: it holds the cover over the info-panel dance, so the
+    // viewer is first seen settled rather than mid-churn. Every other path
+    // reveals immediately, as before.
+    let revealed = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      document.getElementById("loading").classList.remove("visible");
+    };
     // NB: do not revoke the content-state blob URL here — Clover 3.11.0 reads
     // it asynchronously after connection, so revoking (even deferred) races
     // that read and the manifest 404s. The one-per-load blob leak is fine.
@@ -479,8 +513,15 @@ function launchClover(manifestId, cfUrl) {
     // manifest-fetch-failure fallback paths below attach with just the bare
     // manifest URL — there's nothing to zoom to, so leave Clover's default
     // (open) info panel alone.
-    if (stateId) ensureZoomThenClosePanel(el, stateId, expectedAspect);
-    else if (collapsePanel) collapseInfoPanel(el);
+    if (stateId) {
+      // Belt and braces: however the driver exits, the cover comes off. A hung
+      // driver must never leave the reader staring at a loading message.
+      setTimeout(reveal, REVEAL_SAFETY_MS);
+      ensureZoomThenClosePanel(el, stateId, expectedAspect, reveal);
+    } else {
+      reveal();
+      if (collapsePanel) collapseInfoPanel(el);
+    }
   }
 
   if (!cfUrl) {
