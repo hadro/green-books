@@ -3376,6 +3376,22 @@ function syncViewToggleUI() {
   const mapWrap = document.getElementById("map-wrap");
   if (tableWrap) tableWrap.style.display = map ? "none" : "";
   if (mapWrap) mapWrap.style.display = map ? "" : "none";
+  syncMapModeUI();
+}
+
+// Derived from gbMapMode, never written by the click handler alone:
+// applyHashState() sets gbMapMode straight from `map=density` in the URL, so the
+// buttons have to be able to catch up from the state and not only from the
+// interaction that changed it. Without this a density deep link drew the
+// choropleth under a toggle still reading "Bubbles" — and gbSetMapMode()'s
+// early-return then made clicking Density a no-op.
+function syncMapModeUI() {
+  ["bubbles", "density"].forEach(m => {
+    const btn = document.getElementById("map-mode-" + m);
+    if (!btn) return;
+    btn.classList.toggle("view-btn-active", m === gbMapMode);
+    btn.setAttribute("aria-checked", String(m === gbMapMode));
+  });
 }
 function setViewMode(mode) {
   if (mode === viewMode) return;
@@ -4083,15 +4099,12 @@ function gbRenderMapCount(agg, tier, dense) {
 }
 
 function gbSetMapMode(mode) {
+  // The guard saves a redundant re-render; it is deliberately no longer what
+  // keeps the buttons correct — syncMapModeUI() runs on every renderAll() too.
   if (mode === gbMapMode) return;
   gbMapMode = mode;
   gcEvent("map-mode-" + mode);
-  ["bubbles", "density"].forEach(m => {
-    const btn = document.getElementById("map-mode-" + m);
-    if (!btn) return;
-    btn.classList.toggle("view-btn-active", m === mode);
-    btn.setAttribute("aria-checked", String(m === mode));
-  });
+  syncMapModeUI();
   // Not renderAll(): a mode change touches nothing outside the map, and
   // renderAll() would close an open detail panel. syncFilterUI() alone keeps the
   // URL in step, and with _pushNextHistory false it takes the replaceState path.
