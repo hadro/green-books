@@ -515,7 +515,14 @@ table.est-mode td:nth-child(5) { max-width: 130px; }
 /* ── Table ── */
 #content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 #table-wrap { flex: 1; overflow-y: auto; overflow-x: auto; }
-#map-wrap { flex: 1; position: relative; min-height: 0; }
+/* isolation, not decoration. Leaflet numbers its own panes 400 and its controls
+   800/1000. #map-wrap and #nyc-map are both positioned but z-index:auto, so
+   without a stacking context here that whole private ladder escapes upward into
+   #app's context (#app is position:sticky, which always makes one) and competes
+   with the page's own layers — where #detail is only 100 (300 on mobile). That
+   is how the map came to paint over an open detail panel. Isolating keeps
+   Leaflet's numbering private so the page ladder stays authoritative. */
+#map-wrap { flex: 1; position: relative; min-height: 0; isolation: isolate; }
 /* The font rule used to be `#nyc-map .leaflet-container`, a descendant selector
    that never matched: #nyc-map IS the .leaflet-container (it's the element
    handed to L.map()). The map had been rendering in Leaflet's stock Helvetica
@@ -659,7 +666,15 @@ table.est-mode td:nth-child(5) { max-width: 130px; }
 .nyc-popup .pp-addr { font-size: 0.8rem; margin-bottom: 6px; }
 .nyc-popup .pp-actions { display: flex; gap: 10px; margin-top: 8px; }
 .nyc-popup .pp-btn { font-family: var(--gb-font-mono); font-size: 0.68rem; color: var(--gb-accent); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; }
-#main.detail-open #map-wrap { padding-right: var(--gb-detail-w); }
+/* A transparent border, not padding. This rule has always meant "reserve room
+   for the detail panel", but as padding it did nothing: #nyc-map and the five
+   .map-chip elements are absolutely positioned, and an absolutely positioned
+   child resolves inset:0 / right:12px against the PADDING box, which includes
+   the padding. A border is outside the padding box, so the map, the count chip,
+   the scale bar and the attribution all inset themselves with no per-element
+   rules. Safe because box-sizing is border-box globally (see the reset above),
+   so this eats into #map-wrap's flex width rather than overflowing it. */
+#main.detail-open #map-wrap { border-right: var(--gb-detail-w) solid transparent; }
 table { width: 100%; border-collapse: collapse; font-size: 0.929rem; }
 thead { position: sticky; top: 0; background: var(--gb-paper); z-index: 1; }
 thead th {
@@ -855,6 +870,9 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   tbody td.mcard-cell:first-child, table.est-mode tbody td.mcard-cell:first-child { width: auto; padding-left: 16px; font-family: var(--gb-font-body); font-size: 1rem; color: inherit; }
   tbody tr.selected td.mcard-cell { box-shadow: inset 3px 0 0 var(--gb-accent); color: inherit; }
   #main.detail-open #table-wrap { padding-right: 0; }
+  /* The panel goes full-screen here, so nothing needs reserving — and reserving
+     420px+ out of a 400px viewport would leave no map at all. */
+  #main.detail-open #map-wrap { border-right-width: 0; }
   #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
   #mobile-header { display: block; padding: 14px 16px 12px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
   .mobile-hero-title { margin: 0 0 4px; font-family: var(--gb-font-display); font-size: 1.214rem; font-weight: 500; color: var(--gb-ink); line-height: 1.2; }
