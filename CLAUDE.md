@@ -175,6 +175,15 @@ replaces the plugin's default `iconCreateFunction`, so its classes are dead.
 `vendor/` stays a clean upstream copy; all Leaflet restyling is in the page's
 own `<style>`.
 
+`#map-wrap` carries `isolation: isolate`, and that is load-bearing: Leaflet
+numbers its panes 400 and its controls 800/1000, and without a stacking context
+there that ladder escapes into `#app`'s context (`#app` is `position: sticky`)
+and out-ranks `#detail` (100 desktop / 300 mobile) — the map then paints over an
+open detail panel. Its `detail-open` rule reserves room with a transparent
+`border-right`, not `padding-right`: the map and all five `.map-chip` elements
+are absolutely positioned, and those resolve their offsets against the *padding*
+box, so padding reserved nothing.
+
 The map auto-fits only on first render and when the neighborhood/borough facet
 changes; every other filter leaves the viewport alone (it used to re-fit on
 every keystroke). "⤴ Whole city" is the manual reset.
