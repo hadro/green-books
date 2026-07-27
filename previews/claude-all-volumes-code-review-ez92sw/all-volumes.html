@@ -462,8 +462,6 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 /* Transient toast under the toolbar; also announced via aria-live. */
 #export-feedback { position: absolute; right: 0; top: calc(100% + 6px); z-index: 5; background: var(--gb-ink); color: var(--gb-paper); font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.04em; padding: 6px 10px; border-radius: 2px; pointer-events: none; }
 #export-feedback:empty { display: none; }
-#random-btn { padding: 6px 14px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-soft); }
-#random-btn:hover { border-color: var(--gb-ink); color: var(--gb-ink); }
 #filter-btn { display: none; }
 
 /* ── View-mode toggle (Listings / Establishments) ── */
@@ -839,7 +837,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     margin-right: 12px;
   }
   #detail-close { width: 44px; height: 44px; }
-  #export-btn, #random-btn { padding: 9px 14px; }
+  #export-btn { padding: 9px 14px; }
   .facet-item { min-height: 36px; }
   /* Sticky "Search the guides" bar — shown via .sticky-visible by the observer.
      z-index sits below the .skip-link (1000) so keyboard focus still surfaces
@@ -970,7 +968,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div id="active-filters" class="active-filters" aria-label="Active filters" style="display:none"></div>
     <p id="est-mode-note" style="display:none">One row per business — listings matched across volumes and publications by name and address; entries that never carry an address (section headers, boilerplate) are hidden. Click a row to open its most recent listing.</p>
   </div>
-  <button id="random-btn" style="display:none"></button>
   <div id="content">
     <div id="table-wrap">
       <table id="results-table" aria-label="Green Book entries">
@@ -1267,6 +1264,17 @@ const PUBLICATION_COLORS = {
   "Hackley & Harrison's Hotel and Apartment Guide": "#b8447e"
 };
 
+// Small colored <span class="pub-dot">, shared by every place a listing's
+// source guide gets a compact visual identity. The optional fallback lets
+// the year-chart legend use a darker default than the ink-faint used
+// everywhere else.
+function gbPubDot(pub, fallback) {
+  const dot = document.createElement("span");
+  dot.className = "pub-dot";
+  dot.style.background = PUBLICATION_COLORS[pub] || fallback || "var(--gb-ink-faint)";
+  return dot;
+}
+
 // Short display name for the coverage grid's row labels. Falls back to the
 // full publication name when not listed here.
 const PUBLICATION_SHORT_NAMES = {
@@ -1350,6 +1358,9 @@ const VALUE_LABELS = {
   "true": "Yes",
   "false": "No",
 };
+function gbValueLabel(v) {
+  return Object.prototype.hasOwnProperty.call(VALUE_LABELS, v) ? VALUE_LABELS[v] : v;
+}
 
 // Rich fields present in the CSVs but not shown as table columns. They render
 // in the detail panel, join the search haystack, and ride along in CSV export.
@@ -1424,9 +1435,7 @@ function gbRenderProvenance(row) {
   const line = document.createElement("div");
   line.className = "detail-prov-line";
   if (pub) {
-    const dot = document.createElement("span");
-    dot.className = "pub-dot";
-    dot.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink-faint)";
+    const dot = gbPubDot(pub);
     line.appendChild(dot);
     const name = document.createElement("span");
     name.className = "detail-prov-pub";
@@ -1503,7 +1512,7 @@ try { const _s = sessionStorage.getItem('showAllFacets'); if (_s) JSON.parse(_s)
 
 // ── Boot ───────────────────────────────────────────────────────────────────
 document.getElementById("mobile-about-btn").addEventListener("click", () => document.getElementById("about-btn").click());
-document.getElementById("mobile-random-btn").addEventListener("click", () => document.getElementById("gb-explore-btn").click());
+document.getElementById("mobile-random-btn").addEventListener("click", () => openRandomEntry());
 
 
 let facetFields = FIELD_META.filter(f => f.type === "facet");
@@ -1522,7 +1531,7 @@ let _fcKey = null, _fcRows = null;
 function _filterKey() {
   const fs = facetFields.map(f => f.name + ":" + [...facetState[f.name]].join("|")).join(";");
   return [ALL_ENTRIES.length, displayFields.map(f => f.name).join(","),
-          searchQuery, JSON.stringify(colFilters), fs].join("");
+          searchQuery, JSON.stringify(colFilters), fs].join("\u0001");
 }
 function getFiltered() {
   const key = _filterKey();
@@ -1592,11 +1601,8 @@ function getSorted(rows) {
 }
 
 // ── Search match highlighting ─────────────────────────────────────────────
-function escapeHtml(str) {
-  const t = document.createElement("span");
-  t.textContent = str;
-  return t.innerHTML;
-}
+const _gbEscMap = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+function escapeHtml(str) { return String(str).replace(/[&<>"']/g, c => _gbEscMap[c]); }
 function highlightMatch(text, query) {
   if (!query || !text) return document.createTextNode(text || "");
   const idx = text.toLowerCase().indexOf(query.toLowerCase());
@@ -1638,9 +1644,7 @@ function gbBuildListingCardTd(row, q) {
   year.textContent = row.volume_year || "";
   top.appendChild(year);
   if (row.publication) {
-    const dot = document.createElement("span");
-    dot.className = "pub-dot";
-    dot.style.background = PUBLICATION_COLORS[row.publication] || "var(--gb-ink-faint)";
+    const dot = gbPubDot(row.publication);
     top.appendChild(dot);
     top.appendChild(document.createTextNode(PUBLICATION_SHORT_NAMES[row.publication] || row.publication));
   }
@@ -1796,7 +1800,7 @@ function renderSentinel(tbody, sorted, winStart) {
   const sentinelTr = document.createElement("tr");
   sentinelTr.className = "table-end-sentinel";
   const sentinelTd = document.createElement("td");
-  sentinelTd.colSpan = displayFields.length + 1;
+  sentinelTd.colSpan = displayFields.length + 2;
   if (remaining > 0) {
     sentinelTd.textContent = `Showing ${(shownEnd - winStart).toLocaleString()} of ${sorted.length.toLocaleString()} entries `;
     const more = document.createElement("button");
@@ -1888,9 +1892,9 @@ function renderTableBody() {
       const activeDesc = [];
       if (searchQuery.trim()) activeDesc.push(`searching for “${searchQuery.trim()}”`);
       Object.entries(facetState).filter(([,s]) => s.size > 0)
-        .forEach(([k,s]) => activeDesc.push(`${FIELD_LABELS[k] || k.replace(/_/g,' ')}: ${[...s].join(', ')}`));
+        .forEach(([k,s]) => activeDesc.push(`${gbFieldLabel(k)}: ${[...s].join(', ')}`));
       Object.entries(colFilters).filter(([,v]) => v)
-        .forEach(([k,v]) => activeDesc.push(`${FIELD_LABELS[k] || k.replace(/_/g,' ')}: “${v}”`));
+        .forEach(([k,v]) => activeDesc.push(`${gbFieldLabel(k)}: “${v}”`));
       const summary = activeDesc.length ? `<p class="no-results-active">Active filters: ${activeDesc.join(' · ')}</p>` : '';
       noResults.innerHTML = 'No entries match the current filters.' + summary + '<p>Try removing filters or adjusting your search.</p><button id="clear-all-btn">× Clear all filters</button>';
     }
@@ -1910,7 +1914,7 @@ function renderTableHead() {
   displayFields.forEach(f => {
     const th = document.createElement("th");
     th.setAttribute("scope", "col");
-    th.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+    th.textContent = gbFieldLabel(f.name);
     th.dataset.col = f.name;
     th.setAttribute("tabindex", "0");
     if (sortCol === f.name) {
@@ -1951,7 +1955,7 @@ function renderTableHead() {
     if (f.type === "facet" && f.top_values.length > 0) {
       const sel = document.createElement("select");
       sel.className = "col-filter-input";
-      sel.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
+      sel.setAttribute("aria-label", `Filter by ${gbFieldLabel(f.name)}`);
       const opt0 = document.createElement("option");
       opt0.value = ""; opt0.textContent = "(all)";
       sel.appendChild(opt0);
@@ -1991,7 +1995,7 @@ function renderTableHead() {
     } else {
       const inp = document.createElement("input");
       inp.type = "text"; inp.className = "col-filter-input"; inp.placeholder = "filter…";
-      inp.setAttribute("aria-label", `Filter by ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")}`);
+      inp.setAttribute("aria-label", `Filter by ${gbFieldLabel(f.name)}`);
       inp.value = colFilters[f.name] || "";
       // Same debounce as the main search — a full-dataset re-render per
       // keystroke makes typing feel sticky.
@@ -2040,7 +2044,7 @@ function gbSyncMobileSort() {
   } else {
     opts.push(["", "Original order"]);
     displayFields.forEach(f => {
-      const label = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+      const label = gbFieldLabel(f.name);
       opts.push([f.name + ":asc", label + " ↑"]);
       opts.push([f.name + ":desc", label + " ↓"]);
     });
@@ -2256,9 +2260,14 @@ function showDetail(row, opts) {
     img.alt = `Scan showing ${entryName}`;
     img.style.display = "block";
     attachThumb(img, row);
-    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}&from=all-volumes`;
-    thumbLink.title = "View this entry highlighted in the original scan";
-    thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
+    if (row.canvas_fragment) {
+      thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}&from=all-volumes`;
+      thumbLink.title = "View this entry highlighted in the original scan";
+      thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
+    } else {
+      thumbLink.removeAttribute("href");
+      thumbLink.removeAttribute("aria-label");
+    }
   } else {
     img.style.display = "none";
     img.alt = "";
@@ -2322,13 +2331,12 @@ function showDetail(row, opts) {
       if (spec.format === "rates") val = gbFormatRates(val);
       const k = document.createElement("dt");
       k.className = "df-key";
-      k.textContent = spec.label || FIELD_LABELS[spec.name] || spec.name.replace(/_/g, " ");
+      k.textContent = spec.label || gbFieldLabel(spec.name);
       const v = document.createElement("dd");
       v.className = "df-val";
       // Own-property check: the lookup is keyed on CSV data, so a cell reading
       // "constructor" or "toString" would otherwise render a function body.
-      v.textContent = Object.prototype.hasOwnProperty.call(VALUE_LABELS, val)
-        ? VALUE_LABELS[val] : val;
+      v.textContent = gbValueLabel(val);
       dl.appendChild(k);
       dl.appendChild(v);
     });
@@ -2877,12 +2885,19 @@ function renderDetailMap(row) {
   });
 }
 
+// The one path that closes the detail panel: drop any pending geocode and
+// release the mobile modal state (role, inert), so `inert` can never outlive
+// the panel that set it. Callers that reopen the panel (gbJumpToListing)
+// re-apply it via showDetail().
+function closeDetailPanel() {
+  document.getElementById("detail").classList.remove("open");
+  document.getElementById("main").classList.remove("detail-open");
+  gbCancelDetailMap();      // drop any pending geocode
+  gbSyncDetailModality();   // release mobile inert/role state
+}
+
 document.getElementById("detail-close").addEventListener("click", () => {
-  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
-  // Drop the pending geocode and release the mobile modal state (role, inert)
-  // before focus moves back to the table.
-  gbCancelDetailMap();
-  gbSyncDetailModality();
+  closeDetailPanel();
   const u = new URL(location.href);
   u.searchParams.delete('cf');
   const qs = u.searchParams.toString();
@@ -3033,13 +3048,13 @@ function renderFacetSidebar() {
     const lbl = document.createElement("div");
     lbl.className = "facet-label";
     const labelText = document.createElement("span");
-    labelText.textContent = FIELD_LABELS[f.name] || f.name.replace(/_/g, " ");
+    labelText.textContent = gbFieldLabel(f.name);
     lbl.appendChild(labelText);
     if (facetState[f.name].size > 0) {
       const clr = document.createElement("button");
       clr.className = "facet-clear";
       clr.textContent = "clear";
-      clr.setAttribute("aria-label", `Clear ${FIELD_LABELS[f.name] || f.name.replace(/_/g, " ")} filter`);
+      clr.setAttribute("aria-label", `Clear ${gbFieldLabel(f.name)} filter`);
       clr.addEventListener("click", () => {
         _pushNextHistory = true;
         facetState[f.name].clear();
@@ -3066,13 +3081,11 @@ function renderFacetSidebar() {
       const valSpan = document.createElement("span");
       valSpan.className = "val";
       if (f.name === "publication" && PUBLICATION_COLORS[val]) {
-        const dot = document.createElement("span");
-        dot.className = "pub-dot";
-        dot.style.background = PUBLICATION_COLORS[val];
-        valSpan.appendChild(dot);
+        valSpan.appendChild(gbPubDot(val));
       }
-      valSpan.appendChild(document.createTextNode(VALUE_LABELS[val] || val || "(empty)"));
-      valSpan.title = VALUE_LABELS[val] || val;
+      const vLabel = gbValueLabel(val);
+      valSpan.appendChild(document.createTextNode(vLabel || "(empty)"));
+      valSpan.title = vLabel;
       const cntSpan = document.createElement("span");
       cntSpan.className = "cnt";
       // liveCount is already keyed by canonical label for folded facets (see
@@ -3089,7 +3102,7 @@ function renderFacetSidebar() {
       const more = document.createElement("button");
       more.className = "facet-more";
       more.textContent = `+ ${f.top_values.length - 10} more…`;
-      more.setAttribute("aria-label", `Show ${f.top_values.length - 10} more ${f.name.replace(/_/g, " ")} values`);
+      more.setAttribute("aria-label", `Show ${f.top_values.length - 10} more ${gbFieldLabel(f.name)} values`);
       more.addEventListener("click", () => {
         showAllFacets.add(f.name);
         try { sessionStorage.setItem('showAllFacets', JSON.stringify([...showAllFacets])); } catch(e) {}
@@ -3312,7 +3325,7 @@ function gbRenderActiveFilters(anyActive) {
   // Faceted filters ({field: Set<value>}); render the stored value as the sidebar does.
   Object.keys(facetState).forEach(field => {
     facetState[field].forEach(value => {
-      addChip(gbFieldLabel(field), VALUE_LABELS[value] || value || "(empty)", () => {
+      addChip(gbFieldLabel(field), gbValueLabel(value) || "(empty)", () => {
         facetState[field].delete(value);
         gbRefreshAfterFilter();
       });
@@ -3397,12 +3410,7 @@ function renderAll(opts) {
   // Auto-close the detail panel whenever filters/search change so users
   // never see a stale record juxtaposed against a new result set.
   if (!(opts && opts.keepDetail)) {
-    document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
-    // Central close path — drop any pending geocode and release the mobile modal
-    // state here too, so `inert` can never outlive the panel that set it. Callers
-    // that reopen the panel (gbJumpToListing) re-apply it via showDetail().
-    gbCancelDetailMap();
-    gbSyncDetailModality();
+    closeDetailPanel();
     selectedIdx = null;
   }
   _winSize = WINDOW_STEP;  // shrink an extended window back to one page
@@ -3446,7 +3454,7 @@ function scrollToYear(year) {
   }, 0);
 }
 
-document.getElementById("random-btn").addEventListener("click", () => {
+function openRandomEntry() {
   gcEvent('random-entry');
   const all = getSorted(getFiltered());
   const pool = all.filter(r => r.address && r.canvas_fragment && r.canvas_fragment.includes('#xywh='));
@@ -3456,7 +3464,7 @@ document.getElementById("random-btn").addEventListener("click", () => {
   showDetail(r);
   renderTableBody();
   scrollToSelected();
-});
+}
 
 // ── Establishments view ──────────────────────────────────────────────────────
 // One row per resolved business group instead of one row per extracted
@@ -4076,9 +4084,7 @@ function renderEstabRecord(row, listings) {
     yr.textContent = t.year;
     btn.appendChild(yr);
 
-    const dot = document.createElement("span");
-    dot.className = "pub-dot";
-    dot.style.background = PUBLICATION_COLORS[t.pub] || "var(--gb-ink-faint)";
+    const dot = gbPubDot(t.pub);
     btn.appendChild(dot);
 
     const body = document.createElement("span");
@@ -4476,9 +4482,7 @@ function gbRenderCoverage(row) {
     const shortName = PUBLICATION_SHORT_NAMES[pub] || pub;
     const label = document.createElement("div");
     label.className = "pub-label" + (pub === currentPub ? " pub-label-current" : "");
-    const dot = document.createElement("span");
-    dot.className = "pub-dot";
-    dot.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink-faint)";
+    const dot = gbPubDot(pub);
     label.appendChild(dot);
     label.appendChild(document.createTextNode(shortName));
     grid.appendChild(label);
@@ -4641,8 +4645,7 @@ function gbRenderCoverage(row) {
       if (getFiltered().length > 0) break;
     }
     document.getElementById("search").value = searchQuery;
-    document.getElementById("detail").classList.remove("open");
-    document.getElementById("main").classList.remove("detail-open");
+    closeDetailPanel();
     selectedIdx = null;
     _pushNextHistory = true;
     renderAll();
@@ -4711,7 +4714,7 @@ if (location.hash && location.hash.length > 1) {
     history.replaceState(null, '', location.pathname + location.search);
   }
   document.getElementById('about-btn').addEventListener('click', openAbout);
-  if (window._gbAboutOnLoad) openAbout();
+  if (_gbAboutOnLoad) openAbout();
   document.addEventListener('click', (e) => {
     const backdrop = document.getElementById('about-backdrop');
     if (!backdrop || !backdrop.classList.contains('open')) return;
@@ -4763,7 +4766,7 @@ document.getElementById('detail').addEventListener('keydown', e => {
 // ── Sidebar random-entry CTA ──────────────────────────────────────────────────
 (function () {
   const btn = document.getElementById('gb-explore-btn');
-  if (btn) btn.addEventListener('click', () => document.getElementById('random-btn').click());
+  if (btn) btn.addEventListener('click', () => openRandomEntry());
 }());
 
 // ── Streaming CSV loader ──────────────────────────────────────────────────────
@@ -5105,6 +5108,9 @@ async function gbStreamCsv(url, onRow) {
       estBtn.disabled = false;
       estBtn.title = "One row per business, matched across volumes and publications";
     }
+    // A #view=est deep link rendered the establishments view before the index
+    // existed; re-render now that it can actually be built.
+    if (viewMode === "establishments") renderTable();
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
     if (gbTrendsModalOpen()) gbRenderTrends();  // modal opened before data was ready
     gbMaybeBuildHero();  // build the featured trio now that all volumes are present
@@ -5495,9 +5501,7 @@ function gbDrawYearChart() {
     pubOrder.forEach(p => {
       const item = document.createElement("span");
       item.className = "trend-legend-item";
-      const dot = document.createElement("span");
-      dot.className = "pub-dot";
-      dot.style.background = PUBLICATION_COLORS[p] || "var(--gb-ink)";
+      const dot = gbPubDot(p, "var(--gb-ink)");
       item.appendChild(dot);
       item.appendChild(document.createTextNode(PUBLICATION_SHORT_NAMES[p] || p));
       leg.appendChild(item);
@@ -6130,7 +6134,7 @@ function gbCloseTrendsModal(skipFocus) {
 // ── Hero + Timeline additions ─────────────────────────────────────────────────
 
 document.getElementById('random-btn-hero').addEventListener('click', () => {
-  document.getElementById('random-btn').click();
+  openRandomEntry();
   setTimeout(() => document.getElementById('app').scrollIntoView({ behavior: 'smooth' }), 50);
   scrollToSelected(500);
 });
