@@ -4788,12 +4788,16 @@ function gbRenderCoverage(row) {
   });
   alsoEl.appendChild(legend);
 
-  // Broaden filters to surface every candidate match across publications. The
-  // count reuses the summary total so the link says what it will show.
+  // Broaden filters to surface every candidate match across publications.
+  // Deliberately no count: this runs a name search, which is looser than the
+  // resolved group the grid above plots. It reliably finds every listing in
+  // that group, and usually a few more — same-name rows the resolver split off
+  // at a different address. Promising nList and landing on more read as a bug
+  // ("Show all 36" arriving at 41 rows), so the link states the action instead.
   const allLink = document.createElement("a");
   allLink.className = "also-all-link";
   allLink.href = "#";
-  allLink.textContent = "Show all " + nList + " matching listings in the table →";
+  allLink.textContent = "Search the table for this business →";
   allLink.addEventListener("click", e => {
     e.preventDefault();
     // The link promises listings, so it must land in the listings view — the
