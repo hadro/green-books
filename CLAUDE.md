@@ -13,6 +13,7 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | `index.html` | IIIF viewer entry point — all JS is inline in this file, no build step (the `react_clover` branch has a separate Vite/Clover rewrite in `viewer-src/`, not yet merged) |
 | `manifests/{uuid}/manifest.json` | Per-volume IIIF manifests (one per Green Book edition; the LOC 1946 volume's manifest lives at `manifests/2016298176/manifest.json`) |
 | `green_book_entries_all_fixed.csv` | Scratch/working copy; `green_book_entries_all.csv` is the canonical one |
+| `nyc_geo.json` | **Generated** — slim `sha1(canvas_fragment)[:12]` → `[lat, lon, neighborhood, borough, approx]` lookup for the 7,883 geocoded NYC entries. Rebuild with `python3 scripts/build_nyc_geo.py` whenever `nyc-neighborhoods/nyc_entries_geocoded.csv` changes; `--check` fails if it has drifted. |
 
 ## Branch overview
 
@@ -118,6 +119,28 @@ HF dataset repo, so the explorers make effectively zero live NYPL/LOC image requ
 - The `hero-thumbs/` committed pool + `manifest.json` still exist, but only to
   *select* which entries are featured on the hero — the images themselves now
   come from the CDN.
+
+## NYC coordinates (`nyc_geo.json`)
+
+`nyc-neighborhoods/nyc_entries_geocoded.csv` is the NYC geocoding run's deliverable:
+7,995 rows, 99.6% resolved to real coordinates via NYC GeoSearch, with `neighborhood`
+and `borough` labels. `nyc.html` streams that CSV as its entire dataset.
+
+`all-volumes.html` only needs the coordinate, so it loads **`nyc_geo.json`** instead —
+the same data at ~107 KB gzipped rather than 3.1 MB, keyed by the same
+content-addressed id the thumbnail CDN uses (`sha1(canvas_fragment)[:12]`), so the
+browser derives keys with the `sha1hex()` already inlined in each explorer. It is
+fetched on idle after the CSVs land, never on the critical path.
+
+Where a coordinate exists, the detail panel skips Nominatim entirely: no request, a
+tighter map, and the neighborhood named. Rows the pipeline marked
+`GEOMETRIC_CENTER`/`APPROXIMATE` or flagged for review are shown as block-level
+approximations rather than pinpoints. Everywhere outside NYC still geocodes live.
+
+**Licensing:** coordinates (NYC GeoSearch, public domain) and the point-in-polygon
+`neighborhood`/`borough` labels are CC0-compatible. The CC BY-SA boundary geometry in
+`nyc-neighborhoods/nyc-neighborhoods.geojson` is deliberately **not** in `nyc_geo.json`
+— only `nyc.html`'s cluster map loads it, with attribution.
 
 ## Companion repo: directory-pipeline
 

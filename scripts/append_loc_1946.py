@@ -146,6 +146,31 @@ def update_image_to_volume(kept_rows):
     return added, len(mapping) - before, bases
 
 
+def loc_resource_url(service_base, position):
+    """Build the loc.gov reader URL for a tile.loc.gov service id.
+
+    A LOC resource path is <collection>.<item>, and BOTH halves are carried in
+    the service id:
+
+        service:gdc:gdcscd:00:21:22:75:09:8:00212275098:00064
+                    ^^^^^^ collection        ^^^^^^^^^^^ item
+
+    i.e. collection is the third colon-segment and the item id is the
+    second-to-last (the last is the page). The same shape holds for LOC's
+    other collections -- service:rbc:lcrbmrp:t8073:001 is lcrbmrp.t8073.
+
+    The item id ALONE does not resolve: this script used to emit
+    /resource/00212275098/?sp=N, dropping the gdcscd. prefix, and every
+    "open original source page" link for the 1946 edition led nowhere.
+    """
+    tail = service_base.rsplit("/", 1)[-1]
+    parts = tail.split(":")
+    if parts[0] != "service" or len(parts) < 5:
+        raise ValueError("unrecognised LOC service id: %s" % service_base)
+    collection, item = parts[2], parts[-2]
+    return "https://www.loc.gov/resource/%s.%s/?sp=%d" % (collection, item, position)
+
+
 def update_canvas_map(kept_rows, manifest):
     with open(CANVAS_MAP) as f:
         cmap = json.load(f)
@@ -165,7 +190,7 @@ def update_canvas_map(kept_rows, manifest):
             unmatched.append(base)
             continue
         width, height, position = info
-        viewer_url = f"https://www.loc.gov/resource/00212275098/?sp={position}"
+        viewer_url = loc_resource_url(base, position)
         if base not in cmap:
             added += 1
         cmap[base] = [base, width, height, viewer_url]

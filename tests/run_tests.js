@@ -107,29 +107,49 @@ async function pollOverlay(page, spec, timeoutMs, settleMs = 4000) {
 // be 0. Samples every 50ms until the pending window ends (or timeout).
 // Returns counts so callers can assert (a) the window was observed at all
 // and (b) the aside was never visible inside it.
+// Recorder for the gb-zoom-pending window, installed via addInitScript so it is
+// running before any page script — see installFlashRecorder's note on why this
+// cannot be driven from Node.
+const FLASH_RECORDER = () => {
+  const state = { pendingAsideSamples: 0, visiblePendingAsideSamples: 0, sawPending: false, ended: false };
+  window.__gbFlash = state;
+  const tick = () => {
+    const cv = document.querySelector('clover-viewer');
+    if (cv) {
+      const pending = cv.classList.contains('gb-zoom-pending');
+      if (pending) {
+        state.sawPending = true;
+        const aside = cv.querySelector('aside[data-aside-active]');
+        if (aside) {
+          state.pendingAsideSamples++;
+          if (getComputedStyle(aside).opacity !== '0') state.visiblePendingAsideSamples++;
+        }
+      } else if (state.sawPending) {
+        state.ended = true;
+        return;  // window over, stop sampling
+      }
+    }
+    setTimeout(tick, 16);
+  };
+  tick();
+};
+
+// The pending window is short — on desktop Clover's info panel is already open,
+// so the overlay registers on the driver's first 250ms poll and the class comes
+// straight back off. Sampling it from Node at 50ms per round trip, starting only
+// once page.goto() resolved, was a race: the same index.html scored 2 samples in
+// one CI run and 0 in the next, and 0 every time on a fast machine. The window
+// itself was never the problem — the observation was. Recording in-page from
+// document start at ~16ms makes it deterministic.
 async function watchFlashHidden(page, timeoutMs) {
   const start = Date.now();
-  let pendingAsideSamples = 0;
-  let visiblePendingAsideSamples = 0;
-  let sawPending = false;
   while (Date.now() - start < timeoutMs) {
-    const s = await page.evaluate(() => {
-      const cv = document.querySelector('clover-viewer');
-      if (!cv) return { phase: 'no-viewer' };
-      const pending = cv.classList.contains('gb-zoom-pending');
-      const aside = cv.querySelector('aside[data-aside-active]');
-      if (!aside) return { phase: 'no-aside', pending };
-      return { phase: 'aside', pending, opacity: getComputedStyle(aside).opacity };
-    });
-    if (s.pending) sawPending = true;
-    if (s.phase === 'aside' && s.pending) {
-      pendingAsideSamples++;
-      if (s.opacity !== '0') visiblePendingAsideSamples++;
-    }
-    if (sawPending && s.pending === false) break; // window over
+    const s = await page.evaluate(() => window.__gbFlash || null);
+    if (s && s.ended) return s;
     await page.waitForTimeout(50);
   }
-  return { pendingAsideSamples, visiblePendingAsideSamples };
+  return (await page.evaluate(() => window.__gbFlash || null)) ||
+         { pendingAsideSamples: 0, visiblePendingAsideSamples: 0 };
 }
 
 async function getViewerRect(page) {
@@ -209,6 +229,7 @@ function assertOverlaySane(overlay, viewer, spec, label, results) {
 async function newPage(browser, viewport) {
   const context = await browser.newContext({ viewport });
   const page = await context.newPage();
+  await page.addInitScript(FLASH_RECORDER);
   const consoleErrors = [];
   const pageErrors = [];
   const requestFailures = [];

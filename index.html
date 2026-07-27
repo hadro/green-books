@@ -19,7 +19,14 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231e5231'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23f6f1e5'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231e5231'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%2375705f'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Loaded non-render-blocking: a plain stylesheet <link> also blocks the parser
+     from running the inline script below it, so DOMContentLoaded waits on
+     fonts.googleapis.com. Measured at 12.6s when that host is slow or blocked
+     (corporate proxies, blockers, regions where Google is unreachable). The
+     media="print" swap lets the page render immediately in the fallback stacks
+     declared on --gb-font-*; display=swap then swaps the webfonts in. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"></noscript>
   <style>
     :root {
       --gb-paper:        #f6f1e5;
@@ -76,6 +83,12 @@
       flex-direction: column; gap: 16px; padding: 32px; text-align: center;
     }
     #landing.visible, #error.visible, #loading.visible { display: flex; }
+    /* The loading state must be able to COVER the viewer, not just precede it:
+       clover-viewer is appended last, so without a stacking context of its own
+       #loading paints underneath, and being transparent it would show nothing
+       anyway. Opaque + above the viewer, it masks the info-panel open/close
+       dance the zoom driver performs on mount (see ensureZoomThenClosePanel). */
+    #loading { background: var(--gb-paper); z-index: 2; }
     #landing p, #loading p {
       font-family: var(--gb-font-body); font-size: 15px;
       color: var(--gb-ink-soft); max-width: 480px; line-height: 1.6;
@@ -295,7 +308,37 @@ function xywhAspect(fragment) {
 // index.html had to skip the auto-dismiss on small viewports). Closing
 // unconditionally also means the zoom below always runs against the final,
 // full-size OSD container, so it lands identically at every width.
-function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
+// Collapse the info panel for entries that have a page but no region. There is
+// nothing to zoom to and no annotation worth reading (Clover shows "None"), so
+// leaving the panel open spends ~40% of the width on chrome when the whole point
+// of the link is to see the page. Clicking the same toggle the zoom driver uses
+// to OPEN a collapsed panel, bounded so it can never hang.
+function collapseInfoPanel(el) {
+  const POLL_MS = 250, MAX_MS = 10000;
+  let elapsed = 0;
+  (function poll() {
+    const toggle = el.querySelector('button[data-aside-active][aria-expanded="true"]');
+    if (toggle) { toggle.click(); return; }
+    elapsed += POLL_MS;
+    if (elapsed < MAX_MS) setTimeout(poll, POLL_MS);
+  }());
+}
+
+// How long the loading cover may stay up before it is dropped regardless of
+// what the driver is doing. Comfortably inside the driver's own MAX_MS.
+const REVEAL_SAFETY_MS = 15000;
+
+// `reveal` drops the loading cover that attach() holds over this whole
+// sequence. Called once the info panel has been dismissed — i.e. once the
+// viewer is back at full size and about to receive its one zoom — and on
+// every give-up path. Before this, the reader watched the raw sequence:
+// Clover's own content-state zoom, then the info panel opening (full-width on
+// a phone, so the page scan vanished — "it appeared to reload"), then the
+// panel closing and OSD re-fitting to home, then the driver's zoom. Two zooms
+// with a blank flash between them. The dance still happens; it is just no
+// longer performed in front of the reader.
+function ensureZoomThenClosePanel(el, stateId, expectedAspect, reveal) {
+  reveal = reveal || function () {};
   const POLL_MS = 250;
   const MAX_MS = 45000;
   const ASPECT_TOLERANCE = 0.2; // relative
@@ -365,6 +408,9 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
       const btn = el.querySelector('[data-value="manifest-back"]');
       if (btn) btn.click();
       el.classList.remove("gb-zoom-pending");
+      // Panel dismissed: the viewer is back at full size. Show it now, so the
+      // reader sees the page and then a single zoom, not the churn above.
+      reveal();
     } else {
       const rect = overlay.getBoundingClientRect();
       const viewer = el.getBoundingClientRect();
@@ -382,8 +428,9 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
         // until the overlay grows past its at-dispatch size (or spans a real
         // share of the viewer, for large fragments).
         if (elapsed - dispatchedAt >= VERIFY_MS) {
-          if (zoomed) return; // done
+          if (zoomed) { reveal(); return; } // done
           if (dispatches >= MAX_DISPATCHES) {
+            reveal();
             return; // give up; class already cleared at panel close
           }
           dispatches++;
@@ -417,6 +464,7 @@ function ensureZoomThenClosePanel(el, stateId, expectedAspect) {
     elapsed += POLL_MS;
     if (elapsed >= MAX_MS) {
       el.classList.remove("gb-zoom-pending"); // never leave the panel invisible
+      reveal();                                 // nor the viewer covered
       return; // give up rather than zoom to a bogus rect
     }
     setTimeout(poll, POLL_MS);
@@ -436,7 +484,7 @@ function launchClover(manifestId, cfUrl) {
   // unknown element until Clover upgrades it.
   const cloverReady = customElements.whenDefined("clover-viewer");
 
-  function attach(blobId, stateId, expectedAspect) {
+  function attach(blobId, stateId, expectedAspect, collapsePanel) {
     const el = document.createElement("clover-viewer");
     el.setAttribute("id", blobId);
     // Must always be present: Clover does an unguarded JSON.parse() of this
@@ -446,7 +494,16 @@ function launchClover(manifestId, cfUrl) {
       canvasHeight: "auto", showDownload: false, showIIIFBadge: false,
     }));
     wrap.appendChild(el);
-    document.getElementById("loading").classList.remove("visible");
+    // Reveal = drop the loading cover. For a fragment load the driver below
+    // owns the moment: it holds the cover over the info-panel dance, so the
+    // viewer is first seen settled rather than mid-churn. Every other path
+    // reveals immediately, as before.
+    let revealed = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      document.getElementById("loading").classList.remove("visible");
+    };
     // NB: do not revoke the content-state blob URL here — Clover 3.11.0 reads
     // it asynchronously after connection, so revoking (even deferred) races
     // that read and the manifest 404s. The one-per-load blob leak is fine.
@@ -455,7 +512,15 @@ function launchClover(manifestId, cfUrl) {
     // manifest-fetch-failure fallback paths below attach with just the bare
     // manifest URL — there's nothing to zoom to, so leave Clover's default
     // (open) info panel alone.
-    if (stateId) ensureZoomThenClosePanel(el, stateId, expectedAspect);
+    if (stateId) {
+      // Belt and braces: however the driver exits, the cover comes off. A hung
+      // driver must never leave the reader staring at a loading message.
+      setTimeout(reveal, REVEAL_SAFETY_MS);
+      ensureZoomThenClosePanel(el, stateId, expectedAspect, reveal);
+    } else {
+      reveal();
+      if (collapsePanel) collapseInfoPanel(el);
+    }
   }
 
   if (!cfUrl) {
@@ -474,7 +539,16 @@ function launchClover(manifestId, cfUrl) {
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
       const state = buildCloverState(manifestId, canvasId, fragment);
-      attach(contentStateToBlobId(state), state.id, xywhAspect(fragment));
+      // 774 of 109,163 entries (0.7%) carry a canvas_fragment with no #xywh —
+      // the pipeline located the page but not the region on it. Without a
+      // FragmentSelector Clover draws no overlay annotation, so the zoom driver
+      // polls for an element that will never exist and holds gb-zoom-pending
+      // for its full 45s timeout, leaving the info panel invisible while it
+      // still occupies layout: a wide dead band beside a page that never zooms.
+      // Pass no stateId so the driver is skipped — the content state still
+      // opens the correct page, it simply opens it unzoomed, which is all the
+      // data supports.
+      attach(contentStateToBlobId(state), fragment ? state.id : null, xywhAspect(fragment), !fragment);
     })
     .catch(() => {
       cloverReady.then(() => attach(manifestId));

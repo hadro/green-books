@@ -21,7 +21,14 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231e5231'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23f6f1e5'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231e5231'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%2375705f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<!-- Loaded non-render-blocking: a plain stylesheet <link> also blocks the parser
+     from running the inline script below it, so DOMContentLoaded waits on
+     fonts.googleapis.com. Measured at 12.6s when that host is slow or blocked
+     (corporate proxies, blockers, regions where Google is unreachable). The
+     media="print" swap lets the page render immediately in the fallback stacks
+     declared on --gb-font-*; display=swap then swaps the webfonts in. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"></noscript>
 <style>
 :root {
   --gb-paper:        #f6f1e5;   /* aged newsprint */
@@ -1413,7 +1420,12 @@ function _filterKey() {
 function getFiltered() {
   const key = _filterKey();
   if (key === _fcKey && _fcRows) return _fcRows;
-  const q = searchQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+  // Fold "6001/2" to "600 1/2" on both sides before punctuation is stripped, so
+  // the two printed spellings of a half-address collapse to the same haystack
+  // text ("600 12") and either query finds both. Without it the strip turns them
+  // into "60012" and "600 12", which can never match each other.
+  const q = gbSplitHouseFraction(searchQuery).trim().toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
   const result = ALL_ENTRIES.filter(row => {
     // Search filter — the normalized haystack is cached on the row (data is
     // immutable after load), so repeat searches don't re-normalize 100k rows.
@@ -1427,7 +1439,8 @@ function getFiltered() {
         const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
         row._hay = (displayFields.map(f => (row[f.name] || ""))
           .concat(DETAIL_FIELDS.map(n => row[n] || ""))
-          .join(" ") + " " + foldedCat)
+          .join(" ") + " " + foldedCat);
+        row._hay = gbSplitHouseFraction(row._hay)
           .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       }
       if (!row._hay.includes(q)) return false;
@@ -2267,14 +2280,35 @@ function renderDetailMap(row) {
   const controller = new AbortController();
   _mapAbort = controller;
 
-  function showEmbed(lat, lon, d, disclaimer) {
+  function showEmbed(lat, lon, d, disclaimer, label) {
     const bbox = [lon - d, lat - d, lon + d, lat + d].join(",");
     const marker = d < 0.05 ? "&marker=" + lat + "," + lon : "";
     const embedUrl = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=mapnik" + marker;
     mapEl.innerHTML =
-      '<div class="also-in-label">Approximate location</div>' +
+      '<div class="also-in-label">' + (label || "Approximate location") + '</div>' +
       '<iframe class="map-frame" src="' + embedUrl + '" loading="lazy" title="Map showing approximate location of this listing"></iframe>' +
       '<p class="map-disclaimer">' + disclaimer + ' <a href="' + osmSearchUrl + '" target="_blank">Search on OpenStreetMap ↗</a></p>';
+  }
+
+  // Every row on this page already carries a resolved coordinate — the whole
+  // dataset is the geocoding run's output, and the cluster map plots straight
+  // from row.latitude/row.longitude. Only this panel ignored them and re-asked
+  // Nominatim for an answer the row already had, which was slower, could
+  // disagree with the marker on the map behind it, and could fail on addresses
+  // the pipeline had already resolved. Use the row.
+  const lat0 = parseFloat(row.latitude), lon0 = parseFloat(row.longitude);
+  if (isFinite(lat0) && isFinite(lon0)) {
+    const q = (row.geocode_quality || "").trim().toUpperCase();
+    const fuzzy = q === "GEOMETRIC_CENTER" || q === "APPROXIMATE" ||
+                  String(row.review_flag || "").trim().toLowerCase() === "true";
+    showEmbed(lat0, lon0, fuzzy ? 0.004 : 0.0022,
+      fuzzy
+        ? "Block-level match — the geocoder could not resolve this to a single building. " +
+          "Streets and addresses also change over time, so treat it as an approximation."
+        : "Geocoded from the printed address by NYC GeoSearch. Streets and addresses " +
+          "change over time, and the building here may not be the one listed.",
+      fuzzy ? "Approximate location" : "Location");
+    return;
   }
 
   function tryCity() {
@@ -3981,35 +4015,75 @@ const MERGED_ENTRIES_TOTAL_APPROX = 7995;
 // State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
 // quoting (escaped quotes, embedded commas and newlines) across arbitrary
 // chunk boundaries.
-function gbCreateStreamingCSVParser(onRow) {
+function gbCreateStreamingCSVParser(onRow, keepColumns) {
   let headers = null;
+  let keepMask = null;       // per-column boolean, or null while reading headers
+  let keepThis = true;       // does the field currently being read survive?
+  let fieldIdx = 0;
   let field = '';
   let row = [];
   let inQuote = false;
   let pendingQuote = false;  // saw `"` while in quote — next char decides escape vs end
   let pendingCR = false;     // saw `\r` — swallow following `\n` if any
-  function flushField() { row.push(field); field = ''; }
+  function flushField() {
+    row.push(keepThis ? field : '');
+    field = '';
+    fieldIdx++;
+    keepThis = keepMask ? keepMask[fieldIdx] !== false : true;
+  }
   function flushRow() {
-    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; return; }
-    if (!headers) { headers = row; row = []; return; }
+    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; fieldIdx = 0; keepThis = keepMask ? keepMask[0] !== false : true; return; }
+    if (!headers) {
+      headers = row;
+      if (keepColumns) keepMask = headers.map(h => keepColumns.has(h));
+      row = []; fieldIdx = 0;
+      keepThis = keepMask ? keepMask[0] !== false : true;
+      return;
+    }
     const obj = {};
-    for (let i = 0; i < headers.length; i++) obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    for (let i = 0; i < headers.length; i++) {
+      if (keepMask && !keepMask[i]) continue;
+      obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    }
     onRow(obj);
-    row = [];
+    row = []; fieldIdx = 0;
+    keepThis = keepMask ? keepMask[0] !== false : true;
   }
   return {
     feed(text) {
-      for (let i = 0; i < text.length; i++) {
-        const c = text[i];
+      const n = text.length;
+      let i = 0;
+      while (i < n) {
+        // Fast path: consume a run of characters that the state machine would
+        // have appended verbatim. Falls through to the per-character logic the
+        // moment anything structural shows up.
+        if (!pendingQuote && !pendingCR) {
+          let j = i;
+          if (inQuote) {
+            while (j < n && text.charCodeAt(j) !== 34) j++;               // until "
+          } else {
+            while (j < n) {
+              const cc = text.charCodeAt(j);
+              if (cc === 34 || cc === 44 || cc === 13 || cc === 10) break; // " , CR LF
+              j++;
+            }
+          }
+          if (j > i) {
+            if (keepThis) field += text.slice(i, j);
+            i = j;
+            continue;
+          }
+        }
+        const c = text[i++];
         if (pendingQuote) {
           pendingQuote = false;
-          if (c === '"') { field += '"'; continue; }
+          if (c === '"') { if (keepThis) field += '"'; continue; }
           inQuote = false;
           // fall through to handle c outside quotes
         }
         if (inQuote) {
           if (c === '"') pendingQuote = true;
-          else field += c;
+          else if (keepThis) field += c;
           continue;
         }
         if (pendingCR) {
@@ -4020,35 +4094,105 @@ function gbCreateStreamingCSVParser(onRow) {
         else if (c === ',') flushField();
         else if (c === '\r') { flushField(); flushRow(); pendingCR = true; }
         else if (c === '\n') { flushField(); flushRow(); }
-        else field += c;
+        else if (keepThis) field += c;
       }
     },
     end() { if (field !== '' || row.length > 0) { flushField(); flushRow(); } }
   };
 }
 
+// Columns the explorers actually read. Everything else in the CSVs is pipeline
+// QA provenance (flag_*, drift_*, "Fixed or checked") or unused metadata; a grep
+// across all-volumes / nyc / explorer / travel_guides finds zero references.
+// `image` and `volume_id` look droppable but are not — liveIiifUrl() falls back
+// to `image`, and the hero stats count distinct `volume_id`.
+const GB_KEEP_COLUMNS = new Set([
+  "volume_id", "volume_title", "volume_year", "publication",
+  "name", "address", "state", "city", "sub_region", "category", "notes",
+  "phone", "proprietor", "amenities_services", "rates", "personnel",
+  "is_advertisement", "is_recommended", "canvas_fragment", "image",
+  // nyc.html's CSV carries its geocode columns in the same stream.
+  "neighborhood", "borough", "latitude", "longitude", "geocode_quality", "review_flag",
+]);
+
+// ── Response cache ─────────────────────────────────────────────────────────
+// The two CSVs are 3.65 MB gzipped and never change between deploys, so paying
+// for them on every visit is the largest avoidable cost a returning reader has.
+// The Cache API keeps the raw responses; the parser is untouched and still
+// streams, it just streams from disk.
+//
+// Freshness is not traded away for it. A cache hit still makes one conditional
+// request (If-None-Match / If-Modified-Since) and only serves the stored copy on
+// a 304, so a redeployed CSV is picked up on the very next load rather than the
+// one after. That costs a round trip instead of megabytes. If the network is
+// unreachable the stored copy is served anyway, which also makes the explorer
+// work offline after a single visit.
+const GB_CACHE_NAME = 'gb-data-v1';
+async function gbCachedFetch(url) {
+  let cache = null;
+  try { if (window.caches) cache = await caches.open(GB_CACHE_NAME); } catch (e) { cache = null; }
+  if (!cache) return fetch(url);            // insecure origin, private mode, old browser
+  const put = async resp => { try { await cache.put(url, resp.clone()); } catch (e) { /* quota */ } };
+
+  let cached = null;
+  try { cached = await cache.match(url); } catch (e) { cached = null; }
+  if (!cached) {
+    const resp = await fetch(url);
+    if (resp.ok) await put(resp);
+    return resp;
+  }
+  const etag = cached.headers.get('ETag');
+  const lastMod = cached.headers.get('Last-Modified');
+  if (!etag && !lastMod) return cached;     // nothing to revalidate with
+  const headers = etag ? { 'If-None-Match': etag } : { 'If-Modified-Since': lastMod };
+  try {
+    const fresh = await fetch(url, { headers });
+    if (fresh.status === 304) return cached;
+    if (fresh.ok) { await put(fresh); return fresh; }
+    return cached;                          // 5xx — the stored copy is better than nothing
+  } catch (e) {
+    return cached;                          // offline
+  }
+}
+// Drop caches from earlier versions of this scheme; cheap, and only on idle.
+function gbPruneOldCaches() {
+  if (!window.caches || !caches.keys) return;
+  const go = () => caches.keys()
+    .then(names => Promise.all(names.filter(n => /^gb-data-/.test(n) && n !== GB_CACHE_NAME)
+      .map(n => caches.delete(n))))
+    .catch(() => {});
+  if (window.requestIdleCallback) requestIdleCallback(go, { timeout: 5000 });
+  else setTimeout(go, 2000);
+}
+
 async function gbStreamCsv(url, onRow) {
-  const resp = await fetch(url);
+  const resp = await gbCachedFetch(url);
   if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + url);
   const reader = resp.body.getReader();
   const decoder = new TextDecoder('utf-8');
-  const parser = gbCreateStreamingCSVParser(onRow);
-  // Sub-chunk size: yielding between sub-chunks lets the browser paint the
-  // first-paint render (and successive incremental updates) instead of being
-  // blocked by a single multi-MB synchronous parse on fast connections.
-  const SUBCHUNK = 128 * 1024;
+  const parser = gbCreateStreamingCSVParser(onRow, GB_KEEP_COLUMNS);
+  // Yield often enough that the browser can paint, but no more. The old code
+  // yielded every 128 KB — ~258 times across the two CSVs — and setTimeout is
+  // clamped to ~4ms, so roughly a second of the load was spent waiting on
+  // timers rather than parsing. Yielding on elapsed time instead keeps frames
+  // available without paying for hundreds of round trips through the event loop.
+  const SUBCHUNK = 256 * 1024;
+  const YIELD_EVERY_MS = 12;
   const yieldToBrowser = () => new Promise(r => setTimeout(r, 0));
+  let lastYield = performance.now();
   while (true) {
     const { done, value } = await reader.read();
     if (done) { parser.feed(decoder.decode()); parser.end(); return; }
     const text = decoder.decode(value, { stream: true });
     for (let off = 0; off < text.length; off += SUBCHUNK) {
       parser.feed(text.substring(off, Math.min(off + SUBCHUNK, text.length)));
-      await yieldToBrowser();
+      if (performance.now() - lastYield >= YIELD_EVERY_MS) {
+        await yieldToBrowser();
+        lastYield = performance.now();
+      }
     }
   }
 }
-
 (async function () {
   const NYC_CSV_URL = 'nyc-neighborhoods/nyc_entries_geocoded.csv';
   const FIRST_PAINT_AT = 2000;
@@ -4090,8 +4234,8 @@ async function gbStreamCsv(url, onRow) {
   const getJson = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
   try {
     const [gbCanvas, tgCanvas] = await Promise.all([
-      fetch('canvas_map.json').then(getJson),
-      fetch('travel_guides_canvas_map.json').then(getJson)
+      gbCachedFetch('canvas_map.json').then(getJson),
+      gbCachedFetch('travel_guides_canvas_map.json').then(getJson)
     ]);
     CANVAS_MAP = Object.assign({}, gbCanvas, tgCanvas);
     // Single pre-merged, pre-geocoded NYC subset — publication, neighborhood,
@@ -4118,6 +4262,7 @@ async function gbStreamCsv(url, onRow) {
     await new Promise(r => setTimeout(r, 0));  // yield so the browser paints before the heavy index build
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
+    gbPruneOldCaches();
     const estBtn = document.getElementById('view-estabs-btn');
     if (estBtn) {
       estBtn.disabled = false;
