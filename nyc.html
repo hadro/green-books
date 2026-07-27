@@ -6,7 +6,13 @@
 <title>Green Book New York — A Neighborhood Explorer</title>
 <link rel="stylesheet" href="vendor/leaflet.css">
 <link rel="stylesheet" href="vendor/MarkerCluster.css">
-<link rel="stylesheet" href="vendor/MarkerCluster.Default.css">
+<!-- MarkerCluster.Default.css is deliberately NOT loaded: every rule in it (the
+     lime/gold/orange bubbles, the pill radii, the Helvetica stack) is something
+     the house style replaces, and the .marker-cluster-{small,medium,large}
+     classes it targets come from the plugin's default iconCreateFunction, which
+     gbClusterIcon() replaces. Overriding it would mean shipping dead CSS and
+     then out-specifying it forever. vendor/MarkerCluster.css stays — that one is
+     only the spiderfy and cluster-animation transitions. -->
 <meta property="og:title"        content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
 <meta property="og:description"  content="Search and browse more than 109,000 entries from the Green Books and six other Black travel guides, 1930–1966.">
 <meta property="og:type"         content="website">
@@ -508,23 +514,166 @@ table.est-mode td:nth-child(5) { max-width: 130px; }
 /* ── Table ── */
 #content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 #table-wrap { flex: 1; overflow-y: auto; overflow-x: auto; }
-#map-wrap { flex: 1; position: relative; min-height: 0; }
-#nyc-map { position: absolute; inset: 0; background: var(--gb-paper); }
-#nyc-map .leaflet-container { font-family: var(--gb-font-sans, sans-serif); }
-#map-legend { position: absolute; bottom: 18px; left: 12px; z-index: 500; background: rgba(255,255,255,0.94); border: 1px solid var(--gb-rule-faint); border-radius: 3px; padding: 8px 11px; font-family: var(--gb-font-mono); font-size: 0.68rem; line-height: 1.55; max-width: 210px; box-shadow: 0 2px 12px -5px rgba(0,0,0,0.35); }
+/* isolation, not decoration. Leaflet numbers its own panes 400 and its controls
+   800/1000. #map-wrap and #nyc-map are both positioned but z-index:auto, so
+   without a stacking context here that whole private ladder escapes upward into
+   #app's context (#app is position:sticky, which always makes one) and competes
+   with the page's own layers — where #detail is only 100 (300 on mobile). That
+   is how the map came to paint over an open detail panel. Isolating keeps
+   Leaflet's numbering private so the page ladder stays authoritative. */
+#map-wrap { flex: 1; position: relative; min-height: 0; isolation: isolate; }
+/* The font rule used to be `#nyc-map .leaflet-container`, a descendant selector
+   that never matched: #nyc-map IS the .leaflet-container (it's the element
+   handed to L.map()). The map had been rendering in Leaflet's stock Helvetica
+   stack the whole time. It also named --gb-font-sans, which is not a token here. */
+#nyc-map { position: absolute; inset: 0; background: var(--gb-paper); font-family: var(--gb-font-body); box-shadow: inset 0 0 60px -22px rgba(26,23,18,0.4); }
+
+/* Paper grain over the whole map. It must live on the container, not in a
+   Leaflet pane: .leaflet-map-pane carries `.leaflet-pane { z-index: 400 }` and
+   is positioned, so it forms a stacking context that traps every sub-pane —
+   a pane at 365 would land under the entire map. 450 sits above the map pane
+   (400) and below the page's own map chrome (500) and Leaflet's controls (800).
+   Fixed to the container rather than the map, so the paper is the screen and
+   doesn't pan. One 180px tile rasterized once and repeated: a single composited
+   layer, no per-frame cost. */
+#nyc-map::after {
+  content: ""; position: absolute; inset: 0; z-index: 450; pointer-events: none;
+  opacity: 0.45; mix-blend-mode: multiply; background-repeat: repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.13'/%3E%3C/svg%3E");
+}
+/* Warm the basemap toward the page's newsprint. saturate() pulls back the
+   orange sepia introduces so parks don't go pumpkin; the flattened contrast
+   keeps the tiles behind the choropleth rather than competing with it. The
+   labels ride in their own pane and get MORE contrast, not less, because they
+   now sit under a translucent fill. Same precedent as .map-frame below. */
+.gb-base-tiles  { filter: sepia(0.34) saturate(0.72) hue-rotate(-6deg) brightness(1.04) contrast(0.92); }
+.gb-label-tiles { filter: sepia(0.5) saturate(0.6) contrast(1.18) brightness(0.9); opacity: 0.85; }
+@media (prefers-contrast: more) {
+  #nyc-map::after { display: none; }
+  .gb-base-tiles, .gb-label-tiles { filter: none; opacity: 1; }
+}
+
+/* ── Map chrome (page-owned, absolutely positioned over the Leaflet container) ── */
+.map-chip { position: absolute; z-index: 500; background: rgba(246,241,229,0.94); border: 1px solid var(--gb-rule); border-radius: 0; font-family: var(--gb-font-mono); font-size: 0.68rem; color: var(--gb-ink); box-shadow: 3px 3px 0 rgba(26,23,18,0.13); }
+/* Bottom-left, clear of Leaflet's zoom control (top-left) and of the scale bar
+   and attribution (both bottom-right). */
+#map-legend { bottom: 26px; left: 12px; padding: 8px 11px; line-height: 1.55; max-width: 216px; }
 #map-legend .lg-hd { text-transform: uppercase; letter-spacing: 0.05em; color: var(--gb-ink-faint); margin-bottom: 4px; }
 #map-legend .lg-item { display: flex; align-items: center; gap: 6px; }
 #map-legend .lg-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
-#map-count { position: absolute; top: 12px; right: 12px; z-index: 500; background: rgba(255,255,255,0.94); border: 1px solid var(--gb-rule-faint); border-radius: 3px; padding: 5px 9px; font-family: var(--gb-font-mono); font-size: 0.7rem; color: var(--gb-ink); box-shadow: 0 2px 12px -5px rgba(0,0,0,0.35); }
-#map-crosspub { position: absolute; top: 80px; left: 12px; z-index: 500; background: rgba(255,255,255,0.94); border: 1px solid var(--gb-rule-faint); border-radius: 3px; padding: 6px 9px; font-family: var(--gb-font-mono); font-size: 0.68rem; color: var(--gb-ink); box-shadow: 0 2px 12px -5px rgba(0,0,0,0.35); display: flex; align-items: center; gap: 6px; cursor: pointer; }
-#map-crosspub input { cursor: pointer; margin: 0; }
 #map-legend .lg-ring { width: 10px; height: 10px; border-radius: 50%; flex: none; background: #8a8172; box-shadow: 0 0 0 2px #a6791b; }
-.nyc-popup h4 { margin: 0 0 3px; font-size: 0.9rem; line-height: 1.2; }
+#map-legend .lg-note { color: var(--gb-ink-faint); margin-top: 6px; line-height: 1.4; font-size: 0.63rem; }
+#map-legend .lg-note a { color: var(--gb-accent); }
+/* Choropleth ramp: a continuous ladder of swatches with the break numbers
+   underneath, so the classes read as one ordered scale rather than five dots. */
+#map-legend .lg-ramp { display: flex; margin: 5px 0 0; }
+#map-legend .lg-ramp span { flex: 1; height: 11px; border: 1px solid var(--gb-rule-faint); border-right: 0; }
+#map-legend .lg-ramp span:last-child { border-right: 1px solid var(--gb-rule-faint); }
+#map-legend .lg-scale { display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--gb-ink-faint); margin-top: 2px; letter-spacing: 0.02em; }
+#map-count { top: 12px; right: 12px; padding: 5px 9px; font-size: 0.7rem; max-width: 260px; line-height: 1.4; }
+/* Stacked top-left, starting to the right of the zoom control (28px + margins). */
+#map-crosspub { top: 12px; left: 58px; padding: 6px 9px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+#map-crosspub input { cursor: pointer; margin: 0; }
+#map-mode { top: 46px; left: 58px; display: inline-flex; padding: 0; overflow: hidden; }
+/* :not() matters — a bare `#map-mode .view-btn` background wins on specificity
+   over .view-btn-active and paints the selected button paper-on-paper. */
+#map-mode .view-btn:not(.view-btn-active) { background: transparent; }
+#map-mode .view-btn { padding: 4px 10px; }
+#map-reset { top: 80px; left: 58px; padding: 5px 9px; cursor: pointer; color: var(--gb-ink); letter-spacing: 0.04em; text-transform: uppercase; }
+#map-reset[disabled] { color: var(--gb-ink-faint); cursor: default; opacity: 0.55; }
+@media (max-width: 900px) {
+  #map-crosspub { top: 92px; left: 12px; }
+  #map-mode { top: 126px; left: 12px; }
+  #map-reset { top: 160px; left: 12px; }
+  #map-legend { max-width: 190px; }
+}
+
+/* ── Neighborhood bubbles (aggregate tier) ── */
+/* divIcon markers rather than circleMarkers: they take real HTML for the
+   two-line label, they land in markerPane above the polygons, and L.Marker's
+   keyboard:true makes them focusable — which canvas circles can never be. */
+.gb-bubble { background: none; border: 0; overflow: visible; }
+.gb-bubble .gb-bub-in {
+  width: 100%; height: 100%; border-radius: 50%; box-sizing: border-box;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(246,241,229,0.93); border: 1.5px solid var(--gb-accent);
+  box-shadow: 0 0 0 2px rgba(246,241,229,0.7), 2px 2px 0 rgba(26,23,18,0.16);
+  color: var(--gb-ink); text-align: center; line-height: 1;
+}
+.gb-bubble .gb-bub-multi { box-shadow: 0 0 0 2px #a6791b, 3px 3px 0 rgba(26,23,18,0.16); }
+.gb-bubble .gb-bub-n { font-family: var(--gb-font-display); font-weight: 500; letter-spacing: 0.01em; }
+/* The name sits BELOW the disc, not inside it: at these radii a name inside
+   competes with the numeral and truncates to nothing ("EAST H…"). Outside, it
+   needs no width budget at all, and a paper halo keeps it readable over tiles
+   and over neighbouring bubbles. */
+.gb-bubble .gb-bub-l {
+  position: absolute; left: 50%; top: 100%; transform: translate(-50%, 3px);
+  font-family: var(--gb-font-mono); font-size: 0.58rem; letter-spacing: 0.04em;
+  color: var(--gb-ink); text-transform: uppercase; white-space: nowrap; pointer-events: none;
+  text-shadow: 0 0 3px var(--gb-paper), 0 0 3px var(--gb-paper), 0 0 6px var(--gb-paper);
+}
+.gb-bubble:hover .gb-bub-in, .gb-bubble:focus-visible .gb-bub-in { border-color: var(--gb-highlight); background: var(--gb-paper); }
+.gb-bubble:focus-visible { outline: 2px solid var(--gb-accent); outline-offset: 2px; }
+
+/* ── Fine-tier clusters (replaces MarkerCluster.Default.css entirely) ── */
+/* Circles, not the house's square corners: a disc is what reads as "a stack of
+   points", and the pins underneath are circles too. The paper halo is what
+   keeps a cluster legible over busy tiles — same device as the pins' white ring. */
+.gb-cluster { background: transparent; }
+.gb-cluster span {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; box-sizing: border-box; border-radius: 50%;
+  background: var(--gb-paper); color: var(--gb-ink); border: 1.5px solid var(--gb-accent);
+  box-shadow: 0 0 0 2px var(--gb-paper), 2px 2px 0 rgba(26,23,18,0.18);
+  font-family: var(--gb-font-display); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.02em;
+}
+.gb-cluster-l span  { border-width: 2px; background: var(--gb-accent); color: var(--gb-paper); }
+.gb-cluster-xl span { border-width: 2px; background: var(--gb-accent-deep); color: var(--gb-paper); }
+
+/* ── Leaflet chrome, restyled ── */
+#nyc-map .leaflet-popup-content-wrapper { background: var(--gb-paper); color: var(--gb-ink); border: 1px solid var(--gb-rule); border-radius: 0; padding: 0; box-shadow: 4px 4px 0 rgba(26,23,18,0.13); }
+/* Thick-thin masthead rule, the page's recurring device (cf. .gb-hero-title). */
+#nyc-map .leaflet-popup-content-wrapper::before { content: ""; display: block; height: 3px; background: var(--gb-accent); border-bottom: 1px solid var(--gb-paper); box-shadow: 0 2px 0 var(--gb-accent); }
+#nyc-map .leaflet-popup-content { margin: 14px 15px 12px; font-family: var(--gb-font-body); line-height: 1.45; }
+/* Leaflet rotates the tip 45°, so only two of its borders are on show — a full
+   border would draw a square outline instead of continuing the arrow. */
+#nyc-map .leaflet-popup-tip { background: var(--gb-paper); box-shadow: none; border: 1px solid var(--gb-rule); border-top: 0; border-left: 0; }
+#nyc-map .leaflet-popup-close-button { color: var(--gb-ink-faint); font-family: var(--gb-font-body); }
+#nyc-map .leaflet-popup-close-button:hover { color: var(--gb-ink); background: transparent; }
+#nyc-map .leaflet-tooltip { background: var(--gb-paper); color: var(--gb-ink); border: 1px solid var(--gb-rule); border-radius: 0; padding: 6px 9px; box-shadow: 3px 3px 0 rgba(26,23,18,0.13); font-family: var(--gb-font-mono); font-size: 0.7rem; letter-spacing: 0.03em; line-height: 1.45; }
+/* The tooltip arrow is a CSS triangle coloured per direction — miss these four
+   and you get a white arrow hanging off a paper tooltip. */
+#nyc-map .leaflet-tooltip-top::before    { border-top-color: var(--gb-rule); }
+#nyc-map .leaflet-tooltip-bottom::before { border-bottom-color: var(--gb-rule); }
+#nyc-map .leaflet-tooltip-left::before   { border-left-color: var(--gb-rule); }
+#nyc-map .leaflet-tooltip-right::before  { border-right-color: var(--gb-rule); }
+.gb-hood-tip .gb-tip-n { font-family: var(--gb-font-display); font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.03em; display: block; }
+.gb-hood-tip .gb-tip-m { color: var(--gb-ink-faint); display: block; }
+#nyc-map .leaflet-control-zoom { border: 1px solid var(--gb-rule); border-radius: 0; box-shadow: 3px 3px 0 rgba(26,23,18,0.13); }
+#nyc-map .leaflet-control-zoom a { background: var(--gb-paper); color: var(--gb-ink); border-radius: 0; border-bottom: 1px solid var(--gb-rule-faint); font-family: var(--gb-font-display); font-weight: 400; width: 28px; height: 28px; line-height: 28px; font-size: 1.05rem; }
+#nyc-map .leaflet-control-zoom a:last-child { border-bottom: 0; }
+#nyc-map .leaflet-control-zoom a:hover { background: var(--gb-paper-2); color: var(--gb-accent); }
+#nyc-map .leaflet-control-zoom a:focus-visible { outline: 2px solid var(--gb-accent); outline-offset: 2px; }
+#nyc-map .leaflet-control-zoom a.leaflet-disabled { background: var(--gb-paper-2); color: var(--gb-ink-faint); }
+/* Bigger and warmer than stock, not smaller: this bar carries OSM, CARTO and
+   the CC BY-SA boundary credit, and the boundaries now do real work. */
+#nyc-map .leaflet-control-attribution { background: rgba(246,241,229,0.92); border-top: 1px solid var(--gb-rule-faint); border-left: 1px solid var(--gb-rule-faint); border-radius: 0; font-family: var(--gb-font-mono); font-size: 0.62rem; color: var(--gb-ink-faint); padding: 2px 7px; }
+#nyc-map .leaflet-control-attribution a { color: var(--gb-accent); }
+#nyc-map .leaflet-control-scale-line { background: rgba(246,241,229,0.9); border: 1px solid var(--gb-rule); border-top: 0; border-radius: 0; color: var(--gb-ink); font-family: var(--gb-font-mono); font-size: 0.62rem; letter-spacing: 0.05em; padding: 1px 5px 0; line-height: 1.35; }
+.nyc-popup h4 { margin: 0 0 3px; font-size: 0.9rem; line-height: 1.2; font-family: var(--gb-font-display); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; }
 .nyc-popup .pp-meta { font-family: var(--gb-font-mono); font-size: 0.66rem; color: var(--gb-ink-faint); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
 .nyc-popup .pp-addr { font-size: 0.8rem; margin-bottom: 6px; }
 .nyc-popup .pp-actions { display: flex; gap: 10px; margin-top: 8px; }
 .nyc-popup .pp-btn { font-family: var(--gb-font-mono); font-size: 0.68rem; color: var(--gb-accent); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; }
-#main.detail-open #map-wrap { padding-right: var(--gb-detail-w); }
+/* A transparent border, not padding. This rule has always meant "reserve room
+   for the detail panel", but as padding it did nothing: #nyc-map and the five
+   .map-chip elements are absolutely positioned, and an absolutely positioned
+   child resolves inset:0 / right:12px against the PADDING box, which includes
+   the padding. A border is outside the padding box, so the map, the count chip,
+   the scale bar and the attribution all inset themselves with no per-element
+   rules. Safe because box-sizing is border-box globally (see the reset above),
+   so this eats into #map-wrap's flex width rather than overflowing it. */
+#main.detail-open #map-wrap { border-right: var(--gb-detail-w) solid transparent; }
 table { width: 100%; border-collapse: collapse; font-size: 0.929rem; }
 thead { position: sticky; top: 0; background: var(--gb-paper); z-index: 1; }
 thead th {
@@ -720,6 +869,9 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   tbody td.mcard-cell:first-child, table.est-mode tbody td.mcard-cell:first-child { width: auto; padding-left: 16px; font-family: var(--gb-font-body); font-size: 1rem; color: inherit; }
   tbody tr.selected td.mcard-cell { box-shadow: inset 3px 0 0 var(--gb-accent); color: inherit; }
   #main.detail-open #table-wrap { padding-right: 0; }
+  /* The panel goes full-screen here, so nothing needs reserving — and reserving
+     420px+ out of a 400px viewport would leave no map at all. */
+  #main.detail-open #map-wrap { border-right-width: 0; }
   #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
   #mobile-header { display: block; padding: 14px 16px 12px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
   .mobile-hero-title { margin: 0 0 4px; font-family: var(--gb-font-display); font-size: 1.214rem; font-weight: 500; color: var(--gb-ink); line-height: 1.2; }
@@ -905,9 +1057,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
     <div id="map-wrap" style="display:none">
       <div id="nyc-map"></div>
-      <label id="map-crosspub" title="Businesses listed in more than one travel guide"><input type="checkbox" id="map-crosspub-cb"> Only in 2+ guides</label>
-      <div id="map-legend" aria-hidden="true"></div>
-      <div id="map-count" aria-live="polite"></div>
+      <label id="map-crosspub" class="map-chip" title="Businesses listed in more than one travel guide"><input type="checkbox" id="map-crosspub-cb"> Only in 2+ guides</label>
+      <div id="map-mode" class="map-chip" role="radiogroup" aria-label="Neighborhood view">
+        <button type="button" id="map-mode-bubbles" class="view-btn view-btn-active" role="radio" aria-checked="true">Bubbles</button>
+        <button type="button" id="map-mode-density" class="view-btn" role="radio" aria-checked="false">Density</button>
+      </div>
+      <button type="button" id="map-reset" class="map-chip" title="Zoom back out to the whole city">&#x2934; Whole city</button>
+      <div id="map-legend" class="map-chip" aria-hidden="true"></div>
+      <div id="map-count" class="map-chip" aria-live="polite"></div>
     </div>
     <div id="detail" role="complementary" aria-label="Entry details">
       <div class="detail-hero">
@@ -2298,9 +2455,7 @@ function renderDetailMap(row) {
   // the pipeline had already resolved. Use the row.
   const lat0 = parseFloat(row.latitude), lon0 = parseFloat(row.longitude);
   if (isFinite(lat0) && isFinite(lon0)) {
-    const q = (row.geocode_quality || "").trim().toUpperCase();
-    const fuzzy = q === "GEOMETRIC_CENTER" || q === "APPROXIMATE" ||
-                  String(row.review_flag || "").trim().toLowerCase() === "true";
+    const fuzzy = gbIsApproxGeocode(row);
     showEmbed(lat0, lon0, fuzzy ? 0.004 : 0.0022,
       fuzzy
         ? "Block-level match — the geocoder could not resolve this to a single building. " +
@@ -2691,6 +2846,10 @@ function stateToHash() {
   }
   if (viewMode === "establishments") params.set("view", "est");
   else if (viewMode === "map") params.set("view", "map");
+  // Only the non-default mode is serialized, so an ordinary map link stays short.
+  // The viewport is deliberately NOT in the hash: it would churn history on
+  // every pan, and it isn't the part of a map view people mean to share.
+  if (viewMode === "map" && gbMapMode === "density") params.set("map", "density");
   if (searchQuery) params.set("q", searchQuery);
   if (sortCol) params.set("sort", sortCol + ":" + (sortDir > 0 ? "asc" : "desc"));
   for (const [col, val] of Object.entries(colFilters)) {
@@ -2736,6 +2895,7 @@ function applyHashState() {
   if (params.get("view") === "est") viewMode = "establishments";
   else if (params.get("view") === "map") viewMode = "map";
   else if (params.get("view") === "trends") _gbTrendsOnLoad = true;
+  gbMapMode = params.get("map") === "density" ? "density" : "bubbles";
 
   // Search query
   const q = params.get("q");
@@ -3215,6 +3375,22 @@ function syncViewToggleUI() {
   const mapWrap = document.getElementById("map-wrap");
   if (tableWrap) tableWrap.style.display = map ? "none" : "";
   if (mapWrap) mapWrap.style.display = map ? "" : "none";
+  syncMapModeUI();
+}
+
+// Derived from gbMapMode, never written by the click handler alone:
+// applyHashState() sets gbMapMode straight from `map=density` in the URL, so the
+// buttons have to be able to catch up from the state and not only from the
+// interaction that changed it. Without this a density deep link drew the
+// choropleth under a toggle still reading "Bubbles" — and gbSetMapMode()'s
+// early-return then made clicking Density a no-op.
+function syncMapModeUI() {
+  ["bubbles", "density"].forEach(m => {
+    const btn = document.getElementById("map-mode-" + m);
+    if (!btn) return;
+    btn.classList.toggle("view-btn-active", m === gbMapMode);
+    btn.setAttribute("aria-checked", String(m === gbMapMode));
+  });
 }
 function setViewMode(mode) {
   if (mode === viewMode) return;
@@ -3228,14 +3404,84 @@ document.getElementById("view-listings-btn").addEventListener("click", () => set
 document.getElementById("view-map-btn").addEventListener("click", () => setViewMode("map"));
 document.getElementById("view-estabs-btn").addEventListener("click", () => setViewMode("establishments"));
 
-// ── Map view (Leaflet + MarkerCluster) ──────────────────────────────────────
+// ── Map view (Leaflet + neighborhood aggregation) ───────────────────────────
 // The map is a third render target for the SAME getFiltered() set the table
 // uses, so every sidebar facet (neighborhood, year, publication, category) and
-// the search box filter the map identically. Points are clustered and coloured
-// by publication; a faint neighborhood-boundary underlay makes the neighborhood
-// facet spatially legible. All published coordinates are open (NYC GeoSearch).
+// the search box filter the map identically.
+//
+// Two tiers, switched at GB_TIER_ZOOM:
+//
+//   AGGREGATE (zoomed out) — the unit is the neighborhood, not an arbitrary
+//     pixel radius. The geocoding run labelled every row, and those labels join
+//     exactly to the boundary file's `name` + `borough`, so the clusters are
+//     places a reader can name. That matters here more than usual: Harlem alone
+//     is 36% of the data, so distance clustering produced blobs that straddled
+//     neighborhood lines and meant nothing. Read it as BUBBLES (a sized disc per
+//     neighborhood) or as DENSITY (the boundaries shaded by count).
+//   POINT (zoomed in) — one marker per business, filled by publication, still
+//     inside markercluster because 7,645 of the 7,965 geocoded rows share a
+//     coordinate with another row (one address carries 78) and spiderfy is the
+//     only way to reach them.
+//
+// Coordinates are open (NYC GeoSearch, public domain); the boundary geometry is
+// CC BY-SA and credited in the attribution control and the density legend.
 let gbMap = null, gbMarkerLayer = null, gbHoodLayer = null, gbMapReady = false;
 let gbMapCrossPubOnly = false;  // spotlight businesses listed in 2+ publications
+let gbMapMode = "bubbles";      // "bubbles" | "density" — aggregate-tier reading
+let gbBubbleLayer = null;       // L.layerGroup of divIcon neighborhood markers
+let gbHoodGeo = null;           // slim FeatureCollection, fetched once
+let gbHoodFetch = null;         // in-flight fetch promise, shared; cleared on failure
+let gbHoodError = null;         // why the boundaries are missing, for the legend
+let gbBaseTiles = null, gbLabelTiles = null, gbHoodRenderer = null;
+let _gbTierState = null;        // memo: skips work on zooms that change nothing
+let _gbFitDone = false, _gbFitGeoKey = null;
+let _gbHoodKey = null, _gbHoodAgg = null;
+const GB_TIER_ZOOM = 14;        // >= this: individual business pins
+// Hoisted out of the old inline fitBounds: a few geocode outliers must not pull
+// the view out to Westchester or Long Island.
+const GB_NYC_BOUNDS = L.latLngBounds([40.49, -74.27], [40.93, -73.68]);
+const gbReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const gbHiContrast = window.matchMedia("(prefers-contrast: more)");
+
+// Choropleth classes. Fixed manual breaks, deliberately not quantiles and not a
+// scale derived from the filtered max: a scale that rescales under the reader is
+// a scale that lies — comparing "1953 only" against "all years" would silently
+// compare two different ramps. These are round, roughly log-spaced (~3.2x), and
+// hold still across every filter state. The legend carries a live "max in view"
+// line so a tight filter reads as pale-but-honest rather than broken.
+const GB_HOOD_BREAKS = [1, 5, 15, 50, 150, 500];
+const GB_HOOD_BREAK_LABELS = ["1–4", "5–14", "15–49", "50–149", "150–499", "500+"];
+// HEAT_RAMP (the state x year heatmap's scale) is the house sequential ramp and
+// has exactly six steps, so a reader who has seen the trends heatmap reads this
+// one immediately. It is `const`-declared FURTHER DOWN this file than this
+// block, so reading it during initial script evaluation would throw on the
+// temporal dead zone. Nothing does: gbMapShow() defers every render behind a
+// setTimeout(0), and gbMapInit() never touches the ramp. Keep it that way.
+function gbHoodRamp() {
+  return gbHiContrast.matches
+    ? ["#bed3a4", "#9aba78", "#71a050", "#4a832f", "#245e19", "#123008"]
+    : HEAT_RAMP;
+}
+function gbHoodClass(n) {
+  if (!n) return -1;
+  let i = 0;
+  while (i + 1 < GB_HOOD_BREAKS.length && n >= GB_HOOD_BREAKS[i + 1]) i++;
+  return i;
+}
+
+// `Staten Island` (CSV) and `staten-island` (GeoJSON) onto one key. Name alone
+// is not a key: six boundary names repeat across boroughs. `properties.slug`
+// looks like a shortcut but ten of them disagree with name+borough.
+function gbNormBorough(s) { return (s || "").trim().toLowerCase().replace(/\s+/g, "-"); }
+function gbHoodKey(name, borough) { return (name || "").trim() + "|" + gbNormBorough(borough); }
+
+// Not precise enough to point at a building. Extracted from showDetail()'s embed
+// block so the map and the detail panel can never disagree about a row.
+function gbIsApproxGeocode(row) {
+  const q = (row.geocode_quality || "").trim().toUpperCase();
+  return q === "GEOMETRIC_CENTER" || q === "APPROXIMATE" ||
+         String(row.review_flag || "").trim().toLowerCase() === "true";
+}
 
 function gbEscMap(s) {
   const d = document.createElement("div");
@@ -3243,44 +3489,173 @@ function gbEscMap(s) {
   return d.innerHTML;
 }
 
+const GB_HOOD_CREDIT = 'Neighborhoods: <a href="https://github.com/chriswhong/nyc-neighborhood-boundaries">chriswhong</a> (CC BY-SA 4.0)';
+
+// The slim build is what the map wants; the full file is the fallback, so a
+// deploy that has not picked up the generated artefact yet degrades to a slower
+// map rather than a blank one.
+const GB_HOOD_URLS = [
+  "nyc-neighborhoods/nyc-neighborhoods.slim.geojson",
+  "nyc-neighborhoods/nyc-neighborhoods.geojson"
+];
+
+// Fetch the boundaries once and share the promise. Routed through gbCachedFetch
+// so a return visit revalidates with an ETag instead of re-downloading 239 KB,
+// and kicked off on idle after the CSV lands (see the loader) rather than on the
+// first click of the Map tab — it is a blocking dependency of density mode now,
+// not the decorative underlay it used to be.
+//
+// Failure is NOT memoized. This used to be `.catch(() => null)` on a cached
+// promise, so one bad response — an offline first visit, a deploy mid-flight, a
+// blocked request — killed the boundaries for the rest of the session and the
+// map just silently had none.
+function gbLoadHoodGeo() {
+  if (gbHoodGeo) return Promise.resolve(gbHoodGeo);
+  if (gbHoodFetch) return gbHoodFetch;
+  gbHoodFetch = (async () => {
+    let last = null;
+    for (const url of GB_HOOD_URLS) {
+      try {
+        const r = await gbCachedFetch(url);
+        if (!r.ok) { last = url + " → HTTP " + r.status; continue; }
+        gbHoodGeo = await r.json();
+        gbHoodError = null;
+        return gbHoodGeo;
+      } catch (e) {
+        last = url + " → " + (e && e.message ? e.message : e);
+      }
+    }
+    gbHoodError = last || "unavailable";
+    console.warn("[nyc map] neighborhood boundaries unavailable:", gbHoodError);
+    gbHoodFetch = null;   // let the next map open or mode switch try again
+    return null;
+  })();
+  return gbHoodFetch;
+}
+
 function gbMapInit() {
   if (gbMapReady) return;
-  gbMap = L.map("nyc-map", { preferCanvas: true, worldCopyJump: false })
-    .setView([40.758, -73.955], 11);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: "abcd", maxZoom: 19
+  const anim = !gbReduceMotion.matches;
+  gbMap = L.map("nyc-map", {
+    preferCanvas: true, worldCopyJump: false,
+    // Leaflet's JS animations are not reachable from the page's
+    // prefers-reduced-motion CSS rule, so they have to be switched off here.
+    zoomAnimation: anim, fadeAnimation: anim, markerZoomAnimation: anim
+  }).setView([40.758, -73.955], 11);
+
+  // Boundaries get their own pane AND their own renderer. Without an explicit
+  // renderer, preferCanvas puts the polygons in the same canvas as the business
+  // markers, and nothing can then be z-ordered between them — which is exactly
+  // what the labels-above-fills, pins-above-labels stack needs.
+  gbMap.createPane("gbHoodPane").style.zIndex = 350;
+  const labelPane = gbMap.createPane("gbLabelPane");
+  labelPane.style.zIndex = 360;
+  labelPane.style.pointerEvents = "none";
+  gbHoodRenderer = L.canvas({ pane: "gbHoodPane", padding: 0.1 });
+
+  const tileOpts = { subdomains: "abcd", maxZoom: 19 };
+  gbBaseTiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+    ...tileOpts, className: "gb-base-tiles",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(gbMap);
-  gbMarkerLayer = L.markerClusterGroup({ chunkedLoading: true, maxClusterRadius: 45 });
-  gbMap.addLayer(gbMarkerLayer);
-  fetch("nyc-neighborhoods/nyc-neighborhoods.geojson")
-    .then(r => r.ok ? r.json() : null)
-    .then(gj => {
-      if (!gj || !gbMap) return;
-      gbHoodLayer = L.geoJSON(gj, {
-        interactive: false,
-        attribution: 'Neighborhoods: <a href="https://github.com/chriswhong/nyc-neighborhood-boundaries">chriswhong</a> (CC BY-SA 4.0)',
-        style: { color: "#9c8f77", weight: 1, opacity: 0.45, fill: false }
-      }).addTo(gbMap);
-      gbHoodLayer.bringToBack();
-    })
-    .catch(() => {});
-  const lg = document.getElementById("map-legend");
-  if (lg) {
-    lg.innerHTML = '<div class="lg-hd">Publication</div>' +
-      Object.keys(PUBLICATION_COLORS).map(p =>
-        `<div class="lg-item"><span class="lg-dot" style="background:${PUBLICATION_COLORS[p]}"></span>${gbEscMap(PUBLICATION_SHORT_NAMES[p] || p)}</div>`
-      ).join("") +
-      '<div class="lg-item" style="margin-top:6px"><span class="lg-ring"></span>Listed in 2+ guides</div>';
-  }
+  // Labels ride above the choropleth instead of under it. If this style ever
+  // 404s the map is still complete — it just loses street names.
+  gbLabelTiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png", {
+    ...tileOpts, className: "gb-label-tiles", pane: "gbLabelPane"
+  }).addTo(gbMap);
+
+  // maxClusterRadius takes a function of zoom. 45 -> 26 because this tier is
+  // only reached already zoomed in, so a cluster should mean genuine
+  // coincidence rather than "same few blocks". disableClusteringAtZoom is
+  // deliberately NOT set: it would kill spiderfy at max zoom, which is the one
+  // thing that makes the 78-deep coordinates reachable at all.
+  gbMarkerLayer = L.markerClusterGroup({
+    chunkedLoading: true,
+    maxClusterRadius: z => (z >= 17 ? 1 : 26),
+    iconCreateFunction: gbClusterIcon,
+    animate: anim,
+    polygonOptions: { color: "#1e5231", weight: 1, opacity: 0.5, fillColor: "#1e5231", fillOpacity: 0.06, dashArray: "3 3" }
+  });
+  gbBubbleLayer = L.layerGroup();
+
+  L.control.scale({ imperial: true, metric: false, maxWidth: 130, position: "bottomright" }).addTo(gbMap);
+  // Pin the boundary credit to the map itself rather than to the geoJSON layer's
+  // options: the layer is added and removed as the tier changes, and the credit
+  // must not blink out with it.
+  gbMap.attributionControl.addAttribution(GB_HOOD_CREDIT);
+
+  gbEnsureHoodLayer();
+
   const cb = document.getElementById("map-crosspub-cb");
   if (cb) cb.addEventListener("change", () => { gbMapCrossPubOnly = cb.checked; gbMapRender(); });
+  const modeBtns = { bubbles: document.getElementById("map-mode-bubbles"),
+                     density: document.getElementById("map-mode-density") };
+  Object.entries(modeBtns).forEach(([mode, btn]) => {
+    if (btn) btn.addEventListener("click", () => gbSetMapMode(mode));
+  });
+  const reset = document.getElementById("map-reset");
+  if (reset) reset.addEventListener("click", () => gbMapFitTo(GB_NYC_BOUNDS));
+
+  // Without this, a drag or scroll that starts on one of the page's own chips
+  // is swallowed by the map underneath (and a click on the label pans it).
+  ["map-crosspub", "map-mode", "map-reset", "map-legend", "map-count"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { L.DomEvent.disableClickPropagation(el); L.DomEvent.disableScrollPropagation(el); }
+  });
+
+  gbMap.on("zoomend", gbMapSyncTier);
+  gbMap.on("moveend", gbSyncResetBtn);
+  // #main.detail-open puts a padding-right on #map-wrap, so opening or closing
+  // the detail panel resizes the map without any event Leaflet knows about — it
+  // rendered clipped until the next full render. One observer covers that, the
+  // window resize, and the mobile breakpoints.
+  if (window.ResizeObserver) {
+    const wrap = document.getElementById("map-wrap");
+    if (wrap) new ResizeObserver(() => { if (gbMap) gbMap.invalidateSize(false); }).observe(wrap);
+  }
+  // Contrast is read in JS because the choropleth fills are painted to canvas,
+  // where a CSS media query can never reach them.
+  const onContrast = () => { _gbTierState = null; gbMapRender(); };
+  if (gbHiContrast.addEventListener) gbHiContrast.addEventListener("change", onContrast);
   gbMapReady = true;
+}
+
+// Build the boundary layer as soon as the geometry is in hand. Safe to call
+// repeatedly: it is the retry path when a first fetch failed, and a no-op once
+// the layer exists.
+let _gbHoodLayerPending = false;
+function gbEnsureHoodLayer() {
+  if (gbHoodLayer || _gbHoodLayerPending) return;
+  _gbHoodLayerPending = true;
+  gbLoadHoodGeo().then(gj => {
+    _gbHoodLayerPending = false;
+    if (!gj || !gbMap || gbHoodLayer) return;
+    gbHoodLayer = L.geoJSON(gj, {
+      pane: "gbHoodPane", renderer: gbHoodRenderer,
+      smoothFactor: 1.5,   // free per-zoom Douglas-Peucker on the projected path
+      style: () => ({ color: "#9c8f77", weight: 1, opacity: 0.45, fill: false }),
+      onEachFeature: gbHoodFeature
+    }).addTo(gbMap);
+    _gbTierState = null;
+    gbMapRender();
+  });
+}
+
+function gbClusterIcon(cluster) {
+  const n = cluster.getChildCount();
+  const s = n < 10 ? 30 : n < 100 ? 36 : n < 500 ? 44 : 52;
+  const t = n < 10 ? "s" : n < 100 ? "m" : n < 500 ? "l" : "xl";
+  return L.divIcon({
+    html: "<span>" + (n >= 1000 ? (n / 1000).toFixed(1) + "k" : n) + "</span>",
+    className: "gb-cluster gb-cluster-" + t,
+    iconSize: L.point(s, s)
+  });
 }
 
 function gbMapPopupHtml(row, estab) {
   const cat = (estab && estab.category) || row.category;
-  const meta = [cat, row.neighborhood].filter(Boolean).join(" · ");
+  const meta = [cat, row.neighborhood, gbIsApproxGeocode(row) ? "approximate location" : ""]
+    .filter(Boolean).join(" · ");
   let when;
   if (estab && estab.firstYear) {
     when = (estab.firstYear === estab.lastYear ? String(estab.firstYear)
@@ -3310,8 +3685,321 @@ window.gbMapOpenDetail = function (idx) {
   showDetail(row);
 };
 
-function gbMapRender() {
-  if (!gbMapReady || !gbMarkerLayer) return;
+// ── Neighborhood aggregate ──────────────────────────────────────────────────
+// Same source the point tier draws from, so both tiers always agree, and
+// memoized on the same key getEstablishments() uses.
+function gbHoodAgg() {
+  const key = _filterKey() + "|" + (gbMapCrossPubOnly ? 1 : 0) + "|" + (gbDataLoaded ? 1 : 0);
+  if (key === _gbHoodKey && _gbHoodAgg) return _gbHoodAgg;
+
+  const groups = gbDataLoaded ? getEstablishments() : null;
+  const byKey = new Map();
+  const bounds = L.latLngBounds([]);
+  let total = 0, max = 0;
+  const hoodSel = facetState.neighborhood;
+
+  const add = (row, nPubs, first, last) => {
+    const lat = parseFloat(row.latitude), lon = parseFloat(row.longitude);
+    if (!isFinite(lat) || !isFinite(lon)) return;
+    bounds.extend([lat, lon]);
+    const name = (row.neighborhood || "").trim();
+    if (!name) return;
+    const k = gbHoodKey(name, row.borough);
+    let h = byKey.get(k);
+    if (!h) {
+      h = { key: k, name, boroughTitle: (row.borough || "").trim(), n: 0, nMulti: 0,
+            firstYear: null, lastYear: null, pts: [] };
+      byKey.set(k, h);
+    }
+    h.n++;
+    total++;
+    if (nPubs >= 2) h.nMulti++;
+    if (first && (h.firstYear === null || first < h.firstYear)) h.firstYear = first;
+    if (last && (h.lastYear === null || last > h.lastYear)) h.lastYear = last;
+    h.pts.push([lat, lon]);
+  };
+
+  if (groups) {
+    for (const g of groups) {
+      if (gbMapCrossPubOnly && g.nPubs < 2) continue;
+      // gbComputeEstabStats picks `rep` from the FULL cross-listing group, so it
+      // can be a row the current filter excludes — including one in a different
+      // neighborhood. Only when the reader has named neighborhoods explicitly is
+      // that visible (a business appearing in one they ruled out), so only then
+      // is it worth the lookup to re-attribute by a row that survived.
+      let row = g.rep;
+      if (hoodSel.size && !hoodSel.has((row.neighborhood || "").trim())) {
+        const kept = (gbNameIndex.get(gbRowToKey.get(g.rep)) || [])
+          .find(r => hoodSel.has((r.neighborhood || "").trim()));
+        if (kept) row = kept;
+      }
+      add(row, g.nPubs, g.firstYear, g.lastYear);
+    }
+  } else {
+    for (const row of getFiltered()) {
+      const y = parseInt(row.volume_year, 10) || null;
+      add(row, 1, y, y);
+    }
+  }
+
+  byKey.forEach(h => {
+    // Medoid, not a polygon centroid and not a mean. Every mapped row was
+    // assigned to this neighborhood by the pipeline's own point-in-polygon test,
+    // so any data point is inside the polygon and on land by construction —
+    // which a centroid is not, with 249 of the boundaries being MultiPolygons
+    // and neighborhoods like Broad Channel and Rockaway genuinely concave. It
+    // also moves with the filter, so a 1953-only view puts the bubble where the
+    // 1953 listings are. A mean would be dragged by a single bad geocode, and
+    // 17% of rows are known-approximate.
+    const lats = h.pts.map(p => p[0]).sort((a, b) => a - b);
+    const lons = h.pts.map(p => p[1]).sort((a, b) => a - b);
+    const mid = lats.length >> 1;
+    const cLat = lats[mid], cLon = lons[mid];
+    // Snap the component-wise median onto a real listing: taken separately the
+    // two medians are not themselves a data point, and on a strongly L-shaped
+    // point cloud their meeting place can fall outside the neighborhood.
+    let best = h.pts[0], bd = Infinity;
+    for (const p of h.pts) {
+      const d = (p[0] - cLat) * (p[0] - cLat) + (p[1] - cLon) * (p[1] - cLon);
+      if (d < bd) { bd = d; best = p; }
+    }
+    h.center = best;
+    h.bounds = L.latLngBounds([lats[0], lons[0]], [lats[lats.length - 1], lons[lons.length - 1]]);
+    if (h.n > max) max = h.n;
+    h.pts = null;   // ~8k coordinate pairs we never need again
+  });
+
+  _gbHoodKey = key;
+  _gbHoodAgg = { byKey, list: [...byKey.values()], total, max, isGroups: !!groups, bounds };
+  return _gbHoodAgg;
+}
+
+// ── Choropleth ──────────────────────────────────────────────────────────────
+function gbHoodRecord(feature) {
+  const p = feature.properties || {};
+  return gbHoodAgg().byKey.get(gbHoodKey(p.name, p.borough));
+}
+function gbHoodStyle(feature) {
+  const filled = gbMapMode === "density" && gbMapTier() === "hood";
+  if (!filled) return { color: "#9c8f77", weight: 1, opacity: 0.45, fill: false };
+  const p = feature.properties || {};
+  const rec = gbHoodRecord(feature);
+  const sel = facetState.neighborhood;
+  // Three states, not two. A neighborhood the reader filtered out must not read
+  // as a neighborhood with no listings — so it gets no fill and a dashed hairline.
+  if (sel.size && !sel.has(p.name)) {
+    return { color: "#9c8f77", weight: 1, opacity: 0.4, dashArray: "2 3", fill: false };
+  }
+  const cls = gbHoodClass(rec ? rec.n : 0);
+  const hi = gbHiContrast.matches;
+  return {
+    color: "#1a1712", weight: hi ? 1.2 : 0.6, opacity: 0.22, dashArray: null,
+    fill: true,
+    fillColor: cls < 0 ? "#ebe3d0" : gbHoodRamp()[cls],   // --gb-paper-2 for "none in view"
+    fillOpacity: cls < 0 ? 0.5 : (hi ? 0.92 : 0.72)
+  };
+}
+function gbHoodFeature(feature, layer) {
+  layer.bindTooltip(() => {
+    const rec = gbHoodRecord(feature);
+    return gbHoodTipHtml(feature.properties, rec);
+  }, { sticky: true, direction: "top", className: "gb-hood-tip", opacity: 1 });
+  layer.on("mouseover", () => { if (gbMapMode === "density") layer.setStyle({ weight: 2, opacity: 0.85 }); });
+  layer.on("mouseout", () => layer.setStyle(gbHoodStyle(feature)));
+  layer.on("click", () => {
+    const rec = gbHoodRecord(feature);
+    if (rec) gbHoodActivate(rec);
+  });
+}
+// "business" already ends in an s, so the usual + "s" gives "businesss".
+function gbHoodUnit(n) {
+  return gbHoodAgg().isGroups
+    ? (n === 1 ? "business" : "businesses")
+    : (n === 1 ? "listing" : "listings");
+}
+
+function gbHoodTipHtml(props, rec) {
+  const n = rec ? rec.n : 0;
+  const cls = gbHoodClass(n);
+  const bits = [
+    `<span class="gb-tip-n">${gbEscMap(props.name)}</span>`,
+    `<span class="gb-tip-m">${gbEscMap((props.borough || "").replace(/-/g, " "))}</span>`,
+    `<span class="gb-tip-m">${n.toLocaleString()} ${gbHoodUnit(n)}` +
+      (rec && rec.firstYear ? ` · ${rec.firstYear}–${rec.lastYear}` : "") + `</span>`
+  ];
+  // Name the class in words as well as colour — the palette rule this page
+  // already follows for publications.
+  if (gbMapMode === "density") {
+    bits.push(`<span class="gb-tip-m">${cls < 0 ? "no listings in view"
+      : `${GB_HOOD_BREAK_LABELS[cls]} · class ${cls + 1} of ${GB_HOOD_BREAKS.length}`}</span>`);
+  }
+  return bits.join("");
+}
+
+// ── Aggregate-tier bubbles ──────────────────────────────────────────────────
+// How many neighborhoods carry a printed name. Manhattan alone stacks 30-odd
+// bubbles, so naming them all is illegible; the rest name themselves on hover,
+// and every one of them is in the neighborhood facet with its count.
+const GB_BUBBLE_LABELS = 12;
+
+function gbBuildBubbles(agg) {
+  gbBubbleLayer.clearLayers();
+  // Ascending, so the largest are added last and Leaflet stacks them on top.
+  // Manhattan holds 78% of the listings in its smallest neighborhoods, so
+  // something has to be buried; burying a 772 under a 1 is the wrong way round.
+  const ordered = [...agg.list].sort((a, b) => a.n - b.n);
+  const byCount = [...agg.list].sort((a, b) => b.n - a.n);
+  const nameCutoff = byCount.length > GB_BUBBLE_LABELS ? byCount[GB_BUBBLE_LABELS].n : 0;
+  const zoom = gbMap ? gbMap.getZoom() : 11;
+  // At z11 the whole city fits and upper Manhattan is a knot of overlapping
+  // discs; printed names there are pure noise on top of it. The numerals still
+  // read, hover still names every bubble, and the reader gets the names back
+  // one zoom step in.
+  const showNames = zoom >= 12;
+  // The city fits on screen at z11, where 98 constant-size bubbles cannot all
+  // be legible. Growing them with the zoom keeps each one's footprint roughly
+  // geographic, so the dense core separates as the reader moves in instead of
+  // demanding one size that works everywhere. The floor doesn't scale — an
+  // 8px disc still has to hold a numeral.
+  const zf = Math.max(0.55, Math.min(1.15, Math.pow(1.35, zoom - 13)));
+  for (let i = 0; i < ordered.length; i++) {
+    const h = ordered[i];
+    // Area proportional to count is the honest encoding, so radius tracks the
+    // square root — but sqrt(2915)/sqrt(1) is a 54x span, unusable on one
+    // screen. Capped, and the legend says the largest are clipped.
+    const r = Math.round(8 + Math.min(Math.sqrt(h.n) * 1.4, 26) * zf);
+    const d = r * 2;
+    const label = h.n.toLocaleString();
+    const named = showNames && h.n > nameCutoff;
+    const html =
+      `<span class="gb-bub-in${h.nMulti ? " gb-bub-multi" : ""}">` +
+      `<span class="gb-bub-n" style="font-size:${Math.max(10, Math.round(r * 0.62))}px">${label}</span>` +
+      `</span>` +
+      (named ? `<span class="gb-bub-l">${gbEscMap(h.name)}</span>` : "");
+    const m = L.marker(h.center, {
+      icon: L.divIcon({ className: "gb-bubble", html, iconSize: [d, d], iconAnchor: [r, r] }),
+      keyboard: true,
+      riseOnHover: true,
+      // Leaflet z-orders markers by their pixel y, so insertion order alone
+      // decides nothing — without an explicit offset a 1-listing bubble in the
+      // south covers Harlem's 772. `ordered` is ascending, so the busiest
+      // neighborhoods land on top.
+      zIndexOffset: i * 1000
+    });
+    m.bindTooltip(() => gbHoodTipHtml({ name: h.name, borough: h.boroughTitle }, h),
+                  { direction: "top", offset: [0, -r], className: "gb-hood-tip", opacity: 1 });
+    m.on("click", () => gbHoodActivate(h));
+    // divIcons carry no alt text of their own, so name the marker once it has an
+    // element. L.Marker's keyboard option already made it tabbable and maps
+    // Enter onto click.
+    m.on("add", () => {
+      const el = m.getElement();
+      if (!el) return;
+      el.setAttribute("role", "button");
+      el.setAttribute("aria-label",
+        `${h.name}, ${h.boroughTitle}: ${label} ${gbHoodUnit(h.n)}. Zoom to neighborhood.`);
+    });
+    gbBubbleLayer.addLayer(m);
+  }
+}
+
+// Clicking a neighborhood zooms to it; it deliberately does NOT apply the
+// neighborhood facet. That facet is global — it would narrow the listings table,
+// the establishments table and every sidebar count — and panning back out would
+// not undo it, so a click meaning "look closer" would silently rewrite the whole
+// app's state. The filter is offered instead as a labelled button in the popup,
+// which the active-filter chips can then clear.
+function gbHoodActivate(h) {
+  const b = h.bounds.pad(0.12);
+  if (gbReduceMotion.matches) gbMap.fitBounds(b, { maxZoom: 16, animate: false });
+  else gbMap.flyToBounds(b, { maxZoom: 16, duration: 0.8 });
+  L.popup({ className: "gb-hood-popup", autoPan: false })
+    .setLatLng(h.center)
+    .setContent(gbHoodPopupHtml(h))
+    .openOn(gbMap);
+}
+function gbHoodPopupHtml(h) {
+  const meta = [h.boroughTitle, h.n.toLocaleString() + " " + gbHoodUnit(h.n),
+                h.nMulti ? h.nMulti.toLocaleString() + " in 2+ guides" : ""].filter(Boolean).join(" · ");
+  return `<div class="nyc-popup"><h4>${gbEscMap(h.name)}</h4>` +
+    `<div class="pp-meta">${gbEscMap(meta)}</div>` +
+    (h.firstYear ? `<div class="pp-meta">${h.firstYear}–${h.lastYear}</div>` : "") +
+    `<div class="pp-actions">` +
+    `<button class="pp-btn" onclick="gbMapFilterHood(${JSON.stringify(h.name).replace(/"/g, "&quot;")},` +
+    `${JSON.stringify(h.boroughTitle).replace(/"/g, "&quot;")})">Filter to ${gbEscMap(h.name)}</button>` +
+    `</div></div>`;
+}
+window.gbMapFilterHood = function (name, borough) {
+  _pushNextHistory = true;
+  facetState.neighborhood.clear();
+  facetState.neighborhood.add(name);
+  // Co-filtering the borough keeps a repeated name (Chinatown) unambiguous if
+  // the data ever grows past Manhattan's.
+  if (borough && facetState.borough) { facetState.borough.clear(); facetState.borough.add(borough); }
+  if (gbMap) gbMap.closePopup();
+  renderAll();
+};
+
+// ── Tiers ───────────────────────────────────────────────────────────────────
+function gbMapTier() {
+  if (!gbMap) return "hood";
+  if (gbMap.getZoom() >= GB_TIER_ZOOM) return "point";
+  // Aggregating a single neighborhood into a single bubble tells the reader
+  // nothing they didn't just ask for.
+  if (facetState.neighborhood.size === 1) return "point";
+  return "hood";
+}
+
+function gbMapSyncTier() {
+  if (!gbMapReady) return;
+  const tier = gbMapTier();
+  // Bubble radius tracks the zoom, so a zoom inside the aggregate tier has to
+  // rebuild them; every other zoom that changes nothing else still short-circuits.
+  const zoomKey = tier === "hood" && gbMapMode === "bubbles" ? gbMap.getZoom() : 0;
+  const want = [gbMapMode, tier, zoomKey, _filterKey(), gbMapCrossPubOnly, gbDataLoaded,
+                gbHiContrast.matches, !!gbHoodLayer].join("|");
+  if (want === _gbTierState) return;
+  _gbTierState = want;
+
+  const agg = gbHoodAgg();
+  // Density needs geometry. Without it, fall back to bubbles — which need none —
+  // rather than showing an empty map under a choropleth legend.
+  const dense = gbMapMode === "density" && !!gbHoodLayer;
+  const wantBubbles = tier === "hood" && !dense;
+  const wantPoints = tier === "point";
+
+  if (wantBubbles) {
+    gbBuildBubbles(agg);
+    if (!gbMap.hasLayer(gbBubbleLayer)) gbMap.addLayer(gbBubbleLayer);
+  } else if (gbMap.hasLayer(gbBubbleLayer)) {
+    gbMap.removeLayer(gbBubbleLayer);
+    gbBubbleLayer.clearLayers();
+  }
+
+  if (wantPoints) {
+    gbBuildPins();
+    if (!gbMap.hasLayer(gbMarkerLayer)) gbMap.addLayer(gbMarkerLayer);
+  } else if (gbMap.hasLayer(gbMarkerLayer)) {
+    // Skipping pin construction entirely while zoomed out is most of why the
+    // aggregate tier is cheap: 2.5k markers never get built.
+    gbMap.removeLayer(gbMarkerLayer);
+    gbMarkerLayer.clearLayers();
+  }
+
+  if (gbHoodLayer) {
+    gbHoodLayer.setStyle(gbHoodStyle);
+    // Interactive only where the polygons are the thing being read, so hover
+    // never competes with the pins.
+    const on = dense && tier === "hood";
+    gbHoodLayer.eachLayer(l => { l.options.interactive = on; });
+  } else if (gbMapMode === "density") {
+    gbEnsureHoodLayer();   // failure isn't sticky — retry now the reader asked for it
+  }
+  gbRenderMapLegend(agg, tier, dense);
+  gbRenderMapCount(agg, tier, dense);
+}
+
+function gbBuildPins() {
   gbMarkerLayer.clearLayers();
   // One pin per business, not per listing: reuse the establishments matcher
   // (gbNameIndex) so a hotel listed across 15 editions is a single dot, sized
@@ -3319,7 +4007,6 @@ function gbMapRender() {
   // cross-listing index finishes building.
   const groups = gbDataLoaded ? getEstablishments() : null;
   const markers = [];
-  let multiCount = 0;
   const addPin = (row, radius, estab) => {
     const lat = parseFloat(row.latitude), lon = parseFloat(row.longitude);
     if (!isFinite(lat) || !isFinite(lon)) return;
@@ -3329,9 +4016,12 @@ function gbMapRender() {
       radius,
       // Gold ring, thickening with each additional publication, marks a business
       // vouched for across more than one guide. Fill still = publication colour,
-      // radius still = years listed.
+      // radius still = years listed. A dashed stroke means the geocoder reached
+      // the block but not the building — a fourth channel that costs nothing and
+      // doesn't disturb the other three.
       weight: multi ? Math.min(1.5 + nPubs, 4) : 1,
       color: multi ? "#a6791b" : "#ffffff",
+      dashArray: gbIsApproxGeocode(row) ? "2 2" : null,
       fillColor: PUBLICATION_COLORS[row.publication] || "#8a8172", fillOpacity: 0.88
     });
     m.bindPopup(() => gbMapPopupHtml(row, estab));  // built lazily on click
@@ -3340,32 +4030,125 @@ function gbMapRender() {
   if (groups) {
     for (const g of groups) {
       if (gbMapCrossPubOnly && g.nPubs < 2) continue;
-      if (g.nPubs >= 2) multiCount++;
       addPin(g.rep, 4 + Math.min(Math.sqrt(g.nYears || 1) * 1.6, 9), g);
     }
   } else {
     for (const row of getFiltered()) addPin(row, 5, null);
   }
   gbMarkerLayer.addLayers(markers);
+}
+
+// ── Chrome ──────────────────────────────────────────────────────────────────
+function gbRenderMapLegend(agg, tier, dense) {
+  const lg = document.getElementById("map-legend");
+  if (!lg) return;
+  const unit = agg.isGroups ? "businesses" : "listings";
+  // Say so rather than leaving the reader with a mode that looks broken.
+  const stranded = gbMapMode === "density" && !dense
+    ? '<div class="lg-note"><strong>Density needs the neighborhood boundaries, which did not load' +
+      (gbHoodError ? " (" + gbEscMap(gbHoodError) + ")" : "") +
+      '.</strong> Showing bubbles instead; they need no boundary data. Switching modes retries.</div>'
+    : "";
+  if (stranded) {
+    lg.innerHTML = '<div class="lg-hd">Neighborhoods</div>' + stranded;
+    return;
+  }
+  if (tier === "hood" && dense) {
+    lg.innerHTML = `<div class="lg-hd">${unit} per neighborhood</div>` +
+      '<div class="lg-ramp">' + gbHoodRamp().map(c => `<span style="background:${c}"></span>`).join("") + "</div>" +
+      '<div class="lg-scale"><span>1</span><span>5</span><span>15</span><span>50</span><span>150</span><span>500+</span></div>' +
+      `<div class="lg-note">Highest in view: ${agg.max.toLocaleString()}. Unshaded = none in view.<br>` +
+      GB_HOOD_CREDIT + "</div>";
+  } else if (tier === "hood") {
+    lg.innerHTML = '<div class="lg-hd">Neighborhoods</div>' +
+      `<div class="lg-note" style="margin-top:0">Bubble area = ${unit}; the largest are clipped. ` +
+      "A gold ring means the neighborhood holds businesses listed in 2+ guides.<br>" +
+      "Zoom in past a neighborhood to see individual businesses.</div>";
+  } else {
+    lg.innerHTML = '<div class="lg-hd">Publication</div>' +
+      Object.keys(PUBLICATION_COLORS).map(p =>
+        `<div class="lg-item"><span class="lg-dot" style="background:${PUBLICATION_COLORS[p]}"></span>${gbEscMap(PUBLICATION_SHORT_NAMES[p] || p)}</div>`
+      ).join("") +
+      '<div class="lg-item" style="margin-top:6px"><span class="lg-ring"></span>Listed in 2+ guides</div>' +
+      '<div class="lg-note">A dashed outline marks a block-level approximation.</div>';
+  }
+}
+
+function gbRenderMapCount(agg, tier, dense) {
   const cnt = document.getElementById("map-count");
-  if (cnt) {
-    if (!groups) cnt.textContent = markers.length.toLocaleString() + " mapped";
-    else if (gbMapCrossPubOnly) cnt.textContent = markers.length.toLocaleString() + " businesses in 2+ guides";
-    else cnt.textContent = markers.length.toLocaleString() + " businesses · " + multiCount.toLocaleString() + " in 2+ guides";
+  if (!cnt) return;
+  const unit = agg.isGroups ? "businesses" : "listings";
+  let multi = 0;
+  agg.list.forEach(h => { multi += h.nMulti; });
+  if (tier === "hood") {
+    // #map-count is the aria-live twin of a legend that is decoration, so the
+    // semantics of the current view have to live here.
+    const top = agg.list.reduce((a, b) => (b.n > (a ? a.n : -1) ? b : a), null);
+    cnt.textContent =
+      (dense ? "Density by neighborhood. " : "Neighborhoods. ") +
+      agg.list.length.toLocaleString() + " neighborhoods · " +
+      agg.total.toLocaleString() + " " + unit +
+      (top ? " · highest: " + top.name + ", " + top.n.toLocaleString() : "");
+  } else if (gbMapCrossPubOnly) {
+    cnt.textContent = agg.total.toLocaleString() + " " + unit + " in 2+ guides";
+  } else {
+    cnt.textContent = agg.total.toLocaleString() + " " + unit +
+      (agg.isGroups ? " · " + multi.toLocaleString() + " in 2+ guides" : "");
   }
-  if (markers.length) {
-    try {
-      // Clamp the auto-zoom to a NYC bbox so a few geocode outliers can't pull
-      // the whole view out to Westchester / Long Island.
-      const nyc = L.latLngBounds([40.49, -74.27], [40.93, -73.68]);
-      const b = gbMarkerLayer.getBounds();
-      const clamped = L.latLngBounds(
-        [Math.max(b.getSouth(), nyc.getSouth()), Math.max(b.getWest(), nyc.getWest())],
-        [Math.min(b.getNorth(), nyc.getNorth()), Math.min(b.getEast(), nyc.getEast())]
-      );
-      gbMap.fitBounds((clamped.isValid() ? clamped : b).pad(0.05), { maxZoom: 15, animate: false });
-    } catch (e) {}
-  }
+}
+
+function gbSetMapMode(mode) {
+  // The guard saves a redundant re-render; it is deliberately no longer what
+  // keeps the buttons correct — syncMapModeUI() runs on every renderAll() too.
+  if (mode === gbMapMode) return;
+  gbMapMode = mode;
+  gcEvent("map-mode-" + mode);
+  syncMapModeUI();
+  // Not renderAll(): a mode change touches nothing outside the map, and
+  // renderAll() would close an open detail panel. syncFilterUI() alone keeps the
+  // URL in step, and with _pushNextHistory false it takes the replaceState path.
+  _gbTierState = null;
+  gbMapSyncTier();
+  syncFilterUI();
+}
+
+function gbSyncResetBtn() {
+  const btn = document.getElementById("map-reset");
+  if (!btn || !gbMap) return;
+  btn.disabled = gbMap.getZoom() <= 11 && GB_NYC_BOUNDS.contains(gbMap.getCenter());
+}
+
+function gbMapFitTo(b) {
+  if (!gbMap || !b || !b.isValid()) return;
+  try {
+    const clamped = L.latLngBounds(
+      [Math.max(b.getSouth(), GB_NYC_BOUNDS.getSouth()), Math.max(b.getWest(), GB_NYC_BOUNDS.getWest())],
+      [Math.min(b.getNorth(), GB_NYC_BOUNDS.getNorth()), Math.min(b.getEast(), GB_NYC_BOUNDS.getEast())]
+    );
+    gbMap.fitBounds((clamped.isValid() ? clamped : b).pad(0.05), { maxZoom: 15, animate: false });
+  } catch (e) {}
+}
+
+// The map used to re-fit on every render, so typing in the search box yanked the
+// viewport out from under the reader on every keystroke. Only two things are a
+// spatial instruction: the very first render, and a change to the neighborhood
+// or borough facet — "show me Harlem" does mean "take me to Harlem". Everything
+// else leaves the view exactly where it was put.
+function gbMapMaybeFit(agg) {
+  const geoKey = [...facetState.neighborhood].sort().join("|") + "/" +
+                 [...facetState.borough].sort().join("|");
+  const should = !_gbFitDone || geoKey !== _gbFitGeoKey;
+  _gbFitDone = true;
+  _gbFitGeoKey = geoKey;
+  if (should) gbMapFitTo(agg.bounds);
+}
+
+function gbMapRender() {
+  if (!gbMapReady || !gbMarkerLayer) return;
+  _gbTierState = null;          // filters moved: force the tier to rebuild
+  gbMapSyncTier();
+  gbMapMaybeFit(gbHoodAgg());
+  gbSyncResetBtn();
 }
 
 function gbMapShow() {
@@ -3382,6 +4165,7 @@ window.addEventListener("popstate", function () {
   sortCol = null;
   sortDir = 1;
   viewMode = "listings";
+  gbMapMode = "bubbles";   // applyHashState() early-returns on a bare URL
   searchQuery = "";
   const searchEl = document.getElementById("search");
   if (searchEl) searchEl.value = "";
@@ -4263,6 +5047,13 @@ async function gbStreamCsv(url, onRow) {
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
     gbPruneOldCaches();
+    // Warm the neighborhood boundaries on idle. They used to be fetched on the
+    // first click of the Map tab, which was fine while they were a decorative
+    // underlay; density mode can't draw without them, so pay for them while
+    // nothing is waiting. gbMapInit() awaits the same promise rather than
+    // issuing a second request.
+    if (window.requestIdleCallback) requestIdleCallback(() => gbLoadHoodGeo(), { timeout: 8000 });
+    else setTimeout(() => gbLoadHoodGeo(), 3000);
     const estBtn = document.getElementById('view-estabs-btn');
     if (estBtn) {
       estBtn.disabled = false;
