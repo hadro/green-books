@@ -4268,6 +4268,45 @@ function renderEstabRecord(row, listings) {
   }
 }
 
+// Make sure a row the user just asked for is actually in the filtered table.
+// The search box and column filters that were in force before the jump have
+// nothing to do with the cell just clicked, and routinely exclude it: a table
+// filtered to "Wards" does not contain the 1930 listing printed as "Ward", so
+// the explorer announced "no matches" while the panel beside it had that very
+// listing open. Broaden by the same ladder the "Show all listings" link uses —
+// stripped name, raw name, raw name without the city — and verify each rung
+// actually contains the target before committing to it. The facets are left
+// alone: the year is the whole point of the jump. If no rung works, put the
+// user's own filters back rather than strand them somewhere arbitrary.
+function gbEnsureRowVisible(targetRow) {
+  if (getFiltered().includes(targetRow)) return;
+  const savedQuery = searchQuery;
+  const savedFilters = Object.assign({}, colFilters);
+  const nf = ["name", "establishment_name", "firm_name", "business_name"]
+    .find(k => targetRow[k] != null && targetRow[k] !== "");
+  const nfVal = nf && targetRow[nf];
+  const cityVal = targetRow.city ? gbNormCity(targetRow.city) : "";
+  const ladder = [];
+  if (nfVal) {
+    ladder.push([gbSearchQueryName(nfVal), cityVal]);
+    ladder.push([nfVal, cityVal]);
+    ladder.push([nfVal, ""]);
+  }
+  ladder.push(["", ""]);  // last resort: the year facet alone
+  for (const [q, city] of ladder) {
+    searchQuery = q;
+    colFilters = {};
+    if (city) colFilters["city"] = city;
+    if (getFiltered().includes(targetRow)) {
+      const box = document.getElementById("search");
+      if (box) box.value = searchQuery;
+      return;
+    }
+  }
+  searchQuery = savedQuery;
+  colFilters = savedFilters;
+}
+
 // Jump to a specific listing row. The coverage grid knows the exact target
 // row for each filled cell, so we can land on the (publication, year) the
 // user clicked rather than guessing by year alone.
@@ -4288,6 +4327,13 @@ function gbJumpToListing(targetRow) {
   const anchorY = covBefore && covBefore.offsetParent !== null
     ? covBefore.getBoundingClientRect().top : null;
 
+  // A coverage cell names one listing in one edition, so land in the listings
+  // view whichever view we came from. In the establishments view the table
+  // carries one row per business, so narrowing to the clicked cell's year
+  // routinely emptied it — the explorer said "no matches" while the panel
+  // beside it had the very listing open.
+  viewMode = "listings";
+  gbEnsureRowVisible(targetRow);
   _pushNextHistory = true;
   // Keep the panel open across the re-filter. renderAll()'s auto-close strips
   // .open, and #detail is `display: none` without it — so the panel was being
@@ -4750,6 +4796,12 @@ function gbRenderCoverage(row) {
   allLink.textContent = "Show all " + nList + " matching listings in the table →";
   allLink.addEventListener("click", e => {
     e.preventDefault();
+    // The link promises listings, so it must land in the listings view — the
+    // establishments table holds one row per business and cannot show them.
+    // Set before the candidate loop below: getFiltered() is keyed on viewMode,
+    // so verifying a query against the establishments sequence would be testing
+    // the wrong table.
+    viewMode = "listings";
     if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
     if (facetState["publication"]) facetState["publication"].clear();
     // Search on the stripped name (suffixes, descriptors, possessives) so
