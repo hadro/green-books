@@ -18,7 +18,14 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231e5231'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23f6f1e5'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231e5231'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%2375705f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<!-- Loaded non-render-blocking: a plain stylesheet <link> also blocks the parser
+     from running the inline script below it, so DOMContentLoaded waits on
+     fonts.googleapis.com. Measured at 12.6s when that host is slow or blocked
+     (corporate proxies, blockers, regions where Google is unreachable). The
+     media="print" swap lets the page render immediately in the fallback stacks
+     declared on --gb-font-*; display=swap then swaps the webfonts in. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"></noscript>
 <style>
 :root {
   --gb-paper:        #f6f1e5;   /* aged newsprint */
@@ -156,6 +163,8 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
   text-decoration: none; overflow: hidden;
 }
 .gb-hero-card:hover { border-color: var(--gb-rule); background: var(--gb-row-hover); }
+/* Clicked before its CSV row streamed in — the panel opens as soon as it lands. */
+.gb-hero-card-pending { border-color: var(--gb-accent); opacity: 0.72; }
 .gb-hero-card:focus-visible { border-color: var(--gb-rule); background: var(--gb-row-hover); outline: 2px solid var(--gb-accent); outline-offset: 2px; }
 .gb-hero-card-thumb {
   width: 100%; height: 110px; background: var(--gb-paper-2);
@@ -437,6 +446,11 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 .toolbar-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 #count-label { font-size: 0.857rem; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
 #load-status { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); }
+#load-progress { display: inline-flex; align-items: center; gap: 8px; }
+#load-progress[hidden] { display: none; }
+#load-bar { width: 84px; height: 3px; background: var(--gb-rule-faint); overflow: hidden; flex-shrink: 0; }
+#load-bar-fill { display: block; height: 100%; width: 0%; background: var(--gb-accent); transition: width 0.18s linear; }
+@media (prefers-reduced-motion: reduce) { #load-bar-fill { transition: none; } }
 #clear-filters-btn {
   display: none; background: var(--gb-highlight-soft);
   border: 1px solid rgba(184, 134, 11, 0.6);
@@ -564,21 +578,120 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #main.detail-open #table-wrap { padding-right: var(--gb-detail-w); }
 #detail { position: fixed; top: 0; right: 0; width: var(--gb-detail-w); min-width: 320px; height: 100dvh; background: var(--gb-paper); border-left: 1px solid var(--gb-rule-faint); display: none; flex-direction: column; z-index: 100; overflow: hidden; }
 #detail.open { display: flex; }
-.detail-hero { position: relative; height: 280px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+/* The hosted crop is a 400px-wide WebP and the panel is 420–720px, so the snippet
+   is deliberately upscaled to fill the panel: legibility of the scan is worth more
+   here than pixel-exactness, and the alternative — a larger live IIIF crop — would
+   reintroduce the per-view NYPL/LOC requests the thumbnail CDN exists to avoid.
+   height:auto (rather than the old fixed 280px) keeps the hero at the crop's own
+   aspect ratio instead of letterboxing it; max-height caps unusually tall crops.
+   min-height leaves room for the close button when an entry has no thumbnail. */
+.detail-hero { position: relative; height: auto; min-height: 68px; border-bottom: 1px solid var(--gb-rule-faint); background: var(--gb-paper-2); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 #detail-thumb-link { display: contents; }
-#detail-thumb { width: 100%; height: 100%; object-fit: contain; display: none; cursor: pointer; }
+#detail-thumb { width: 100%; height: auto; max-height: 340px; object-fit: contain; display: none; cursor: pointer; }
 #detail-close { position: absolute; top: 12px; right: 12px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); width: 28px; height: 28px; cursor: pointer; display: grid; place-items: center; color: var(--gb-ink-soft); font-size: 1.143rem; z-index: 1; }
 #detail-close:hover { color: var(--gb-ink); border-color: var(--gb-ink); }
-#detail-inner { padding: 24px 24px 32px; overflow-y: auto; flex: 1; }
+/* overscroll-behavior: a scroll gesture that reaches this container's end
+   must NOT chain to the page behind it. The panel is a fixed overlay, so a
+   chained scroll moves a document the user cannot see: the scroll indicator
+   appears and nothing in the panel changes, which reads as a frozen panel. */
+#detail-inner { padding: 24px 24px 32px; overflow-y: auto; overscroll-behavior: contain; flex: 1; }
 #detail-title { font-family: var(--gb-font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.005em; line-height: 1.1; margin: 0 0 20px; color: var(--gb-ink); }
 #detail-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: -12px 0 16px; }
 #detail-badges:empty { display: none; }
 .detail-badge { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); background: var(--gb-paper-2); }
 .detail-badge-rec { color: #5c3d00; background: var(--gb-highlight-soft); border-color: rgba(184, 134, 11, 0.6); }
 .rec-star { color: var(--gb-highlight); font-size: 0.786rem; }
-.detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0 0 20px; padding: 16px 0; border-top: 1px solid var(--gb-rule-faint); border-bottom: 1px solid var(--gb-rule-faint); font-size: 0.929rem; }
+/* Fields render as ordered, headed groups (see DETAIL_SPEC) rather than one flat
+   run of key/value rows in table-column order. Only the container carries a rule —
+   every section below it already has its own border-top, so a border-bottom here
+   would double up. */
+#detail-fields { margin: 0 0 20px; padding: 16px 0 0; border-top: 1px solid var(--gb-rule-faint); }
+#detail-fields:empty { display: none; }
+.detail-group { margin: 0 0 16px; }
+.detail-group:last-child { margin-bottom: 0; }
+.detail-group-hd { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 8px; font-weight: 500; }
+.detail-fields { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 8px 16px; margin: 0; font-size: 0.929rem; }
 .df-key { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); align-self: baseline; padding-top: 2px; }
 .df-val { margin: 0; color: var(--gb-ink); font-size: 0.929rem; word-break: break-word; }
+
+/* Panel actions. The ?cf= permalink already existed but had no UI — users had to
+   know to copy the address bar. */
+#detail-actions { display: flex; align-items: center; gap: 10px; margin: -8px 0 18px; flex-wrap: wrap; }
+/* Step through the current results without going back to the table. */
+#detail-nav { display: inline-flex; align-items: center; gap: 6px; }
+#detail-nav[hidden] { display: none; }
+.detail-nav-btn { font-family: var(--gb-font-body); font-size: 1rem; line-height: 1; width: 26px; height: 26px; display: grid; place-items: center; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); cursor: pointer; padding: 0; }
+.detail-nav-btn:hover:not(:disabled) { border-color: var(--gb-accent); color: var(--gb-accent); }
+.detail-nav-btn:disabled { opacity: 0.38; cursor: default; }
+#detail-pos { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; color: var(--gb-ink-faint); font-variant-numeric: tabular-nums; }
+/* Announced, never shown: the visible position text alone doesn't say which
+   entry you landed on, and clicking the arrows keeps focus on the button. */
+.gb-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 640px) { .detail-nav-btn { width: 34px; height: 34px; } }
+.detail-action-btn { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; background: var(--gb-paper); border: 1px solid var(--gb-rule-faint); color: var(--gb-ink-soft); cursor: pointer; }
+.detail-action-btn:hover { border-color: var(--gb-accent); color: var(--gb-accent); }
+#detail-copy-status { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-faint); }
+
+/* `notes` is the guide's own printed prose and the richest field in the corpus
+   (12.4% of merged rows; 27.6% on the travel-guides side). It used to render as a
+   cramped <dd> in the 80px-label grid — it reads as a quotation instead. */
+#detail-notes { display: none; margin: 0 0 20px; padding: 2px 0 2px 16px; border-left: 2px solid var(--gb-accent); font-family: var(--gb-font-body); font-size: 0.964rem; line-height: 1.55; color: var(--gb-ink); }
+#detail-notes.has-notes { display: block; }
+.detail-notes-cap { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gb-ink-faint); margin-top: 6px; }
+
+/* Citation, collapsed by default — useful to have, not what most readers came for. */
+#detail-cite { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+#detail-cite > summary { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer; list-style: none; }
+#detail-cite > summary::-webkit-details-marker { display: none; }
+#detail-cite > summary::before { content: "+ "; color: var(--gb-accent); }
+#detail-cite[open] > summary::before { content: "– "; }
+#detail-cite > summary:hover { color: var(--gb-accent); }
+#detail-cite-text { font-family: var(--gb-font-body); font-size: 0.857rem; line-height: 1.5; color: var(--gb-ink-soft); margin: 10px 0 0; word-break: break-word; }
+.detail-cite-actions { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+
+/* Provenance: which guide, which year, and — only when it adds something — which
+   edition. Replaces three near-identical Publication/Edition/Year rows. The dot
+   reuses .pub-dot + PUBLICATION_COLORS, matching the facet sidebar, the table
+   stripe and the coverage grid. */
+#detail-provenance { margin: 2px 0 20px; }
+#detail-provenance:empty { display: none; }
+.detail-prov-line { display: flex; align-items: baseline; gap: 8px; font-family: var(--gb-font-body); font-size: 0.929rem; color: var(--gb-ink); }
+.detail-prov-line .pub-dot { margin-right: 0; align-self: center; }
+.detail-prov-year { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.06em; color: var(--gb-ink-soft); font-variant-numeric: tabular-nums; }
+.detail-prov-year::before { content: "·"; margin-right: 8px; color: var(--gb-ink-faint); }
+.detail-prov-edition { font-size: 0.857rem; line-height: 1.4; color: var(--gb-ink-soft); margin: 4px 0 0 13px; }
+
+/* Establishment record: which listing of the business you are looking at, and
+   what the guides changed between listings. */
+#detail-estab-note { display: none; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); margin: -14px 0 16px; line-height: 1.6; }
+.estab-note-alt { text-transform: none; letter-spacing: 0.02em; font-family: var(--gb-font-body); font-size: 0.786rem; color: var(--gb-ink-soft); }
+#detail-estab { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+.estab-summary { font-family: var(--gb-font-body); font-size: 0.857rem; color: var(--gb-ink-soft); margin: -2px 0 10px; }
+.estab-timeline { list-style: none; margin: 0; padding: 0; }
+.estab-timeline .estab-tl-extra { display: none; }
+.estab-timeline.estab-timeline-all .estab-tl-extra { display: list-item; }
+.estab-tl-item { display: flex; align-items: baseline; gap: 8px; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid transparent; padding: 5px 0 5px 10px; cursor: pointer; font-family: var(--gb-font-body); font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.35; }
+.estab-tl-item:hover { color: var(--gb-accent); border-left-color: var(--gb-accent); }
+.estab-tl-current { color: var(--gb-ink); border-left-color: var(--gb-ink); cursor: default; }
+.estab-tl-current .estab-tl-name { font-weight: 600; }
+.estab-tl-year { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+.estab-tl-current .estab-tl-year { color: var(--gb-ink-soft); }
+.estab-tl-item .pub-dot { margin-right: 0; flex-shrink: 0; align-self: center; }
+.estab-tl-body { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.estab-tl-name { word-break: break-word; }
+.estab-tl-sub { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.03em; color: var(--gb-ink-faint); text-transform: uppercase; }
+.estab-tl-prop { font-size: 0.786rem; color: var(--gb-ink-soft); font-style: italic; }
+.estab-tl-more { display: block; margin-top: 8px; background: none; border: 0; padding: 0 0 1px; cursor: pointer; font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; color: var(--gb-accent); border-bottom: 1px solid var(--gb-accent); }
+.estab-tl-more:hover { border-bottom-style: dashed; }
+
+/* "Elsewhere on the same page" — the entry's printed neighbours, in page order. */
+#detail-page-neighbors { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
+.page-neighbor-list { list-style: none; margin: 0; padding: 0; }
+.page-neighbor { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid transparent; padding: 5px 0 5px 10px; cursor: pointer; font-family: var(--gb-font-body); font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.35; }
+.page-neighbor:hover { color: var(--gb-accent); border-left-color: var(--gb-accent); }
+.page-neighbor-current { color: var(--gb-ink); font-weight: 600; border-left-color: var(--gb-ink); cursor: default; }
+.page-neighbor-cat { display: block; font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gb-ink-faint); }
+.page-neighbor-more { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-faint); margin-top: 8px; }
 #detail-page-context { text-align: right; margin-bottom: 8px; min-height: 0; }
 #detail-page-context:empty { display: none; }
 #detail-page-context a { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
@@ -586,9 +699,10 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 .detail-source { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); display: flex; flex-direction: column; gap: 8px; }
 .detail-source a { font-family: var(--gb-font-mono); font-size: 0.786rem; letter-spacing: 0.08em; color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; width: max-content; }
 .detail-source a:hover { border-bottom-style: dashed; }
-#detail-also-in { margin-top: 16px; padding-top: 16px; }
+#detail-also-in { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 #detail-map { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 .map-frame { width: 100%; height: 190px; border: 1px solid var(--gb-rule-faint); display: block; margin-top: 8px; filter: grayscale(60%); }
+.map-place { font-family: var(--gb-font-body); font-size: 0.929rem; color: var(--gb-ink); margin: -4px 0 6px; }
 .map-disclaimer { font-size: 0.786rem; font-family: var(--gb-font-mono); color: var(--gb-ink-faint); margin: 6px 0 0; }
 .map-disclaimer a { color: var(--gb-accent); text-decoration: none; border-bottom: 1px solid var(--gb-accent); padding-bottom: 1px; }
 .map-disclaimer a:hover { border-bottom-style: dashed; }
@@ -678,7 +792,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
-  #sidebar { position: fixed; top: 0; left: 0; width: 85vw; max-width: 300px; height: 100dvh; z-index: 200; min-width: 0; transform: translateX(-100%); transition: transform 0.22s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.18); }
+  #sidebar { position: fixed; top: 0; left: 0; width: 85vw; max-width: 300px; height: 100dvh; z-index: 200; min-width: 0; overscroll-behavior: contain; transform: translateX(-100%); transition: transform 0.22s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.18); }
   #app.sidebar-open #sidebar { transform: translateX(0); }
   #sidebar-backdrop { display: none !important; position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 199; }
   #app.sidebar-open #sidebar-backdrop { display: block !important; }
@@ -693,7 +807,10 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   tbody td.mcard-cell:first-child, table.est-mode tbody td.mcard-cell:first-child { width: auto; padding-left: 16px; font-family: var(--gb-font-body); font-size: 1rem; color: inherit; }
   tbody tr.selected td.mcard-cell { box-shadow: inset 3px 0 0 var(--gb-accent); color: inherit; }
   #main.detail-open #table-wrap { padding-right: 0; }
-  #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; border-left: none; }
+  #detail { position: fixed; inset: 0; width: 100%; max-width: 100%; min-width: 0; height: 100dvh; z-index: 300; overflow-y: auto; overscroll-behavior: contain; border-left: none; }
+  /* #detail itself scrolls here, so release the inner scroller — two stacked
+     overflow:auto containers made the panel scroll against itself. */
+  #detail-inner { overflow-y: visible; flex: 0 0 auto; }
   #mobile-header { display: block; padding: 14px 16px 12px; background: var(--gb-paper); border-bottom: 1px solid var(--gb-rule-faint); }
   .mobile-hero-title { margin: 0 0 4px; font-family: var(--gb-font-display); font-size: 1.214rem; font-weight: 500; color: var(--gb-ink); line-height: 1.2; }
   .mobile-hero-desc { margin: 0 0 10px; font-size: 0.857rem; color: var(--gb-ink-soft); line-height: 1.4; }
@@ -857,7 +974,14 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       </div>
       <label id="mobile-sort-wrap"><span class="mobile-sort-label">Sort</span><select id="mobile-sort" aria-label="Sort entries"></select></label>
       <span id="count-label" aria-live="polite" aria-atomic="true"></span>
-      <span id="load-status"></span>
+      <!-- Deliberately not an overlay: the table is searchable and filterable
+           from ~300ms, long before the stream finishes, so a modal curtain would
+           hide content that already works. This reports progress beside it. -->
+      <span id="load-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+            aria-valuenow="0" aria-label="Loading entries">
+        <span id="load-status"></span>
+        <span id="load-bar"><span id="load-bar-fill"></span></span>
+      </span>
       <button id="clear-filters-btn" aria-label="Clear all filters">× Clear filters</button>
     </div>
     <div id="active-filters" class="active-filters" aria-label="Active filters" style="display:none"></div>
@@ -884,11 +1008,39 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <div id="detail-inner">
         <div id="detail-page-context"></div>
         <h2 id="detail-title"></h2>
+        <div id="detail-estab-note"></div>
         <div id="detail-badges"></div>
-        <dl class="detail-fields" id="detail-fields"></dl>
+        <div id="detail-actions">
+          <span id="detail-nav">
+            <button type="button" id="detail-prev" class="detail-nav-btn" aria-label="Previous entry">&lsaquo;</button>
+            <button type="button" id="detail-next" class="detail-nav-btn" aria-label="Next entry">&rsaquo;</button>
+            <span id="detail-pos"></span>
+          </span>
+          <button type="button" id="detail-copy-link" class="detail-action-btn">Copy link</button>
+          <span id="detail-copy-status" role="status" aria-live="polite"></span>
+          <span id="detail-nav-live" class="gb-sr-only" aria-live="polite"></span>
+        </div>
+        <blockquote id="detail-notes"></blockquote>
+        <div id="detail-fields"></div>
+        <div id="detail-provenance"></div>
+        <!-- Coverage sits directly under the entry's own fields: for listings that
+             have it, the cross-publication run is a primary part of the record.
+             Page neighbours are a bonus and a jumping-off point, so they sit near
+             the bottom, just above the source links. -->
         <div id="detail-also-in" style="display:none"></div>
+        <!-- Coverage answers "when was it listed"; this answers "what changed". -->
+        <div id="detail-estab" style="display:none"></div>
         <div id="detail-map" style="display:none"></div>
+        <div id="detail-page-neighbors" style="display:none"></div>
         <div class="detail-source" id="detail-source"></div>
+        <details id="detail-cite">
+          <summary>Cite this entry</summary>
+          <p id="detail-cite-text"></p>
+          <div class="detail-cite-actions">
+            <button type="button" id="detail-copy-cite" class="detail-action-btn">Copy citation</button>
+            <span id="detail-cite-status" role="status" aria-live="polite"></span>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -1233,7 +1385,93 @@ Object.assign(FIELD_LABELS, {
   "rates": "Rates",
   "amenities_services": "Amenities",
   "sub_region": "Area",
+  "volume_title": "Edition",
+  "notes": "Notes",
 });
+
+// Panel-only field layout. The detail panel used to render `displayFields` (whose
+// real job is driving *table columns*) followed by DETAIL_FIELDS, producing one
+// flat run of up to 14 same-weight rows in column order — with `name` duplicated
+// from the <h2> above it, and address/city/state split across three lines for what
+// is one postal fact.
+//
+// This spec is purely additive: DETAIL_FIELDS is left exactly as it was, because it
+// also feeds the search haystack (getFiltered) and the CSV export column list.
+//
+// `combine` merges several columns into one displayed row. `name` is deliberately
+// absent — it is the panel's heading. `notes` is absent too: it renders as a
+// quotation block above the groups rather than as a cramped key/value row.
+const DETAIL_SPEC = [
+  { heading: "Where", fields: [
+    { name: "address" },
+    { name: "city", label: "Location", combine: ["city", "state"], sep: ", " },
+    { name: "sub_region" },
+  ] },
+  { heading: "As printed", fields: [
+    { name: "category" },
+    { name: "phone" },
+    { name: "proprietor" },
+    { name: "personnel" },
+    { name: "rates", format: "rates" },
+    { name: "amenities_services" },
+  ] },
+  // No "Source" group — publication, edition title and year are largely the same
+  // string three times over (see gbRenderProvenance).
+];
+
+// Provenance line. As three separate rows this was flatly redundant: of the 46
+// distinct (publication, year, edition-title) combinations in the corpus, 16 are
+// pure duplicates — every early Green Book year reads "The Negro Motorist Green
+// Book" / "The Negro Motorist Green Book: 1937" / "1937".
+//
+// The edition title still earns its place on the other 30, though, so it is
+// suppressed rather than dropped: "1951 Railroad Edition", "The Green Book
+// Vacation Guide: 1949" (a second, distinct 1949 volume), "Go, guide to pleasant
+// motoring, Vol. 3", and the run's own title changes (Negro Motorist → Negro
+// Travelers'). It renders only when it says something publication + year does not.
+function gbEditionAddsInfo(title, publication, year) {
+  const norm = s => (s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const t = norm(title);
+  if (!t) return false;
+  const p = norm(publication), y = norm(year);
+  return t !== p + y && t !== p && t !== y;
+}
+function gbRenderProvenance(row) {
+  const el = document.getElementById("detail-provenance");
+  el.innerHTML = "";
+  const pub = (row.publication || "").trim();
+  const year = (row[GB_YEAR_FIELD] || row.year || "").trim();
+  const title = (row.volume_title || "").trim();
+  if (!pub && !year && !title) { el.style.display = "none"; return; }
+  el.style.display = "";
+
+  const line = document.createElement("div");
+  line.className = "detail-prov-line";
+  if (pub) {
+    const dot = document.createElement("span");
+    dot.className = "pub-dot";
+    dot.style.background = PUBLICATION_COLORS[pub] || "var(--gb-ink-faint)";
+    line.appendChild(dot);
+    const name = document.createElement("span");
+    name.className = "detail-prov-pub";
+    name.textContent = pub;
+    line.appendChild(name);
+  }
+  if (year) {
+    const y = document.createElement("span");
+    y.className = "detail-prov-year";
+    y.textContent = year;
+    line.appendChild(y);
+  }
+  el.appendChild(line);
+
+  if (gbEditionAddsInfo(title, pub, year)) {
+    const ed = document.createElement("div");
+    ed.className = "detail-prov-edition";
+    ed.textContent = title;
+    el.appendChild(ed);
+  }
+}
 
 // Boolean flags arrive as True/TRUE/true (and False variants) across the two CSVs.
 function gbIsTrue(v) { return /^true$/i.test((v || "").trim()); }
@@ -1381,7 +1619,12 @@ function _filterKey() {
 function getFiltered() {
   const key = _filterKey();
   if (key === _fcKey && _fcRows) return _fcRows;
-  const q = searchQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
+  // Fold "6001/2" to "600 1/2" on both sides before punctuation is stripped, so
+  // the two printed spellings of a half-address collapse to the same haystack
+  // text ("600 12") and either query finds both. Without it the strip turns them
+  // into "60012" and "600 12", which can never match each other.
+  const q = gbSplitHouseFraction(searchQuery).trim().toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
   const result = ALL_ENTRIES.filter(row => {
     // Search filter — the normalized haystack is cached on the row (data is
     // immutable after load), so repeat searches don't re-normalize 100k rows.
@@ -1395,7 +1638,8 @@ function getFiltered() {
         const foldedCat = row.category ? gbCategoryGroup(row.category) : "";
         row._hay = (displayFields.map(f => (row[f.name] || ""))
           .concat(DETAIL_FIELDS.map(n => row[n] || ""))
-          .join(" ") + " " + foldedCat)
+          .join(" ") + " " + foldedCat);
+        row._hay = gbSplitHouseFraction(row._hay)
           .toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ");
       }
       if (!row._hay.includes(q)) return false;
@@ -2159,28 +2403,63 @@ function showDetail(row) {
     badges.appendChild(b);
   }
 
+  // Notes: the guide's own printed prose. Set as a quotation above the field
+  // groups — it is the richest thing on most listings that carry it.
+  const notesEl = document.getElementById("detail-notes");
+  notesEl.innerHTML = "";
+  const notesVal = (row.notes || "").trim();
+  if (notesVal) {
+    const p = document.createElement("p");
+    p.style.margin = "0";
+    p.textContent = notesVal;
+    notesEl.appendChild(p);
+    const cap = document.createElement("div");
+    cap.className = "detail-notes-cap";
+    cap.textContent = "As printed in the guide";
+    notesEl.appendChild(cap);
+    notesEl.classList.add("has-notes");
+  } else {
+    notesEl.classList.remove("has-notes");
+  }
+
+  // Fields, as ordered and headed groups (DETAIL_SPEC). Empty values are skipped,
+  // and a group whose every field is empty is omitted entirely — most listings
+  // carry only a handful of the fourteen possible columns.
   const fields = document.getElementById("detail-fields");
   fields.innerHTML = "";
-  const addField = (label, val) => {
-    const k = document.createElement("dt");
-    k.className = "df-key";
-    k.textContent = label;
-    const v = document.createElement("dd");
-    v.className = "df-val";
-    v.textContent = VALUE_LABELS[val] || val;
-    fields.appendChild(k);
-    fields.appendChild(v);
-  };
-  displayFields.forEach(f => {
-    const val = row[f.name] || "";
-    if (!val) return;
-    addField(FIELD_LABELS[f.name] || f.name.replace(/_/g, " "), val);
-  });
-  DETAIL_FIELDS.forEach(fname => {
-    let val = row[fname] || "";
-    if (!val) return;
-    if (fname === "rates") val = gbFormatRates(val);
-    addField(FIELD_LABELS[fname] || fname.replace(/_/g, " "), val);
+  DETAIL_SPEC.forEach(group => {
+    const dl = document.createElement("dl");
+    dl.className = "detail-fields";
+    group.fields.forEach(spec => {
+      let val;
+      if (spec.combine) {
+        val = spec.combine.map(n => (row[n] || "").trim()).filter(Boolean).join(spec.sep || " ");
+      } else {
+        val = (row[spec.name] || "").trim();
+      }
+      if (!val) return;
+      if (spec.format === "rates") val = gbFormatRates(val);
+      const k = document.createElement("dt");
+      k.className = "df-key";
+      k.textContent = spec.label || FIELD_LABELS[spec.name] || spec.name.replace(/_/g, " ");
+      const v = document.createElement("dd");
+      v.className = "df-val";
+      // Own-property check: the lookup is keyed on CSV data, so a cell reading
+      // "constructor" or "toString" would otherwise render a function body.
+      v.textContent = Object.prototype.hasOwnProperty.call(VALUE_LABELS, val)
+        ? VALUE_LABELS[val] : val;
+      dl.appendChild(k);
+      dl.appendChild(v);
+    });
+    if (!dl.children.length) return;
+    const wrap = document.createElement("div");
+    wrap.className = "detail-group";
+    const hd = document.createElement("div");
+    hd.className = "detail-group-hd";
+    hd.textContent = group.heading;
+    wrap.appendChild(hd);
+    wrap.appendChild(dl);
+    fields.appendChild(wrap);
   });
 
   const pageCtx = document.getElementById("detail-page-context");
@@ -2201,24 +2480,400 @@ function showDetail(row) {
     pageCtx.innerHTML = "";
     src.innerHTML = "";
   }
+  gbRenderProvenance(row);
+  renderPageNeighbors(row);
+  gbRenderCitation(row);
+  gbRenderDetailNav(row);
+
+  // Name the region after the entry it is showing, rather than a static
+  // "Entry details" that never changes.
+  panel.setAttribute("aria-label", entryName === "entry" ? "Entry details" : entryName);
+  gbSyncDetailModality();
+
+  // Reset the copy-link confirmation left over from the previous entry.
+  const copyStatus = document.getElementById("detail-copy-status");
+  if (copyStatus) copyStatus.textContent = "";
+
   // Move focus into the panel so assistive tech announces the entry that just
   // opened. Focusing the heading (rather than the Close button) reads the entry
   // name; the Close button and source links are the next tab stops.
   const detailTitle = document.getElementById("detail-title");
   detailTitle.setAttribute("tabindex", "-1");
-  detailTitle.focus();
+  if (!_gbSuppressDetailFocus) detailTitle.focus();
   renderDetailMap(row);
+}
+
+// ── Detail panel modality ──────────────────────────────────────────────────
+// Below 640px the panel is a full-viewport overlay with a Tab focus trap, which
+// makes it a dialog; above it, it sits beside a still-interactive table, which
+// makes it complementary. The markup declared "complementary" unconditionally,
+// so the mobile overlay contradicted its own behaviour — and the background
+// stayed in the accessibility tree, letting a screen-reader cursor swipe into
+// the table behind it (a Tab trap does nothing about that).
+//
+// `inert` applies to an element's entire subtree, and #detail lives INSIDE
+// #main — so marking #main inert froze the open panel along with the
+// background. On a phone that meant nothing in the entry could be tapped:
+// not Close, not the source links, not copy-link. Focus couldn't enter either
+// (the focus() call below silently no-ops into an inert subtree), so Escape
+// was the only way out and a phone has no Escape key — a reload was the only
+// escape. Collect the background as the panel's *siblings* instead, descending
+// past any ancestor of the panel so one can never be marked.
+function gbCollectInertTargets(el, panel, out) {
+  if (el === panel) return;
+  if (!el.contains(panel)) { out.push(el); return; }
+  for (const child of el.children) gbCollectInertTargets(child, panel, out);
+}
+function gbSyncDetailModality() {
+  const panel = document.getElementById("detail");
+  const open = panel.classList.contains("open");
+  const modal = open && window.matchMedia("(max-width: 640px)").matches;
+  if (modal) {
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-modal", "true");
+  } else {
+    panel.setAttribute("role", "complementary");
+    panel.removeAttribute("aria-modal");
+  }
+  const targets = [];
+  ["main", "sidebar"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) gbCollectInertTargets(el, panel, targets);
+  });
+  targets.forEach(el => { el.inert = modal; });
+}
+// Re-sync on a resize across the breakpoint, so rotating a phone (or dragging a
+// desktop window narrow) with the panel open doesn't strand the wrong role.
+if (window.matchMedia) {
+  const _gbDetailMq = window.matchMedia("(max-width: 640px)");
+  const _onMq = () => gbSyncDetailModality();
+  if (_gbDetailMq.addEventListener) _gbDetailMq.addEventListener("change", _onMq);
+  else if (_gbDetailMq.addListener) _gbDetailMq.addListener(_onMq);
+}
+
+// ── "Elsewhere on the same page" ───────────────────────────────────────────
+// Every entry records the IIIF canvas it was cropped from, and a guide page
+// carries ~31 listings on average across the merged corpus (3,295 of the 3,534
+// pages hold at least two; the densest holds 120). The faceted table scatters
+// those neighbours; this puts the page back together — the businesses that
+// physically sat beside this one in print, in the order they were printed.
+//
+// Cost matters here: this runs on every panel open, over ~109k rows. The first
+// version grouped rows by canvas *and* eagerly sorted all 3,534 page lists on the
+// click — 657ms cold, of which ~190ms sorted pages nobody asked for. Two changes
+// fix it, and measurement drove both:
+//
+//   - Group once, sort per page lazily. Only one page is ever displayed, and a
+//     page holds ≤120 rows, so its sort is free.
+//   - Build the grouping while the browser is idle after load, not on the click.
+//     The first pass over 109k row objects costs ~300ms in JIT and first-touch
+//     however it is written, so it must not sit on a user action. (Collecting a
+//     single page on demand instead was tried and is worse: no global build, but
+//     ~30ms rescanning all rows for every new page opened.)
+let _pageIndex = null, _pageIndexLen = -1;
+const _pageSorted = new Set();  // canvas ids already put in printed order
+function gbFragXY(cf) {
+  const i = cf.indexOf("#xywh=");
+  if (i === -1) return [Infinity, Infinity];
+  const c1 = cf.indexOf(",", i + 6);
+  if (c1 === -1) return [Infinity, Infinity];
+  const c2 = cf.indexOf(",", c1 + 1);
+  const x = Number(cf.slice(i + 6, c1));
+  const y = Number(c2 === -1 ? NaN : cf.slice(c1 + 1, c2));
+  return [isNaN(x) ? Infinity : x, isNaN(y) ? Infinity : y];
+}
+// Both CSVs stream in, so an index built mid-load may be incomplete; the row
+// count is the cheap invalidation signal.
+function gbPageIndex() {
+  if (_pageIndex && _pageIndexLen === ALL_ENTRIES.length) return _pageIndex;
+  const m = new Map();
+  for (let i = 0; i < ALL_ENTRIES.length; i++) {
+    const cf = ALL_ENTRIES[i].canvas_fragment;
+    if (!cf) continue;
+    const cid = canvasId(cf);
+    let list = m.get(cid);
+    if (!list) { list = []; m.set(cid, list); }
+    list.push(ALL_ENTRIES[i]);
+  }
+  _pageIndex = m;
+  _pageIndexLen = ALL_ENTRIES.length;
+  _pageSorted.clear();
+  return m;
+}
+// One page's rows, in printed order: down the page, then across. Entries with no
+// #xywh sort last. Decorate-sort-undecorate, so coordinates are parsed once per
+// row rather than twice per comparison.
+function gbPageRows(cid) {
+  const list = gbPageIndex().get(cid);
+  if (!list || _pageSorted.has(cid)) return list;
+  const dec = list.map(r => { const xy = gbFragXY(r.canvas_fragment || ""); return [xy[1], xy[0], r]; });
+  dec.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  for (let i = 0; i < dec.length; i++) list[i] = dec[i][2];
+  _pageSorted.add(cid);
+  return list;
+}
+let _pageWarm = false;
+function gbWarmPageRows() {
+  if (_pageWarm) return;
+  const go = () => {
+    _pageWarm = true;
+    try { gbPageIndex(); } catch (e) { /* non-critical */ }
+    gbLoadNycGeo();  // ~107 KB gzipped; fetched off the critical path
+  };
+  if (window.requestIdleCallback) requestIdleCallback(go, { timeout: 2000 });
+  else setTimeout(go, 300);
+}
+
+const PAGE_NEIGHBOR_SPAN = 3;  // entries shown either side of the current one
+function renderPageNeighbors(row) {
+  const el = document.getElementById("detail-page-neighbors");
+  el.innerHTML = "";
+  el.style.display = "none";
+  const cid = canvasId(row.canvas_fragment || "");
+  if (!cid) return;
+  const page = gbPageRows(cid);
+  if (!page || page.length < 2) return;
+  const at = page.indexOf(row);
+  if (at === -1) return;
+
+  const from = Math.max(0, at - PAGE_NEIGHBOR_SPAN);
+  const to = Math.min(page.length, at + PAGE_NEIGHBOR_SPAN + 1);
+
+  const hd = document.createElement("div");
+  hd.className = "also-in-label";
+  hd.textContent = "Elsewhere on the same page";
+  el.appendChild(hd);
+
+  const list = document.createElement("ul");
+  list.className = "page-neighbor-list";
+  for (let i = from; i < to; i++) {
+    const r = page[i];
+    const isCurrent = r === row;
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "page-neighbor" + (isCurrent ? " page-neighbor-current" : "");
+    const nm = document.createElement("span");
+    nm.textContent = r.name || "(unnamed)";
+    btn.appendChild(nm);
+    const cat = (r.category || "").trim();
+    if (cat) {
+      const c = document.createElement("span");
+      c.className = "page-neighbor-cat";
+      c.textContent = cat;
+      btn.appendChild(c);
+    }
+    if (isCurrent) {
+      // "You are here": stays focusable (not disabled) so keyboard users can
+      // find it, matching how the coverage grid marks its current cell.
+      btn.setAttribute("aria-current", "true");
+      btn.setAttribute("aria-label", (r.name || "This entry") + ": this entry");
+      btn.addEventListener("click", e => e.preventDefault());
+    } else {
+      btn.setAttribute("aria-label", "Open " + (r.name || "entry") + ", printed on the same page");
+      btn.addEventListener("click", () => gbOpenListing(r));
+    }
+    li.appendChild(btn);
+    list.appendChild(li);
+  }
+  el.appendChild(list);
+
+  if (page.length > (to - from)) {
+    const more = document.createElement("div");
+    more.className = "page-neighbor-more";
+    more.textContent = page.length.toLocaleString() + " listings on this page in total";
+    el.appendChild(more);
+  }
+  el.style.display = "";
+}
+
+// Open another listing in the panel without touching filter state. Deliberately
+// distinct from gbJumpToListing(), which re-filters the table to the target's
+// year — correct when jumping across editions from the coverage grid, wrong
+// here, where the neighbour already shares this entry's volume and re-filtering
+// would silently apply a filter the user never asked for. If the neighbour
+// falls outside the active filters the panel still shows it; only the table's
+// row highlight is absent.
+function gbOpenListing(targetRow) {
+  if (!targetRow) return;
+  selectedIdx = rowIdx(targetRow);
+  showDetail(targetRow);
+  renderTableBody();
+}
+
+// ── Step through results from inside the panel ──────────────────────────────
+// Arrow keys move focus between table rows, but once the panel was open reading
+// ten entries meant ten round trips back to the table. These walk the *current*
+// result set — same rows, same order, same view mode as the table shows — so
+// stepping never contradicts what is on screen behind the panel.
+let _seqKey = null, _seq = null;
+function gbVisibleSequence() {
+  const key = _filterKey() + "|" + sortCol + "|" + sortDir + "|" + viewMode +
+              "|" + estabSortCol + "|" + estabSortDir;
+  if (key === _seqKey && _seq) return _seq;
+  _seq = viewMode === "establishments"
+    ? getSortedEstabs(getEstablishments())
+    : getSorted(getFiltered());
+  _seqKey = key;
+  return _seq;
+}
+// Where the open entry sits in that sequence, or null when it isn't in it at
+// all — a page neighbour or a shared ?cf= link can land on an entry the active
+// filters exclude, and stepping from outside the list would be a lie.
+function gbSeqPosition(row) {
+  if (!row) return null;
+  const seq = gbVisibleSequence();
+  let i;
+  if (viewMode === "establishments") {
+    const key = gbEstabKeyOf(row);
+    i = seq.findIndex(g => g.key === key);
+  } else {
+    i = seq.indexOf(row);
+  }
+  return i === -1 ? null : { index: i, total: seq.length, seq };
+}
+function gbRenderDetailNav(row) {
+  const nav = document.getElementById("detail-nav");
+  if (!nav) return;
+  const pos = gbSeqPosition(row);
+  if (!pos) { nav.hidden = true; return; }
+  nav.hidden = false;
+  document.getElementById("detail-prev").disabled = pos.index <= 0;
+  document.getElementById("detail-next").disabled = pos.index >= pos.total - 1;
+  document.getElementById("detail-pos").textContent =
+    (pos.index + 1).toLocaleString() + " of " + pos.total.toLocaleString();
+}
+// Suppresses showDetail's focus-the-heading behaviour for one call, so clicking
+// the arrows repeatedly doesn't yank focus off the button after every step.
+let _gbSuppressDetailFocus = false;
+function gbStepEntry(delta, refocusEl) {
+  const cur = (selectedIdx !== null) ? ALL_ENTRIES[selectedIdx] : null;
+  const pos = gbSeqPosition(cur);
+  if (!pos) return;
+  const next = pos.index + delta;
+  if (next < 0 || next >= pos.total) return;
+  const target = pos.seq[next];
+  const row = viewMode === "establishments" ? target.rep : target;
+  _gbSuppressDetailFocus = !!refocusEl;
+  selectedIdx = rowIdx(row);
+  if (viewMode === "establishments") showDetail(row, { estab: target });
+  else showDetail(row);
+  _gbSuppressDetailFocus = false;
+  if (viewMode === "establishments") renderEstabBody(); else renderTableBody();
+  scrollToSelected();
+  if (refocusEl) {
+    // Keep the arrow under the pointer usable; hand focus to its twin when this
+    // step exhausted the sequence, so the keyboard never lands on a dead button.
+    const el = refocusEl.disabled
+      ? document.getElementById(refocusEl.id === "detail-next" ? "detail-prev" : "detail-next")
+      : refocusEl;
+    if (el && !el.disabled) el.focus();
+    else { const t = document.getElementById("detail-title"); if (t) t.focus(); }
+    const live = document.getElementById("detail-nav-live");
+    const p2 = gbSeqPosition(row);
+    if (live) live.textContent = (row.name || "Entry") +
+      (p2 ? ", " + (p2.index + 1).toLocaleString() + " of " + p2.total.toLocaleString() : "");
+  }
+}
+(function () {
+  const prev = document.getElementById("detail-prev");
+  const next = document.getElementById("detail-next");
+  if (prev) prev.addEventListener("click", () => gbStepEntry(-1, prev));
+  if (next) next.addEventListener("click", () => gbStepEntry(1, next));
+  // Left/right rather than up/down: the panel scrolls vertically, and stealing
+  // ArrowUp/ArrowDown would fight both the panel and the table's row navigation.
+  document.addEventListener("keydown", e => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+    const panel = document.getElementById("detail");
+    if (!panel || !panel.classList.contains("open")) return;
+    const t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+    // Don't hijack horizontal scrolling of the coverage grid.
+    if (t && t.closest && t.closest(".coverage-scroll")) return;
+    e.preventDefault();
+    gbStepEntry(e.key === "ArrowLeft" ? -1 : 1, null);
+  });
+}());
+
+// ── Pending open (hero card / ?cf= deep link before the row has streamed) ────
+// Both CSVs take ~20s to stream, and the requested entry can be anywhere in
+// them. Waiting for gbDataLoaded before honouring a hero click or a shared link
+// left the panel shut for that whole time. Instead the stream callback watches
+// for one canvas_fragment and opens the panel the moment its row lands —
+// typically a second or two. showDetail() already copes with being called
+// mid-stream: the coverage grid shows its "matches will appear once all entries
+// finish loading…" placeholder until the match index exists.
+let gbPendingOpenCf = null;
+function gbOpenHeroRow(row) {
+  selectedIdx = rowIdx(row);
+  showDetail(row);
+  renderTableBody();
+  const app = document.getElementById('app');
+  if (app) app.scrollIntoView({ behavior: 'smooth' });
+  scrollToSelected(500);
+}
+function gbCheckPendingOpen(row) {
+  if (row.canvas_fragment !== gbPendingOpenCf) return;
+  gbPendingOpenCf = null;
+  document.querySelectorAll('.gb-hero-card-pending')
+    .forEach(el => el.classList.remove('gb-hero-card-pending'));
+  gbOpenHeroRow(row);
+}
+
+// ── NYC precomputed coordinates ────────────────────────────────────────────
+// The NYC geocoding run resolved 7,965 of 7,995 New York entries (99.6%) to real
+// coordinates, with neighborhood and borough labels, and nyc.html has shipped
+// that CSV for a while — but this page never used it, geocoding every NYC
+// address live against Nominatim instead. For the densest slice of the corpus
+// that is both slower and less accurate than the answer already sitting in the
+// repo.
+//
+// nyc_geo.json is the slim form of it (scripts/build_nyc_geo.py): ~107 KB
+// gzipped, keyed by sha1(canvas_fragment)[:12] — the same content-addressed id
+// the thumbnail CDN uses, so sha1hex() below already computes it. Coordinates
+// (NYC GeoSearch, public domain) and the point-in-polygon neighborhood labels
+// are CC0-compatible; the CC BY-SA boundary geometry is deliberately not here.
+let NYC_GEO = null;
+let _nycGeoPromise = null;
+function gbLoadNycGeo() {
+  if (_nycGeoPromise) return _nycGeoPromise;
+  _nycGeoPromise = gbCachedFetch("nyc_geo.json")
+    .then(r => (r.ok ? r.json() : null))
+    .then(j => { NYC_GEO = j || {}; return NYC_GEO; })
+    .catch(() => { NYC_GEO = {}; return NYC_GEO; });  // absent file → live geocode
+  return _nycGeoPromise;
+}
+// Returns {lat, lon, neighborhood, borough, approx} or null.
+function gbNycGeo(row) {
+  if (!NYC_GEO) return null;
+  const cf = row && row.canvas_fragment;
+  if (!cf) return null;
+  const v = NYC_GEO[sha1hex(cf).slice(0, 12)];
+  if (!v) return null;
+  return { lat: v[0], lon: v[1], neighborhood: v[2], borough: v[3], approx: !!v[4] };
 }
 
 // ── Detail map: Nominatim geocode → OSM embed ──────────────────────────────
 // gbGeocode() is shared with explorer.html via gb-geo.js (localStorage-backed
 // cache).
 let _mapAbort = null;
+let _mapTimer = null;
+// Nominatim asks for no more than 1 request/second. Rendering the map straight
+// from showDetail meant every panel open cost up to two lookups (address, then
+// the city fallback), so clicking through twenty entries could fire forty —
+// against a free community service. The lookup now waits for the user to settle
+// on an entry; clicking past one costs nothing.
+const GB_GEOCODE_DELAY_MS = 400;
+function gbCancelDetailMap() {
+  if (_mapTimer) { clearTimeout(_mapTimer); _mapTimer = null; }
+  if (_mapAbort) { _mapAbort.abort(); _mapAbort = null; }
+}
 function renderDetailMap(row) {
   const mapEl = document.getElementById("detail-map");
   mapEl.style.display = "none";
   mapEl.innerHTML = "";
-  if (_mapAbort) { _mapAbort.abort(); _mapAbort = null; }
+  gbCancelDetailMap();
 
   const addr = (row.address || "").trim();
   const city = (row.city || "").trim();
@@ -2235,14 +2890,42 @@ function renderDetailMap(row) {
   const controller = new AbortController();
   _mapAbort = controller;
 
-  function showEmbed(lat, lon, d, disclaimer) {
+  function showEmbed(lat, lon, d, disclaimer, opts) {
+    const o = opts || {};
     const bbox = [lon - d, lat - d, lon + d, lat + d].join(",");
     const marker = d < 0.05 ? "&marker=" + lat + "," + lon : "";
     const embedUrl = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox + "&layer=mapnik" + marker;
+    const place = o.place
+      ? '<div class="map-place">' + escapeHtml(o.place) + '</div>' : "";
+    const extra = o.extraLink || "";
     mapEl.innerHTML =
-      '<div class="also-in-label">Approximate location</div>' +
+      '<div class="also-in-label">' + (o.label || "Approximate location") + '</div>' + place +
       '<iframe class="map-frame" src="' + embedUrl + '" loading="lazy" title="Map showing approximate location of this listing"></iframe>' +
-      '<p class="map-disclaimer">' + disclaimer + ' <a href="' + osmSearchUrl + '" target="_blank">Search on OpenStreetMap ↗</a></p>';
+      '<p class="map-disclaimer">' + disclaimer +
+      ' <a href="' + osmSearchUrl + '" target="_blank">Search on OpenStreetMap ↗</a>' + extra + '</p>';
+  }
+
+  // Precomputed NYC coordinate: no network lookup at all, and a better answer
+  // than Nominatim gives for a 1940s Harlem address. Falls through to the live
+  // geocode for everywhere else (and for the 30 NYC rows that never resolved).
+  function tryPrecomputed() {
+    const g = gbNycGeo(row);
+    if (!g) return false;
+    const where = [g.neighborhood, g.borough].filter(Boolean).join(", ");
+    const nycUrl = "nyc.html?cf=" + encodeURIComponent(row.canvas_fragment || "");
+    const extraLink = ' <a href="' + nycUrl + '">Open in the NYC explorer ↗</a>';
+    if (g.approx) {
+      showEmbed(g.lat, g.lon, 0.004,
+        "Block-level match — the geocoder could not resolve this to a single building. " +
+        "Streets and addresses also change over time, so treat it as an approximation.",
+        { label: "Approximate location", place: where, extraLink: extraLink });
+    } else {
+      showEmbed(g.lat, g.lon, 0.0022,
+        "Geocoded from the printed address by NYC GeoSearch. Streets and addresses " +
+        "change over time, and the building here may not be the one listed.",
+        { label: "Location", place: where, extraLink: extraLink });
+    }
+    return true;
   }
 
   function tryCity() {
@@ -2260,20 +2943,35 @@ function renderDetailMap(row) {
       });
   }
 
-  gbGeocode(addrQuery, controller.signal)
-    .then(results => {
-      if (!results.length) { tryCity(); return; }
-      const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
-      showEmbed(lat, lon, 0.006, "Note: Streets and addresses change over time, and historical addresses often don't match contemporary locations -- use with caution.");
-    })
-    .catch(err => {
-      if (err.name === "AbortError") return;
-      tryCity();
-    });
+  // The precomputed table answers instantly and without a request, but it may
+  // still be in flight on the first open — so wait for it before deciding, then
+  // fall back to the live lookup. The debounce also still applies: a user
+  // clicking past this entry cancels the timer before anything is fetched.
+  gbLoadNycGeo().then(() => {
+    if (controller.signal.aborted) return;
+    if (tryPrecomputed()) return;
+    _mapTimer = setTimeout(() => {
+      _mapTimer = null;
+      gbGeocode(addrQuery, controller.signal)
+        .then(results => {
+          if (!results.length) { tryCity(); return; }
+          const lat = parseFloat(results[0].lat), lon = parseFloat(results[0].lon);
+          showEmbed(lat, lon, 0.006, "Note: Streets and addresses change over time, and historical addresses often don't match contemporary locations -- use with caution.");
+        })
+        .catch(err => {
+          if (err.name === "AbortError") return;
+          tryCity();
+        });
+    }, GB_GEOCODE_DELAY_MS);
+  });
 }
 
 document.getElementById("detail-close").addEventListener("click", () => {
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+  // Drop the pending geocode and release the mobile modal state (role, inert)
+  // before focus moves back to the table.
+  gbCancelDetailMap();
+  gbSyncDetailModality();
   const u = new URL(location.href);
   u.searchParams.delete('cf');
   const qs = u.searchParams.toString();
@@ -2296,6 +2994,109 @@ document.getElementById("detail-close").addEventListener("click", () => {
     if (prevRow) prevRow.focus({ preventScroll: true });
   }
 });
+
+// ── Clipboard ──────────────────────────────────────────────────────────────
+// Shared by the copy-link and copy-citation buttons.
+const _gbStatusTimers = new WeakMap();
+function gbSayStatus(el, msg) {
+  if (!el) return;
+  el.textContent = msg;
+  const t = _gbStatusTimers.get(el);
+  if (t) clearTimeout(t);
+  _gbStatusTimers.set(el, setTimeout(() => { el.textContent = ""; }, 2500));
+}
+// execCommand fallback: navigator.clipboard is unavailable on insecure origins,
+// which includes the plain-HTTP local server used to preview this file.
+function _gbLegacyCopy(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+  document.body.removeChild(ta);
+  return ok;
+}
+function gbCopyText(text, statusEl, okMsg) {
+  const fail = "Press ⌘/Ctrl+C to copy";
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text)
+      .then(() => gbSayStatus(statusEl, okMsg))
+      .catch(() => gbSayStatus(statusEl, _gbLegacyCopy(text) ? okMsg : fail));
+    return;
+  }
+  gbSayStatus(statusEl, _gbLegacyCopy(text) ? okMsg : fail);
+}
+
+// ── Citation ───────────────────────────────────────────────────────────────
+// Everything a citation needs is already on the row — the edition title, the
+// year, the holding institution (implied by the IIIF host) and a stable
+// permalink — but a reader had to assemble it by hand.
+//
+// It states only what the data supports. Publisher and place of publication are
+// not in the corpus, so they are not in the citation: an invented "New York:
+// Victor H. Green & Co." would be plausible, uncheckable, and wrong for the six
+// other publications. The permalink is built from origin + pathname rather than
+// location.href so a citation never carries the citer's private filter state.
+const GB_CITE_SITE = "Green Book and Travel Guides Explorer";
+function gbEntryPermalink(row) {
+  if (!row || !row.canvas_fragment) return location.origin + location.pathname;
+  return location.origin + location.pathname + "?cf=" + encodeURIComponent(row.canvas_fragment);
+}
+function gbBuildCitation(row) {
+  const name = (row.name || "").trim() || "Untitled listing";
+  const year = String(row[GB_YEAR_FIELD] || row.year || "").trim();
+  const edition = (row.volume_title || "").trim() || (row.publication || "").trim();
+  const inst = (row.canvas_fragment || "").includes("tile.loc.gov")
+    ? "the Library of Congress" : "The New York Public Library";
+  const accessed = new Date().toLocaleDateString("en-US",
+    { year: "numeric", month: "long", day: "numeric" });
+  // Most edition titles already carry the year ("The Negro Motorist Green Book:
+  // 1937"), so appending it again reads as a typo. Only add it when the title
+  // doesn't already say it — "Go, guide to pleasant motoring, Vol. 3" does need it.
+  const parts = ['"' + name + '."'];
+  if (edition) parts.push(edition + (year && edition.indexOf(year) === -1 ? ", " + year : "") + ".");
+  else if (year) parts.push(year + ".");
+  parts.push("Digitized by " + inst + ".");
+  parts.push(GB_CITE_SITE + ", " + gbEntryPermalink(row) + ".");
+  parts.push("Accessed " + accessed + ".");
+  return parts.join(" ");
+}
+function gbRenderCitation(row) {
+  const box = document.getElementById("detail-cite");
+  const txt = document.getElementById("detail-cite-text");
+  if (!box || !txt) return;
+  if (!row) { box.style.display = "none"; return; }
+  box.style.display = "";
+  box.open = false;  // collapsed by default: useful, but not what most readers came for
+  txt.textContent = gbBuildCitation(row);
+}
+(function () {
+  const btn = document.getElementById("detail-copy-cite");
+  const status = document.getElementById("detail-cite-status");
+  if (!btn || !status) return;
+  btn.addEventListener("click", () => {
+    gcEvent("detail-copy-cite");
+    gbCopyText(document.getElementById("detail-cite-text").textContent, status, "Citation copied");
+  });
+}());
+
+// ── Copy link ──────────────────────────────────────────────────────────────
+// The ?cf= permalink already round-tripped (showDetail syncs it, the loader and
+// popstate restore it) but had no UI, so sharing an entry meant knowing to copy
+// the address bar.
+(function () {
+  const btn = document.getElementById("detail-copy-link");
+  const status = document.getElementById("detail-copy-status");
+  if (!btn || !status) return;
+  btn.addEventListener("click", () => {
+    gcEvent("detail-copy-link");
+    gbCopyText(location.href, status, "Link copied");
+  });
+}());
 
 // ── Render: facet sidebar ──────────────────────────────────────────────────
 function renderFacetSidebar() {
@@ -2700,11 +3501,21 @@ function applyHashState() {
 }
 
 // ── Render all ─────────────────────────────────────────────────────────────
-function renderAll() {
+// `opts.keepDetail` suppresses the auto-close for the one caller that is about
+// to restore the same panel anyway — the bootstrap pass after the CSVs finish.
+// Closing and reopening there made a deep-linked entry blink out of existence.
+function renderAll(opts) {
   // Auto-close the detail panel whenever filters/search change so users
   // never see a stale record juxtaposed against a new result set.
-  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
-  selectedIdx = null;
+  if (!(opts && opts.keepDetail)) {
+    document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
+    // Central close path — drop any pending geocode and release the mobile modal
+    // state here too, so `inert` can never outlive the panel that set it. Callers
+    // that reopen the panel (gbJumpToListing) re-apply it via showDetail().
+    gbCancelDetailMap();
+    gbSyncDetailModality();
+    selectedIdx = null;
+  }
   _winSize = WINDOW_STEP;  // shrink an extended window back to one page
   _estabWinSize = ESTAB_WINDOW_STEP;
   syncViewToggleUI();
@@ -2971,7 +3782,8 @@ function buildEstabTr(g, q, selKey) {
   }
   const open = () => {
     selectedIdx = rowIdx(g.rep);
-    showDetail(g.rep);
+    // Pass the group so the panel can say which of its listings this is.
+    showDetail(g.rep, { estab: g });
     const wrap = document.getElementById("table-wrap");
     const saved = wrap ? wrap.scrollTop : 0;
     renderEstabBody();
@@ -3224,6 +4036,277 @@ function gbCrossListings(row) {
   return (key !== undefined && gbNameIndex.get(key)) || [];
 }
 
+// ── Establishment record: how the guides printed one business over time ─────
+// The resolver deliberately folds name variants ("Miami Carver" / "Miami Carver
+// Hotel"), address forms ("La Salle" / "LaSalle") and city forms so that one
+// business is one group. That fold is what makes the group correct — but it also
+// hides the most interesting thing in a longitudinal directory: the guides
+// recorded this business under different names, at different addresses, under
+// different owners, filed under different headings, across three decades.
+//
+// gbEstabTimeline unfolds it again: one entry per listing in year order, showing
+// how each guide printed the business.
+//
+// It deliberately reports variance and does NOT claim renames or moves. That
+// restraint is measured, not cautious by default — across all 18,048
+// multi-listing groups:
+//
+//   - Names never differ by stem: 0 of 18,048. The resolver buckets on
+//     gbNewNameStem, so listings only reach the same group when their stems
+//     match. Remaining variation is tail noise, parentheticals, quotes or
+//     possessives — "ROCKEFELLER CENTER" vs "ROCKEFELLER CENTER (and Radio
+//     City)". Comparing raw strings labelled 16.1% of groups "renamed"; that
+//     was measuring transcription, not history.
+//   - House numbers never differ either: 0 of 18,048, because the resolver's
+//     address-signature phase splits on incompatible numbers. A business that
+//     genuinely moved to a new number is therefore two groups, not one. Raw
+//     string comparison flagged 29.7% as moves and parsed-place comparison
+//     6.5%, but those are transcription variants too ("4330 Broadway" vs
+//     "4330 B'way."). Claiming a move here would contradict the grouping that
+//     put these listings together in the first place.
+//   - Category drift is real, but the coverage section already reports it
+//     better ("Filed under N section headings across guides").
+//
+// Proprietors looked like the one substantive change left, but of the 250 groups
+// where the name differs after stripping titles, a hand sample was mostly the
+// same person written differently — "Alberta Sawyer, Mgr." / "Mrs. Alberta
+// Sawyer", "Atty. Thad D. Williams" / "Thad D. Williams" — or OCR ("I. W.
+// Mitchell" / "J. W. Mitchell"). Too noisy to assert a change of ownership.
+//
+// So this section makes no claims at all: it shows what each guide printed and
+// lets the reader judge. The proprietor is surfaced when it differs from the
+// previous listing, which is a statement about the sources rather than about
+// the business.
+function _gbTlNorm(s) { return (s || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+const _GB_HONORIFIC = /^(mr|mrs|miss|ms|dr|rev|atty|prof|capt|sgt|hon)$/;
+const _GB_ROLE = /^(prop|propr|proprietor|prophetess|mgr|manager|owner|pres|president|sec|secy|secretary|treas|treasurer|editor|chairman|chairwoman|dir|director|exec|proprietors)$/;
+// Compare the person, not the courtesy title or the job description.
+function _gbPersonKey(s) {
+  let t = String(s || "").toLowerCase().split(",")[0]
+    .replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(Boolean);
+  while (t.length > 1 && _GB_HONORIFIC.test(t[0])) t.shift();
+  while (t.length > 1 && _GB_ROLE.test(t[t.length - 1])) t.pop();
+  return t.join("");
+}
+function gbEstabTimeline(rows) {
+  const sorted = [...rows].sort((a, b) => {
+    const ya = Number(a[GB_YEAR_FIELD] || a.year) || 0;
+    const yb = Number(b[GB_YEAR_FIELD] || b.year) || 0;
+    return ya - yb || (a.publication || "").localeCompare(b.publication || "");
+  });
+  const out = [];
+  let prev = null;
+  sorted.forEach(r => {
+    const addr = (r.address || "").trim();
+    const cur = {
+      row: r,
+      year: String(r[GB_YEAR_FIELD] || r.year || ""),
+      pub: r.publication || "",
+      name: (r.name || "").trim(),
+      // Placeholder addresses ("do", "same") carry no signal and would otherwise
+      // register as a move in both directions.
+      address: addr && !ADDR_PLACEHOLDER.test(addr) ? addr : "",
+      proprietor: (r.proprietor || "").trim(),
+      category: (r.category || "").trim(),
+      showProprietor: false,
+    };
+    // Surface the proprietor on the first listing that names one, and whenever a
+    // later listing names a different person.
+    if (cur.proprietor &&
+        (!prev || !prev.proprietor || _gbPersonKey(cur.proprietor) !== _gbPersonKey(prev.proprietor))) {
+      cur.showProprietor = true;
+    }
+    // Carry the last known value forward so a listing that simply omits the
+    // address isn't reported as a move when the next one repeats the original.
+    cur.address = cur.address || (prev ? prev.address : "");
+    cur.proprietor = cur.proprietor || (prev ? prev.proprietor : "");
+    out.push(cur);
+    prev = cur;
+  });
+  return out;
+}
+
+// The framing line under the title. The Establishments view lists one row per
+// resolved business but opens a single listing's panel, which previously gave no
+// hint that you were looking at 1 of 9 — you clicked a business that ran
+// 1938–1955 and got the 1955 record with no way to tell.
+function gbRenderEstabNote(row, listings, estab) {
+  const el = document.getElementById("detail-estab-note");
+  if (!el) return;
+  el.innerHTML = "";
+  el.style.display = "none";
+  if (!row || !listings || listings.length < 2) return;
+
+  const years = listings.map(r => Number(r[GB_YEAR_FIELD] || r.year)).filter(n => !isNaN(n));
+  const lo = Math.min(...years), hi = Math.max(...years);
+  const range = years.length ? (lo === hi ? String(lo) : lo + "–" + hi) : "";
+  const year = String(row[GB_YEAR_FIELD] || row.year || "");
+
+  // No ordinal: the Establishments view always opens the most recent listing, so
+  // a position would read "32 of 32" every time. The timeline below marks where
+  // this listing sits, which shows position better than a number would.
+  const parts = [];
+  parts.push(year ? "Showing its " + year + " listing" : "Showing one listing");
+  parts.push("one of " + listings.length);
+  if (range) parts.push(range);
+  el.textContent = parts.join(" · ");
+
+  // When the group's display name differs from what this year printed, say so —
+  // otherwise the title contradicts the row the user clicked in the table.
+  if (estab && estab.name && _gbTlNorm(estab.name) !== _gbTlNorm(row.name || "")) {
+    const alt = document.createElement("span");
+    alt.className = "estab-note-alt";
+    alt.textContent = "Listed elsewhere as " + estab.name;
+    el.appendChild(document.createElement("br"));
+    el.appendChild(alt);
+  }
+  el.style.display = "";
+}
+
+const ESTAB_TL_VISIBLE = 10;  // listings shown before the "show all" expander
+function renderEstabRecord(row, listings) {
+  const el = document.getElementById("detail-estab");
+  el.innerHTML = "";
+  el.style.display = "none";
+  if (!listings || listings.length < 2) return;
+  const tl = gbEstabTimeline(listings);
+  el.style.display = "";
+
+  const hd = document.createElement("div");
+  hd.className = "also-in-label";
+  hd.textContent = "Across its listings";
+  el.appendChild(hd);
+
+  // Say what varies and that PRINTING is what varies: these are how the guides
+  // set one business at one location in type, not renames or moves (see
+  // gbEstabTimeline). Stating the variance is the honest, and more interesting,
+  // claim — it is a fact about the sources. Each clause carries its own noun
+  // and verb so it still reads when only one of the two varies; the earlier
+  // "3 of the address" borrowed both from the name clause and said nothing on
+  // its own.
+  const names = new Set(tl.map(t => _gbTlNorm(t.name)).filter(Boolean));
+  const addrs = new Set(tl.map(t => _gbTlNorm(t.address)).filter(Boolean));
+  const bits = [];
+  if (names.size > 1) bits.push("the name " + names.size + " ways");
+  if (addrs.size > 1) bits.push("the address " + addrs.size + " ways");
+  if (bits.length) {
+    const sum = document.createElement("div");
+    sum.className = "estab-summary";
+    sum.textContent = "The guides print " + bits.join(" and ") + ".";
+    el.appendChild(sum);
+  }
+
+  const list = document.createElement("ol");
+  list.className = "estab-timeline";
+  let shownAddr = "";
+  tl.forEach((t, i) => {
+    const li = document.createElement("li");
+    if (i >= ESTAB_TL_VISIBLE) li.className = "estab-tl-extra";
+    const isCurrent = t.row === row;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "estab-tl-item" + (isCurrent ? " estab-tl-current" : "");
+
+    const yr = document.createElement("span");
+    yr.className = "estab-tl-year";
+    yr.textContent = t.year;
+    btn.appendChild(yr);
+
+    const dot = document.createElement("span");
+    dot.className = "pub-dot";
+    dot.style.background = PUBLICATION_COLORS[t.pub] || "var(--gb-ink-faint)";
+    btn.appendChild(dot);
+
+    const body = document.createElement("span");
+    body.className = "estab-tl-body";
+    const nm = document.createElement("span");
+    nm.className = "estab-tl-name";
+    nm.textContent = t.name || "(unnamed)";
+    body.appendChild(nm);
+    // Address on the first listing only. The variants are counted in the summary
+    // above; printing five transcriptions of one location down the list reads as
+    // five moves, which is precisely what the data does not say.
+    if (t.address && !shownAddr) {
+      const ad = document.createElement("span");
+      ad.className = "estab-tl-sub";
+      ad.textContent = t.address;
+      body.appendChild(ad);
+      shownAddr = t.address;
+    }
+    if (t.showProprietor) {
+      const pr = document.createElement("span");
+      pr.className = "estab-tl-prop";
+      pr.textContent = t.proprietor;
+      body.appendChild(pr);
+    }
+    btn.appendChild(body);
+
+    const label = [t.year, PUBLICATION_SHORT_NAMES[t.pub] || t.pub, t.name].filter(Boolean).join(", ");
+    if (isCurrent) {
+      btn.setAttribute("aria-current", "true");
+      btn.setAttribute("aria-label", label + ": this listing");
+      btn.addEventListener("click", e => e.preventDefault());
+    } else {
+      btn.setAttribute("aria-label", "Open " + label);
+      btn.addEventListener("click", () => gbOpenListing(t.row));
+    }
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+  el.appendChild(list);
+
+  if (tl.length > ESTAB_TL_VISIBLE) {
+    const more = document.createElement("button");
+    more.type = "button";
+    more.className = "estab-tl-more";
+    more.textContent = "Show all " + tl.length + " listings";
+    more.addEventListener("click", () => {
+      list.classList.add("estab-timeline-all");
+      more.remove();
+    });
+    el.appendChild(more);
+  }
+}
+
+// Make sure a row the user just asked for is actually in the filtered table.
+// The search box and column filters that were in force before the jump have
+// nothing to do with the cell just clicked, and routinely exclude it: a table
+// filtered to "Wards" does not contain the 1930 listing printed as "Ward", so
+// the explorer announced "no matches" while the panel beside it had that very
+// listing open. Broaden by the same ladder the "Show all listings" link uses —
+// stripped name, raw name, raw name without the city — and verify each rung
+// actually contains the target before committing to it. The facets are left
+// alone: the year is the whole point of the jump. If no rung works, put the
+// user's own filters back rather than strand them somewhere arbitrary.
+function gbEnsureRowVisible(targetRow) {
+  if (getFiltered().includes(targetRow)) return;
+  const savedQuery = searchQuery;
+  const savedFilters = Object.assign({}, colFilters);
+  const nf = ["name", "establishment_name", "firm_name", "business_name"]
+    .find(k => targetRow[k] != null && targetRow[k] !== "");
+  const nfVal = nf && targetRow[nf];
+  const cityVal = targetRow.city ? gbNormCity(targetRow.city) : "";
+  const ladder = [];
+  if (nfVal) {
+    ladder.push([gbSearchQueryName(nfVal), cityVal]);
+    ladder.push([nfVal, cityVal]);
+    ladder.push([nfVal, ""]);
+  }
+  ladder.push(["", ""]);  // last resort: the year facet alone
+  for (const [q, city] of ladder) {
+    searchQuery = q;
+    colFilters = {};
+    if (city) colFilters["city"] = city;
+    if (getFiltered().includes(targetRow)) {
+      const box = document.getElementById("search");
+      if (box) box.value = searchQuery;
+      return;
+    }
+  }
+  searchQuery = savedQuery;
+  colFilters = savedFilters;
+}
+
 // Jump to a specific listing row. The coverage grid knows the exact target
 // row for each filled cell, so we can land on the (publication, year) the
 // user clicked rather than guessing by year alone.
@@ -3234,11 +4317,54 @@ function gbJumpToListing(targetRow) {
     facetState[GB_YEAR_FIELD].clear();
     facetState[GB_YEAR_FIELD].add(year);
   }
+  // Hold the coverage grid still under the finger. The panel keeps its scroll
+  // offset across a jump, but the sections above the grid differ in height from
+  // entry to entry, so the grid slid around — and landing on a shorter entry
+  // clamped the old offset to the very bottom, leaving the panel apparently
+  // stuck with nothing below it. Anchor on the grid's viewport position so
+  // tapping cell after cell keeps working.
+  const covBefore = document.getElementById("detail-also-in");
+  const anchorY = covBefore && covBefore.offsetParent !== null
+    ? covBefore.getBoundingClientRect().top : null;
+
+  // A coverage cell names one listing in one edition, so land in the listings
+  // view whichever view we came from. In the establishments view the table
+  // carries one row per business, so narrowing to the clicked cell's year
+  // routinely emptied it — the explorer said "no matches" while the panel
+  // beside it had the very listing open.
+  viewMode = "listings";
+  gbEnsureRowVisible(targetRow);
   _pushNextHistory = true;
-  renderAll();
+  // Keep the panel open across the re-filter. renderAll()'s auto-close strips
+  // .open, and #detail is `display: none` without it — so the panel was being
+  // torn down and rebuilt on every jump, even though the very next statement
+  // reopens it on a different row. On mobile #detail is also the scroll
+  // container (position: fixed; overflow-y: auto), so that teardown destroys
+  // and recreates the thing the user's finger is scrolling, mid-tap. It also
+  // churned the modal state, dropping and re-applying `inert` across the
+  // background for no reason. Nothing here needs the panel closed.
+  renderAll({ keepDetail: true });
   selectedIdx = rowIdx(targetRow);
   showDetail(targetRow);
   renderTableBody();
+
+  if (anchorY !== null) {
+    const cov = document.getElementById("detail-also-in");
+    const sc = gbDetailScroller();
+    if (cov && sc && cov.offsetParent !== null) {
+      const delta = cov.getBoundingClientRect().top - anchorY;
+      if (delta) sc.scrollTop += delta;
+    }
+  }
+}
+
+// Which element actually scrolls the panel: #detail itself below 640px (where
+// it is a full-viewport overlay), #detail-inner above it. Picked by measurement
+// rather than by media query, so it stays right if either rule changes.
+function gbDetailScroller() {
+  const inner = document.getElementById("detail-inner");
+  if (inner && inner.scrollHeight > inner.clientHeight + 2) return inner;
+  return document.getElementById("detail");
 }
 
 // ── Coverage-cell tooltip ────────────────────────────────────────────────────
@@ -3304,10 +4430,21 @@ renderFacetSidebar = function () {
 };
 
 // showDetail: sync ?cf= URL param + append "Also in" section
+// `opts.estab` is the establishment group when the panel was opened from the
+// Establishments view — it names which of the group's listings is on screen.
 const _gbOrigSD = showDetail;
-showDetail = function (row) {
+showDetail = function (row, opts) {
   _gbOrigSD(row);
   if (row) gcEvent('detail-open');
+
+  // The establishment record: every listing the resolver folded into this
+  // business, and what changed between them. Rendered before the coverage grid's
+  // early returns below, so a group still gets its record even when the grid
+  // bails (mid-stream, or no cross-listings to plot).
+  const estabListings = row ? gbCrossListings(row) : [];
+  _gbLastDetailEstab = (opts && opts.estab) || null;
+  renderEstabRecord(row, estabListings);
+  gbRenderEstabNote(row, estabListings, _gbLastDetailEstab);
 
   // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
   // closes it); switching entries while it's already open replaces, so Back
@@ -3321,6 +4458,17 @@ showDetail = function (row) {
     else history.pushState(null, '', url);
   }
 
+  // The coverage grid needs the cross-listing index, which is only built once
+  // the CSVs finish streaming. It lives in its own function so a panel opened
+  // before the index exists can have this section filled in later, in place,
+  // without reopening the panel — see gbRefreshDetailIndexSections().
+  gbRenderCoverage(row);
+};
+
+// Split verbatim out of the showDetail wrapper above, of which it was the tail —
+// so its early `return`s still mean "this section is done" and nothing was
+// pending behind them. Reads `row` and globals only.
+function gbRenderCoverage(row) {
   const alsoEl = document.getElementById("detail-also-in");
   if (!alsoEl) return;
 
@@ -3640,14 +4788,24 @@ showDetail = function (row) {
   });
   alsoEl.appendChild(legend);
 
-  // Broaden filters to surface every candidate match across publications. The
-  // count reuses the summary total so the link says what it will show.
+  // Broaden filters to surface every candidate match across publications.
+  // Deliberately no count: this runs a name search, which is looser than the
+  // resolved group the grid above plots. It reliably finds every listing in
+  // that group, and usually a few more — same-name rows the resolver split off
+  // at a different address. Promising nList and landing on more read as a bug
+  // ("Show all 36" arriving at 41 rows), so the link states the action instead.
   const allLink = document.createElement("a");
   allLink.className = "also-all-link";
   allLink.href = "#";
-  allLink.textContent = "Show all " + nList + " matching listings in the table →";
+  allLink.textContent = "Search the table for this business →";
   allLink.addEventListener("click", e => {
     e.preventDefault();
+    // The link promises listings, so it must land in the listings view — the
+    // establishments table holds one row per business and cannot show them.
+    // Set before the candidate loop below: getFiltered() is keyed on viewMode,
+    // so verifying a query against the establishments sequence would be testing
+    // the wrong table.
+    viewMode = "listings";
     if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD]) facetState[GB_YEAR_FIELD].clear();
     if (facetState["publication"]) facetState["publication"].clear();
     // Search on the stripped name (suffixes, descriptors, possessives) so
@@ -3680,7 +4838,22 @@ showDetail = function (row) {
     renderAll();
   });
   alsoEl.appendChild(allLink);
-};
+}
+
+// Re-render only the panel sections that depend on the cross-listing index.
+// Used when the index finishes building while a deep-linked panel is already
+// open: calling showDetail() again would also work, but it would re-run the
+// map geocode, re-take focus and touch history — visible churn for sections
+// that are already correct. The establishment group is remembered from the
+// opening call so a panel opened from the Establishments view keeps naming it.
+var _gbLastDetailEstab = null;
+function gbRefreshDetailIndexSections(row) {
+  if (!row || !document.getElementById("detail").classList.contains("open")) return;
+  const listings = gbCrossListings(row);
+  renderEstabRecord(row, listings);
+  gbRenderEstabNote(row, listings, _gbLastDetailEstab);
+  gbRenderCoverage(row);
+}
 
 // ── Re-render everything now that monkey-patches are in place ────────────────
 // The base renderAll() at the bottom of the main script runs *before* this
@@ -3694,7 +4867,9 @@ renderAll();
   const cf = new URLSearchParams(location.search).get('cf');
   if (!cf) return;
   const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
-  if (!match) return;
+  // Not streamed in yet — hand it to the pending-open watcher so the panel opens
+  // as soon as this row arrives, rather than waiting for the whole dataset.
+  if (!match) { gbPendingOpenCf = cf; return; }
   selectedIdx = rowIdx(match);
   showDetail(match);
   renderTableBody();
@@ -3793,35 +4968,90 @@ const MERGED_ENTRIES_TOTAL_APPROX = 109163;
 // State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
 // quoting (escaped quotes, embedded commas and newlines) across arbitrary
 // chunk boundaries.
-function gbCreateStreamingCSVParser(onRow) {
+//
+// Two things make it fast enough for 33 MB / 109k rows, both measured:
+//
+//   - Ordinary characters are copied in runs. The original appended one
+//     character at a time (`field += c`) for all ~33 million of them; the state
+//     machine below is byte-for-byte identical, but a fast path first scans
+//     ahead for the next character that actually means something (, " CR LF, or
+//     just " inside a quoted field) and appends that whole slice in one go.
+//   - Columns nobody reads are never materialised. `keepColumns` is an optional
+//     Set of header names; fields outside it are neither accumulated into a
+//     string nor written onto the row object. The Green Book CSV carries 32
+//     columns of which the explorers read 19 — the flag_*/drift_* QA columns and
+//     `Fixed or checked` have zero references in any explorer — so this drops
+//     ~1.4 million string allocations and property writes per load. The CSVs
+//     themselves are untouched: this is a read-side filter, not a data change.
+function gbCreateStreamingCSVParser(onRow, keepColumns) {
   let headers = null;
+  let keepMask = null;       // per-column boolean, or null while reading headers
+  let keepThis = true;       // does the field currently being read survive?
+  let fieldIdx = 0;
   let field = '';
   let row = [];
   let inQuote = false;
   let pendingQuote = false;  // saw `"` while in quote — next char decides escape vs end
   let pendingCR = false;     // saw `\r` — swallow following `\n` if any
-  function flushField() { row.push(field); field = ''; }
+  function flushField() {
+    row.push(keepThis ? field : '');
+    field = '';
+    fieldIdx++;
+    keepThis = keepMask ? keepMask[fieldIdx] !== false : true;
+  }
   function flushRow() {
-    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; return; }
-    if (!headers) { headers = row; row = []; return; }
+    if (row.length === 0 || (row.length === 1 && row[0] === '')) { row = []; fieldIdx = 0; keepThis = keepMask ? keepMask[0] !== false : true; return; }
+    if (!headers) {
+      headers = row;
+      if (keepColumns) keepMask = headers.map(h => keepColumns.has(h));
+      row = []; fieldIdx = 0;
+      keepThis = keepMask ? keepMask[0] !== false : true;
+      return;
+    }
     const obj = {};
-    for (let i = 0; i < headers.length; i++) obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    for (let i = 0; i < headers.length; i++) {
+      if (keepMask && !keepMask[i]) continue;
+      obj[headers[i]] = row[i] !== undefined ? row[i] : '';
+    }
     onRow(obj);
-    row = [];
+    row = []; fieldIdx = 0;
+    keepThis = keepMask ? keepMask[0] !== false : true;
   }
   return {
     feed(text) {
-      for (let i = 0; i < text.length; i++) {
-        const c = text[i];
+      const n = text.length;
+      let i = 0;
+      while (i < n) {
+        // Fast path: consume a run of characters that the state machine would
+        // have appended verbatim. Falls through to the per-character logic the
+        // moment anything structural shows up.
+        if (!pendingQuote && !pendingCR) {
+          let j = i;
+          if (inQuote) {
+            while (j < n && text.charCodeAt(j) !== 34) j++;               // until "
+          } else {
+            while (j < n) {
+              const cc = text.charCodeAt(j);
+              if (cc === 34 || cc === 44 || cc === 13 || cc === 10) break; // " , CR LF
+              j++;
+            }
+          }
+          if (j > i) {
+            if (keepThis) field += text.slice(i, j);
+            i = j;
+            continue;
+          }
+        }
+        const c = text[i++];
         if (pendingQuote) {
           pendingQuote = false;
-          if (c === '"') { field += '"'; continue; }
+          if (c === '"') { if (keepThis) field += '"'; continue; }
           inQuote = false;
           // fall through to handle c outside quotes
         }
         if (inQuote) {
           if (c === '"') pendingQuote = true;
-          else field += c;
+          else if (keepThis) field += c;
           continue;
         }
         if (pendingCR) {
@@ -3832,31 +5062,102 @@ function gbCreateStreamingCSVParser(onRow) {
         else if (c === ',') flushField();
         else if (c === '\r') { flushField(); flushRow(); pendingCR = true; }
         else if (c === '\n') { flushField(); flushRow(); }
-        else field += c;
+        else if (keepThis) field += c;
       }
     },
     end() { if (field !== '' || row.length > 0) { flushField(); flushRow(); } }
   };
 }
 
+// Columns the explorers actually read. Everything else in the CSVs is pipeline
+// QA provenance (flag_*, drift_*, "Fixed or checked") or unused metadata; a grep
+// across all-volumes / nyc / explorer / travel_guides finds zero references.
+// `image` and `volume_id` look droppable but are not — liveIiifUrl() falls back
+// to `image`, and the hero stats count distinct `volume_id`.
+const GB_KEEP_COLUMNS = new Set([
+  "volume_id", "volume_title", "volume_year", "publication",
+  "name", "address", "state", "city", "sub_region", "category", "notes",
+  "phone", "proprietor", "amenities_services", "rates", "personnel",
+  "is_advertisement", "is_recommended", "canvas_fragment", "image",
+  // nyc.html's CSV carries its geocode columns in the same stream.
+  "neighborhood", "borough", "latitude", "longitude", "geocode_quality", "review_flag",
+]);
+
+// ── Response cache ─────────────────────────────────────────────────────────
+// The two CSVs are 3.65 MB gzipped and never change between deploys, so paying
+// for them on every visit is the largest avoidable cost a returning reader has.
+// The Cache API keeps the raw responses; the parser is untouched and still
+// streams, it just streams from disk.
+//
+// Freshness is not traded away for it. A cache hit still makes one conditional
+// request (If-None-Match / If-Modified-Since) and only serves the stored copy on
+// a 304, so a redeployed CSV is picked up on the very next load rather than the
+// one after. That costs a round trip instead of megabytes. If the network is
+// unreachable the stored copy is served anyway, which also makes the explorer
+// work offline after a single visit.
+const GB_CACHE_NAME = 'gb-data-v1';
+async function gbCachedFetch(url) {
+  let cache = null;
+  try { if (window.caches) cache = await caches.open(GB_CACHE_NAME); } catch (e) { cache = null; }
+  if (!cache) return fetch(url);            // insecure origin, private mode, old browser
+  const put = async resp => { try { await cache.put(url, resp.clone()); } catch (e) { /* quota */ } };
+
+  let cached = null;
+  try { cached = await cache.match(url); } catch (e) { cached = null; }
+  if (!cached) {
+    const resp = await fetch(url);
+    if (resp.ok) await put(resp);
+    return resp;
+  }
+  const etag = cached.headers.get('ETag');
+  const lastMod = cached.headers.get('Last-Modified');
+  if (!etag && !lastMod) return cached;     // nothing to revalidate with
+  const headers = etag ? { 'If-None-Match': etag } : { 'If-Modified-Since': lastMod };
+  try {
+    const fresh = await fetch(url, { headers });
+    if (fresh.status === 304) return cached;
+    if (fresh.ok) { await put(fresh); return fresh; }
+    return cached;                          // 5xx — the stored copy is better than nothing
+  } catch (e) {
+    return cached;                          // offline
+  }
+}
+// Drop caches from earlier versions of this scheme; cheap, and only on idle.
+function gbPruneOldCaches() {
+  if (!window.caches || !caches.keys) return;
+  const go = () => caches.keys()
+    .then(names => Promise.all(names.filter(n => /^gb-data-/.test(n) && n !== GB_CACHE_NAME)
+      .map(n => caches.delete(n))))
+    .catch(() => {});
+  if (window.requestIdleCallback) requestIdleCallback(go, { timeout: 5000 });
+  else setTimeout(go, 2000);
+}
+
 async function gbStreamCsv(url, onRow) {
-  const resp = await fetch(url);
+  const resp = await gbCachedFetch(url);
   if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + url);
   const reader = resp.body.getReader();
   const decoder = new TextDecoder('utf-8');
-  const parser = gbCreateStreamingCSVParser(onRow);
-  // Sub-chunk size: yielding between sub-chunks lets the browser paint the
-  // first-paint render (and successive incremental updates) instead of being
-  // blocked by a single multi-MB synchronous parse on fast connections.
-  const SUBCHUNK = 128 * 1024;
+  const parser = gbCreateStreamingCSVParser(onRow, GB_KEEP_COLUMNS);
+  // Yield often enough that the browser can paint, but no more. The old code
+  // yielded every 128 KB — ~258 times across the two CSVs — and setTimeout is
+  // clamped to ~4ms, so roughly a second of the load was spent waiting on
+  // timers rather than parsing. Yielding on elapsed time instead keeps frames
+  // available without paying for hundreds of round trips through the event loop.
+  const SUBCHUNK = 256 * 1024;
+  const YIELD_EVERY_MS = 12;
   const yieldToBrowser = () => new Promise(r => setTimeout(r, 0));
+  let lastYield = performance.now();
   while (true) {
     const { done, value } = await reader.read();
     if (done) { parser.feed(decoder.decode()); parser.end(); return; }
     const text = decoder.decode(value, { stream: true });
     for (let off = 0; off < text.length; off += SUBCHUNK) {
       parser.feed(text.substring(off, Math.min(off + SUBCHUNK, text.length)));
-      await yieldToBrowser();
+      if (performance.now() - lastYield >= YIELD_EVERY_MS) {
+        await yieldToBrowser();
+        lastYield = performance.now();
+      }
     }
   }
 }
@@ -3888,23 +5189,40 @@ async function gbStreamCsv(url, onRow) {
   // it to a real "X of Y" count, we stop touching it. #load-status is cheaper
   // to keep current: it always reflects the latest tick, gated to every 10k
   // rows (summed across both streams) so the onRow path stays cheap.
-  function gbProgressTick() {
-    if (ALL_ENTRIES.length % 10000 !== 0) return;
+  // Time-gated rather than every-10,000-rows: at 109k rows that fired about ten
+  // times for the whole load, so the bar lurched. A ~120ms cadence is smooth to
+  // watch and still costs one Date.now() per row.
+  let _lastTick = 0;
+  function gbSetProgress(pct, label) {
+    const wrap = document.getElementById('load-progress');
     const ls = document.getElementById('load-status');
-    if (ls) ls.textContent = gbLoadStatusText();
+    const fill = document.getElementById('load-bar-fill');
+    if (ls) ls.textContent = label;
+    if (fill) fill.style.width = pct + '%';
+    if (wrap) wrap.setAttribute('aria-valuenow', String(Math.round(pct)));
+  }
+  function gbHideProgress() {
+    const wrap = document.getElementById('load-progress');
+    if (wrap) wrap.hidden = true;
+  }
+  function gbProgressTick(force) {
+    const now = Date.now();
+    if (!force && now - _lastTick < 120) return;
+    _lastTick = now;
+    const pct = Math.min(99, ALL_ENTRIES.length / MERGED_ENTRIES_TOTAL_APPROX * 100);
+    gbSetProgress(pct, gbLoadStatusText());
     if (!firstPainted) return;
     const cl = document.getElementById('count-label');
     if (cl && /loading more…$/.test(cl.textContent)) {
       cl.textContent = 'Loaded ' + ALL_ENTRIES.length.toLocaleString() + ' entries — loading more…';
     }
   }
-  const loadStatusEl = document.getElementById('load-status');
-  if (loadStatusEl) loadStatusEl.textContent = gbLoadStatusText();  // initial text, before streaming starts
+  gbSetProgress(0, gbLoadStatusText());  // initial state, before streaming starts
   const getJson = r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
   try {
     const [gbCanvas, tgCanvas] = await Promise.all([
-      fetch('canvas_map.json').then(getJson),
-      fetch('travel_guides_canvas_map.json').then(getJson)
+      gbCachedFetch('canvas_map.json').then(getJson),
+      gbCachedFetch('travel_guides_canvas_map.json').then(getJson)
     ]);
     CANVAS_MAP = Object.assign({}, gbCanvas, tgCanvas);
     await Promise.all([
@@ -3912,12 +5230,15 @@ async function gbStreamCsv(url, onRow) {
         row.publication = GREEN_BOOK_PUBLICATION;
         row._i = ALL_ENTRIES.length;
         ALL_ENTRIES.push(row);
+        // Guard short-circuits to one null check per row unless something is waiting.
+        if (gbPendingOpenCf) gbCheckPendingOpen(row);
         maybeFirstPaint();
         gbProgressTick();
       }),
       gbStreamCsv(TG_CSV_URL, row => {
         row._i = ALL_ENTRIES.length;
         ALL_ENTRIES.push(row);
+        if (gbPendingOpenCf) gbCheckPendingOpen(row);
         maybeFirstPaint();
         gbProgressTick();
       })
@@ -3933,11 +5254,39 @@ async function gbStreamCsv(url, onRow) {
     gbBuildFacets(ALL_ENTRIES);
     PUBLICATION_ACTIVE_YEARS = gbComputePublicationActiveYears(ALL_ENTRIES);
     applyHashState();
-    renderAll();
-    if (loadStatusEl) loadStatusEl.textContent = 'Indexing cross-listings…';
+    renderAll({ keepDetail: true });
+    // Put the panel back immediately, not after the index build below. Both a
+    // ?cf= deep link and a mid-stream click open the panel while the CSVs are
+    // still arriving; renderAll() above then closes it, and reopening only once
+    // gbBuildMatchIndex() returned left the panel visibly gone for seconds
+    // (measured: open at 2.4s, closed at 4.1s, back at 6.6s). The panel's two
+    // index-dependent sections show their "still loading" state for that
+    // stretch and are filled in below, in place.
+    const deepLinkCf = new URLSearchParams(location.search).get('cf');
+    const restoreRow = (deepLinkCf && ALL_ENTRIES.find(r => r.canvas_fragment === deepLinkCf)) || openRow;
+    if (restoreRow) {
+      selectedIdx = rowIdx(restoreRow);
+      // Already on screen from the mid-stream open? Then leave it entirely
+      // alone. Re-running showDetail() would restart the map geocode and
+      // re-take focus for a panel whose content is already right — only the
+      // index-dependent sections below are stale.
+      if (restoreRow !== openRow) showDetail(restoreRow);
+      renderTableBody();
+      // A shared link lands on the entry, not on the masthead.
+      if (deepLinkCf) {
+        const app = document.getElementById('app');
+        if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+      }
+      scrollToSelected(100);
+    }
+    // The bar stays visible through the index build — it is ~1s of the load and
+    // gating Establishments, so going quiet here would look like a stall.
+    gbSetProgress(99, 'Indexing cross-listings…');
     await new Promise(r => setTimeout(r, 0));  // yield so the browser paints before the heavy index build
     ({ index: gbNameIndex, rowToKey: gbRowToKey } = gbBuildMatchIndex(ALL_ENTRIES));
     gbDataLoaded = true;
+    gbPruneOldCaches();
+    gbWarmPageRows();  // pay the page-scan's one-off JIT cost on idle, not on the first click
     const estBtn = document.getElementById('view-estabs-btn');
     if (estBtn) {
       estBtn.disabled = false;
@@ -3946,30 +5295,20 @@ async function gbStreamCsv(url, onRow) {
     gbUpdateStats();  // correct any partial counts the hero observer wrote mid-stream
     if (gbTrendsModalOpen()) gbRenderTrends();  // modal opened before data was ready
     gbMaybeBuildHero();  // build the featured trio now that all volumes are present
-    // These need the cross-listing index (for "Also listed in" chips), so they
-    // run after gbBuildMatchIndex() above. The coverage grid can now be filled in.
-    const cf = new URLSearchParams(location.search).get('cf');
-    if (cf) {
-      const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
-      if (match) {
-        selectedIdx = rowIdx(match);
-        showDetail(match);
-        renderTableBody();
-        const app = document.getElementById('app');
-        if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
-        scrollToSelected(100);
-      }
-    } else if (openRow) {
-      selectedIdx = rowIdx(openRow);
-      showDetail(openRow);
-      renderTableBody();
-      scrollToSelected(100);
+    // The panel restored above has been showing the "matches will appear once
+    // all entries finish loading…" placeholder; the index exists now, so fill
+    // those sections in where they stand rather than reopening the panel.
+    if (restoreRow) {
+      gbRefreshDetailIndexSections(restoreRow);
     } else if (GB_YEAR_FIELD && facetState[GB_YEAR_FIELD] && facetState[GB_YEAR_FIELD].size === 0
                && !location.hash.includes('volume_year')) {
       scrollToYear("1938");
     }
-    if (loadStatusEl) { loadStatusEl.textContent = ''; loadStatusEl.style.display = 'none'; }
+    gbSetProgress(100, '');
+    gbHideProgress();
   } catch (err) {
+    // Never leave a half-filled bar implying the load is still coming.
+    gbHideProgress();
     const noRes = document.getElementById("no-results");
     if (noRes) {
       noRes.style.display = 'block';
@@ -5064,17 +6403,19 @@ function gbUpdateHero() {
     card.appendChild(meta);
     card.addEventListener('click', e => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-      // Manifest thumbs are slim records; the detail panel needs the real CSV
-      // row. If it hasn't streamed in yet, fall through to the ?cf= href —
-      // the deep-link path resolves the entry after reload.
-      const row = useManifest ? ALL_ENTRIES.find(x => x.canvas_fragment === r.canvas_fragment) : r;
-      if (!row) return;
+      // Always handle a plain left click ourselves. This used to fall through to
+      // the ?cf= href whenever the row had not streamed yet — which meant a full
+      // page reload (re-randomising the hero, rewriting the URL) followed by a
+      // wait for the *entire* dataset before the panel opened, ~20s in. Modifier
+      // and middle clicks still navigate the real link.
       e.preventDefault();
-      selectedIdx = rowIdx(row);
-      showDetail(row);
-      renderTableBody();
+      // Manifest thumbs are slim records; the detail panel needs the real CSV row.
+      const row = useManifest ? ALL_ENTRIES.find(x => x.canvas_fragment === r.canvas_fragment) : r;
+      if (row) { gbOpenHeroRow(row); return; }
+      // Not streamed yet — queue it and open the moment it arrives.
+      gbPendingOpenCf = r.canvas_fragment || null;
+      card.classList.add('gb-hero-card-pending');
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
-      scrollToSelected(500);
     });
     stack.appendChild(card);
   });
