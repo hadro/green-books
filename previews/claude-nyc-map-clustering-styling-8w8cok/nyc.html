@@ -3397,7 +3397,8 @@ let gbMapCrossPubOnly = false;  // spotlight businesses listed in 2+ publication
 let gbMapMode = "bubbles";      // "bubbles" | "density" — aggregate-tier reading
 let gbBubbleLayer = null;       // L.layerGroup of divIcon neighborhood markers
 let gbHoodGeo = null;           // slim FeatureCollection, fetched once
-let gbHoodFetch = null;         // in-flight/settled fetch promise, shared
+let gbHoodFetch = null;         // in-flight fetch promise, shared; cleared on failure
+let gbHoodError = null;         // why the boundaries are missing, for the legend
 let gbBaseTiles = null, gbLabelTiles = null, gbHoodRenderer = null;
 let _gbTierState = null;        // memo: skips work on zooms that change nothing
 let _gbFitDone = false, _gbFitGeoKey = null;
@@ -3457,18 +3458,45 @@ function gbEscMap(s) {
 
 const GB_HOOD_CREDIT = 'Neighborhoods: <a href="https://github.com/chriswhong/nyc-neighborhood-boundaries">chriswhong</a> (CC BY-SA 4.0)';
 
+// The slim build is what the map wants; the full file is the fallback, so a
+// deploy that has not picked up the generated artefact yet degrades to a slower
+// map rather than a blank one.
+const GB_HOOD_URLS = [
+  "nyc-neighborhoods/nyc-neighborhoods.slim.geojson",
+  "nyc-neighborhoods/nyc-neighborhoods.geojson"
+];
+
 // Fetch the boundaries once and share the promise. Routed through gbCachedFetch
 // so a return visit revalidates with an ETag instead of re-downloading 239 KB,
 // and kicked off on idle after the CSV lands (see the loader) rather than on the
 // first click of the Map tab — it is a blocking dependency of density mode now,
 // not the decorative underlay it used to be.
+//
+// Failure is NOT memoized. This used to be `.catch(() => null)` on a cached
+// promise, so one bad response — an offline first visit, a deploy mid-flight, a
+// blocked request — killed the boundaries for the rest of the session and the
+// map just silently had none.
 function gbLoadHoodGeo() {
-  if (!gbHoodFetch) {
-    gbHoodFetch = gbCachedFetch("nyc-neighborhoods/nyc-neighborhoods.slim.geojson")
-      .then(r => r.ok ? r.json() : null)
-      .then(gj => { gbHoodGeo = gj; return gj; })
-      .catch(() => null);
-  }
+  if (gbHoodGeo) return Promise.resolve(gbHoodGeo);
+  if (gbHoodFetch) return gbHoodFetch;
+  gbHoodFetch = (async () => {
+    let last = null;
+    for (const url of GB_HOOD_URLS) {
+      try {
+        const r = await gbCachedFetch(url);
+        if (!r.ok) { last = url + " → HTTP " + r.status; continue; }
+        gbHoodGeo = await r.json();
+        gbHoodError = null;
+        return gbHoodGeo;
+      } catch (e) {
+        last = url + " → " + (e && e.message ? e.message : e);
+      }
+    }
+    gbHoodError = last || "unavailable";
+    console.warn("[nyc map] neighborhood boundaries unavailable:", gbHoodError);
+    gbHoodFetch = null;   // let the next map open or mode switch try again
+    return null;
+  })();
   return gbHoodFetch;
 }
 
@@ -3523,17 +3551,7 @@ function gbMapInit() {
   // must not blink out with it.
   gbMap.attributionControl.addAttribution(GB_HOOD_CREDIT);
 
-  gbLoadHoodGeo().then(gj => {
-    if (!gj || !gbMap) return;
-    gbHoodLayer = L.geoJSON(gj, {
-      pane: "gbHoodPane", renderer: gbHoodRenderer,
-      smoothFactor: 1.5,   // free per-zoom Douglas-Peucker on the projected path
-      style: () => ({ color: "#9c8f77", weight: 1, opacity: 0.45, fill: false }),
-      onEachFeature: gbHoodFeature
-    }).addTo(gbMap);
-    _gbTierState = null;
-    gbMapRender();
-  });
+  gbEnsureHoodLayer();
 
   const cb = document.getElementById("map-crosspub-cb");
   if (cb) cb.addEventListener("change", () => { gbMapCrossPubOnly = cb.checked; gbMapRender(); });
@@ -3567,6 +3585,27 @@ function gbMapInit() {
   const onContrast = () => { _gbTierState = null; gbMapRender(); };
   if (gbHiContrast.addEventListener) gbHiContrast.addEventListener("change", onContrast);
   gbMapReady = true;
+}
+
+// Build the boundary layer as soon as the geometry is in hand. Safe to call
+// repeatedly: it is the retry path when a first fetch failed, and a no-op once
+// the layer exists.
+let _gbHoodLayerPending = false;
+function gbEnsureHoodLayer() {
+  if (gbHoodLayer || _gbHoodLayerPending) return;
+  _gbHoodLayerPending = true;
+  gbLoadHoodGeo().then(gj => {
+    _gbHoodLayerPending = false;
+    if (!gj || !gbMap || gbHoodLayer) return;
+    gbHoodLayer = L.geoJSON(gj, {
+      pane: "gbHoodPane", renderer: gbHoodRenderer,
+      smoothFactor: 1.5,   // free per-zoom Douglas-Peucker on the projected path
+      style: () => ({ color: "#9c8f77", weight: 1, opacity: 0.45, fill: false }),
+      onEachFeature: gbHoodFeature
+    }).addTo(gbMap);
+    _gbTierState = null;
+    gbMapRender();
+  });
 }
 
 function gbClusterIcon(cluster) {
@@ -3890,7 +3929,10 @@ function gbMapSyncTier() {
   _gbTierState = want;
 
   const agg = gbHoodAgg();
-  const wantBubbles = tier === "hood" && gbMapMode === "bubbles";
+  // Density needs geometry. Without it, fall back to bubbles — which need none —
+  // rather than showing an empty map under a choropleth legend.
+  const dense = gbMapMode === "density" && !!gbHoodLayer;
+  const wantBubbles = tier === "hood" && !dense;
   const wantPoints = tier === "point";
 
   if (wantBubbles) {
@@ -3915,11 +3957,13 @@ function gbMapSyncTier() {
     gbHoodLayer.setStyle(gbHoodStyle);
     // Interactive only where the polygons are the thing being read, so hover
     // never competes with the pins.
-    const on = gbMapMode === "density" && tier === "hood";
+    const on = dense && tier === "hood";
     gbHoodLayer.eachLayer(l => { l.options.interactive = on; });
+  } else if (gbMapMode === "density") {
+    gbEnsureHoodLayer();   // failure isn't sticky — retry now the reader asked for it
   }
-  gbRenderMapLegend(agg, tier);
-  gbRenderMapCount(agg, tier);
+  gbRenderMapLegend(agg, tier, dense);
+  gbRenderMapCount(agg, tier, dense);
 }
 
 function gbBuildPins() {
@@ -3962,11 +4006,21 @@ function gbBuildPins() {
 }
 
 // ── Chrome ──────────────────────────────────────────────────────────────────
-function gbRenderMapLegend(agg, tier) {
+function gbRenderMapLegend(agg, tier, dense) {
   const lg = document.getElementById("map-legend");
   if (!lg) return;
   const unit = agg.isGroups ? "businesses" : "listings";
-  if (tier === "hood" && gbMapMode === "density") {
+  // Say so rather than leaving the reader with a mode that looks broken.
+  const stranded = gbMapMode === "density" && !dense
+    ? '<div class="lg-note"><strong>Density needs the neighborhood boundaries, which did not load' +
+      (gbHoodError ? " (" + gbEscMap(gbHoodError) + ")" : "") +
+      '.</strong> Showing bubbles instead; they need no boundary data. Switching modes retries.</div>'
+    : "";
+  if (stranded) {
+    lg.innerHTML = '<div class="lg-hd">Neighborhoods</div>' + stranded;
+    return;
+  }
+  if (tier === "hood" && dense) {
     lg.innerHTML = `<div class="lg-hd">${unit} per neighborhood</div>` +
       '<div class="lg-ramp">' + gbHoodRamp().map(c => `<span style="background:${c}"></span>`).join("") + "</div>" +
       '<div class="lg-scale"><span>1</span><span>5</span><span>15</span><span>50</span><span>150</span><span>500+</span></div>' +
@@ -3987,7 +4041,7 @@ function gbRenderMapLegend(agg, tier) {
   }
 }
 
-function gbRenderMapCount(agg, tier) {
+function gbRenderMapCount(agg, tier, dense) {
   const cnt = document.getElementById("map-count");
   if (!cnt) return;
   const unit = agg.isGroups ? "businesses" : "listings";
@@ -3998,7 +4052,7 @@ function gbRenderMapCount(agg, tier) {
     // semantics of the current view have to live here.
     const top = agg.list.reduce((a, b) => (b.n > (a ? a.n : -1) ? b : a), null);
     cnt.textContent =
-      (gbMapMode === "density" ? "Density by neighborhood. " : "Neighborhoods. ") +
+      (dense ? "Density by neighborhood. " : "Neighborhoods. ") +
       agg.list.length.toLocaleString() + " neighborhoods · " +
       agg.total.toLocaleString() + " " + unit +
       (top ? " · highest: " + top.name + ", " + top.n.toLocaleString() : "");
