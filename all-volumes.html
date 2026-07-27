@@ -98,7 +98,6 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
   border-top: 1px solid var(--gb-rule); border-bottom: 1px solid var(--gb-rule);
   padding: 5px 0;
 }
-.gb-hero-eyebrow-dot { display: none; }
 .gb-hero-title {
   font-family: var(--gb-font-display); font-weight: 500;
   text-transform: uppercase;
@@ -196,7 +195,6 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
   margin: 56px 0 0; padding: 28px 0 0;
   display: block; max-width: 820px;
 }
-.gb-hero-caveat-rule { display: none; }
 .gb-hero-caveat-body {
   display: flex; flex-direction: column; gap: 8px;
   border-top: 1px solid var(--gb-rule); border-bottom: 1px solid var(--gb-rule);
@@ -227,7 +225,6 @@ button.about-modal-link { background: none; border: none; padding: 0; cursor: po
 .trends-loading { font-family: var(--gb-font-mono); font-size: 0.786rem; color: var(--gb-ink-faint); margin: 0; }
 /* Panel-level caveat, echoing the hero's accuracy note. */
 .trends-caveat { display: block; margin: 0 0 30px; max-width: 880px; }
-.trends-caveat-rule { display: none; }
 .trends-caveat-body {
   display: flex; flex-direction: column; gap: 7px; min-width: 0;
   border-top: 1px solid var(--gb-rule); border-bottom: 1px solid var(--gb-rule);
@@ -365,9 +362,6 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 #sidebar-header h2 { font-family: var(--gb-font-display); font-size: 1rem; font-weight: 400; color: var(--gb-ink); margin: 0 0 2px; letter-spacing: -0.005em; }
 .gb-sidebar-desc { font-size: 0.857rem; line-height: 1.45; color: var(--gb-ink-soft); margin: 6px 0 0; font-family: var(--gb-font-body); }
 #sidebar-header .sub { font-size: 0.786rem; color: var(--gb-ink-faint); font-family: var(--gb-font-mono); letter-spacing: 0.04em; }
-.gb-tagline { display: none; }
-#volume-wrap { margin-top: 10px; background: var(--gb-accent-soft); border: 1px solid rgba(30,82,49,0.25); padding: 8px 10px; }
-#volume-select { width: 100%; font-size: 0.857rem; padding: 4px 6px; border: 1px solid var(--gb-rule-faint); background: var(--gb-paper); color: var(--gb-ink); cursor: pointer; font-family: var(--gb-font-body); }
 #sidebar-cta { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
 #gb-explore-btn {
   background: none; border: 1px solid var(--gb-accent);
@@ -442,7 +436,6 @@ button.heat-cell:hover, button.heat-cell:focus-visible { outline: 1.5px solid va
 }
 #search::placeholder { color: var(--gb-ink-faint); font-style: italic; }
 #search:focus { border-color: var(--gb-ink); background: var(--gb-paper-2); outline: 2px solid var(--gb-accent); outline-offset: 1px; }
-#search-scope-label { display: none; }
 .toolbar-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 #count-label { font-size: 0.857rem; color: var(--gb-ink-soft); font-family: var(--gb-font-body); }
 #load-status { font-family: var(--gb-font-mono); font-size: 0.714rem; color: var(--gb-ink-faint); }
@@ -888,9 +881,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div>
       <div class="gb-hero-eyebrow">
         <span>Green Book + Other Travel Guide Explorer</span>
-        <!-- <span>EST. 1936</span> -->
-        <!-- <span class="gb-hero-eyebrow-dot">&#x25CF;</span> -->
-        <!-- <span id="hero-eyebrow-stats">109,163 ENTRIES &middot; 46 VOLUMES</span> -->
       </div>
       <h1 class="gb-hero-title">A directory of places that welcomed Black travelers, <em>1930&nbsp;&ndash;&nbsp;1966.</em></h1>
       <p class="gb-hero-lede">The Negro Motorist Green Book wasn't the only travel guide for African Americans listing hotels, restaurants, beauty parlors, and other businesses safe to visit during the Jim Crow era of segregation. This explorer makes records searchable across every volume of seven different publications.</p>
@@ -900,7 +890,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <p class="gb-hero-credit">Source material held by the New York Public Library, Schomburg Center for Research in Black Culture, and the Library of Congress.<br>Data extracted using an LLM-enhanced <a class="about-modal-link" href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">Directory Pipeline</a> for OCR and named-entity recognition.</p>
       </div>
       <aside class="gb-hero-caveat" role="note" aria-label="A note on accuracy">
-        <div class="gb-hero-caveat-rule" aria-hidden="true"></div>
         <div class="gb-hero-caveat-body">
           <div class="gb-hero-caveat-label">A NOTE ON ACCURACY</div>
           <p class="gb-hero-caveat-text">This dataset carries occasional OCR, entity-extraction, and entry-alignment errors, so always treat the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, <em>not a replacement for them</em>. Data has not been reviewed for 100% accuracy.</p>
@@ -930,12 +919,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   <div id="sidebar-header">
     <p class="sidebar-brand"><a href="#" onclick="gbBrandHome();return false;">Green Books + Other Travel Guide Explorer</a></p>
     <p class="gb-sidebar-desc">Explore the listings of safe businesses and services for Black travelers, 1930&ndash;1966</p>
-    <span id="doc-title" style="display:none"></span>
-    <span id="doc-sub" style="display:none"></span>
-    <div id="volume-wrap" style="display:none">
-      <label for="volume-select" style="display:block;font-family:var(--gb-font-mono);font-size: 0.714rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--gb-ink-faint);margin-bottom:3px;">Select volume</label>
-      <select id="volume-select"></select>
-    </div>
     <div id="sidebar-cta">
       <button id="about-btn">About this explorer</button>
       <button id="trends-btn">Charts &amp; trends</button>
@@ -958,7 +941,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <button id="mobile-trends-btn">Charts</button>
       <button id="mobile-random-btn">Random entry</button>
     </div>
-    <select id="mobile-volume-select" aria-label="Select volume" style="display:none"></select>
   </div>
   <div id="toolbar">
     <button id="filter-btn" aria-label="Open filters" aria-expanded="false" aria-controls="sidebar">&#9776; Filters</button>
@@ -1057,7 +1039,6 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     <div class="trends-modal-body">
       <p class="trends-sub">Charts cover the full dataset — counting extracted listings, or resolved businesses where noted. Click a year, category, state, or cell to see its listings and leave the charts.</p>
       <aside class="trends-caveat" role="note" aria-label="What these charts can and cannot measure">
-        <div class="trends-caveat-rule" aria-hidden="true"></div>
         <div class="trends-caveat-body">
           <div class="trends-caveat-label">WHAT THESE CHARTS CAN &mdash; AND CAN&rsquo;T &mdash; MEASURE</div>
           <p class="trends-caveat-lede">These charts count machine-extracted listings from the digitized corpus &mdash; read an empty year or a thin state as <em>absent from the digitized record, not from history.</em></p>
@@ -1239,8 +1220,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 <script>
 var _gbAboutOnLoad = location.hash === '#about';
 var _gbTrendsOnLoad = location.hash === '#trends';
-const ALL_INITIAL_ENTRIES = [];
-const VOLUMES     = {};
+const ALL_ENTRIES = [];
 // Field schema for the merged Green Book + travel-guide dataset. top_values
 // (the facet value lists) start empty and are computed at runtime by
 // gbBuildFacets() once both CSVs are loaded — a baked-in blob can't survive
@@ -1307,7 +1287,7 @@ function gbComputePublicationActiveYears(rows) {
   const m = new Map();
   rows.forEach(r => {
     const pub = r.publication;
-    const y = r.volume_year || r.year;
+    const y = r.volume_year;
     if (!pub || !y) return;
     if (!m.has(pub)) m.set(pub, new Set());
     m.get(pub).add(y);
@@ -1349,11 +1329,6 @@ function gbBuildFacets(rows) {
 }
 let CANVAS_MAP = {};
 const DOC_TITLE   = "Green Book and Travel Guides";
-const VIEWER_URL  = "";
-const MANIFEST_URL = "";
-const FULL_PAGE_THUMBS = false;
-let activeManifestUrl = MANIFEST_URL;
-let ALL_ENTRIES = ALL_INITIAL_ENTRIES;
 
 // ── Field display-name and value-label overrides ──────────────────────────
 const FIELD_LABELS = {
@@ -1440,7 +1415,7 @@ function gbRenderProvenance(row) {
   const el = document.getElementById("detail-provenance");
   el.innerHTML = "";
   const pub = (row.publication || "").trim();
-  const year = (row[GB_YEAR_FIELD] || row.year || "").trim();
+  const year = (row[GB_YEAR_FIELD] || "").trim();
   const title = (row.volume_title || "").trim();
   if (!pub && !year && !title) { el.style.display = "none"; return; }
   el.style.display = "";
@@ -1491,7 +1466,6 @@ function gbFormatRates(v) {
 }
 
 // ── State ──────────────────────────────────────────────────────────────────
-let currentDocMeta = {};
 const facetState = {};   // {fieldName: Set<value>}
 let searchQuery = "";
 let sortCol = null;
@@ -1527,9 +1501,6 @@ const showAllFacets = new Set();  // field names with expanded value list
 try { const _s = sessionStorage.getItem('showAllFacets'); if (_s) JSON.parse(_s).forEach(n => showAllFacets.add(n)); } catch(e) {}
 
 // ── Boot ───────────────────────────────────────────────────────────────────
-document.getElementById("doc-title").textContent = DOC_TITLE;
-document.getElementById("doc-sub").textContent =
-    ALL_ENTRIES.length.toLocaleString() + " entries";
 document.getElementById("mobile-about-btn").addEventListener("click", () => document.getElementById("about-btn").click());
 document.getElementById("mobile-random-btn").addEventListener("click", () => document.getElementById("gb-explore-btn").click());
 
@@ -1540,70 +1511,6 @@ let displayFields = FIELD_META.filter(f => f.type !== "id");
 // Init facet state
 facetFields.forEach(f => { facetState[f.name] = new Set(); });
 
-// ── Load a volume by label (data + UI reset, no render) ──────────────────
-function loadVolume(label) {
-  const vol = VOLUMES[label];
-  if (!vol) return;
-  ALL_ENTRIES = vol.rows;
-  facetFields = vol.field_meta.filter(f => f.type === "facet");
-  displayFields = vol.field_meta.filter(f => f.type !== "id");
-  Object.keys(facetState).forEach(k => delete facetState[k]);
-  facetFields.forEach(f => { facetState[f.name] = new Set(); });
-  searchQuery = "";
-  sortCol = null;
-  sortDir = 1;
-  selectedIdx = null;
-  colFilters = {};
-  showAllFacets.clear();
-  try { sessionStorage.removeItem('showAllFacets'); } catch(e) {}
-  document.getElementById("search").value = "";
-  document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
-  document.getElementById("doc-title").textContent = label;
-  document.getElementById("doc-sub").textContent =
-    ALL_ENTRIES.length.toLocaleString() + " entries";
-  currentDocMeta = vol.doc_meta || {};
-  activeManifestUrl = currentDocMeta.manifest_url || MANIFEST_URL;
-  renderMetaStrip(currentDocMeta);
-}
-
-// ── Volume selector ─────────────────────────────────────────────────────────
-(function () {
-  const volLabels = Object.keys(VOLUMES);
-  if (volLabels.length === 0) return;
-  const wrap = document.getElementById("volume-wrap");
-  const sel  = document.getElementById("volume-select");
-  wrap.style.display = "block";
-  volLabels.forEach(label => {
-    const opt = document.createElement("option");
-    opt.value = label;
-    opt.textContent = label + "  (" + VOLUMES[label].rows.length.toLocaleString() + ")";
-    sel.appendChild(opt);
-  });
-  // Set h1 and meta strip to first volume on load
-  document.getElementById("doc-title").textContent = volLabels[0];
-  currentDocMeta = VOLUMES[volLabels[0]].doc_meta || {};
-  activeManifestUrl = currentDocMeta.manifest_url || MANIFEST_URL;
-  renderMetaStrip(currentDocMeta);
-
-  // Build mobile volume select
-  const msel = document.getElementById("mobile-volume-select");
-  volLabels.forEach(label => {
-    const opt = document.createElement("option");
-    opt.value = label; opt.textContent = label;
-    msel.appendChild(opt);
-  });
-  msel.classList.add("visible");
-  msel.addEventListener("change", () => {
-    sel.value = msel.value;
-    sel.dispatchEvent(new Event("change"));
-  });
-
-  sel.addEventListener("change", () => {
-    loadVolume(sel.value);
-    document.getElementById("mobile-volume-select").value = sel.value;
-    renderAll();
-  });
-})();
 
 // ── Filtering ──────────────────────────────────────────────────────────────
 // Memoized: one render pass calls getFiltered() from the table body, the
@@ -1727,7 +1634,7 @@ function gbBuildListingCardTd(row, q) {
   top.className = "mcard-top";
   const year = document.createElement("span");
   year.className = "mcard-year";
-  year.textContent = row.volume_year || row.year || "";
+  year.textContent = row.volume_year || "";
   top.appendChild(year);
   if (row.publication) {
     const dot = document.createElement("span");
@@ -1788,9 +1695,9 @@ function buildRowTr(row, q) {
   // panel), but it keeps role="row" so table navigation still works. Name the
   // row and state the action so assistive tech announces it on focus rather
   // than reading only the cell contents with no hint that it's clickable.
-  const _rowName = row.name || row.establishment_name || row.firm_name || row.business_name || "Entry";
+  const _rowName = row.name || "Entry";
   const _rowLoc = [row.city, row.state].filter(Boolean).join(", ");
-  const _rowYear = row.volume_year || row.year || "";
+  const _rowYear = row.volume_year || "";
   tr.setAttribute("aria-label",
     [_rowName, _rowLoc, _rowYear].filter(Boolean).join(", ") + " — press Enter to open details");
   tr.dataset.idx = idx;
@@ -2200,9 +2107,6 @@ function viewerUrl(canvas_fragment) {
   // Library of Congress: https://www.loc.gov/item/{id}/canvas/{num}
   const locMatch = cid.match(/https:\/\/www\.loc\.gov\/item\/([^/]+)\/canvas\/(\d+)/);
   if (locMatch) {
-    if (currentDocMeta && currentDocMeta.resource_url) {
-      return currentDocMeta.resource_url.replace(/\/?$/, "/") + `?sp=${parseInt(locMatch[2])}`;
-    }
     // Derive resource URL + correct per-volume page number from CANVAS_MAP service ID.
     // Service ID format: https://tile.loc.gov/image-services/iiif/service:rbc:lcrbmrp:t8073:001
     // → resource lcrbmrp.t8073, sp=1 (not the global canvas number, which spans volumes).
@@ -2224,28 +2128,6 @@ function viewerUrl(canvas_fragment) {
 function openSource(canvas_fragment) {
   const url = viewerUrl(canvas_fragment);
   if (url) window.open(url, "_blank");
-}
-
-// ── IIIF Content State deep-link ────────────────────────────────────────────
-function contentStateUrl(canvas_fragment) {
-  const mUrl = activeManifestUrl || MANIFEST_URL;
-  if (!VIEWER_URL || !mUrl || !canvas_fragment) return "";
-  const cid = canvasId(canvas_fragment);
-  if (!cid) return "";
-  const state = {
-    "@context": "http://iiif.io/api/presentation/3/context.json",
-    "type": "Annotation",
-    "motivation": "contentState",
-    "target": {
-      "id": canvas_fragment,
-      "type": "Canvas",
-      "partOf": [{"id": mUrl, "type": "Manifest"}]
-    }
-  };
-  // base64url (RFC 4648 §5): standard base64 with + → -, / → _, padding stripped
-  const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
-  const encoded = b64.replace(/[+]/g, "-").replace(/[/]/g, "_").replace(/=+$/, "");
-  return VIEWER_URL.replace(/\/$/, "") + "?iiif-content=" + encoded;
 }
 
 // ── Thumbnails ─────────────────────────────────────────────────────────────
@@ -2325,7 +2207,7 @@ function liveIiifUrl(row, hAnchor) {
   const cid = canvasId(cf);
   const svc = CANVAS_MAP[cid];
   if (!svc) return "";
-  if (!FULL_PAGE_THUMBS && cf.includes("#xywh=")) {
+  if (cf.includes("#xywh=")) {
     const xywh = cf.split("#xywh=")[1].split(",").map(Number);
     if (xywh.length !== 4 || xywh[2] <= 0 || xywh[3] <= 0) return "";
     const [cw, ch] = [svc[1], svc[2]];
@@ -2363,11 +2245,9 @@ function showDetail(row) {
   panel.classList.add("open");
   document.getElementById("main").classList.add("detail-open");
 
-  const nameField = displayFields.find(f => f.name.includes("name") || f.name.includes("title"));
-  document.getElementById("detail-title").textContent =
-    (nameField && row[nameField.name]) || "(entry)";
+  document.getElementById("detail-title").textContent = row.name || "(entry)";
 
-  const entryName = (nameField && row[nameField.name]) || "entry";
+  const entryName = row.name || "entry";
   const img = document.getElementById("detail-thumb");
   const thumbLink = document.getElementById("detail-thumb-link");
   const url = thumbUrl(row);
@@ -2473,8 +2353,6 @@ function showDetail(row) {
     const srcUrl = viewerUrl(row.canvas_fragment);
     const srcInst = row.canvas_fragment.includes("tile.loc.gov") ? "Library of Congress" : "NYPL";
     if (srcUrl) links.push(`<a href="${srcUrl}" target="_blank">Open original ${srcInst} source page ↗</a>`);
-    const csUrl = contentStateUrl(row.canvas_fragment);
-    if (csUrl) links.push(`<a href="${csUrl}" target="_blank">View in source document ↗</a>`);
     src.innerHTML = links.length ? `<div class="also-in-label">Source</div>` + links.join("") : "";
   } else {
     pageCtx.innerHTML = "";
@@ -3048,7 +2926,7 @@ function gbEntryPermalink(row) {
 }
 function gbBuildCitation(row) {
   const name = (row.name || "").trim() || "Untitled listing";
-  const year = String(row[GB_YEAR_FIELD] || row.year || "").trim();
+  const year = String(row[GB_YEAR_FIELD] || "").trim();
   const edition = (row.volume_title || "").trim() || (row.publication || "").trim();
   const inst = (row.canvas_fragment || "").includes("tile.loc.gov")
     ? "the Library of Congress" : "The New York Public Library";
@@ -3416,14 +3294,6 @@ document.getElementById("clear-filters-btn").addEventListener("click", clearAllF
 // ── URL hash state (shareable filtered links) ─────────────────────────────
 function stateToHash() {
   const params = new URLSearchParams();
-  const volLabels = Object.keys(VOLUMES);
-  if (volLabels.length > 1) {
-    const sel = document.getElementById("volume-select");
-    if (sel) {
-      const idx = volLabels.indexOf(sel.value);
-      if (idx > 0) params.set("vol", idx);
-    }
-  }
   if (viewMode === "establishments") params.set("view", "est");
   if (searchQuery) params.set("q", searchQuery);
   if (sortCol) params.set("sort", sortCol + ":" + (sortDir > 0 ? "asc" : "desc"));
@@ -3448,20 +3318,6 @@ function applyHashState() {
   const raw = location.hash.slice(1);
   if (!raw) return;
   const params = new URLSearchParams(raw);
-
-  // Volume: load data + reset filters, then apply overrides below
-  if (params.has("vol")) {
-    const volLabels = Object.keys(VOLUMES);
-    const idx = parseInt(params.get("vol"), 10);
-    if (idx > 0 && idx < volLabels.length) {
-      const label = volLabels[idx];
-      loadVolume(label);
-      const sel = document.getElementById("volume-select");
-      if (sel) sel.value = label;
-      const msel = document.getElementById("mobile-volume-select");
-      if (msel) msel.value = label;
-    }
-  }
 
   // View mode (establishments needs the loaded dataset; before it's built
   // the establishment body renders a loading note, and the post-load
@@ -3539,7 +3395,7 @@ function scrollToSelected(delayMs = 0) {
 function scrollToYear(year) {
   if (viewMode !== "listings") return;  // the establishments table has no year rows
   const sorted = getSorted(getFiltered());
-  const targetRow = sorted.find(r => (r.volume_year || r.year || '') === year);
+  const targetRow = sorted.find(r => (r.volume_year || '') === year);
   if (!targetRow) return;
   const targetIdx = rowIdx(targetRow);
   _yearScrollAnchor = targetIdx;
@@ -3592,10 +3448,10 @@ function gbComputeEstabStats(key, rows) {
   const catCount = new Map();
   let rep = rows[0], repY = -1;
   rows.forEach(r => {
-    const y = Number(r[GB_YEAR_FIELD] || r.year) || 0;
+    const y = Number(r[GB_YEAR_FIELD]) || 0;
     if (y >= repY) { repY = y; rep = r; }  // representative = most recent listing
     if (r.name) nameCount.set(r.name, (nameCount.get(r.name) || 0) + 1);
-    const ys = String(r[GB_YEAR_FIELD] || r.year || "");
+    const ys = String(r[GB_YEAR_FIELD] || "");
     if (ys && !yearPub.has(ys)) yearPub.set(ys, r.publication || "");
     if (r.publication) pubs.add(r.publication);
     // Same fold the facet uses (gb-categories.js); the blank bucket carries
@@ -4005,16 +3861,11 @@ if (location.hash && location.hash.length > 1) {
   }, 0);
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// Green Book extensions — year facets + "Also in" (appended by
-// analysis/build_greenbook_explorer.py; do not edit the base template)
-// ════════════════════════════════════════════════════════════════════════════
+// ── Green Book dataset extensions ─────────────────────────────────────────────
+// (originally appended to a generated template; the whole file is hand-maintained now)
 
-// ── Auto-detect the edition-year field name ──────────────────────────────────
-const GB_YEAR_FIELD = (() => {
-  const f = FIELD_META.find(f => f.name === "volume_year" || f.name === "year");
-  return f ? f.name : null;
-})();
+// ── Edition-year field ────────────────────────────────────────────────────────
+const GB_YEAR_FIELD = "volume_year";  // both CSVs use this column
 
 // ── Cross-listing match index ────────────────────────────────────────────────
 // Normalization + resolver live in gb-matching.js (shared with the validation
@@ -4090,8 +3941,8 @@ function _gbPersonKey(s) {
 }
 function gbEstabTimeline(rows) {
   const sorted = [...rows].sort((a, b) => {
-    const ya = Number(a[GB_YEAR_FIELD] || a.year) || 0;
-    const yb = Number(b[GB_YEAR_FIELD] || b.year) || 0;
+    const ya = Number(a[GB_YEAR_FIELD]) || 0;
+    const yb = Number(b[GB_YEAR_FIELD]) || 0;
     return ya - yb || (a.publication || "").localeCompare(b.publication || "");
   });
   const out = [];
@@ -4100,7 +3951,7 @@ function gbEstabTimeline(rows) {
     const addr = (r.address || "").trim();
     const cur = {
       row: r,
-      year: String(r[GB_YEAR_FIELD] || r.year || ""),
+      year: String(r[GB_YEAR_FIELD] || ""),
       pub: r.publication || "",
       name: (r.name || "").trim(),
       // Placeholder addresses ("do", "same") carry no signal and would otherwise
@@ -4137,10 +3988,10 @@ function gbRenderEstabNote(row, listings, estab) {
   el.style.display = "none";
   if (!row || !listings || listings.length < 2) return;
 
-  const years = listings.map(r => Number(r[GB_YEAR_FIELD] || r.year)).filter(n => !isNaN(n));
+  const years = listings.map(r => Number(r[GB_YEAR_FIELD])).filter(n => !isNaN(n));
   const lo = Math.min(...years), hi = Math.max(...years);
   const range = years.length ? (lo === hi ? String(lo) : lo + "–" + hi) : "";
-  const year = String(row[GB_YEAR_FIELD] || row.year || "");
+  const year = String(row[GB_YEAR_FIELD] || "");
 
   // No ordinal: the Establishments view always opens the most recent listing, so
   // a position would read "32 of 32" every time. The timeline below marks where
@@ -4282,9 +4133,7 @@ function gbEnsureRowVisible(targetRow) {
   if (getFiltered().includes(targetRow)) return;
   const savedQuery = searchQuery;
   const savedFilters = Object.assign({}, colFilters);
-  const nf = ["name", "establishment_name", "firm_name", "business_name"]
-    .find(k => targetRow[k] != null && targetRow[k] !== "");
-  const nfVal = nf && targetRow[nf];
+  const nfVal = targetRow.name;
   const cityVal = targetRow.city ? gbNormCity(targetRow.city) : "";
   const ladder = [];
   if (nfVal) {
@@ -4473,9 +4322,7 @@ function gbRenderCoverage(row) {
   if (!alsoEl) return;
 
   // Find the name field for this row
-  const nf = ["name", "establishment_name", "firm_name", "business_name"]
-    .find(k => row[k] != null && row[k] !== "");
-  const nfVal = nf && row[nf];
+  const nfVal = row.name;
   // While the CSVs are still streaming, say why the coverage grid isn't here
   // yet instead of silently omitting a section that will appear later.
   if (!gbDataLoaded && nfVal) {
@@ -4541,7 +4388,7 @@ function gbRenderCoverage(row) {
   const listingByPubYear = new Map();
   allListings.forEach(r => {
     const pub = r.publication;
-    const y = r[GB_YEAR_FIELD] || r.year;
+    const y = r[GB_YEAR_FIELD];
     if (!pub || !y) return;
     const k = pub + "|" + y;
     if (!listingByPubYear.has(k)) listingByPubYear.set(k, r);
@@ -4555,12 +4402,12 @@ function gbRenderCoverage(row) {
   const minY = yearNums[0], maxY = yearNums[yearNums.length - 1];
 
   const currentPub = row.publication;
-  const currentYear = String(row[GB_YEAR_FIELD] || row.year);
+  const currentYear = String(row[GB_YEAR_FIELD]);
 
   // ── Summary headline: lead with the number this grid knows ─────────────────
   const listedPubSet = new Set(allListings.map(r => r.publication).filter(Boolean));
   const listingYearNums = allListings
-    .map(r => Number(r[GB_YEAR_FIELD] || r.year)).filter(n => !isNaN(n));
+    .map(r => Number(r[GB_YEAR_FIELD])).filter(n => !isNaN(n));
   const firstListed = Math.min(...listingYearNums);
   const lastListed = Math.max(...listingYearNums);
   const totalPubs = PUBLICATION_ACTIVE_YEARS.size;
@@ -5079,8 +4926,6 @@ const GB_KEEP_COLUMNS = new Set([
   "name", "address", "state", "city", "sub_region", "category", "notes",
   "phone", "proprietor", "amenities_services", "rates", "personnel",
   "is_advertisement", "is_recommended", "canvas_fragment", "image",
-  // nyc.html's CSV carries its geocode columns in the same stream.
-  "neighborhood", "borough", "latitude", "longitude", "geocode_quality", "review_flag",
 ]);
 
 // ── Response cache ─────────────────────────────────────────────────────────
@@ -5336,7 +5181,7 @@ function gbTrendAggregates() {
   const stateYear = new Map(); // uppercased state → Map(year number → count)
   const catYear = new Map();   // folded category → Map(year number → count)
   ALL_ENTRIES.forEach(r => {
-    const y = Number(r.volume_year || r.year);
+    const y = Number(r.volume_year);
     const inRange = y >= 1930 && y <= 1966;
     if (inRange) {
       let m = yearPub.get(y);
@@ -5383,7 +5228,7 @@ function gbResolverAggregates() {
   const groupPubs = new Map();     // group key → Set(publications)
   const groupHasAddr = new Set();  // group keys with >=1 real street address
   ALL_ENTRIES.forEach(r => {
-    const y = Number(r.volume_year || r.year);
+    const y = Number(r.volume_year);
     if (!(y >= 1930 && y <= 1966)) return;
     const k = gbEstabKeyOf(r);
     if (!groupFirst.has(k) || y < groupFirst.get(k)) groupFirst.set(k, y);
@@ -5404,7 +5249,7 @@ function gbResolverAggregates() {
   // Churn: each listing is "first-time" if its year is its business's first.
   const churn = new Map();  // year → { fresh, ret }
   ALL_ENTRIES.forEach(r => {
-    const y = Number(r.volume_year || r.year);
+    const y = Number(r.volume_year);
     if (!(y >= 1930 && y <= 1966)) return;
     const k = gbEstabKeyOf(r);
     if (!groupHasAddr.has(k)) return;
@@ -6366,16 +6211,14 @@ function gbUpdateHero() {
   const featured = [], seen = new Set();
   for (let t = 0; t < 800 && featured.length < 3; t++) {
     const r = pool[Math.floor(Math.random() * pool.length)];
-    const nf = ['name','establishment_name','firm_name','business_name'].find(k => r[k]);
-    if (!nf) continue;
-    const key = r[nf] + '|' + (r.city || '');
+    if (!r.name) continue;
+    const key = r.name + '|' + (r.city || '');
     if (!seen.has(key)) { seen.add(key); featured.push(r); }
   }
   const stack = document.getElementById('hero-featured-stack');
   stack.innerHTML = '';
   featured.forEach(r => {
-    const nf = ['name','establishment_name','firm_name','business_name'].find(k => r[k]) || 'name';
-    const year = r.volume_year || r.year || '';
+    const year = r.volume_year || '';
     const cat = r.category ? gbCategoryGroup(r.category) : '';
     const city = (r.city || '').toUpperCase();
     const state = (r.state || '').toUpperCase();
@@ -6396,7 +6239,7 @@ function gbUpdateHero() {
     }
     const meta = document.createElement('div');
     meta.className = 'gb-hero-card-meta';
-    meta.innerHTML = '<div class="gb-hero-card-name">' + (r[nf] || '') + '</div>' +
+    meta.innerHTML = '<div class="gb-hero-card-name">' + (r.name || '') + '</div>' +
       '<div class="gb-hero-card-line">' + year + (city ? ' \u00B7 ' + city + (state ? ', ' + state : '') : '') + '</div>' +
       '<div class="gb-hero-card-cat">' + cat + '</div>';
     card.appendChild(thumbDiv);
@@ -6428,7 +6271,7 @@ const _heroSection = document.getElementById('gb-hero');
 // hero visibility. While the fetch is in flight gbMaybeBuildHero holds off so
 // the live-IIIF fallback can't fire 3 NYPL requests that the local pool was
 // about to make unnecessary; the fetch always settles and re-calls it.
-let HERO_THUMBS = null, HERO_THUMB_BY_CF = null, _heroThumbsState = 'idle';
+let HERO_THUMBS = null, _heroThumbsState = 'idle';
 function gbFetchHeroThumbs() {
   if (_heroThumbsState !== 'idle') return;
   _heroThumbsState = 'pending';
@@ -6436,11 +6279,8 @@ function gbFetchHeroThumbs() {
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(m => {
       HERO_THUMBS = (m.thumbs || []).filter(t => t && t.file && t.canvas_fragment);
-      // canvas_fragment -> local file, so thumbUrl() (detail panel) serves
-      // pool entries from the repo instead of live IIIF.
-      HERO_THUMB_BY_CF = new Map(HERO_THUMBS.map(t => [t.canvas_fragment, t.file]));
     })
-    .catch(() => { HERO_THUMBS = null; HERO_THUMB_BY_CF = null; })
+    .catch(() => { HERO_THUMBS = null; })
     .then(() => { _heroThumbsState = 'done'; gbMaybeBuildHero(); });
 }
 // Build the featured trio once the hero is visible AND a pool is ready — the
@@ -6505,7 +6345,7 @@ document.getElementById('sticky-search-btn').addEventListener('click', () => {
 
 // Skip link: drive focus in JS instead of relying on the "#search" fragment.
 // A bare hash resolves against an injected <base href> on preview deploys and
-// would navigate to the site root (index.html) — the same trap hrefForState()
+// would navigate to the site root (index.html) — the same trap stateToHash()
 // avoids for the JS-generated links.
 const _skipLink = document.querySelector('.skip-link');
 if (_skipLink) _skipLink.addEventListener('click', e => {
@@ -6516,12 +6356,6 @@ if (_skipLink) _skipLink.addEventListener('click', e => {
   if (search) search.focus({ preventScroll: true });
 });
 
-// Fallback interval in case data arrives after the hero is already visible
-const _checkHero = setInterval(() => {
-  const rect = _heroSection.getBoundingClientRect();
-  if (rect.bottom > 0 && rect.top < window.innerHeight) { _heroVisible = true; gbFetchHeroThumbs(); gbMaybeBuildHero(); }
-  if (_heroUpdated) clearInterval(_checkHero);
-}, 200);
 // Reshuffle on demand — gbUpdateHero rebuilds the stack from a fresh random
 // draw. Against the local manifest pool this is free (no network at all).
 document.getElementById('hero-shuffle').addEventListener('click', () => {
