@@ -1479,11 +1479,11 @@ let _winSize = WINDOW_STEP;    // current render-window size; reset by renderAll
 // indexOf fallback covers rows from any other source (none in this build).
 const rowIdx = r => (r._i !== undefined ? r._i : ALL_ENTRIES.indexOf(r));
 let _pushNextHistory = false;  // set to true before renderAll() to push a history entry
-// Declared here (rather than down by the rest of the cross-listing state,
-// where it conceptually belongs) so renderTableBody()'s "so far" suffix can
-// safely reference it — renderAll() runs once before the loader section
-// below would otherwise have declared it.
-let gbDataLoaded = false;      // true once both CSV streams have finished
+// True once both CSV streams have finished.
+let gbDataLoaded = false;
+let gbNameIndex = new Map();   // groupKey → [row objects]
+let gbRowToKey  = new Map();   // row object → groupKey
+let _gbLastDetailEstab = null;
 function gcEvent(name) {
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, event: true });
 }
@@ -2240,7 +2240,7 @@ function liveIiifUrl(row, hAnchor) {
   return `${svc[0]}/full/400,/0/default.jpg`;
 }
 
-function showDetail(row) {
+function showDetail(row, opts) {
   const panel = document.getElementById("detail");
   panel.classList.add("open");
   document.getElementById("main").classList.add("detail-open");
@@ -2379,6 +2379,38 @@ function showDetail(row) {
   detailTitle.setAttribute("tabindex", "-1");
   if (!_gbSuppressDetailFocus) detailTitle.focus();
   renderDetailMap(row);
+
+  // showDetail: sync ?cf= URL param + append "Also in" section
+  // `opts.estab` is the establishment group when the panel was opened from the
+  // Establishments view — it names which of the group's listings is on screen.
+  if (row) gcEvent('detail-open');
+
+  // The establishment record: every listing the resolver folded into this
+  // business, and what changed between them. Rendered before the coverage grid's
+  // early returns below, so a group still gets its record even when the grid
+  // bails (mid-stream, or no cross-listings to plot).
+  const estabListings = row ? gbCrossListings(row) : [];
+  _gbLastDetailEstab = (opts && opts.estab) || null;
+  renderEstabRecord(row, estabListings);
+  gbRenderEstabNote(row, estabListings, _gbLastDetailEstab);
+
+  // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
+  // closes it); switching entries while it's already open replaces, so Back
+  // doesn't walk through every row the user ever clicked.
+  if (row && row.canvas_fragment) {
+    const u = new URL(location.href);
+    const wasOpen = u.searchParams.has('cf');
+    u.searchParams.set('cf', row.canvas_fragment);
+    const url = u.pathname + '?' + u.searchParams + (location.hash || '');
+    if (wasOpen) history.replaceState(null, '', url);
+    else history.pushState(null, '', url);
+  }
+
+  // The coverage grid needs the cross-listing index, which is only built once
+  // the CSVs finish streaming. It lives in its own function so a panel opened
+  // before the index exists can have this section filled in later, in place,
+  // without reopening the panel — see gbRefreshDetailIndexSections().
+  gbRenderCoverage(row);
 }
 
 // ── Detail panel modality ──────────────────────────────────────────────────
@@ -3849,18 +3881,6 @@ window.addEventListener("popstate", function () {
   }
 });
 
-applyHashState();
-renderAll();
-
-// If the URL has any hash state, skip the hero and jump to the explorer
-if (location.hash && location.hash.length > 1) {
-  history.scrollRestoration = 'manual';
-  setTimeout(() => {
-    const app = document.getElementById('app');
-    if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
-  }, 0);
-}
-
 // ── Green Book dataset extensions ─────────────────────────────────────────────
 // (originally appended to a generated template; the whole file is hand-maintained now)
 
@@ -3873,14 +3893,6 @@ const GB_YEAR_FIELD = "volume_year";  // both CSVs use this column
 // city), then split into business-level groups by address signature. Built
 // once in the streaming loader's final pass; empty until then.
   
-// `var`, not `let`: the base renderAll() call above runs before this section
-// evaluates, and a #view=est hash routes it into renderEstabBody, which reads
-// these — var hoists as undefined instead of throwing a TDZ error.
-var gbNameIndex = new Map();   // groupKey → [row objects]
-var gbRowToKey  = new Map();   // row object → groupKey
-// gbDataLoaded is declared with the render state near the top of the script.
-
-
 // All cross-listings for a row's resolved business group (including itself).
 function gbCrossListings(row) {
   const key = gbRowToKey.get(row);
@@ -4264,57 +4276,7 @@ function gbAttachTip(cell, lines) {
   cell.addEventListener("blur", gbHideTip);
 }
 
-// ── Monkey-patches ───────────────────────────────────────────────────────────
-
-// renderFacetSidebar: move volume_year to the top of the facet list
-const _gbOrigRFS = renderFacetSidebar;
-renderFacetSidebar = function () {
-  const orig = facetFields;
-  facetFields = [
-    ...facetFields.filter(f => f.name === GB_YEAR_FIELD),
-    ...facetFields.filter(f => f.name !== GB_YEAR_FIELD),
-  ];
-  _gbOrigRFS();
-  facetFields = orig;
-};
-
-// showDetail: sync ?cf= URL param + append "Also in" section
-// `opts.estab` is the establishment group when the panel was opened from the
-// Establishments view — it names which of the group's listings is on screen.
-const _gbOrigSD = showDetail;
-showDetail = function (row, opts) {
-  _gbOrigSD(row);
-  if (row) gcEvent('detail-open');
-
-  // The establishment record: every listing the resolver folded into this
-  // business, and what changed between them. Rendered before the coverage grid's
-  // early returns below, so a group still gets its record even when the grid
-  // bails (mid-stream, or no cross-listings to plot).
-  const estabListings = row ? gbCrossListings(row) : [];
-  _gbLastDetailEstab = (opts && opts.estab) || null;
-  renderEstabRecord(row, estabListings);
-  gbRenderEstabNote(row, estabListings, _gbLastDetailEstab);
-
-  // Sync ?cf= to the URL. Opening the panel pushes one history entry (so Back
-  // closes it); switching entries while it's already open replaces, so Back
-  // doesn't walk through every row the user ever clicked.
-  if (row && row.canvas_fragment) {
-    const u = new URL(location.href);
-    const wasOpen = u.searchParams.has('cf');
-    u.searchParams.set('cf', row.canvas_fragment);
-    const url = u.pathname + '?' + u.searchParams + (location.hash || '');
-    if (wasOpen) history.replaceState(null, '', url);
-    else history.pushState(null, '', url);
-  }
-
-  // The coverage grid needs the cross-listing index, which is only built once
-  // the CSVs finish streaming. It lives in its own function so a panel opened
-  // before the index exists can have this section filled in later, in place,
-  // without reopening the panel — see gbRefreshDetailIndexSections().
-  gbRenderCoverage(row);
-};
-
-// Split verbatim out of the showDetail wrapper above, of which it was the tail —
+// Split verbatim out of showDetail's tail —
 // so its early `return`s still mean "this section is done" and nothing was
 // pending behind them. Reads `row` and globals only.
 function gbRenderCoverage(row) {
@@ -4693,7 +4655,6 @@ function gbRenderCoverage(row) {
 // map geocode, re-take focus and touch history — visible churn for sections
 // that are already correct. The establishment group is remembered from the
 // opening call so a panel opened from the Establishments view keeps naming it.
-var _gbLastDetailEstab = null;
 function gbRefreshDetailIndexSections(row) {
   if (!row || !document.getElementById("detail").classList.contains("open")) return;
   const listings = gbCrossListings(row);
@@ -4702,11 +4663,17 @@ function gbRefreshDetailIndexSections(row) {
   gbRenderCoverage(row);
 }
 
-// ── Re-render everything now that monkey-patches are in place ────────────────
-// The base renderAll() at the bottom of the main script runs *before* this
-// block executes, so volume_year checkboxes would still be visible without
-// this second pass.
+applyHashState();
 renderAll();
+
+// If the URL has any hash state, skip the hero and jump to the explorer
+if (location.hash && location.hash.length > 1) {
+  history.scrollRestoration = 'manual';
+  setTimeout(() => {
+    const app = document.getElementById('app');
+    if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+  }, 0);
+}
 
 
 // ── Deep-link: ?cf=<canvas_fragment> opens entry detail on load ──────────────
