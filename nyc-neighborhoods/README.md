@@ -45,6 +45,7 @@ Pipeline: `directory-pipeline/scripts/geocode_nyc_neighborhoods.py`
 | `nyc_geocode_cache.json` | API result cache keyed by query — makes re-runs free; keep this |
 | `nyc_sample_results.json` | The 250-row validation sample |
 | `nyc-neighborhoods.geojson` | Neighborhood boundary polygons — see license/attribution below |
+| `nyc-neighborhoods.slim.geojson` | **Generated** — the trimmed boundaries `nyc.html`'s map loads (261 top-level features, 2 properties, 5 dp; 239 KB gzipped vs 409 KB). Rebuild with `python3 scripts/build_nyc_hoods.py`; `--check` fails if it has drifted. Same CC BY-SA 4.0 licence — see below. |
 | `full_run.log` | Run log |
 
 ## Neighborhood boundaries — license & attribution
@@ -56,16 +57,27 @@ Pipeline: `directory-pipeline/scripts/geocode_nyc_neighborhoods.py`
 is itself derived from the **Zillow Neighborhood Boundary Shapefile for New York
 State** (last published Aug 2017), licensed CC BY-SA 3.0.
 
-- The GeoJSON is redistributed here **unmodified**.
-- This project **builds upon** it: the `neighborhood` and `borough` columns in
-  `nyc_entries_geocoded.csv` are assigned by point-in-polygon lookup against
-  these boundaries.
+- `nyc-neighborhoods.geojson` is redistributed here **unmodified**, and remains
+  the source of truth for the point-in-polygon run.
+- `nyc-neighborhoods.slim.geojson` is a **modified** redistribution — an adapted
+  work under CC BY-SA 4.0 §3(a)(1)(B), and so licensed CC BY-SA 4.0 in turn. It
+  is what `nyc.html`'s map actually loads (239 KB gzipped rather than 409 KB, and
+  the map now shades the polygons rather than just outlining them). Built by
+  `scripts/build_nyc_hoods.py`, which is also the record of the modifications:
+  - properties reduced to `name` and `borough`;
+  - the 125 `kind: "sub-neighborhood"` features dropped, keeping the 261
+    top-level ones (all 99 neighborhoods the entries resolve to are top-level,
+    and the build fails if that ever stops being true);
+  - coordinates rounded to 5 decimal places (~1.1 m).
+- This project **builds upon** the boundaries: the `neighborhood` and `borough`
+  columns in `nyc_entries_geocoded.csv` are assigned by point-in-polygon lookup
+  against them.
 - Neighborhood lines in NYC are unofficial, approximate, and disputed; treat the
   labels as one interpretation, not authoritative.
 
-**ShareAlike / CC0 position:** `nyc-neighborhoods.geojson` remains CC BY-SA 4.0,
-attributed above, and is kept as a standalone file — it is **not merged into the
-published CC0 dataset**. The `neighborhood`/`borough` columns are the output of a
+**ShareAlike / CC0 position:** both GeoJSON files remain CC BY-SA 4.0, attributed
+above and in the map's attribution control, and are kept as standalone files —
+they are **not merged into the published CC0 dataset**. The `neighborhood`/`borough` columns are the output of a
 point-in-polygon *computation* (a factual label assigned to each coordinate), not
 a reproduction or adaptation of the polygon geometry, and so are treated as
 CC0-compatible facts. Rule of thumb: publish the neighborhood **labels**, never

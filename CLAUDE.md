@@ -14,6 +14,7 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | `manifests/{uuid}/manifest.json` | Per-volume IIIF manifests (one per Green Book edition; the LOC 1946 volume's manifest lives at `manifests/2016298176/manifest.json`) |
 | `green_book_entries_all_fixed.csv` | Scratch/working copy; `green_book_entries_all.csv` is the canonical one |
 | `nyc_geo.json` | **Generated** — slim `sha1(canvas_fragment)[:12]` → `[lat, lon, neighborhood, borough, approx]` lookup for the 7,883 geocoded NYC entries. Rebuild with `python3 scripts/build_nyc_geo.py` whenever `nyc-neighborhoods/nyc_entries_geocoded.csv` changes; `--check` fails if it has drifted. |
+| `nyc-neighborhoods/nyc-neighborhoods.slim.geojson` | **Generated** — the boundary polygons `nyc.html`'s map loads (261 top-level features, `name`+`borough` only, 5 dp; 239 KB gzipped vs the source's 409 KB). Rebuild with `python3 scripts/build_nyc_hoods.py`; `--check` fails if it has drifted. A *modified* CC BY-SA 4.0 redistribution — see `nyc-neighborhoods/README.md`. |
 
 ## Branch overview
 
@@ -139,8 +140,44 @@ approximations rather than pinpoints. Everywhere outside NYC still geocodes live
 
 **Licensing:** coordinates (NYC GeoSearch, public domain) and the point-in-polygon
 `neighborhood`/`borough` labels are CC0-compatible. The CC BY-SA boundary geometry in
-`nyc-neighborhoods/nyc-neighborhoods.geojson` is deliberately **not** in `nyc_geo.json`
-— only `nyc.html`'s cluster map loads it, with attribution.
+`nyc-neighborhoods/nyc-neighborhoods*.geojson` is deliberately **not** in `nyc_geo.json`
+— only `nyc.html`'s map loads it, with attribution.
+
+## NYC map (`nyc.html`, map view)
+
+Two tiers, switched at zoom 14 (`GB_TIER_ZOOM`), both drawing from the same
+`getFiltered()` set as the table:
+
+- **Aggregate tier** (zoomed out) — the unit is the *neighborhood*, not a pixel
+  radius. Every row already carries a `neighborhood` label, and those labels join
+  exactly to the boundary file on `name` + normalized `borough` (name alone is
+  not a key — six names repeat across boroughs). Two readings, toggled by
+  `#map-mode` and serialized as `map=density` in the hash: **Bubbles** (a disc
+  per neighborhood, area ∝ count, largest on top via `zIndexOffset`, radius
+  scaled by zoom, names printed for the top 12 at z≥12) and **Density** (the
+  polygons shaded on fixed manual breaks `[1,5,15,50,150,500]` using `HEAT_RAMP`,
+  the same six-step ramp as the trends heatmap). Breaks are fixed, never derived
+  from the filtered max — a scale that rescales under the reader is a scale that
+  lies.
+- **Point tier** (zoomed in) — one `circleMarker` per business inside
+  `L.markerClusterGroup`, filled by publication, gold ring for 2+ guides, dashed
+  stroke for a block-level geocode. markercluster stays because 7,645 of the
+  7,965 geocoded rows share a coordinate with another row (one address carries
+  78) and spiderfy is the only way to reach them — so `disableClusteringAtZoom`
+  is deliberately unset.
+
+Selecting exactly one neighborhood in the facet also forces the point tier.
+Clicking a bubble or polygon flies to it and opens a popup offering
+"Filter to <name>"; the click itself never applies the facet.
+
+`MarkerCluster.Default.css` is deliberately **not** loaded — `gbClusterIcon()`
+replaces the plugin's default `iconCreateFunction`, so its classes are dead.
+`vendor/` stays a clean upstream copy; all Leaflet restyling is in the page's
+own `<style>`.
+
+The map auto-fits only on first render and when the neighborhood/borough facet
+changes; every other filter leaves the viewport alone (it used to re-fit on
+every keystroke). "⤴ Whole city" is the manual reset.
 
 ## Companion repo: directory-pipeline
 
