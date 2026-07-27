@@ -406,6 +406,24 @@ closes), and confirm the sidebar still lists Year first.
    }
    ```
    and use it at all three sites (keep the detail panel's explanatory comment).
+5. **`#view=est` deep link never fills in** *(found during Stage 2 verification;
+   reproduces on pre-cleanup code — pre-existing)*. A page loaded with
+   `#view=est` shows the "Establishments become available once all entries
+   finish loading…" note and keeps it forever: the loader's final pass renders
+   before `gbDataLoaded` flips true (deliberately, to paint before the heavy
+   index build), and nothing re-renders the establishments view afterwards —
+   `scrollToYear("1938")` returns early outside the listings view, and
+   `setViewMode` no-ops when the mode is already active. Fix: in the streaming
+   loader, immediately after the `estBtn.disabled = false; … estBtn.title = …`
+   block, add:
+   ```js
+   // A #view=est deep link rendered the establishments view before the index
+   // existed; re-render now that it can actually be built.
+   if (viewMode === "establishments") renderTable();
+   ```
+   Verification: load `all-volumes.html#view=est` fresh; after the data
+   finishes streaming, `table.est-mode` rows must appear without any user
+   interaction.
 
 ### Helpers (replace verbatim-repeated patterns; hoisted function declarations, so placement is flexible — put each near its subject)
 5. **Adopt the existing `gbFieldLabel()`** (defined ≈L3344) at the 8 inline
