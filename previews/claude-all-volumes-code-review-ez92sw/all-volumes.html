@@ -1683,6 +1683,21 @@ function gbBuildListingCardTd(row, q) {
 
 // Build one result row. Factored out of renderTableBody so extendWindow()
 // can append rows without rebuilding the whole window.
+// Shared roving-tabindex ArrowUp/ArrowDown handler for the listings and
+// establishments row keydown listeners, which otherwise only differ in their
+// Enter/Space action (handled at each call site before falling through here).
+function gbRowKeyNav(tr, e) {
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
+    if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
+      tr.setAttribute("tabindex", "-1");
+      next.setAttribute("tabindex", "0");
+      next.focus();
+    }
+  }
+}
+
 function buildRowTr(row, q) {
   const tr = document.createElement("tr");
   const idx = rowIdx(row);
@@ -1773,50 +1788,56 @@ function buildRowTr(row, q) {
   tr.addEventListener("click", rowHandler);
   tr.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); rowHandler(); return; }
-    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-      e.preventDefault();
-      const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
-      if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
-        tr.setAttribute("tabindex", "-1");
-        next.setAttribute("tabindex", "0");
-        next.focus();
-      }
-    }
+    gbRowKeyNav(tr, e);
   });
   return tr;
 }
 
-// End-of-window sentinel: reports how much is shown and, when more rows
-// remain below the window, offers "Show more" + auto-extends via an
-// IntersectionObserver as it scrolls into view.
+// End-of-window sentinel row shared by the listings and establishments views:
+// reports how much is shown and, when more rows remain below the window,
+// offers "Show more" + auto-extends via an IntersectionObserver as it scrolls
+// into view. o = {shownFrom, shownTo, total, unit, step, colSpan, onExtend}
 let _sentinelObserver = null;
-function renderSentinel(tbody, sorted, winStart) {
+function gbRenderSentinelRow(tbody, o) {
   if (_sentinelObserver) { _sentinelObserver.disconnect(); _sentinelObserver = null; }
-  if (sorted.length === 0) return;
-  const shownEnd = Math.min(sorted.length, winStart + _winSize);
-  const remaining = sorted.length - shownEnd;
+  if (o.total === 0) return;
+  const remaining = o.total - o.shownTo;
   const sentinelTr = document.createElement("tr");
   sentinelTr.className = "table-end-sentinel";
   const sentinelTd = document.createElement("td");
-  sentinelTd.colSpan = displayFields.length + 2;
+  sentinelTd.colSpan = o.colSpan;
   if (remaining > 0) {
-    sentinelTd.textContent = `Showing ${(shownEnd - winStart).toLocaleString()} of ${sorted.length.toLocaleString()} entries `;
+    sentinelTd.textContent = `Showing ${(o.shownTo - o.shownFrom).toLocaleString()} of ${o.total.toLocaleString()} ${o.unit} `;
     const more = document.createElement("button");
     more.type = "button";
-    more.textContent = `Show ${Math.min(WINDOW_STEP, remaining).toLocaleString()} more`;
-    more.addEventListener("click", extendWindow);
+    more.textContent = `Show ${Math.min(o.step, remaining).toLocaleString()} more`;
+    more.addEventListener("click", o.onExtend);
     sentinelTd.appendChild(more);
     _sentinelObserver = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) extendWindow();
+      if (entries[0].isIntersecting) o.onExtend();
     }, { root: document.getElementById("table-wrap"), rootMargin: "200px" });
     _sentinelObserver.observe(sentinelTr);
-  } else if (winStart > 0) {
-    sentinelTd.textContent = `Showing entries ${(winStart + 1).toLocaleString()}–${shownEnd.toLocaleString()} of ${sorted.length.toLocaleString()}`;
+  } else if (o.shownFrom > 0) {
+    sentinelTd.textContent = `Showing entries ${(o.shownFrom + 1).toLocaleString()}–${o.shownTo.toLocaleString()} of ${o.total.toLocaleString()}`;
   } else {
-    sentinelTd.textContent = `Showing all ${sorted.length.toLocaleString()} entries`;
+    sentinelTd.textContent = `Showing all ${o.total.toLocaleString()} ${o.unit}`;
   }
   sentinelTr.appendChild(sentinelTd);
   tbody.appendChild(sentinelTr);
+}
+
+// Thin wrapper: listings view sentinel (the mid-window "Showing entries N–M"
+// branch is reachable here since the render window can start after row 0).
+function renderSentinel(tbody, sorted, winStart) {
+  gbRenderSentinelRow(tbody, {
+    shownFrom: winStart,
+    shownTo: Math.min(sorted.length, winStart + _winSize),
+    total: sorted.length,
+    unit: "entries",
+    step: WINDOW_STEP,
+    colSpan: displayFields.length + 2,
+    onExtend: extendWindow,
+  });
 }
 
 // Grow the render window in place: append only the new slice, keep scroll.
@@ -3687,15 +3708,7 @@ function buildEstabTr(g, q, selKey) {
   tr.addEventListener("click", open);
   tr.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); return; }
-    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-      e.preventDefault();
-      const next = e.key === "ArrowDown" ? tr.nextElementSibling : tr.previousElementSibling;
-      if (next && next.tagName === "TR" && !next.classList.contains("table-end-sentinel")) {
-        tr.setAttribute("tabindex", "-1");
-        next.setAttribute("tabindex", "0");
-        next.focus();
-      }
-    }
+    gbRowKeyNav(tr, e);
   });
   return tr;
 }
@@ -3786,30 +3799,20 @@ function renderEstabBody() {
   }
 }
 
+// Thin wrapper: establishments view sentinel (shownFrom is always 0 — this
+// window only ever grows from the start — so the mid-window "Showing entries
+// N–M" branch above is unreachable here and always falls through to "Showing
+// all").
 function renderEstabSentinel(tbody, groups) {
-  if (groups.length === 0) return;
-  const shown = Math.min(groups.length, _estabWinSize);
-  const remaining = groups.length - shown;
-  const trS = document.createElement("tr");
-  trS.className = "table-end-sentinel";
-  const td = document.createElement("td");
-  td.colSpan = ESTAB_COLUMNS.length;
-  if (remaining > 0) {
-    td.textContent = `Showing ${shown.toLocaleString()} of ${groups.length.toLocaleString()} establishments `;
-    const more = document.createElement("button");
-    more.type = "button";
-    more.textContent = `Show ${Math.min(ESTAB_WINDOW_STEP, remaining).toLocaleString()} more`;
-    more.addEventListener("click", extendEstabWindow);
-    td.appendChild(more);
-    _sentinelObserver = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) extendEstabWindow();
-    }, { root: document.getElementById("table-wrap"), rootMargin: "200px" });
-    _sentinelObserver.observe(trS);
-  } else {
-    td.textContent = `Showing all ${groups.length.toLocaleString()} establishments`;
-  }
-  trS.appendChild(td);
-  tbody.appendChild(trS);
+  gbRenderSentinelRow(tbody, {
+    shownFrom: 0,
+    shownTo: Math.min(groups.length, _estabWinSize),
+    total: groups.length,
+    unit: "establishments",
+    step: ESTAB_WINDOW_STEP,
+    colSpan: ESTAB_COLUMNS.length,
+    onExtend: extendEstabWindow,
+  });
 }
 
 function extendEstabWindow() {
@@ -4695,47 +4698,74 @@ if (location.hash && location.hash.length > 1) {
   scrollToSelected(100);
 })();
 
+// ── Shared modal chrome (About + Trends) ──────────────────────────────────────
+// Both are didactic layers you visit and leave — a #hash, backdrop and Escape
+// to close, a Tab focus trap, focus restored to the opener on close.
+
+// Shared Tab focus trap for a modal/overlay container: cycles focus within
+// the container's focusable elements instead of escaping to the page behind.
+function gbTrapTab(container, e) {
+  const focusable = Array.from(
+    container.querySelectorAll('a[href], button, summary, [tabindex]:not([tabindex="-1"])')
+  ).filter(el => !el.disabled && el.offsetParent !== null);
+  if (!focusable.length) return;
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault(); last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault(); first.focus();
+  }
+}
+
+// o = {backdropEl, modalEl, closeSelector, openHash, restoreUrl, onOpen}
+function gbSetupModal(o) {
+  let opener = null;
+  function isOpen() { return o.backdropEl.classList.contains("open"); }
+  function open() {
+    if (isOpen()) return;
+    opener = document.activeElement;
+    o.backdropEl.classList.add("open");
+    o.modalEl.focus();
+    if (o.onOpen) o.onOpen();
+    // Pathname-anchored — a bare "#about"/"#trends" resolves against <base
+    // href> in preview deploys and would rewrite the address bar to the site
+    // root.
+    try { history.replaceState(null, "", location.pathname + location.search + o.openHash); } catch (e) {}
+  }
+  function close(skipFocus) {
+    if (!isOpen()) return;
+    o.backdropEl.classList.remove("open");
+    try { history.replaceState(null, "", o.restoreUrl()); } catch (e) {}
+    if (!skipFocus && opener && opener.focus) opener.focus();
+    opener = null;
+  }
+  document.addEventListener("click", e => {
+    if (!isOpen()) return;
+    const closeEl = e.target.closest(o.closeSelector);
+    // The containment check matters because the Trends close button's
+    // classes are "close-about close-trends", so About's ".close-about"
+    // selector would otherwise also match clicks inside the Trends modal.
+    if (e.target === o.backdropEl || (closeEl && o.backdropEl.contains(closeEl))) close();
+  });
+  document.addEventListener("keydown", e => {
+    if (!isOpen()) return;
+    if (e.key === "Escape") { close(); return; }
+    if (e.key === "Tab") gbTrapTab(o.modalEl, e);
+  });
+  return { open, close, isOpen };
+}
+
 // ── About modal ──────────────────────────────────────────────────────────────
 (function () {
-  let opener = null;
-  function openAbout() {
-    opener = document.activeElement;
-    document.getElementById('about-backdrop').classList.add('open');
-    document.getElementById('about-modal').focus();
-    // Pathname-anchored — a bare "#about" resolves against <base href> in
-    // preview deploys and would rewrite the address bar to the site root.
-    history.replaceState(null, '', location.pathname + location.search + '#about');
-  }
-  function closeAbout() {
-    document.getElementById('about-backdrop').classList.remove('open');
-    if (opener) { opener.focus(); opener = null; }
-    history.replaceState(null, '', location.pathname + location.search);
-  }
-  document.getElementById('about-btn').addEventListener('click', openAbout);
-  if (_gbAboutOnLoad) openAbout();
-  document.addEventListener('click', (e) => {
-    const backdrop = document.getElementById('about-backdrop');
-    if (!backdrop || !backdrop.classList.contains('open')) return;
-    if (e.target === backdrop || e.target.closest('.close-about')) closeAbout();
+  const modal = gbSetupModal({
+    backdropEl: document.getElementById('about-backdrop'),
+    modalEl: document.getElementById('about-modal'),
+    closeSelector: '.close-about',
+    openHash: '#about',
+    restoreUrl: () => location.pathname + location.search,
   });
-  document.addEventListener('keydown', (e) => {
-    const backdrop = document.getElementById('about-backdrop');
-    if (!backdrop || !backdrop.classList.contains('open')) return;
-    if (e.key === 'Escape') { closeAbout(); return; }
-    if (e.key === 'Tab') {
-      const modal = document.getElementById('about-modal');
-      const focusable = Array.from(
-        modal.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])')
-      ).filter(el => !el.disabled);
-      if (!focusable.length) return;
-      const first = focusable[0], last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault(); last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault(); first.focus();
-      }
-    }
-  });
+  document.getElementById('about-btn').addEventListener('click', modal.open);
+  if (_gbAboutOnLoad) modal.open();
 }());
 
 // ── Detail panel: Escape everywhere; focus trap only on mobile, where the
@@ -4748,16 +4778,7 @@ document.getElementById('detail').addEventListener('keydown', e => {
   if (e.key === 'Escape') { document.getElementById('detail-close').click(); return; }
   if (e.key === 'Tab') {
     if (!window.matchMedia('(max-width: 640px)').matches) return;
-    const focusable = Array.from(
-      detail.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])')
-    ).filter(el => !el.disabled && el.offsetParent !== null);
-    if (!focusable.length) return;
-    const first = focusable[0], last = focusable[focusable.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault(); last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault(); first.focus();
-    }
+    gbTrapTab(detail, e);
   }
 });
 
@@ -6003,30 +6024,18 @@ window.addEventListener("resize", () => {
 // The charts are didactic, like the About modal — a layer you visit and
 // leave — so they share its interaction contract: #trends hash, backdrop and
 // Escape to close, focus trap, focus restored to the opener.
-function gbTrendsModalOpen() {
-  const b = document.getElementById("trends-backdrop");
-  return !!b && b.classList.contains("open");
-}
-let _gbTrendsOpener = null;
-function gbOpenTrendsModal() {
-  if (gbTrendsModalOpen()) return;
-  _gbTrendsOpener = document.activeElement;
-  document.getElementById("trends-backdrop").classList.add("open");
-  document.getElementById("trends-modal").focus();
-  gcEvent("trends-open");
-  // Pathname-anchored, mirroring the About modal's #about handling.
-  try { history.replaceState(null, "", location.pathname + location.search + "#trends"); } catch (e) {}
-  gbRenderTrends();  // charts need a visible container to measure width
-}
-function gbCloseTrendsModal(skipFocus) {
-  const b = document.getElementById("trends-backdrop");
-  if (!b || !b.classList.contains("open")) return;
-  b.classList.remove("open");
-  // Restore the filter-state hash the modal's #trends replaced.
-  try { history.replaceState(null, "", stateToHash()); } catch (e) {}
-  if (!skipFocus && _gbTrendsOpener && _gbTrendsOpener.focus) _gbTrendsOpener.focus();
-  _gbTrendsOpener = null;
-}
+const _gbTrendsModal = gbSetupModal({
+  backdropEl: document.getElementById("trends-backdrop"),
+  modalEl: document.getElementById("trends-modal"),
+  closeSelector: ".close-trends",
+  openHash: "#trends",
+  restoreUrl: stateToHash,  // restores the filter-state hash the modal's #trends replaced
+  onOpen: () => { gcEvent("trends-open"); gbRenderTrends(); },  // charts need a visible container to measure width
+});
+// Thin delegates so the rest of the file can keep calling these by name.
+function gbTrendsModalOpen() { return _gbTrendsModal.isOpen(); }
+function gbOpenTrendsModal() { _gbTrendsModal.open(); }
+function gbCloseTrendsModal(skipFocus) { _gbTrendsModal.close(skipFocus); }
 (function () {
   ["trends-btn", "hero-trends-btn", "mobile-trends-btn"].forEach(id => {
     const el = document.getElementById(id);
@@ -6037,26 +6046,6 @@ function gbCloseTrendsModal(skipFocus) {
     const closeAboutBtn = document.querySelector("#about-modal .close-about");
     if (closeAboutBtn) closeAboutBtn.click();
     gbOpenTrendsModal();
-  });
-  document.addEventListener("click", e => {
-    const backdrop = document.getElementById("trends-backdrop");
-    if (!backdrop || !backdrop.classList.contains("open")) return;
-    if (e.target === backdrop || e.target.closest(".close-trends")) gbCloseTrendsModal();
-  });
-  document.addEventListener("keydown", e => {
-    const backdrop = document.getElementById("trends-backdrop");
-    if (!backdrop || !backdrop.classList.contains("open")) return;
-    if (e.key === "Escape") { gbCloseTrendsModal(); return; }
-    if (e.key === "Tab") {
-      const modal = document.getElementById("trends-modal");
-      const focusable = Array.from(
-        modal.querySelectorAll('a[href], button, summary, [tabindex]:not([tabindex="-1"])')
-      ).filter(el => !el.disabled && el.offsetParent !== null);
-      if (!focusable.length) return;
-      const first = focusable[0], last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
   });
   if (_gbTrendsOnLoad) gbOpenTrendsModal();
 })();
