@@ -3,6 +3,10 @@ CLAUDE.md
 hero-thumbs-review.html
 __pycache__/
 
+# Derived query database built from the two CSVs by scripts/build_query_db.py
+# (~68 MB, rebuilds in ~5 s). Never committed — it would go stale silently.
+green_books.sqlite
+
 # Full-corpus thumbnail build tree (~450 MB, ~109k WebP files). Hosted on the
 # hadro/green-books-thumbnails HF dataset, never committed. See scripts/build_all_thumbs.py.
 thumbs/
