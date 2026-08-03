@@ -56,7 +56,18 @@ function gbStripNameTail(name) {
 //     uniformly the same business at the same address, and the West End /
 //     St. Louis hard case keeps its splits).
 // ────────────────────────────────────────────────────────────────────────────
+// Cached for the same reason as the address signature: gbStripNameTail loops
+// over 28 regexes until none match, and the corpus has only ~27.5k distinct
+// names across 109k rows.
+const GB_STEM_CACHE = new Map();
 function gbNewNameStem(name) {
+  const ck = name || "";
+  let stem = GB_STEM_CACHE.get(ck);
+  if (stem === undefined) GB_STEM_CACHE.set(ck, stem = gbComputeNameStem(ck));
+  return stem;
+}
+
+function gbComputeNameStem(name) {
   let s = (name || "").replace(/\([^)]*\)/g, " ");
   const unquoted = s.replace(/"[^"]*"/g, " ").replace(/\s+/g, " ").trim();
   if (unquoted.length >= 3) s = unquoted;
@@ -106,6 +117,19 @@ function oldKey(row) {
 // ────────────────────────────────────────────────────────────────────────────
 const STREET_SUFFIXES = /\s*\b(sts?|streets?|aves?|avenues?|blvds?|boulevards?|rds?|roads?|pls?|places?|cts?|courts?|drs?|drives?|lns?|lanes?|hwys?|highways?|pkwys?|parkways?|terr?|terraces?|sqs?|squares?|way|circles?|cirs?)\.?\s*$/i;
 const STREET_DIRECTIONALS = /\b(north|south|east|west|n|s|e|w|ne|nw|se|sw)\b\.?/gi;
+// One directional sitting at the END of the part. Applied repeatedly (see
+// gbStripTrailingDirectionals) so a run of them — "N. W.", "Ave. N.E" — comes
+// off a piece at a time. Stripped BEFORE the $-anchored STREET_SUFFIXES, so a
+// trailing directional can't shield the street type from being stripped.
+// "No."/"So." are included here but deliberately NOT in STREET_DIRECTIONALS
+// above: as a trailing token they are always the direction, but mid-address
+// they carry lettered-street forms ("1207 So. \"M\" St.") that must survive.
+const STREET_TRAILING_DIRECTIONAL = /[\s.,]*\b(?:north|south|east|west|no|so|n|s|e|w|ne|nw|se|sw)\b\.?[\s.,]*$/i;
+function gbStripTrailingDirectionals(text) {
+  let out = text, prev;
+  do { prev = out; out = out.replace(STREET_TRAILING_DIRECTIONAL, " "); } while (out !== prev);
+  return out;
+}
 // "at" joins intersection forms too: "7th Ave. at 125th St."
 const STREET_SPLIT = /\s*(?:&| and | at |\/|,)\s*/i;
 
@@ -174,7 +198,18 @@ function gbSplitHouseFraction(s) {
 //     a mangled number, and expanding it would swallow the whole street.
 // Callers only consult this for rows that already parsed a house number.
 const GB_MAX_RANGE_SPAN = 40;
+// Cached like the signature above — callers only read the returned Set, and
+// gbResolveGroups asks for the same folded address once per bucket it appears
+// in. `null` is a real answer here ("not a range"), so probe with has().
+const GB_RANGE_CACHE = new Map();
 function gbHouseRange(folded) {
+  if (GB_RANGE_CACHE.has(folded)) return GB_RANGE_CACHE.get(folded);
+  const r = gbComputeHouseRange(folded);
+  GB_RANGE_CACHE.set(folded, r);
+  return r;
+}
+
+function gbComputeHouseRange(folded) {
   const m = folded.match(/^\s*(\d+)((?:\s*[-\/]\s*\d+(?!\d|\s*(?:st|nd|rd|th)\b))+)/i);
   if (!m) return null;
   const base = m[1];
@@ -191,7 +226,21 @@ function gbHouseRange(folded) {
   return out;
 }
 
+// A signature depends only on (address, city, state) and every caller treats it
+// as read-only — gbResolveGroups reads .number/.raw and iterates .streets, and
+// copies into a fresh Set when it needs to accumulate (phase 2). 60% of the
+// corpus's address triples are a repeat of another row's, the same business
+// reprinted edition after edition, so the parse is cached rather than redone.
+// Bounded by the number of DISTINCT triples (~44k over both CSVs).
+const GB_SIG_CACHE = new Map();
 function gbParseAddress(addr, city, state) {
+  const ck = (addr || "") + "\u0000" + (city || "") + "\u0000" + (state || "");
+  let sig = GB_SIG_CACHE.get(ck);
+  if (sig === undefined) GB_SIG_CACHE.set(ck, sig = gbComputeSignature(addr, city, state));
+  return sig;
+}
+
+function gbComputeSignature(addr, city, state) {
   const raw = gbSplitHouseFraction((addr || "").trim());
   if (!raw || ADDR_PLACEHOLDER.test(raw)) return { number: null, streets: new Set(), raw: "" };
   // House number = leading digits NOT followed by an ordinal suffix —
@@ -214,21 +263,33 @@ function gbParseAddress(addr, city, state) {
     ((city || "") + " " + (state || "")).toLowerCase()
       .replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(w => w.length >= 3)
   );
+  const partWords = (text) => text
+    .replace(STREET_SUFFIXES, "")
+    .replace(STREET_DIRECTIONALS, "")
+    .replace(/[^a-zA-Z0-9\s]/g, "")  // keep digits so "3rd"/"42nd" survive
+    .trim()
+    .toLowerCase()
+    .split(/\s+/)
+    .map(t => SPELLED_ORDINALS[t] || t)
+    // Canonicalize numeric ordinals to bare digits so "148 St." and
+    // "148th St." produce the same token (exact digit equality still
+    // applies — "125" never matches "126").
+    .map(t => t.replace(/^(\d+)(?:st|nd|rd|th)$/i, "$1"))
+    .filter(t => t && !cityWords.has(t));
+
   const streets = new Set();
   for (const p of parts) {
-    const cleaned = p
-      .replace(STREET_SUFFIXES, "")
-      .replace(STREET_DIRECTIONALS, "")
-      .replace(/[^a-zA-Z0-9\s]/g, "")  // keep digits so "3rd"/"42nd" survive
-      .trim()
-      .toLowerCase();
-    const words = cleaned.split(/\s+/)
-      .map(t => SPELLED_ORDINALS[t] || t)
-      // Canonicalize numeric ordinals to bare digits so "148 St." and
-      // "148th St." produce the same token (exact digit equality still
-      // applies — "125" never matches "126").
-      .map(t => t.replace(/^(\d+)(?:st|nd|rd|th)$/i, "$1"))
-      .filter(t => t && !cityWords.has(t));
+    // Strip a trailing directional first, so "5th Ave. N." reduces to the same
+    // token as "5th Ave.". Without this the $-anchored suffix strip can't fire,
+    // "Ave" survives as a token, and the bare ordinal that every other spelling
+    // produces is never minted — the same address then fails to match itself.
+    let words = partWords(gbStripTrailingDirectionals(p));
+    // A part contributes nothing when it yields no token and no concat. That
+    // means the "directional" was the street's own name (Brooklyn's "Ave. S",
+    // Washington's "Q St. N. W."), so re-read the part with it left in place.
+    if (words.filter(t => t.length >= 3 || /^\d+$/.test(t)).length === 0 && words.length < 2) {
+      words = partWords(p);
+    }
     // The 3-char floor drops alphabetic particles ("la", "de") but numeric
     // street tokens are meaningful at any length ("7" ← "7th Ave").
     const tokens = words.filter(t => t.length >= 3 || /^\d+$/.test(t));
@@ -470,9 +531,22 @@ function gbBuildMatchIndex(rows) {
       g.rows.forEach(r => rowToKey.set(r, key));
     });
   });
+  gbClearMatchCaches();
   gbBuildMatchIndex.lastBuildMs =
     (typeof performance !== "undefined" ? performance.now() : Date.now()) - t0;
   return { index, rowToKey };
+}
+
+// The memo tables above exist to serve ONE build — the corpus reprints the same
+// address, name and house range edition after edition, so caching cuts the
+// index build roughly in half. Once the index exists nothing hot reads them
+// again, and ~81k retained entries would hold ~14 MB for the life of the page.
+// gbBuildMatchIndex calls this on the way out; call it yourself if you drive
+// gbResolveGroups directly (address-keying-test.html does).
+function gbClearMatchCaches() {
+  GB_SIG_CACHE.clear();
+  GB_STEM_CACHE.clear();
+  GB_RANGE_CACHE.clear();
 }
 
 // Human-readable search query for "See all likely match listings": applies
