@@ -639,6 +639,53 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 #detail-notes.has-notes { display: block; }
 .detail-notes-cap { font-family: var(--gb-font-mono); font-size: 0.679rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gb-ink-faint); margin-top: 6px; }
 
+/* ── Detail skeleton (deep link / hero card opened before the row streamed) ──
+   A shared ?cf= link asks for one entry, but the CSVs take ~20s to stream and
+   the row can be anywhere in them. The panel used to stay shut for that whole
+   wait — the reader landed on the hero, started reading it, and got yanked down
+   to the explorer when the row finally arrived. Instead the panel opens
+   immediately in a placeholder state, so the wait is visibly *this entry
+   loading* rather than an unrelated page that later moves under you.
+   The one thing that needs no data is the snippet itself: the thumbnail URL is
+   content-addressed off the canvas fragment (thumbKey), so the actual scan of
+   the requested entry paints in the hero straight away, ahead of the CSVs.
+   The placeholder bars replace the real panel contents rather than sitting
+   alongside them (see the :not() rule), so nothing shifts when the row lands —
+   the bars are sized to the type they stand in for. */
+#detail.is-skeleton #detail-inner > *:not(#detail-skeleton) { display: none !important; }
+#detail:not(.is-skeleton) #detail-skeleton { display: none; }
+#detail-skeleton { padding-top: 2px; }
+.sk-eyebrow { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gb-ink-faint); margin-bottom: 14px; }
+.sk-bar { background: var(--gb-paper-2); border-radius: 1px; position: relative; overflow: hidden; }
+/* One sweep across the panel, not a per-bar loop: a dozen independently
+   shimmering bars reads as noise. Bars share the animation and stagger by
+   delay, so the highlight travels down the panel. */
+.sk-bar::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent); animation: sk-sweep 1.6s ease-in-out infinite; }
+@keyframes sk-sweep { 100% { transform: translateX(100%); } }
+.sk-title { height: 30px; width: 72%; margin-bottom: 8px; }
+.sk-title-2 { height: 30px; width: 44%; margin-bottom: 20px; }
+.sk-meta { height: 12px; width: 38%; margin-bottom: 22px; }
+.sk-rule { border-top: 1px solid var(--gb-rule-faint); padding-top: 18px; }
+.sk-row { display: grid; grid-template-columns: minmax(80px, 96px) 1fr; gap: 8px 16px; margin-bottom: 12px; }
+.sk-row .sk-bar { height: 11px; align-self: center; }
+.sk-row .sk-bar:first-child { width: 100%; }
+.sk-block { height: 74px; width: 100%; margin: 22px 0 0; }
+#detail-skeleton .sk-bar:nth-child(2n)::after { animation-delay: 0.12s; }
+#detail-skeleton .sk-row:nth-child(2n) .sk-bar::after { animation-delay: 0.18s; }
+#detail-skeleton .sk-row:nth-child(3n) .sk-bar::after { animation-delay: 0.3s; }
+/* Status line: says what is happening and roughly how far along, so a slow
+   connection reads as progress rather than a hang. */
+#detail-sk-status { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.06em; color: var(--gb-ink-faint); margin: 26px 0 0; padding-top: 14px; border-top: 1px solid var(--gb-rule-faint); }
+/* Terminal state: the fragment matched nothing once both CSVs finished. */
+#detail-skeleton.sk-missing .sk-bar, #detail-skeleton.sk-missing .sk-rule { display: none; }
+#detail-skeleton.sk-missing #detail-sk-status { border-top: none; padding-top: 0; margin-top: 0; }
+.sk-missing-title { font-family: var(--gb-font-display); font-size: 1.5rem; font-weight: 400; color: var(--gb-ink); margin: 0 0 10px; }
+.sk-missing-text { font-size: 0.929rem; color: var(--gb-ink-soft); margin: 0 0 16px; line-height: 1.5; }
+/* Placeholder for the snippet itself, shown only until the crop paints (or for
+   the few entries with no canvas fragment to address one by). */
+.detail-hero-sk { width: 100%; height: 148px; background: var(--gb-paper-2); position: relative; overflow: hidden; }
+.detail-hero-sk::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent); animation: sk-sweep 1.6s ease-in-out infinite; }
+
 /* Citation, collapsed by default — useful to have, not what most readers came for. */
 #detail-cite { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gb-rule-faint); }
 #detail-cite > summary { font-family: var(--gb-font-mono); font-size: 0.714rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gb-ink-faint); cursor: pointer; list-style: none; }
@@ -1002,10 +1049,33 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
     <div id="detail" role="complementary" aria-label="Entry details">
       <div class="detail-hero">
+        <div class="detail-hero-sk" id="detail-hero-sk" style="display:none" aria-hidden="true"></div>
         <a id="detail-thumb-link" target="_blank"><img id="detail-thumb" alt="" style="display:none;cursor:pointer"></a>
         <button id="detail-close" aria-label="Close detail panel">&#x2715;</button>
       </div>
       <div id="detail-inner">
+        <!-- Placeholder shown while the requested entry's row is still streaming
+             in; replaced in place by the real content below (see
+             gbShowDetailSkeleton). -->
+        <div id="detail-skeleton">
+          <div class="sk-eyebrow" id="detail-sk-eyebrow">Loading entry&hellip;</div>
+          <div class="sk-bar sk-title"></div>
+          <div class="sk-bar sk-title-2"></div>
+          <div class="sk-bar sk-meta"></div>
+          <div class="sk-rule">
+            <div class="sk-row"><div class="sk-bar"></div><div class="sk-bar" style="width:64%"></div></div>
+            <div class="sk-row"><div class="sk-bar"></div><div class="sk-bar" style="width:82%"></div></div>
+            <div class="sk-row"><div class="sk-bar"></div><div class="sk-bar" style="width:46%"></div></div>
+            <div class="sk-row"><div class="sk-bar"></div><div class="sk-bar" style="width:71%"></div></div>
+            <div class="sk-bar sk-block"></div>
+          </div>
+          <div id="detail-sk-missing" hidden>
+            <h2 class="sk-missing-title">Entry not found</h2>
+            <p class="sk-missing-text">This link points to a listing that isn&rsquo;t in the current dataset &mdash; it may have been re-extracted since the link was made.</p>
+            <button type="button" class="detail-action-btn" id="detail-sk-browse">Browse all entries</button>
+          </div>
+          <p id="detail-sk-status" role="status" aria-live="polite">Finding this entry &mdash; the full dataset is still loading.</p>
+        </div>
         <div id="detail-page-context"></div>
         <h2 id="detail-title"></h2>
         <div id="detail-estab-note"></div>
@@ -2360,6 +2430,13 @@ function liveIiifUrl(row, hAnchor) {
 
 function showDetail(row) {
   const panel = document.getElementById("detail");
+  // Real content supersedes the placeholder. If the reader picked a *different*
+  // entry while one was still loading, that's them changing their mind — drop the
+  // pending open so its row can't yank the panel away from them later.
+  if (gbDetailSkeletonActive()) {
+    if (gbPendingOpenCf && row.canvas_fragment !== gbPendingOpenCf) gbCancelPendingOpen();
+    gbClearDetailSkeleton();
+  }
   panel.classList.add("open");
   document.getElementById("main").classList.add("detail-open");
 
@@ -2804,21 +2881,173 @@ function gbStepEntry(delta, refocusEl) {
 // typically a second or two. showDetail() already copes with being called
 // mid-stream: the coverage grid shows its "matches will appear once all entries
 // finish loading…" placeholder until the match index exists.
+//
+// The panel opens *immediately* in a skeleton state (gbShowDetailSkeleton), before
+// any row exists, and the deep-link path also puts the page at the explorer right
+// away. Both halves of that matter: a shared link used to land on the hero, let
+// the reader start reading it, and then scroll them down to an entry seconds
+// later — the page moved out from under a reader who had already engaged with it.
+// Now the wait reads as "this entry is loading" from the first paint, and nothing
+// jumps when the row lands.
 let gbPendingOpenCf = null;
-function gbOpenHeroRow(row) {
+// Hero-card clicks scroll to the explorer when the row arrives; the deep-link
+// path has already put the page there and must not move it again (the reader may
+// have scrolled back up to the hero in the meantime — that's their choice).
+let gbPendingOpenScroll = true;
+function gbOpenHeroRow(row, opts) {
+  const o = opts || {};
   selectedIdx = rowIdx(row);
   showDetail(row);
   renderTableBody();
-  const app = document.getElementById('app');
-  if (app) app.scrollIntoView({ behavior: 'smooth' });
+  if (o.scroll !== false) {
+    const app = document.getElementById('app');
+    if (app) app.scrollIntoView({ behavior: 'smooth' });
+  }
   scrollToSelected(500);
 }
 function gbCheckPendingOpen(row) {
   if (row.canvas_fragment !== gbPendingOpenCf) return;
+  const scroll = gbPendingOpenScroll;
   gbPendingOpenCf = null;
+  gbPendingOpenScroll = true;
   document.querySelectorAll('.gb-hero-card-pending')
     .forEach(el => el.classList.remove('gb-hero-card-pending'));
-  gbOpenHeroRow(row);
+  gbOpenHeroRow(row, { scroll: scroll });
+}
+function gbCancelPendingOpen() {
+  gbPendingOpenCf = null;
+  gbPendingOpenScroll = true;
+  document.querySelectorAll('.gb-hero-card-pending')
+    .forEach(el => el.classList.remove('gb-hero-card-pending'));
+}
+
+// ── Detail skeleton ─────────────────────────────────────────────────────────
+// Non-null while the placeholder is showing; holds the canvas_fragment it is
+// standing in for.
+let gbSkeletonCf = null;
+function gbDetailSkeletonActive() { return gbSkeletonCf !== null; }
+// Still waiting on a row (as opposed to the terminal "not found" state), which is
+// the only case a re-render should leave the panel open for.
+function gbDetailSkeletonPending() {
+  return gbSkeletonCf !== null
+    && !document.getElementById('detail-skeleton').classList.contains('sk-missing');
+}
+// `opts.label` — a name we already know (hero cards carry one), used only in the
+// status line; the placeholder never guesses at content it doesn't have.
+function gbShowDetailSkeleton(cf, opts) {
+  const panel = document.getElementById('detail');
+  const sk = document.getElementById('detail-skeleton');
+  if (!panel || !sk) return;
+  const o = opts || {};
+  gbSkeletonCf = cf || '';
+  sk.classList.remove('sk-missing');
+  document.getElementById('detail-sk-missing').hidden = true;
+  document.getElementById('detail-sk-eyebrow').textContent = 'Loading entry…';
+  const status = document.getElementById('detail-sk-status');
+  status.classList.remove('gb-sr-only');
+  status.textContent = o.label
+    ? 'Finding “' + o.label + '” — the full dataset is still loading.'
+    : 'Finding this entry — the full dataset is still loading.';
+  // The snippet needs no CSV row: the thumbnail filename is sha1(canvas_fragment),
+  // so the actual scan of the requested entry can paint before the data arrives.
+  // Its shimmer stands in until then (and for the rare entry with no fragment).
+  const heroSk = document.getElementById('detail-hero-sk');
+  const img = document.getElementById('detail-thumb');
+  const thumbLink = document.getElementById('detail-thumb-link');
+  thumbLink.removeAttribute('href');
+  thumbLink.removeAttribute('aria-label');
+  img.style.display = 'none';
+  img.alt = '';
+  heroSk.style.display = 'block';
+  const url = thumbKey(cf || '');
+  if (url) {
+    img.onerror = () => { img.onerror = null; img.style.display = 'none'; };
+    img.onload = () => {
+      img.onload = null;
+      // Only reveal it if the placeholder is still what's on screen — the real
+      // row may have landed and re-pointed this same <img> in the meantime.
+      if (!gbDetailSkeletonActive()) return;
+      img.style.display = 'block';
+      heroSk.style.display = 'none';
+    };
+    img.src = url;
+  }
+  panel.classList.add('is-skeleton');
+  panel.setAttribute('aria-busy', 'true');
+  panel.setAttribute('aria-label', 'Entry details, loading');
+  document.getElementById('main').classList.add('detail-open');
+  panel.classList.add('open');
+  gbSyncDetailModality();
+  // On phones the panel is a modal and everything behind it goes inert, so focus
+  // has to come with it — otherwise it is stranded on an inert hero card (or on
+  // <body>, for a deep link). preventScroll: gbHoldAtApp owns the scroll here.
+  if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {
+    const close = document.getElementById('detail-close');
+    if (close) close.focus({ preventScroll: true });
+  }
+}
+function gbClearDetailSkeleton() {
+  if (gbSkeletonCf === null) return;
+  gbSkeletonCf = null;
+  const img = document.getElementById('detail-thumb');
+  img.onload = null;
+  const panel = document.getElementById('detail');
+  panel.removeAttribute('aria-busy');
+  panel.classList.remove('is-skeleton');
+  document.getElementById('detail-skeleton').classList.remove('sk-missing');
+  document.getElementById('detail-sk-missing').hidden = true;
+  document.getElementById('detail-hero-sk').style.display = 'none';
+}
+// Fed by the loader's progress ticks: a percentage turns a long wait from a
+// possible hang into visible progress.
+function gbDetailSkeletonProgress(pct) {
+  if (gbSkeletonCf === null) return;
+  const sk = document.getElementById('detail-skeleton');
+  if (sk.classList.contains('sk-missing')) return;
+  const status = document.getElementById('detail-sk-status');
+  status.textContent = 'Finding this entry — ' + Math.floor(pct) + '% of the dataset loaded.';
+}
+// Both CSVs finished and the fragment matched nothing: a stale or hand-edited
+// link. Say so rather than shimmering forever.
+function gbDetailSkeletonMissing() {
+  if (gbSkeletonCf === null) return;
+  gbCancelPendingOpen();
+  const sk = document.getElementById('detail-skeleton');
+  sk.classList.add('sk-missing');
+  document.getElementById('detail-sk-eyebrow').textContent = 'Not found';
+  document.getElementById('detail-sk-missing').hidden = false;
+  // The visible message is the heading below; the live region carries it to
+  // assistive tech, which has been listening to this element for progress.
+  const status = document.getElementById('detail-sk-status');
+  status.classList.add('gb-sr-only');
+  status.textContent = 'Entry not found. This link points to a listing that is not in the current dataset.';
+  document.getElementById('detail-hero-sk').style.display = 'none';
+}
+document.getElementById('detail-sk-browse').addEventListener('click', () => {
+  document.getElementById('detail-close').click();
+});
+
+// Put the page at the explorer and keep it there while the masthead settles.
+// #app sits below a hero whose height moves as the webfonts swap in and the
+// featured cards fill, so one scrollTo at boot lands tens of pixels off. Re-snap
+// at each settle point — but never once the reader has scrolled for themselves,
+// and never past the first few seconds.
+function gbHoldAtApp() {
+  const app = document.getElementById('app');
+  if (!app) return;
+  const t0 = Date.now();
+  let owned = false;
+  const release = () => { owned = true; };
+  ['wheel', 'touchmove', 'keydown', 'mousedown'].forEach(t =>
+    window.addEventListener(t, release, { passive: true, once: true }));
+  const snap = () => {
+    if (owned || Date.now() - t0 > 3000) return;
+    window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
+  };
+  snap();
+  requestAnimationFrame(snap);
+  window.addEventListener('load', snap, { once: true });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(snap, () => {});
 }
 
 // ── NYC precomputed coordinates ────────────────────────────────────────────
@@ -2967,6 +3196,9 @@ function renderDetailMap(row) {
 }
 
 document.getElementById("detail-close").addEventListener("click", () => {
+  // Closing a still-loading panel is a decision: abandon the requested entry, so
+  // its row can't reopen the panel when it eventually streams in.
+  if (gbDetailSkeletonActive()) { gbCancelPendingOpen(); gbClearDetailSkeleton(); }
   document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
   // Drop the pending geocode and release the mobile modal state (role, inert)
   // before focus moves back to the table.
@@ -3506,8 +3738,12 @@ function applyHashState() {
 // Closing and reopening there made a deep-linked entry blink out of existence.
 function renderAll(opts) {
   // Auto-close the detail panel whenever filters/search change so users
-  // never see a stale record juxtaposed against a new result set.
-  if (!(opts && opts.keepDetail)) {
+  // never see a stale record juxtaposed against a new result set. A skeleton
+  // still waiting on its row is exempt: the first-paint render fires ~2s into
+  // the stream, and closing there would blank a deep link's panel seconds after
+  // opening it. It holds no stale record to juxtapose — only a pending request.
+  if (!(opts && opts.keepDetail) && !gbDetailSkeletonPending()) {
+    gbClearDetailSkeleton();
     document.getElementById("detail").classList.remove("open"); document.getElementById("main").classList.remove("detail-open");
     // Central close path — drop any pending geocode and release the mobile modal
     // state here too, so `inert` can never outlive the panel that set it. Callers
@@ -3989,7 +4225,22 @@ window.addEventListener("popstate", function () {
       showDetail(match);
       renderTableBody();
       scrollToSelected();
+    } else if (!gbDataLoaded) {
+      // Still streaming — re-point the pending open and its placeholder at
+      // whichever entry this history state asked for. The page is already where
+      // the reader put it, so this never scrolls.
+      gbPendingOpenCf = cf;
+      gbPendingOpenScroll = false;
+      gbShowDetailSkeleton(cf);
     }
+  } else if (gbDetailSkeletonActive()) {
+    // Navigated away from the deep link before its row arrived: drop both the
+    // placeholder and the request behind it.
+    gbCancelPendingOpen();
+    gbClearDetailSkeleton();
+    document.getElementById("detail").classList.remove("open");
+    document.getElementById("main").classList.remove("detail-open");
+    gbSyncDetailModality();
   }
 });
 
@@ -4867,13 +5118,22 @@ renderAll();
   const cf = new URLSearchParams(location.search).get('cf');
   if (!cf) return;
   const match = ALL_ENTRIES.find(r => r.canvas_fragment === cf);
+  history.scrollRestoration = 'manual';
   // Not streamed in yet — hand it to the pending-open watcher so the panel opens
-  // as soon as this row arrives, rather than waiting for the whole dataset.
-  if (!match) { gbPendingOpenCf = cf; return; }
+  // as soon as this row arrives, rather than waiting for the whole dataset. The
+  // panel and the scroll position are both settled *now*, in placeholder form:
+  // the link asked for an entry, so the reader lands on the explorer with that
+  // entry visibly loading, and nothing moves when its row lands seconds later.
+  if (!match) {
+    gbPendingOpenCf = cf;
+    gbPendingOpenScroll = false;
+    gbShowDetailSkeleton(cf);
+    gbHoldAtApp();
+    return;
+  }
   selectedIdx = rowIdx(match);
   showDetail(match);
   renderTableBody();
-  history.scrollRestoration = 'manual';
   const app = document.getElementById('app');
   if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
   scrollToSelected(100);
@@ -5200,6 +5460,9 @@ async function gbStreamCsv(url, onRow) {
     if (ls) ls.textContent = label;
     if (fill) fill.style.width = pct + '%';
     if (wrap) wrap.setAttribute('aria-valuenow', String(Math.round(pct)));
+    // A deep-linked entry's placeholder shows the same progress: the bar lives in
+    // the toolbar, which the panel covers on phones.
+    gbDetailSkeletonProgress(pct);
   }
   function gbHideProgress() {
     const wrap = document.getElementById('load-progress');
@@ -5272,13 +5535,19 @@ async function gbStreamCsv(url, onRow) {
       // index-dependent sections below are stale.
       if (restoreRow !== openRow) showDetail(restoreRow);
       renderTableBody();
-      // A shared link lands on the entry, not on the masthead.
-      if (deepLinkCf) {
+      // A shared link lands on the entry, not on the masthead — but only if the
+      // page isn't already there. When the deep link opened mid-stream the reader
+      // has been sitting in the explorer for seconds; scrolling again here would
+      // be exactly the yank the skeleton exists to prevent.
+      if (deepLinkCf && restoreRow !== openRow) {
         const app = document.getElementById('app');
         if (app) window.scrollTo({ top: app.offsetTop, behavior: 'instant' });
       }
       scrollToSelected(100);
     }
+    // Placeholder still up with both streams finished — the fragment matches
+    // nothing in the corpus. Say so instead of shimmering forever.
+    if (gbDetailSkeletonPending()) gbDetailSkeletonMissing();
     // The bar stays visible through the index build — it is ~1s of the load and
     // gating Establishments, so going quiet here would look like a stall.
     gbSetProgress(99, 'Indexing cross-listings…');
@@ -5309,6 +5578,15 @@ async function gbStreamCsv(url, onRow) {
   } catch (err) {
     // Never leave a half-filled bar implying the load is still coming.
     gbHideProgress();
+    // Nor a placeholder waiting on a row that is never coming. Close it outright:
+    // on phones the panel covers the whole page, including the error below.
+    if (gbDetailSkeletonActive()) {
+      gbCancelPendingOpen();
+      gbClearDetailSkeleton();
+      document.getElementById("detail").classList.remove("open");
+      document.getElementById("main").classList.remove("detail-open");
+      gbSyncDetailModality();
+    }
     const noRes = document.getElementById("no-results");
     if (noRes) {
       noRes.style.display = 'block';
@@ -6412,9 +6690,11 @@ function gbUpdateHero() {
       // Manifest thumbs are slim records; the detail panel needs the real CSV row.
       const row = useManifest ? ALL_ENTRIES.find(x => x.canvas_fragment === r.canvas_fragment) : r;
       if (row) { gbOpenHeroRow(row); return; }
-      // Not streamed yet — queue it and open the moment it arrives.
+      // Not streamed yet — queue it, open the panel in its placeholder state so
+      // the click has a visible answer, and open the moment the row arrives.
       gbPendingOpenCf = r.canvas_fragment || null;
       card.classList.add('gb-hero-card-pending');
+      gbShowDetailSkeleton(r.canvas_fragment || '', { label: r[nf] || '' });
       document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
     });
     stack.appendChild(card);
