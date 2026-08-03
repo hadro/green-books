@@ -173,7 +173,7 @@ Name variants that stem differently never get compared, however identical their
 addresses.
 
 Run against the 18 real listings for the A. G. Gaston Motel in Birmingham — one
-business, one address, 1955–1966 — the production matcher returns **three** groups:
+business, one address, 1955–1966 — the matcher returned **three** groups:
 
 | Group key | Rows | Example address |
 |---|---:|---|
@@ -181,22 +181,62 @@ business, one address, 1955–1966 — the production matcher returns **three** 
 | `gaston a g\|birmingham#0` | 3 | `1510 5th Ave., N.` — inverted name form, different bucket |
 | `a g gaston\|birmingham#1` | 1 | `1510 5th Ave., N.` — same bucket, address split |
 
-The singleton is the more interesting failure: it shares both name stem and street
-address with the 14-row group, but `gbParseAddress` splits `"1510 5th Ave., N."` on
-the comma and yields `streets = ["5"]` instead of `["ave", "5ave"]`, so the fuzzy
-street-token test fails despite an identical house number of 1510.
+The singleton was a bug in `gbParseAddress`, **since fixed** — see
+"Trailing directionals" below. It is now 2 groups: 15 + 3.
+
+The remaining split is the structural one, and it does not have a cheap fix: the
+inverted name form `"Gaston, A. G. (Motel)"` stems to `gaston a g` rather than
+`a g gaston`, lands in a different bucket, and its address is therefore never
+compared against the other fifteen.
 
 **Consequences for the design:**
 
-1. A naive `trace_business` over group IDs would report 14 appearances where the
+1. A naive `trace_business` over group IDs would report 15 appearances where the
    truth is 18 — confidently, with citations. That is worse than no tool.
 2. So `trace_business` returns **two tiers**: `resolved` (same `business_group_id`,
    matching the live site exactly) and `candidates` (name-token/FTS recall pass,
    mirroring the site's "See all likely match listings"), clearly labelled, with the
    model told never to merge the tiers silently.
-3. The comma-directional split is a genuine upstream bug in `gbParseAddress` worth
-   fixing in `gb-matching.js` — it would improve the live explorer too, and should
-   be filed separately rather than worked around in the server.
+
+### Trailing directionals — fixed
+
+Diagnosing the singleton above turned up a real defect in `gbParseAddress`, now
+fixed in `gb-matching.js` with regression tests in `tests/matching_test.js`.
+
+`STREET_SUFFIXES` is anchored to end-of-string, so a trailing directional shielded
+the street type from being stripped. The *same* address then produced different
+signatures depending on spelling:
+
+| Address | Before | After |
+|---|---|---|
+| `1510 5th Ave.` | `["5"]` | `["5"]` |
+| `1510 5th Ave. N.` | `["ave", "5ave"]` | `["5"]` |
+| `1510 5th Avenue North` | `["avenue", "5avenue"]` | `["5"]` |
+| `1510 5th Ave. No.` | `["ave", "5aveno"]` | `["5"]` |
+
+The bare-ordinal form was the correct one all along; the directional spellings were
+the broken ones, leaking the street type as a token and losing the ordinal entirely.
+Because `tokensMatch` refuses to fuzzy-match numeric ordinals (so 5th never meets
+6th), `["5"]` could never reach `["ave", "5ave"]`.
+
+The fix strips a *trailing run* of directionals before the suffix strip, with a
+fallback for streets whose name **is** a direction — Brooklyn's `Ave. S`, Washington's
+`Q St. N. W.` — which would otherwise be erased. Corpus-wide: 961 of 100,847
+addresses change signature, none lose all street tokens, and group count drops from
+31,917 to 31,845 — 72 groups correctly unified (same business, same address, e.g.
+`548 Bedford Pl. N. E.` / `548 Bedford Place, N.E.`).
+
+One group split, and it is an honest cost: `901 Rhode Island Ave. N. W.` and
+`901 Rhode Is. Ave. N. W.` (YWCA, Washington) previously matched *only* through the
+junk `ave` token both carried — a token that would equally have matched any other
+avenue in the bucket. That merge was accidental, not principled, and the abbreviation
+`Rhode Is.` is beyond what the resolver handles.
+
+Two known limits were left alone as out of scope: `No.`/`So.` are still not treated
+as directionals in the *global* strip (adding them fixes a false merge of
+`429 No. 37th St.` with `429 No. 27th Street`, but costs eight Tacoma/Las Vegas
+lettered-street addresses their only token), and the street *type* is discarded for
+numbered streets, so `5th Ave.` and `5th St.` share a signature.
 
 ---
 
@@ -230,8 +270,12 @@ large ones such as blank-name rows in a big city).
   explorer) needs the same aggregates this server computes. Worth checking whether
   the DB build can also emit the explorers' hard-coded `FIELD_META.top_values`,
   which are currently recomputed by hand whenever the data changes.
-- **Fixing `gbParseAddress`'s comma-directional split** — separate issue, benefits
-  the live site, would tighten `trace_business` recall.
+- **Name-stem bucketing** is now the binding constraint on matching recall: an
+  inverted name form (`Gaston, A. G.`) never has its address compared against the
+  canonical form. Fixing it means resolving addresses across buckets, which is a
+  bigger change than the trailing-directional fix and needs its own measurement.
+- **`No.`/`So.` as global directionals** — fixes a false merge (37th St / 27th St)
+  at the cost of eight lettered-street addresses. Deferred; see above.
 
 ---
 

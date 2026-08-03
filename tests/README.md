@@ -58,6 +58,21 @@ PW_CHROMIUM_PATH=/opt/pw-browsers/chromium \
 tests/run.sh
 ```
 
+## Matcher unit tests
+
+`tests/matching_test.js` covers `gb-matching.js` — the address-signature
+resolver behind "Also listed in" and the cross-edition timeline. Plain Node, no
+dependencies, no server:
+
+```sh
+node tests/matching_test.js
+```
+
+It pins the address-parsing invariants (trailing directionals must not change a
+signature; streets *named* for a direction keep their name; ordinals canonicalize;
+frontage ranges expand but ordinals don't) and grouping on the A. G. Gaston Motel
+rows, which is what caught the trailing-directional bug.
+
 ## CI
 
 `.github/workflows/viewer-tests.yml` runs `tests/run.sh` on pushes and PRs
