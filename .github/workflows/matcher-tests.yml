@@ -1,0 +1,33 @@
+name: Matcher tests
+
+# gb-matching.js decides which listings are treated as the same business across
+# editions, and it had no CI at all — the viewer workflow's path filter doesn't
+# mention it, so a matcher-only change triggered nothing. These tests need no
+# browser and no dependencies, so they run as their own fast job rather than
+# behind the Playwright install.
+
+on:
+  push:
+    paths:
+      - "gb-matching.js"
+      - "tests/matching_test.js"
+      - ".github/workflows/matcher-tests.yml"
+  pull_request:
+    paths:
+      - "gb-matching.js"
+      - "tests/matching_test.js"
+      - ".github/workflows/matcher-tests.yml"
+
+jobs:
+  matcher-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run matcher unit tests
+        run: node tests/matching_test.js

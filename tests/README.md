@@ -58,7 +58,28 @@ PW_CHROMIUM_PATH=/opt/pw-browsers/chromium \
 tests/run.sh
 ```
 
+## Matcher unit tests
+
+`tests/matching_test.js` covers `gb-matching.js` — the address-signature
+resolver behind "Also listed in" and the cross-edition timeline. Plain Node, no
+dependencies, no server:
+
+```sh
+node tests/matching_test.js
+```
+
+It pins the address-parsing invariants (trailing directionals must not change a
+signature; streets *named* for a direction keep their name; ordinals canonicalize;
+frontage ranges expand but ordinals don't) and grouping on the A. G. Gaston Motel
+rows, which is what caught the trailing-directional bug.
+
 ## CI
 
 `.github/workflows/viewer-tests.yml` runs `tests/run.sh` on pushes and PRs
 that touch `index.html`, `clover.umd-*.js`, or `tests/**`.
+
+`.github/workflows/matcher-tests.yml` runs `tests/matching_test.js` on pushes
+and PRs that touch `gb-matching.js` or the test itself. Separate workflow
+because it needs no browser and finishes in about a second — and because the
+viewer workflow's path filter never mentioned `gb-matching.js`, so matcher
+changes previously ran no CI at all.

@@ -80,6 +80,19 @@ The first non-NYPL volume in the collection. Key details:
 - **Local manifest**: committed at `manifests/2016298176/manifest.json`
 - **Integration**: added via `scripts/append_loc_1946.py`; full plan at `docs/loc-1946-integration-plan.md`
 
+## Querying the corpus (agents)
+
+Don't answer corpus questions by loading the CSVs into context — 34 MB, 109,163 rows.
+`python3 scripts/build_query_db.py` folds both CSVs, `nyc_geo.json`, and the per-volume
+rights into `green_books.sqlite` (FTS5, ~5 s, gitignored). The
+`.claude/skills/green-books-data/` skill documents the schema, tested query recipes,
+and the traps — category folding, the case-fold-only `state_normalized`, non-unique
+`thumb_id`, and the fact that cross-edition business matching lives in `gb-matching.js`
+and must never be reimplemented ad hoc.
+
+An MCP server exposing the same data to non-shell agent clients is proposed but not
+started — see `docs/mcp-server-plan.md`.
+
 ## Companion repo: directory-pipeline
 
 Raw pipeline code at `/Users/joshhadro/github/directory-pipeline`. It produces the CSVs and manifests that feed this repo. After a pipeline run, copy `green_book_entries_all.csv` and `image_to_volume.json` here and commit.
