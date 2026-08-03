@@ -77,3 +77,9 @@ rows, which is what caught the trailing-directional bug.
 
 `.github/workflows/viewer-tests.yml` runs `tests/run.sh` on pushes and PRs
 that touch `index.html`, `clover.umd-*.js`, or `tests/**`.
+
+`.github/workflows/matcher-tests.yml` runs `tests/matching_test.js` on pushes
+and PRs that touch `gb-matching.js` or the test itself. Separate workflow
+because it needs no browser and finishes in about a second — and because the
+viewer workflow's path filter never mentioned `gb-matching.js`, so matcher
+changes previously ran no CI at all.
