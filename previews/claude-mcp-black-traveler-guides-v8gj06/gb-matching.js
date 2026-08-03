@@ -106,6 +106,19 @@ function oldKey(row) {
 // ────────────────────────────────────────────────────────────────────────────
 const STREET_SUFFIXES = /\s*\b(sts?|streets?|aves?|avenues?|blvds?|boulevards?|rds?|roads?|pls?|places?|cts?|courts?|drs?|drives?|lns?|lanes?|hwys?|highways?|pkwys?|parkways?|terr?|terraces?|sqs?|squares?|way|circles?|cirs?)\.?\s*$/i;
 const STREET_DIRECTIONALS = /\b(north|south|east|west|n|s|e|w|ne|nw|se|sw)\b\.?/gi;
+// One directional sitting at the END of the part. Applied repeatedly (see
+// gbStripTrailingDirectionals) so a run of them — "N. W.", "Ave. N.E" — comes
+// off a piece at a time. Stripped BEFORE the $-anchored STREET_SUFFIXES, so a
+// trailing directional can't shield the street type from being stripped.
+// "No."/"So." are included here but deliberately NOT in STREET_DIRECTIONALS
+// above: as a trailing token they are always the direction, but mid-address
+// they carry lettered-street forms ("1207 So. \"M\" St.") that must survive.
+const STREET_TRAILING_DIRECTIONAL = /[\s.,]*\b(?:north|south|east|west|no|so|n|s|e|w|ne|nw|se|sw)\b\.?[\s.,]*$/i;
+function gbStripTrailingDirectionals(text) {
+  let out = text, prev;
+  do { prev = out; out = out.replace(STREET_TRAILING_DIRECTIONAL, " "); } while (out !== prev);
+  return out;
+}
 // "at" joins intersection forms too: "7th Ave. at 125th St."
 const STREET_SPLIT = /\s*(?:&| and | at |\/|,)\s*/i;
 
@@ -214,21 +227,33 @@ function gbParseAddress(addr, city, state) {
     ((city || "") + " " + (state || "")).toLowerCase()
       .replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(w => w.length >= 3)
   );
+  const partWords = (text) => text
+    .replace(STREET_SUFFIXES, "")
+    .replace(STREET_DIRECTIONALS, "")
+    .replace(/[^a-zA-Z0-9\s]/g, "")  // keep digits so "3rd"/"42nd" survive
+    .trim()
+    .toLowerCase()
+    .split(/\s+/)
+    .map(t => SPELLED_ORDINALS[t] || t)
+    // Canonicalize numeric ordinals to bare digits so "148 St." and
+    // "148th St." produce the same token (exact digit equality still
+    // applies — "125" never matches "126").
+    .map(t => t.replace(/^(\d+)(?:st|nd|rd|th)$/i, "$1"))
+    .filter(t => t && !cityWords.has(t));
+
   const streets = new Set();
   for (const p of parts) {
-    const cleaned = p
-      .replace(STREET_SUFFIXES, "")
-      .replace(STREET_DIRECTIONALS, "")
-      .replace(/[^a-zA-Z0-9\s]/g, "")  // keep digits so "3rd"/"42nd" survive
-      .trim()
-      .toLowerCase();
-    const words = cleaned.split(/\s+/)
-      .map(t => SPELLED_ORDINALS[t] || t)
-      // Canonicalize numeric ordinals to bare digits so "148 St." and
-      // "148th St." produce the same token (exact digit equality still
-      // applies — "125" never matches "126").
-      .map(t => t.replace(/^(\d+)(?:st|nd|rd|th)$/i, "$1"))
-      .filter(t => t && !cityWords.has(t));
+    // Strip a trailing directional first, so "5th Ave. N." reduces to the same
+    // token as "5th Ave.". Without this the $-anchored suffix strip can't fire,
+    // "Ave" survives as a token, and the bare ordinal that every other spelling
+    // produces is never minted — the same address then fails to match itself.
+    let words = partWords(gbStripTrailingDirectionals(p));
+    // A part contributes nothing when it yields no token and no concat. That
+    // means the "directional" was the street's own name (Brooklyn's "Ave. S",
+    // Washington's "Q St. N. W."), so re-read the part with it left in place.
+    if (words.filter(t => t.length >= 3 || /^\d+$/.test(t)).length === 0 && words.length < 2) {
+      words = partWords(p);
+    }
     // The 3-char floor drops alphabetic particles ("la", "de") but numeric
     // street tokens are meaningful at any length ("7" ← "7th Ave").
     const tokens = words.filter(t => t.length >= 3 || /^\d+$/.test(t));
