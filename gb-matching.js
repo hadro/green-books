@@ -56,7 +56,18 @@ function gbStripNameTail(name) {
 //     uniformly the same business at the same address, and the West End /
 //     St. Louis hard case keeps its splits).
 // ────────────────────────────────────────────────────────────────────────────
+// Cached for the same reason as the address signature: gbStripNameTail loops
+// over 28 regexes until none match, and the corpus has only ~27.5k distinct
+// names across 109k rows.
+const GB_STEM_CACHE = new Map();
 function gbNewNameStem(name) {
+  const ck = name || "";
+  let stem = GB_STEM_CACHE.get(ck);
+  if (stem === undefined) GB_STEM_CACHE.set(ck, stem = gbComputeNameStem(ck));
+  return stem;
+}
+
+function gbComputeNameStem(name) {
   let s = (name || "").replace(/\([^)]*\)/g, " ");
   const unquoted = s.replace(/"[^"]*"/g, " ").replace(/\s+/g, " ").trim();
   if (unquoted.length >= 3) s = unquoted;
@@ -187,7 +198,18 @@ function gbSplitHouseFraction(s) {
 //     a mangled number, and expanding it would swallow the whole street.
 // Callers only consult this for rows that already parsed a house number.
 const GB_MAX_RANGE_SPAN = 40;
+// Cached like the signature above — callers only read the returned Set, and
+// gbResolveGroups asks for the same folded address once per bucket it appears
+// in. `null` is a real answer here ("not a range"), so probe with has().
+const GB_RANGE_CACHE = new Map();
 function gbHouseRange(folded) {
+  if (GB_RANGE_CACHE.has(folded)) return GB_RANGE_CACHE.get(folded);
+  const r = gbComputeHouseRange(folded);
+  GB_RANGE_CACHE.set(folded, r);
+  return r;
+}
+
+function gbComputeHouseRange(folded) {
   const m = folded.match(/^\s*(\d+)((?:\s*[-\/]\s*\d+(?!\d|\s*(?:st|nd|rd|th)\b))+)/i);
   if (!m) return null;
   const base = m[1];
@@ -204,7 +226,21 @@ function gbHouseRange(folded) {
   return out;
 }
 
+// A signature depends only on (address, city, state) and every caller treats it
+// as read-only — gbResolveGroups reads .number/.raw and iterates .streets, and
+// copies into a fresh Set when it needs to accumulate (phase 2). 60% of the
+// corpus's address triples are a repeat of another row's, the same business
+// reprinted edition after edition, so the parse is cached rather than redone.
+// Bounded by the number of DISTINCT triples (~44k over both CSVs).
+const GB_SIG_CACHE = new Map();
 function gbParseAddress(addr, city, state) {
+  const ck = (addr || "") + "\u0000" + (city || "") + "\u0000" + (state || "");
+  let sig = GB_SIG_CACHE.get(ck);
+  if (sig === undefined) GB_SIG_CACHE.set(ck, sig = gbComputeSignature(addr, city, state));
+  return sig;
+}
+
+function gbComputeSignature(addr, city, state) {
   const raw = gbSplitHouseFraction((addr || "").trim());
   if (!raw || ADDR_PLACEHOLDER.test(raw)) return { number: null, streets: new Set(), raw: "" };
   // House number = leading digits NOT followed by an ordinal suffix —
@@ -495,9 +531,22 @@ function gbBuildMatchIndex(rows) {
       g.rows.forEach(r => rowToKey.set(r, key));
     });
   });
+  gbClearMatchCaches();
   gbBuildMatchIndex.lastBuildMs =
     (typeof performance !== "undefined" ? performance.now() : Date.now()) - t0;
   return { index, rowToKey };
+}
+
+// The memo tables above exist to serve ONE build — the corpus reprints the same
+// address, name and house range edition after edition, so caching cuts the
+// index build roughly in half. Once the index exists nothing hot reads them
+// again, and ~81k retained entries would hold ~14 MB for the life of the page.
+// gbBuildMatchIndex calls this on the way out; call it yourself if you drive
+// gbResolveGroups directly (address-keying-test.html does).
+function gbClearMatchCaches() {
+  GB_SIG_CACHE.clear();
+  GB_STEM_CACHE.clear();
+  GB_RANGE_CACHE.clear();
 }
 
 // Human-readable search query for "See all likely match listings": applies

@@ -232,6 +232,15 @@ junk `ave` token both carried — a token that would equally have matched any ot
 avenue in the bucket. That merge was accidental, not principled, and the abbreviation
 `Rhode Is.` is beyond what the resolver handles.
 
+The extra parsing pass cost ~18% on `gbParseAddress`. Rather than leave that,
+`gbParseAddress`, `gbNewNameStem` and `gbHouseRange` are now memoized — the corpus
+reprints the same address, name and house range edition after edition (60% of
+address triples and 75% of names are repeats), so the index build drops from
+~1,300 ms to ~910 ms over all 109,163 rows, a net ~30% faster than before the fix.
+The tables serve one build and `gbBuildMatchIndex` clears them on the way out, so
+retained memory is unchanged at 13.3 MB; `gbClearMatchCaches()` is exported for
+callers that drive `gbResolveGroups` directly.
+
 Two known limits were left alone as out of scope: `No.`/`So.` are still not treated
 as directionals in the *global* strip (adding them fixes a false merge of
 `429 No. 37th St.` with `429 No. 27th Street`, but costs eight Tacoma/Las Vegas
