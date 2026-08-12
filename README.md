@@ -2,7 +2,15 @@
 
 This repository powers a public website for browsing and viewing the digitized editions of *The Negro Motorist Green Book* (1936–1966) and six other African American travel guides published between 1930 and 1962 — directories listing hotels, restaurants, beauty salons, and other businesses that served Black travelers during the Jim Crow era. The scanned volumes are held by the New York Public Library's Schomburg Center for Research in Black Culture and served as IIIF resources, with the 1946 edition digitized by the Library of Congress.
 
-**Live site:** https://hadro.github.io/green-books/explorer (the Green Book) · https://hadro.github.io/green-books/all-volumes (search across all seven publications)
+## 👉 Start here: **https://hadro.github.io/green-books/all-volumes**
+
+The all-volumes explorer is the main entry point to the project — search, filter, and chart all ~109,200 listings across all 46 volumes and seven publications in one place. If you are linking to this project, link there.
+
+The other explorers are narrower views of the same corpus and remain available:
+
+- [/explorer](https://hadro.github.io/green-books/explorer) — *The Negro Motorist Green Book* only (24 editions, ~67,000 listings)
+- [/travel_guides_explorer](https://hadro.github.io/green-books/travel_guides_explorer) — the six non–Green Book travel guides
+- [/nyc](https://hadro.github.io/green-books/nyc) — the New York City listings, mapped by neighborhood
 
 ---
 
@@ -10,10 +18,11 @@ This repository powers a public website for browsing and viewing the digitized e
 
 | File / folder | Description |
 |---|---|
-| `index.html` | IIIF viewer (Clover) with routing logic — opens a specific page when given a `?cf=` deep-link |
-| `explorer.html` | Interactive directory browser for *The Negro Motorist Green Book* — search and filter ~67,000 listings across all 24 editions |
-| `all-volumes.html` | The same browser extended to all seven publications — ~109,200 listings across 46 volumes (1930–1966), with cross-publication charts and trends |
+| `all-volumes.html` | **The primary explorer** — search and filter all ~109,200 listings across 46 volumes and seven publications (1930–1966), with cross-publication charts and trends |
+| `explorer.html` | The same browser scoped to *The Negro Motorist Green Book* — ~67,000 listings across its 24 editions |
 | `travel_guides_explorer.html` | Browser scoped to just the six non–Green Book travel guides |
+| `nyc.html` | New York City listings on a neighborhood map — aggregate and point views over the geocoded NYC subset |
+| `index.html` | IIIF viewer (Clover) with routing logic — opens a specific page when given a `?cf=` deep-link. **The only part of the site that contacts the NYPL or LOC image servers.** |
 | `old-explorer.html` | Archived earlier version of the explorer — kept as a historical reference, not linked from the live site |
 | `green_book_entries_all.csv` | Structured dataset of the Green Book entries, extracted via OCR and AI from the digitized scans |
 | `travel_guides_all.csv` | Structured dataset of the other six publications' entries |
@@ -21,7 +30,8 @@ This repository powers a public website for browsing and viewing the digitized e
 | `gb-categories.js` | Category folding — normalizes the guides' printed section headings into a consistent set of business categories |
 | `gb-geo.js` | Geocoding helpers for placing entries on the OpenStreetMap embed |
 | `image_to_volume.json`, `travel_guides_image_to_volume.json` | Lookup tables mapping NYPL image IDs and LOC IIIF service IDs to volume IDs, used by the viewer to route deep-links |
-| `canvas_map.json`, `travel_guides_canvas_map.json` | Lookup tables mapping IIIF canvas IDs to image service URLs, used by the explorers for thumbnail generation |
+| `canvas_map.json`, `travel_guides_canvas_map.json` | Lookup tables mapping IIIF canvas IDs to image service URLs — used to construct viewer deep-links and, only on a CDN miss, a fallback live image crop |
+| `nyc_geo.json` | Pre-computed coordinates and neighborhood labels for the ~7,900 geocoded New York City entries, so those never need a live geocoding request |
 | `manifests/` | IIIF Presentation 3 manifests for each digitized volume, patched to serve from this repository |
 | `tests/` | End-to-end viewer tests (Playwright + local fake IIIF service) — see `tests/README.md` |
 | `clover.umd-3.11.0.js` | Vendored, **unmodified** [Clover IIIF](https://github.com/samvera-labs/clover-iiif) viewer bundle — `@samvera/clover-iiif@3.11.0`, `dist/web-components/index.umd.js` from the [npm package](https://registry.npmjs.org/@samvera/clover-iiif/-/clover-iiif-3.11.0.tgz). Configured via the `options` attribute set in `index.html`; content-state deep-linking and HTTP→HTTPS URL rewriting for NYPL tile requests are handled entirely in `index.html`, no bundle patching needed. |
@@ -30,13 +40,13 @@ This repository powers a public website for browsing and viewing the digitized e
 
 ## How the site works
 
-### Explorer (`explorer.html`)
+### Explorer (`all-volumes.html`)
 
-A single-page browser that lazy-loads `green_book_entries_all.csv` after first paint. Features include:
+A single-page browser that streams `green_book_entries_all.csv` and `travel_guides_all.csv` after first paint, merging both into one searchable corpus. Features include:
 
 - Full-text search across all fields
 - Faceted filtering by edition year, city, state, and business category (with live counts)
-- Detail panel with a thumbnail of the original scanned page and a link to the IIIF viewer
+- Detail panel with a cropped snippet of the listing as it appears on the original scanned page (served from Hugging Face — see below) and a link to open that page in the IIIF viewer
 - "Also listed in" cross-referencing — shows other editions where the same business appears
 - Cross-edition timeline — for businesses appearing in multiple editions, a dedicated view shows each appearance as a run card with scan thumbnails, year chips, and address-diff detection
 - Jump-to-year navigation for quickly moving between editions
@@ -44,7 +54,9 @@ A single-page browser that lazy-loads `green_book_entries_all.csv` after first p
 - CSV export of any filtered view
 - Deep-linking via `?cf=` (entry detail) and `?tl=` (timeline view) URL parameters
 
-`all-volumes.html` and `travel_guides_explorer.html` reuse the same interface over a wider dataset. `all-volumes.html` merges both CSVs to cover all seven publications, colors rows and filters by publication, and adds a "Charts & trends" view — listings per year, first-time vs. returning businesses, a state-by-year heatmap, and the changing category mix — computed across the whole corpus.
+On top of that shared interface, `all-volumes.html` colors rows and filters by publication and adds a "Charts & trends" view — listings per year, first-time vs. returning businesses, a state-by-year heatmap, and the changing category mix — computed across the whole corpus.
+
+`explorer.html` and `travel_guides_explorer.html` run the same code over a single publication's slice of the data; `nyc.html` reuses it over the geocoded New York City subset and adds a Leaflet neighborhood map.
 
 ### Viewer (`index.html`)
 
@@ -55,7 +67,23 @@ A Clover IIIF viewer that accepts a `?cf=` query parameter containing a canvas f
 3. Fetches the corresponding manifest from `manifests/<id>/manifest.json`
 4. Navigates Clover to the correct page and bounding box region
 
-Visiting the root URL without a `?cf=` parameter shows a landing page linking to the explorer.
+Visiting the root URL without a `?cf=` parameter shows a landing page linking to the all-volumes explorer.
+
+---
+
+## Where the data comes from (and what the site does *not* request)
+
+The explorers are deliberately built so that **browsing the site places no load on the libraries' image servers.** Everything an explorer needs comes from two places:
+
+1. **The CSVs in this repository**, served as static files from GitHub Pages and streamed into the browser after first paint. All text — business names, addresses, cities, categories, years — is read from these. There is no API and no database behind the site.
+2. **Cropped snippet thumbnails from Hugging Face.** Every entry's thumbnail is pre-cropped and served from the [`hadro/green-books-thumbnails`](https://huggingface.co/datasets/hadro/green-books-thumbnails) dataset repo. Filenames are content-addressed (`sha1(canvas_fragment)[:12]`), so the browser derives each URL locally — there is no per-entry manifest to fetch.
+
+**The NYPL and Library of Congress IIIF servers are contacted only when a reader explicitly opens a page in the IIIF viewer** (`index.html`, via an entry's "View page" / `?cf=` deep-link). That is a deliberate, per-click action: tiles are fetched then, for that one volume, and not before. Scrolling, searching, faceting, charting, and viewing entry detail panels in any explorer trigger zero requests to either institution.
+
+Two narrow exceptions, both fallbacks rather than normal operation:
+
+- If a thumbnail is missing from the Hugging Face CDN, the page falls back to a live IIIF crop for that single image (`liveIiifUrl()`).
+- Entries outside New York City geocode their address through OpenStreetMap's Nominatim when their detail panel is opened, cached in the browser afterward. NYC entries skip this entirely — their coordinates are pre-computed in `nyc_geo.json`.
 
 ---
 
@@ -67,7 +95,7 @@ The structured entries dataset was produced by the [directory-pipeline](https://
 
 The data reaches only as far as digitization has: other Black travel guides that have not been digitized (see NYPL's guide, ["More African American Travel Guides!"](https://libguides.nypl.org/greenbook/more)) are not represented, so counts describe the digitized corpus, not the full historical record.
 
-The full structured dataset — all seven publications combined — is also published as a downloadable, CC0-licensed dataset on Hugging Face: [hadro/green-books-travel-guides](https://huggingface.co/datasets/hadro/green-books-travel-guides).
+The full structured dataset — all seven publications combined — is also published as a downloadable, CC0-licensed dataset on Hugging Face: [hadro/green-books-travel-guides](https://huggingface.co/datasets/hadro/green-books-travel-guides). The matching cropped snippet images for every entry are published alongside it as [hadro/green-books-thumbnails](https://huggingface.co/datasets/hadro/green-books-thumbnails), which is also what the live explorers load their thumbnails from.
 
 ---
 
