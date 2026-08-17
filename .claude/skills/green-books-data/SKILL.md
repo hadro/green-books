@@ -1,16 +1,16 @@
 ---
 name: green-books-data
-description: Query the Green Book / Black travel guide corpus — 109,163 historical business listings across 46 volumes (1930–1966) in green_book_entries_all.csv and travel_guides_all.csv. Use when asked to search, count, cross-reference, chart, or audit listings; trace a business across editions; find listings by city, state, year, category, or NYC neighborhood; check transcription quality against the scanned page; or build a derived dataset from the corpus. Triggers on "Green Book", "travel guide listings", "the corpus", "the CSVs", specific business/place/edition lookups, and data-quality questions about the entries.
+description: Query the Green Book / Black travel guide corpus — 113,827 historical business listings across 50 volumes (1930–1966) in green_book_entries_all.csv and travel_guides_all.csv. Use when asked to search, count, cross-reference, chart, or audit listings; trace a business across editions; find listings by city, state, year, category, or NYC neighborhood; check transcription quality against the scanned page; or build a derived dataset from the corpus. Triggers on "Green Book", "travel guide listings", "the corpus", "the CSVs", specific business/place/edition lookups, and data-quality questions about the entries.
 ---
 
 # Querying the Green Books corpus
 
-109,163 listings from 46 digitized volumes of *The Negro Motorist Green Book* and six
-companion African American travel guides, 1930–1966. Every row links back to the exact
-region of the page scan it was read from.
+113,827 listings from 50 digitized volumes of *The Negro Motorist Green Book* and seven
+companion African American travel guides, 1930–1966, across 8 publications. Every row
+links back to the exact region of the page scan it was read from.
 
 **Never answer a corpus question by eyeballing the CSVs or by loading them into context.**
-They are 34 MB / 109k rows. Build the SQLite database once and query it.
+They are 34 MB / 114k rows. Build the SQLite database once and query it.
 
 ## Setup (once per checkout)
 
@@ -42,9 +42,9 @@ Write intermediate result files to the scratchpad, not the repo.
 
 | Table | What |
 |---|---|
-| `listings` | 109,163 rows, both corpora in one schema |
+| `listings` | 113,827 rows, both corpora in one schema |
 | `listings_fts` | FTS5 over `name`, `address`, `notes`, `proprietor` (external content, join on `rowid = listings.id`) |
-| `volumes` | 46 rows — per-volume rights provenance from `hf-dataset/volume_rights.csv` |
+| `volumes` | 50 rows — per-volume rights provenance from `hf-dataset/volume_rights.csv` |
 | `meta` | row counts + a staleness signature |
 
 ### Columns worth knowing
@@ -56,7 +56,7 @@ Write intermediate result files to the scratchpad, not the repo.
 - `canvas_fragment` — IIIF URL + `#xywh=` region. The provenance anchor.
 - `thumb_id` — `sha1(canvas_fragment)[:12]`, the CDN/geo join key.
 - `flags` — comma-joined list of the quality flags set on the row; `''` when clean.
-- `lat`/`lon`/`neighborhood`/`borough`/`geo_approx` — populated for the 7,969 NYC rows only.
+- `lat`/`lon`/`neighborhood`/`borough`/`geo_approx` — populated for the 8,082 NYC rows only.
 
 ## Recipes
 
@@ -124,8 +124,8 @@ factual claim about a specific listing.
 **Don't re-derive logic that already exists here.** Two normalizations are load-bearing
 and an ad-hoc reimplementation will silently disagree with the published site:
 
-- *Category folding* — `gb_categories.py` / `gb-categories.js`, folding 759 raw values
-  to 462. Already applied as `category_normalized`.
+- *Category folding* — `gb_categories.py` / `gb-categories.js`, folding 760 raw values
+  to 463. Already applied as `category_normalized`.
 - *Cross-edition business matching* — `gb-matching.js`. Grouping the same business across
   editions is **not** name+city; it is address-signature resolution (house-number ranges,
   fuzzy street tokens, dominance anchoring for intersections). It is not in the database.
@@ -133,25 +133,25 @@ and an ad-hoc reimplementation will silently disagree with the published site:
   Node, or present candidates as *likely* matches and say so. Never invent a match rule.
 
 **`state_normalized` is a case fold, not a gazetteer.** It uppercases and trims; it does
-not expand `Fla.` → `FLORIDA`. 197 distinct values remain. Match with `LIKE`/`IN`, and
+not expand `Fla.` → `FLORIDA`. 208 distinct values remain. Match with `LIKE`/`IN`, and
 never assume 50 clean states.
 
 **`thumb_id` is not a primary key.** 619 rows share a `canvas_fragment` with another row
 (two listings read from one page region). Join on `listings.id` when you need one row.
 
-**`drift_geonames` is noise at scale.** It is set on 47,565 rows — a soft signal, not a
-defect list. Real triage targets are `flag_name_address` (335), `flag_unanchored` (314),
-`flag_duplicate` (1,306), `flag_state_invalid` (1,262), and high `drift_score`.
+**`drift_geonames` is noise at scale.** It is set on 50,456 rows — a soft signal, not a
+defect list. Real triage targets are `flag_name_address` (440), `flag_unanchored` (314),
+`flag_duplicate` (2,480), `flag_state_invalid` (2,303), and high `drift_score`.
 
 **Rights are per-volume.** Most volumes are NYPL `PDREN` (public domain); the 1946 Green
 Book is LOC "no known restrictions"; *Travelguide 1957* is `ICORPHAN`, an orphan work.
 Check `volumes` before redistributing rows, and don't flatten to "it's all CC0".
 
-**Blank categories are the largest group** (24,899 rows, `Blank or no specific category`).
+**Blank categories are the largest group** (26,322 rows, `Blank or no specific category`).
 Exclude them explicitly in any "most common category" answer, or say they're included.
 
 ## Reporting numbers
 
 State the filter you used alongside any count — corpus-wide, single publication, and
 single edition totals differ by an order of magnitude, and "the Green Book" (67,052)
-is not "the corpus" (109,163). When a number could be read either way, give both.
+is not "the corpus" (113,827). When a number could be read either way, give both.

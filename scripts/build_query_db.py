@@ -10,14 +10,14 @@ without parsing 34 MB of CSV per query.
 
 What it produces:
 
-  listings      109,163 rows, both corpora in one schema (the Hugging Face
+  listings      113,827 rows, both corpora in one schema (the Hugging Face
                 20-column schema plus the fields the explorers use). Adds
                 `thumb_id` (the content-addressed thumbnail/geo key),
                 `category_normalized` and `state_normalized` (folded through
                 gb_categories.py, the same logic the browser uses), a `flags`
                 summary column, and NYC coordinates joined from nyc_geo.json.
   listings_fts  FTS5 index over name / address / notes / proprietor.
-  volumes       46 rows from hf-dataset/volume_rights.csv — per-volume rights
+  volumes       50 rows from hf-dataset/volume_rights.csv — per-volume rights
                 provenance, so anything redistributing rows can check them.
 
 The database is a derived artifact and is gitignored; rebuild it whenever the

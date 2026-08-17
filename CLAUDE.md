@@ -9,11 +9,11 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | `explorer.html` | Main Green Books explorer (faceted search table, ~1,600 lines of vanilla JS) |
 | `green_book_entries_all.csv` | Combined data for all 24 Green Book editions (~67k entries; includes the LOC-digitized 1946 edition, volume_id 2016298176) |
 | `image_to_volume.json` | Maps NYPL image IDs and LOC IIIF service IDs → volume IDs (used by IIIF viewer for deep links) |
-| `travel_guides_image_to_volume.json` | Same, for the 22 sibling travel guide volumes (not yet built) |
+| `travel_guides_image_to_volume.json` | Same, for the 26 sibling travel guide volumes (built and live; drives `travel_guides_explorer.html`) |
 | `index.html` | IIIF viewer entry point — all JS is inline in this file, no build step (the `react_clover` branch has a separate Vite/Clover rewrite in `viewer-src/`, not yet merged) |
 | `manifests/{uuid}/manifest.json` | Per-volume IIIF manifests (one per Green Book edition; the LOC 1946 volume's manifest lives at `manifests/2016298176/manifest.json`) |
 | `green_book_entries_all_fixed.csv` | Scratch/working copy; `green_book_entries_all.csv` is the canonical one |
-| `nyc_geo.json` | **Generated** — slim `sha1(canvas_fragment)[:12]` → `[lat, lon, neighborhood, borough, approx]` lookup for the 7,883 geocoded NYC entries. Rebuild with `python3 scripts/build_nyc_geo.py` whenever `nyc-neighborhoods/nyc_entries_geocoded.csv` changes; `--check` fails if it has drifted. |
+| `nyc_geo.json` | **Generated** — slim `sha1(canvas_fragment)[:12]` → `[lat, lon, neighborhood, borough, approx]` lookup for the 7,996 geocoded NYC entries. Rebuild with `python3 scripts/build_nyc_geo.py` whenever `nyc-neighborhoods/nyc_entries_geocoded.csv` changes; `--check` fails if it has drifted. |
 | `nyc-neighborhoods/nyc-neighborhoods.slim.geojson` | **Generated** — the boundary polygons `nyc.html`'s map loads (261 top-level features, `name`+`borough` only, 5 dp; 239 KB gzipped vs the source's 409 KB). Rebuild with `python3 scripts/build_nyc_hoods.py`; `--check` fails if it has drifted. A *modified* CC BY-SA 4.0 redistribution — see `nyc-neighborhoods/README.md`. |
 
 ## Branch overview
@@ -23,7 +23,7 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | `main` | Production. Has inference-patched CSV (11,972 category inferences; 0 U+FFFD chars). No category sidebar facet. |
 | `new_facets` | Has category sidebar facet (`type: "facet"` in FIELD_META, top-20 checkboxes). Needs the updated CSV pulled from main before merging. |
 | `react_clover` | React + `@samvera/clover-iiif@3.9.2` rewrite of the IIIF viewer. Image loading works; fragment zoom implemented but not yet browser-tested. |
-| `sibling_viewer` | Stub for the 22 travel guide volumes explorer (not yet started). |
+| `sibling_viewer` | Stub predating `travel_guides_explorer.html`, which now ships on `main`; branch is obsolete. |
 | `holistic_viewer` | Earlier viewer experiment; ignore. |
 
 ## Explorer architecture (`explorer.html`)
@@ -82,11 +82,36 @@ The first non-NYPL volume in the collection. Key details:
 - **Local manifest**: committed at `manifests/2016298176/manifest.json`
 - **Integration**: added via `scripts/append_loc_1946.py`; full plan at `docs/loc-1946-integration-plan.md`
 
+## Afro-American's Travel Guide volumes
+
+Four NYPL volumes added to `travel_guides_all.csv`, bringing it to 26 travel-guide
+volumes / 7 travel-guide publications (50 volumes / 8 publications corpus-wide).
+Published by the Travel Bureau of the Afro-American newspapers, Baltimore. NYPL
+collection UUID `52af6e40-7256-013f-1a2f-0242ac110002`.
+
+| Year | Volume UUID | Rows |
+|------|-------------|-----:|
+| 1954 | `b5f95f60-7256-013f-3691-0242ac110002` | 1,287 |
+| 1956 | `e36a5750-7256-013f-f2b2-0242ac110002` | 1,113 |
+| 1957 | `fb4f57d0-7256-013f-8933-0242ac110003` | 1,127 |
+| 1958 | `2a3699e0-7257-013f-019f-0242ac110003` | 1,137 |
+
+4,664 rows appended in total. All four are NYPL PDREN / NoC-US public domain
+(verified via the NYPL API). Explorer color `#713471` (deep plum) in
+`all-volumes.html`/`nyc.html`, `#a83a68` (deep rose) in
+`travel_guides_explorer.html`; short name "Afro-American".
+
+- **Integration**: added via `scripts/append_afro_american.py`, mirroring
+  `scripts/append_loc_1946.py` but for IIIF v3 manifests. It patches in real
+  canvas dimensions from the pipeline's aligned sidecars, because the NYPL
+  manifests for these volumes report a placeholder 2560×2560 for every canvas.
+
 ## Thumbnail CDN (all entries → Hugging Face)
 
-Every entry's cropped snippet thumbnail (all 109,163 across both CSVs, incl. the
-LOC 1946 volume) is pre-cropped and served from the **`hadro/green-books-thumbnails`**
-HF dataset repo, so the explorers make effectively zero live NYPL/LOC image requests.
+Every entry's cropped snippet thumbnail (113,053 webps across both CSVs, incl. the
+LOC 1946 volume and the four Afro-American's Travel Guide volumes) is pre-cropped and
+served from the **`hadro/green-books-thumbnails`** HF dataset repo, so the explorers
+make effectively zero live NYPL/LOC image requests.
 
 - **Filename is content-addressed**: `sha1(canvas_fragment)[:12]`, sharded by the
   first two hex chars → repo path `<tid[:2]>/<tid>.webp`. Front-end URL base is
@@ -103,10 +128,14 @@ HF dataset repo, so the explorers make effectively zero live NYPL/LOC image requ
   /Users/joshhadro/github/directory-pipeline/.venv/bin/python scripts/build_all_thumbs.py \
     --images-dir /Users/joshhadro/github/directory-pipeline/output/green_books_and_related \
     --images-dir /Users/joshhadro/github/directory-pipeline/output/the_negro_motorist_green_book_2016298176/2016298176 \
+    --images-dir /Users/joshhadro/github/directory-pipeline/output/afro-american-travel-guide-1954 \
+    --images-dir /Users/joshhadro/github/directory-pipeline/output/afro-american-travel-guide-1956 \
+    --images-dir /Users/joshhadro/github/directory-pipeline/output/afro-american-travel-guide-1957 \
+    --images-dir /Users/joshhadro/github/directory-pipeline/output/afro-american-travel-guide-1958 \
     --format webp --jobs 7
   ```
   Local scans are joined by the CSV `image` column (an exact filename for both
-  NYPL and LOC) — this is what pulls the LOC volume in. `scripts/build_hero_thumbs.py`
+  NYPL and LOC) — this is what pulls the LOC and Afro-American volumes in. `scripts/build_hero_thumbs.py`
   (the curated ~300-thumb featured pool) is unchanged and still shares its crop
   primitives (`crop_box`, `thumb_id`, etc.) with the full builder.
 - **Publish**: `python scripts/publish_thumbs.py` (needs HF write auth). The `thumbs/`
@@ -124,8 +153,9 @@ HF dataset repo, so the explorers make effectively zero live NYPL/LOC image requ
 ## NYC coordinates (`nyc_geo.json`)
 
 `nyc-neighborhoods/nyc_entries_geocoded.csv` is the NYC geocoding run's deliverable:
-7,995 rows, 99.6% resolved to real coordinates via NYC GeoSearch, with `neighborhood`
-and `borough` labels. `nyc.html` streams that CSV as its entire dataset.
+8,108 rows (re-run to include the 113 Afro-American's Travel Guide rows), 99.6%
+resolved to real coordinates via NYC GeoSearch, with `neighborhood` and `borough`
+labels. `nyc.html` streams that CSV as its entire dataset.
 
 `all-volumes.html` only needs the coordinate, so it loads **`nyc_geo.json`** instead —
 the same data at ~107 KB gzipped rather than 3.1 MB, keyed by the same
@@ -196,5 +226,5 @@ Raw pipeline code at `/Users/joshhadro/github/directory-pipeline`. It produces t
 
 1. Browser-test the `react_clover` viewer zoom fix
 2. Merge `new_facets` → `main` (category sidebar facet)
-3. Build sibling explorer for 22 travel guide volumes (full plan: `directory-pipeline/docs/sibling-explorer-plan.md`)
-4. Add cross-links between Green Books explorer and future sibling explorer
+3. ~~Build sibling explorer for the travel guide volumes~~ — done: `travel_guides_explorer.html` is live on `main`, now covering 26 volumes / 7 publications
+4. Add cross-links between Green Books explorer and sibling explorer

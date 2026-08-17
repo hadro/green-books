@@ -67,12 +67,12 @@ dataset_info:
       dtype: string
   splits:
     - name: train
-      num_examples: 109163
+      num_examples: 113827
 ---
 
 # African American Travel Guides: The Green Book & Companion Directories (1930–1966)
 
-A unified, structured dataset of **109,163 business and lodging listings** transcribed from **46 volumes** of mid-20th-century African American travel guides, spanning **1930–1966**. During the Jim Crow era, these guides told Black travelers which hotels, restaurants, tourist homes, service stations, and other businesses would serve them safely. This dataset brings *The Negro Motorist Green Book* together with six lesser-known companion publications into a single comparable schema.
+A unified, structured dataset of **113,827 business and lodging listings** transcribed from **50 volumes** of mid-20th-century African American travel guides, spanning **1930–1966**. During the Jim Crow era, these guides told Black travelers which hotels, restaurants, tourist homes, service stations, and other businesses would serve them safely. This dataset brings *The Negro Motorist Green Book* together with seven lesser-known companion publications into a single comparable schema.
 
 Every listing links back to the exact page region of the scanned source via IIIF (`canvas_fragment` / `image`), so any row can be traced to the original document.
 
@@ -83,8 +83,9 @@ Every listing links back to the exact page region of the scanned source via IIIF
 | Publication | Listings | Notes |
 |---|---:|---|
 | The Green Book | 67,052 | All 24 editions, 1937–1966 (titled *The Negro Motorist Green Book*, later *The Negro Travelers' Green Book* and *The Travelers' Green Book*), normalized to one series label |
-| Travelguide | 28,581 | "Vacation & Recreation Without Humiliation", 1947–1957 |
+| Travelguide | 28,581 | "Vacation & Recreation Without Humiliation", 1947–1962 |
 | Go, Guide to Pleasant Motoring | 9,206 | |
+| Afro-American's Travel Guide | 4,664 | Published by the Travel Bureau of the *Afro-American* newspapers (Baltimore), 1954–1958 editions |
 | Hackley & Harrison's Hotel and Apartment Guide | 1,209 | Board, rooms, garage accommodations across ~300 US & Canadian cities |
 | The Travelers Guide | 1,194 | |
 | Smith's Tourist Guide | 1,022 | |
@@ -104,18 +105,18 @@ Source volumes are digitized by **The New York Public Library** (Schomburg Cente
 | `volume_title` | Observed | 100.0 | Full title of the specific edition (carries the year) |
 | `volume_year` | Observed | 100.0 | Publication year of the edition |
 | `name` | Observed | 99.8 | Business or establishment name |
-| `proprietor` | Observed | 4.8 | Owner/operator, where printed |
-| `category` | **Derived** | 96.5 | Raw listing category as extracted (e.g. HOTELS, RESTAURANTS). Partly section-header-derived and partly model-inferred — see caveats |
-| `category_normalized` | Derived | 100.0 | `category` folded to a canonical label (case-fold + typo/synonym groups); blanks → "Blank or no specific category". Folds 759 raw values → 462 |
+| `proprietor` | Observed | 4.6 | Owner/operator, where printed |
+| `category` | **Derived** | 95.4 | Raw listing category as extracted (e.g. HOTELS, RESTAURANTS). Partly section-header-derived and partly model-inferred — see caveats |
+| `category_normalized` | Derived | 100.0 | `category` folded to a canonical label (case-fold + typo/synonym groups); blanks → "Blank or no specific category". Folds 760 raw values → 463 |
 | `address` | Observed | 92.4 | Street address as printed |
-| `city` | Observed | 99.6 | City |
+| `city` | Observed | 99.0 | City |
 | `state` | Observed | 99.9 | State/region exactly as printed (raw) |
-| `state_normalized` | Derived | 99.9 | `state` trimmed + uppercased (case-fold only, no gazetteer). Collapses 265 raw values → 197 |
-| `phone` | Observed | 13.0 | Telephone, where printed |
-| `rates` | Observed | 2.9 | Room/service rates, where printed |
-| `notes` | Observed | 12.4 | Free-text notes from the listing |
-| `is_advertisement` | Derived | 24.9 | Heuristic flag: listing came from a display ad |
-| `is_recommended` | Derived | 19.0 | Heuristic flag: marked/recommended in source |
+| `state_normalized` | Derived | 99.9 | `state` trimmed + uppercased (case-fold only, no gazetteer). Collapses 276 raw values → 208 |
+| `phone` | Observed | 14.0 | Telephone, where printed |
+| `rates` | Observed | 2.8 | Room/service rates, where printed |
+| `notes` | Observed | 13.0 | Free-text notes from the listing |
+| `is_advertisement` | Derived | 23.9 | Heuristic flag: listing came from a display ad |
+| `is_recommended` | Derived | 18.2 | Heuristic flag: marked/recommended in source |
 | `canvas_fragment` | Observed | 100.0 | IIIF canvas + `#xywh=` region locating the listing on the page |
 | `image` | Observed | 100.0 | NYPL image identifier for the source page, or LOC IIIF service identifier for the 1946 edition |
 
@@ -126,9 +127,9 @@ Source volumes are digitized by **The New York Public Library** (Schomburg Cente
 Two independent bases support free reuse of this data:
 
 1. **The listings are facts, and facts are not copyrightable.** Under *Feist Publications, Inc. v. Rural Telephone Service Co.*, 499 U.S. 340 (1991) — a case about a telephone directory — names, addresses, and categories in a directory carry no copyright. A faithful transcription of factual directory data is uncopyrightable regardless of the source document's status.
-2. **Source-scan rights, verified against the NYPL API (45 NYPL volumes) and the Library of Congress item record (1 LOC volume):**
-   - **45 of 46 volumes** are marked **Public Domain in the United States** — 44 NYPL volumes verified via the NYPL API (`NoC-US`, NYPL status `PDREN`) plus the **1946 Green Book** from the **Library of Congress**, which states no known restrictions on publication (`NoC-US`).
-   - **1 of 46** — *Travelguide 1957* (2,483 listings) — is an **in-copyright orphan work** (`InC-RUU`, NYPL status `ICORPHAN`): NYPL identified a copyright notice, could not locate a rights-holder, and released it as an orphan work. Its *scan* is not public domain, but its *factual listings* remain uncopyrightable under (1). It is included here and flagged; per-volume rights are in [`volume_rights.csv`](volume_rights.csv).
+2. **Source-scan rights, verified against the NYPL API (49 NYPL volumes) and the Library of Congress item record (1 LOC volume):**
+   - **49 of 50 volumes** are marked **Public Domain in the United States** — 48 NYPL volumes verified via the NYPL API (`NoC-US`, NYPL status `PDREN`) plus the **1946 Green Book** from the **Library of Congress**, which states no known restrictions on publication (`NoC-US`).
+   - **1 of 50** — *Travelguide 1957* (2,483 listings) — is an **in-copyright orphan work** (`InC-RUU`, NYPL status `ICORPHAN`): NYPL identified a copyright notice, could not locate a rights-holder, and released it as an orphan work. Its *scan* is not public domain, but its *factual listings* remain uncopyrightable under (1). It is included here and flagged; per-volume rights are in [`volume_rights.csv`](volume_rights.csv).
 
    `volume_rights.csv` records one row per volume. Its `copyright_status` column (formerly `nypl_copyright_status`) holds each source institution's own status code or phrase — `PDREN`/`ICORPHAN` for NYPL, a plain-language phrase for LOC — since these vocabularies differ by institution; a `source_institution` column (`NYPL` or `LOC`) disambiguates which vocabulary applies to a given row.
 
@@ -142,7 +143,7 @@ These records document real businesses and, in the case of tourist/guest homes, 
 
 This corpus is published as faithfully-transcribed data with **light** post-processing. Known issues:
 
-- **Raw vs normalized `state`/`category`.** The raw `category` and `state` columns appear exactly as extracted, including **case inconsistencies** (`NEW YORK` vs `New York`, `GENERAL` vs `General`) and near-duplicate labels (`Hotels and Motels`, `Hotels-Motels-Tourists`, `Hotels - Motels - Tourist Homes - Restaurants`). For convenience, **`category_normalized` and `state_normalized`** apply a mechanical fold — `category_normalized` uses a case-fold plus an explicit typo/synonym/section-header map (the same logic that powers the companion web explorer, shared via [`gb-categories.json`](https://github.com/hadro/green-books)), collapsing 759 → 462 labels; `state_normalized` is trim + uppercase only, collapsing 265 → 197. Both normalized columns are a mechanical cleanup, **not** an authoritative taxonomy or gazetteer — the `state` long tail still includes OCR noise and non-US locations (e.g. `CANADA`), and rare categories keep their (uppercased) raw form. Use the raw columns when you need the source values verbatim.
+- **Raw vs normalized `state`/`category`.** The raw `category` and `state` columns appear exactly as extracted, including **case inconsistencies** (`NEW YORK` vs `New York`, `GENERAL` vs `General`) and near-duplicate labels (`Hotels and Motels`, `Hotels-Motels-Tourists`, `Hotels - Motels - Tourist Homes - Restaurants`). For convenience, **`category_normalized` and `state_normalized`** apply a mechanical fold — `category_normalized` uses a case-fold plus an explicit typo/synonym/section-header map (the same logic that powers the companion web explorer, shared via [`gb-categories.json`](https://github.com/hadro/green-books)), collapsing 760 → 463 labels; `state_normalized` is trim + uppercase only, collapsing 276 → 208. Both normalized columns are a mechanical cleanup, **not** an authoritative taxonomy or gazetteer — the `state` long tail still includes OCR noise and non-US locations (e.g. `CANADA`), and rare categories keep their (uppercased) raw form. Use the raw columns when you need the source values verbatim.
 - **Vision-language-model extraction errors.** Both the OCR and the field extraction were done by a vision-language model reading the page images (see [Extraction method](#extraction-method)), not a human or a deterministic OCR/layout engine. On these dense, multi-column directory pages the model sometimes **confuses columns** — pulling a value into the wrong field or attaching it to the wrong listing — and can **mis-transcribe** unusual names/abbreviations or **mis-identify** a listing's category (e.g. a section-header category bleeding onto adjacent entries, or a `name`/`address` boundary drawn in the wrong place). These are systematic model-interpretation errors, not random noise, and they surface most in `category`, `name`, and `address`. When accuracy matters for a given row, check it against the source scan via `canvas_fragment` / `image`.
 - **`category` is partly inferred**, not purely transcribed. Treat it as a helpful signal, not authoritative classification.
 - **No cross-volume deduplication.** The same business recurs across editions and years by design — this is a listings-over-time corpus, not a deduplicated business registry. Group by (`name`, `address`, `city`) if you need unique establishments.
@@ -179,7 +180,7 @@ Companion IIIF viewer and Green Book explorer: <https://hadro.github.io/green-bo
   title  = {African American Travel Guides: The Green Book and Companion Directories (1930--1966)},
   author = {Hadro, Josh},
   year   = {2026},
-  note   = {Structured listings transcribed from 46 digitized volumes, New York Public Library and Library of Congress Digital Collections},
+  note   = {Structured listings transcribed from 50 digitized volumes, New York Public Library and Library of Congress Digital Collections},
   url    = {https://huggingface.co/datasets/hadro/green-books-travel-guides}
 }
 ```

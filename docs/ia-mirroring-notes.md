@@ -1,7 +1,7 @@
 # Internet Archive as a secondary IIIF image source — research notes
 
 Date: 2026-07-15. Read-only research, no uploads performed. Question: could
-`iiif.archive.org` serve as a secondary/fallback image source for the ~46
+`iiif.archive.org` serve as a secondary/fallback image source for the ~50
 Green Book / sibling travel guide volumes currently served from
 `iiif.nypl.org`?
 
@@ -27,7 +27,7 @@ Wikipedia snapshots, etc.
 corpus, at most **2–3 years (1938, 1938 again, 1940, partial 1949)** have any
 presence on IA, and none are IA's own institutional scans — they're all
 individual re-uploads of NYPL- or other-library-sourced material, with
-inconsistent (and non-CC0) licensing. This is a large gap versus the ~46
+inconsistent (and non-CC0) licensing. This is a large gap versus the ~50
 volumes the site needs.
 
 ## 2. Sibling travel guides on IA
@@ -104,12 +104,12 @@ Guide, and N.H.A. Directory and Guide to Travelers.
 | Use case | Viable? | Why | Rough effort |
 |---|---|---|---|
 | (a) Hero-thumbnail source | N/A | Already solved locally (no need for IA) | — |
-| (b) Full tile-viewer mirror (replace/fallback for iiif.nypl.org tiles) | **No** | IA only has ~2–3 of ~46 volumes, non-CC0 licensing on the ones it does have, no NYPL canvas/xywh alignment, and observed timeouts on real multi-page items | High (per-volume re-alignment) for a small fraction of coverage — not worth it |
+| (b) Full tile-viewer mirror (replace/fallback for iiif.nypl.org tiles) | **No** | IA only has ~2–3 of ~50 volumes, non-CC0 licensing on the ones it does have, no NYPL canvas/xywh alignment, and observed timeouts on real multi-page items | High (per-volume re-alignment) for a small fraction of coverage — not worth it |
 | (c) Bulk-thumbnail source for table/hover features | **Not now** | Same coverage gap (only 1938/1940/1949-partial exist) and licensing caveats; NYPL already provides thumbnails without apparent load issues | Low effort *if* NYPL ever becomes unreliable, but low value today given coverage |
 
 **Recommendation:** Do not pursue IA as a secondary IIIF source at this
 time. Coverage is far too sparse (a handful of re-uploaded editions out of
-~46 volumes, no sibling guides at all), licensing on the extant items is
+~50 volumes, no sibling guides at all), licensing on the extant items is
 non-CC0, canvas numbering doesn't map to the site's existing NYPL-keyed
 bounding-box data, and IA's IIIF service showed timeouts on a real
 multi-page item during this research. If NYPL load ever becomes a real

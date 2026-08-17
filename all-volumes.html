@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Green Books &amp; Black Travel Guides — All Volumes Explorer</title>
 <meta property="og:title"        content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
-<meta property="og:description"  content="Search and browse more than 109,000 entries from the Green Books and six other Black travel guides, 1930–1966.">
+<meta property="og:description"  content="Search and browse more than 113,000 entries from the Green Books and seven other Black travel guides, 1930–1966.">
 <meta property="og:type"         content="website">
 <meta property="og:url"          content="https://hadro.github.io/green-books/all-volumes">
 <meta property="og:image"        content="https://hadro.github.io/green-books/social-preview.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
-<meta name="twitter:description" content="Search and browse more than 109,000 entries from the Green Books and six other Black travel guides, 1930–1966.">
+<meta name="twitter:description" content="Search and browse more than 113,000 entries from the Green Books and seven other Black travel guides, 1930–1966.">
 <meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231e5231'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23f6f1e5'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231e5231'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%2375705f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -937,10 +937,10 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <span>Green Book + Other Travel Guide Explorer</span>
         <!-- <span>EST. 1936</span> -->
         <!-- <span class="gb-hero-eyebrow-dot">&#x25CF;</span> -->
-        <!-- <span id="hero-eyebrow-stats">109,163 ENTRIES &middot; 46 VOLUMES</span> -->
+        <!-- <span id="hero-eyebrow-stats">113,827 ENTRIES &middot; 50 VOLUMES</span> -->
       </div>
       <h1 class="gb-hero-title">A directory of places that welcomed Black travelers, <em>1930&nbsp;&ndash;&nbsp;1966.</em></h1>
-      <p class="gb-hero-lede">The Negro Motorist Green Book wasn't the only travel guide for African Americans listing hotels, restaurants, beauty parlors, and other businesses safe to visit during the Jim Crow era of segregation. This explorer makes records searchable across every digitized volume of seven different publications.</p>
+      <p class="gb-hero-lede">The Negro Motorist Green Book wasn't the only travel guide for African Americans listing hotels, restaurants, beauty parlors, and other businesses safe to visit during the Jim Crow era of segregation. This explorer makes records searchable across every digitized volume of eight different publications.</p>
       <div class="gb-hero-cta">
         <button class="gb-btn-primary" onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start exploring &rarr;</button>
         <button class="gb-btn-ghost" id="random-btn-hero">Open a random entry</button>
@@ -963,11 +963,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
   </div>
   <div class="gb-hero-stats">
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">109,163</div><div class="gb-hero-stat-label">individual listings</div></div>
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">46</div><div class="gb-hero-stat-label">published volumes</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">113,827</div><div class="gb-hero-stat-label">individual listings</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">50</div><div class="gb-hero-stat-label">published volumes</div></div>
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
-    <!-- 43 = folded gbCategoryGroup() labels with >=100 entries across the merged green_book_entries_all.csv + travel_guides_all.csv dataset, excluding the "Blank or no specific category" bucket. Regenerate by folding both CSVs' category columns through gb-categories.js's gbCategoryGroup() and counting labels. -->
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">43</div><div class="gb-hero-stat-label">business categories</div></div>
+    <!-- 45 = folded gbCategoryGroup() labels with >=100 entries across the merged green_book_entries_all.csv + travel_guides_all.csv dataset, excluding the "Blank or no specific category" bucket. Regenerate by folding both CSVs' category columns through gb-categories.js's gbCategoryGroup() and counting labels. -->
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">45</div><div class="gb-hero-stat-label">business categories</div></div>
   </div>
   <button class="gb-hero-caveat-link" id="hero-trends-btn" style="margin-top:20px">SEE THE FULL PICTURE &mdash; CHARTS OF THE WHOLE DATASET&rarr;</button>
 </section>
@@ -1133,7 +1133,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
           <p class="trends-caveat-lede">These charts count machine-extracted listings from the digitized corpus &mdash; read an empty year or a thin state as <em>absent from the digitized record, not from history.</em></p>
           <details class="trends-methodology">
             <summary>Read methodology</summary>
-            <p class="trends-caveat-text">These charts count machine-extracted listings, so occasional OCR and entity-recognition errors in years, states, and categories flow through them uncorrected. They can also only measure what has been digitized and processed: the 46 volumes in this dataset. Other Black travel guides &mdash; including titles held by the Schomburg Center that have not been digitized &mdash; are not represented, and some years are covered by a single publication. Read an empty year or a thin state as <em>absent from the digitized corpus</em>, not absent from history.</p>
+            <p class="trends-caveat-text">These charts count machine-extracted listings, so occasional OCR and entity-recognition errors in years, states, and categories flow through them uncorrected. They can also only measure what has been digitized and processed: the 50 volumes in this dataset. Other Black travel guides &mdash; including titles held by the Schomburg Center that have not been digitized &mdash; are not represented, and some years are covered by a single publication. Read an empty year or a thin state as <em>absent from the digitized corpus</em>, not absent from history.</p>
             <a class="trends-caveat-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">&ldquo;MORE AFRICAN AMERICAN TRAVEL GUIDES!&rdquo; &mdash; NYPL RESEARCH GUIDE&rarr;</a>
           </details>
         </div>
@@ -1240,11 +1240,11 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
       <h2 id="about-title" class="about-modal-title">An exploration tool for data from <em>The Negro Motorist Green&nbsp;Book</em> and other Black travel guides, extracted from page scans, 1930&nbsp;&ndash;&nbsp;1966.</h2>
       <div class="about-modal-grid">
         <div class="about-modal-prose">
-          <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966, alongside six other travel guides published for Black Americans between 1930 and 1962 &mdash; guides that helped Black travelers find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
+          <p class="about-modal-lede">This tool lets you browse structured data extracted from the Green Books published by Victor H. Green &amp; Co. between 1937 and 1966, alongside seven other travel guides published for Black Americans between 1930 and 1962 &mdash; guides that helped Black travelers find welcoming hotels, restaurants, and businesses during the era of racial segregation in the United States.</p>
           <h3 class="about-modal-h3">The Green Books</h3>
           <p>The Green Book was published annually by Victor H. Green &amp; Co. from 1936 to 1966 as a guide for Black Americans navigating the Jim Crow era; the earliest edition digitized here is 1937. Publication paused during World War II and resumed with the 1946 edition, which is digitized by the Library of Congress and included here alongside the New York Public Library volumes. <a class="about-modal-link" href="https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book" target="_blank" rel="noopener">Read the full history on Wikipedia &rarr;</a></p>
           <h3 class="about-modal-h3">The other travel guide publications</h3>
-          <p>This explorer searches across seven publications at once. Colors mark each publication throughout the site &mdash; on table rows, sidebar filters, and the coverage grid in each entry&rsquo;s detail panel. Each title links to the source scans in NYPL Digital Collections (the 1946 Green Book edition was digitized by the Library of Congress):</p>
+          <p>This explorer searches across eight publications at once. Colors mark each publication throughout the site &mdash; on table rows, sidebar filters, and the coverage grid in each entry&rsquo;s detail panel. Each title links to the source scans in NYPL Digital Collections (the 1946 Green Book edition was digitized by the Library of Congress):</p>
           <ul class="about-modal-pubs">
             <li><span class="pub-dot" style="background:#4a7d1c"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener" aria-label="The Negro Motorist Green Book on NYPL Digital Collections">The Negro Motorist Green Book</a></em>&ensp;1937&ndash;1966 &middot; <a class="about-modal-link" href="https://www.loc.gov/item/2016298176/" target="_blank" rel="noopener" aria-label="The 1946 Negro Motorist Green Book at the Library of Congress">1946 edition via LOC</a></li>
             <li><span class="pub-dot" style="background:#b8447e"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/items/4f7822b0-c00d-0136-5411-11376e3c248e" target="_blank" rel="noopener" aria-label="Hackley &amp; Harrison&rsquo;s Hotel and Apartment Guide on NYPL Digital Collections">Hackley &amp; Harrison&rsquo;s Hotel and Apartment Guide</a></em>&ensp;1930</li>
@@ -1252,12 +1252,13 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
             <li><span class="pub-dot" style="background:#cf7a12"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/items/e20bf5b0-c01a-0136-7fe0-000bde94fce8" target="_blank" rel="noopener" aria-label="Smith&rsquo;s Tourist Guide on NYPL Digital Collections">Smith&rsquo;s Tourist Guide</a></em>&ensp;1940</li>
             <li><span class="pub-dot" style="background:#c0341d"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/travelguide" target="_blank" rel="noopener" aria-label="Travelguide on NYPL Digital Collections">Travelguide</a></em>&ensp;1947&ndash;1962</li>
             <li><span class="pub-dot" style="background:#1f5aa8"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/go-guide-to-pleasant-motoring" target="_blank" rel="noopener" aria-label="Go, Guide to Pleasant Motoring on NYPL Digital Collections">Go, Guide to Pleasant Motoring</a></em>&ensp;1952&ndash;1959</li>
+            <li><span class="pub-dot" style="background:#713471"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/52af6e40-7256-013f-1a2f-0242ac110002" target="_blank" rel="noopener" aria-label="Afro-American&rsquo;s Travel Guide on NYPL Digital Collections">Afro-American&rsquo;s Travel Guide</a></em>&ensp;1954&ndash;1958</li>
             <li><span class="pub-dot" style="background:#0093a0"></span><em><a class="about-modal-link" href="https://digitalcollections.nypl.org/items/b33397d0-c009-0136-7aeb-5d14e5199b19" target="_blank" rel="noopener" aria-label="NHA Directory and Guide to Travelers on NYPL Digital Collections">NHA Directory and Guide to Travelers</a></em>&ensp;1959</li>
           </ul>
           <p>Page scans provided by the <a class="about-modal-link" href="https://digitalcollections.nypl.org/collections/the-green-book" target="_blank" rel="noopener">New York Public Library Digital Collections</a> and, for the 1946 Green Book edition, the <a class="about-modal-link" href="https://www.loc.gov/item/2016298176/" target="_blank" rel="noopener">Library of Congress</a>. Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. The Explorer uses the <a class="about-modal-link" href="https://iiif.io/" target="_blank" rel="noopener">IIIF standard</a> extensively &mdash; entry thumbnails are cropped from the original page images, and each entry&rsquo;s source link opens the IIIF viewer at the exact page location.</p>
           <h3 class="about-modal-h3">A note on accuracy</h3>
           <p class="about-modal-emphasis">This dataset carries occasional OCR, entity-extraction, and entry-alignment errors, so always treat the original published pages as the authoritative source. This explorer is a way to engage with the directories more deeply, not a replacement for them. Data has not been reviewed for 100% accuracy.</p>
-          <p>The dataset also reaches only as far as digitization has: it covers the 45 digitized volumes across these seven publications. Other Black travel guides &mdash; such as the <em>Afro-American&rsquo;s Travel Guide</em> (1939) and <em>The Black American Travel Guide</em> (1971), held in the Schomburg Center&rsquo;s Jean Blackwell Hutson Research and Reference Division but not digitized here &mdash; are not represented, so charts and counts describe the digitized corpus, not the full historical record. <a class="about-modal-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">See NYPL&rsquo;s research guide, &ldquo;More African American Travel Guides!&rdquo; &rarr;</a> You can explore the shape of the digitized corpus in <button type="button" id="about-trends-link" class="about-modal-link">charts &amp; trends</button>.</p>
+          <p>The dataset also reaches only as far as digitization has: it covers the 50 digitized volumes across these eight publications. Other Black travel guides &mdash; such as the 1939 edition of the <em>Afro-American&rsquo;s Travel Guide</em> (four later editions of which joined this explorer when NYPL digitized them in 2026) and <em>The Black American Travel Guide</em> (1971), held in the Schomburg Center&rsquo;s Jean Blackwell Hutson Research and Reference Division but not digitized here &mdash; are not represented, so charts and counts describe the digitized corpus, not the full historical record. <a class="about-modal-link" href="https://libguides.nypl.org/greenbook/more" target="_blank" rel="noopener">See NYPL&rsquo;s research guide, &ldquo;More African American Travel Guides!&rdquo; &rarr;</a> You can explore the shape of the digitized corpus in <button type="button" id="about-trends-link" class="about-modal-link">charts &amp; trends</button>.</p>
           <h3 class="about-modal-h3">How to use this site</h3>
           <ol class="about-modal-list">
             <li>Filter by <strong>year</strong>, <strong>name</strong>, <strong>address</strong>, <strong>state</strong>, <strong>city</strong>, or <strong>category</strong> at the top of the explorer.</li>
@@ -1272,13 +1273,13 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <aside class="about-modal-side">
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">DATASET</div>
-            <div class="about-modal-side-stat" id="about-stat-entries">109,163</div>
+            <div class="about-modal-side-stat" id="about-stat-entries">113,827</div>
             <div class="about-modal-side-sub">individual listings, extracted</div>
           </div>
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">VOLUMES</div>
-            <div class="about-modal-side-stat" id="about-stat-volumes">46</div>
-            <div class="about-modal-side-sub">across 7 publications, covering 1930 &mdash; 1966</div>
+            <div class="about-modal-side-stat" id="about-stat-volumes">50</div>
+            <div class="about-modal-side-sub">across 8 publications, covering 1930 &mdash; 1966</div>
           </div>
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">PIPELINE</div>
@@ -1346,6 +1347,12 @@ const GREEN_BOOK_PUBLICATION = "The Negro Motorist Green Book";
 // two near-identical greens (Green Book / Hackley) and a purple/blue pair that
 // deuteranopia collapsed to ΔE ~2; the greens are split and the cool pair is now
 // separated by lightness.
+// The 8th colour (Afro-American's Travel Guide, deep plum #713471) was chosen by
+// grid-scanning OKLCH space against all seven existing colours pairwise: it
+// passes solo checks (contrast 8.1:1 vs #faf8f3) and clears CVD ΔE >= 8 (worst
+// pair 9.6 deutan vs Go Guide) and normal-vision ΔE >= 15 vs every existing
+// colour — its coverage-grid neighbours (Go Guide 1952, NHA 1959) are its
+// strongest separations.
 const PUBLICATION_COLORS = {
   "The Negro Motorist Green Book":                  "#4a7d1c",
   "Travelguide":                                    "#c0341d",
@@ -1353,7 +1360,8 @@ const PUBLICATION_COLORS = {
   "The Travelers Guide":                            "#a06fd0",
   "NHA Directory and Guide to Travelers":           "#0093a0",
   "Smith's Tourist Guide":                          "#cf7a12",
-  "Hackley & Harrison's Hotel and Apartment Guide": "#b8447e"
+  "Hackley & Harrison's Hotel and Apartment Guide": "#b8447e",
+  "Afro-American's Travel Guide":                   "#713471"
 };
 
 // Short display name for the coverage grid's row labels. Falls back to the
@@ -1365,7 +1373,8 @@ const PUBLICATION_SHORT_NAMES = {
   "The Travelers Guide":                            "Travelers Guide",
   "NHA Directory and Guide to Travelers":           "NHA Directory",
   "Smith's Tourist Guide":                          "Smith's",
-  "Hackley & Harrison's Hotel and Apartment Guide": "Hackley's"
+  "Hackley & Harrison's Hotel and Apartment Guide": "Hackley's",
+  "Afro-American's Travel Guide":                   "Afro-American"
 };
 
 // publication → Set<year>, populated once both CSVs finish streaming. The
@@ -4843,8 +4852,9 @@ function gbRenderCoverage(row) {
   // ── Column model ───────────────────────────────────────────────────────────
   // Columns span the year window. A maximal run of >=2 consecutive years in
   // which *no* publication was active collapses into one narrow "break" column,
-  // so the dead spans (1932-36, the 1942-46 wartime pause, 1964-65) don't
-  // dominate the ink. Isolated dead years (e.g. 1958) stay as visible cells.
+  // so the dead spans (1932-36, the 1942-45 wartime pause, 1964-65) don't
+  // dominate the ink. An isolated dead year, should the data ever have one
+  // again, stays as a visible cell.
   // On mobile compact the window trims to this entry's own listing span (+/-1yr)
   // while staying contiguous, so the time axis is never silently rescaled.
   let windowMin = minY, windowMax = maxY;
@@ -5218,12 +5228,12 @@ document.getElementById('detail').addEventListener('keydown', e => {
 // user sees something fast) and once more when both streams finish.
 
 // Approximate merged row count, baked via `tail -n +2 green_book_entries_all.csv
-// | wc -l` (67,052) plus `tail -n +2 travel_guides_all.csv | wc -l` (42,111).
+// | wc -l` (67,052) plus `tail -n +2 travel_guides_all.csv | wc -l` (46,775).
 // Used only to show a "Loading entries — N%" progress indicator while the
 // CSVs stream in; the real count everywhere else comes from
 // ALL_ENTRIES.length. Regenerate by re-running the commands above if either
 // CSV is ever regenerated with a different row count.
-const MERGED_ENTRIES_TOTAL_APPROX = 109163;
+const MERGED_ENTRIES_TOTAL_APPROX = 113827;
 
 // State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
 // quoting (escaped quotes, embedded commas and newlines) across arbitrary
