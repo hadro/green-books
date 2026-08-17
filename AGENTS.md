@@ -9,7 +9,7 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | `explorer.html` | Main Green Books explorer (faceted search table, ~1,600 lines of vanilla JS) |
 | `green_book_entries_all.csv` | Combined data for all 24 Green Book editions (~67k entries; includes the LOC-digitized 1946 edition, volume_id 2016298176) |
 | `image_to_volume.json` | Maps NYPL image IDs and LOC IIIF service IDs → volume IDs (used by IIIF viewer for deep links) |
-| `travel_guides_image_to_volume.json` | Same, for the 22 sibling travel guide volumes (not yet built) |
+| `travel_guides_image_to_volume.json` | Same, for the 26 sibling travel guide volumes (built and live; drives `travel_guides_explorer.html`) |
 | `index.html` | IIIF viewer entry point — all JS is inline in this file, no build step (the `react_clover` branch has a separate Vite/Clover rewrite in `viewer-src/`, not yet merged) |
 | `manifests/{uuid}/manifest.json` | Per-volume IIIF manifests (one per Green Book edition; the LOC 1946 volume's manifest lives at `manifests/2016298176/manifest.json`) |
 | `green_book_entries_all_fixed.csv` | Scratch/working copy; `green_book_entries_all.csv` is the canonical one |
@@ -21,7 +21,7 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | `main` | Production. Has inference-patched CSV (11,972 category inferences; 0 U+FFFD chars). No category sidebar facet. |
 | `new_facets` | Has category sidebar facet (`type: "facet"` in FIELD_META, top-20 checkboxes). Needs the updated CSV pulled from main before merging. |
 | `react_clover` | React + `@samvera/clover-iiif@3.9.2` rewrite of the IIIF viewer. Image loading works; fragment zoom implemented but not yet browser-tested. |
-| `sibling_viewer` | Stub for the 22 travel guide volumes explorer (not yet started). |
+| `sibling_viewer` | Stub predating `travel_guides_explorer.html`, which now ships on `main`; branch is obsolete. |
 | `holistic_viewer` | Earlier viewer experiment; ignore. |
 
 ## Explorer architecture (`explorer.html`)
@@ -80,9 +80,33 @@ The first non-NYPL volume in the collection. Key details:
 - **Local manifest**: committed at `manifests/2016298176/manifest.json`
 - **Integration**: added via `scripts/append_loc_1946.py`; full plan at `docs/loc-1946-integration-plan.md`
 
+## Afro-American's Travel Guide volumes
+
+Four NYPL volumes added to `travel_guides_all.csv`, bringing it to 26 travel-guide
+volumes / 7 travel-guide publications (50 volumes / 8 publications corpus-wide).
+Published by the Travel Bureau of the Afro-American newspapers, Baltimore. NYPL
+collection UUID `52af6e40-7256-013f-1a2f-0242ac110002`.
+
+| Year | Volume UUID | Rows |
+|------|-------------|-----:|
+| 1954 | `b5f95f60-7256-013f-3691-0242ac110002` | 1,287 |
+| 1956 | `e36a5750-7256-013f-f2b2-0242ac110002` | 1,113 |
+| 1957 | `fb4f57d0-7256-013f-8933-0242ac110003` | 1,127 |
+| 1958 | `2a3699e0-7257-013f-019f-0242ac110003` | 1,137 |
+
+4,664 rows appended in total. All four are NYPL PDREN / NoC-US public domain
+(verified via the NYPL API). Explorer color `#713471` (deep plum) in
+`all-volumes.html`/`nyc.html`, `#a83a68` (deep rose) in
+`travel_guides_explorer.html`; short name "Afro-American".
+
+- **Integration**: added via `scripts/append_afro_american.py`, mirroring
+  `scripts/append_loc_1946.py` but for IIIF v3 manifests. It patches in real
+  canvas dimensions from the pipeline's aligned sidecars, because the NYPL
+  manifests for these volumes report a placeholder 2560×2560 for every canvas.
+
 ## Querying the corpus (agents)
 
-Don't answer corpus questions by loading the CSVs into context — 34 MB, 109,163 rows.
+Don't answer corpus questions by loading the CSVs into context — 34 MB, 113,827 rows.
 `python3 scripts/build_query_db.py` folds both CSVs, `nyc_geo.json`, and the per-volume
 rights into `green_books.sqlite` (FTS5, ~5 s, gitignored). The
 `.claude/skills/green-books-data/` skill documents the schema, tested query recipes,
@@ -101,5 +125,5 @@ Raw pipeline code at `/Users/joshhadro/github/directory-pipeline`. It produces t
 
 1. Browser-test the `react_clover` viewer zoom fix
 2. Merge `new_facets` → `main` (category sidebar facet)
-3. Build sibling explorer for 22 travel guide volumes (full plan: `directory-pipeline/docs/sibling-explorer-plan.md`)
-4. Add cross-links between Green Books explorer and future sibling explorer
+3. ~~Build sibling explorer for the travel guide volumes~~ — done: `travel_guides_explorer.html` is live on `main`, now covering 26 volumes / 7 publications
+4. Add cross-links between Green Books explorer and sibling explorer

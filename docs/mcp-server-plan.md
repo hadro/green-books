@@ -1,7 +1,7 @@
 # MCP server for the Green Books corpus — plan
 
 **Status:** proposal, not started. Written 2026-08-01.
-**Scope:** expose the 109,163-listing corpus to LLM agents over the Model Context
+**Scope:** expose the 113,827-listing corpus to LLM agents over the Model Context
 Protocol, without breaking this repo's no-build-step, no-infrastructure property.
 
 ---
@@ -123,9 +123,9 @@ deep link, and the thumbnail URL — provenance is not optional.
 |---|---|
 | `search_listings` | FTS5 + filters (publication, year range, state, city, category, flags); paginated |
 | `get_listing` | One row, full detail, plus its cross-edition group |
-| `trace_business` | Every appearance of one business across all 46 volumes, chronological |
+| `trace_business` | Every appearance of one business across all 50 volumes, chronological |
 | `aggregate_listings` | `group_by` ∈ {year, state, city, category, publication, neighborhood}; counts only |
-| `list_volumes` | 46 volumes: years, publication, institution, **rights statement**, row counts |
+| `list_volumes` | 50 volumes: years, publication, institution, **rights statement**, row counts |
 | `get_page_crop` | Returns the cropped scan as MCP image content — the verification tool |
 | `find_flagged` | Flag/drift-filtered sampling for the QA loop |
 
@@ -275,7 +275,7 @@ large ones such as blank-name rows in a big city).
 - **Should the server read the HF dataset instead of local CSVs?** Would decouple it
   from a checkout, at the cost of a network dependency and version skew. Local wins
   while the server ships in this repo.
-- **Sibling-explorer overlap.** Pending work item #3 (the 22-volume travel guide
+- **Sibling-explorer overlap.** Pending work item #3 (the 26-volume travel guide
   explorer) needs the same aggregates this server computes. Worth checking whether
   the DB build can also emit the explorers' hard-coded `FIELD_META.top_values`,
   which are currently recomputed by hand whenever the data changes.

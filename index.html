@@ -148,7 +148,7 @@
     <p>This viewer opens specific pages from the digitized Green Book volumes and other
        Black travel guides. Use one of the explorers below to find an entry and open its
        source page here.</p>
-    <a href="all-volumes.html">Search across all seven publications</a>
+    <a href="all-volumes.html">Search across all eight publications</a>
     <a href="explorer.html" class="gb-secondary-link">Or browse just the Green Book →</a>
   </div>
   <div id="loading" role="status" aria-live="polite"><p></p></div>
@@ -539,7 +539,7 @@ function launchClover(manifestId, cfUrl) {
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
       const state = buildCloverState(manifestId, canvasId, fragment);
-      // 774 of 109,163 entries (0.7%) carry a canvas_fragment with no #xywh —
+      // 774 of 113,827 entries (0.7%) carry a canvas_fragment with no #xywh —
       // the pipeline located the page but not the region on it. Without a
       // FragmentSelector Clover draws no overlay annotation, so the zoom driver
       // polls for an element that will never exist and holds gb-zoom-pending
