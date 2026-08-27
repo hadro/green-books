@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="https://hadro.github.io/green-books/">
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Green Books Directory Explorer — IIIF Viewer</title>
+  <meta name="description" content="Viewer for digitized pages of the Green Books and other Black travel guides, opened at the exact entry location.">
+  <meta property="og:title"        content="Green Books &amp; Travel Guides — Page Viewer">
+  <meta property="og:description"  content="Viewer for digitized pages of the Green Books and other Black travel guides, opened at the exact entry location.">
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://hadro.github.io/green-books/">
+  <meta property="og:image"        content="https://hadro.github.io/green-books/social-preview.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Green Books &amp; Travel Guides — Page Viewer">
+  <meta name="twitter:description" content="Viewer for digitized pages of the Green Books and other Black travel guides, opened at the exact entry location.">
+  <meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231e5231'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23f6f1e5'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231e5231'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%2375705f'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Loaded non-render-blocking: a plain stylesheet <link> also blocks the parser
+     from running the inline script below it, so DOMContentLoaded waits on
+     fonts.googleapis.com. Measured at 12.6s when that host is slow or blocked
+     (corporate proxies, blockers, regions where Google is unreachable). The
+     media="print" swap lets the page render immediately in the fallback stacks
+     declared on --gb-font-*; display=swap then swaps the webfonts in. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"></noscript>
+  <style>
+    :root {
+      --gb-paper:        #f6f1e5;
+      --gb-paper-2:      #ebe3d0;
+      --gb-ink:          #1a1712;
+      --gb-ink-soft:     #524d45;
+      --gb-ink-faint:    #75705f;
+      --gb-rule:         #1a1712;
+      --gb-rule-faint:   rgba(26, 23, 18, 0.16);
+      --gb-accent:       #1e5231;
+      --gb-accent-deep:  #143a22;
+      --gb-accent-soft:  rgba(30, 82, 49, 0.08);
+      --gb-highlight:    #b8860b;
+      --gb-highlight-soft: rgba(184, 134, 11, 0.30);
+      --gb-row-hover:    rgba(26, 23, 18, 0.04);
+      --gb-row-active:   rgba(30, 82, 49, 0.08);
+      --gb-font-display: "Oswald", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
+      --gb-font-body:    "Libre Franklin", "Franklin Gothic Medium", "Segoe UI", sans-serif;
+      --gb-font-mono:    "Courier Prime", "Courier New", Courier, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--gb-paper);
+      font-family: var(--gb-font-body);
+      display: flex; flex-direction: column;
+    }
+    header {
+      flex-shrink: 0;
+      display: flex; align-items: center; gap: 16px;
+      padding: 10px 24px;
+      background: var(--gb-paper-2);
+      border-bottom: 1px solid var(--gb-rule-faint);
+    }
+    header h1 {
+      font-family: var(--gb-font-display);
+      font-weight: 500; font-size: 17px;
+      color: var(--gb-ink); text-transform: uppercase; letter-spacing: 0.01em;
+    }
+    header h1 em { font-style: normal; color: var(--gb-accent); }
+    header a {
+      margin-left: auto;
+      font-family: var(--gb-font-mono); font-size: 11px;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--gb-ink-soft); text-decoration: none;
+    }
+    header a:hover { color: var(--gb-accent); }
+    #viewer-wrap { flex: 1; min-height: 0; position: relative; }
+    clover-viewer { display: block; position: absolute; inset: 0; }
+    clover-viewer > div { height: 100%; }
+    #landing, #error, #loading {
+      display: none; position: absolute; inset: 0;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px; padding: 32px; text-align: center;
+    }
+    #landing.visible, #error.visible, #loading.visible { display: flex; }
+    /* The loading state must be able to COVER the viewer, not just precede it:
+       clover-viewer is appended last, so without a stacking context of its own
+       #loading paints underneath, and being transparent it would show nothing
+       anyway. Opaque + above the viewer, it masks the info-panel open/close
+       dance the zoom driver performs on mount (see ensureZoomThenClosePanel). */
+    #loading { background: var(--gb-paper); z-index: 2; }
+    #landing p, #loading p {
+      font-family: var(--gb-font-body); font-size: 15px;
+      color: var(--gb-ink-soft); max-width: 480px; line-height: 1.6;
+    }
+    #landing a, #error a {
+      display: inline-block; padding: 10px 22px;
+      background: var(--gb-accent); color: var(--gb-paper);
+      border-radius: 0; text-decoration: none;
+      font-family: var(--gb-font-body); font-weight: 600; font-size: 14px;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    #landing a:hover, #error a:hover { background: var(--gb-accent-deep, #143a22); }
+    #landing .gb-secondary-link {
+      display: inline-block; background: none; padding: 0;
+      color: var(--gb-ink-soft); text-decoration: underline;
+      font-family: var(--gb-font-body); font-weight: 400; font-size: 13px;
+    }
+    #landing .gb-secondary-link:hover { color: var(--gb-accent); }
+    #error p { font-size: 13px; color: #b00; max-width: 520px; line-height: 1.5; }
+    .gb-entry-subtitle {
+      display: block;
+      font-family: var(--gb-font-mono, ui-monospace, monospace);
+      font-size: 11px; letter-spacing: 0.05em;
+      color: var(--gb-ink-soft, #54504a);
+      margin-top: 2px;
+    }
+    /* While the deep-link driver (ensureZoomThenClosePanel) is opening and
+       closing Clover's info panel to register the content-state overlay,
+       hide the panel chrome so it doesn't flash on load. Selectors taken
+       from the rendered 3.11.0 DOM: the panel is aside[data-aside-active],
+       its resize handle is div[data-dragging], and its toggle is
+       button[data-aside-active] (Clover's stitches class names are build
+       hashes — attribute selectors are the stable handle; the
+       [data-aside-active] wrapper div is deliberately NOT matched, it
+       contains the whole viewer). opacity, NOT display:none — the panel
+       must stay mounted with stable layout for Clover to register the
+       overlay and for OSD sizing. JS .click() still works on
+       pointer-events:none elements, so the driver's toggle/manifest-back
+       clicks are unaffected. */
+    clover-viewer.gb-zoom-pending aside[data-aside-active],
+    clover-viewer.gb-zoom-pending div[data-dragging],
+    clover-viewer.gb-zoom-pending button[data-aside-active] {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="viewer-heading">Green Books &amp; Travel Guides — <em>Page Viewer</em></h1>
+  <a id="back-link" href="all-volumes.html">← Back to all volumes</a>
+</header>
+
+<div id="viewer-wrap">
+  <div id="landing">
+    <p>This viewer opens specific pages from the digitized Green Book volumes and other
+       Black travel guides. Use one of the explorers below to find an entry and open its
+       source page here.</p>
+    <a href="all-volumes.html">Search across all eight publications</a>
+    <a href="explorer.html" class="gb-secondary-link">Or browse just the Green Book →</a>
+  </div>
+  <div id="loading" role="status" aria-live="polite"><p></p></div>
+  <div id="error" role="alert"><p id="error-msg"></p><a id="error-back-link" href="all-volumes.html">← Back to all volumes</a></div>
+</div>
+
+<script>
+// NYPL info.json responses return "id":"http://iiif.nypl.org:443/..." — Chrome
+// blocks HTTP requests from an HTTPS page. Rewrite those URLs for both fetch
+// (info.json) and XMLHttpRequest (OSD tile loading) before Clover/OSD loads.
+(function () {
+  function fixNyplUrl(url) {
+    return typeof url === 'string'
+      ? url.replace(/^http:\/\/iiif\.nypl\.org(:\d+)?\//,'https://iiif.nypl.org/')
+      : url;
+  }
+  const _fetch = window.fetch;
+  window.fetch = function (input, init) {
+    return _fetch.call(this, fixNyplUrl(input), init).then(function (resp) {
+      // Also rewrite URLs embedded in JSON response bodies (info.json @id field)
+      const ct = resp.headers.get('content-type') || '';
+      if (!ct.includes('json')) return resp;
+      return resp.text().then(function (text) {
+        const fixed = text.replace(/http:\/\/iiif\.nypl\.org(:\d+)?\//g, 'https://iiif.nypl.org/');
+        return new Response(fixed, { status: resp.status, statusText: resp.statusText, headers: resp.headers });
+      });
+    });
+  };
+  const _open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function (method, url) {
+    return _open.apply(this, [method, fixNyplUrl(url)].concat(Array.prototype.slice.call(arguments, 2)));
+  };
+}());
+
+// Manifests are committed in-repo, so forks, local dev, and preview deploys
+// should resolve them relative to the page rather than the canonical host.
+// Manifest `id` fields are still baked with the absolute hadro.github.io URL,
+// but Clover's vault tolerates the request URL not matching the manifest id.
+// NOTE: tests/run.sh rewires this statement to the local origin — keep the
+// literal shape in sync if you change it.
+const BASE_URL = location.hostname === "hadro.github.io"
+  ? "https://hadro.github.io/green-books"
+  : new URL(".", location.href).href.replace(/\/$/, "");
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+function showError(msg) {
+  document.getElementById("loading").classList.remove("visible");
+  document.getElementById("error-msg").textContent = msg;
+  document.getElementById("error").classList.add("visible");
+}
+
+// Whitelist for the `from` param — never interpolate its raw value into a URL.
+// Green Book explorer deep-links tag themselves `from=explorer` so they round-
+// trip back there; everything else (the all-volumes explorer, the bare landing
+// page, unknown sources) returns to all-volumes, the site's primary entry point.
+function resolveBackTarget(params) {
+  return params.get("from") === "explorer"
+    ? { page: "explorer.html", text: "← Back to the Green Book explorer" }
+    : { page: "all-volumes.html", text: "← Back to all volumes" };
+}
+
+function serviceId(service) {
+  if (!service) return "";
+  const s = Array.isArray(service) ? service[0] : service;
+  return (s && (s.id || s["@id"])) || "";
+}
+
+function buildCanvasIndex(manifest) {
+  const index = {};
+  for (const canvas of (manifest.items || [])) {
+    try {
+      const body = canvas.items[0].items[0].body;
+      // Index by service base URL (primary)
+      const svc = serviceId(body.service);
+      if (svc) index[svc] = canvas.id;
+      // Also index by body URL stripped to service base (NYPL canvas IDs are image URLs)
+      if (body.id) index[body.id.replace(/\/full\/.*$/, "")] = canvas.id;
+    } catch (e) {}
+  }
+  return index;
+}
+
+function buildCloverState(manifestId, canvasId, fragment) {
+  const target = {
+    type: "SpecificResource",
+    source: { id: canvasId, type: "Canvas", partOf: [{ id: manifestId, type: "Manifest" }] },
+  };
+  if (fragment) target.selector = { type: "FragmentSelector", value: fragment };
+  const state = {
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    id: canvasId + (fragment ? "#" + fragment : "") + "/content-state",
+    type: "Annotation",
+    motivation: ["contentState"],
+    target,
+  };
+  return state;
+}
+
+function contentStateToBlobId(stateObj) {
+  return URL.createObjectURL(
+    new Blob([JSON.stringify(stateObj)], { type: "application/json" })
+  );
+}
+
+// Parse a pixel "xywh=x,y,w,h" fragment (the only form this site produces —
+// see canvas_fragment values in the CSV / explorer.html) into its width/height
+// aspect ratio. Returns null for anything else, so callers can fall back to a
+// weaker readiness check rather than assume a shape that may not hold.
+function xywhAspect(fragment) {
+  const m = /^xywh=(\d+),(\d+),(\d+),(\d+)$/.exec(fragment || "");
+  if (!m) return null;
+  const w = Number(m[3]), h = Number(m[4]);
+  return (w > 0 && h > 0) ? w / h : null;
+}
+
+// Clover's own info-panel AnnotationItem is the only thing that actually
+// zooms to a content-state fragment: it polls (1s interval) for its OSD
+// overlay to exist, calls fitBounds() once, then stops. If that overlay is
+// drawn before the tiled image finishes loading, its rect can be NaN
+// (silent no-op zoom) — Clover redraws the overlay correctly once the image
+// loads, but its own poll has already stopped by then. Rather than race
+// Clover's interval, drive the zoom ourselves: each overlay is a light-DOM
+// <button id="{content-state annotation id}"> with a keydown-Enter handler
+// that calls fitBounds() on whatever rect the overlay currently has.
+//
+// A finite, non-zero rect isn't quite enough of a readiness signal on its
+// own: testing against a slow image load showed Clover can also draw the
+// overlay at a tiny (e.g. 4x4px), non-NaN placeholder position before the
+// image is loaded — sane by a bare non-zero check, but not the real
+// fragment position, and dispatching against it zooms to nowhere exactly
+// like the NaN case. Since we already know the fragment's pixel aspect
+// ratio, cross-check the overlay's on-screen aspect ratio against it before
+// trusting the rect; a real (even mid-animation) draw of the fragment keeps
+// that aspect ratio, while a placeholder does not.
+//
+// Small-viewport wrinkle: below Clover's ~768px WINDOW-width breakpoint,
+// Viewer.tsx initializes the info panel closed, so the content-state
+// AnnotationItem (which lives in that panel) never mounts, the overlay is
+// never registered, and no zoom ever happens — phone deep links would land
+// on an unzoomed page. Clover still renders its panel-toggle button (the
+// only button carrying a data-aside-active attribute, aria-label "More
+// Information"); clicking it mounts the panel and with it the content-state
+// annotation + overlay. So while waiting for the overlay to EXIST: if the
+// toggle reports the panel collapsed (aria-expanded="false"), click it — a
+// no-op on desktop where the panel starts open.
+//
+// The panel is closed (manifest-back) as soon as the overlay element exists,
+// BEFORE waiting for its rect to become sane and zooming. Order matters: at
+// phone widths the opened panel covers the entire viewer and while it is
+// open OSD never settles into real dimensions — on a slow image load the
+// overlay stays a tiny placeholder indefinitely (observed at 400px), so
+// waiting for a sane rect with the panel open deadlocks. The overlay button,
+// its keydown handler, and its world-space rect all survive the close
+// (verified at 1280px and 400px in stock 3.11.0 — unlike the old patched
+// 3.4.0 bundle, where the back-click wiped zoom + highlight on mobile and
+// index.html had to skip the auto-dismiss on small viewports). Closing
+// unconditionally also means the zoom below always runs against the final,
+// full-size OSD container, so it lands identically at every width.
+// Collapse the info panel for entries that have a page but no region. There is
+// nothing to zoom to and no annotation worth reading (Clover shows "None"), so
+// leaving the panel open spends ~40% of the width on chrome when the whole point
+// of the link is to see the page. Clicking the same toggle the zoom driver uses
+// to OPEN a collapsed panel, bounded so it can never hang.
+function collapseInfoPanel(el) {
+  const POLL_MS = 250, MAX_MS = 10000;
+  let elapsed = 0;
+  (function poll() {
+    const toggle = el.querySelector('button[data-aside-active][aria-expanded="true"]');
+    if (toggle) { toggle.click(); return; }
+    elapsed += POLL_MS;
+    if (elapsed < MAX_MS) setTimeout(poll, POLL_MS);
+  }());
+}
+
+// How long the loading cover may stay up before it is dropped regardless of
+// what the driver is doing. Comfortably inside the driver's own MAX_MS.
+const REVEAL_SAFETY_MS = 15000;
+
+// `reveal` drops the loading cover that attach() holds over this whole
+// sequence. Called once the info panel has been dismissed — i.e. once the
+// viewer is back at full size and about to receive its one zoom — and on
+// every give-up path. Before this, the reader watched the raw sequence:
+// Clover's own content-state zoom, then the info panel opening (full-width on
+// a phone, so the page scan vanished — "it appeared to reload"), then the
+// panel closing and OSD re-fitting to home, then the driver's zoom. Two zooms
+// with a blank flash between them. The dance still happens; it is just no
+// longer performed in front of the reader.
+function ensureZoomThenClosePanel(el, stateId, expectedAspect, reveal) {
+  reveal = reveal || function () {};
+  const POLL_MS = 250;
+  const MAX_MS = 45000;
+  const ASPECT_TOLERANCE = 0.2; // relative
+  const TOGGLE_GRACE_MS = 1000;    // don't touch the toggle before Clover settles
+  const TOGGLE_RETRY_MS = 3000;    // re-click at most this often if still collapsed
+  const STABLE_TICKS = 2;          // sane rect must hold this many ticks before zooming
+  const VERIFY_MS = 1000;          // wait this long after a dispatch before checking it took
+  const MAX_DISPATCHES = 4;
+  // Two signals that a dispatched zoom actually took: for large fragments the
+  // overlay ends up spanning a big share of the viewer in some axis; tiny
+  // fragments (single directory lines, e.g. 94x31px) never reach that —
+  // Clover pads its fitBounds target by fixed world units (+0.2/+0.5) that
+  // dwarf a sliver, leaving the overlay at ~13% of the viewer even when fully
+  // zoomed — so also accept the overlay having grown well past its at-dispatch
+  // (home view) size.
+  const ZOOMED_MIN_FRACTION = 0.25;
+  const ZOOMED_MIN_GROWTH = 1.5;
+  let elapsed = 0;
+  let lastToggleClick = -Infinity;
+  let panelClosed = false;
+  let lastRect = null;
+  let stableTicks = 0;
+  let dispatches = 0;
+  let dispatchedAt = null;
+  let rectAtDispatch = null;
+
+  // Aspect must be measured from OSD's inline style (exact, world-derived
+  // px values), not getBoundingClientRect(): the highlight overlay carries a
+  // 2px border per side, and the +4px per axis skews the on-screen aspect of
+  // tiny fragments far outside any reasonable tolerance (e.g. a 20.9x6.9px
+  // sliver measures 24.9x10.9 -> aspect 2.29 vs the fragment's true 3.03).
+  function overlayAspect(overlay, rect) {
+    const w = parseFloat(overlay.style.width);
+    const h = parseFloat(overlay.style.height);
+    if (Number.isFinite(w) && Number.isFinite(h) && w > 0 && h > 0) return w / h;
+    return rect.height > 0 ? rect.width / rect.height : NaN;
+  }
+
+  // Hide the panel chrome (see the gb-zoom-pending CSS rule) for the whole
+  // "panel mounted but not yet closed" window, so the open→close dance
+  // doesn't flash on screen. Cleared right after the manifest-back click,
+  // and on the give-up path so the panel is never left invisible.
+  el.classList.add("gb-zoom-pending");
+
+  function openPanelIfCollapsed() {
+    if (elapsed < TOGGLE_GRACE_MS || elapsed - lastToggleClick < TOGGLE_RETRY_MS) return;
+    // Scoped to Clover's aside toggle: it is the only button carrying a
+    // data-aside-active attribute (verified in 3.11.0 DOM at 400px and
+    // 1280px), so this cannot match other aria-expanded widgets. JS .click()
+    // fires its handler even under the pending rule's pointer-events:none.
+    const toggle = el.querySelector('button[data-aside-active][aria-expanded="false"]');
+    if (toggle) {
+      lastToggleClick = elapsed;
+      toggle.click();
+    }
+  }
+
+  function poll() {
+    const overlay = document.getElementById(stateId); // light DOM (shadow: false)
+    if (!overlay) {
+      // Panel must have been open at least once for the overlay to exist.
+      openPanelIfCollapsed();
+    } else if (!panelClosed) {
+      // Overlay registered — the panel has served its purpose; dismiss it
+      // now so OSD gets its final dimensions and can finish loading.
+      panelClosed = true;
+      const btn = el.querySelector('[data-value="manifest-back"]');
+      if (btn) btn.click();
+      el.classList.remove("gb-zoom-pending");
+      // Panel dismissed: the viewer is back at full size. Show it now, so the
+      // reader sees the page and then a single zoom, not the churn above.
+      reveal();
+    } else {
+      const rect = overlay.getBoundingClientRect();
+      const viewer = el.getBoundingClientRect();
+      const zoomed = viewer.width > 0 && viewer.height > 0 &&
+        ((rect.width / viewer.width >= ZOOMED_MIN_FRACTION ||
+          rect.height / viewer.height >= ZOOMED_MIN_FRACTION) ||
+         (rectAtDispatch !== null &&
+          (rect.width >= rectAtDispatch.width * ZOOMED_MIN_GROWTH ||
+           rect.height >= rectAtDispatch.height * ZOOMED_MIN_GROWTH)));
+      if (dispatchedAt !== null) {
+        // Verify a dispatched zoom actually took. OSD re-fits the viewport to
+        // home bounds up to 3 times (~150ms) after the image finishes loading
+        // (fitBoundsOnAllLoaded), and a home-fit landing after our fitBounds
+        // silently undoes the zoom — observed on fast CI runners. Re-dispatch
+        // until the overlay grows past its at-dispatch size (or spans a real
+        // share of the viewer, for large fragments).
+        if (elapsed - dispatchedAt >= VERIFY_MS) {
+          if (zoomed) { reveal(); return; } // done
+          if (dispatches >= MAX_DISPATCHES) {
+            reveal();
+            return; // give up; class already cleared at panel close
+          }
+          dispatches++;
+          dispatchedAt = elapsed;
+          overlay.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+        }
+      } else {
+        const sane = Number.isFinite(rect.width) && Number.isFinite(rect.height) &&
+          rect.width > 0 && rect.height > 0;
+        const aspect = overlayAspect(overlay, rect);
+        const aspectOk = !expectedAspect ||
+          Math.abs(aspect - expectedAspect) / expectedAspect <= ASPECT_TOLERANCE;
+        // Require the sane rect to hold still across consecutive ticks before
+        // zooming: a fresh overlay redraw lands together with OSD's home-fit
+        // retry window, and dispatching inside it gets overridden.
+        const stable = sane && aspectOk && lastRect &&
+          Math.abs(rect.x - lastRect.x) < 1 && Math.abs(rect.y - lastRect.y) < 1 &&
+          Math.abs(rect.width - lastRect.width) < 1 && Math.abs(rect.height - lastRect.height) < 1;
+        stableTicks = stable ? stableTicks + 1 : 0;
+        lastRect = (sane && aspectOk) ? rect : null;
+        if (stableTicks >= STABLE_TICKS) {
+          // Trigger Clover's own handler for the correct fitBounds rect.
+          // Idempotent if Clover already zoomed on its own.
+          dispatches++;
+          dispatchedAt = elapsed;
+          rectAtDispatch = rect; // growth baseline for the zoom verification
+          overlay.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+        }
+      }
+    }
+    elapsed += POLL_MS;
+    if (elapsed >= MAX_MS) {
+      el.classList.remove("gb-zoom-pending"); // never leave the panel invisible
+      reveal();                                 // nor the viewer covered
+      return; // give up rather than zoom to a bogus rect
+    }
+    setTimeout(poll, POLL_MS);
+  }
+
+  poll();
+}
+
+function launchClover(manifestId, cfUrl) {
+  const wrap = document.getElementById("viewer-wrap");
+  const old = wrap.querySelector("clover-viewer");
+  if (old) old.remove();
+
+  // Wait for the custom element to be defined before appending it.
+  // On cold loads, clover.umd-3.11.0.js (~2 MB) can finish downloading
+  // after the manifest fetches complete, leaving the element in the DOM as an
+  // unknown element until Clover upgrades it.
+  const cloverReady = customElements.whenDefined("clover-viewer");
+
+  function attach(blobId, stateId, expectedAspect, collapsePanel) {
+    const el = document.createElement("clover-viewer");
+    el.setAttribute("id", blobId);
+    // Must always be present: Clover does an unguarded JSON.parse() of this
+    // attribute. canvasHeight:"auto" gives full-height layout; the download
+    // button and IIIF badge are hidden to match the site's chrome.
+    el.setAttribute("options", JSON.stringify({
+      canvasHeight: "auto", showDownload: false, showIIIFBadge: false,
+    }));
+    wrap.appendChild(el);
+    // Reveal = drop the loading cover. For a fragment load the driver below
+    // owns the moment: it holds the cover over the info-panel dance, so the
+    // viewer is first seen settled rather than mid-churn. Every other path
+    // reveals immediately, as before.
+    let revealed = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      document.getElementById("loading").classList.remove("visible");
+    };
+    // NB: do not revoke the content-state blob URL here — Clover 3.11.0 reads
+    // it asynchronously after connection, so revoking (even deferred) races
+    // that read and the manifest 404s. The one-per-load blob leak is fine.
+    // Only content-state loads (a specific canvas fragment) have a zoom
+    // target and an info panel worth auto-dismissing. The no-cfUrl and
+    // manifest-fetch-failure fallback paths below attach with just the bare
+    // manifest URL — there's nothing to zoom to, so leave Clover's default
+    // (open) info panel alone.
+    if (stateId) {
+      // Belt and braces: however the driver exits, the cover comes off. A hung
+      // driver must never leave the reader staring at a loading message.
+      setTimeout(reveal, REVEAL_SAFETY_MS);
+      ensureZoomThenClosePanel(el, stateId, expectedAspect, reveal);
+    } else {
+      reveal();
+      if (collapsePanel) collapseInfoPanel(el);
+    }
+  }
+
+  if (!cfUrl) {
+    cloverReady.then(() => attach(manifestId));
+    return;
+  }
+
+  const fragment = cfUrl.includes("#") ? cfUrl.split("#")[1] : "";
+  const cfBase   = cfUrl.includes("#") ? cfUrl.split("#")[0] : cfUrl;
+
+  // Run the manifest fetch and Clover registration in parallel; attach only
+  // when both are ready so the element is immediately active on connection.
+  Promise.all([cloverReady, fetch(manifestId).then(r => r.json())])
+    .then(([, manifest]) => {
+      const index = buildCanvasIndex(manifest);
+      const svcBase = cfBase.replace(/\/full\/.*$/, "");
+      const canvasId = index[svcBase] || index[cfBase] || cfBase;
+      const state = buildCloverState(manifestId, canvasId, fragment);
+      // 774 of 113,827 entries (0.7%) carry a canvas_fragment with no #xywh —
+      // the pipeline located the page but not the region on it. Without a
+      // FragmentSelector Clover draws no overlay annotation, so the zoom driver
+      // polls for an element that will never exist and holds gb-zoom-pending
+      // for its full 45s timeout, leaving the info panel invisible while it
+      // still occupies layout: a wide dead band beside a page that never zooms.
+      // Pass no stateId so the driver is skipped — the content state still
+      // opens the correct page, it simply opens it unzoomed, which is all the
+      // data supports.
+      attach(contentStateToBlobId(state), fragment ? state.id : null, xywhAspect(fragment), !fragment);
+    })
+    .catch(() => {
+      cloverReady.then(() => attach(manifestId));
+    });
+}
+
+// ── Header: populate from URL params ─────────────────────────────────────────
+
+(function () {
+  const params = new URLSearchParams(location.search);
+  const cf   = params.get("cf");
+  const name = params.get("name");
+  const back = resolveBackTarget(params);
+  const backHref = back.page + (cf ? "?cf=" + encodeURIComponent(cf) : "");
+
+  const backLink = document.getElementById("back-link");
+  backLink.href = backHref;
+  backLink.textContent = back.text;
+
+  const errorBackLink = document.getElementById("error-back-link");
+  errorBackLink.href = backHref;
+  errorBackLink.textContent = back.text;
+
+  if (name) {
+    document.title = name + " — Green Books Page Viewer";
+    // Inject "Entry: [name]" as subtitle inside Clover's own header once it renders.
+    const obs = new MutationObserver(() => {
+      const titleEl = document.querySelector(".clover-viewer-header .label");
+      if (!titleEl || titleEl.querySelector(".gb-entry-subtitle")) return;
+      const sub = document.createElement("span");
+      sub.className = "gb-entry-subtitle";
+      sub.textContent = "Entry: " + name;
+      titleEl.appendChild(sub);
+      obs.disconnect();
+    });
+    obs.observe(document.getElementById("viewer-wrap"), { childList: true, subtree: true });
+  }
+})();
+
+// ── Route ────────────────────────────────────────────────────────────────────
+
+const _params = new URLSearchParams(location.search);
+const cf    = _params.get("cf");
+const name  = _params.get("name") || "";
+
+if (!cf) {
+  document.getElementById("landing").classList.add("visible");
+} else {
+  // NYPL fragments look like …/iiif/3/<numericId>/…; LOC (tile.loc.gov)
+  // fragments carry a colon-delimited service token instead.
+  const m = cf.match(/\/iiif\/\d+\/(\d+)\//) ||
+            cf.match(/\/image-services\/iiif\/(service:[^/#?]+)/);
+  if (!m) {
+    showError("Unrecognised canvas fragment URL: " + cf);
+  } else {
+    const imageId = m[1];
+
+    document.querySelector("#loading p").textContent =
+      name ? "Loading page scan for " + name + "…" : "Loading page scan…";
+    document.getElementById("loading").classList.add("visible");
+
+    // If clover.umd-3.11.0.js (~2 MB) stalls or fails outright, don't leave
+    // the loading state spinning forever — the manifest fetch below can
+    // succeed while the viewer element itself never upgrades.
+    const watchdog = setTimeout(() => {
+      if (!customElements.get("clover-viewer")) {
+        showError("The page viewer failed to load. Use the back link to return to the explorer.");
+      }
+    }, 12000);
+    customElements.whenDefined("clover-viewer").then(() => clearTimeout(watchdog));
+
+    Promise.all([
+      fetch("image_to_volume.json").then(r => r.json()).catch(() => ({})),
+      fetch("travel_guides_image_to_volume.json").then(r => r.json()).catch(() => ({})),
+    ])
+      .then(([gbLookup, tgLookup]) => {
+        const uuid = gbLookup[imageId] || tgLookup[imageId];
+        if (!uuid) {
+          showError("No volume found for image ID " + imageId + ". The lookup table may be out of date.");
+          return;
+        }
+        launchClover(BASE_URL + "/manifests/" + uuid + "/manifest.json", cf);
+      })
+      .catch(err => showError("Could not load volume index: " + err.message));
+  }
+}
+</script>
+
+<script src="previews/claude-data-explorer-improvements-review-208sgw/clover.umd-3.11.0.js"></script>
+<!-- privacy-friendly analytics via GoatCounter -->
+<!-- Strip ?cf=... so every entry view aggregates under /index.html instead of fragmenting per-entry -->
+<script>window.goatcounter = { path: function (p) { return p.split('?')[0]; } };</script>
+<script data-goatcounter="https://green-books.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
