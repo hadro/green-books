@@ -10,7 +10,8 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | `green_book_entries_all.csv` | Combined data for all 24 Green Book editions (~67k entries; includes the LOC-digitized 1946 edition, volume_id 2016298176) |
 | `image_to_volume.json` | Maps NYPL image IDs and LOC IIIF service IDs → volume IDs (used by IIIF viewer for deep links) |
 | `travel_guides_image_to_volume.json` | Same, for the 26 sibling travel guide volumes (built and live; drives `travel_guides_explorer.html`) |
-| `index.html` | IIIF viewer entry point — all JS is inline in this file, no build step (the `react_clover` branch has a separate Vite/Clover rewrite in `viewer-src/`, not yet merged) |
+| `index.html` | Site home page — static, no JS needed to render; also shims legacy `?cf=` links through to `viewer.html` |
+| `viewer.html` | IIIF viewer entry point — all JS is inline in this file, no build step (the `react_clover` branch has a separate Vite/Clover rewrite in `viewer-src/`, not yet merged). **Was `index.html` until the root/viewer split** |
 | `manifests/{uuid}/manifest.json` | Per-volume IIIF manifests (one per Green Book edition; the LOC 1946 volume's manifest lives at `manifests/2016298176/manifest.json`) |
 | `green_book_entries_all_fixed.csv` | Scratch/working copy; `green_book_entries_all.csv` is the canonical one |
 | `nyc_geo.json` | **Generated** — slim `sha1(canvas_fragment)[:12]` → `[lat, lon, neighborhood, borough, approx]` lookup for the 7,996 geocoded NYC entries. Rebuild with `python3 scripts/build_nyc_geo.py` whenever `nyc-neighborhoods/nyc_entries_geocoded.csv` changes; `--check` fails if it has drifted. |
@@ -64,13 +65,13 @@ git commit -m "Pull updated CSV from main"
 git checkout main && git merge new_facets
 ```
 
-## IIIF viewer (`index.html`)
+## IIIF viewer (`viewer.html`)
 
-The production viewer is entirely inline in `index.html` (no build step). It accepts a `?cf=<canvas_fragment_url>` query parameter encoding which IIIF image and region to show. The viewer looks up the image ID (or LOC service ID) in `image_to_volume.json` → fetches the manifest → builds an IIIF content state → passes it to Clover.
+The production viewer is entirely inline in `viewer.html` (no build step). It accepts a `?cf=<canvas_fragment_url>` query parameter encoding which IIIF image and region to show. The viewer looks up the image ID (or LOC service ID) in `image_to_volume.json` → fetches the manifest → builds an IIIF content state → passes it to Clover.
 
 **How the viewer works:** For NYPL volumes, the canvas fragment URL encodes the NYPL image ID; the viewer extracts it, looks up the volume in `image_to_volume.json`, and fetches `manifests/<uuid>/manifest.json`. For the LOC 1946 volume, the fragment encodes the LOC IIIF service ID; the lookup resolves to volume_id 2016298176 and fetches `manifests/2016298176/manifest.json`.
 
-**Known issue:** NYPL `info.json` responses return `"id": "http://iiif.nypl.org:443/..."` (HTTP + port 443), which breaks OSD tile construction. This is fixed by a `window.fetch` monkey-patch inline in `index.html` that rewrites the URL before OSD sees it.
+**Known issue:** NYPL `info.json` responses return `"id": "http://iiif.nypl.org:443/..."` (HTTP + port 443), which breaks OSD tile construction. This is fixed by a `window.fetch` monkey-patch inline in `viewer.html` that rewrites the URL before OSD sees it.
 
 **react_clover branch status:** A React rewrite with `@samvera/clover-iiif@3.9.2` exists in the `react_clover` branch. Image loading and canvas navigation work; fragment zoom is implemented (via `customDisplays` + `viewport.fitBounds`) but needs browser testing. No entry highlight overlay yet.
 
@@ -219,6 +220,26 @@ changes; every other filter leaves the viewport alone (it used to re-fit on
 every keystroke). "⤴ Whole city" is the manual reset.
 
 ## Discoverability metadata
+
+**Root / viewer split.** The viewer lived at `index.html` until the root became a
+home page; it is now `viewer.html`, and `index.html` is a static home page. One URL
+could not be both the project's front door and a per-entry viewer — they want
+opposite titles and link previews. Consequences worth remembering:
+
+- `index.html`'s first `<head>` script forwards any request carrying a `?cf=`
+  parameter to `viewer.html`, query and hash intact. It must stay *before* the
+  stylesheet, or every deep link flashes the home page first. Covered by Test 8 in
+  `tests/run_tests.js`, which also asserts a bare root visit does *not* redirect.
+- `viewer.html` is `noindex, follow` — 113,827 thin `?cf=` URLs. Its og: tags still
+  work; scrapers ignore `noindex`.
+- `tests/run.sh` rewires `viewer.html`'s `BASE_URL`, and
+  `.github/workflows/viewer-tests.yml` watches both files.
+
+**Site nav.** `.gb-sitenav` is duplicated verbatim in `index.html` and the four
+explorers (markup after the skip link, CSS appended to the last `<style>` block).
+It resolves entirely through `--gb-*` custom properties — whose names are identical
+across both type families — so one block picks up each page's own palette. It is
+deliberately not sticky. Edit all five copies together.
 
 Each of the four explorer pages carries a `schema.org/Dataset` JSON-LD block in
 `<head>`, scoped to the slice of the corpus that page shows (`all-volumes` is the

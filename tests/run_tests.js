@@ -1,4 +1,4 @@
-// Viewer test suite for the green-books Clover integration (index.html).
+// Viewer test suite for the green-books Clover integration (viewer.html).
 //
 // Run via tests/run.sh (which builds the serving copy and starts server.py).
 // Chromium resolution: PW_CHROMIUM_PATH or CHROMIUM_BIN env var wins;
@@ -137,7 +137,7 @@ const FLASH_RECORDER = () => {
 // The pending window is short — on desktop Clover's info panel is already open,
 // so the overlay registers on the driver's first 250ms poll and the class comes
 // straight back off. Sampling it from Node at 50ms per round trip, starting only
-// once page.goto() resolved, was a race: the same index.html scored 2 samples in
+// once page.goto() resolved, was a race: the same viewer.html scored 2 samples in
 // one CI run and 0 in the next, and 0 every time on a fast machine. The window
 // itself was never the problem — the observation was. Recording in-page from
 // document start at ~16ms makes it deterministic.
@@ -239,7 +239,7 @@ async function newPage(browser, viewport) {
   return { context, page, consoleErrors, pageErrors, requestFailures };
 }
 
-// External resources index.html references that are unreachable (or
+// External resources viewer.html references that are unreachable (or
 // pointless) from the test sandbox / CI: analytics, web fonts, favicon.
 // net::ERR_ABORTED is a cancellation, not a failure: the driver closes the
 // info panel as soon as the overlay registers, which unmounts the panel's
@@ -248,11 +248,59 @@ function isBenignNoise(text) {
   return /gc\.zgo\.at|goatcounter|fonts\.googleapis|fonts\.gstatic|favicon\.ico|net::ERR_ABORTED/i.test(text);
 }
 
+// The viewer used to live at the site root, so links shared before it moved to
+// viewer.html arrive at index.html carrying their ?cf= entry parameter. A shim
+// in index.html's <head> forwards those. This case guards it: without the shim
+// every entry link already in the wild lands on the home page instead of the
+// entry, and the failure is invisible from the explorers (which link straight
+// to viewer.html) — nothing else in this suite would catch it.
+async function runCaseRootRedirect(browser, { label }) {
+  console.log(`\n=== ${label} ===`);
+  await setDelay(0);
+  const { page } = await newPage(browser, { width: 1280, height: 800 });
+  const results = [];
+  const query = `?cf=${encodeURIComponent(BIG.cfUrl)}&name=TestEntry&from=all-volumes`;
+
+  await page.goto(`${ORIGIN}/index.html${query}`);
+  await page.waitForFunction(
+    () => location.pathname.endsWith('/viewer.html'), null, { timeout: 15000 }
+  ).catch(() => {});
+  const landed = new URL(page.url());
+  results.push([landed.pathname.endsWith('/viewer.html'),
+    `?cf= link to the root forwards to the viewer (landed on ${landed.pathname})`]);
+  results.push([landed.searchParams.get('cf') === BIG.cfUrl,
+    'cf parameter survives the forward intact']);
+  results.push([landed.searchParams.get('name') === 'TestEntry' &&
+                landed.searchParams.get('from') === 'all-volumes',
+    'the other query parameters survive too']);
+
+  // A bare root visit must render the home page and stay there — the shim
+  // keys on ?cf=, so an over-eager match would redirect real visitors away.
+  await page.goto(`${ORIGIN}/index.html`);
+  await page.waitForLoadState('load');
+  const stayed = new URL(page.url());
+  results.push([stayed.pathname.endsWith('/index.html'),
+    `a bare root visit stays on the home page (is ${stayed.pathname})`]);
+  const heroText = await page.evaluate(() => {
+    const h = document.querySelector('h1');
+    return h ? h.textContent.replace(/\s+/g, ' ').trim() : '';
+  });
+  results.push([/welcomed Black travelers/i.test(heroText),
+    `home page renders its heading (got: "${heroText.slice(0, 60)}")`]);
+  const navCount = await page.evaluate(() =>
+    document.querySelectorAll('.gb-sitenav a').length);
+  results.push([navCount >= 5,
+    `home page carries the site nav (${navCount} links)`]);
+
+  await page.context().close();
+  return { results };
+}
+
 async function runCaseDesktop(browser, { delayMs, label, timeoutMs, spec = BIG }) {
   console.log(`\n=== ${label} ===`);
   await setDelay(delayMs);
   const { page, consoleErrors, pageErrors, requestFailures } = await newPage(browser, { width: 1280, height: 800 });
-  const url = `${ORIGIN}/index.html?cf=${encodeURIComponent(spec.cfUrl)}&name=TestEntry`;
+  const url = `${ORIGIN}/viewer.html?cf=${encodeURIComponent(spec.cfUrl)}&name=TestEntry`;
   const t0 = Date.now();
   await page.goto(url);
   const flashWatch = delayMs > 0 ? watchFlashHidden(page, timeoutMs) : null;
@@ -298,7 +346,7 @@ async function runCaseDesktop(browser, { delayMs, label, timeoutMs, spec = BIG }
 
 // Clover 3.11.0 initializes the info panel closed below its ~768px window-
 // width breakpoint, which would mean the content-state item never mounts and
-// no zoom happens on phones. index.html's driver counters that by clicking
+// no zoom happens on phones. viewer.html's driver counters that by clicking
 // Clover's aside toggle (button[data-aside-active]) while waiting for the
 // overlay, closing the panel as soon as the overlay registers (an open panel
 // covers the viewer at phone widths and stalls OSD), then zooming. These
@@ -307,7 +355,7 @@ async function runCaseMobile(browser, { delayMs, label, timeoutMs, spec = BIG })
   console.log(`\n=== ${label} ===`);
   await setDelay(delayMs);
   const { page, consoleErrors, pageErrors, requestFailures } = await newPage(browser, { width: 400, height: 800 });
-  const url = `${ORIGIN}/index.html?cf=${encodeURIComponent(spec.cfUrl)}&name=TestEntry`;
+  const url = `${ORIGIN}/viewer.html?cf=${encodeURIComponent(spec.cfUrl)}&name=TestEntry`;
   const t0 = Date.now();
   await page.goto(url);
   const flashWatch = delayMs > 0 ? watchFlashHidden(page, timeoutMs) : null;
@@ -357,9 +405,10 @@ async function runCaseMobile(browser, { delayMs, label, timeoutMs, spec = BIG })
     const r5 = await runCaseDesktop(browser, { delayMs: 0, label: 'Test 5: desktop, fast load, tiny fragment', timeoutMs: 25000, spec: TINY });
     const r6 = await runCaseDesktop(browser, { delayMs: 7000, label: 'Test 6: desktop, slow load, tiny fragment', timeoutMs: 45000, spec: TINY });
     const r7 = await runCaseMobile(browser, { delayMs: 0, label: 'Test 7: mobile, fast load, tiny fragment', timeoutMs: 25000, spec: TINY });
+    const r8 = await runCaseRootRedirect(browser, { label: 'Test 8: site root forwards legacy ?cf= links to the viewer' });
     spamSeen = r1.spamPresent || r2.spamPresent;
     for (const [name, r] of [['Test1-desktop-fast', r1], ['Test2-desktop-slow', r2], ['Test3-mobile-fast', r3], ['Test4-mobile-slow', r4],
-                             ['Test5-desktop-fast-tiny', r5], ['Test6-desktop-slow-tiny', r6], ['Test7-mobile-fast-tiny', r7]]) {
+                             ['Test5-desktop-fast-tiny', r5], ['Test6-desktop-slow-tiny', r6], ['Test7-mobile-fast-tiny', r7], ['Test8-root-redirect', r8]]) {
       console.log(`\n--- ${name} results ---`);
       for (const [ok, msg] of r.results) {
         console.log((ok ? 'PASS' : 'FAIL'), '-', msg);

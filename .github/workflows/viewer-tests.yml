@@ -3,11 +3,13 @@ name: Viewer tests
 on:
   push:
     paths:
+      - "viewer.html"
       - "index.html"
       - "clover.umd-*.js"
       - "tests/**"
   pull_request:
     paths:
+      - "viewer.html"
       - "index.html"
       - "clover.umd-*.js"
       - "tests/**"

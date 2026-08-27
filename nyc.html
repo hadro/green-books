@@ -936,6 +936,32 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   /* Mobile compact mode for the coverage grid is opt-in via the
      data-compact attribute, set by the renderer when (max-width: 640px). */
 }
+
+/* ── Site nav ──────────────────────────────────────────────────────────────
+   Shared verbatim with index.html and the other explorers. Every rule resolves
+   through the --gb-* custom properties, whose names are identical across both
+   type families, so the same block picks up this page's own palette. Not
+   sticky: this page already stacks a sticky #app and its own sticky
+   affordances, and a further sticky layer would have to be reasoned about
+   against all of them for no real gain. */
+.gb-sitenav {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 24px;
+  padding: 10px 80px; background: var(--gb-paper-2);
+  border-bottom: 1px solid var(--gb-rule-faint);
+  font-family: var(--gb-font-mono); font-size: 0.75rem;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.gb-sitenav-home {
+  font-weight: 700; color: var(--gb-ink); text-decoration: none; margin-right: auto;
+}
+.gb-sitenav-home:hover { color: var(--gb-accent); }
+.gb-sitenav ul { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0; padding: 0; list-style: none; }
+.gb-sitenav a { color: var(--gb-ink-soft); text-decoration: none; padding-bottom: 2px; }
+.gb-sitenav a:hover { color: var(--gb-accent); border-bottom: 1px solid var(--gb-accent); }
+.gb-sitenav [aria-current="page"] {
+  color: var(--gb-ink); font-weight: 700; border-bottom: 2px solid var(--gb-accent);
+}
+@media (max-width: 860px) { .gb-sitenav { padding: 10px 24px; } }
 </style>
 <script type="application/ld+json">
 {
@@ -1033,6 +1059,16 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 </head>
 <body>
 <a href="#search" class="skip-link">Skip to search</a>
+
+<nav class="gb-sitenav" aria-label="Site">
+  <a class="gb-sitenav-home" href="./">Green Books &amp; Black Travel Guides</a>
+  <ul>
+    <li><a href="all-volumes.html">All volumes</a></li>
+    <li><a href="explorer.html">Green Book</a></li>
+    <li><a href="travel_guides_explorer.html">Other guides</a></li>
+    <li><a href="nyc.html" aria-current="page">NYC map</a></li>
+  </ul>
+</nav>
 
 <!-- Mobile-only sticky affordance: appears once the hero scrolls out of view
      (IntersectionObserver mirrors the hero observer) and routes to #search. -->
@@ -2431,7 +2467,7 @@ function showDetail(row) {
     img.alt = `Scan showing ${entryName}`;
     img.style.display = "block";
     attachThumb(img, row);
-    thumbLink.href = `index.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}&from=all-volumes`;
+    thumbLink.href = `viewer.html?cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent([entryName, row.address, [row.city, row.state].filter(Boolean).join(", ")].filter(Boolean).join(" – "))}&from=all-volumes`;
     thumbLink.title = "View this entry highlighted in the original scan";
     thumbLink.setAttribute("aria-label", `View ${entryName} in source document`);
   } else {
@@ -2489,7 +2525,7 @@ function showDetail(row) {
     const cityState = [row.city, row.state].filter(Boolean).join(", ");
     const overlayLabel = [entryName, row.address, cityState].filter(Boolean).join(" – ");
     const viewerParams = `cf=${encodeURIComponent(row.canvas_fragment)}&name=${encodeURIComponent(entryName)}&label=${encodeURIComponent(overlayLabel)}&from=all-volumes`;
-    pageCtx.innerHTML = `<a href="index.html?${viewerParams}" target="_blank">View in page context ↗</a>`;
+    pageCtx.innerHTML = `<a href="viewer.html?${viewerParams}" target="_blank">View in page context ↗</a>`;
     const links = [];
     const srcUrl = viewerUrl(row.canvas_fragment);
     const srcInst = row.canvas_fragment.includes("tile.loc.gov") ? "Library of Congress" : "NYPL";
@@ -3765,7 +3801,7 @@ function gbMapPopupHtml(row, estab) {
   }
   const name = (estab && estab.name) || row.name || "(no name)";
   const viewer = row.canvas_fragment
-    ? `<a href="index.html?cf=${encodeURIComponent(row.canvas_fragment)}&from=nyc" target="_blank" rel="noopener">View source page ↗</a>`
+    ? `<a href="viewer.html?cf=${encodeURIComponent(row.canvas_fragment)}&from=nyc" target="_blank" rel="noopener">View source page ↗</a>`
     : "";
   return `<div class="nyc-popup"><h4>${gbEscMap(name)}</h4>` +
     `<div class="pp-meta">${gbEscMap(meta)}</div>` +

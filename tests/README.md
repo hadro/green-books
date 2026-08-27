@@ -1,6 +1,6 @@
 # Viewer tests
 
-End-to-end tests for the Clover IIIF viewer integration in `index.html` — the
+End-to-end tests for the Clover IIIF viewer integration in `viewer.html` — the
 content-state deep-link flow ("zoom to segment"), the info-panel open/close
 driver, and the viewer chrome options.
 
@@ -76,7 +76,7 @@ rows, which is what caught the trailing-directional bug.
 ## CI
 
 `.github/workflows/viewer-tests.yml` runs `tests/run.sh` on pushes and PRs
-that touch `index.html`, `clover.umd-*.js`, or `tests/**`.
+that touch `viewer.html`, `clover.umd-*.js`, or `tests/**`.
 
 `.github/workflows/matcher-tests.yml` runs `tests/matching_test.js` on pushes
 and PRs that touch `gb-matching.js` or the test itself. Separate workflow

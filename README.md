@@ -6,6 +6,8 @@ This repository powers a public website for browsing and viewing the digitized e
 
 The all-volumes explorer is the main entry point to the project — search, filter, and chart all ~113,800 listings across all 50 volumes and eight publications in one place. If you are linking to this project, link there.
 
+The site root, <https://hadro.github.io/green-books/>, is a home page introducing the corpus and pointing at each explorer — it is where people who arrive by search or by guessing the URL land, not the place to send someone who already wants to search.
+
 The other explorers are narrower views of the same corpus and remain available:
 
 - [/explorer](https://hadro.github.io/green-books/explorer) — *The Negro Motorist Green Book* only (24 editions, ~67,000 listings)
@@ -22,7 +24,8 @@ The other explorers are narrower views of the same corpus and remain available:
 | `explorer.html` | The same browser scoped to *The Negro Motorist Green Book* — ~67,000 listings across its 24 editions |
 | `travel_guides_explorer.html` | Browser scoped to just the seven non–Green Book travel guides |
 | `nyc.html` | New York City listings on a neighborhood map — aggregate and point views over the geocoded NYC subset |
-| `index.html` | IIIF viewer (Clover) with routing logic — opens a specific page when given a `?cf=` deep-link. **The only part of the site that contacts the NYPL or LOC image servers.** |
+| `index.html` | The site home page — what the corpus is, the four explorers, provenance, licensing and credits. Static; no JS needed to render it. Also carries a shim that forwards legacy `?cf=` links (from when the viewer lived here) to `viewer.html`. |
+| `viewer.html` | IIIF viewer (Clover) with routing logic — opens a specific page when given a `?cf=` deep-link. **The only part of the site that contacts the NYPL or LOC image servers.** |
 | `old-explorer.html` | Archived earlier version of the explorer — kept as a historical reference, not linked from the live site |
 | `green_book_entries_all.csv` | Structured dataset of the Green Book entries, extracted via OCR and AI from the digitized scans |
 | `travel_guides_all.csv` | Structured dataset of the other seven publications' entries |
@@ -36,7 +39,7 @@ The other explorers are narrower views of the same corpus and remain available:
 | `tests/` | End-to-end viewer tests (Playwright + local fake IIIF service) — see `tests/README.md` |
 | `CITATION.cff` | Citation metadata for the entries dataset — drives GitHub's "Cite this repository" button |
 | `sitemap.xml`, `robots.txt` | Crawl metadata for the published site (see *Discoverability* below) |
-| `clover.umd-3.11.0.js` | Vendored, **unmodified** [Clover IIIF](https://github.com/samvera-labs/clover-iiif) viewer bundle — `@samvera/clover-iiif@3.11.0`, `dist/web-components/index.umd.js` from the [npm package](https://registry.npmjs.org/@samvera/clover-iiif/-/clover-iiif-3.11.0.tgz). Configured via the `options` attribute set in `index.html`; content-state deep-linking and HTTP→HTTPS URL rewriting for NYPL tile requests are handled entirely in `index.html`, no bundle patching needed. |
+| `clover.umd-3.11.0.js` | Vendored, **unmodified** [Clover IIIF](https://github.com/samvera-labs/clover-iiif) viewer bundle — `@samvera/clover-iiif@3.11.0`, `dist/web-components/index.umd.js` from the [npm package](https://registry.npmjs.org/@samvera/clover-iiif/-/clover-iiif-3.11.0.tgz). Configured via the `options` attribute set in `viewer.html`; content-state deep-linking and HTTP→HTTPS URL rewriting for NYPL tile requests are handled entirely in `viewer.html`, no bundle patching needed. |
 
 ---
 
@@ -60,7 +63,7 @@ On top of that shared interface, `all-volumes.html` colors rows and filters by p
 
 `explorer.html` and `travel_guides_explorer.html` run the same code over a single publication's slice of the data; `nyc.html` reuses it over the geocoded New York City subset and adds a Leaflet neighborhood map.
 
-### Viewer (`index.html`)
+### Viewer (`viewer.html`)
 
 A Clover IIIF viewer that accepts a `?cf=` query parameter containing a canvas fragment URL (e.g. from the `canvas_fragment` column of the CSV). It:
 
@@ -80,7 +83,7 @@ The explorers are deliberately built so that **browsing the site places no load 
 1. **The CSVs in this repository**, served as static files from GitHub Pages and streamed into the browser after first paint. All text — business names, addresses, cities, categories, years — is read from these. There is no API and no database behind the site.
 2. **Cropped snippet thumbnails from Hugging Face.** Every entry's thumbnail is pre-cropped and served from the [`hadro/green-books-thumbnails`](https://huggingface.co/datasets/hadro/green-books-thumbnails) dataset repo. Filenames are content-addressed (`sha1(canvas_fragment)[:12]`), so the browser derives each URL locally — there is no per-entry manifest to fetch.
 
-**The NYPL and Library of Congress IIIF servers are contacted only when a reader explicitly opens a page in the IIIF viewer** (`index.html`, via an entry's "View page" / `?cf=` deep-link). That is a deliberate, per-click action: tiles are fetched then, for that one volume, and not before. Scrolling, searching, faceting, charting, and viewing entry detail panels in any explorer trigger zero requests to either institution.
+**The NYPL and Library of Congress IIIF servers are contacted only when a reader explicitly opens a page in the IIIF viewer** (`viewer.html`, via an entry's "View page" / `?cf=` deep-link). That is a deliberate, per-click action: tiles are fetched then, for that one volume, and not before. Scrolling, searching, faceting, charting, and viewing entry detail panels in any explorer trigger zero requests to either institution.
 
 Two narrow exceptions, both fallbacks rather than normal operation:
 
@@ -126,6 +129,17 @@ The pages also carry `<meta name="description">`, Open Graph / Twitter cards, an
 `<link rel="canonical">` — the canonical tag matters because every page is
 reachable both with and without its `.html` extension.
 
+The viewer sits at `viewer.html` rather than at the root so that one URL is not
+trying to be both the project's front door and a per-entry page viewer — the two
+want opposite titles, descriptions and link previews. `viewer.html` is `noindex`
+(there are 113,827 distinct `?cf=` entry URLs, all thin), though its Open Graph
+tags still drive link previews, which scrapers read regardless. A shim in
+`index.html` forwards any legacy `?cf=` link that still points at the root.
+
+Every explorer also carries a shared site nav (`.gb-sitenav`), so the four
+explorers and the home page link to each other. Before it existed each explorer
+was an island: a crawler reaching `/nyc` had no path to `/all-volumes`.
+
 `robots.txt` and `sitemap.xml` ship at the site root. **`robots.txt` is
 advisory here, not authoritative:** crawlers read `robots.txt` only from the
 domain root, and `https://hadro.github.io/robots.txt` is served by the
@@ -149,7 +163,7 @@ npx playwright install --with-deps chromium
 ```
 
 CI runs the same suite via `.github/workflows/viewer-tests.yml` on any change
-to `index.html`, the vendored Clover bundle, or `tests/**`.
+to `viewer.html`, `index.html`, the vendored Clover bundle, or `tests/**`.
 
 ---
 

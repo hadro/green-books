@@ -53,16 +53,16 @@ python3 - "$SERVE_DIR/site" "$ORIGIN" "$TESTS_DIR" << 'PYEOF'
 import json, os, sys
 site, origin, tests_dir = sys.argv[1], sys.argv[2], sys.argv[3]
 
-# 1. BASE_URL -> local origin. index.html computes BASE_URL host-relatively
+# 1. BASE_URL -> local origin. viewer.html computes BASE_URL host-relatively
 # (a ternary spanning several lines); replace the whole statement with an
 # explicit local-origin constant so the test drives a known value.
-index_path = os.path.join(site, "index.html")
-text = open(index_path, encoding="utf-8").read()
+viewer_path = os.path.join(site, "viewer.html")
+text = open(viewer_path, encoding="utf-8").read()
 needle = ('const BASE_URL = location.hostname === "hadro.github.io"\n'
           '  ? "https://hadro.github.io/green-books"\n'
           '  : new URL(".", location.href).href.replace(/\\/$/, "");')
-assert needle in text, "BASE_URL statement not found in index.html — update tests/run.sh"
-open(index_path, "w", encoding="utf-8").write(
+assert needle in text, "BASE_URL statement not found in viewer.html — update tests/run.sh"
+open(viewer_path, "w", encoding="utf-8").write(
     text.replace(needle, 'const BASE_URL = "%s";' % origin))
 
 # 2. Test manifest from the fixture template
@@ -87,7 +87,7 @@ SERVER_PID=$!
 
 # Wait for the server to accept requests.
 for i in $(seq 1 50); do
-  if curl -sf -o /dev/null "$ORIGIN/index.html"; then break; fi
+  if curl -sf -o /dev/null "$ORIGIN/viewer.html"; then break; fi
   if ! kill -0 "$SERVER_PID" 2>/dev/null; then
     echo "ERROR: server exited early; log follows:" >&2
     cat "$SERVE_DIR/server.log" >&2
@@ -95,7 +95,7 @@ for i in $(seq 1 50); do
   fi
   sleep 0.2
 done
-curl -sf -o /dev/null "$ORIGIN/index.html" || { echo "ERROR: server never came up" >&2; exit 1; }
+curl -sf -o /dev/null "$ORIGIN/viewer.html" || { echo "ERROR: server never came up" >&2; exit 1; }
 
 echo "Running Playwright suite ..."
 TEST_PORT="$PORT" node "$TESTS_DIR/run_tests.js"
