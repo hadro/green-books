@@ -34,6 +34,8 @@ The other explorers are narrower views of the same corpus and remain available:
 | `nyc_geo.json` | Pre-computed coordinates and neighborhood labels for the ~8,000 geocoded New York City entries, so those never need a live geocoding request |
 | `manifests/` | IIIF Presentation 3 manifests for each digitized volume, patched to serve from this repository |
 | `tests/` | End-to-end viewer tests (Playwright + local fake IIIF service) — see `tests/README.md` |
+| `CITATION.cff` | Citation metadata for the entries dataset — drives GitHub's "Cite this repository" button |
+| `sitemap.xml`, `robots.txt` | Crawl metadata for the published site (see *Discoverability* below) |
 | `clover.umd-3.11.0.js` | Vendored, **unmodified** [Clover IIIF](https://github.com/samvera-labs/clover-iiif) viewer bundle — `@samvera/clover-iiif@3.11.0`, `dist/web-components/index.umd.js` from the [npm package](https://registry.npmjs.org/@samvera/clover-iiif/-/clover-iiif-3.11.0.tgz). Configured via the `options` attribute set in `index.html`; content-state deep-linking and HTTP→HTTPS URL rewriting for NYPL tile requests are handled entirely in `index.html`, no bundle patching needed. |
 
 ---
@@ -98,6 +100,40 @@ The data reaches only as far as digitization has: other Black travel guides that
 The full structured dataset — all eight publications combined — is also published as a downloadable, CC0-licensed dataset on Hugging Face: [hadro/green-books-travel-guides](https://huggingface.co/datasets/hadro/green-books-travel-guides). The matching cropped snippet images for every entry are published alongside it as [hadro/green-books-thumbnails](https://huggingface.co/datasets/hadro/green-books-thumbnails), which is also what the live explorers load their thumbnails from.
 
 ---
+
+## Citing this data
+
+Machine-readable citation metadata is in [`CITATION.cff`](CITATION.cff); GitHub
+renders it as the **Cite this repository** button at the top right of the repo
+page, and it exports to BibTeX and APA from there.
+
+The entries data is CC0 — no permission needed, but a citation helps other people
+find the source. Note that the vendored third-party components keep their own
+licenses (Clover IIIF, Leaflet, and the CC BY-SA neighborhood boundary geometry in
+`nyc-neighborhoods/`); `CITATION.cff` documents which is which. The digitized page
+images remain with their holding institutions.
+
+## Discoverability
+
+Each explorer page carries a `schema.org/Dataset` JSON-LD block describing the
+slice of the corpus it presents — fields, temporal and spatial coverage, CC0
+license, and the CSVs and Hugging Face dataset as `distribution` entries. This is
+what makes the data eligible for [Google Dataset
+Search](https://datasetsearch.research.google.com/), which is a primary way people
+find cultural-heritage datasets.
+
+The pages also carry `<meta name="description">`, Open Graph / Twitter cards, and
+`<link rel="canonical">` — the canonical tag matters because every page is
+reachable both with and without its `.html` extension.
+
+`robots.txt` and `sitemap.xml` ship at the site root. **`robots.txt` is
+advisory here, not authoritative:** crawlers read `robots.txt` only from the
+domain root, and `https://hadro.github.io/robots.txt` is served by the
+`hadro.github.io` user-pages repo, not this one. To make its rules binding, the
+same `Disallow` lines have to be added there. The branch previews, which are the
+thing actually worth keeping out of the index, are handled independently and
+reliably: `pages-deploy.yml` injects `<meta name="robots" content="noindex,
+nofollow">` into every preview page and strips its canonical tag.
 
 ## Running the viewer tests
 

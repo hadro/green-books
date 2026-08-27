@@ -74,11 +74,24 @@ jobs:
             # ship with the preview, not resolve to main's copy. Because the
             # base href points at the site root, local script srcs must be
             # rewritten to the preview folder explicitly.
+            #
+            # Previews are also de-indexed. A robots.txt under /green-books/
+            # cannot do this: crawlers only honour robots.txt at the domain
+            # root (https://hadro.github.io/robots.txt), which belongs to a
+            # different repo. So each preview page gets a `noindex` meta and
+            # has its `<link rel="canonical">` stripped — otherwise every
+            # preview would be a crawlable duplicate of a real page, and
+            # stale ones would linger in the index until the branch is
+            # deleted.
             BASE_TAG='  <base href="https://hadro.github.io/green-books/">'
+            NOINDEX_TAG='  <meta name="robots" content="noindex, nofollow">'
             for f in *.html; do
-              awk -v tag="$BASE_TAG" '
+              awk -v base="$BASE_TAG" -v noindex="$NOINDEX_TAG" '
+                tolower($0) ~ /<link[^>]*rel="canonical"/ { next }
                 { print }
-                !injected && tolower($0) ~ /<head[^>]*>/ { print tag; injected = 1 }
+                !injected && tolower($0) ~ /<head[^>]*>/ {
+                  print base; print noindex; injected = 1
+                }
               ' "$f" > "_publish/$f"
             done
             cp *.js _publish/ 2>/dev/null || true

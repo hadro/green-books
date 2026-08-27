@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Green Books Travel Guide Explorer</title>
+<meta name="description" content="Explore and view entries of the businesses and services listed in the Green Books from 1937-1966.">
+<link rel="canonical" href="https://hadro.github.io/green-books/explorer">
 <meta property="og:title"        content="Green Books Travel Guide Explorer">
 <meta property="og:description"  content="Explore and view entries of the businesses and services listed in the Green Books from 1937-1966.">
 <meta property="og:type"         content="website">
@@ -563,6 +565,91 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
   .facet-item { min-height: 36px; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "@id": "https://hadro.github.io/green-books/explorer#dataset",
+  "name": "The Negro Motorist Green Book — Structured Entries, 1937–1966",
+  "description": "A structured dataset of 67,052 business listings transcribed from all 24 known digitized editions of The Negro Motorist Green Book, published 1937–1966. Each entry records the business name, street address, city, state, category, proprietor and telephone where printed, the edition year, and a IIIF canvas URI locating the listing on the scanned page. This is the Green Book subset of a larger corpus of eight African American travel guides. Source scans held by the New York Public Library's Schomburg Center, with the 1946 edition digitized by the Library of Congress.",
+  "url": "https://hadro.github.io/green-books/explorer",
+  "isPartOf": {
+    "@id": "https://hadro.github.io/green-books/all-volumes#dataset",
+    "@type": "Dataset",
+    "url": "https://hadro.github.io/green-books/all-volumes"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Josh Hadro",
+    "url": "https://github.com/hadro"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Josh Hadro",
+    "url": "https://github.com/hadro"
+  },
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "isAccessibleForFree": true,
+  "temporalCoverage": "1937/1966",
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "United States"
+  },
+  "variableMeasured": [
+    "business name",
+    "street address",
+    "city",
+    "state",
+    "business category",
+    "proprietor",
+    "telephone",
+    "publication",
+    "edition year",
+    "source IIIF canvas region"
+  ],
+  "keywords": [
+    "Green Book",
+    "The Negro Motorist Green Book",
+    "African American travel guides",
+    "Black travel",
+    "Jim Crow",
+    "segregation",
+    "Black-owned businesses",
+    "historical business directories",
+    "African American history",
+    "IIIF",
+    "cultural heritage",
+    "digital humanities"
+  ],
+  "measurementTechnique": "Page images from the digitized volumes were transcribed with OCR and the individual business listings extracted with a large language model, then linked back to their source page region via IIIF canvas URIs. Machine-extracted historical text: expect transcription errors.",
+  "isBasedOn": [
+    {
+      "@type": "CreativeWork",
+      "name": "The New York Public Library Digital Collections",
+      "url": "https://digitalcollections.nypl.org/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Library of Congress — The Negro Motorist Green Book (1946)",
+      "url": "https://www.loc.gov/item/2016298176/"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "The Negro Motorist Green Book — all entries (CSV)",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://hadro.github.io/green-books/green_book_entries_all.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Combined dataset on Hugging Face",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://huggingface.co/datasets/hadro/green-books-travel-guides"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a href="#search" class="skip-link">Skip to search</a>

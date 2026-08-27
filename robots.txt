@@ -1,0 +1,24 @@
+# https://hadro.github.io/green-books/
+#
+# ADVISORY ONLY. Crawlers read robots.txt from the domain root, and
+# https://hadro.github.io/robots.txt is served by the `hadro.github.io`
+# user-pages repo, not this one — so nothing here binds a crawler unless the
+# same rules are also added there. This file states the intent and is honoured
+# by tools that do fetch per-project robots.txt.
+#
+# The rule that actually matters — keeping branch previews out of the index —
+# is enforced independently in .github/workflows/pages-deploy.yml, which
+# injects `<meta name="robots" content="noindex, nofollow">` into every
+# preview page and strips its canonical tag.
+
+User-agent: *
+
+# Branch previews: full, crawlable copies of every page, deployed to
+# gh-pages/previews/<branch-slug>/. Working copies, not publications.
+Disallow: /green-books/previews/
+
+# Not linked from the live site: an archived earlier explorer and a dev harness.
+Disallow: /green-books/old-explorer.html
+Disallow: /green-books/address-keying-test.html
+
+Sitemap: https://hadro.github.io/green-books/sitemap.xml

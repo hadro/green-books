@@ -1,0 +1,76 @@
+# Citation metadata for the structured entries dataset published by this
+# repository. GitHub renders this as the "Cite this repository" button.
+#
+# Scope note: `license: CC0-1.0` applies to the extracted entries data (the
+# CSVs and their derivatives), which is also published at
+# https://huggingface.co/datasets/hadro/green-books-travel-guides. Third-party
+# components vendored here keep their own licenses — notably
+# `clover.umd-*.js` (Clover IIIF, MIT), `vendor/` (Leaflet and
+# Leaflet.markercluster, BSD-2-Clause / MIT), and
+# `nyc-neighborhoods/nyc-neighborhoods*.geojson` (CC BY-SA 4.0, see
+# `nyc-neighborhoods/README.md`). The digitized page images remain with their
+# holding institutions.
+
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+type: dataset
+title: "Green Books & Black Travel Guides: Structured Entries from 50 Digitized African American Travel Guides, 1930–1966"
+abstract: >-
+  A structured dataset of 113,827 business listings transcribed from 50
+  digitized volumes of eight African American travel guides published between
+  1930 and 1966, including all 24 known editions of The Negro Motorist Green
+  Book. Each entry records the business name, street address, city, state,
+  category, proprietor and telephone where printed, the publication and edition
+  year, and a IIIF canvas URI locating the listing on the scanned page it came
+  from. The entries were produced by OCR and large-language-model extraction
+  over page scans held by the New York Public Library's Schomburg Center for
+  Research in Black Culture, with the 1946 Green Book edition digitized by the
+  Library of Congress. As machine-extracted historical text, the data contains
+  transcription errors and should be checked against the linked page image for
+  any use where exactness matters.
+authors:
+  - family-names: Hadro
+    given-names: Josh
+    alias: hadro
+repository-code: "https://github.com/hadro/green-books"
+url: "https://hadro.github.io/green-books/all-volumes"
+license: CC0-1.0
+keywords:
+  - Green Book
+  - The Negro Motorist Green Book
+  - African American travel guides
+  - Black travel
+  - Jim Crow
+  - segregation
+  - Black-owned businesses
+  - historical business directories
+  - African American history
+  - IIIF
+  - cultural heritage
+  - digital humanities
+references:
+  - type: database
+    title: "Green Books & Black Travel Guides — combined entries dataset"
+    authors:
+      - family-names: Hadro
+        given-names: Josh
+    url: "https://huggingface.co/datasets/hadro/green-books-travel-guides"
+    license: CC0-1.0
+  - type: software
+    title: "directory-pipeline — the OCR and entity-extraction pipeline that produced this data"
+    authors:
+      - family-names: Hadro
+        given-names: Josh
+    repository-code: "https://github.com/hadro/directory-pipeline"
+  - type: catalogue
+    title: "The Green Book collection, Schomburg Center for Research in Black Culture"
+    authors:
+      - name: "The New York Public Library"
+    url: "https://digitalcollections.nypl.org/collections/the-green-book"
+  - type: book
+    title: "The Negro Motorist Green Book (1946)"
+    authors:
+      - name: "Victor H. Green & Co."
+    year: 1946
+    url: "https://www.loc.gov/item/2016298176/"
+    notes: "Digitized by the Library of Congress."

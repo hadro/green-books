@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>African American Travel Guides Explorer</title>
+<meta name="description" content="Explore and view entries of the businesses and services listed in historical African American travel guides from 1930-1962.">
+<link rel="canonical" href="https://hadro.github.io/green-books/travel_guides_explorer">
 <meta property="og:title"        content="African American Travel Guides Explorer">
 <meta property="og:description"  content="Explore and view entries of the businesses and services listed in historical African American travel guides from 1930-1962.">
 <meta property="og:type"         content="website">
@@ -538,6 +540,91 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "@id": "https://hadro.github.io/green-books/travel_guides_explorer#dataset",
+  "name": "African American Travel Guides (non–Green Book) — Structured Entries, 1930–1962",
+  "description": "A structured dataset of 46,775 business listings transcribed from 26 digitized volumes of seven African American travel guides other than The Negro Motorist Green Book, published 1930–1962: Hackley & Harrison's Hotel and Apartment Guide, The Travelers' Guide, Smith's Tourist Guide, the Afro-American's Travel Guide, Travelguide, Go: Guide to Pleasant Motoring, and the NHA Directory and Guide to Travelers. Each entry records the business name, address, city, state, category and a IIIF canvas URI locating it on the scanned page. Source scans held by the New York Public Library's Schomburg Center for Research in Black Culture.",
+  "url": "https://hadro.github.io/green-books/travel_guides_explorer",
+  "isPartOf": {
+    "@id": "https://hadro.github.io/green-books/all-volumes#dataset",
+    "@type": "Dataset",
+    "url": "https://hadro.github.io/green-books/all-volumes"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Josh Hadro",
+    "url": "https://github.com/hadro"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Josh Hadro",
+    "url": "https://github.com/hadro"
+  },
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "isAccessibleForFree": true,
+  "temporalCoverage": "1930/1962",
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "United States"
+  },
+  "variableMeasured": [
+    "business name",
+    "street address",
+    "city",
+    "state",
+    "business category",
+    "proprietor",
+    "telephone",
+    "publication",
+    "edition year",
+    "source IIIF canvas region"
+  ],
+  "keywords": [
+    "Green Book",
+    "The Negro Motorist Green Book",
+    "African American travel guides",
+    "Black travel",
+    "Jim Crow",
+    "segregation",
+    "Black-owned businesses",
+    "historical business directories",
+    "African American history",
+    "IIIF",
+    "cultural heritage",
+    "digital humanities"
+  ],
+  "measurementTechnique": "Page images from the digitized volumes were transcribed with OCR and the individual business listings extracted with a large language model, then linked back to their source page region via IIIF canvas URIs. Machine-extracted historical text: expect transcription errors.",
+  "isBasedOn": [
+    {
+      "@type": "CreativeWork",
+      "name": "The New York Public Library Digital Collections",
+      "url": "https://digitalcollections.nypl.org/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Library of Congress — The Negro Motorist Green Book (1946)",
+      "url": "https://www.loc.gov/item/2016298176/"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Other African American travel guides — all entries (CSV)",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://hadro.github.io/green-books/travel_guides_all.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Combined dataset on Hugging Face",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://huggingface.co/datasets/hadro/green-books-travel-guides"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a href="#search" class="skip-link">Skip to search</a>

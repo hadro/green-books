@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Green Book New York — A Neighborhood Explorer</title>
+<meta name="description" content="Map and search the 8,108 New York City listings from the Green Books and other Black travel guides, geocoded by street address and grouped by neighborhood.">
+<link rel="canonical" href="https://hadro.github.io/green-books/nyc">
 <link rel="stylesheet" href="vendor/leaflet.css">
 <link rel="stylesheet" href="vendor/MarkerCluster.css">
 <!-- MarkerCluster.Default.css is deliberately NOT loaded: every rule in it (the
@@ -13,16 +15,16 @@
      gbClusterIcon() replaces. Overriding it would mean shipping dead CSS and
      then out-specifying it forever. vendor/MarkerCluster.css stays — that one is
      only the spiderfy and cluster-animation transitions. -->
-<meta property="og:title"        content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
-<meta property="og:description"  content="Search and browse more than 113,000 entries from the Green Books and seven other Black travel guides, 1930–1966.">
+<meta property="og:title"        content="Green Book New York — A Neighborhood Explorer">
+<meta property="og:description"  content="Map and search the 8,108 New York City listings from the Green Books and other Black travel guides, geocoded by street address and grouped by neighborhood.">
 <meta property="og:type"         content="website">
-<meta property="og:url"          content="https://hadro.github.io/green-books/all-volumes">
+<meta property="og:url"          content="https://hadro.github.io/green-books/nyc">
 <meta property="og:image"        content="https://hadro.github.io/green-books/social-preview.png">
 <meta property="og:image:width"  content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="Green Books &amp; Black Travel Guides — All Volumes Explorer">
-<meta name="twitter:description" content="Search and browse more than 113,000 entries from the Green Books and seven other Black travel guides, 1930–1966.">
+<meta name="twitter:title"       content="Green Book New York — A Neighborhood Explorer">
+<meta name="twitter:description" content="Map and search the 8,108 New York City listings from the Green Books and other Black travel guides, geocoded by street address and grouped by neighborhood.">
 <meta name="twitter:image"       content="https://hadro.github.io/green-books/social-preview.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='2' fill='%231e5231'/%3E%3Crect x='3' y='2.5' width='10' height='11' rx='0.8' fill='%23f6f1e5'/%3E%3Crect x='4.2' y='4.2' width='7.6' height='1.2' fill='%231e5231'/%3E%3Crect x='4.2' y='6.4' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='8' width='7.6' height='0.8' fill='%2375705f'/%3E%3Crect x='4.2' y='9.6' width='5' height='0.8' fill='%2375705f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -935,6 +937,99 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
      data-compact attribute, set by the renderer when (max-width: 640px). */
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "@id": "https://hadro.github.io/green-books/nyc#dataset",
+  "name": "Green Book New York — Geocoded New York City Listings, 1930–1966",
+  "description": "The New York City subset of the Green Books and Black travel guides corpus: 8,108 business listings from eight African American travel guides published 1930–1966, geocoded to street coordinates via NYC GeoSearch and labelled with the neighborhood and borough they fall in — 99 neighborhoods across the five boroughs. Each entry carries the business name, address, category, publication and edition year, plus a IIIF canvas URI locating the listing on its scanned page, and is mapped at both neighborhood and individual-address resolution.",
+  "url": "https://hadro.github.io/green-books/nyc",
+  "isPartOf": {
+    "@id": "https://hadro.github.io/green-books/all-volumes#dataset",
+    "@type": "Dataset",
+    "url": "https://hadro.github.io/green-books/all-volumes"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Josh Hadro",
+    "url": "https://github.com/hadro"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Josh Hadro",
+    "url": "https://github.com/hadro"
+  },
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "isAccessibleForFree": true,
+  "temporalCoverage": "1930/1966",
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "New York City, New York, United States",
+    "geo": {
+      "@type": "GeoShape",
+      "box": "40.4774 -74.2591 40.9176 -73.7002"
+    }
+  },
+  "variableMeasured": [
+    "business name",
+    "street address",
+    "city",
+    "state",
+    "business category",
+    "proprietor",
+    "telephone",
+    "publication",
+    "edition year",
+    "source IIIF canvas region",
+    "latitude",
+    "longitude",
+    "neighborhood",
+    "borough"
+  ],
+  "keywords": [
+    "Green Book",
+    "The Negro Motorist Green Book",
+    "African American travel guides",
+    "Black travel",
+    "Jim Crow",
+    "segregation",
+    "Black-owned businesses",
+    "historical business directories",
+    "African American history",
+    "IIIF",
+    "cultural heritage",
+    "digital humanities"
+  ],
+  "measurementTechnique": "Page images from the digitized volumes were transcribed with OCR and the individual business listings extracted with a large language model, then linked back to their source page region via IIIF canvas URIs. Machine-extracted historical text: expect transcription errors.",
+  "isBasedOn": [
+    {
+      "@type": "CreativeWork",
+      "name": "The New York Public Library Digital Collections",
+      "url": "https://digitalcollections.nypl.org/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Library of Congress — The Negro Motorist Green Book (1946)",
+      "url": "https://www.loc.gov/item/2016298176/"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Geocoded New York City entries (CSV)",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://hadro.github.io/green-books/nyc-neighborhoods/nyc_entries_geocoded.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Combined dataset on Hugging Face",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://huggingface.co/datasets/hadro/green-books-travel-guides"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a href="#search" class="skip-link">Skip to search</a>

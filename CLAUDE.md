@@ -218,6 +218,28 @@ The map auto-fits only on first render and when the neighborhood/borough facet
 changes; every other filter leaves the viewport alone (it used to re-fit on
 every keystroke). "⤴ Whole city" is the manual reset.
 
+## Discoverability metadata
+
+Each of the four explorer pages carries a `schema.org/Dataset` JSON-LD block in
+`<head>`, scoped to the slice of the corpus that page shows (`all-volumes` is the
+full 113,827-entry dataset; `explorer`, `travel_guides_explorer` and `nyc` declare
+`isPartOf` pointing at it by `@id`). **The counts, year ranges and volume counts in
+those blocks are hard-coded** — recompute and update them whenever the CSVs change,
+the same way `FIELD_META`'s `top_values` are. All five pages also carry
+`<meta name="description">`, OG/Twitter cards and `<link rel="canonical">`
+(extensionless URLs, matching `og:url` and the README's links).
+
+`CITATION.cff` describes the entries dataset (CC0) and is deliberately scoped:
+a header comment names the vendored components that are *not* CC0 (Clover, Leaflet,
+the CC BY-SA neighborhood geometry). Keep that scope note if you edit the file.
+
+`robots.txt` is advisory only — a project-subdirectory robots.txt is not
+authoritative for `hadro.github.io`. Preview de-indexing is done for real in
+`pages-deploy.yml`, which injects a `noindex` meta and strips the canonical tag
+from each preview page. If you change the preview build's `awk`, re-run the
+simulation: previews must end up with zero canonical tags and exactly one
+`noindex` and one `<base href>` each.
+
 ## Companion repo: directory-pipeline
 
 Raw pipeline code at `/Users/joshhadro/github/directory-pipeline`. It produces the CSVs and manifests that feed this repo. After a pipeline run, copy `green_book_entries_all.csv` and `image_to_volume.json` here and commit.
