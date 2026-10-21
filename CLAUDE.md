@@ -13,6 +13,8 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | `index.html` | IIIF viewer entry point — all JS is inline in this file, no build step (the `react_clover` branch has a separate Vite/Clover rewrite in `viewer-src/`, not yet merged) |
 | `manifests/{uuid}/manifest.json` | Per-volume IIIF manifests (one per Green Book edition; the LOC 1946 volume's manifest lives at `manifests/2016298176/manifest.json`) |
 | `green_book_entries_all_fixed.csv` | Scratch/working copy; `green_book_entries_all.csv` is the canonical one |
+| `alignment_ground_truth.json` | **Committed rescue.** 6,962 hand-verified OCR alignments lifted out of `directory-pipeline`'s gitignored `output/` tree — the only human-verified data in the project and the only artifact not reproducible from the page images. Rebuild with `python3 scripts/extract_manual_alignments.py`; `--check` fails if it has drifted. |
+| `alignment_audit.csv` | **Generated triage.** 8,901 rows where an entry's `canvas_fragment` looks wrong — the entry text, the text its box actually contains, and a similarity score. Rebuild with `directory-pipeline/tools/audit_entry_bindings.py`. |
 | `nyc_geo.json` | **Generated** — slim `sha1(canvas_fragment)[:12]` → `[lat, lon, neighborhood, borough, approx]` lookup for the 7,996 geocoded NYC entries. Rebuild with `python3 scripts/build_nyc_geo.py` whenever `nyc-neighborhoods/nyc_entries_geocoded.csv` changes; `--check` fails if it has drifted. |
 | `nyc-neighborhoods/nyc-neighborhoods.slim.geojson` | **Generated** — the boundary polygons `nyc.html`'s map loads (261 top-level features, `name`+`borough` only, 5 dp; 239 KB gzipped vs the source's 409 KB). Rebuild with `python3 scripts/build_nyc_hoods.py`; `--check` fails if it has drifted. A *modified* CC BY-SA 4.0 redistribution — see `nyc-neighborhoods/README.md`. |
 
@@ -218,6 +220,33 @@ The map auto-fits only on first render and when the neighborhood/borough facet
 changes; every other filter leaves the viewport alone (it used to re-fit on
 every keystroke). "⤴ Whole city" is the manual reset.
 
+## Entry→box alignment repair (2026-09-04) — PAUSED ON A DECISION
+
+Some entries highlight the wrong region of the right page. Audited, root-caused and fixed;
+**one decision is outstanding and nothing has been applied.** Full handoff:
+`docs/alignment-audit-2026-09-04.md`. Read it before touching alignment, thumbnails, or
+`canvas_fragment` values.
+
+The short version:
+
+- The cause was mostly **not** OCR alignment. The entry→line matcher in
+  `directory-pipeline/pipeline/extract_entries.py` fell through to the entry's `category`,
+  which in a Green Book *is* the printed section heading — 489 of ~900 attributable
+  misplacements. Rewritten as `utils/entry_binding.py`; 961 repairs at 0.12% regression.
+- **Do not run `align_ocr.py --force` without checking the handoff first.** It used to
+  destroy hand corrections; 6,962 of them existed with no backup and no git history. They
+  are now preserved in `alignment_ground_truth.json` here and the aligner has a
+  preservation fix, but the habit matters more than either.
+- `gemini-2.0-flash` **was retired by the API on 2026-09-04**. 43 of 45 volumes have it as
+  their only OCR text, so that text is now unreproducible. Backed up at
+  `directory-pipeline/output/_ocr_backups/gemini_ocr_text_2026-09-04/`.
+- **Do not apply the re-alignment data.** Scored against Surya's independent reading of each
+  box, it moves 98.7% of entry boxes not at all and nets +52 placements across 70,306, for
+  ~12,800 thumbnail rebuilds. An earlier "+301 selectively" recommendation was **withdrawn**
+  — it scored entries against the aligned line's own text, which is the thing a re-align
+  changes. The binder's 961/0.12% used the same score but held the tree fixed, so it stands.
+- Ship the binder and keep the pipeline code fixes; those are independent of the data decision.
+
 ## Companion repo: directory-pipeline
 
 Raw pipeline code at `/Users/joshhadro/github/directory-pipeline`. It produces the CSVs and manifests that feed this repo. After a pipeline run, copy `green_book_entries_all.csv` and `image_to_volume.json` here and commit.
@@ -228,3 +257,4 @@ Raw pipeline code at `/Users/joshhadro/github/directory-pipeline`. It produces t
 2. Merge `new_facets` → `main` (category sidebar facet)
 3. ~~Build sibling explorer for the travel guide volumes~~ — done: `travel_guides_explorer.html` is live on `main`, now covering 26 volumes / 7 publications
 4. Add cross-links between Green Books explorer and sibling explorer
+5. **Ship the entry binder** and regenerate the affected thumbnails — see `docs/alignment-audit-2026-09-04.md`. The alignment-data decision is resolved (don't apply it); the binder ship is what remains.

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alignment review queue</title>
+<!--
+  Reviews the entries the corrected entry-binder declined to place.
+
+  Self-contained, no build step, same shape as the other explorers in this repo.
+  Serve it from the repo root (`python3 -m http.server`) so the CSV and canvas
+  maps resolve; opening it via file:// will fail the fetches.
+
+  Crops come live from IIIF, built from canvas_map.json exactly the way
+  all-volumes.html builds them. Nothing is written anywhere except your own
+  browser's localStorage; "Export decisions" gives you a CSV to hand back.
+-->
+<style>
+:root{
+  --bg:#F6F3F6; --card:#fff; --sunk:#EDE8EE;
+  --ink:#1C1620; --ink2:#4A4152; --ink3:#6B6270;
+  --rule:#DCD4DE; --rule2:#C3B7C6; --accent:#7A2E5E;
+  --good:#1D5FA8; --bad:#C2410C; --warn:#8A6A12;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme=light]){
+    --bg:#16121A; --card:#211B26; --sunk:#1B1620;
+    --ink:#EDE6EF; --ink2:#C0B6C5; --ink3:#9C93A3;
+    --rule:#332B39; --rule2:#4A3F52; --accent:#C77BAE;
+    --good:#4E97D6; --bad:#D9772F; --warn:#C9A227;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+header{position:sticky;top:0;z-index:20;background:var(--bg);
+  border-bottom:1px solid var(--rule2);padding:.7rem 1rem .6rem}
+.hrow{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;max-width:1500px;margin:0 auto}
+h1{font-size:1rem;margin:0;font-weight:600;white-space:nowrap}
+.sub{font-family:var(--mono);font-size:.72rem;color:var(--ink3);letter-spacing:.04em}
+select,button{font:inherit;font-size:.83rem;padding:.32rem .6rem;border:1px solid var(--rule2);
+  border-radius:4px;background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+.bar{height:5px;background:var(--sunk);border-radius:3px;flex:1;min-width:120px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0}
+main{max-width:1500px;margin:0 auto;padding:1rem}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:6px;
+  margin-bottom:1rem;overflow:hidden}
+.card.done{opacity:.5}
+.card:target,.card.cur{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 22%,transparent)}
+.top{display:flex;gap:1rem;align-items:flex-start;justify-content:space-between;
+  padding:.75rem 1rem;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.who .nm{font-weight:600;font-size:1.02rem}
+.who .ad{color:var(--ink2);font-size:.9rem}
+.who .mt{font-family:var(--mono);font-size:.7rem;color:var(--ink3);margin-top:.2rem}
+.badges{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap}
+.b{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:.16rem .45rem;border-radius:3px;border:1px solid currentColor;font-weight:600}
+.b.blanked{color:var(--bad)} .b.kept{color:var(--good)}
+.b.kept_unverifiable{color:var(--warn)} .b.no_box{color:var(--ink3)}
+.b.sc{color:var(--ink2)}
+.panes{display:grid;grid-template-columns:1fr 1fr;gap:0}
+@media(max-width:860px){.panes{grid-template-columns:1fr}}
+.pane{padding:.75rem 1rem}
+.pane+.pane{border-left:1px solid var(--rule)}
+@media(max-width:860px){.pane+.pane{border-left:none;border-top:1px solid var(--rule)}}
+.plab{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:.4rem;display:flex;justify-content:space-between;gap:.5rem}
+.shot{width:100%;background:var(--sunk);border:1px solid var(--rule);border-radius:4px;
+  display:block;min-height:52px}
+.shotwrap{position:relative;line-height:0}
+.bbox{position:absolute;border:2px solid var(--accent);border-radius:2px;pointer-events:none;
+  box-shadow:0 0 0 1px #fff8, inset 0 0 0 1px #fff8}
+.shotwrap::after{content:"the box";position:absolute;top:2px;right:4px;font-family:var(--mono);
+  font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+  background:var(--card);padding:0 .25rem;border-radius:2px;opacity:.9}
+.none{display:flex;align-items:center;justify-content:center;min-height:80px;color:var(--ink3);
+  background:var(--sunk);border:1px dashed var(--rule2);border-radius:4px;
+  font-family:var(--mono);font-size:.78rem;text-align:center;padding:.6rem}
+.read{margin-top:.5rem;font-family:var(--mono);font-size:.76rem;color:var(--ink2);
+  background:var(--sunk);padding:.4rem .55rem;border-radius:4px;word-break:break-word}
+.read b{color:var(--ink3);font-weight:600}
+.ctx{padding:.75rem 1rem;border-top:1px solid var(--rule)}
+.ctx img{width:100%;border:1px solid var(--rule);border-radius:4px;background:var(--sunk)}
+.acts{display:flex;gap:.5rem;padding:.7rem 1rem;border-top:1px solid var(--rule);
+  background:var(--sunk);flex-wrap:wrap;align-items:center}
+.acts .sp{flex:1}
+.acts .q{font-size:.82rem;color:var(--ink2);font-weight:600;margin-right:.2rem}
+.outcome{font-family:var(--mono);font-size:.72rem;color:var(--ink3)}
+.outcome.good{color:var(--good);font-weight:600}
+.outcome.bad{color:var(--bad);font-weight:600}
+.outcome.warn{color:var(--warn);font-weight:600}
+.acts button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+a.src{font-size:.78rem;color:var(--accent)}
+kbd{font-family:var(--mono);font-size:.68rem;background:var(--card);border:1px solid var(--rule2);
+  border-radius:3px;padding:.05rem .28rem}
+.empty{padding:3rem 1rem;text-align:center;color:var(--ink3)}
+.help{max-width:1500px;margin:.5rem auto 0;font-size:.85rem}
+.help summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:.8rem}
+.help > div{padding:.5rem 0 .2rem;color:var(--ink2);max-width:74ch}
+.help p{margin:.4rem 0} .help ul{margin:.4rem 0;padding-left:1.1rem}
+.help li{margin-bottom:.25rem} .help b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hrow">
+    <h1>Alignment review</h1>
+    <span class="sub" id="status">loading…</span>
+    <div class="bar"><i id="prog"></i></div>
+    <select id="f-verdict">
+      <option value="judgeable" selected>rows with a box to judge (1,657)</option>
+      <option value="">all verdicts</option>
+      <option value="blanked">blanked (box removed)</option>
+      <option value="kept">kept</option>
+      <option value="kept_unverifiable">kept, unverifiable</option>
+      <option value="no_box">no box either way (489 — not judgeable)</option>
+    </select>
+    <select id="f-decided">
+      <option value="todo">not yet reviewed</option>
+      <option value="">everything</option>
+      <option value="done">reviewed</option>
+    </select>
+    <select id="f-vol"><option value="">all volumes</option></select>
+    <button id="export" class="primary">Export decisions</button>
+    <button id="reset" title="Clear your saved decisions">Reset</button>
+  </div>
+  <div class="hrow" style="margin-top:.4rem">
+    <span class="sub"><kbd>j</kbd>/<kbd>k</kbd> move · <kbd>1</kbd> yes · <kbd>2</kbd> no ·
+      <kbd>3</kbd> unsure — judge <b>the outlined box</b>, not our decision. Saved in this browser.</span>
+  </div>
+  <details class="help">
+    <summary>How to answer</summary>
+    <div>
+      <p><b>The purple outline is the box.</b> The crop shows lines above and below it for
+      context, so look at what the outline actually sits on, not what is visible in the picture.</p>
+      <ul>
+        <li><b>Yes</b> — the outline is on this entry&rsquo;s own line.</li>
+        <li><b>No</b> — the outline is on a different line, a heading, or a neighbouring entry.
+          <em>This includes the case where you can see the right text in the crop but the
+          outline is not on it</em> — the box is still wrong.</li>
+        <li><b>Unsure</b> — the scan is illegible, or the entry genuinely spans lines and you
+          cannot tell. Not for &ldquo;the box is nearly right&rdquo;: nearly right is <b>No</b>.</li>
+      </ul>
+      <p>An entry that wraps across two printed lines is a real ambiguity. Either line is
+      defensible; answer <b>Yes</b> if the outline is on either of them.</p>
+      <p><b>Rows with no box</b> (489 of them) cannot be judged this way &mdash; there is nothing
+      to look at. They are filtered out by default. If you switch them on, they are asking a
+      different question: does a line for this entry exist on the page at all?</p>
+    </div>
+  </details>
+</header>
+
+<main id="list"><div class="empty">Loading the queue…</div></main>
+
+<script>
+const KEY = "gb-alignment-review-v1";
+let ROWS = [], MAP = {}, DEC = {}, cur = 0, VIEW = [];
+
+try { DEC = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { DEC = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(DEC)); } catch (e) {} };
+const rid = r => `${r.csv}:${r.row}`;
+
+// ── IIIF crops, built the way all-volumes.html builds them ────────────────
+function canvasId(cf) { return cf ? cf.split("#")[0] : ""; }
+
+// Returns {url, box} where box locates the ACTUAL bbox inside the padded crop as
+// percentages. Without drawing it you cannot answer "is the box on this entry's
+// line" — the crop shows neighbouring lines too, so a wrong box and a right box
+// look identical.
+function cropUrl(cf, { pad = 1.0, width = 900, minW = 700 } = {}) {
+  if (!cf) return null;
+  const svc = MAP[canvasId(cf)];
+  if (!svc) return null;
+  if (!cf.includes("#xywh=")) return null;   // no region: nothing to crop or outline
+  const [x, y, w, h] = cf.split("#xywh=")[1].split(",").map(Number);
+  const [cw, ch] = [svc[1], svc[2]];
+  if (!cw || !ch || !(w > 0) || !(h > 0)) return "";
+  const padV = Math.max(h * pad, 26);
+  const cx = x + w / 2, halfW = Math.max(w / 2 + 60, minW / 2);
+  const rx = Math.max(0, cx - halfW);
+  const rw = Math.min(cw, cx + halfW) - rx;
+  const ry = Math.max(0, y - padV);
+  const rh = Math.min(ch, y + h + padV) - ry;
+  const p = n => n.toFixed(4);
+  // Never ask for more pixels than the region actually has. Over-requesting makes
+  // tile.loc.gov serve a DOWNSAMPLED pyramid level and stretch it: asking a 700px
+  // region for 900px returned 900x127 in 3KB, against 700x98 in 8KB asking for its
+  // native width — the larger request is the blurrier image.
+  const outW = Math.max(160, Math.min(width, Math.round(rw)));
+  return {
+    url: `${svc[0]}/pct:${p(rx/cw*100)},${p(ry/ch*100)},${p(rw/cw*100)},${p(rh/ch*100)}/${outW},/0/default.jpg`,
+    box: { l: (x - rx) / rw * 100, t: (y - ry) / rh * 100, w: w / rw * 100, h: h / rh * 100 },
+  };
+}
+
+// Wider window around the same box: lets you see the neighbouring lines and
+// judge whether the entry's real line is just above or below.
+function contextUrl(cf) {
+  if (!cf || !cf.includes("#xywh=")) return "";
+  const svc = MAP[canvasId(cf)];
+  if (!svc) return "";
+  const [x, y, w, h] = cf.split("#xywh=")[1].split(",").map(Number);
+  const [cw, ch] = [svc[1], svc[2]];
+  if (!cw || !ch) return "";
+  const padV = Math.max(h * 5, 260);
+  const ry = Math.max(0, y - padV), rh = Math.min(ch, y + h + padV) - ry;
+  const p = n => n.toFixed(4);
+  const outW = Math.max(160, Math.min(1100, cw));   // same rule: never upscale
+  return `${svc[0]}/pct:0,${p(ry/ch*100)},100,${p(rh/ch*100)}/${outW},/0/default.jpg`;
+}
+
+function sourceUrl(cf) {
+  const svc = MAP[canvasId(cf)];
+  return svc && svc[3] ? svc[3] : "";
+}
+
+const esc = s => (s || "").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+
+// What the reviewer's answer implies about the automated verdict. Stated rather
+// than left to the reader, because "was the box right" and "did we do the right
+// thing" are opposite questions on a blanked row. Also drives the export, so the
+// CSV says what needs doing rather than only what was seen.
+function outcomeOf(r, d) {
+  if (!d) return ["no answer yet", ""];
+  if (d === "unsure") return ["flagged unsure", "warn"];
+  const hadBox = (r.previous_fragment || "").includes("#xywh=");
+  const boxWasGood = d === "right";
+  if (!hadBox)
+    return boxWasGood ? ["→ needs a box; we left it without one", "bad"]
+                      : ["→ correctly has no box", "good"];
+  if (r.verdict === "blanked")
+    return boxWasGood ? ["→ WE REMOVED A CORRECT BOX — restore it", "bad"]
+                      : ["→ we were right to remove it", "good"];
+  return boxWasGood ? ["→ we were right to keep it", "good"]
+                    : ["→ WE KEPT A WRONG BOX — remove it", "bad"];
+}
+
+// Machine-readable form of the same call, for the export.
+function actionOf(r, d) {
+  if (!d || d === "unsure") return d === "unsure" ? "review_again" : "";
+  const hadBox = (r.previous_fragment || "").includes("#xywh=");
+  const boxWasGood = d === "right";
+  if (!hadBox) return boxWasGood ? "needs_box" : "ok_no_box";
+  if (r.verdict === "blanked") return boxWasGood ? "restore_box" : "ok_removed";
+  return boxWasGood ? "ok_kept" : "remove_box";
+}
+
+// An image with the bbox outlined on it.
+function shot(c, alt) {
+  const b = c.box;
+  return `<div class="shotwrap">
+    <img class="shot" loading="lazy" src="${c.url}" alt="scan crop showing ${alt}">
+    <span class="bbox" style="left:${b.l.toFixed(2)}%;top:${b.t.toFixed(2)}%;width:${b.w.toFixed(2)}%;height:${b.h.toFixed(2)}%"></span>
+  </div>`;
+}
+
+function card(r, i) {
+  const id = rid(r), d = DEC[id];
+  const before = cropUrl(r.previous_fragment);
+  const afterHasBox = (r.fragment || "").includes("#xywh=");
+  const after = afterHasBox ? cropUrl(r.fragment) : null;
+  const ctx = contextUrl(r.previous_fragment);
+  const src = sourceUrl(r.previous_fragment || r.fragment);
+  const sc = r.surya_agreement ? `agreement ${r.surya_agreement}` : "not scored";
+  const same = afterHasBox && r.fragment === r.previous_fragment;
+  const hadBox = (r.previous_fragment || "").includes("#xywh=");
+
+  // What your answer implies about the automated verdict. Stated rather than
+  // left to the reader, because "was the box right" and "did we do the right
+  // thing" are opposite questions on a blanked row.
+  const [outcome, outClass] = outcomeOf(r, d);
+
+  return `<article class="card${d ? " done" : ""}${i === cur ? " cur" : ""}" id="c${i}" data-i="${i}">
+    <div class="top">
+      <div class="who">
+        <div class="nm">${esc(r.name) || "<em>(no name)</em>"}</div>
+        <div class="ad">${esc(r.address)}${r.city ? " · " + esc(r.city) : ""}${r.state ? ", " + esc(r.state) : ""}</div>
+        <div class="mt">${esc(r.volume_year)} ${esc(r.volume_title).slice(0, 62)} · ${esc(r.image)}${r.category ? " · " + esc(r.category) : ""}</div>
+      </div>
+      <div class="badges">
+        <span class="b ${esc(r.verdict)}">${esc(r.verdict).replace(/_/g, " ")}</span>
+        <span class="b sc">${sc}</span>
+        ${src ? `<a class="src" href="${src}" target="_blank" rel="noopener">page at NYPL ↗</a>` : ""}
+      </div>
+    </div>
+
+    <div class="panes">
+      <div class="pane">
+        <div class="plab"><span>Before — the box it had</span></div>
+        ${before ? shot(before, "the box this entry pointed at")
+                 : `<div class="none">This entry never had a box.<br>
+                      <span style="font-size:.7rem">Nothing to judge here &mdash; use the page context below,
+                      or skip with <kbd>j</kbd>.</span></div>`}
+        <div class="read"><b>the page says here:</b><br>${esc(r.surya_text) || "<em>— nothing legible —</em>"}</div>
+        <div class="read"><b>entry text to match:</b><br>${esc(r.entry_text)}</div>
+      </div>
+      <div class="pane">
+        <div class="plab"><span>After — what it points at now</span></div>
+        ${after ? shot(after, "the box after the rebind")
+                : `<div class="none">box removed<br><span style="font-size:.7rem">the reader now sees the page with no highlight</span></div>`}
+        ${same ? `<div class="read">unchanged — the arbiter judged this box good enough to keep</div>` : ""}
+      </div>
+    </div>
+
+    ${ctx ? `<div class="ctx"><div class="plab"><span>Page context — is the right line nearby?</span></div>
+       <img loading="lazy" src="${ctx}" alt="wider crop of the page around the box"></div>` : ""}
+
+    <div class="acts">
+      <span class="q">${hadBox
+        ? "Was the BEFORE box on this entry&rsquo;s own line?"
+        : "Does this entry have a findable line on the page?"}</span>
+      <button data-v="right" class="${d === "right" ? "on" : ""}">1 · ${hadBox ? "Yes, correct box" : "Yes, it has one"}</button>
+      <button data-v="wrong" class="${d === "wrong" ? "on" : ""}">2 · ${hadBox ? "No, wrong box" : "No, nothing there"}</button>
+      <button data-v="unsure" class="${d === "unsure" ? "on" : ""}">3 · Unsure</button>
+      <span class="sp"></span>
+      <span class="outcome ${outClass}">${outcome}</span>
+    </div>
+  </article>`;
+}
+
+function applyFilters() {
+  const v = document.getElementById("f-verdict").value;
+  const s = document.getElementById("f-decided").value;
+  const vol = document.getElementById("f-vol").value;
+  VIEW = ROWS.filter(r => {
+    if (v === "judgeable") { if (!(r.previous_fragment || "").includes("#xywh=")) return false; }
+    else if (v && r.verdict !== v) return false;
+    if (vol && r.volume_title !== vol) return false;
+    const done = !!DEC[rid(r)];
+    if (s === "todo" && done) return false;
+    if (s === "done" && !done) return false;
+    return true;
+  });
+  cur = 0;
+  render();
+}
+
+function render() {
+  const el = document.getElementById("list");
+  el.innerHTML = VIEW.length
+    ? VIEW.slice(0, 400).map(card).join("")
+    : `<div class="empty">Nothing matches these filters.</div>`;
+  const done = ROWS.filter(r => DEC[rid(r)]).length;
+  document.getElementById("status").textContent =
+    `${VIEW.length.toLocaleString()} shown · ${done.toLocaleString()} of ${ROWS.length.toLocaleString()} reviewed`;
+  document.getElementById("prog").style.width = (done / Math.max(ROWS.length, 1) * 100) + "%";
+  if (VIEW.length > 400) {
+    el.insertAdjacentHTML("beforeend",
+      `<div class="empty">Showing the first 400. Narrow the filters to reach the rest.</div>`);
+  }
+}
+
+function decide(i, v) {
+  const r = VIEW[i]; if (!r) return;
+  const id = rid(r);
+  DEC[id] === v ? delete DEC[id] : DEC[id] = v;
+  save();
+  const c = document.querySelector(`[data-i="${i}"]`);
+  if (c) { c.outerHTML = card(r, i); }
+  const done = ROWS.filter(x => DEC[rid(x)]).length;
+  document.getElementById("status").textContent =
+    `${VIEW.length.toLocaleString()} shown · ${done.toLocaleString()} of ${ROWS.length.toLocaleString()} reviewed`;
+  document.getElementById("prog").style.width = (done / Math.max(ROWS.length, 1) * 100) + "%";
+}
+
+function focusCard(n) {
+  cur = Math.max(0, Math.min(VIEW.length - 1, n));
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("cur"));
+  const c = document.querySelector(`[data-i="${cur}"]`);
+  if (c) { c.classList.add("cur"); c.scrollIntoView({ block: "center", behavior: "smooth" }); }
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button[data-v]");
+  if (b) { const i = +b.closest(".card").dataset.i; cur = i; decide(i, b.dataset.v); }
+});
+document.addEventListener("keydown", e => {
+  if (e.target.matches("select,input,textarea")) return;
+  if (e.key === "j") { focusCard(cur + 1); e.preventDefault(); }
+  else if (e.key === "k") { focusCard(cur - 1); e.preventDefault(); }
+  else if (e.key === "1") decide(cur, "right");
+  else if (e.key === "2") decide(cur, "wrong");
+  else if (e.key === "3") decide(cur, "unsure");
+});
+["f-verdict", "f-decided", "f-vol"].forEach(id =>
+  document.getElementById(id).addEventListener("change", applyFilters));
+
+document.getElementById("export").addEventListener("click", () => {
+  const cols = ["csv", "row", "image", "name", "address", "volume_year", "verdict",
+                "surya_agreement", "previous_fragment", "fragment",
+                "human_decision", "action"];
+  const q = s => `"${(s || "").replace(/"/g, '""')}"`;
+  const lines = [cols.join(",")];
+  ROWS.forEach(r => {
+    const d = DEC[rid(r)];
+    if (!d) return;
+    lines.push(cols.map(c =>
+      q(c === "human_decision" ? d : c === "action" ? actionOf(r, d) : r[c])).join(","));
+  });
+  if (lines.length === 1) { alert("No decisions recorded yet."); return; }
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/csv" }));
+  a.download = "alignment_review_decisions.csv";
+  a.click();
+});
+document.getElementById("reset").addEventListener("click", () => {
+  if (confirm("Discard all your recorded decisions?")) { DEC = {}; save(); applyFilters(); }
+});
+
+// ── load ──────────────────────────────────────────────────────────────────
+function parseCsv(t) {
+  const out = []; let row = [], f = "", q = false;
+  for (let i = 0; i < t.length; i++) {
+    const c = t[i];
+    if (q) {
+      if (c === '"') { if (t[i+1] === '"') { f += '"'; i++; } else q = false; }
+      else f += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(f); f = ""; }
+    else if (c === "\n") { row.push(f); out.push(row); row = []; f = ""; }
+    else if (c !== "\r") f += c;
+  }
+  if (f || row.length) { row.push(f); out.push(row); }
+  const head = out.shift();
+  return out.filter(r => r.length > 1).map(r => Object.fromEntries(head.map((h, i) => [h, r[i] ?? ""])));
+}
+
+Promise.all([
+  fetch("alignment_review_queue.csv").then(r => { if (!r.ok) throw new Error("queue " + r.status); return r.text(); }),
+  fetch("canvas_map.json").then(r => r.json()),
+  fetch("travel_guides_canvas_map.json").then(r => r.json()),
+]).then(([csvText, a, b]) => {
+  MAP = Object.assign({}, a, b);
+  ROWS = parseCsv(csvText);
+  const vols = [...new Set(ROWS.map(r => r.volume_title).filter(Boolean))].sort();
+  const sel = document.getElementById("f-vol");
+  vols.forEach(v => { const o = document.createElement("option");
+    o.value = v; o.textContent = v.slice(0, 54); sel.appendChild(o); });
+  applyFilters();
+}).catch(e => {
+  document.getElementById("list").innerHTML =
+    `<div class="empty"><b>Could not load.</b><br>${esc(e.message)}<br><br>
+     Serve this from the repo root — <code>python3 -m http.server</code> — then open
+     <code>http://localhost:8000/alignment_review.html</code>. Opening the file directly
+     blocks the fetches.</div>`;
+});
+</script>
+</body>
+</html>
