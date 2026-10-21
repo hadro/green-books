@@ -4,11 +4,11 @@ This repository powers a public website for browsing and viewing the digitized e
 
 ## 👉 Start here: **https://hadro.github.io/green-books/all-volumes**
 
-The all-volumes explorer is the main entry point to the project — search, filter, and chart all ~113,800 listings across all 50 volumes and eight publications in one place. If you are linking to this project, link there.
+The all-volumes explorer is the main entry point to the project — search, filter, and chart all ~116,000 listings across all 51 volumes and eight publications in one place. If you are linking to this project, link there.
 
 The other explorers are narrower views of the same corpus and remain available:
 
-- [/explorer](https://hadro.github.io/green-books/explorer) — *The Negro Motorist Green Book* only (24 editions, ~67,000 listings)
+- [/explorer](https://hadro.github.io/green-books/explorer) — *The Negro Motorist Green Book* only (25 editions, ~69,000 listings)
 - [/travel_guides_explorer](https://hadro.github.io/green-books/travel_guides_explorer) — the seven non–Green Book travel guides
 - [/nyc](https://hadro.github.io/green-books/nyc) — the New York City listings, mapped by neighborhood
 
@@ -18,8 +18,8 @@ The other explorers are narrower views of the same corpus and remain available:
 
 | File / folder | Description |
 |---|---|
-| `all-volumes.html` | **The primary explorer** — search and filter all ~113,800 listings across 50 volumes and eight publications (1930–1966), with cross-publication charts and trends |
-| `explorer.html` | The same browser scoped to *The Negro Motorist Green Book* — ~67,000 listings across its 24 editions |
+| `all-volumes.html` | **The primary explorer** — search and filter all ~116,000 listings across 51 volumes and eight publications (1930–1966), with cross-publication charts and trends |
+| `explorer.html` | The same browser scoped to *The Negro Motorist Green Book* — ~69,000 listings across its 25 editions |
 | `travel_guides_explorer.html` | Browser scoped to just the seven non–Green Book travel guides |
 | `nyc.html` | New York City listings on a neighborhood map — aggregate and point views over the geocoded NYC subset |
 | `index.html` | IIIF viewer (Clover) with routing logic — opens a specific page when given a `?cf=` deep-link. **The only part of the site that contacts the NYPL or LOC image servers.** |
@@ -91,7 +91,7 @@ Two narrow exceptions, both fallbacks rather than normal operation:
 
 The structured entries dataset was produced by the [directory-pipeline](https://github.com/hadro/directory-pipeline) project, which uses Gemini for OCR and named-entity recognition on the NYPL scans. The pipeline extracts business names, addresses, cities, states, categories, and notes from each page, and links each entry back to its source canvas via IIIF URIs.
 
-*The Negro Motorist Green Book* editions alone number 24 volumes with roughly 67,000 listings. Together with seven other digitized African American travel guides — *Hackley & Harrison's Hotel and Apartment Guide* (1930), *The Travelers' Guide* (1931), *Smith's Tourist Guide* (1940), the *Afro-American's Travel Guide* (1954–1958), *Travelguide* (1947–1962), *Go: Guide to Pleasant Motoring* (1952–1959), and the *NHA Directory and Guide to Travelers* (1959) — the full corpus spans 50 volumes across eight publications (1930–1966) and roughly 113,800 individual listings.
+*The Negro Motorist Green Book* editions alone number 25 volumes with roughly 69,000 listings. Together with seven other digitized African American travel guides — *Hackley & Harrison's Hotel and Apartment Guide* (1930), *The Travelers' Guide* (1931), *Smith's Tourist Guide* (1940), the *Afro-American's Travel Guide* (1954–1958), *Travelguide* (1947–1962), *Go: Guide to Pleasant Motoring* (1952–1959), and the *NHA Directory and Guide to Travelers* (1959) — the full corpus spans 51 volumes across eight publications (1930–1966) and roughly 116,000 individual listings.
 
 The data reaches only as far as digitization has: other Black travel guides that have not been digitized (see NYPL's guide, ["More African American Travel Guides!"](https://libguides.nypl.org/greenbook/more)) are not represented, so counts describe the digitized corpus, not the full historical record.
 

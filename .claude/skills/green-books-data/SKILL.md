@@ -1,11 +1,11 @@
 ---
 name: green-books-data
-description: Query the Green Book / Black travel guide corpus — 113,827 historical business listings across 50 volumes (1930–1966) in green_book_entries_all.csv and travel_guides_all.csv. Use when asked to search, count, cross-reference, chart, or audit listings; trace a business across editions; find listings by city, state, year, category, or NYC neighborhood; check transcription quality against the scanned page; or build a derived dataset from the corpus. Triggers on "Green Book", "travel guide listings", "the corpus", "the CSVs", specific business/place/edition lookups, and data-quality questions about the entries.
+description: Query the Green Book / Black travel guide corpus — 115,996 historical business listings across 51 volumes (1930–1966) in green_book_entries_all.csv and travel_guides_all.csv. Use when asked to search, count, cross-reference, chart, or audit listings; trace a business across editions; find listings by city, state, year, category, or NYC neighborhood; check transcription quality against the scanned page; or build a derived dataset from the corpus. Triggers on "Green Book", "travel guide listings", "the corpus", "the CSVs", specific business/place/edition lookups, and data-quality questions about the entries.
 ---
 
 # Querying the Green Books corpus
 
-113,827 listings from 50 digitized volumes of *The Negro Motorist Green Book* and seven
+115,996 listings from 51 digitized volumes of *The Negro Motorist Green Book* and seven
 companion African American travel guides, 1930–1966, across 8 publications. Every row
 links back to the exact region of the page scan it was read from.
 
@@ -42,14 +42,14 @@ Write intermediate result files to the scratchpad, not the repo.
 
 | Table | What |
 |---|---|
-| `listings` | 113,827 rows, both corpora in one schema |
+| `listings` | 115,996 rows, both corpora in one schema |
 | `listings_fts` | FTS5 over `name`, `address`, `notes`, `proprietor` (external content, join on `rowid = listings.id`) |
-| `volumes` | 50 rows — per-volume rights provenance from `hf-dataset/volume_rights.csv` |
+| `volumes` | 51 rows — per-volume rights provenance from `hf-dataset/volume_rights.csv` |
 | `meta` | row counts + a staleness signature |
 
 ### Columns worth knowing
 
-- `publication` — series label; all 24 Green Book editions collapse to `The Green Book`.
+- `publication` — series label; all 25 Green Book editions collapse to `The Green Book`.
   `volume_title` keeps the specific edition. `source_corpus` is `green_book` or `travel_guides`.
 - `category` (as printed) vs `category_normalized` (folded — **use this for grouping**).
 - `state` (as printed) vs `state_normalized` (case-fold only, see gotchas).
@@ -139,9 +139,9 @@ never assume 50 clean states.
 **`thumb_id` is not a primary key.** 619 rows share a `canvas_fragment` with another row
 (two listings read from one page region). Join on `listings.id` when you need one row.
 
-**`drift_geonames` is noise at scale.** It is set on 50,456 rows — a soft signal, not a
-defect list. Real triage targets are `flag_name_address` (440), `flag_unanchored` (314),
-`flag_duplicate` (2,480), `flag_state_invalid` (2,303), and high `drift_score`.
+**`drift_geonames` is noise at scale.** It is set on 52,050 rows — a soft signal, not a
+defect list. Real triage targets are `flag_name_address` (443), `flag_unanchored` (314),
+`flag_duplicate` (2,511), `flag_state_invalid` (2,303), and high `drift_score`.
 
 **Rights are per-volume.** Most volumes are NYPL `PDREN` (public domain); the 1946 Green
 Book is LOC "no known restrictions"; *Travelguide 1957* is `ICORPHAN`, an orphan work.
@@ -153,5 +153,5 @@ Exclude them explicitly in any "most common category" answer, or say they're inc
 ## Reporting numbers
 
 State the filter you used alongside any count — corpus-wide, single publication, and
-single edition totals differ by an order of magnitude, and "the Green Book" (67,052)
-is not "the corpus" (113,827). When a number could be read either way, give both.
+single edition totals differ by an order of magnitude, and "the Green Book" (69,221)
+is not "the corpus" (115,996). When a number could be read either way, give both.
