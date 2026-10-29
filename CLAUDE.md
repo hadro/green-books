@@ -7,13 +7,13 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | File | What it is |
 |------|-----------|
 | `explorer.html` | Main Green Books explorer (faceted search table, ~1,600 lines of vanilla JS) |
-| `green_book_entries_all.csv` | Combined data for all 24 Green Book editions (~67k entries; includes the LOC-digitized 1946 edition, volume_id 2016298176) |
+| `green_book_entries_all.csv` | Combined data for all 25 Green Book editions (~69k entries; includes the LOC-digitized 1946 edition, volume_id 2016298176, and the 1958 edition added 2026-10) |
 | `image_to_volume.json` | Maps NYPL image IDs and LOC IIIF service IDs → volume IDs (used by IIIF viewer for deep links) |
 | `travel_guides_image_to_volume.json` | Same, for the 26 sibling travel guide volumes (built and live; drives `travel_guides_explorer.html`) |
 | `index.html` | IIIF viewer entry point — all JS is inline in this file, no build step (the `react_clover` branch has a separate Vite/Clover rewrite in `viewer-src/`, not yet merged) |
 | `manifests/{uuid}/manifest.json` | Per-volume IIIF manifests (one per Green Book edition; the LOC 1946 volume's manifest lives at `manifests/2016298176/manifest.json`) |
 | `green_book_entries_all_fixed.csv` | Scratch/working copy; `green_book_entries_all.csv` is the canonical one |
-| `nyc_geo.json` | **Generated** — slim `sha1(canvas_fragment)[:12]` → `[lat, lon, neighborhood, borough, approx]` lookup for the 7,996 geocoded NYC entries. Rebuild with `python3 scripts/build_nyc_geo.py` whenever `nyc-neighborhoods/nyc_entries_geocoded.csv` changes; `--check` fails if it has drifted. |
+| `nyc_geo.json` | **Generated** — slim `sha1(canvas_fragment)[:12]` → `[lat, lon, neighborhood, borough, approx]` lookup for the 8,051 geocoded NYC entries. Rebuild with `python3 scripts/build_nyc_geo.py` whenever `nyc-neighborhoods/nyc_entries_geocoded.csv` changes; `--check` fails if it has drifted. |
 | `nyc-neighborhoods/nyc-neighborhoods.slim.geojson` | **Generated** — the boundary polygons `nyc.html`'s map loads (261 top-level features, `name`+`borough` only, 5 dp; 239 KB gzipped vs the source's 409 KB). Rebuild with `python3 scripts/build_nyc_hoods.py`; `--check` fails if it has drifted. A *modified* CC BY-SA 4.0 redistribution — see `nyc-neighborhoods/README.md`. |
 
 ## Branch overview
@@ -85,7 +85,8 @@ The first non-NYPL volume in the collection. Key details:
 ## Afro-American's Travel Guide volumes
 
 Four NYPL volumes added to `travel_guides_all.csv`, bringing it to 26 travel-guide
-volumes / 7 travel-guide publications (50 volumes / 8 publications corpus-wide).
+volumes / 7 travel-guide publications (50 volumes / 8 publications corpus-wide at
+the time; 51 since the 1958 Green Book).
 Published by the Travel Bureau of the Afro-American newspapers, Baltimore. NYPL
 collection UUID `52af6e40-7256-013f-1a2f-0242ac110002`.
 
@@ -106,10 +107,28 @@ collection UUID `52af6e40-7256-013f-1a2f-0242ac110002`.
   canvas dimensions from the pipeline's aligned sidecars, because the NYPL
   manifests for these volumes report a placeholder 2560×2560 for every canvas.
 
+## 1958 Green Book volume
+
+*The Negro Travelers' Green Book: 1958* (NYPL `b4affe50-7ca3-013f-af86-0242ac110002`,
+2,169 rows) fills the 1957 → 1959 gap; the Green Book now has 25 editions and the
+corpus 51 volumes / 8 publications. PDREN / NoC-US (NYPL also flags "Right of
+Publicity Issues Present", which concerns likenesses, not copyright).
+
+- **Integration**: `scripts/append_green_book_1958.py`, two phases (`stage`, then the
+  pipeline's `collections/greenbook/detect_geographic_drift.py` over all editions,
+  then `apply`) so its drift scores see every other edition. Full record:
+  `docs/green-book-1958-integration-plan.md`.
+- **Its NER prompt has no category field**; categories come from
+  `fix_entries.py --infer-categories` reading the `section` column (the edition
+  prints one combined "Hotels — Motels — Tourist Homes — Restaurants" heading).
+- **10 rows are hand-entered** (page 0078, `Fixed or checked` = TRUE): NER dropped
+  every listing there without a leading town name.
+
 ## Thumbnail CDN (all entries → Hugging Face)
 
-Every entry's cropped snippet thumbnail (113,053 webps across both CSVs, incl. the
-LOC 1946 volume and the four Afro-American's Travel Guide volumes) is pre-cropped and
+Every entry's cropped snippet thumbnail (115,222 webps across both CSVs, incl. the
+LOC 1946 volume, the four Afro-American's Travel Guide volumes and the 1958 Green
+Book) is pre-cropped and
 served from the **`hadro/green-books-thumbnails`** HF dataset repo, so the explorers
 make effectively zero live NYPL/LOC image requests.
 
@@ -132,6 +151,7 @@ make effectively zero live NYPL/LOC image requests.
     --images-dir /Users/joshhadro/github/directory-pipeline/output/afro-american-travel-guide-1956 \
     --images-dir /Users/joshhadro/github/directory-pipeline/output/afro-american-travel-guide-1957 \
     --images-dir /Users/joshhadro/github/directory-pipeline/output/afro-american-travel-guide-1958 \
+    --images-dir /Users/joshhadro/github/directory-pipeline/output/b4affe50-7ca3-013f-af86-0242ac110002 \
     --format webp --jobs 7
   ```
   Local scans are joined by the CSV `image` column (an exact filename for both
@@ -153,7 +173,7 @@ make effectively zero live NYPL/LOC image requests.
 ## NYC coordinates (`nyc_geo.json`)
 
 `nyc-neighborhoods/nyc_entries_geocoded.csv` is the NYC geocoding run's deliverable:
-8,108 rows (re-run to include the 113 Afro-American's Travel Guide rows), 99.6%
+8,163 rows (last re-run for the 55 NYC rows of the 1958 Green Book), 99.6%
 resolved to real coordinates via NYC GeoSearch, with `neighborhood` and `borough`
 labels. `nyc.html` streams that CSV as its entire dataset.
 

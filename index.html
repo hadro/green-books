@@ -539,7 +539,7 @@ function launchClover(manifestId, cfUrl) {
       const svcBase = cfBase.replace(/\/full\/.*$/, "");
       const canvasId = index[svcBase] || index[cfBase] || cfBase;
       const state = buildCloverState(manifestId, canvasId, fragment);
-      // 774 of 113,827 entries (0.7%) carry a canvas_fragment with no #xywh —
+      // 774 of 115,996 entries (0.7%) carry a canvas_fragment with no #xywh —
       // the pipeline located the page but not the region on it. Without a
       // FragmentSelector Clover draws no overlay annotation, so the zoom driver
       // polls for an element that will never exist and holds gb-zoom-pending

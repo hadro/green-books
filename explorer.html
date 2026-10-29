@@ -574,7 +574,7 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <span>Green Books Travel Guide Explorer</span>
         <!-- <span>EST. 1936</span> -->
         <!-- <span class="gb-hero-eyebrow-dot">&#x25CF;</span> -->
-        <!-- <span id="hero-eyebrow-stats">67,052 ENTRIES &middot; 24 VOLUMES</span> -->
+        <!-- <span id="hero-eyebrow-stats">69,221 ENTRIES &middot; 25 VOLUMES</span> -->
       </div>
       <h1 class="gb-hero-title">A directory of places that welcomed Black travelers, <em>1937&nbsp;&ndash;&nbsp;1966.</em></h1>
       <p class="gb-hero-lede">The Negro Motorist Green Book listed hotels, restaurants, beauty parlors, and roadhouses safe to visit during the Jim Crow era of segregation. This explorer makes those records searchable across all published editions.</p>
@@ -600,8 +600,8 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
     </div>
   </div>
   <div class="gb-hero-stats">
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">67,052</div><div class="gb-hero-stat-label">individual listings</div></div>
-    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">24</div><div class="gb-hero-stat-label">published volumes</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-entries">69,221</div><div class="gb-hero-stat-label">individual listings</div></div>
+    <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-editions">25</div><div class="gb-hero-stat-label">published volumes</div></div>
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-states">89</div><div class="gb-hero-stat-label">states and countries represented</div></div>
     <!-- 26 = folded gbCategoryGroup() labels with >=100 entries in green_book_entries_all.csv, excluding the "Blank or no specific category" bucket. Regenerate by folding the CSV's category column through gb-categories.js's gbCategoryGroup() and counting labels. -->
     <div class="gb-hero-stat"><div class="gb-hero-stat-num" id="hero-stat-cats">26</div><div class="gb-hero-stat-label">business categories</div></div>
@@ -726,12 +726,12 @@ tbody tr.selected .detail-btn { color: var(--gb-accent); }
         <aside class="about-modal-side">
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">DATASET</div>
-            <div class="about-modal-side-stat" id="about-stat-entries">67,052</div>
+            <div class="about-modal-side-stat" id="about-stat-entries">69,221</div>
             <div class="about-modal-side-sub">individual listings, extracted</div>
           </div>
           <div class="about-modal-side-block">
             <div class="about-modal-side-label">VOLUMES</div>
-            <div class="about-modal-side-stat">24</div>
+            <div class="about-modal-side-stat">25</div>
             <div class="about-modal-side-sub">covering 1937 &mdash; 1966</div>
           </div>
           <div class="about-modal-side-block">
@@ -769,7 +769,7 @@ const VOLUMES     = {};
 // python3's csv module, to handle embedded commas/quotes correctly) and
 // folding each value through gb-categories.js's gbCategoryGroup() — run the
 // file itself (e.g. in a Node vm sandbox) rather than reimplementing the map.
-const FIELD_META  = [{"name": "volume_year", "fill_rate": 1.0, "cardinality": 23, "type": "facet", "top_values": [["1937", 87], ["1938", 1016], ["1939", 2010], ["1940", 2064], ["1941", 2041], ["1946", 3462], ["1947", 3808], ["1948", 3920], ["1949", 4135], ["1950", 4345], ["1951", 4240], ["1952", 4222], ["1953", 4034], ["1954", 4103], ["1955", 4045], ["1956", 1958], ["1957", 2128], ["1959", 2129], ["1960", 2247], ["1961", 2395], ["1962", 2240], ["1963", 3136], ["1966", 3287]]}, {"name": "name", "fill_rate": 1.0, "cardinality": 12360, "type": "search", "top_values": []}, {"name": "address", "fill_rate": 0.9194, "cardinality": 14205, "type": "search", "top_values": []}, {"name": "city", "fill_rate": 0.9974, "cardinality": 2647, "type": "search", "top_values": []}, {"name": "state", "fill_rate": 1.0, "cardinality": 203, "type": "search", "top_values": []}, {"name": "category", "fill_rate": 0.968, "cardinality": 274, "type": "facet", "folded": true, "top_values": [["HOTELS", 15063], ["TOURIST HOMES", 12102], ["RESTAURANTS", 8232], ["TAVERNS", 5755], ["BEAUTY PARLORS", 4734], ["Blank or no specific category", 4484], ["SERVICE STATIONS", 2305], ["BARBER SHOPS", 2276], ["NIGHT CLUBS", 1895], ["TAILOR SHOPS", 1272], ["DRUG STORES", 1253], ["WINE & LIQUOR STORES", 1210], ["VACATION RESORTS", 1128], ["GARAGES", 989], ["TAXI CABS", 548], ["SUMMER RESORTS", 418], ["ROAD HOUSES", 289], ["VACATION SECTION", 263], ["BEAUTY CULTURE SCHOOLS", 256], ["MOTEL", 212], ["SCHOOLS", 210], ["POINTS OF INTEREST", 185], ["AUTOMOTIVE", 133], ["PUBLICATIONS", 115], ["NEWSPAPERS", 111]]}, {"name": "notes", "fill_rate": 0.0291, "cardinality": 1598, "type": "search", "top_values": []}, {"name": "canvas_fragment", "fill_rate": 1.0, "cardinality": 66531, "type": "id", "top_values": []}, {"name": "image", "fill_rate": 1.0, "cardinality": 1649, "type": "id", "top_values": []}];
+const FIELD_META  = [{"name": "volume_year", "fill_rate": 1.0, "cardinality": 24, "type": "facet", "top_values": [["1937", 87], ["1938", 1016], ["1939", 2010], ["1940", 2064], ["1941", 2041], ["1946", 3462], ["1947", 3808], ["1948", 3920], ["1949", 4135], ["1950", 4345], ["1951", 4240], ["1952", 4222], ["1953", 4034], ["1954", 4103], ["1955", 4045], ["1956", 1958], ["1957", 2128], ["1958", 2169], ["1959", 2129], ["1960", 2247], ["1961", 2395], ["1962", 2240], ["1963", 3136], ["1966", 3287]]}, {"name": "name", "fill_rate": 1.0, "cardinality": 12396, "type": "search", "top_values": []}, {"name": "address", "fill_rate": 0.919, "cardinality": 14239, "type": "search", "top_values": []}, {"name": "city", "fill_rate": 0.9975, "cardinality": 2655, "type": "search", "top_values": []}, {"name": "state", "fill_rate": 1.0, "cardinality": 203, "type": "search", "top_values": []}, {"name": "category", "fill_rate": 0.9671, "cardinality": 275, "type": "facet", "folded": true, "top_values": [["HOTELS", 15993], ["TOURIST HOMES", 12596], ["RESTAURANTS", 8568], ["TAVERNS", 5756], ["Blank or no specific category", 4808], ["BEAUTY PARLORS", 4735], ["SERVICE STATIONS", 2305], ["BARBER SHOPS", 2276], ["NIGHT CLUBS", 1895], ["TAILOR SHOPS", 1272], ["DRUG STORES", 1253], ["WINE & LIQUOR STORES", 1210], ["VACATION RESORTS", 1139], ["GARAGES", 989], ["TAXI CABS", 548], ["SUMMER RESORTS", 418], ["ROAD HOUSES", 289], ["VACATION SECTION", 263], ["BEAUTY CULTURE SCHOOLS", 256], ["MOTEL", 212], ["SCHOOLS", 210], ["POINTS OF INTEREST", 185], ["AUTOMOTIVE", 133], ["PUBLICATIONS", 115], ["NEWSPAPERS", 111]]}, {"name": "notes", "fill_rate": 0.0291, "cardinality": 1636, "type": "search", "top_values": []}, {"name": "canvas_fragment", "fill_rate": 1.0, "cardinality": 68700, "type": "id", "top_values": []}, {"name": "image", "fill_rate": 1.0, "cardinality": 1724, "type": "id", "top_values": []}];
 let CANVAS_MAP = {};
 const DOC_TITLE   = "The Green Book";
 const VIEWER_URL  = "";
@@ -2275,7 +2275,7 @@ document.getElementById('detail').addEventListener('keydown', e => {
 // the CSV streams in; the real count everywhere else comes from
 // ALL_ENTRIES.length. Regenerate by re-running the command above if the CSV
 // is ever regenerated with a different row count.
-const GB_ENTRIES_TOTAL_APPROX = 67052;
+const GB_ENTRIES_TOTAL_APPROX = 69221;
 
 // State-machine CSV parser that accepts the file in chunks. Handles RFC 4180
 // quoting (escaped quotes, embedded commas and newlines) across arbitrary
