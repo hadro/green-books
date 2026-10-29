@@ -7,7 +7,7 @@ Published data and explorer UI for the digitized *Green Book* volumes (and relat
 | File | What it is |
 |------|-----------|
 | `explorer.html` | Main Green Books explorer (faceted search table, ~1,600 lines of vanilla JS) |
-| `green_book_entries_all.csv` | Combined data for all 24 Green Book editions (~67k entries; includes the LOC-digitized 1946 edition, volume_id 2016298176) |
+| `green_book_entries_all.csv` | Combined data for all 25 Green Book editions (~69k entries; includes the LOC-digitized 1946 edition, volume_id 2016298176, and the 1958 edition added 2026-10) |
 | `image_to_volume.json` | Maps NYPL image IDs and LOC IIIF service IDs → volume IDs (used by IIIF viewer for deep links) |
 | `travel_guides_image_to_volume.json` | Same, for the 26 sibling travel guide volumes (built and live; drives `travel_guides_explorer.html`) |
 | `index.html` | IIIF viewer entry point — all JS is inline in this file, no build step (the `react_clover` branch has a separate Vite/Clover rewrite in `viewer-src/`, not yet merged) |
@@ -83,7 +83,8 @@ The first non-NYPL volume in the collection. Key details:
 ## Afro-American's Travel Guide volumes
 
 Four NYPL volumes added to `travel_guides_all.csv`, bringing it to 26 travel-guide
-volumes / 7 travel-guide publications (50 volumes / 8 publications corpus-wide).
+volumes / 7 travel-guide publications (50 volumes / 8 publications corpus-wide at
+the time; 51 since the 1958 Green Book).
 Published by the Travel Bureau of the Afro-American newspapers, Baltimore. NYPL
 collection UUID `52af6e40-7256-013f-1a2f-0242ac110002`.
 
@@ -104,9 +105,26 @@ collection UUID `52af6e40-7256-013f-1a2f-0242ac110002`.
   canvas dimensions from the pipeline's aligned sidecars, because the NYPL
   manifests for these volumes report a placeholder 2560×2560 for every canvas.
 
+## 1958 Green Book volume
+
+*The Negro Travelers' Green Book: 1958* (NYPL `b4affe50-7ca3-013f-af86-0242ac110002`,
+2,169 rows) fills the 1957 → 1959 gap; the Green Book now has 25 editions and the
+corpus 51 volumes / 8 publications. PDREN / NoC-US (NYPL also flags "Right of
+Publicity Issues Present", which concerns likenesses, not copyright).
+
+- **Integration**: `scripts/append_green_book_1958.py`, two phases (`stage`, then the
+  pipeline's `collections/greenbook/detect_geographic_drift.py` over all editions,
+  then `apply`) so its drift scores see every other edition. Full record:
+  `docs/green-book-1958-integration-plan.md`.
+- **Its NER prompt has no category field**; categories come from
+  `fix_entries.py --infer-categories` reading the `section` column (the edition
+  prints one combined "Hotels — Motels — Tourist Homes — Restaurants" heading).
+- **10 rows are hand-entered** (page 0078, `Fixed or checked` = TRUE): NER dropped
+  every listing there without a leading town name.
+
 ## Querying the corpus (agents)
 
-Don't answer corpus questions by loading the CSVs into context — 34 MB, 113,827 rows.
+Don't answer corpus questions by loading the CSVs into context — 34 MB, 115,996 rows.
 `python3 scripts/build_query_db.py` folds both CSVs, `nyc_geo.json`, and the per-volume
 rights into `green_books.sqlite` (FTS5, ~5 s, gitignored). The
 `.claude/skills/green-books-data/` skill documents the schema, tested query recipes,

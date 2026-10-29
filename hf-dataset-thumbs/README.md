@@ -19,7 +19,7 @@ viewer: false
 
 # African American Travel Guides: Listing Thumbnails
 
-**113,053 pre-cropped thumbnail images — one per listing — from 50 volumes of mid-20th-century African American travel guides (1930–1966).** Each image is a small snippet of a scanned directory page cropped down to a single business or lodging listing: the exact region a traveler would have read.
+**115,222 pre-cropped thumbnail images — one per listing — from 51 volumes of mid-20th-century African American travel guides (1930–1966).** Each image is a small snippet of a scanned directory page cropped down to a single business or lodging listing: the exact region a traveler would have read.
 
 This is the **image companion** to the structured-listings dataset [**hadro/green-books-travel-guides**](https://huggingface.co/datasets/hadro/green-books-travel-guides). That dataset holds the transcribed *text* of each listing; this one holds the *picture* of it. They join on a content hash of each listing's IIIF region (see [Finding a listing's thumbnail](#finding-a-listings-thumbnail)).
 
@@ -35,9 +35,9 @@ Its purpose is practical: it lets the companion web explorer show the source sni
 
 | | Count |
 |---|---:|
-| Listings in the companion dataset | 113,827 |
-| **Thumbnails here** | **113,053** (99.3%) |
-| Volumes | 50 |
+| Listings in the companion dataset | 115,996 |
+| **Thumbnails here** | **115,222** (99.3%) |
+| Volumes | 51 |
 
 The ~774 listings without a thumbnail are ones whose page region couldn't be resolved to a croppable IIIF canvas (missing/degenerate `#xywh=`). In the web explorer those rows fall back to a live IIIF crop, so nothing is lost at view time — this repo simply doesn't pre-host them.
 
@@ -71,8 +71,8 @@ Because the key is a hash of the full `canvas_fragment` (URL + `#xywh=` region),
 
 Unlike the *facts* in the companion dataset (which are uncopyrightable directory data under *Feist v. Rural Telephone*, 499 U.S. 340), these files are **image crops of the source scans**, so the scans' own status matters directly. Verified against the NYPL API (49 NYPL volumes) and the LOC item record (1 LOC volume):
 
-- **49 of 50 volumes** are **Public Domain in the United States** — 48 NYPL volumes (`NoC-US`, NYPL status `PDREN`) plus the **1946 Green Book** from the Library of Congress (no known publication restrictions, `NoC-US`). Crops of these pages are in the public domain.
-- **1 of 50 — *Travelguide 1957*** — is an **in-copyright orphan work** (`InC-RUU`, NYPL status `ICORPHAN`): NYPL found a copyright notice, could not locate a rights-holder, and released the scan as an orphan work. Its listings' *facts* are free to reuse, but its page *scans* are not public domain, so the ~2,483 thumbnails cropped from it are **derivatives of an orphan-work scan**. They are included and flagged here for parity with the text dataset; downstream users who need a strictly-public-domain image set should exclude that volume. Per-volume rights are in [`volume_rights.csv`](https://huggingface.co/datasets/hadro/green-books-travel-guides/blob/main/volume_rights.csv) in the companion dataset.
+- **50 of 51 volumes** are **Public Domain in the United States** — 49 NYPL volumes (`NoC-US`, NYPL status `PDREN`) plus the **1946 Green Book** from the Library of Congress (no known publication restrictions, `NoC-US`). Crops of these pages are in the public domain.
+- **1 of 51 — *Travelguide 1957*** — is an **in-copyright orphan work** (`InC-RUU`, NYPL status `ICORPHAN`): NYPL found a copyright notice, could not locate a rights-holder, and released the scan as an orphan work. Its listings' *facts* are free to reuse, but its page *scans* are not public domain, so the ~2,483 thumbnails cropped from it are **derivatives of an orphan-work scan**. They are included and flagged here for parity with the text dataset; downstream users who need a strictly-public-domain image set should exclude that volume. Per-volume rights are in [`volume_rights.csv`](https://huggingface.co/datasets/hadro/green-books-travel-guides/blob/main/volume_rights.csv) in the companion dataset.
 
 Attribution is not legally required for the public-domain volumes but is requested as a courtesy: *"From The New York Public Library"* (NYPL volumes) / *"From the Library of Congress"* (1946 edition).
 
@@ -97,7 +97,7 @@ Cropped from the digitized page images with an open-source pipeline — the crop
   title  = {African American Travel Guides: Listing Thumbnails (Green Book and Companion Directories, 1930--1966)},
   author = {Hadro, Josh},
   year   = {2026},
-  note   = {113,053 per-listing snippet images cropped from 50 digitized volumes, New York Public Library and Library of Congress Digital Collections},
+  note   = {115,222 per-listing snippet images cropped from 51 digitized volumes, New York Public Library and Library of Congress Digital Collections},
   url    = {https://huggingface.co/datasets/hadro/green-books-thumbnails}
 }
 ```
