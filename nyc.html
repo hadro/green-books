@@ -3556,14 +3556,22 @@ function gbMapInit() {
   labelPane.style.pointerEvents = "none";
   gbHoodRenderer = L.canvas({ pane: "gbHoodPane", padding: 0.1 });
 
-  const tileOpts = { subdomains: "abcd", maxZoom: 19 };
-  gbBaseTiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+  // CARTO basemaps need a key; without one every tile is an "API key required"
+  // watermark. Each key is locked to one site in the CARTO dashboard, so local
+  // dev (localhost, any port; not 127.0.0.1) has its own. Leaflet fills {key}.
+  const tileOpts = {
+    subdomains: "abcd", maxZoom: 19,
+    key: location.hostname === "localhost"
+      ? "cb1_5c1a_2_9cf4a54a529445b5815a4548"
+      : "cb1_5c1a_1_ef063c57f06bcb8cd01e074b"
+  };
+  gbBaseTiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png?key={key}", {
     ...tileOpts, className: "gb-base-tiles",
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(gbMap);
   // Labels ride above the choropleth instead of under it. If this style ever
   // 404s the map is still complete — it just loses street names.
-  gbLabelTiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png", {
+  gbLabelTiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png?key={key}", {
     ...tileOpts, className: "gb-label-tiles", pane: "gbLabelPane"
   }).addTo(gbMap);
 
